@@ -14,9 +14,20 @@
 | page layout
 |-----------------------------------
 */
-::selection{ background-color: #E13300; color: white; }
-::moz-selection{ background-color: #E13300; color: white; }
-::webkit-selection{ background-color: #E13300; color: white; }
+::selection {
+	background-color: #E13300;
+	color: white;
+}
+
+::moz-selection {
+	background-color: #E13300;
+	color: white;
+}
+
+::webkit-selection {
+	background-color: #E13300;
+	color: white;
+}
 
 body {
 	background-color: #fff;
@@ -52,11 +63,11 @@ code {
 	padding: 12px 10px 12px 10px;
 }
 
-#body{
+#body {
 	margin: 0 15px 0 15px;
 }
 
-p.footer{
+p.footer {
 	text-align: right;
 	font-size: 11px;
 	border-top: 1px solid #D0D0D0;
@@ -65,10 +76,14 @@ p.footer{
 	margin: 20px 0 0 0;
 }
 
-#container{
-	margin: 10px;
+#container {
+	margin: 40px auto;
+	width: 900px;
 	border: 1px solid #D0D0D0;
+
 	-webkit-box-shadow: 0 0 8px #D0D0D0;
+	-moz-box-shadow: 0 0 8px #D0D0D0;
+	box-shadow: 0 0 8px #D0D0D0;
 }
 
 
@@ -78,29 +93,41 @@ p.footer{
 |-----------------------------------
 */
 #message-page {
-    background: #525252;
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.8) inset;
-    color: #fff;
-    padding: 1em;
-    margin-top: 5em;
+	background: #525252;
+
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+
+	-webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.8) inset;
+	-moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.8) inset;
+	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.8) inset;
+	color: #fff;
+	padding: 1em;
+	margin-top: 5em;
 }
 
-#message-page p, #message-page a {
-    color: #fff;
-    text-decoration: none;
+#message-page p,#message-page a {
+	color: #fff;
+	text-decoration: none;
 }
 
 #message-page h3 {
-    font-size: 14px;
-    margin: 0px 0px -8px 0px;
+	font-size: 14px;
+	margin: 0px 0px -8px 0px;
 }
 
-h3.success { color: green; }
-h3.error { color: red; }
-h3.info { color: blue; }
+h3.success {
+	color: green;
+}
+
+h3.error {
+	color: red;
+}
+
+h3.info {
+	color: blue;
+}
 
 
 /*
@@ -108,12 +135,18 @@ h3.info { color: blue; }
 | uni-form stuffs
 |-----------------------------------
 */
-.uniForm fieldset h3 { font-size: 25px; }
-.uniForm .inlineLabels ul li label { line-height: 2.2; }
-.uniForm .textInput, .uniForm .fileUpload, .uniForm .selectInput, .uniForm select, .uniForm textarea {
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;
+.uniForm fieldset h3 {
+	font-size: 25px;
+}
+
+.uniForm .inlineLabels ul li label {
+	line-height: 2.2;
+}
+
+.uniForm .textInput,.uniForm .fileUpload,.uniForm .selectInput,.uniForm select,.uniForm textarea {
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
 }
 
 
@@ -123,75 +156,89 @@ h3.info { color: blue; }
 |-----------------------
 */
 .notification {
-    display: block;
-    clear: both;
-    padding: 10px 10px 8px 36px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    border: 1px solid;
-    color: #646464;
-    background-position: 10px 10px;
-    background-repeat: no-repeat;
-    margin: 10px 0;
-    line-height: 150%;
+	display: block;
+	clear: both;
+	padding: 10px 10px 8px 36px;
+
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	border: 1px solid;
+	color: #646464;
+	background-position: 10px 10px;
+	background-repeat: no-repeat;
+	margin: 10px 0;
+	line-height: 150%;
 }
 
 .notification p {
-    margin: 0;
-    padding: 0;
+	margin: 0;
+	padding: 0;
 }
 
 .close-notification {
-    float: right;
-    padding: 10px 3px 3px;
-    text-decoration: none;
-    color: #737373;
-    position: relative;
-    top: -16px;
-    right: -2px;
+	float: right;
+	padding: 10px 3px 3px;
+	text-decoration: none;
+	color: #737373;
+	position: relative;
+	top: -16px;
+	right: -2px;
 }
 
-.close-notification:hover { color:#333; }
+.close-notification:hover {
+	color: #333;
+}
 
 .notification.error {
-    background-color: #f2d4ce;
-    background-image: url(images/icons/icon_notification_error.png);
-    border-color: #ae432e;
+	background-color: #f2d4ce;
+	background-image: url(images/icons/icon_notification_error.png);
+	border-color: #ae432e;
 }
 
-.notification.error strong { color:#ae432e; }
+.notification.error strong {
+	color: #ae432e;
+}
 
 .notification.success {
-    background-color: #d9e6c3;
-    background-image: url(images/icons/icon_notification_success.png);
-    border-color: #77ab13;
+	background-color: #d9e6c3;
+	background-image: url(images/icons/icon_notification_success.png);
+	border-color: #77ab13;
 }
 
-.notification.success strong { color:#69990f; }
+.notification.success strong {
+	color: #69990f;
+}
 
 .notification.attention {
-    background-color: #faf6d4;
-    background-image: url(images/icons/icon_notification_attention.png);
-    border-color: #e6c26e;
+	background-color: #faf6d4;
+	background-image: url(images/icons/icon_notification_attention.png);
+	border-color: #e6c26e;
 }
 
-.notification.attention strong { color:#be8007; }
+.notification.attention strong {
+	color: #be8007;
+}
 
 .notification.information {
-    background-color: #cee6f2;
-    background-image: url(images/icons/icon_notification_information.png);
-    border-color: #058dc7;
+	background-color: #cee6f2;
+	background-image: url(images/icons/icon_notification_information.png);
+	border-color: #058dc7;
 }
 
-.notification.information strong { color:#0576a6; }
+.notification.information strong {
+	color: #0576a6;
+}
 
 .notification.note {
-    background-color: #f2f2f2;
-    background-image: url(images/icons/icon_notification_note.png);
-    border-color: #d1d1d1;
+	background-color: #f2f2f2;
+	background-image: url(images/icons/icon_notification_note.png);
+	border-color: #d1d1d1;
 }
 
-.notification.note strong { color:#737373; }
+.notification.note strong {
+	color: #737373;
+}
 
 
 /*
@@ -216,16 +263,16 @@ h3.info { color: blue; }
 }
 
 .round {
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
 }
 
 .small { width:33%; }
 .medium { width:66%; }
 .large { width:99%; }
-/*.left { float:left; }
-.right { float:right; } */
+.left { float:left; }
+.right { float:right; }
 
 .al {
     text-align: left;
