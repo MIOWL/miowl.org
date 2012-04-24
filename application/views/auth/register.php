@@ -35,7 +35,7 @@
                 <div class="ctrlHolder">
                     <label for="spamcheck">The URI of this website.</label>
                     <input type="text" name="spamcheck" id="spamcheck" size="35" class="textInput medium" autocompelete="OFF" />
-                    <p class="formHint">type &ldquo;pixldrop.com&rdquo; into this box.</p>
+                    <p class="formHint">type &ldquo;???&rdquo; into this box.</p>
                 </div>
 
             </fieldset>

@@ -22,7 +22,7 @@ class User extends CI_Controller {
         parent::__construct();
 
         // loads
-        #$this->load->library('usermail');
+        $this->load->library('usermail');
     }
     //------------------------------------------------------------------
 
@@ -381,15 +381,6 @@ class User extends CI_Controller {
 
                         $this->session->set_userdata($session_data);
 
-                        // Is this user registered on the forums??
-                        $onForums = $user_query->row()->on_forum;
-                        if ($onForums === "false")
-                        {
-                            // Add this user to IPB
-                            $this->User_model->add_user_to_IPB($user_query->row()->user_name, $this->input->post('password'));
-                        }
-                        // ---------------------------------------
-
                         // Set last login time
                         $this->User_model->login_time($user_query->row()->user_name);
 
@@ -464,7 +455,7 @@ class User extends CI_Controller {
      */
     public function _spam_check($str)
     {
-        if (strtolower($str) === "pixldrop.com")
+        if (strtolower($str) === "???")
             return TRUE;
 
         $this->form_validation->set_message('_spam_check', 'Failed spam check. Really?! Are you human?');

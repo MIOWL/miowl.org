@@ -218,62 +218,6 @@ class User_model extends CI_Model {
     //------------------------------------------------------------------
 
 
-    /**
-     * public _add_user_to_IPB()
-     * now that we have a validated user lets register them to IPB as well
-     * for support and forum access.
-     *
-     * @param string $user
-     * @param string $pass
-     */
-    public function add_user_to_IPB($user = FALSE, $pass = FALSE)
-    {
-        if (!$user || !$pass)
-            return FALSE;
-
-        /* Get the users info from the database */
-        $this->db->select('*');
-        $this->db->where('user_name', $user);
-        $user = $this->db->get('users');
-
-        if ($user->num_rows() <= 0)
-        {
-            print "error collecting data";
-            exit;
-            return;
-        }
-        /* ------------------------------------*/
-
-        /* Set the user as on_forum */
-        $this->db->where('user_name', $user->row()->user_name);
-        $this->db->update('users', array('on_forum' => 'true'));
-        /* ------------------------------------*/
-
-        /* Build up the IPB info to insert */
-        $ipb_user = array(
-            'name'                      => $user->row()->user_name,
-            'member_group_id'           => 3,
-            'email'                     => $user->row()->user_email,
-            'joined'                    => time(),
-            'allow_admin_mails'         => 1,
-            'members_display_name'      => $user->row()->user_name,
-            'members_seo_name'          => $user->row()->user_name,
-            'members_l_display_name'    => $user->row()->user_name,
-            'members_l_username'        => $user->row()->user_name,
-            'members_pass_hash'         => md5(md5($user->row()->user_salt) . md5($pass)),
-            'members_pass_salt'         => $user->row()->user_salt,
-        );
-        /* ------------------------------------*/
-
-        /* Add this info into the IPB database */
-        $ipb = $this->load->database('forums', TRUE);
-        $ipb->insert('pd_members', $ipb_user);
-        $ipb->close();
-        /* ------------------------------------*/
-    }
-    //------------------------------------------------------------------
-
-
     //=================================================================================
     // :validation callbacks
     //=================================================================================
