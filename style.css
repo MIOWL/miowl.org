@@ -70,3 +70,164 @@ p.footer{
 	border: 1px solid #D0D0D0;
 	-webkit-box-shadow: 0 0 8px #D0D0D0;
 }
+
+
+/*
+|-----------------------------------
+| Single-Page Message
+|-----------------------------------
+*/
+#message-page {
+    background: #525252;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.8) inset;
+    color: #fff;
+    padding: 1em;
+    margin-top: 5em;
+}
+
+#message-page p, #message-page a {
+    color: #fff;
+    text-decoration: none;
+}
+
+#message-page h3 {
+    font-size: 14px;
+    margin: 0px 0px -8px 0px;
+}
+
+h3.success { color: green; }
+h3.error { color: red; }
+h3.info { color: blue; }
+
+
+/*
+|-----------------------------------
+| uni-form stuffs
+|-----------------------------------
+*/
+.uniForm fieldset h3 { font-size: 25px; }
+.uniForm .inlineLabels ul li label { line-height: 2.2; }
+.uniForm .textInput, .uniForm .fileUpload, .uniForm .selectInput, .uniForm select, .uniForm textarea {
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+
+
+/*
+|-----------------------
+| message box notifications
+|-----------------------
+*/
+.notification {
+    display: block;
+    clear: both;
+    padding: 10px 10px 8px 36px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border: 1px solid;
+    color: #646464;
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    margin: 10px 0;
+    line-height: 150%;
+}
+
+.notification p {
+    margin: 0;
+    padding: 0;
+}
+
+.close-notification {
+    float: right;
+    padding: 10px 3px 3px;
+    text-decoration: none;
+    color: #737373;
+    position: relative;
+    top: -16px;
+    right: -2px;
+}
+
+.close-notification:hover { color:#333; }
+
+.notification.error {
+    background-color: #f2d4ce;
+    background-image: url(images/icons/icon_notification_error.png);
+    border-color: #ae432e;
+}
+
+.notification.error strong { color:#ae432e; }
+
+.notification.success {
+    background-color: #d9e6c3;
+    background-image: url(images/icons/icon_notification_success.png);
+    border-color: #77ab13;
+}
+
+.notification.success strong { color:#69990f; }
+
+.notification.attention {
+    background-color: #faf6d4;
+    background-image: url(images/icons/icon_notification_attention.png);
+    border-color: #e6c26e;
+}
+
+.notification.attention strong { color:#be8007; }
+
+.notification.information {
+    background-color: #cee6f2;
+    background-image: url(images/icons/icon_notification_information.png);
+    border-color: #058dc7;
+}
+
+.notification.information strong { color:#0576a6; }
+
+.notification.note {
+    background-color: #f2f2f2;
+    background-image: url(images/icons/icon_notification_note.png);
+    border-color: #d1d1d1;
+}
+
+.notification.note strong { color:#737373; }
+
+
+/*
+|-----------------------
+| misc
+|-----------------------
+*/
+.clear {
+    display: block;
+    clear: both;
+    height: 0px !important;
+    width: 0px !important;
+}
+
+
+.hlight {
+    color: #000;
+}
+
+.slight {
+    color: #ccc;
+}
+
+.round {
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.small { width:33%; }
+.medium { width:66%; }
+.large { width:99%; }
+/*.left { float:left; }
+.right { float:right; } */
+
+.al {
+    text-align: left;
+    padding-left: 1em;
+}
