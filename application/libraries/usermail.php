@@ -42,9 +42,9 @@ class Usermail {
             'authcode' => $auth_code,
         );
 
-        $email_data  = $this->obj->load->view('templates/head_foot/email_head.tpl', '', TRUE);  // Add email header
-        $email_data .= $this->obj->parser->parse('templates/auth_email.tpl', $data, TRUE);      // Build the email body
-        $email_data .= $this->obj->load->view('templates/head_foot/email_foot.tpl', '', TRUE);  // Add the email footer
+        $email_data  = $this->obj->load->view('email/head_foot/email_head.tpl', '', TRUE);  // Add email header
+        $email_data .= $this->obj->parser->parse('email/auth_email.tpl', $data, TRUE);      // Build the email body
+        $email_data .= $this->obj->load->view('email/head_foot/email_foot.tpl', '', TRUE);  // Add the email footer
 
         // Email Subject
         $subject = 'MiOWL | Confirm your Account';
@@ -71,9 +71,9 @@ class Usermail {
             'username' => $username,
         );
 
-        $email_data  = $this->obj->load->view('templates/head_foot/email_head.tpl', '', TRUE);  // Add email header
-        $email_data .= $this->obj->parser->parse('templates/welcome_email.tpl', $data, TRUE);   // Build the email body
-        $email_data .= $this->obj->load->view('templates/head_foot/email_foot.tpl', '', TRUE);  // Add the email footer
+        $email_data  = $this->obj->load->view('email/head_foot/email_head.tpl', '', TRUE);  // Add email header
+        $email_data .= $this->obj->parser->parse('email/welcome_email.tpl', $data, TRUE);   // Build the email body
+        $email_data .= $this->obj->load->view('email/head_foot/email_foot.tpl', '', TRUE);  // Add the email footer
 
         // Email Subject
         $subject = 'MiOWL | Welcome';
@@ -103,9 +103,9 @@ class Usermail {
             'ip'        => $ip
         );
 
-        $email_data  = $this->obj->load->view('templates/head_foot/email_head.tpl', '', TRUE);      // Add email header
-        $email_data .= $this->obj->parser->parse('templates/forgot_pass_email.tpl', $data, TRUE);   // Build the email body
-        $email_data .= $this->obj->load->view('templates/head_foot/email_foot.tpl', '', TRUE);      // Add the email footer
+        $email_data  = $this->obj->load->view('email/head_foot/email_head.tpl', '', TRUE);      // Add email header
+        $email_data .= $this->obj->parser->parse('email/forgot_pass_email.tpl', $data, TRUE);   // Build the email body
+        $email_data .= $this->obj->load->view('email/head_foot/email_foot.tpl', '', TRUE);      // Add the email footer
 
         // Email Subject
         $subject = 'MiOWL | Password Reset';
@@ -132,9 +132,9 @@ class Usermail {
             'username' => $username,
         );
 
-        $email_data  = $this->obj->load->view('templates/head_foot/email_head.tpl', '', TRUE);  // Add email header
-        $email_data .= $this->obj->parser->parse('templates/lockout_email.tpl', $data, TRUE);   // Build the email body
-        $email_data .= $this->obj->load->view('templates/head_foot/email_foot.tpl', '', TRUE);  // Add the email footer
+        $email_data  = $this->obj->load->view('email/head_foot/email_head.tpl', '', TRUE);  // Add email header
+        $email_data .= $this->obj->parser->parse('email/lockout_email.tpl', $data, TRUE);   // Build the email body
+        $email_data .= $this->obj->load->view('email/head_foot/email_foot.tpl', '', TRUE);  // Add the email footer
 
         // Email Subject
         $subject = 'MiOWL | Account Lockout';
