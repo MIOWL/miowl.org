@@ -10,10 +10,10 @@
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 <script>
-	window.jQuery || document.write('<script src="/js/jquery.min.js"><\/script>\n<script src="/js/jquery-ui.min.js"><\/script>')
+	window.jQuery || document.write('<script src="<?php print site_url('/js/jquery.min.js'); ?>"><\/script>\n<script src="<?php print site_url('/js/jquery-ui.min.js'); ?>"><\/script>')
 </script>
-<script type="text/javascript" src="/js/uni-form.jquery.min.js"></script>
-<script type="text/javascript" src="/js/tips.js"></script>
+<script type="text/javascript" src="<?php print site_url('/js/uni-form.jquery.min.js'); ?>"></script>
+<script type="text/javascript" src="<?php print site_url('/js/tips.js'); ?>"></script>
 
 
 <!-- Google Analytics -->

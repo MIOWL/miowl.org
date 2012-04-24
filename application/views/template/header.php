@@ -10,7 +10,7 @@
     <link rel="Shortcut Icon" href="<?php print site_url('favicon.ico'); ?>" type="image/x-icon" />
 
     <!-- CSS -->
-    <link rel="stylesheet" href="/style.css" type="text/css" media="screen" charset="utf-8" />
+    <link rel="stylesheet" href="<?php print site_url('/style.css'); ?>" type="text/css" media="screen" charset="utf-8" />
 
 </head>
 <body>
