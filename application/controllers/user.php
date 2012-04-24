@@ -536,7 +536,7 @@ class User extends CI_Controller {
             return FALSE;
         }
 
-        if (!valid_email($email))
+        if (!$this->valid_email($email))
         {
             $this->form_validation->set_message('_valid_email', 'This is not a valid email address!');
             return FALSE;
