@@ -567,7 +567,7 @@ class User extends CI_Controller {
         if (!$email)
             return FALSE;
 
-        if (preg_match("^([_a-z0-9-]+)(\.[_a-z0-9-]+)*@([a-z0-9-]+)(\.[a-z0-9-]+) * (\.[a-z]{2,4})$", $email))
+        if (preg_match('/^([*+!.&#$¦\'\\%\/0-9a-z^_`{}=?~:-]+)@(([0-9a-z-]+\.)+[0-9a-z]{2,4})$/i', $email))
         {
             if ($test_mx)
             {
