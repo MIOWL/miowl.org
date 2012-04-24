@@ -536,7 +536,7 @@ class User extends CI_Controller {
             return FALSE;
         }
 
-        if (!$this->valid_email($email))
+        if (!valid_email($email))
         {
             $this->form_validation->set_message('_valid_email', 'This is not a valid email address!');
             return FALSE;
@@ -554,37 +554,6 @@ class User extends CI_Controller {
     //=================================================================================
     // :private
     //=================================================================================
-
-
-    /**
-     * private valid_email
-     * This function checks if the email is correctly structured and if the domain name exists based on MX records.
-     *
-     * @return bool
-     */
-    private function valid_email($email = FALSE,  $test_mx = FALSE)
-    {
-        if (!$email)
-            return FALSE;
-
-        if (preg_match('/^([*+!.&#$¦\'\\%\/0-9a-z^_`{}=?~:-]+)@(([0-9a-z-]+\.)+[0-9a-z]{2,4})$/i', $email))
-        {
-            if ($test_mx)
-            {
-                list( $username, $domain ) = split( "@", $email);
-                return (checkdnsrr($domain, 'MX') || checkdnsrr($domain, 'A'));
-            }
-            else
-            {
-                return TRUE;
-            }
-        }
-        else
-        {
-            return FALSE;
-        }
-    }
-    //------------------------------------------------------------------
 
 
     /**
