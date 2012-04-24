@@ -14,6 +14,7 @@
 </script>
 <script type="text/javascript" src="<?php print site_url('/js/uni-form.jquery.min.js'); ?>"></script>
 <script type="text/javascript" src="<?php print site_url('/js/tips.js'); ?>"></script>
+<script type="text/javascript" src="<?php print site_url('/js/jquery.countdown.js'); ?>"></script>
 
 
 <!-- Google Analytics -->
