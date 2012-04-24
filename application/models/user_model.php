@@ -1,0 +1,356 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+class User_model extends CI_Model {
+
+
+    //=================================================================================
+    // :public
+    //=================================================================================
+
+
+    /**
+     * public get_user_by_id()
+     * function will pull needed user info based on the passed int user id.
+     *
+     * @param int $user_id - user id
+     */
+    public function get_user_by_id($user_id)
+    {
+        if (!$user_id)
+            return FALSE;
+
+        $this->db->select('*');
+        $this->db->where('id', $user_id);
+        $query = $this->db->get('users');
+
+        if ($query->num_rows() > 0)
+            return $query;
+        else
+            return FALSE;
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * public get_all_users()
+     * function will get all user info for all users
+     */
+    public function get_all_users()
+    {
+        $this->db->select('*');
+        $this->db->order_by("id", "ASC");
+        $query = $this->db->get('users');
+
+        if ($query->num_rows() > 0)
+            return $query;
+        else
+            return FALSE;
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * public get_unverified_users()
+     * function will get all user info for all unverified users
+     */
+    public function get_unverified_users()
+    {
+        $this->db->select('*');
+        $this->db->where('user_active', 'no');
+        $this->db->order_by("id", "ASC");
+        $query = $this->db->get('users');
+
+        if ($query->num_rows() > 0)
+            return $query;
+        else
+            return FALSE;
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * public get_user()
+     * function will get needed user info via the passed username or email address
+     *
+     * @param string $user_name - this can be the user's username OR email address.
+     */
+    public function get_user($user_name = FALSE)
+    {
+        if (!$user_name)
+            return FALSE;
+
+        $this->db->select('*');
+        $this->db->where('user_name', $user_name);
+        $this->db->or_where('user_email', $user_name);
+        $query = $this->db->get('users');
+
+        if ($query->num_rows() > 0)
+            return $query;
+        else
+            return FALSE;
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * public add_user()
+     * function will begin the user registration process, and will add the user into the database,
+     * however users will still need to confirm their email address.
+     *
+     * @param string $user_name - requested username
+     * @param string $user_password - users password sha1 hashed with salt
+     * @param string $user_email - users email address
+     * @param string $user_salt - randomly generated user salt
+     * @param string $user_activation - the randomly generated user activation code
+     */
+    public function add_user($user_name = FALSE, $user_password = FALSE, $user_email = FALSE, $user_salt = FALSE, $user_activation = FALSE)
+    {
+        if (!$user_name || !$user_password || !$user_email || !$user_salt || !$user_activation)
+            return FALSE;
+
+        $insert_data = array(
+            'user_name'                 => $user_name,
+            'user_email'                => $user_email,
+            'user_salt'                 => $user_salt,
+            'user_password'             => $user_password,
+            'user_activation'           => $user_activation,
+            'user_registration_date'    => time(),
+        );
+
+        $this->db->insert('users', $insert_data);
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * public activate_user()
+     * function will activate a users account via their emailed code
+     *
+     * @param string $user_activation - the users activation code
+     */
+    public function activate_user($user_activation)
+    {
+        if (!$user_activation)
+            return FALSE;
+
+        $where = array(
+            'user_active'       => 'no',
+            'user_activation'   => $user_activation
+        );
+
+        $update_data = array(
+            'user_active'       => 'yes',
+            'user_activation'   => ''
+        );
+
+        $this->db->where($where);
+        $this->db->update('users', $update_data);
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * public add_reset_data()
+     * function add the reset data to the database for autherization later
+     *
+     * @param string $user_name         - the users name
+     * @param string $user_email        - the users email address
+     * @param string $user_activation   - the users activation code
+     */
+    public function add_reset_data($user_name, $user_email, $user_activation)
+    {
+        if (!$user_name || !$user_email  || !$user_activation)
+            return FALSE;
+
+        $where = array(
+            'user_name'         => $user_name,
+            'user_email'        => $user_email
+        );
+
+        $update_data = array(
+            'user_activation'   => $user_activation
+        );
+
+        $this->db->where($where);
+        $this->db->update('users', $update_data);
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * public auth_reset()
+     * function will authenticate users password change request via their emailed code
+     *
+     * @param string $user_activation   - the users activation code
+     * @param string $user_password     - the users new password
+     * @param string $user_salt         - the users new salt
+     */
+    public function auth_reset($user_activation, $user_password, $user_salt)
+    {
+        if (!$user_activation)
+            return FALSE;
+
+        $update_data = array(
+            'user_active'       => 'yes',
+            'user_activation'   => '',
+            'user_salt'         => $user_salt,
+            'user_password'     => $user_password
+        );
+
+        $this->db->where('user_activation', $user_activation);
+        $this->db->update('users', $update_data);
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * public login_time()
+     * function will set last login time
+     *
+     * @param string $user - the username
+     */
+    public function login_time($user)
+    {
+        $this->db->set('user_lastlogin', time());
+        $this->db->where('user_name', $user);
+        $this->db->update('users');
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * public _add_user_to_IPB()
+     * now that we have a validated user lets register them to IPB as well
+     * for support and forum access.
+     *
+     * @param string $user
+     * @param string $pass
+     */
+    public function add_user_to_IPB($user = FALSE, $pass = FALSE)
+    {
+        if (!$user || !$pass)
+            return FALSE;
+
+        /* Get the users info from the database */
+        $this->db->select('*');
+        $this->db->where('user_name', $user);
+        $user = $this->db->get('users');
+
+        if ($user->num_rows() <= 0)
+        {
+            print "error collecting data";
+            exit;
+            return;
+        }
+        /* ------------------------------------*/
+
+        /* Set the user as on_forum */
+        $this->db->where('user_name', $user->row()->user_name);
+        $this->db->update('users', array('on_forum' => 'true'));
+        /* ------------------------------------*/
+
+        /* Build up the IPB info to insert */
+        $ipb_user = array(
+            'name'                      => $user->row()->user_name,
+            'member_group_id'           => 3,
+            'email'                     => $user->row()->user_email,
+            'joined'                    => time(),
+            'allow_admin_mails'         => 1,
+            'members_display_name'      => $user->row()->user_name,
+            'members_seo_name'          => $user->row()->user_name,
+            'members_l_display_name'    => $user->row()->user_name,
+            'members_l_username'        => $user->row()->user_name,
+            'members_pass_hash'         => md5(md5($user->row()->user_salt) . md5($pass)),
+            'members_pass_salt'         => $user->row()->user_salt,
+        );
+        /* ------------------------------------*/
+
+        /* Add this info into the IPB database */
+        $ipb = $this->load->database('forums', TRUE);
+        $ipb->insert('pd_members', $ipb_user);
+        $ipb->close();
+        /* ------------------------------------*/
+    }
+    //------------------------------------------------------------------
+
+
+    //=================================================================================
+    // :validation callbacks
+    //=================================================================================
+
+
+    /**
+     * public validate_authcode()
+     * function will return a bool value if the auth code is valid and the user acccount
+     * needs to be adcivated.
+     *
+     * @param string $auth_code  - user auth code
+     * @param string $pass_reset - are we checking a password reset?
+     */
+    public function validate_authcode($auth_code, $pass_reset = FALSE)
+    {
+        $this->db->select('id');
+
+        if ($pass_reset)
+            $this->db->where('user_activation', $auth_code);
+        else
+            $this->db->where(array('user_activation' => $auth_code, 'user_active' => 'no'));
+
+        $query = $this->db->get('users');
+
+        if ($query->num_rows() > 0)
+            return TRUE;
+
+        return FALSE;
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * public validate_username()
+     * function will make sure that the provided username does NOT already exists, and will return a
+     * bool value. FALSE if the username does exists, TRUE otherwise.
+     *
+     * @param string $user_name - username to validate.
+     */
+    public function validate_username($user_name)
+    {
+        $this->db->select('id');
+        $this->db->where('user_name', $user_name);
+        $query = $this->db->get('users');
+
+        if ($query->num_rows() > 0)
+            return FALSE;
+
+        return TRUE;
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * public validate_email()
+     * function will check and make sure the provided email does not already exists in our database.
+     * will then return a bool value, FALSE if the email does exists, TRUE otherwise.
+     *
+     * @param string $user_email - email to validate.
+     */
+    public function validate_email($user_email)
+    {
+        $this->db->select('id');
+        $this->db->where('user_email', $user_email);
+        $query = $this->db->get('users');
+
+        if ($query->num_rows() > 0)
+            return FALSE;
+
+        return TRUE;
+    }
+    //------------------------------------------------------------------
+
+
+    //=================================================================================
+    // :private
+    //=================================================================================
+
+
+}

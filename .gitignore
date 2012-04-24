@@ -1,0 +1,23 @@
+## GitIgnore Config
+# This file is used to ignore certian files from the git repo
+##
+
+## CodeIgniter Ignore Settings
+*/config/development
+*/logs/log-*.php
+*/logs/!index.html
+*/cache/*
+*/cache/!index.html
+##
+
+## OSX
+.DS_Store
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+##
+
