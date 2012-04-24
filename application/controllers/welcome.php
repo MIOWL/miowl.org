@@ -47,7 +47,7 @@ class Welcome extends CI_Controller {
 	{
 		$page_data = array();
 		$page_data['page_title'] = 'Medical Interprofessional Open-source Web-based Libraries';
-		$this->load->view('welcome_message');
+		$this->load->view('welcome_message', $page_data);
 	}
     //------------------------------------------------------------------
 
