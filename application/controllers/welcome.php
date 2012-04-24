@@ -2,25 +2,61 @@
 
 class Welcome extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -  
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in 
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see http://codeigniter.com/user_guide/general/urls.html
-	 */
+    //=================================================================================
+    // :private vars
+    //=================================================================================
+
+
+
+    //=================================================================================
+    // :public
+    //=================================================================================
+
+
+    /**
+     * public construct
+     */
+    public function __construct()
+    {
+        // init parent
+        parent::__construct();
+
+        // loads
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * public remap
+     */
+    public function _remap($method, $params = array())
+    {
+        if (method_exists($this, $method))
+        {
+            return call_user_func_array(array($this, $method), $params);
+        }
+        show_404();
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * public index()
+     */
 	public function index()
 	{
+		$page_data = array();
+		$page_data['page_title'] = 'Medical Interprofessional Open-source Web-based Libraries';
 		$this->load->view('welcome_message');
 	}
+    //------------------------------------------------------------------
+
+
+    //=================================================================================
+    // :private
+    //=================================================================================
+
+
 }
 
 /* End of file welcome.php */
