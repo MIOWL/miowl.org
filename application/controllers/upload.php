@@ -64,6 +64,8 @@ class Upload extends CI_Controller {
 
         $this->load->library('upload', $config);
 
+        print var_dump($page_data);
+
         if($this->form_validation->run())
         {
             if (!$this->upload->do_upload())
