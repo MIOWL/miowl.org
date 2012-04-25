@@ -64,6 +64,12 @@ class Upload extends CI_Controller {
 
         $this->load->library('upload', $config);
 
+        // Get the POST data
+        $post_back = array();
+        foreach ($this->input->post() as $key => $value) {
+            $post_back[$key] = $value;
+        }
+
         if($this->form_validation->run())
         {
             if (!$this->upload->do_upload())
