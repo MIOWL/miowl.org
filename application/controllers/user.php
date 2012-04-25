@@ -371,11 +371,11 @@ class User extends CI_Controller {
                     {
                         // users passed all our tests lets build em a session
                         $session_data = array(
-                            'user_id'    => $user_query->row()->id,
-                            'username'    => $user_query->row()->user_name,
-                            'email'        => $user_query->row()->user_email,
-                            'premium'    => $user_query->row()->user_premium === 'true' ? TRUE : FALSE,
-                            'admin'        => $user_query->row()->user_admin === 'true' ? TRUE : FALSE,
+                            'user_id'   => $user_query->row()->id,
+                            'username'  => $user_query->row()->user_name,
+                            'email'     => $user_query->row()->user_email,
+                            'owl'       => 'random',
+                            'admin'     => $user_query->row()->user_admin === 'true' ? TRUE : FALSE,
                             'authed'    => TRUE,
                         );
 

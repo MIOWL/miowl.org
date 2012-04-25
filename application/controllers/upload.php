@@ -22,6 +22,7 @@ class Upload extends CI_Controller {
         parent::__construct();
 
         // loads
+        $this->load->model('upload_model');
     }
     //------------------------------------------------------------------
 
@@ -85,8 +86,32 @@ class Upload extends CI_Controller {
         }
         else
         {
+            $upload_data = $this->upload->data();
+
+            $upload_user        = $this->session->userdata('username');
+            $file_name          = $upload_data['file_name'];
+            $full_path          = $upload_data['full_path'];
+            $upload_catagory    = 'n/a';
+            $file_type          = $upload_data['file_type'];
+            $client_name        = $this->session->userdata('owl');
+            $file_size          = $upload_data['file_size'];
+            $file_ext           = $upload_data['file_ext'];
+            $description        = 'n/a';
+
+            $this->upload_model->add_upload(
+                        $upload_user,
+                        $file_name,
+                        $full_path,
+                        $upload_catagory,
+                        $file_type,
+                        $client_name,
+                        $file_size,
+                        $file_ext,
+                        $description
+                      );
+
             $page_data['page_title'] = 'Upload Success';
-            $page_data['upload_data'] = $this->upload->data();
+            $page_data['upload_data'] = $upload_data;
 
             $this->load->view('pages/upload_success', $page_data);
         }
