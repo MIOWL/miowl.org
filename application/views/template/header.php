@@ -16,3 +16,4 @@
 <body>
 
 <div id="container">
+<?php $this->load->view('template/nav'); ?>
