@@ -11,6 +11,9 @@
 			<h3>
 				The page you requested was not found.
 			</h3>
+			<p>
+				Maybe you should just <a href="<?php print site_url(); ?>">pop back home?</a>
+			</p>
 		</center>
 	</div>
 
