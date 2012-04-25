@@ -7,7 +7,11 @@
 	</h1>
 
 	<div id="body">
-		<p>The page you requested was not found.</p>
+		<p>
+			<center>
+				The page you requested was not found.
+			</center>
+		</p>
 	</div>
 
 <?php $this->load->view('template/footer'); ?>

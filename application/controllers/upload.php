@@ -50,8 +50,9 @@ class Upload extends CI_Controller {
             return;
 
         $page_data = array();
-        $page_data['page_title'] = 'Medical Interprofessional Open-source Web-based Libraries';
-        $this->load->view('pages/welcome_message', $page_data);
+        $page_data['page_title'] = 'Upload';
+        $page_data['error'] = NULL;
+        $this->load->view('pages/upload_form', $page_data);
     }
     //------------------------------------------------------------------
 
@@ -79,7 +80,7 @@ class Upload extends CI_Controller {
         }
         else
         {
-            $data = array('upload_data' => $this->upload->data());
+            $data = array('page_title' => 'Upload Success', 'upload_data' => $this->upload->data());
 
             $this->load->view('upload_success', $data);
         }
