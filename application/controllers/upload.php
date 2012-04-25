@@ -109,12 +109,9 @@ class Upload extends CI_Controller {
         }
         else
         {
-            $page_data = array();
             $page_data['page_title'] = 'Upload';
             $this->load->view('pages/upload_form', $page_data);
         }
-
-        print var_dump($page_data);
     }
     //------------------------------------------------------------------
 
