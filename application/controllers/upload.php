@@ -66,7 +66,7 @@ class Upload extends CI_Controller {
 
         // Get the POST data
         $post_back = array();
-        foreach ($this->input->post() as $key => $value) {
+        foreach ($this->input->post(NULL, TRUE) as $key => $value) {
             $post_back[$key] = $value;
         }
 
