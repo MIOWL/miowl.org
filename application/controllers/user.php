@@ -348,7 +348,7 @@ class User extends CI_Controller {
             return;
 
         $page_data                  = array();
-        $page_data['page_title'] = "Login";
+        $page_data['page_title']    = "Login";
 
         // form validation rules
         $this->form_validation->set_rules('username', 'Username', 'required');

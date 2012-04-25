@@ -67,6 +67,12 @@ class Upload extends CI_Controller {
         // Get the POST data
         $page_data['post_back'] = $this->input->post(NULL, TRUE);
 
+        // form validation rules
+        $this->form_validation->set_rules('userfile', 'File', 'required');
+        $this->form_validation->set_rules('filename', 'File Name', 'required');
+        $this->form_validation->set_rules('catagory', 'Catagory', 'required');
+        $this->form_validation->set_rules('description', 'Description', 'required');
+
         if($this->form_validation->run())
         {
             if (!$this->upload->do_upload())
