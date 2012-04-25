@@ -94,6 +94,7 @@ class Upload_model extends CI_Model {
      */
     public function add_upload(
                                 $upload_user        = FALSE,
+                                $owl                = FALSE,
                                 $file_name          = FALSE,
                                 $full_path          = FALSE,
                                 $upload_catagory    = FALSE,
@@ -104,12 +105,13 @@ class Upload_model extends CI_Model {
                                 $description        = FALSE
                               )
     {
-        if (!$upload_user || !$file_name || !$full_path || !$upload_catagory || !$file_type || !$client_name || !$file_size || !$file_ext || !$description)
+        if (!$upload_user || !$owl || !$file_name || !$full_path || !$upload_catagory || !$file_type || !$client_name || !$file_size || !$file_ext || !$description)
             return FALSE;
 
         $insert_data = array(
             'upload_time'       => time(),
             'upload_user'       => $upload_user,
+            'owl'               => $owl,
             'file_name'         => $file_name,
             'full_path'         => $full_path,
             'upload_catagory'   => $upload_catagory,

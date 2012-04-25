@@ -89,17 +89,19 @@ class Upload extends CI_Controller {
             $upload_data = $this->upload->data();
 
             $upload_user        = $this->session->userdata('username');
+            $owl                = $this->session->userdata('owl');
             $file_name          = $upload_data['file_name'];
             $full_path          = $upload_data['full_path'];
             $upload_catagory    = 'n/a';
             $file_type          = $upload_data['file_type'];
-            $client_name        = $this->session->userdata('owl');
+            $client_name        = $upload_data['client_name'];
             $file_size          = $upload_data['file_size'];
             $file_ext           = $upload_data['file_ext'];
             $description        = 'n/a';
 
             $this->upload_model->add_upload(
                         $upload_user,
+                        $owl,
                         $file_name,
                         $full_path,
                         $upload_catagory,
