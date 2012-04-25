@@ -277,3 +277,15 @@ h3.info {
     text-align: left;
     padding-left: 1em;
 }
+
+
+
+/*
+|-----------------------
+| navigation style
+|-----------------------
+*/
+#nav {
+	float: right;
+	padding: 10px;
+}
