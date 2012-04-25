@@ -1,7 +1,7 @@
 <?php $this->load->view('template/header'); ?>
 
 	<h1>
-		<img src="<?php print site_url('miowl_red_black_small.png');?>" alt="MiOWL Logo" title="MiOWL Logo">
+		<img src="<?php print site_url('images/miowl_red_black_small.png');?>" alt="MiOWL Logo" title="MiOWL Logo">
 		<br>
 		"Welcome to CodeIgniter!
 	</h1>
