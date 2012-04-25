@@ -66,22 +66,9 @@ class Upload extends CI_Controller {
         if (!$this->login_check('upload-do_upload'))
             return;
 
-        $upload_path = './uploads/';
-
-        // Generate the random filename and check it is unique
-        $rand = FALSE;
-        do {
-            $rand = $this->_genRand();
-
-            if(file_exists($upload_path . $rand))
-                $rand = FALSE;
-
-        } while (!$rand);
-
-        $config['upload_path'] = $upload_path;
+        $config['upload_path'] = './uploads/';
         $config['allowed_types'] = 'txt|pdf|doc|docx|rtf';
         $config['max_size'] = '10240'; // 10MB
-        #$config['file_name'] = $rand;
         $config['encrypt_name'] = TRUE;
 
         $page_data = array();
@@ -139,27 +126,5 @@ class Upload extends CI_Controller {
     //------------------------------------------------------------------
 
 
-    /**
-     * private _genRand()
-     * function generates a random string used for the uploaded file name.
-     * This is unique and is used for file protection.
-     *
-     * @param int $length - optional length of the salt (default 20)
-     */
-    private function _genRand($length = 20)
-    {
-        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $randomString = '';
-        for ($i = 0; $i < $length; $i++) {
-            $randomString .= $characters[rand(0, strlen($characters) - 1)];
-        }
-
-        return $randomString;
-    }
-    //------------------------------------------------------------------
-
-
 }
 
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */
