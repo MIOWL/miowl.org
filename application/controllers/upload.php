@@ -81,7 +81,8 @@ class Upload extends CI_Controller {
         $config['upload_path'] = $upload_path;
         $config['allowed_types'] = 'txt|pdf|doc|docx|rtf';
         $config['max_size'] = '10240'; // 10MB
-        $config['file_name'] = $rand;
+        #$config['file_name'] = $rand;
+        $config['encrypt_name'] = TRUE;
 
         $page_data = array();
         $page_data['error'] = NULL;
