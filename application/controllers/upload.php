@@ -65,7 +65,7 @@ class Upload extends CI_Controller {
         $this->load->library('upload', $config);
 
         // Get the POST data
-        $post_back = $this->input->post(NULL, TRUE);
+        $page_data['post_back'] = $this->input->post(NULL, TRUE);
 
         if($this->form_validation->run())
         {
