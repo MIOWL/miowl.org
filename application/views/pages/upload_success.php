@@ -2,23 +2,21 @@
 
 	<h1>
 		<center>
-			Upload a new file
+			Your file was successfully uploaded!
 		</center>
 	</h1>
 
 	<div id="body">
 
-		<?php echo $error;?>
+		<ul>
+			<?php foreach ($upload_data as $item => $value):?>
+				<li><?php echo $item;?>: <?php echo $value;?></li>
+			<?php endforeach; ?>
+		</ul>
 
-		<?php echo form_open_multipart('upload/do_upload');?>
-
-			<input type="file" name="userfile" size="20" />
-
-			<br /><br />
-
-			<input type="submit" value="upload" />
-
-		</form>
+		<p>
+			<?php echo anchor('upload', 'Upload Another File!'); ?>
+		</p>
 
 	</div>
 
