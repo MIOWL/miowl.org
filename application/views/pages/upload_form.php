@@ -18,7 +18,7 @@
                 <div class="ctrlHolder">
                     <label for="userfile">File</label>
                     <input type="file" name="userfile" id="userfile" size="35" class="textInput medium" />
-                    <p class="formHint">Choose the file you want to upload. Must be <strong><?php print $allow_types; ?><strong></p>
+                    <p class="formHint">Choose the file you want to upload. Must be <strong><?php print $allow_types; ?></strong></p>
                 </div>
 
                 <div class="ctrlHolder">
