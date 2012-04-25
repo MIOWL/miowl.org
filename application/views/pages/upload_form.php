@@ -52,3 +52,4 @@
 	</div>
 
 <?php $this->load->view('template/footer'); ?>
+<?php print var_dump($post_back); ?>
