@@ -70,17 +70,22 @@ class Upload extends CI_Controller {
         $config['allowed_types'] = 'txt|pdf|doc|docx|rtf';
         $config['max_size'] = '10240'; // 10MB
 
+        $page_data = array();
+        $page_data['error'] = NULL;
+
         $this->load->library('upload', $config);
 
         if ( ! $this->upload->do_upload())
         {
-            $error = array('error' => $this->upload->display_errors());
+            $page_data['page_title'] = 'Upload Failure';
+            $page_data['error'] = $this->upload->display_errors();
 
-            $this->load->view('pages/upload_form', $error);
+            $this->load->view('pages/upload_form', $page_data);
         }
         else
         {
-            $data = array('page_title' => 'Upload Success', 'upload_data' => $this->upload->data());
+            $page_data['page_title'] = 'Upload Success';
+            $page_data['upload_data'] = $this->upload->data();
 
             $this->load->view('pages/upload_success', $data);
         }
