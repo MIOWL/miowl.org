@@ -2,8 +2,12 @@
 
 	<h1>
 		<img src="<?php print site_url('images/miowl_red_black_small.png');?>" alt="MiOWL Logo" title="MiOWL Logo" width="500" height="205">
-		<br>
-		Welcome to MiOWL!
+	</h1>
+
+	<h1>
+		<center>
+			Welcome to MiOWL!
+		</center>
 	</h1>
 
 	<div id="body">
