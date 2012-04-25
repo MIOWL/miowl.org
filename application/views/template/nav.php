@@ -17,6 +17,8 @@
 		# These are non specific nav options
 		print " | ";															# spacer
 		print "<a href='search' title='Search for a file'>search</a>";			# search
+		print " | ";															# spacer
+		print "<a href='about' title='About the site'>about</a>";				# about
 
 		?>
 	</div>
