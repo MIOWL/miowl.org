@@ -1,6 +1,10 @@
 <?php $this->load->view('template/header'); ?>
 
-	<h1>Welcome to CodeIgniter!</h1>
+	<h1>
+		<img src="<?php print site_url('miowl_red_black_small.png');?>" alt="MiOWL Logo" title="MiOWL Logo">
+		<br>
+		"Welcome to CodeIgniter!
+	</h1>
 
 	<div id="body">
 		<p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
