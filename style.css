@@ -29,7 +29,7 @@
 }
 
 body {
-	background-color: #fff;
+	background: none repeat scroll 0 0 #F2F2F2;
 	font: 13px/20px normal Helvetica, Arial, sans-serif;
 	color: #4F5155;
 }
@@ -75,6 +75,7 @@ p.footer {
 }
 
 #container {
+	background-color: #fff;
 	margin: 40px auto;
 	width: 900px;
 	border: 1px solid #D0D0D0;
