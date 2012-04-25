@@ -20,11 +20,12 @@
 <?php $this->load->view('template/nav'); ?>
 
 	<h1>
-		<img 
-			src="<?php print site_url('images/miowl_red_black_small.png');?>"
-			alt="MiOWL Logo"
-			title="MiOWL Logo"
-			width="500"
-			height="205"
-		>
+		<a href="<?php print site_url(); ?>" title="Go back home!">
+			<img 
+				src="<?php print site_url('images/miowl_red_black_small.png'); ?>"
+				alt="MiOWL Logo"
+				width="500"
+				height="205"
+			>
+		</a>
 	</h1>
