@@ -51,7 +51,7 @@ class Upload extends CI_Controller {
             return;
 
         // What are the allowed file types? [seperate via pipe (|)]
-        $file_types = 'txt|pdf|doc|docx|rtf';
+        $file_types = 'txt|rtf|pdf|doc|docx';
 
         $config['upload_path'] = './uploads/';
         $config['allowed_types'] = $file_types;
