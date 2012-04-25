@@ -51,16 +51,16 @@ class Upload extends CI_Controller {
             return;
 
         // What are the allowed file types? [seperate via pipe (|)]
-        $file_types = 'txt|pdf|doc|docx|rtf';
+        $filetypes = 'txt|pdf|doc|docx|rtf';
 
         $config['upload_path'] = './uploads/';
-        $config['allowed_types'] = $file_types;
+        $config['allowed_types'] = $filetypes;
         $config['max_size'] = '10240'; // 10MB
         $config['encrypt_name'] = TRUE;
 
         $page_data = array();
         $page_data['error'] = NULL;
-        $page_data['file_types'] = $file_types;
+        $page_data['filetypes'] = $filetypes;
 
         $this->load->library('upload', $config);
 
