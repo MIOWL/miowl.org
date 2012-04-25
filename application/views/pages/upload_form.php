@@ -8,17 +8,44 @@
 
 	<div id="body">
 
-		<?php echo $error;?>
+        <!-- login -->
+        <form action="" class="uniForm" method="post">
 
-		<?php echo form_open_multipart('upload/do_upload');?>
+            <?php $this->load->view('messages/message_inline'); ?>
 
-			<input type="file" name="userfile" size="20" />
+            <fieldset class="inlineLabels">
 
-			<br /><br />
+                <div class="ctrlHolder">
+                    <label for="userfile">File</label>
+                    <input type="file" name="userfile" id="userfile" size="35" class="textInput medium" />
+                    <p class="formHint">Choose the file you want to upload. Must be <i><?php print $file_types; ?><i></p>
+                </div>
 
-			<input type="submit" value="upload" />
+                <div class="ctrlHolder">
+                    <label for="filename">Name</label>
+                    <input type="text" name="filename" id="filename" size="35" class="textInput medium" />
+                    <p class="formHint">Choose the file's display name.</p>
+                </div>
 
-		</form>
+                <div class="ctrlHolder">
+                    <label for="catagory">Catagory</label>
+                    <input type="text" name="catagory" id="catagory" size="35" class="textInput medium" />
+                    <p class="formHint">Choose the file's catagory.</p>
+                </div>
+
+                <div class="ctrlHolder">
+                    <label for="description">Description</label>
+                    <textarea name="description" id="description" size="35" class="textInput medium" rows="5" cols="50" />
+                    <p class="formHint">Enter a description for the file.</p>
+                </div>
+
+            </fieldset>
+
+            <div class="buttonHolder">
+                <button class="button" type="submit">Upload</button>
+            </div>
+
+        </form>
 
 	</div>
 
