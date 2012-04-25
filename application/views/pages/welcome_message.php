@@ -1,21 +1,15 @@
 <?php $this->load->view('template/header'); ?>
 
 	<h1>
-		<img src="<?php print site_url('images/miowl_red_black_small.png');?>" alt="MiOWL Logo" title="MiOWL Logo">
+		<img src="<?php print site_url('images/miowl_red_black_small.png');?>" alt="MiOWL Logo" title="MiOWL Logo" width="500" height="205">
 		<br>
-		"Welcome to CodeIgniter!
+		Welcome to MiOWL!
 	</h1>
 
 	<div id="body">
-		<p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
+		<p>The page you are looking at is under construction still.</p>
 
-		<p>If you would like to edit this page you'll find it located at:</p>
-		<code>application/views/welcome_message.php</code>
-
-		<p>The corresponding controller for this page is found at:</p>
-		<code>application/controllers/welcome.php</code>
-
-		<p>If you are exploring CodeIgniter for the very first time, you should start by reading the <a href="user_guide/">User Guide</a>.</p>
+		<p>Check back later for more content and information</p>
 	</div>
 
 <?php $this->load->view('template/footer'); ?>
