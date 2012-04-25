@@ -60,7 +60,7 @@ class Upload extends CI_Controller {
 
         $page_data = array();
         $page_data['error'] = NULL;
-        $page_data['allow_types'] = $file_types;
+        $page_data['allow_types'] = str_replace('|', ', ', $file_types);
 
         $this->load->library('upload', $config);
 
