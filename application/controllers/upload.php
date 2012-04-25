@@ -64,8 +64,6 @@ class Upload extends CI_Controller {
 
         $this->load->library('upload', $config);
 
-        print var_dump($page_data);
-
         if($this->form_validation->run())
         {
             if (!$this->upload->do_upload())
@@ -115,6 +113,8 @@ class Upload extends CI_Controller {
             $page_data['page_title'] = 'Upload';
             $this->load->view('pages/upload_form', $page_data);
         }
+
+        print var_dump($page_data);
     }
     //------------------------------------------------------------------
 
