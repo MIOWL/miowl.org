@@ -1,6 +1,10 @@
 <?php $this->load->view('template/header'); ?>
 
-	<h1>About Mi OWL!</h1>
+	<h1>
+		<center>
+			Upload a new file
+		</center>
+	</h1>
 
 	<div id="body">
 

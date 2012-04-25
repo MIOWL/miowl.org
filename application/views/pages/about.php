@@ -1,6 +1,10 @@
 <?php $this->load->view('template/header'); ?>
 
-	<h1>About Mi OWL!</h1>
+	<h1>
+		<center>
+			About Mi OWL!
+		</center>
+	</h1>
 
 	<div id="body">
 		<p>Mi OWL stands for 'Medical Interprofessional Open-source Web-based Libraries'.</p>

@@ -1,6 +1,10 @@
 <?php $this->load->view('template/header'); ?>
 
-    <h1>Forgot Password!</h1>
+    <h1>
+        <center>
+            User Account Authorize!
+        </center>
+    </h1>
 
     <div id="body">
         <!-- authorize -->

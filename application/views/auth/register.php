@@ -1,6 +1,10 @@
 <?php $this->load->view('template/header'); ?>
 
-	<h1>Registration Page!</h1>
+    <h1>
+        <center>
+            Registration Page!
+        </center>
+    </h1>
 
 	<div id="body">
         <!-- register -->

@@ -1,6 +1,10 @@
 <?php $this->load->view('template/header'); ?>
 
-	<h1>Login Page!</h1>
+    <h1>
+        <center>
+            Login Page!
+        </center>
+    </h1>
 
 	<div id="body">
         <!-- login -->
