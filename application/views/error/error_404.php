@@ -7,11 +7,11 @@
 	</h1>
 
 	<div id="body">
-		<p>
-			<center>
+		<center>
+			<h3>
 				The page you requested was not found.
-			</center>
-		</p>
+			</h3>
+		</center>
 	</div>
 
 <?php $this->load->view('template/footer'); ?>
