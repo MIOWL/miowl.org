@@ -94,7 +94,7 @@ class Browse extends CI_Controller {
                                         $row->upload_catagory,
                                         $row->file_type,
                                         $row->owl,
-                                        '<span class="icon_font"><a href="#" title="Downlaod this file!">C</a></span>'
+                                        '<span class="icon_font"><center><a href="#" title="Downlaod this file!">C</a></center></span>'
                                     );
             }
         }
