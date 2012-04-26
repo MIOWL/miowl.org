@@ -74,7 +74,7 @@ class Upload extends CI_Controller {
             {
                 $page_data['page_title'] = 'Upload Failure';
                 $page_data['error'] = TRUE;
-                $page_data['msg'] = $this->upload->display_errors();
+                $page_data['msg'] = trim($this->upload->display_errors());
 
                 $this->load->view('pages/upload_form', $page_data);
             }
@@ -117,8 +117,6 @@ class Upload extends CI_Controller {
             $page_data['page_title'] = 'Upload';
             $this->load->view('pages/upload_form', $page_data);
         }
-
-        print var_dump($page_data);
     }
     //------------------------------------------------------------------
 
