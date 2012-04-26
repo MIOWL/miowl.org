@@ -83,7 +83,7 @@ class Upload extends CI_Controller {
                 $upload_data = $this->upload->data();
 
                 $file_name = $this->input->post('filename') == ""
-                                ? $upload_data['file_name']
+                                ? $upload_data['client_name']
                                 : $this->input->post('filename');
 
                 $upload_user        = $this->session->userdata('username');
