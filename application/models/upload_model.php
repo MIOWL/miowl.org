@@ -123,8 +123,6 @@ class Upload_model extends CI_Model {
         );
 
         $this->db->insert('uploads', $insert_data);
-
-        return $this->get_id_by_file_name($file_name);
     }
     //------------------------------------------------------------------
 
