@@ -25,7 +25,7 @@
                 <div class="ctrlHolder">
                     <label for="filename">Name</label>
                     <input type="text" name="filename" id="filename" size="35" class="textInput medium" value="<?php print set_value('filename'); ?>" />
-                    <p class="formHint">Choose the file's display name.<br><strong style="colour:red;">NOTE:</strong> leave blank to use the uploaded filename.</p>
+                    <p class="formHint">Choose the file's display name.<br><strong>NOTE:</strong> leave blank to use the uploaded filename.</p>
                 </div>
 
                 <div class="ctrlHolder">
