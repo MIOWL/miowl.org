@@ -18,7 +18,7 @@
             <li>client_name: <?php print $upload_data['client_name']; ?></li>
             <li>file_size: <?php print $upload_data['file_size']; ?></li>
             <li>file_ext: <?php print $upload_data['file_ext']; ?></li>
-            <li>description: <?php print trim($this->input->post('description')); ?></li>
+            <li>description: <pre><?php print trim($this->input->post('description')); ?></pre></li>
         </ul>
 
 	</div>
