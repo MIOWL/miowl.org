@@ -94,9 +94,8 @@ class Browse extends CI_Controller {
                                     $row->owl
                                 );
         }
-        $output .= $this->table->generate();
 
-        $page_data['table'] = $output;
+        $page_data['table'] = $this->table->generate();
 
         $this->load->view('pages/browse', $page_data);
     }
