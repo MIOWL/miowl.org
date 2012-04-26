@@ -64,7 +64,7 @@ class Upload extends CI_Controller {
         $this->load->library('upload', $config);
 
         // form validation rules
-        $this->form_validation->set_rules('filename', 'File Name', 'required');
+        #$this->form_validation->set_rules('filename', 'File Name', 'required');
         $this->form_validation->set_rules('catagory', 'Catagory', 'required');
         $this->form_validation->set_rules('description', 'Description', 'required');
 
@@ -84,14 +84,14 @@ class Upload extends CI_Controller {
 
                 $upload_user        = $this->session->userdata('username');
                 $owl                = $this->session->userdata('owl');
-                $file_name          = $upload_data['file_name'];
+                $file_name          = is_null($this->input->post['catagory']) ? $upload_data['file_name'] : $this->input->post['catagory'];
                 $full_path          = $upload_data['full_path'];
-                $upload_catagory    = 'uncatagorized';
+                $upload_catagory    = $this->input->post['catagory'];
                 $file_type          = $upload_data['file_type'];
                 $client_name        = $upload_data['client_name'];
                 $file_size          = $upload_data['file_size'];
                 $file_ext           = $upload_data['file_ext'];
-                $description        = NULL;
+                $description        = trim($this->input->post['description']);
 
                 $this->upload_model->add_upload(
                             $upload_user,
