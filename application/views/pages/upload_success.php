@@ -21,6 +21,10 @@
             <li>description: <pre><?php print trim($this->input->post('description')); ?></pre></li>
         </ul>
 
+		<p>
+			<?php echo anchor('upload', 'Upload Another File!'); ?>
+		</p>
+
 	</div>
 
 <?php $this->load->view('template/footer'); ?>

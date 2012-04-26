@@ -7,6 +7,7 @@
 @import url("css/uni-form.css");
 @import url("css/default.uni-form.css");
 @import url("css/tipsy.css");
+@import url("css/fonts.css");
 
 /*
 |-----------------------------------
@@ -278,6 +279,15 @@ h3.info {
     padding-left: 1em;
 }
 
+
+/*
+|-----------------------
+| icon font styles
+|-----------------------
+*/
+.icon_font {
+	font: 13px/20px normal WebSymbolsRegular;
+}
 
 
 /*

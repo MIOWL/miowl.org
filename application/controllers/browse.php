@@ -78,7 +78,7 @@ class Browse extends CI_Controller {
                             'table_close'         => '</table>'
                       );
         $this->table->set_template($tmpl);
-        $this->table->set_heading('ID', 'Timestamp (GMT)', 'Filename', 'Catagory', 'File Type', 'Owl');
+        $this->table->set_heading('ID', 'Timestamp (GMT)', 'Filename', 'Catagory', 'File Type', 'Owl', 'Download');
         $this->table->set_empty("N/A");
 
         if($uploads)
@@ -93,7 +93,8 @@ class Browse extends CI_Controller {
                                         $row->file_name,
                                         $row->upload_catagory,
                                         $row->file_type,
-                                        $row->owl
+                                        $row->owl,
+                                        '<span class="icon_font"><a href="#" title="Downlaod this file!">C</a></span>'
                                     );
             }
         }
