@@ -286,15 +286,15 @@ h3.info {
 |-----------------------
 */
 .icon_font {
-	font: 20px/20px normal WebSymbolsRegular;
 	font-family: 'WebSymbolsRegular';
 	src: url('./fonts/websymbols-regular-webfont.eot');
 	src: url('./fonts/websymbols-regular-webfont.eot?#iefix') format('embedded-opentype'),
 	     url('./fonts/websymbols-regular-webfont.woff') format('woff'),
 	     url('./fonts/websymbols-regular-webfont.ttf') format('truetype'),
 	     url('./fonts/websymbols-regular-webfont.svg#WebSymbolsRegular') format('svg');
-    font-weight: normal;
-    font-style: normal;
+	font-weight: normal;
+	font-style: normal;
+	font: 20px/20px normal WebSymbolsRegular;
 }
 
 
