@@ -64,11 +64,13 @@ class User extends CI_Controller {
         $page_data['page_title']     = "Register";
 
         // form validation rules
-        $this->form_validation->set_rules('username', 'Username', 'required|callback__valid_username');
+        $this->form_validation->set_rules('username', 'Username', 'required|trim|callback__valid_username');
+        $this->form_validation->set_rules('firstname', 'First Name', 'required|trim');
+        $this->form_validation->set_rules('secondname', 'Last Name', 'required|trim');
         $this->form_validation->set_rules('password', 'Password', 'required');
         $this->form_validation->set_rules('password_again', 'Password Confirmation', 'required|matches[password]');
-        $this->form_validation->set_rules('email', 'Email', 'required|valid_email|callback__valid_email');
-        $this->form_validation->set_rules('spamcheck', 'Spam Check', 'required|callback__spam_check');
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|callback__valid_email');
+        $this->form_validation->set_rules('spamcheck', 'Spam Check', 'required|trim|callback__spam_check');
 
         // did the user submit
         if ($this->form_validation->run())
@@ -369,25 +371,33 @@ class User extends CI_Controller {
                     // does the supplied password match?
                     if (sha1(sha1($this->input->post('password')) . $user_query->row()->user_salt) === $user_query->row()->user_password)
                     {
-                        // users passed all our tests lets build em a session
-                        $session_data = array(
-                            'user_id'   => $user_query->row()->id,
-                            'username'  => $user_query->row()->user_name,
-                            'email'     => $user_query->row()->user_email,
-                            'owl'       => 'random',
-                            'admin'     => $user_query->row()->user_admin === 'true' ? TRUE : FALSE,
-                            'authed'    => TRUE,
-                        );
+                        if ($user_query->row()->user_owl_id != 0)
+                        {
+                            // users passed all our tests lets build em a session
+                            $session_data = array(
+                                'user_id'   => $user_query->row()->id,
+                                'username'  => $user_query->row()->user_name,
+                                'email'     => $user_query->row()->user_email,
+                                'owl'       => $user_query->row()->user_owl_id,
+                                'admin'     => $user_query->row()->user_admin === 'true' ? TRUE : FALSE,
+                                'authed'    => TRUE,
+                            );
 
-                        $this->session->set_userdata($session_data);
+                            $this->session->set_userdata($session_data);
 
-                        // Set last login time
-                        $this->User_model->login_time($user_query->row()->user_name);
+                            // Set last login time
+                            $this->User_model->login_time($user_query->row()->user_name);
 
-                        // displayed message page and redirect
-                        $page_data['success']     = TRUE;
-                        $page_data['msg']        = "Login successful.";
-                        $page_data['redirect']    = str_replace('-', '/', "" . $location);
+                            // displayed message page and redirect
+                            $page_data['success']     = TRUE;
+                            $page_data['msg']        = "Login successful.";
+                            $page_data['redirect']    = str_replace('-', '/', "" . $location);
+                        }
+                        else
+                        {
+                            // Owl Creation Required
+                            redirect('https://google.com', 'location');
+                        }
                     }
                     else
                     {

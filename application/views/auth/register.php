@@ -28,12 +28,13 @@
                 <div class="ctrlHolder">
                     <label for="username">Username</label>
                     <input type="text" name="username" id="username" size="35" class="textInput medium" autocompelete="OFF" />
-                    <p class="formHint">Pick a username.</p>
+                    <p class="formHint">Pick a username. (Used to login.)</p>
                 </div>
 
                 <div class="ctrlHolder">
                     <label for="password">Password</label>
                     <input type="password" name="password" id="password" size="35" class="textInput medium" autocompelete="OFF" />
+                    <p class="formHint">Choose your password.</p>
                 </div>
 
                 <div class="ctrlHolder">
@@ -56,7 +57,7 @@
                             <option value="<?php print $value; ?>"><?php print $owl; ?></option>
                         <?php endforeach; endif; ?>
                     </select>
-                    <p class="formHint">Please choose your Owl from the list. If you choose an existing Owl, the owner of this Owl will need to approve you.<br>If you choose "New Owl" you will be prompted to create this owl after account validation.</p>
+                    <p class="formHint">Please choose your Owl from the list. If you choose an existing Owl, the owner of this Owl will need to approve you. If you choose "New Owl" you will be prompted to create this owl after account validation.</p>
                 </div>
 
                 <div class="ctrlHolder">

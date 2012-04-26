@@ -103,18 +103,24 @@ class User_model extends CI_Model {
      * @param string $user_salt - randomly generated user salt
      * @param string $user_activation - the randomly generated user activation code
      */
-    public function add_user($user_name = FALSE, $user_password = FALSE, $user_email = FALSE, $user_salt = FALSE, $user_activation = FALSE)
+    public function add_user($user_name = FALSE, $user_password = FALSE, $user_email = FALSE, $user_salt = FALSE, $user_activation = FALSE, $firstname = FALSE, $lastname = FALSE, $owl_id = FALSE)
     {
-        if (!$user_name || !$user_password || !$user_email || !$user_salt || !$user_activation)
+        if (!$user_name || !$user_password || !$user_email || !$user_salt || !$user_activation || !$firstname || !$lastname || !$owl_id)
             return FALSE;
+
+        if ($owl_id == 'new')   // Are we looking at a user with no Owl?
+            $owl_id = 0;        // 0 means that the user has no owl.
 
         $insert_data = array(
             'user_name'                 => $user_name,
+            'user_firstname'            => $firstname,
+            'user_secondname'           => $secondname,
             'user_email'                => $user_email,
             'user_salt'                 => $user_salt,
             'user_password'             => $user_password,
             'user_activation'           => $user_activation,
             'user_registration_date'    => time(),
+            'user_owl_id'               => $owl_id
         );
 
         $this->db->insert('users', $insert_data);
