@@ -14,6 +14,18 @@
 
             <fieldset class="inlineLabels">
                 <div class="ctrlHolder">
+                    <label for="firstname">First Name</label>
+                    <input type="text" name="firstname" id="firstname" size="35" class="textInput medium" autocompelete="OFF" />
+                    <p class="formHint">Your first name. (i.e. Joe)</p>
+                </div>
+
+                <div class="ctrlHolder">
+                    <label for="lastname">Last Name</label>
+                    <input type="text" name="lastname" id="lastname" size="35" class="textInput medium" autocompelete="OFF" />
+                    <p class="formHint">Your second name. (i.e. Bloggs)</p>
+                </div>
+
+                <div class="ctrlHolder">
                     <label for="username">Username</label>
                     <input type="text" name="username" id="username" size="35" class="textInput medium" autocompelete="OFF" />
                     <p class="formHint">Pick a username.</p>
@@ -34,6 +46,17 @@
                     <label for="email">Email</label>
                     <input type="text" name="email" id="email" size="35" class="textInput medium" autocompelete="OFF" />
                     <p class="formHint">This must be a valid email, for verification.</p>
+                </div>
+
+                <div class="ctrlHolder">
+                    <label for="owl">Owl</label>
+                    <select name="owl" id="owl" class="textInput medium" autocompelete="OFF" />
+                        <option value="new">New Owl</option>
+                        <?php if($owls) : foreach ($owls as $value => $owl) : ?>
+                            <option value="<?php print $value; ?>"><?php print $owl; ?></option>
+                        <?php endforeach; endif; ?>
+                    </select>
+                    <p class="formHint">Please choose your Owl from the list. If you choose an existing Owl, the owner of this Owl will need to approve you.<br>If you choose "New Owl" you will be prompted to create this owl after account validation.</p>
                 </div>
 
                 <div class="ctrlHolder">
