@@ -64,9 +64,6 @@ class Upload extends CI_Controller {
 
         $this->load->library('upload', $config);
 
-        // Get the POST data
-        $page_data['post_back'] = $this->input->post(NULL, TRUE);
-
         // form validation rules
         $this->form_validation->set_rules('userfile', 'File', 'required');
         $this->form_validation->set_rules('filename', 'File Name', 'required');
@@ -121,6 +118,8 @@ class Upload extends CI_Controller {
             $page_data['page_title'] = 'Upload';
             $this->load->view('pages/upload_form', $page_data);
         }
+
+        print var_dump($page_data);
     }
     //------------------------------------------------------------------
 
