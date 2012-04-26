@@ -59,7 +59,6 @@ class Upload extends CI_Controller {
         $config['encrypt_name'] = TRUE;
 
         $page_data = array();
-        $page_data['error'] = NULL;
         $page_data['allow_types'] = str_replace('|', ', ', $file_types);
 
         $this->load->library('upload', $config);
@@ -74,7 +73,8 @@ class Upload extends CI_Controller {
             if (!$this->upload->do_upload())
             {
                 $page_data['page_title'] = 'Upload Failure';
-                $page_data['error'] = $this->upload->display_errors();
+                $page_data['error'] = TRUE;
+                $page_data['msg'] = $this->upload->display_errors();
 
                 $this->load->view('pages/upload_form', $page_data);
             }
