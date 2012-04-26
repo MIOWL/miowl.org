@@ -10,7 +10,7 @@
 
         <!-- login -->
         <!-- <form action="" class="uniForm" method="post"> -->
-        <?php echo form_open_multipart();?>
+        <?php echo form_open_multipart('', 'class="uniForm"');?>
 
             <?php $this->load->view('messages/message_inline'); ?>
 
