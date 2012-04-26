@@ -7,7 +7,7 @@
 @import url("css/uni-form.css");
 @import url("css/default.uni-form.css");
 @import url("css/tipsy.css");
-/*@import url("css/fonts.css");*/
+@import url("css/fonts.css");
 
 /*
 |-----------------------------------
@@ -285,17 +285,6 @@ h3.info {
 | icon font styles
 |-----------------------
 */
-@font-face{ 
-	font-family: 'WebSymbolsRegular';
-	src: url('./fonts/websymbols-regular-webfont.eot');
-	src: url('./fonts/websymbols-regular-webfont.eot?#iefix') format('embedded-opentype'),
-	     url('./fonts/websymbols-regular-webfont.woff') format('woff'),
-	     url('./fonts/websymbols-regular-webfont.ttf') format('truetype'),
-	     url('./fonts/websymbols-regular-webfont.svg#WebSymbolsRegular') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-
 .icon_font {
 	font: 20px/20px normal WebSymbolsRegular;
 }
