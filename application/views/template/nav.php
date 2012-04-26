@@ -6,6 +6,8 @@
 			# Logged in NAV
 			print "<a href='". site_url('user/logout') . "' title='Logout'>logout</a>";				# logout
 			print " | ";																			# spacer
+			print "<a href='". site_url('user/owl') . "' title='View your Owl'>my owl</a>";			# my owl
+			print " | ";																			# spacer
 			print "<a href='". site_url('upload') . "' title='Upload a new file'>upload</a>";		# upload
 		}
 		else

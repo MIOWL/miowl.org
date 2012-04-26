@@ -128,7 +128,7 @@ class Upload_model extends CI_Model {
 
 
     /**
-     * public add_upload()
+     * public update_upload()
      */
     public function update_upload( $full_path = FALSE, $upload_catagory = FALSE, $client_name = FALSE, $description = NULL )
     {
