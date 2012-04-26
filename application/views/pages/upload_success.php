@@ -37,7 +37,7 @@
 
 		<ul>
 			<?php foreach ($this->input->post(NULL, TRUE) as $item => $value):?>
-				<li><?php echo $item;?>: <?php echo $value;?></li>
+				<li><?php echo $item;?>: "<?php echo $value;?>"</li>
 			<?php endforeach; ?>
 		</ul>
 
