@@ -18,7 +18,7 @@
             <li>client_name: <?php print $upload_data['client_name']; ?></li>
             <li>file_size: <?php print $upload_data['file_size']; ?></li>
             <li>file_ext: <?php print $upload_data['file_ext']; ?></li>
-            <li>description: <?php print str_replace(array("\r\n","\r","\n"), '\n',trim($this->input->post('description'))); ?></li>
+            <li>description: <?php print str_replace(array("\r\n","\r","\n"), '\n', trim($this->input->post('description'))); ?></li>
         </ul>
 
         <br>
@@ -27,6 +27,16 @@
 
 		<ul>
 			<?php foreach ($upload_data as $item => $value):?>
+				<li><?php echo $item;?>: <?php echo $value;?></li>
+			<?php endforeach; ?>
+		</ul>
+
+        <br>
+        <hr>
+        <br>
+
+		<ul>
+			<?php foreach ($this->input->post(NULL, TRUE) as $item => $value):?>
 				<li><?php echo $item;?>: <?php echo $value;?></li>
 			<?php endforeach; ?>
 		</ul>

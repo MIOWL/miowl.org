@@ -82,9 +82,7 @@ class Upload extends CI_Controller {
             {
                 $upload_data = $this->upload->data();
 
-                $file_name = $this->input->post('filename');
-                print $file_name;
-                $file_name = !$file_name 
+                $file_name = !$this->input->post('filename') 
                                 ? $upload_data['file_name']
                                 : $this->input->post('filename');
 
