@@ -81,18 +81,21 @@ class Browse extends CI_Controller {
         $this->table->set_heading('ID', 'Timestamp (GMT)', 'Filename', 'Catagory', 'File Type', 'Owl');
         $this->table->set_empty("N/A");
 
-        foreach($uploads->result() as $row)
+        if($uploads)
         {
-            $timestamp = date("H:i:s d/m/Y", $row->upload_time);
+            foreach($uploads->result() as $row)
+            {
+                $timestamp = date("H:i:s d/m/Y", $row->upload_time);
 
-            $this->table->add_row(
-                                    $row->id,
-                                    $timestamp,
-                                    $row->file_name,
-                                    $row->upload_catagory,
-                                    $row->file_type,
-                                    $row->owl
-                                );
+                $this->table->add_row(
+                                        $row->id,
+                                        $timestamp,
+                                        $row->file_name,
+                                        $row->upload_catagory,
+                                        $row->file_type,
+                                        $row->owl
+                                    );
+            }
         }
 
         $page_data['table'] = $this->table->generate();
