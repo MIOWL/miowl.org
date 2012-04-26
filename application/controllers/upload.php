@@ -91,7 +91,7 @@ class Upload extends CI_Controller {
                 $client_name        = $upload_data['client_name'];
                 $file_size          = $upload_data['file_size'];
                 $file_ext           = $upload_data['file_ext'];
-                $description        = trim($this->input->post['description']);
+                $description        = htmlspecialchars(trim($this->input->post['description']), ENT_COMPAT | ENT_HTML5);
 
                 $this->upload_model->add_upload(
                             $upload_user,
