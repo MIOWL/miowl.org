@@ -58,7 +58,7 @@ class Browse extends CI_Controller {
         $uploads = $this->upload_model->get_all_uploads();
         $this->load->library('table');
         $tmpl = array (
-                            'table_open'          => '<table border="1" cellpadding="4" cellspacing="0">',
+                            'table_open'          => '<table width="100%" cellspacing="0" cellpadding="4" border="1">',
 
                             'heading_row_start'   => '<tr>',
                             'heading_row_end'     => '</tr>',
