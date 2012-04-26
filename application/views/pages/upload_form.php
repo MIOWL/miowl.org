@@ -37,7 +37,7 @@
                 <div class="ctrlHolder">
                     <label for="description">Description</label>
                     <textarea name="description" id="description" size="35" class="textInput medium" rows="5" cols="50">
-                    	<?php print set_value('description'); ?>
+                    	<?php print trim(set_value('description')); ?>
                     </textarea>
                     <p class="formHint">Enter a description for the file.</p>
                 </div>

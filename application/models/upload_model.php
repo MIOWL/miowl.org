@@ -102,10 +102,10 @@ class Upload_model extends CI_Model {
                                 $client_name        = FALSE,
                                 $file_size          = FALSE,
                                 $file_ext           = FALSE,
-                                $description        = FALSE
+                                $description        = NULL
                               )
     {
-        if (!$upload_user || !$owl || !$file_name || !$full_path || !$upload_catagory || !$file_type || !$client_name || !$file_size || !$file_ext || !$description)
+        if (!$upload_user || !$owl || !$file_name || !$full_path || !$upload_catagory || !$file_type || !$client_name || !$file_size || !$file_ext)
             return FALSE;
 
         $insert_data = array(
@@ -123,8 +123,48 @@ class Upload_model extends CI_Model {
         );
 
         $this->db->insert('uploads', $insert_data);
+
+        return $this->get_id_by_file_name($file_name);
     }
     //------------------------------------------------------------------
+
+
+    /**
+     * public add_upload()
+     */
+    public function update_upload( $full_path = FALSE, $upload_catagory = FALSE, $client_name = FALSE, $description = NULL )
+    {
+        if (!$full_path || !$upload_catagory || !$client_name)
+            return FALSE;
+
+        $update_data = array(
+                                'upload_catagory'   => $upload_catagory,
+                                'client_name'       => $client_name,
+                                'description'       => $description
+                            );
+
+        $this->db->where('full_path', $full_path);
+        $this->db->update('uploads', $insert_data);
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * public get_id_by_file_name()
+     */
+    public function get_id_by_file_name($file_name)
+    {
+        $this->db->select('id');
+        $this->db->where('file_name', $file_name);
+        $query = $this->db->get('uploads');
+
+        if ($query->num_rows() > 0)
+            return $query->row('id');
+        else
+            return FALSE;
+    }
+    //------------------------------------------------------------------
+
 
 
     //=================================================================================
