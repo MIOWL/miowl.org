@@ -8,7 +8,7 @@
 
 	<div id="body">
         <!-- choose existing owl -->
-        <form action="" class="uniForm" method="post">
+        <form action="existing_owl" class="uniForm" method="post">
             <fieldset class="inlineLabels">
                 <div class="ctrlHolder">
                     <label for="owl">Owl</label>
@@ -36,7 +36,7 @@
 
     <div id="body">
         <!-- register new owl -->
-        <form action="" class="uniForm" method="post">
+        <form action="new_owl" class="uniForm" method="post">
 
             <?php $this->load->view('messages/message_inline'); ?>
 
