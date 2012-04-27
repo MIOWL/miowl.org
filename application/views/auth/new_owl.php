@@ -8,12 +8,17 @@
 
 	<div id="body">
         <!-- choose existing owl -->
-        <form action="existing_owl" class="uniForm" method="post">
+        <form action="owl" class="uniForm" method="post">
+            <?php
+                if(isset($this->input->post('existing_owl')))
+                    $this->load->view('messages/message_inline');
+            ?>
+            <input type="hidden" name="existing_owl" id="existing_owl" value="existing_owl" />
             <fieldset class="inlineLabels">
                 <div class="ctrlHolder">
                     <label for="owl">Owl</label>
                     <select name="owl" id="owl" class="textInput medium" autocompelete="OFF" />
-                        <option value="new">New Owl</option>
+                        <option value="default">Select</option>
                         <?php if($owls) : foreach ($owls as $value => $owl) : ?>
                             <option value="<?php print $value; ?>"><?php print $owl; ?></option>
                         <?php endforeach; endif; ?>
@@ -36,9 +41,14 @@
 
     <div id="body">
         <!-- register new owl -->
-        <form action="new_owl" class="uniForm" method="post">
+        <form action="owl" class="uniForm" method="post">
 
-            <?php $this->load->view('messages/message_inline'); ?>
+            <?php
+                if(isset($this->input->post('new_owl')))
+                    $this->load->view('messages/message_inline');
+            ?>
+
+            <input type="hidden" name="new_owl" id="new_owl" value="new_owl" />
 
             <fieldset class="inlineLabels">
                 <div class="ctrlHolder">
@@ -56,9 +66,9 @@
                 <div class="ctrlHolder">
                     <label for="type">Owl Type</label>
                     <select name="type" id="type" class="textInput medium" autocompelete="OFF" />
-                        <option>Select</option>
-                        <option value="clinic">Clinic</option>
-                        <option value="hospital">Hospital</option>
+                        <option value="default" <?php echo set_select('type', 'default', TRUE); ?>>Select</option>
+                        <option value="clinic" <?php echo set_select('type', 'clinic'); ?>>Clinic</option>
+                        <option value="hospital" <?php echo set_select('type', 'hospital'); ?>>Hospital</option>
                     </select>
                     <p class="formHint">Please choose your Owl type from the list.</p>
                 </div>
@@ -72,20 +82,10 @@
                 <div class="ctrlHolder">
                     <label for="province">Province</label>
                     <select name="province" id="province" class="textInput medium" autocompelete="OFF" />
-                        <option>Select</option>
-                        <option value="Alberta">Alberta</option>
-                        <option value="British Columbia">British Columbia</option>
-                        <option value="Manitoba">Manitoba</option>
-                        <option value="New Brunswick">New Brunswick</option>
-                        <option value="Newfoundland and Labrador">Newfoundland and Labrador</option>
-                        <option value="Northwest Territories">Northwest Territories</option>
-                        <option value="Nova Scotia">Nova Scotia</option>
-                        <option value="Nunavut">Nunavut</option>
-                        <option value="Ontario">Ontario</option>
-                        <option value="Prince Edward Island">Prince Edward Island</option>
-                        <option value="Quebec">Quebec</option>
-                        <option value="Saskatchewan">Saskatchewan</option>
-                        <option value="Yukon">Yukon</option>
+                        <option value="select" <?php echo set_select('province', 'select', TRUE); ?>>Select</option>
+                        <?php foreach ($province) : ?>
+                            <option value="<?php print $province; ?>" <?php echo set_select('province', $province); ?>><?php print $province; ?></option>
+                        <?php endforeach; ?>
                     </select>
                     <p class="formHint">Please choose your province the list.</p>
                 </div>

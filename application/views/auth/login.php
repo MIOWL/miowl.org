@@ -16,7 +16,7 @@
 
                 <div class="ctrlHolder">
                     <label for="username">Username / Email</label>
-                    <input type="text" name="username" id="username" size="35" class="textInput medium" />
+                    <input type="text" name="username" id="username" size="35" class="textInput medium" value="<?php print set_value('username'); ?>" />
                     <p class="formHint">Don't have a username? <a href="<?php print site_url('user/register'); ?>">Sign up</a> today!</p>
                 </div>
 

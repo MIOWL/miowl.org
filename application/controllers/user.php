@@ -7,6 +7,23 @@ class User extends CI_Controller {
     //=================================================================================
 
 
+    private $province = array(
+                                'Alberta',
+                                'British Columbia',
+                                'Manitoba',
+                                'New Brunswick',
+                                'Newfoundland and Labrador',
+                                'Northwest Territories',
+                                'Nova Scotia',
+                                'Nunavut',
+                                'Ontario',
+                                'Prince Edward Island',
+                                'Quebec',
+                                'Saskatchewan',
+                                'Yukon'
+                             );
+
+
 
     //=================================================================================
     // :public
@@ -279,7 +296,7 @@ class User extends CI_Controller {
             $this->form_validation->set_rules('password', 'Password', 'required|callback__valid_password');
             $this->form_validation->set_rules('new_password', 'Password', 'callback__new_password');
             $this->form_validation->set_rules('new_password_again', 'Password Confirmation', 'matches[new_password]');
-            $this->form_validation->set_rules('email', 'Email', 'required|valid_email|callback__valid_email');
+            $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|callback__valid_email');
 
             // did the user submit
             if ($this->form_validation->run())
@@ -433,8 +450,9 @@ class User extends CI_Controller {
         }
         elseif (isset($owl_selection) && $owl_selection)
         {
-            $page_data['page_title'] = 'Choose your Owl';
+            $page_data['page_title']    = 'Choose your Owl';
             $page_data['owl_selection'] = TRUE;
+            $page_data['province']      = $this->province;
             $this->load->view('auth/new_owl', $page_data);
         }
         else
@@ -448,20 +466,57 @@ class User extends CI_Controller {
     /**
      * public existing_owl()
      */
-    public function existing_owl()
+    public function owl()
     {
+        // New or existing Owl?
+        if(!$this->input->post('new_owl'))
+        { // Existing Owl
+            // form validation rules
+            $this->form_validation->set_rules('owl', 'Owl', 'callback__valid_choice');
+        }
+        else
+        { // New Owl
+            // form validation rules
+            $this->form_validation->set_rules('name', 'Organization Name', 'required|trim|greater_than[4]|alpha_numeric|is_unique[owls.owl_name]');
+            $this->form_validation->set_rules('acronym', 'Organization Acronym', 'required|trim|greater_than[2]|less_than[7]|alpha_numeric|is_unique[owls.owl_name_short]');
+            $this->form_validation->set_rules('type', 'Owl Type', 'callback__valid_choice');
+            $this->form_validation->set_rules('address', 'Organization Address', 'required|trim|greater_than[5]|alpha_numeric|is_unique[owls.owl_address]');
+            $this->form_validation->set_rules('province', 'Province', 'callback__valid_choice');
+            $this->form_validation->set_rules('city', 'City', 'required|trim|alpha_numeric|greater_than[3]');
+            $this->form_validation->set_rules('zip', 'Postal Code', 'required|trim|alpha_numeric|greater_than[4]is_unique[owls.owl_post_code]');
+            $this->form_validation->set_rules('tel', 'Phone Number', 'required|trim|numeric|greater_than[7]is_unique[owls.owl_tel]');
+            $this->form_validation->set_rules('site', 'Website', 'required|trim|alpha_numeric|greater_than[4]is_unique[owls.owl_site]');
+            $this->form_validation->set_rules('email', 'Administrator Email', 'required|trim|alpha_numeric|valid_email|is_unique[owls.owl_email]');
+        }
+
         // Are you supposed to see this?
-        if (!$this->input->post('owl'))
-            redirect(site_url(), 'location');
+        if (!$this->form_validation->run())
+            redirect('login', 'location');
 
-        // Have you stupidly chosen the 'New Owl' option?
-        if ($this->input->post('owl') == 'new')
-            redirect(site_url(), 'location');
+        // Are you supposed to see this?
+        if (!$this->form_validation->run())
+        {
+            $page_data                  = array();
+            $page_data['page_title']    = "[ERROR] Choose your Owl";
+            $page_data['province']      = $this->province;
 
-        $page_data                  = array();
-        $page_data['page_title']    = "Owl Chosen";
-
-        $this->load->view('auth/login', $page_data);
+            $this->load->view('auth/new_owl', $page_data);
+        }
+        else
+        {
+            if(!$this->input->post('new_owl'))                          // Existing Owl
+            {
+                $page_data                  = array();
+                $page_data['page_title']    = "Owl Chosen";
+                $this->load->view('auth/new_owl_chosen', $page_data);
+            }
+            else                                                        // New Owl
+            {
+                $page_data                  = array();
+                $page_data['page_title']    = "Owl Created";
+                $this->load->view('auth/new_owl_created', $page_data);
+            }
+        }
     }
     //------------------------------------------------------------------
 
@@ -590,6 +645,31 @@ class User extends CI_Controller {
 
         $this->form_validation->set_message('_valid_email', 'This email address is already in use.');
         return FALSE;
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * callback _valid_choice()
+     * function will validate that the user has not selected a default drop down value.
+     *
+     * @param string $choice - choice to validate
+     */
+    public function _valid_choice($choice = FALSE)
+    {
+        if (!$choice)
+        {
+            $this->form_validation->set_message('_valid_choice', 'Invalid Choice!');
+            return FALSE;
+        }
+
+        if ($choice != 'default')
+        {
+            $this->form_validation->set_message('_valid_choice', 'This is not a valid choice!');
+            return FALSE;
+        }
+
+        return TRUE;
     }
     //------------------------------------------------------------------
 
