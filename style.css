@@ -286,7 +286,7 @@ h3.info {
 |-----------------------
 */
 .icon_font {
-	font: 20px/20px normal WebSymbolsRegular;
+	font: 20px/20px 'WebSymbolsRegular', sans-serif;
 }
 
 
