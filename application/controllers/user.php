@@ -401,7 +401,8 @@ class User extends CI_Controller {
                         else
                         {
                             // Owl Creation Required
-                            redirect('https://google.com', 'location');
+                            #redirect('https://google.com', 'location');
+                            $this->load->view('auth/new_owl');
                         }
                     }
                     else
