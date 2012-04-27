@@ -82,7 +82,7 @@ class User extends CI_Controller {
             $authcode = $this->_genActCode(20);
 
             // register the user
-            $this->User_model->add_user($this->input->post('username'), sha1(sha1($this->input->post('password')) . $salt), $this->input->post('email'), $salt, $authcode);
+            $this->User_model->add_user($this->input->post('username'), sha1(sha1($this->input->post('password')) . $salt), $this->input->post('email'), $salt, $authcode, $this->input->post('firstname'), $this->input->post('lastname'), $this->input->post('owl'));
 
             $page_data['success']     = TRUE;
             $page_data['msg']        = "Successfully registered you're account. Please check your email to finish the registration process.";
