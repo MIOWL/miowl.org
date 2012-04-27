@@ -402,7 +402,6 @@ class User extends CI_Controller {
                         {
                             // Owl Creation Required
                             #redirect('https://google.com', 'location');
-                            $page_data['title'] = 'Choose your Owl';
                             $owl_selection = TRUE;
                         }
                     }
@@ -434,6 +433,7 @@ class User extends CI_Controller {
         }
         elseif (isset($owl_selection) && $owl_selection)
         {
+            $page_data['page_title'] = 'Choose your Owl';
             $page_data['owl_selection'] = TRUE;
             $this->load->view('auth/new_owl', $page_data);
         }
