@@ -81,6 +81,9 @@ class User extends CI_Controller {
             // generate our authcode
             $authcode = $this->_genActCode(20);
 
+            // Debug the POST Data
+            print var_dump($this->input->post(NULL, TRUE));
+
             // register the user
             $this->User_model->add_user($this->input->post('username'), sha1(sha1($this->input->post('password')) . $salt), $this->input->post('email'), $salt, $authcode, $this->input->post('firstname'), $this->input->post('lastname'), $this->input->post('owl'));
 
