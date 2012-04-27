@@ -15,7 +15,7 @@
 <script type="text/javascript" src="<?php print site_url('/js/uni-form.jquery.min.js'); ?>"></script>
 <script type="text/javascript" src="<?php print site_url('/js/tips.js'); ?>"></script>
 <script type="text/javascript" src="<?php print site_url('/js/jquery.countdown.js'); ?>"></script>
-
+<?php if($owl_selection) : ?><script type="text/javascript" src="<?php print site_url('/js/owl_selection.js'); ?>"></script><?php endif; ?>
 
 <!-- Google Analytics -->
 <script type="text/javascript">/*

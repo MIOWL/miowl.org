@@ -22,7 +22,7 @@
                 </div>
             </fieldset>
             <div class="buttonHolder">
-                <button class="button" type="submit">Choose</button>
+                <button class="button" type="submit" disabled="disabled" id="owl_choice">Choose</button>
             </div>
         </form>
     </div>

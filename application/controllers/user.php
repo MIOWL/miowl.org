@@ -402,7 +402,10 @@ class User extends CI_Controller {
                         {
                             // Owl Creation Required
                             #redirect('https://google.com', 'location');
-                            $this->load->view('auth/new_owl');
+                            $page_data = array();
+                            $page_data['title'] = 'Choose your Owl';
+                            $page_data['owl_selection'] = TRUE;
+                            $this->load->view('auth/new_owl', $page_data);
                         }
                     }
                     else
@@ -435,6 +438,27 @@ class User extends CI_Controller {
         {
             $this->load->view('auth/login', $page_data);
         }
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * public existing_owl()
+     */
+    public function existing_owl()
+    {
+        // Are you supposed to see this?
+        if (!$this->input->post('owl'))
+            redirect(site_url(), 'location');
+
+        // Have you stupidly chosen the 'New Owl' option?
+        if ($this->input->post('owl') == 'new')
+            redirect(site_url(), 'location');
+
+        $page_data                  = array();
+        $page_data['page_title']    = "Owl Chosen";
+
+        $this->load->view('auth/login', $page_data);
     }
     //------------------------------------------------------------------
 
