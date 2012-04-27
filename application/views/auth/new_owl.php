@@ -14,6 +14,7 @@
                     <label for="owl">Owl</label>
                     <select name="owl" id="owl" class="textInput medium" autocompelete="OFF" />
                         <option value="new">New Owl</option>
+                        <option value="test">Test Owl</option>
                         <?php if($owls) : foreach ($owls as $value => $owl) : ?>
                             <option value="<?php print $value; ?>"><?php print $owl; ?></option>
                         <?php endforeach; endif; ?>
@@ -22,7 +23,7 @@
                 </div>
             </fieldset>
             <div class="buttonHolder">
-                <button class="button" type="submit" disabled="disabled" id="owl_choice">Choose</button>
+                <button class="button" type="submit" id="owl_choice">Choose</button>
             </div>
         </form>
     </div>
