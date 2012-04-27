@@ -114,7 +114,11 @@
                 <div class="ctrlHolder">
                     <label for="email">Administrator Email</label>
                     <input type="text" name="email" id="email" size="35" class="textInput medium" autocompelete="OFF" value="<?php print set_value('email'); ?>" />
-                    <p class="formHint">This must be a valid email. Used to verify new owl members. Leave blank to use the email you registered with.</p>
+                    <p class="formHint">T
+                        his must be a valid email. Used to verify new owl members.
+                        <br>
+                        Leave blank to use the email you registered with.
+                    </p>
                 </div>
 
             </fieldset>
