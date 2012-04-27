@@ -14,7 +14,6 @@
                     <label for="owl">Owl</label>
                     <select name="owl" id="owl" class="textInput medium" autocompelete="OFF" />
                         <option value="new">New Owl</option>
-                        <option value="test">Test Owl</option>
                         <?php if($owls) : foreach ($owls as $value => $owl) : ?>
                             <option value="<?php print $value; ?>"><?php print $owl; ?></option>
                         <?php endforeach; endif; ?>

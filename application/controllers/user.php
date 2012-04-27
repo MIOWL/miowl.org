@@ -406,6 +406,7 @@ class User extends CI_Controller {
                             $page_data['title'] = 'Choose your Owl';
                             $page_data['owl_selection'] = TRUE;
                             $this->load->view('auth/new_owl', $page_data);
+                            return;
                         }
                     }
                     else

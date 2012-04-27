@@ -3,7 +3,7 @@ $(function(){
       //Set button disabled
       $('#owl_choice').attr("disabled", "disabled");
 
-      //Append a change event listener to you inputs
+      //Append a change event listener to the input
       $('#owl').change(function(){
             //Validate your form here, example:
             var validated = false;
