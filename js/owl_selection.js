@@ -10,8 +10,11 @@ $(function(){
             if($('#owl').val() != 'new') validated = true;
 
             //If form is validated enable form
-            if(validated) $('#owl_choice').removeAttr("disabled");
-            else $('#owl_choice').attr("disabled", "disabled");
+            if(validated){
+                  $('#owl_choice').removeAttr("disabled");  // Enable the button
+                  $("#owl option[value='new']").remove();   // Remove the 'New Owl' option.
+            }
+
       });
 
       //Trigger change function once to check if the form is validated on page load
