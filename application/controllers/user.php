@@ -405,8 +405,6 @@ class User extends CI_Controller {
                             $page_data = array();
                             $page_data['title'] = 'Choose your Owl';
                             $page_data['owl_selection'] = TRUE;
-                            $this->load->view('auth/new_owl', $page_data);
-                            return;
                         }
                     }
                     else
@@ -434,6 +432,10 @@ class User extends CI_Controller {
         if (isset($page_data['success']))
         {
             $this->load->view('messages/message_page', $page_data);
+        }
+        elseif ($page_data['owl_selection'])
+        {
+            $this->load->view('auth/new_owl', $page_data);
         }
         else
         {
