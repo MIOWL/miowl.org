@@ -402,9 +402,8 @@ class User extends CI_Controller {
                         {
                             // Owl Creation Required
                             #redirect('https://google.com', 'location');
-                            $page_data = array();
                             $page_data['title'] = 'Choose your Owl';
-                            $page_data['owl_selection'] = TRUE;
+                            $owl_selection = TRUE;
                         }
                     }
                     else
@@ -433,8 +432,9 @@ class User extends CI_Controller {
         {
             $this->load->view('messages/message_page', $page_data);
         }
-        elseif ($page_data['owl_selection'])
+        elseif (isset($owl_selection) && $owl_selection)
         {
+            $page_data['owl_selection'] = TRUE;
             $this->load->view('auth/new_owl', $page_data);
         }
         else
