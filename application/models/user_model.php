@@ -113,8 +113,8 @@ class User_model extends CI_Model {
 
         $insert_data = array(
             'user_name'                 => $user_name,
-            'user_firstname'            => $firstname,
-            'user_secondname'           => $secondname,
+            'user_first_name'           => $firstname,
+            'user_last_name'            => $lastname,
             'user_email'                => $user_email,
             'user_salt'                 => $user_salt,
             'user_password'             => $user_password,
