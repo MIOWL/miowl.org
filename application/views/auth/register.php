@@ -15,19 +15,19 @@
             <fieldset class="inlineLabels">
                 <div class="ctrlHolder">
                     <label for="firstname">First Name</label>
-                    <input type="text" name="firstname" id="firstname" size="35" class="textInput medium" autocompelete="OFF" />
+                    <input type="text" name="firstname" id="firstname" size="35" class="textInput medium" autocompelete="OFF" value="<?php print set_value('firstname'); ?>" />
                     <p class="formHint">Your first name. (i.e. Joe)</p>
                 </div>
 
                 <div class="ctrlHolder">
                     <label for="lastname">Last Name</label>
-                    <input type="text" name="lastname" id="lastname" size="35" class="textInput medium" autocompelete="OFF" />
+                    <input type="text" name="lastname" id="lastname" size="35" class="textInput medium" autocompelete="OFF" value="<?php print set_value('lastname'); ?>" />
                     <p class="formHint">Your second name. (i.e. Bloggs)</p>
                 </div>
 
                 <div class="ctrlHolder">
                     <label for="username">Username</label>
-                    <input type="text" name="username" id="username" size="35" class="textInput medium" autocompelete="OFF" />
+                    <input type="text" name="username" id="username" size="35" class="textInput medium" autocompelete="OFF" value="<?php print set_value('username'); ?>" />
                     <p class="formHint">Pick a username. (Used to login.)</p>
                 </div>
 
@@ -45,7 +45,7 @@
 
                 <div class="ctrlHolder">
                     <label for="email">Email</label>
-                    <input type="text" name="email" id="email" size="35" class="textInput medium" autocompelete="OFF" />
+                    <input type="text" name="email" id="email" size="35" class="textInput medium" autocompelete="OFF" value="<?php print set_value('email'); ?>" />
                     <p class="formHint">This must be a valid email, for verification.</p>
                 </div>
 
