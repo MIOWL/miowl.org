@@ -1,6 +1,6 @@
 <?php $this->load->view('template/header'); ?>
 
-    <div<?php print !$owls || $this->input->post('new_owl') ? ' style="display:none;"' : NULL ?>>
+    <div<?php print $this->input->post('new_owl') ? ' style="display:none;"' : NULL ?>>
         <h1>
             <center>
                 Choose existing Owl!
