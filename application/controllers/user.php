@@ -477,7 +477,7 @@ class User extends CI_Controller {
         else
         { // New Owl
             // form validation rules
-            $this->form_validation->set_rules('name', 'Organization Name', 'required|trim|alpha_numeric|is_unique[owls.owl_name]');
+            $this->form_validation->set_rules('name', 'Organization Name', 'required|trim|is_unique[owls.owl_name]');
             $this->form_validation->set_rules('acronym', 'Organization Acronym', 'required|trim|alpha_numeric|is_unique[owls.owl_name_short]');
             $this->form_validation->set_rules('type', 'Owl Type', 'callback__valid_choice');
             $this->form_validation->set_rules('address', 'Organization Address', 'required|trim|alpha_numeric|is_unique[owls.owl_address]');
