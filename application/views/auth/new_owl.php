@@ -83,8 +83,8 @@
                     <label for="province">Province</label>
                     <select name="province" id="province" class="textInput medium" autocompelete="OFF" />
                         <option value="select" <?php echo set_select('province', 'select', TRUE); ?>>Select</option>
-                        <?php foreach ($province) : ?>
-                            <option value="<?php print $province; ?>" <?php echo set_select('province', $province); ?>><?php print $province; ?></option>
+                        <?php foreach ($province as $value) : ?>
+                            <option value="<?php print $value; ?>" <?php echo set_select('province', $value); ?>><?php print $value; ?></option>
                         <?php endforeach; ?>
                     </select>
                     <p class="formHint">Please choose your province the list.</p>

@@ -450,7 +450,6 @@ class User extends CI_Controller {
         }
         elseif (isset($owl_selection) && $owl_selection)
         {
-            print '<pre>'.print_r($this->province_list, TRUE).'</pre>';exit;
             $page_data['page_title']    = 'Choose your Owl';
             $page_data['owl_selection'] = TRUE;
             $page_data['province']      = $this->province_list; # $this->root_folder
