@@ -485,13 +485,13 @@ class User extends CI_Controller {
             $this->form_validation->set_rules('city', 'City', 'required|trim|alpha_numeric|greater_than[3]');
             $this->form_validation->set_rules('zip', 'Postal Code', 'required|trim|alpha_numeric|greater_than[4]is_unique[owls.owl_post_code]');
             $this->form_validation->set_rules('tel', 'Phone Number', 'required|trim|numeric|greater_than[7]is_unique[owls.owl_tel]');
-            $this->form_validation->set_rules('site', 'Website', 'required|trim|alpha_numeric|greater_than[4]is_unique[owls.owl_site]');
+            $this->form_validation->set_rules('site', 'Website', 'required|trim|alpha_numeric|greater_than[4]|is_unique[owls.owl_site]');
             $this->form_validation->set_rules('email', 'Administrator Email', 'required|trim|alpha_numeric|valid_email|is_unique[owls.owl_email]');
         }
 
         // Are you supposed to see this?
-        if (!$this->form_validation->run())
-            redirect('login', 'location');
+        if (!$this->input->post('existing_owl') && !$this->input->post('new_owl'))
+            redirect('user/login', 'location');
 
         // Are you supposed to see this?
         if (!$this->form_validation->run())
@@ -508,12 +508,20 @@ class User extends CI_Controller {
             {
                 $page_data                  = array();
                 $page_data['page_title']    = "Owl Chosen";
+
+                ## todo
+                # build view and model function to insert data
+
                 $this->load->view('auth/new_owl_chosen', $page_data);
             }
             else                                                        // New Owl
             {
                 $page_data                  = array();
                 $page_data['page_title']    = "Owl Created";
+
+                ## todo
+                # build view and model function to insert data
+
                 $this->load->view('auth/new_owl_created', $page_data);
             }
         }
