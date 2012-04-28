@@ -7,7 +7,7 @@ class User extends CI_Controller {
     //=================================================================================
 
 
-    private $province = array(
+    var $province_list = array(
                                 'Alberta',
                                 'British Columbia',
                                 'Manitoba',
@@ -21,7 +21,7 @@ class User extends CI_Controller {
                                 'Quebec',
                                 'Saskatchewan',
                                 'Yukon'
-                             );
+                              );
 
 
 
@@ -452,7 +452,7 @@ class User extends CI_Controller {
         {
             $page_data['page_title']    = 'Choose your Owl';
             $page_data['owl_selection'] = TRUE;
-            $page_data['province']      = $this->province;
+            $page_data['province']      = $this->province_list; # $this->root_folder
             $this->load->view('auth/new_owl', $page_data);
         }
         else
@@ -498,7 +498,7 @@ class User extends CI_Controller {
         {
             $page_data                  = array();
             $page_data['page_title']    = "[ERROR] Choose your Owl";
-            $page_data['province']      = $this->province;
+            $page_data['province']      = $this->province_list;
 
             $this->load->view('auth/new_owl', $page_data);
         }
