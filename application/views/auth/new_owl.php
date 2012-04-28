@@ -103,24 +103,20 @@
                 </div>
 
                 <div class="ctrlHolder">
-                    <label for="tel">Phone Number</label>
+                    <label for="tel">Phone Number (Optional)</label>
                     <input type="text" name="tel" id="tel" size="35" class="textInput medium" autocompelete="OFF" value="<?php print set_value('tel'); ?>" />
                 </div>
 
                 <div class="ctrlHolder">
-                    <label for="site">Website</label>
+                    <label for="site">Website (Optional)</label>
                     <input type="text" name="site" id="site" size="35" class="textInput medium" autocompelete="OFF" value="<?php print set_value('site'); ?>" />
                     <p class="formHint">Your organization's website.</p>
                 </div>
 
                 <div class="ctrlHolder">
                     <label for="email">Administrator Email</label>
-                    <input type="text" name="email" id="email" size="35" class="textInput medium" autocompelete="OFF" value="<?php print set_value('email'); ?>" />
-                    <p class="formHint">
-                        This must be a valid email. Used to verify new owl members.
-                        <br>
-                        Leave blank to use the email you registered with.
-                    </p>
+                    <input type="text" name="email" id="email" size="35" class="textInput medium" autocompelete="OFF" value="<?php print set_value('email') == '' ? $this->session->userdata('email') : set_value('email'); ?>" />
+                    <p class="formHint">This must be a valid email. Used to verify new owl members.</p>
                 </div>
 
             </fieldset>

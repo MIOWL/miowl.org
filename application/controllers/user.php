@@ -417,6 +417,13 @@ class User extends CI_Controller {
                         }
                         else
                         {
+                            $session_data = array(
+                                'user_id'   => $user_query->row()->id,
+                                'username'  => $user_query->row()->user_name,
+                                'email'     => $user_query->row()->user_email,
+                            );
+                            $this->session->set_userdata($session_data);
+
                             // Owl Creation Required
                             #redirect('https://google.com', 'location');
                             $owl_selection = TRUE;
@@ -484,8 +491,8 @@ class User extends CI_Controller {
             $this->form_validation->set_rules('province', 'Province', 'callback__valid_choice');
             $this->form_validation->set_rules('city', 'City', 'required|trim');
             $this->form_validation->set_rules('zip', 'Postal Code', 'required|trim|alpha_numeric|is_unique[owls.owl_post_code]');
-            $this->form_validation->set_rules('tel', 'Phone Number', 'required|trim|numeric|is_unique[owls.owl_tel]');
-            $this->form_validation->set_rules('site', 'Website', 'required|trim|prep_url|callback__valid_url|is_unique[owls.owl_site]');
+            $this->form_validation->set_rules('tel', 'Phone Number', 'trim|numeric|is_unique[owls.owl_tel]');
+            $this->form_validation->set_rules('site', 'Website', 'trim|prep_url|callback__valid_url|is_unique[owls.owl_site]');
             $this->form_validation->set_rules('email', 'Administrator Email', 'required|trim|valid_email|is_unique[owls.owl_email]');
         }
 
@@ -557,7 +564,7 @@ class User extends CI_Controller {
      * callback _spam_check()
      * function will try and make sure we have a human that's registering an account.
      *
-     * @param string $str - should be a string with "pixldrop.com"s
+     * @param string $str - string to validate against
      */
     public function _spam_check($str)
     {

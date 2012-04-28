@@ -224,6 +224,47 @@ class User_model extends CI_Model {
     //------------------------------------------------------------------
 
 
+    /**
+     * public add_owl()
+     * function will begin the owl registration process, and will add the owl into the database,
+     * however users will still need to confirm their owl email address.
+     *
+     * @param string $name          - Organization Name
+     * @param string $acronym       - Organization Acronym
+     * @param string $type          - Owl Type (Clinic/Hospital)
+     * @param string $address       - 1st line of address
+     * @param string $province      - Province
+     * @param string $city          - City
+     * @param string $zip           - Postal Code
+     * @param string $tel           - Telephone Number      (OPTIONAL)
+     * @param string $www           - Website               (OPTIONAL)
+     * @param string $email         - Administrator Email
+     * @param string $activation    - Activation Code
+     */
+    public function add_owl($name = FALSE, $acronym = FALSE, $type = FALSE, $address = FALSE, $province = FALSE, $city = FALSE, $zip = FALSE, $tel = FALSE, $www = FALSE, $email = FALSE, $activation = FALSE)
+    {
+        if (!$name || !$acronym || !$type || !$address || !$province || !$city || !$zip || !$email || !$activation)
+            return FALSE;
+
+        $insert_data = array(
+            'owl_name'          => $name,
+            'owl_name_short'    => $acronym,
+            'owl_type'          => $type,
+            'owl_address'       => $address,
+            'owl_province'      => $province,
+            'owl_city'          => $city,
+            'owl_postal_code'   => $zip,
+            'owl_tel'           => $tel,
+            'owl_site'          => $www,
+            'owl_email'         => $email,
+            'owl_activation'    => $activation
+        );
+
+        $this->db->insert('users', $insert_data);
+    }
+    //------------------------------------------------------------------
+
+
     //=================================================================================
     // :validation callbacks
     //=================================================================================
