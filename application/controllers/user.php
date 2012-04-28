@@ -665,15 +665,9 @@ class User extends CI_Controller {
      */
     public function _valid_choice($choice = FALSE)
     {
-        if (!$choice)
+        if (!$choice || $choice == 'default')
         {
-            $this->form_validation->set_message('_valid_choice', 'Invalid Choice!');
-            return FALSE;
-        }
-
-        if ($choice != 'default')
-        {
-            $this->form_validation->set_message('_valid_choice', 'This is not a valid choice!');
+            $this->form_validation->set_message('_valid_choice', 'The %s field has an invalid choice!');
             return FALSE;
         }
 
