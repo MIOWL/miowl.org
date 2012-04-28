@@ -477,15 +477,15 @@ class User extends CI_Controller {
         else
         { // New Owl
             // form validation rules
-            $this->form_validation->set_rules('name', 'Organization Name', 'required|trim|greater_than[4]|alpha_numeric|is_unique[owls.owl_name]');
-            $this->form_validation->set_rules('acronym', 'Organization Acronym', 'required|trim|greater_than[2]|less_than[7]|alpha_numeric|is_unique[owls.owl_name_short]');
+            $this->form_validation->set_rules('name', 'Organization Name', 'required|trim|alpha_numeric|is_unique[owls.owl_name]');
+            $this->form_validation->set_rules('acronym', 'Organization Acronym', 'required|trim|alpha_numeric|is_unique[owls.owl_name_short]');
             $this->form_validation->set_rules('type', 'Owl Type', 'callback__valid_choice');
-            $this->form_validation->set_rules('address', 'Organization Address', 'required|trim|greater_than[5]|alpha_numeric|is_unique[owls.owl_address]');
+            $this->form_validation->set_rules('address', 'Organization Address', 'required|trim|alpha_numeric|is_unique[owls.owl_address]');
             $this->form_validation->set_rules('province', 'Province', 'callback__valid_choice');
-            $this->form_validation->set_rules('city', 'City', 'required|trim|alpha_numeric|greater_than[3]');
-            $this->form_validation->set_rules('zip', 'Postal Code', 'required|trim|alpha_numeric|greater_than[4]|is_unique[owls.owl_post_code]');
-            $this->form_validation->set_rules('tel', 'Phone Number', 'required|trim|numeric|greater_than[7]is_unique[owls.owl_tel]');
-            $this->form_validation->set_rules('site', 'Website', 'required|trim|alpha_numeric|greater_than[4]|is_unique[owls.owl_site]');
+            $this->form_validation->set_rules('city', 'City', 'required|trim|alpha_numeric');
+            $this->form_validation->set_rules('zip', 'Postal Code', 'required|trim|alpha_numeric|is_unique[owls.owl_post_code]');
+            $this->form_validation->set_rules('tel', 'Phone Number', 'required|trim|numeric|is_unique[owls.owl_tel]');
+            $this->form_validation->set_rules('site', 'Website', 'required|trim|alpha_numeric|is_unique[owls.owl_site]');
             $this->form_validation->set_rules('email', 'Administrator Email', 'required|trim|alpha_numeric|valid_email|is_unique[owls.owl_email]');
         }
 
