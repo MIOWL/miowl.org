@@ -10,7 +10,7 @@
         <!-- choose existing owl -->
         <form action="owl" class="uniForm" method="post">
             <?php
-                if(isset($this->input->post('existing_owl')))
+                if($this->input->post('existing_owl'))
                     $this->load->view('messages/message_inline');
             ?>
             <input type="hidden" name="existing_owl" id="existing_owl" value="existing_owl" />
@@ -44,7 +44,7 @@
         <form action="owl" class="uniForm" method="post">
 
             <?php
-                if(isset($this->input->post('new_owl')))
+                if($this->input->post('new_owl'))
                     $this->load->view('messages/message_inline');
             ?>
 
