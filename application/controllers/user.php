@@ -485,7 +485,7 @@ class User extends CI_Controller {
             $this->form_validation->set_rules('city', 'City', 'required|trim');
             $this->form_validation->set_rules('zip', 'Postal Code', 'required|trim|alpha_numeric|is_unique[owls.owl_post_code]');
             $this->form_validation->set_rules('tel', 'Phone Number', 'required|trim|numeric|is_unique[owls.owl_tel]');
-            $this->form_validation->set_rules('site', 'Website', 'required|trim|is_unique[owls.owl_site]');
+            $this->form_validation->set_rules('site', 'Website', 'required|trim|prep_url|callback__valid_url|is_unique[owls.owl_site]');
             $this->form_validation->set_rules('email', 'Administrator Email', 'required|trim|valid_email|is_unique[owls.owl_email]');
         }
 
@@ -668,6 +668,34 @@ class User extends CI_Controller {
         if (!$choice || $choice == 'default')
         {
             $this->form_validation->set_message('_valid_choice', 'The %s field has an invalid choice!');
+            return FALSE;
+        }
+
+        return TRUE;
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * callback _valid_url()
+     * function will validate that the user has entered a valid url.
+     *
+     * @param string $url - url to validate
+     */
+    public function _valid_url($url = FALSE)
+    {
+        if (!$url)
+        {
+            $this->form_validation->set_message('_valid_url', '%s is empty!');
+            return FALSE;
+        }
+
+        // Our regex pattern for a valid URL/URI
+        $pattern = "/^(http|https):\/\/([A-Z0-9][A-Z0-9_-]*(?:\.[A-Z0-9][A-Z0-9_-]*)+):?(\d+)?\/?/i";
+
+        if(!(bool) preg_match($pattern, $url))
+        {
+            $this->form_validation->set_message('_valid_url', 'The %s is invalid!');
             return FALSE;
         }
 
