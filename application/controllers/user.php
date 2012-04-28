@@ -516,9 +516,27 @@ class User extends CI_Controller {
                 $page_data                  = array();
                 $page_data['page_title']    = "Owl Chosen";
 
-                ## todo
-                # build view and model function to insert data
+                $authcode = $this->_genActCode();
 
+                $this->User_model->add_owl(
+                                            $this->input->post('name'),
+                                            $this->input->post('acronym'),
+                                            $this->input->post('type'),
+                                            $this->input->post('address'),
+                                            $this->input->post('province'),
+                                            $this->input->post('city'),
+                                            $this->input->post('zip'),
+                                            $this->input->post('tel'),
+                                            $this->input->post('site'),
+                                            $this->input->post('email'),
+                                            $authcode
+                                        );
+
+                ## todo
+                # build email cust
+
+                ## todo
+                # build view
                 $this->load->view('auth/new_owl_chosen', $page_data);
             }
             else                                                        // New Owl
