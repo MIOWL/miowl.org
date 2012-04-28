@@ -84,7 +84,7 @@
                 <div class="ctrlHolder">
                     <label for="province">Province</label>
                     <select name="province" id="province" class="textInput medium" autocompelete="OFF" />
-                        <option value="default" <?php echo set_select('province', 'select', TRUE); ?>>Select</option>
+                        <option value="default" <?php echo set_select('province', 'default', TRUE); ?>>Select</option>
                         <?php foreach ($province as $value) : ?>
                             <option value="<?php print $value; ?>" <?php echo set_select('province', $value); ?>><?php print $value; ?></option>
                         <?php endforeach; ?>
