@@ -1,35 +1,37 @@
 <?php $this->load->view('template/header'); ?>
 
-    <h1>
-        <center>
-            Choose existing Owl!
-        </center>
-    </h1>
+    <div<?php print !$owls || $this->input->post('new_owl') ? ' style="display:none;"' : NULL ?>>
+        <h1>
+            <center>
+                Choose existing Owl!
+            </center>
+        </h1>
 
-	<div id="body">
-        <!-- choose existing owl -->
-        <form action="owl" class="uniForm" method="post">
-            <?php
-                if($this->input->post('existing_owl'))
-                    $this->load->view('messages/message_inline');
-            ?>
-            <input type="hidden" name="existing_owl" id="existing_owl" value="existing_owl" />
-            <fieldset class="inlineLabels">
-                <div class="ctrlHolder">
-                    <label for="owl">Owl</label>
-                    <select name="owl" id="owl" class="textInput medium" autocompelete="OFF" />
-                        <option value="default">Select</option>
-                        <?php if($owls) : foreach ($owls as $value => $owl) : ?>
-                            <option value="<?php print $value; ?>"><?php print $owl; ?></option>
-                        <?php endforeach; endif; ?>
-                    </select>
-                    <p class="formHint">Please choose your Owl from the list. Or register a new owl below...</p>
+    	<div id="body">
+            <!-- choose existing owl -->
+            <form action="owl" class="uniForm" method="post">
+                <?php
+                    if($this->input->post('existing_owl'))
+                        $this->load->view('messages/message_inline');
+                ?>
+                <input type="hidden" name="existing_owl" id="existing_owl" value="existing_owl" />
+                <fieldset class="inlineLabels">
+                    <div class="ctrlHolder">
+                        <label for="owl">Owl</label>
+                        <select name="owl" id="owl" class="textInput medium" autocompelete="OFF" />
+                            <option value="default">Select</option>
+                            <?php if($owls) : foreach ($owls as $value => $owl) : ?>
+                                <option value="<?php print $value; ?>"><?php print $owl; ?></option>
+                            <?php endforeach; endif; ?>
+                        </select>
+                        <p class="formHint">Please choose your Owl from the list. Or register a new owl below...</p>
+                    </div>
+                </fieldset>
+                <div class="buttonHolder">
+                    <button class="button" type="submit" id="owl_choice">Choose</button>
                 </div>
-            </fieldset>
-            <div class="buttonHolder">
-                <button class="button" type="submit" id="owl_choice">Choose</button>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 
 

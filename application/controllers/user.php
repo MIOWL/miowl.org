@@ -483,7 +483,7 @@ class User extends CI_Controller {
             $this->form_validation->set_rules('address', 'Organization Address', 'required|trim|greater_than[5]|alpha_numeric|is_unique[owls.owl_address]');
             $this->form_validation->set_rules('province', 'Province', 'callback__valid_choice');
             $this->form_validation->set_rules('city', 'City', 'required|trim|alpha_numeric|greater_than[3]');
-            $this->form_validation->set_rules('zip', 'Postal Code', 'required|trim|alpha_numeric|greater_than[4]is_unique[owls.owl_post_code]');
+            $this->form_validation->set_rules('zip', 'Postal Code', 'required|trim|alpha_numeric|greater_than[4]|is_unique[owls.owl_post_code]');
             $this->form_validation->set_rules('tel', 'Phone Number', 'required|trim|numeric|greater_than[7]is_unique[owls.owl_tel]');
             $this->form_validation->set_rules('site', 'Website', 'required|trim|alpha_numeric|greater_than[4]|is_unique[owls.owl_site]');
             $this->form_validation->set_rules('email', 'Administrator Email', 'required|trim|alpha_numeric|valid_email|is_unique[owls.owl_email]');
