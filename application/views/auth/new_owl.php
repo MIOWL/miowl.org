@@ -104,7 +104,7 @@
 
                 <div class="ctrlHolder">
                     <label for="tel">Phone Number</label>
-                    <input type="text" name="test" id="tel" size="35" class="textInput medium" autocompelete="OFF" value="<?php print set_value('tel'); ?>" />
+                    <input type="text" name="tel" id="tel" size="35" class="textInput medium" autocompelete="OFF" value="<?php print set_value('tel'); ?>" />
                 </div>
 
                 <div class="ctrlHolder">
