@@ -531,6 +531,8 @@ class User extends CI_Controller {
                                             $this->input->post('email'),
                                             $authcode
                                         );
+                print "<pre>".var_dump($this->input->post(NULL, TRUE))."</pre>";
+                print "<pre>".$authcode."</pre>";
 
                 ## todo
                 # build email cust
