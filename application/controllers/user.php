@@ -79,7 +79,14 @@ class User extends CI_Controller {
 
         $page_data                  = array();
         $page_data['page_title']    = "Register";
-        $page_data['owls']          = $this->Owl_model->get_all_owls(TRUE);
+
+        // fetch the owl data we need
+        $owl_data                   = $this->Owl_model->get_all_owls(TRUE)
+        $owls                       = array();
+        foreach ($owl_data->result() as $row) {
+            $owls[$row->id] = $row->owl_name;
+        }
+        $page_data['owls']          = $owls;
 
         // form validation rules
         $this->form_validation->set_rules('username', 'Username', 'required|trim|callback__valid_username');
@@ -461,7 +468,15 @@ class User extends CI_Controller {
             $page_data['page_title']    = 'Choose your Owl';
             $page_data['owl_selection'] = TRUE;
             $page_data['province']      = $this->province_list;
-            $page_data['owls']          = $this->Owl_model->get_all_owls();
+
+            // fetch the owl data we need
+            $owl_data                   = $this->Owl_model->get_all_owls(TRUE)
+            $owls                       = array();
+            foreach ($owl_data->result() as $row) {
+                $owls[$row->id] = $row->owl_name;
+            }
+            $page_data['owls']          = $owls;
+
             $this->load->view('auth/new_owl', $page_data);
         }
         else
@@ -508,7 +523,14 @@ class User extends CI_Controller {
             $page_data                  = array();
             $page_data['page_title']    = "[ERROR] Choose your Owl";
             $page_data['province']      = $this->province_list;
-            $page_data['owls']          = $this->Owl_model->get_all_owls();
+
+            // fetch the owl data we need
+            $owl_data                   = $this->Owl_model->get_all_owls(TRUE)
+            $owls                       = array();
+            foreach ($owl_data->result() as $row) {
+                $owls[$row->id] = $row->owl_name;
+            }
+            $page_data['owls']          = $owls;
 
             $this->load->view('auth/new_owl', $page_data);
         }
