@@ -260,7 +260,7 @@ class User_model extends CI_Model {
             'owl_activation'    => $activation
         );
 
-        $this->db->insert('users', $insert_data);
+        $this->db->insert('owls', $insert_data);
     }
     //------------------------------------------------------------------
 
