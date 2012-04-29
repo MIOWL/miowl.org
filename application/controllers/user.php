@@ -79,6 +79,7 @@ class User extends CI_Controller {
 
         $page_data                     = array();
         $page_data['page_title']     = "Register";
+        $page_data['owls']          = $this->Owl_model->get_all_owls(TRUE);
 
         // form validation rules
         $this->form_validation->set_rules('username', 'Username', 'required|trim|callback__valid_username');
@@ -459,7 +460,8 @@ class User extends CI_Controller {
         {
             $page_data['page_title']    = 'Choose your Owl';
             $page_data['owl_selection'] = TRUE;
-            $page_data['province']      = $this->province_list; # $this->root_folder
+            $page_data['province']      = $this->province_list;
+            $page_data['owls']          = $this->Owl_model->get_all_owls();
             $this->load->view('auth/new_owl', $page_data);
         }
         else
@@ -487,10 +489,10 @@ class User extends CI_Controller {
             $this->form_validation->set_rules('name', 'Organization Name', 'required|trim|is_unique[owls.owl_name]');
             $this->form_validation->set_rules('acronym', 'Organization Acronym', 'required|trim|alpha_numeric|is_unique[owls.owl_name_short]');
             $this->form_validation->set_rules('type', 'Owl Type', 'callback__valid_choice');
-            $this->form_validation->set_rules('address', 'Organization Address', 'required|trim|is_unique[owls.owl_address]');
+            $this->form_validation->set_rules('address', 'Organization Address', 'required|trim');
             $this->form_validation->set_rules('province', 'Province', 'callback__valid_choice');
             $this->form_validation->set_rules('city', 'City', 'required|trim');
-            $this->form_validation->set_rules('zip', 'Postal Code', 'required|trim|alpha_numeric|is_unique[owls.owl_post_code]');
+            $this->form_validation->set_rules('zip', 'Postal Code', 'required|trim|alpha_numeric');
             $this->form_validation->set_rules('tel', 'Phone Number', 'trim|numeric|is_unique[owls.owl_tel]');
             $this->form_validation->set_rules('site', 'Website', 'trim|prep_url|callback__valid_url|is_unique[owls.owl_site]');
             $this->form_validation->set_rules('email', 'Administrator Email', 'required|trim|valid_email|is_unique[owls.owl_email]');
@@ -506,6 +508,7 @@ class User extends CI_Controller {
             $page_data                  = array();
             $page_data['page_title']    = "[ERROR] Choose your Owl";
             $page_data['province']      = $this->province_list;
+            $page_data['owls']          = $this->Owl_model->get_all_owls();
 
             $this->load->view('auth/new_owl', $page_data);
         }
@@ -528,7 +531,7 @@ class User extends CI_Controller {
 
                 $authcode = $this->_genActCode();
 
-                $this->User_model->add_owl(
+                $this->Owl_model->add_owl(
                                             $this->input->post('name'),
                                             $this->input->post('acronym'),
                                             $this->input->post('type'),
