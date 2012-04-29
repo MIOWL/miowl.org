@@ -253,7 +253,7 @@ class User_model extends CI_Model {
             'owl_address'       => $address,
             'owl_province'      => $province,
             'owl_city'          => $city,
-            'owl_postal_code'   => $zip,
+            'owl_post_code'   => $zip,
             'owl_tel'           => $tel,
             'owl_site'          => $www,
             'owl_email'         => $email,
