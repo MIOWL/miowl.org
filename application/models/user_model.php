@@ -246,15 +246,15 @@ class User_model extends CI_Model {
         if (!$name || !$acronym || !$type || !$address || !$province || !$city || !$zip || !$email || !$activation)
         {
             print "something is false!";
-            print "<pre>\nname: {$name}\nacronym: {$acronym}\ntype: {$type}\naddress: {$address}\nprovince: {$province}\ncity: {$city}\nzip: {$zip}\ntel: {$tel}\nwww: {www}\nemail: {$email}\nactivation: {$activation}\n</pre>"
-            die;
+            print "<pre>\nname: {$name}\nacronym: {$acronym}\ntype: {$type}\naddress: {$address}\nprovince: {$province}\ncity: {$city}\nzip: {$zip}\ntel: {$tel}\nwww: {www}\nemail: {$email}\nactivation: {$activation}\n</pre>";
+            die();
             return FALSE;
         }
         else
         {
             print "everything should have worked!";
-            print "<pre>\nname: {$name}\nacronym: {$acronym}\ntype: {$type}\naddress: {$address}\nprovince: {$province}\ncity: {$city}\nzip: {$zip}\ntel: {$tel}\nwww: {www}\nemail: {$email}\nactivation: {$activation}\n</pre>"
-            die;
+            print "<pre>\nname: {$name}\nacronym: {$acronym}\ntype: {$type}\naddress: {$address}\nprovince: {$province}\ncity: {$city}\nzip: {$zip}\ntel: {$tel}\nwww: {www}\nemail: {$email}\nactivation: {$activation}\n</pre>";
+            die();
         }
 
         $insert_data = array(
