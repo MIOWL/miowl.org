@@ -77,8 +77,8 @@ class User extends CI_Controller {
         if ($this->session->userdata('authed'))
             redirect(site_url(), 'location');
 
-        $page_data                     = array();
-        $page_data['page_title']     = "Register";
+        $page_data                  = array();
+        $page_data['page_title']    = "Register";
         $page_data['owls']          = $this->Owl_model->get_all_owls(TRUE);
 
         // form validation rules
