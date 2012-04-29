@@ -515,6 +515,16 @@ class User extends CI_Controller {
             {
                 $page_data                  = array();
                 $page_data['page_title']    = "Owl Chosen";
+ 
+                ## todo
+                # build view and model function to insert data
+                $this->load->view('auth/new_owl_chosen', $page_data);
+           }
+            else                                                        // New Owl
+            {
+                $page_data                  = array();
+                $page_data['page_title']    = "Owl Created";
+
 
                 $authcode = $this->_genActCode();
 
@@ -539,16 +549,6 @@ class User extends CI_Controller {
 
                 ## todo
                 # build view
-                $this->load->view('auth/new_owl_chosen', $page_data);
-            }
-            else                                                        // New Owl
-            {
-                $page_data                  = array();
-                $page_data['page_title']    = "Owl Created";
-
-                ## todo
-                # build view and model function to insert data
-
                 $this->load->view('auth/new_owl_created', $page_data);
             }
         }
