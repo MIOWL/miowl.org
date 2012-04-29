@@ -81,7 +81,7 @@ class User extends CI_Controller {
         $page_data['page_title']    = "Register";
 
         // fetch the owl data we need
-        $owl_data                   = $this->Owl_model->get_all_owls(TRUE)
+        $owl_data                   = $this->Owl_model->get_all_owls(TRUE);
         $owls                       = array();
         foreach ($owl_data->result() as $row) {
             $owls[$row->id] = $row->owl_name;
@@ -470,7 +470,7 @@ class User extends CI_Controller {
             $page_data['province']      = $this->province_list;
 
             // fetch the owl data we need
-            $owl_data                   = $this->Owl_model->get_all_owls(TRUE)
+            $owl_data                   = $this->Owl_model->get_all_owls(TRUE);
             $owls                       = array();
             foreach ($owl_data->result() as $row) {
                 $owls[$row->id] = $row->owl_name;
@@ -525,7 +525,7 @@ class User extends CI_Controller {
             $page_data['province']      = $this->province_list;
 
             // fetch the owl data we need
-            $owl_data                   = $this->Owl_model->get_all_owls(TRUE)
+            $owl_data                   = $this->Owl_model->get_all_owls(TRUE);
             $owls                       = array();
             foreach ($owl_data->result() as $row) {
                 $owls[$row->id] = $row->owl_name;
