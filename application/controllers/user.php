@@ -711,8 +711,8 @@ class User extends CI_Controller {
     {
         if (!$url)
         {
-            $this->form_validation->set_message('_valid_url', '%s is empty!');
-            return FALSE;
+            #$this->form_validation->set_message('_valid_url', '%s is empty!');
+            return TRUE;
         }
 
         // Our regex pattern for a valid URL/URI
