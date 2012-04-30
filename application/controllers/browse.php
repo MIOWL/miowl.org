@@ -47,8 +47,8 @@ class Browse extends CI_Controller {
     public function index()
     {
         // Do we need to login??
-        if (!$this->login_check('browse'))
-            return;
+        #if (!$this->login_check('browse'))
+        #    return;
 
         $page_data = array();
         $page_data['page_title'] = 'File Browser';

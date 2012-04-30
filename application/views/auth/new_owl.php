@@ -116,7 +116,7 @@
                 <div class="ctrlHolder">
                     <label for="email">Administrator Email</label>
                     <input type="text" name="email" id="email" size="35" class="textInput medium" autocompelete="OFF" value="<?php print set_value('email') == '' ? $this->session->userdata('email') : set_value('email'); ?>" />
-                    <p class="formHint">This must be a valid email. Used to verify new owl members.</p>
+                    <p class="formHint">This must be a valid email. Used to verify new owl members and this owl registraton.</p>
                 </div>
 
             </fieldset>

@@ -7,12 +7,12 @@ $(function(){
       $('#owl').change(function(){
             //Validate your form here, example:
             var validated = false;
-            if($('#owl').val() != 'new') validated = true;
+            if($('#owl').val() != 'default') validated = true;
 
             //If form is validated enable form
             if(validated){
                   $('#owl_choice').removeAttr("disabled");  // Enable the button
-                  $("#owl option[value='new']").remove();   // Remove the 'New Owl' option.
+                  $("#owl option[value='default']").remove();   // Remove the 'New Owl' option.
             }
 
       });
