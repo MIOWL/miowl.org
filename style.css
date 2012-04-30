@@ -300,3 +300,7 @@ h3.info {
 	padding: 10px;
 }
 
+#nav a {
+	color: rgb(255,0,0);
+}
+
