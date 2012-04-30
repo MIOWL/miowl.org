@@ -471,6 +471,7 @@ class User extends CI_Controller {
 
             // fetch the owl data we need
             $owl_data                   = $this->Owl_model->get_all_owls();
+            print var_dump($owl_data);exit;
             if(!$owl_data) {
                 $owls                   = array();
                 foreach ($owl_data->result() as $row) {
