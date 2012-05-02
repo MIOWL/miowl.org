@@ -101,6 +101,7 @@ class User extends CI_Controller {
         $this->form_validation->set_rules('password_again', 'Password Confirmation', 'required|matches[password]');
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|callback__valid_email');
         $this->form_validation->set_rules('spamcheck', 'Spam Check', 'required|trim|callback__spam_check');
+        $this->form_validation->set_rules('owl', 'Owl', 'callback__valid_choice');
 
         // did the user submit
         if ($this->form_validation->run())
@@ -438,7 +439,6 @@ class User extends CI_Controller {
                             $this->session->set_userdata($session_data);
 
                             // Owl Creation Required
-                            #redirect('https://google.com', 'location');
                             $owl_selection = TRUE;
                         }
                     }
@@ -498,105 +498,6 @@ class User extends CI_Controller {
 
 
     /**
-     * public existing_owl()
-     */
-    public function owl()
-    {
-        // New or existing Owl?
-        if(!$this->input->post('new_owl'))
-        { // Existing Owl
-            // form validation rules
-            $this->form_validation->set_rules('owl', 'Owl', 'callback__valid_choice');
-        }
-        else
-        { // New Owl
-            // form validation rules
-            $this->form_validation->set_rules('name', 'Organization Name', 'required|trim|is_unique[owls.owl_name]');
-            $this->form_validation->set_rules('acronym', 'Organization Acronym', 'required|trim|alpha_numeric|is_unique[owls.owl_name_short]');
-            $this->form_validation->set_rules('type', 'Owl Type', 'callback__valid_choice');
-            $this->form_validation->set_rules('address', 'Organization Address', 'required|trim');
-            $this->form_validation->set_rules('province', 'Province', 'callback__valid_choice');
-            $this->form_validation->set_rules('city', 'City', 'required|trim');
-            $this->form_validation->set_rules('zip', 'Postal Code', 'required|trim|alpha_numeric');
-            $this->form_validation->set_rules('tel', 'Phone Number', 'trim|numeric|is_unique[owls.owl_tel]');
-            $this->form_validation->set_rules('site', 'Website', 'trim|prep_url|callback__valid_url|is_unique[owls.owl_site]');
-            $this->form_validation->set_rules('email', 'Administrator Email', 'required|trim|valid_email|is_unique[owls.owl_email]');
-        }
-
-        // Are you supposed to see this?
-        if (!$this->input->post('existing_owl') && !$this->input->post('new_owl'))
-            redirect('user/login', 'location');
-
-        // Are you supposed to see this?
-        if (!$this->form_validation->run())
-        {
-            $page_data                  = array();
-            $page_data['page_title']    = "[ERROR] Choose your Owl";
-            $page_data['province']      = $this->province_list;
-
-            // fetch the owl data we need
-            $owl_data                   = $this->Owl_model->get_all_owls();
-            if($owl_data) {
-                $owls                   = array();
-                foreach ($owl_data->result() as $row) {
-                    $owls[$row->id] = $row->owl_name;
-                }
-            }
-            else {
-                $owls                   = FALSE;
-            }
-            $page_data['owls']          = $owls;
-
-            $this->load->view('auth/new_owl', $page_data);
-        }
-        else
-        {
-            if(!$this->input->post('new_owl'))                          // Existing Owl
-            {
-                $page_data                  = array();
-                $page_data['page_title']    = "Owl Chosen";
- 
-                ## todo
-                # build view and model function to insert data
-                $this->load->view('auth/new_owl_chosen', $page_data);
-           }
-            else                                                        // New Owl
-            {
-                $page_data                  = array();
-                $page_data['page_title']    = "Owl Created";
-
-
-                $authcode = $this->_genActCode();
-
-                $this->Owl_model->add_owl(
-                                            $this->input->post('name'),
-                                            $this->input->post('acronym'),
-                                            $this->input->post('type'),
-                                            $this->input->post('address'),
-                                            $this->input->post('province'),
-                                            $this->input->post('city'),
-                                            $this->input->post('zip'),
-                                            $this->input->post('tel'),
-                                            $this->input->post('site'),
-                                            $this->input->post('email'),
-                                            $authcode
-                                        );
-                print "<pre>".var_dump($this->input->post(NULL, TRUE))."</pre>";
-                print "<pre>".$authcode."</pre>";
-
-                ## todo
-                # build email cust
-
-                ## todo
-                # build view
-                $this->load->view('auth/new_owl_created', $page_data);
-            }
-        }
-    }
-    //------------------------------------------------------------------
-
-
-    /**
      * public logout()
      */
     public function logout()
@@ -628,7 +529,7 @@ class User extends CI_Controller {
      */
     public function _spam_check($str)
     {
-        if (strtolower($str) === "???")
+        if (strtolower($str) === "miowl.org")
             return TRUE;
 
         $this->form_validation->set_message('_spam_check', 'Failed spam check. Really?! Are you human?');

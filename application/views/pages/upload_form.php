@@ -9,8 +9,7 @@
 	<div id="body">
 
         <!-- login -->
-        <!-- <form action="" class="uniForm" method="post"> -->
-        <?php echo form_open_multipart('', 'class="uniForm"');?>
+        <form action="" class="uniForm" method="post">
 
             <?php $this->load->view('messages/message_inline'); ?>
 

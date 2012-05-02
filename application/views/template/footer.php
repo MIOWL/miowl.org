@@ -17,13 +17,10 @@
 <script type="text/javascript" src="<?php print site_url('/js/jquery.countdown.js'); ?>"></script>
 <?php if(isset($owl_selection) && $owl_selection) : ?><script type="text/javascript" src="<?php print site_url('/js/owl_selection.js'); ?>"></script><?php endif; ?>
 
-<!-- Rainbowize JScript -->
-<script type="text/javascript" src="<?php print site_url('/js/rainbowize.js'); ?>"></script>
-
-<!-- Google Analytics -->
-<script type="text/javascript">/*
+  <!-- Google Analytics -->
+<script type="text/javascript">
   var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-29923472-1']);
+  _gaq.push(['_setAccount', 'UA-31288786-1']);
   _gaq.push(['_trackPageview']);
 
   (function() {
@@ -31,7 +28,7 @@
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-*/</script>
+</script>
 
 <!-- ---------------------------------------------------------------------------------------------- -->
 

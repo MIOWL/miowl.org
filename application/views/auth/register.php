@@ -52,7 +52,8 @@
                 <div class="ctrlHolder">
                     <label for="owl">Owl</label>
                     <select name="owl" id="owl" class="textInput medium" autocompelete="OFF" />
-                        <option value="new" <?php echo set_select('owl', 'new', TRUE); ?>>New Owl</option>
+                        <option value="default" <?php echo set_select('owl', 'default', TRUE); ?>>Select</option>
+                        <option value="new" <?php echo set_select('owl', 'new'); ?>>New Owl</option>
                         <?php if($owls) : foreach ($owls as $value => $owl) : ?>
                             <option value="<?php print $value; ?>" <?php echo set_select('owl', $value); ?>><?php print $owl; ?></option>
                         <?php endforeach; endif; ?>
@@ -63,7 +64,7 @@
                 <div class="ctrlHolder">
                     <label for="spamcheck">The URI of this website.</label>
                     <input type="text" name="spamcheck" id="spamcheck" size="35" class="textInput medium" autocompelete="OFF" />
-                    <p class="formHint">type &ldquo;???&rdquo; into this box.</p>
+                    <p class="formHint">type &ldquo;miowl.org&rdquo; into this box.</p>
                 </div>
 
             </fieldset>
