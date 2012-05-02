@@ -31,7 +31,7 @@ class Usermail {
      *
      * @return bool
      */
-    public function send_authcode($username = FALSE, $email = FALSE, $auth_code = FALSE)
+    public function send_authcode($username = FALSE, $email = FALSE, $auth_code = FALSE, $new_owl = FALSE, $owl_name = NULL)
     {
         if (!$username || !$email || !$auth_code)
             return FALSE;
@@ -44,6 +44,12 @@ class Usermail {
 
         $email_data  = $this->obj->load->view('email/head_foot/email_head.tpl', '', TRUE);  // Add email header
         $email_data .= $this->obj->parser->parse('email/auth_email.tpl', $data, TRUE);      // Build the email body
+        
+        if ($new_owl)  // New Owl
+            $email_data .= $this->obj->parser->parse('email/owl_new.tpl', NULL, TRUE);
+        else  // Chosen Owl
+            $email_data .= $this->obj->parser->parse('email/owl_chosen.tpl', array('owl' => $owl_name), TRUE);
+        
         $email_data .= $this->obj->load->view('email/head_foot/email_foot.tpl', '', TRUE);  // Add the email footer
 
         // Email Subject

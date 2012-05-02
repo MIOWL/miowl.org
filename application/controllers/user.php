@@ -124,14 +124,163 @@ class User extends CI_Controller {
             $page_data['msg']        = "Successfully registered you're account. Please check your email to finish the registration process.";
             $page_data['redirect']    = '';
 
+            if($this->input->post('owl') == 'new') {
+                $new_owl    = TRUE;
+                $owl_name   = FALSE;
+            }
+            else {
+                $new_owl    = FALSE;
+                $owl_name   = $this->Owl_model->get_owl_by_id($this->input->post('owl'));
+            }
+
             // send user email
-            $this->usermail->send_authcode($this->input->post('username'), $this->input->post('email'), $authcode);
+            $this->usermail->send_authcode($this->input->post('username'), $this->input->post('email'), $authcode, $new_owl, $owl_name);
         }
 
         if (isset($page_data['success']))
             $this->load->view('messages/message_page', $page_data);
         else
             $this->load->view('auth/register', $page_data);
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * public login()
+     */
+    public function login($location = FALSE)
+    {
+        // Do we need to login??
+        if (!$this->login_check($location, TRUE, FALSE, TRUE))
+            return;
+
+        $page_data                  = array();
+        $page_data['page_title']    = "Login";
+
+        // form validation rules
+        $this->form_validation->set_rules('username', 'Username', 'required');
+        $this->form_validation->set_rules('password', 'Password', 'required');
+
+        // did the user submit?
+        if ($this->form_validation->run())
+        {
+            // check the username & password
+            $user_query = $this->User_model->get_user($this->input->post('username'));
+
+            // did we find the user?
+            if ($user_query)
+            {
+                // is the account active?
+                if ($user_query->row()->user_active === "yes")
+                {
+                    // does the supplied password match?
+                    if (sha1(sha1($this->input->post('password')) . $user_query->row()->user_salt) === $user_query->row()->user_password)
+                    {
+                        if ($user_query->row()->user_owl_id != 0)
+                        {
+                            // users passed all our tests lets build em a session
+                            $session_data = array(
+                                'user_id'   => $user_query->row()->id,
+                                'username'  => $user_query->row()->user_name,
+                                'email'     => $user_query->row()->user_email,
+                                'owl'       => $user_query->row()->user_owl_id,
+                                'admin'     => $user_query->row()->user_admin === 'true' ? TRUE : FALSE,
+                                'authed'    => TRUE,
+                            );
+
+                            $this->session->set_userdata($session_data);
+
+                            // Set last login time
+                            $this->User_model->login_time($user_query->row()->user_name);
+
+                            // displayed message page and redirect
+                            $page_data['success']     = TRUE;
+                            $page_data['msg']        = "Login successful.";
+                            $page_data['redirect']    = str_replace('-', '/', "" . $location);
+                        }
+                        else
+                        {
+                            $session_data = array(
+                                'user_id'   => $user_query->row()->id,
+                                'username'  => $user_query->row()->user_name,
+                                'email'     => $user_query->row()->user_email,
+                            );
+                            $this->session->set_userdata($session_data);
+
+                            // Owl Creation Required
+                            $owl_selection = TRUE;
+                        }
+                    }
+                    else
+                    {
+                        // incorrect password
+                        $page_data['error'] = TRUE;
+                        $page_data['msg'] = "Invalid username or password!";
+                    }
+                }
+                else
+                {
+                    // account has not been activated
+                    $page_data['error'] = TRUE;
+                    $page_data['msg'] = "Your account has not been validated. Please check your emails.";
+                }
+            }
+            else
+            {
+                // invalid username
+                $page_data['error'] = TRUE;
+                $page_data['msg'] = "Invalid username or password!";
+            }
+        }
+
+        if (isset($page_data['success']))
+        {
+            $this->load->view('messages/message_page', $page_data);
+        }
+        elseif (isset($owl_selection) && $owl_selection)
+        {
+            $page_data['page_title']    = 'Choose your Owl';
+            $page_data['owl_selection'] = TRUE;
+            $page_data['province']      = $this->province_list;
+
+            // fetch the owl data we need
+            $owl_data                   = $this->Owl_model->get_all_owls();
+            if($owl_data) {
+                $owls                   = array();
+                foreach ($owl_data->result() as $row) {
+                    $owls[$row->id] = $row->owl_name;
+                }
+            }
+            else {
+                $owls                   = FALSE;
+            }
+            $page_data['owls']          = $owls;
+
+            $this->load->view('auth/new_owl', $page_data);
+        }
+        else
+        {
+            $this->load->view('auth/login', $page_data);
+        }
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * public logout()
+     */
+    public function logout()
+    {
+        $page_data = array();
+
+        // destroy the session
+        $this->session->sess_destroy();
+
+        $page_data['success']     = TRUE;
+        $page_data['msg']        = "You have been successfully logged out.";
+        $page_data['redirect']    = '';
+
+        $this->load->view('messages/message_page', $page_data);
     }
     //------------------------------------------------------------------
 
@@ -372,146 +521,6 @@ class User extends CI_Controller {
 
         // load the approp. page view
         $this->load->view('misc/user_gallery', $page_data);
-    }
-    //------------------------------------------------------------------
-
-
-    /**
-     * public login()
-     */
-    public function login($location = FALSE)
-    {
-        // Do we need to login??
-        if (!$this->login_check($location, TRUE, FALSE, TRUE))
-            return;
-
-        $page_data                  = array();
-        $page_data['page_title']    = "Login";
-
-        // form validation rules
-        $this->form_validation->set_rules('username', 'Username', 'required');
-        $this->form_validation->set_rules('password', 'Password', 'required');
-
-        // did the user submit?
-        if ($this->form_validation->run())
-        {
-            // check the username & password
-            $user_query = $this->User_model->get_user($this->input->post('username'));
-
-            // did we find the user?
-            if ($user_query)
-            {
-                // is the account active?
-                if ($user_query->row()->user_active === "yes")
-                {
-                    // does the supplied password match?
-                    if (sha1(sha1($this->input->post('password')) . $user_query->row()->user_salt) === $user_query->row()->user_password)
-                    {
-                        if ($user_query->row()->user_owl_id != 0)
-                        {
-                            // users passed all our tests lets build em a session
-                            $session_data = array(
-                                'user_id'   => $user_query->row()->id,
-                                'username'  => $user_query->row()->user_name,
-                                'email'     => $user_query->row()->user_email,
-                                'owl'       => $user_query->row()->user_owl_id,
-                                'admin'     => $user_query->row()->user_admin === 'true' ? TRUE : FALSE,
-                                'authed'    => TRUE,
-                            );
-
-                            $this->session->set_userdata($session_data);
-
-                            // Set last login time
-                            $this->User_model->login_time($user_query->row()->user_name);
-
-                            // displayed message page and redirect
-                            $page_data['success']     = TRUE;
-                            $page_data['msg']        = "Login successful.";
-                            $page_data['redirect']    = str_replace('-', '/', "" . $location);
-                        }
-                        else
-                        {
-                            $session_data = array(
-                                'user_id'   => $user_query->row()->id,
-                                'username'  => $user_query->row()->user_name,
-                                'email'     => $user_query->row()->user_email,
-                            );
-                            $this->session->set_userdata($session_data);
-
-                            // Owl Creation Required
-                            $owl_selection = TRUE;
-                        }
-                    }
-                    else
-                    {
-                        // incorrect password
-                        $page_data['error'] = TRUE;
-                        $page_data['msg'] = "Invalid username or password!";
-                    }
-                }
-                else
-                {
-                    // account has not been activated
-                    $page_data['error'] = TRUE;
-                    $page_data['msg'] = "Your account has not been validated. Please check your emails.";
-                }
-            }
-            else
-            {
-                // invalid username
-                $page_data['error'] = TRUE;
-                $page_data['msg'] = "Invalid username or password!";
-            }
-        }
-
-        if (isset($page_data['success']))
-        {
-            $this->load->view('messages/message_page', $page_data);
-        }
-        elseif (isset($owl_selection) && $owl_selection)
-        {
-            $page_data['page_title']    = 'Choose your Owl';
-            $page_data['owl_selection'] = TRUE;
-            $page_data['province']      = $this->province_list;
-
-            // fetch the owl data we need
-            $owl_data                   = $this->Owl_model->get_all_owls();
-            if($owl_data) {
-                $owls                   = array();
-                foreach ($owl_data->result() as $row) {
-                    $owls[$row->id] = $row->owl_name;
-                }
-            }
-            else {
-                $owls                   = FALSE;
-            }
-            $page_data['owls']          = $owls;
-
-            $this->load->view('auth/new_owl', $page_data);
-        }
-        else
-        {
-            $this->load->view('auth/login', $page_data);
-        }
-    }
-    //------------------------------------------------------------------
-
-
-    /**
-     * public logout()
-     */
-    public function logout()
-    {
-        $page_data = array();
-
-        // destroy the session
-        $this->session->sess_destroy();
-
-        $page_data['success']     = TRUE;
-        $page_data['msg']        = "You have been successfully logged out.";
-        $page_data['redirect']    = '';
-
-        $this->load->view('messages/message_page', $page_data);
     }
     //------------------------------------------------------------------
 
