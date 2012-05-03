@@ -1,5 +1,4 @@
     <br />
-    <br />
     <p>
         --------<br />
         The Mi OWL Team<br />

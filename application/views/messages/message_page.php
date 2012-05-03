@@ -15,18 +15,18 @@
     <link rel="Shortcut Icon" href="<?php print site_url('favicon.ico'); ?>" type="image/x-icon" />
 
     <!-- CSS -->
-    <link rel="stylesheet" href="/style.css" type="text/css" media="screen" charset="utf-8" />
+    <link rel="stylesheet" href="<?php print site_url('style.css'); ?>" type="text/css" media="screen" charset="utf-8" />
 
-    <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+    <!-- jQuery -->
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-    <script>window.jQuery || document.write('<script src="/js/jquery.min.js"><\/script>\n<script src="/js/jquery-ui.min.js"><\/script>')</script>
-
-    <!-- Javascript -->
-    <script type="text/javascript" src="/js/uni-form.jquery.min.js"></script>
-    <script type="text/javascript" src="/js/tips.js"></script>
-    <script type="text/javascript" src="/js/jquery.countdown.js"></script>
-    <script type="text/javascript" src="/js/pixldrop.js"></script>
+    <script>
+        window.jQuery || document.write('<script src="<?php print site_url('/js/jquery.min.js'); ?>"><\/script>\n<script src="<?php print site_url('/js/jquery-ui.min.js'); ?>"><\/script>')
+    </script>
+    <script type="text/javascript" src="<?php print site_url('/js/uni-form.jquery.min.js'); ?>"></script>
+    <script type="text/javascript" src="<?php print site_url('/js/tips.js'); ?>"></script>
+    <script type="text/javascript" src="<?php print site_url('/js/jquery.countdown.js'); ?>"></script>
+    <?php if(isset($owl_selection) && $owl_selection) : ?><script type="text/javascript" src="<?php print site_url('/js/owl_selection.js'); ?>"></script><?php endif; ?>
 
 </head>
 <body style="background:none repeat scroll 0 0 #F2F2F2;">

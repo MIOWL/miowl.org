@@ -17,7 +17,7 @@
 <script type="text/javascript" src="<?php print site_url('/js/jquery.countdown.js'); ?>"></script>
 <?php if(isset($owl_selection) && $owl_selection) : ?><script type="text/javascript" src="<?php print site_url('/js/owl_selection.js'); ?>"></script><?php endif; ?>
 
-  <!-- Google Analytics -->
+<!-- Google Analytics -->
 <script type="text/javascript">
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-31288786-1']);
