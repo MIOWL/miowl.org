@@ -1,6 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Owlmail {
+class owlmail {
 
 
     //=================================================================================
@@ -34,6 +34,7 @@ class Owlmail {
     public function send_activation($username = FALSE, $email = FALSE, $auth_code = FALSE)
     {
         if (!$username || !$email || !$auth_code)
+            die('something is null');
             return FALSE;
 
         // Build up the email output
