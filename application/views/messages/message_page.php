@@ -31,42 +31,22 @@
 </head>
 <body style="background:none repeat scroll 0 0 #F2F2F2;">
 
-<!-- wrapper -->
-<div id="wrapper">
+    <!-- message -->
+    <div id="message-page">
+        <div>
+            <?php if (isset($success)) : ?><h3 class="success">Success!</h3><p><?php print $msg; ?></p>
+            <?php elseif (isset($error)) : ?><h3 class="error">Error</h3><p><?php print $msg; ?></p>
+            <?php else : ?><h3 class="info">Information</h3><p><?php print $msg; ?></p>
+            <?php endif; ?>
 
-    <!-- page -->
-    <div id="page">
-
-        <!-- content -->
-        <div id="content">
-
-            <!-- message -->
-            <div id="message-page">
-
-                <div>
-
-                <?php if (isset($success)) :     ?><h3 class="success">Success!</h3><p><?php print $msg; ?></p>
-                <?php elseif (isset($error)) :     ?><h3 class="error">Error</h3><p><?php print $msg; ?></p>
-                <?php else :                     ?><h3 class="info">Information</h3><p><?php print $msg; ?></p>
-                <?php endif;                     ?>
-
-                    <p>Please hold as you will be redirected in <b id='textLayout'>3</b> seconds...</p>
-
-                </div>
-
-                <!-- redirect to $location -->
-                <script type="text/javascript">
-                    setTimeout("location.href='<?php print site_url($redirect); ?>';", 3000);
-                </script>
-
-            </div>
-
+            <p>Please hold as you will be redirected in <b id='textLayout'>3</b> seconds...</p>
         </div>
 
+        <!-- redirect to $location -->
+        <script type="text/javascript">
+            setTimeout("location.href='<?php print site_url($redirect); ?>';", 3000);
+        </script>
     </div>
-
-</div>
-
 <script type="text/javascript">
 $(function () {
     $('#textLayout').countdown({until: +3, layout: '{sn}'});

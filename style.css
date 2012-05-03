@@ -103,8 +103,10 @@ p.footer {
 	-moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.8) inset;
 	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.8) inset;
 	color: #fff;
+	display: block;
+	width: 900px;
+	margin: 5em auto;
 	padding: 1em;
-	margin-top: 5em;
 }
 
 #message-page p,#message-page a {
