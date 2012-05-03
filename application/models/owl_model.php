@@ -127,6 +127,8 @@ class Owl_model extends CI_Model {
 
         $this->db->insert('owls', $insert_data);
 
+        die($this->db->insert_id());
+
         return $this->db->insert_id();
     }
     //------------------------------------------------------------------
