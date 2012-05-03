@@ -42,11 +42,11 @@ class Usermail {
             'authcode' => $auth_code,
         );
 
-        $email_data  = $this->obj->load->view('email/head_foot/email_head.tpl', '', TRUE);  // Add email header
+        $email_data  = $this->obj->load->view('email/head_foot/email_head.tpl', NULL, TRUE);  // Add email header
         $email_data .= $this->obj->parser->parse('email/auth_email.tpl', $data, TRUE);      // Build the email body
         
         if ($new_owl)  // New Owl
-            $email_data .= $this->obj->parser->parse('email/owl_new.tpl', NULL, TRUE);
+            $email_data .= $this->obj->load->view('email/owl_new.tpl', NULL, TRUE);
         else  // Chosen Owl
             $email_data .= $this->obj->parser->parse('email/owl_chosen.tpl', array('owl' => $owl_name), TRUE);
         
