@@ -118,7 +118,7 @@ class Owl_model extends CI_Model {
             'owl_address'       => $address,
             'owl_province'      => $province,
             'owl_city'          => $city,
-            'owl_post_code'   => $zip,
+            'owl_post_code'     => $zip,
             'owl_tel'           => $tel,
             'owl_site'          => $www,
             'owl_email'         => $email,
@@ -141,7 +141,7 @@ class Owl_model extends CI_Model {
             return FALSE;
 
         $where = array(
-            'user_id'       => $user_id
+            'id'       => $user_id
         );
 
         $update_data = array(
