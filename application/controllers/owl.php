@@ -39,7 +39,7 @@ class Owl extends CI_Controller {
         parent::__construct();
 
         // loads
-        $this->load->library('usermail');
+        $this->load->library('owlmail');
     }
     //------------------------------------------------------------------
 
