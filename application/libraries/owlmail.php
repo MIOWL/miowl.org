@@ -146,10 +146,13 @@ class Usermail {
      *
      * @return bool
      */
-    public function send_owl_deny($username = FALSE, $owl = FALSE, $email = FALSE)
+    public function send_owl_deny($username = FALSE, $owl = FALSE, $reason = FALSE, $email = FALSE)
     {
         if (!$username || !$owl || !$email)
             return FALSE;
+
+        if (!$reason || $reason == NULL)
+            $reason = "No reason given...";
 
         // Build up the email output
         $data = array(

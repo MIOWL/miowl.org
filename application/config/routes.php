@@ -40,11 +40,12 @@
 
 
 /* Default Routes */
-$route['default_controller'] = "welcome";
-$route['404_override'] = 'error/error_404';
+$route['default_controller'] 				= "welcome";
+$route['404_override'] 						= 'error/error_404';
 
 /* Custom Routes */
-$route['about'] = 'welcome/about';
+$route['about'] 							= 'welcome/about';
+$route['download/(:num)'] 					= 'browse/download/$1';
 
 
 /* End of file routes.php */

@@ -106,6 +106,31 @@ class Browse extends CI_Controller {
     //------------------------------------------------------------------
 
 
+    /**
+     * public download()
+     */
+    public function download($file_id = FALSE)
+    {
+        if(!$file_id)
+            redirect(site_url('browse'), 'location');
+
+        // Get the file info for this ID
+        $upload_info = $this->upload_model->get_upload_by_id($file_id);
+
+        // Check the file has an ext, if not add it.
+        $file_name = $upload_info->row()->file_name;
+        $file_ext  = $upload_info->row()->file_ext;
+        if (!endswith($file_name, $file_ext))
+            $file_name = $file_name . $file_ext;
+
+        $data = array();
+        $data['file_path'] = $upload_info->row()->full_path;
+        $data['file_name'] = $file_name;
+        $this->load->view('download_file', $data);
+    }
+    //------------------------------------------------------------------
+
+
     //=================================================================================
     // :private
     //=================================================================================
@@ -134,6 +159,26 @@ class Browse extends CI_Controller {
             redirect('/user/login/' . $location, 'location');
             return FALSE;
         }
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * private endswith()
+     *
+     * This function is used to check if a string ends with another string
+     *
+     * @param $string - This is the string we are wanting to check against
+     * @param $test   - This is the string we wish to find in $string
+     *
+     * @return bool
+     */
+    private function endswith($string, $test)
+    {
+        $strlen = strlen($string);
+        $testlen = strlen($test);
+        if ($testlen > $strlen) return false;
+        return substr_compare($string, $test, -$testlen) === 0;
     }
     //------------------------------------------------------------------
 
