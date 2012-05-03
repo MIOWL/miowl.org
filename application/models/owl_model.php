@@ -127,9 +127,7 @@ class Owl_model extends CI_Model {
 
         $this->db->insert('owls', $insert_data);
 
-        die((int)$this->db->insert_id());
-
-        return $this->db->insert_id();
+        return "'".$this->db->insert_id()."'";
     }
     //------------------------------------------------------------------
 
@@ -139,10 +137,8 @@ class Owl_model extends CI_Model {
      */
     public function choose_owl($user_id = FALSE, $user_owl_id = FALSE)
     {
-        #if (!$user_id || !$user_owl_id)
-        #    return FALSE;
-
-        die("uid: " . $user_id . "<br>owl: " . $user_owl_id);
+        if (!$user_id || !$user_owl_id)
+            return FALSE;
 
         $where = array(
             'id'       => $user_id
