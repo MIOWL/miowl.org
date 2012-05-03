@@ -137,8 +137,10 @@ class Owl_model extends CI_Model {
      */
     public function choose_owl($user_id = FALSE, $user_owl_id = FALSE)
     {
-        if (!$user_id || !$user_owl_id)
-            return FALSE;
+        #if (!$user_id || !$user_owl_id)
+        #    return FALSE;
+
+        die("uid: " . $user_id . "<br>owl: " . $user_owl_id);
 
         $where = array(
             'id'       => $user_id
