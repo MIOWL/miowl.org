@@ -167,10 +167,6 @@ class Owl extends CI_Controller {
      */
     public function activate($code = FALSE)
     {
-        // if a user is logged in redirect...
-        if ($this->session->userdata('authed'))
-            redirect(site_url(), 'location');
-
         $page_data = array(
             'code'          => $code,
             'page_title'    => 'Owl Activate',
