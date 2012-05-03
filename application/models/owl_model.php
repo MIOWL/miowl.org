@@ -10,27 +10,27 @@ class Owl_model extends CI_Model {
 
     /**
      * public activate_user()
-     * function will activate a users account via their emailed code
+     * function will activate an owl via their emailed code
      *
-     * @param string $user_activation - the users activation code
+     * @param string $owl_activation - the users activation code
      */
-    public function activate_user($user_activation)
+    public function activate_owl($owl_activation)
     {
-        if (!$user_activation)
+        if (!$owl_activation)
             return FALSE;
 
         $where = array(
-            'user_active'       => 'no',
-            'user_activation'   => $user_activation
+            'owl_active'       => 'no',
+            'owl_activation'   => $owl_activation
         );
 
         $update_data = array(
-            'user_active'       => 'yes',
-            'user_activation'   => ''
+            'owl_active'       => 'yes',
+            'owl_activation'   => ''
         );
 
         $this->db->where($where);
-        $this->db->update('users', $update_data);
+        $this->db->update('owls', $update_data);
     }
     //------------------------------------------------------------------
 
@@ -41,11 +41,11 @@ class Owl_model extends CI_Model {
      *
      * @param string $user_name         - the users name
      * @param string $user_email        - the users email address
-     * @param string $user_activation   - the users activation code
+     * @param string $owl_activation   - the users activation code
      */
-    public function add_reset_data($user_name, $user_email, $user_activation)
+    public function add_reset_data($user_name, $user_email, $owl_activation)
     {
-        if (!$user_name || !$user_email  || !$user_activation)
+        if (!$user_name || !$user_email  || !$owl_activation)
             return FALSE;
 
         $where = array(
@@ -54,7 +54,7 @@ class Owl_model extends CI_Model {
         );
 
         $update_data = array(
-            'user_activation'   => $user_activation
+            'owl_activation'   => $owl_activation
         );
 
         $this->db->where($where);
@@ -67,23 +67,23 @@ class Owl_model extends CI_Model {
      * public auth_reset()
      * function will authenticate users password change request via their emailed code
      *
-     * @param string $user_activation   - the users activation code
+     * @param string $owl_activation   - the users activation code
      * @param string $user_password     - the users new password
      * @param string $user_salt         - the users new salt
      */
-    public function auth_reset($user_activation, $user_password, $user_salt)
+    public function auth_reset($owl_activation, $user_password, $user_salt)
     {
-        if (!$user_activation)
+        if (!$owl_activation)
             return FALSE;
 
         $update_data = array(
-            'user_active'       => 'yes',
-            'user_activation'   => '',
+            'owl_active'       => 'yes',
+            'owl_activation'   => '',
             'user_salt'         => $user_salt,
             'user_password'     => $user_password
         );
 
-        $this->db->where('user_activation', $user_activation);
+        $this->db->where('owl_activation', $owl_activation);
         $this->db->update('users', $update_data);
     }
     //------------------------------------------------------------------
@@ -258,9 +258,9 @@ class Owl_model extends CI_Model {
         $this->db->select('id');
 
         if ($pass_reset)
-            $this->db->where('user_activation', $auth_code);
+            $this->db->where('owl_activation', $auth_code);
         else
-            $this->db->where(array('user_activation' => $auth_code, 'user_active' => 'no'));
+            $this->db->where(array('owl_activation' => $auth_code, 'owl_active' => 'no'));
 
         $query = $this->db->get('owls');
 

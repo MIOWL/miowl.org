@@ -172,8 +172,8 @@ class Owl extends CI_Controller {
             redirect(site_url(), 'location');
 
         $page_data = array(
-            'code'         => $code,
-            'page_title' => 'Validate',
+            'code'          => $code,
+            'page_title'    => 'Owl Validate',
         );
 
         // form validation rules
@@ -183,10 +183,10 @@ class Owl extends CI_Controller {
         if ($this->form_validation->run())
         {
             // activate the user
-            $this->User_model->activate_user($this->input->post('auth_code'));
+            $this->Owl_model->activate_user($this->input->post('auth_code'));
 
             $page_data['success']     = TRUE;
-            $page_data['msg']        = "You're account has been successfully activated.";
+            $page_data['msg']         = "You're owl has been successfully activated.";
             $page_data['redirect']    = '';
         }
 
