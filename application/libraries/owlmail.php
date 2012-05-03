@@ -34,7 +34,6 @@ class owlmail {
     public function send_activation($username = FALSE, $email = FALSE, $auth_code = FALSE)
     {
         if (!$username || !$email || !$auth_code)
-            die("something is null\n\nusername: '" . $username . "'\nemail: '" . $email . "'\nauthcode: '" . $auth_code . "'\n");
             return FALSE;
 
         // Build up the email output
