@@ -186,7 +186,7 @@ class Owl_model extends CI_Model {
             return FALSE;
 
         $this->db->select('*');
-        $this->db->where('user_admin', $email);
+        $this->db->where('owl_email', $email);
         $query = $this->db->get('owls');
 
         if ($query->num_rows() > 0)
