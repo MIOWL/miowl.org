@@ -61,10 +61,10 @@ class Owl extends CI_Controller {
     /**
      * public index()
      */
-    public function index()
-    {
-        #$this->login_check('', TRUE);
-    }
+    #public function index()
+    #{
+    #    #$this->login_check('', TRUE);
+    #}
     //------------------------------------------------------------------
 
 
@@ -124,6 +124,9 @@ class Owl extends CI_Controller {
         {
             if(!$this->input->post('new_owl'))                          // Existing Owl
             {
+                $this->Owl_model->choose_owl($this->session->userdata('user_id'), $this->input->post('owl'));
+                $this->owlmail->send_chosen($this->session->userdata('username'), $this->input->post('owl'), $this->session->userdata('email'));
+
                 $page_data['success']     = TRUE;
                 $page_data['msg']        = "Successfully chosen you're owl. Please check your email to finish the registration process.";
                 $page_data['redirect']    = '';
@@ -133,22 +136,21 @@ class Owl extends CI_Controller {
             {
                 $authcode = $this->_genActCode();
 
-                $this->Owl_model->add_owl(
-                                            $this->input->post('name'),
-                                            $this->input->post('acronym'),
-                                            $this->input->post('type'),
-                                            $this->input->post('address'),
-                                            $this->input->post('province'),
-                                            $this->input->post('city'),
-                                            $this->input->post('zip'),
-                                            $this->input->post('tel'),
-                                            $this->input->post('site'),
-                                            $this->input->post('email'),
-                                            $authcode
-                                        );
-
-                ## todo
-                # build email cust
+                $owl_id = $this->Owl_model->add_owl(
+                                $this->input->post('name'),
+                                $this->input->post('acronym'),
+                                $this->input->post('type'),
+                                $this->input->post('address'),
+                                $this->input->post('province'),
+                                $this->input->post('city'),
+                                $this->input->post('zip'),
+                                $this->input->post('tel'),
+                                $this->input->post('site'),
+                                $this->input->post('email'),
+                                $authcode
+                            );
+                $this->Owl_model->choose_owl($this->session->userdata('user_id'), $this->input->post('owl'));
+                $this->owlmail->send_activation($this->session->userdata('username'), $this->input->post('email'), $authcode);
 
                 $page_data['success']     = TRUE;
                 $page_data['msg']        = "Successfully registered you're owl. Please check your email to finish the registration process.";

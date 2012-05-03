@@ -126,6 +126,30 @@ class Owl_model extends CI_Model {
         );
 
         $this->db->insert('owls', $insert_data);
+
+        return ($this->get_owl_by_email($email))->row()->id;
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * public choose_owl()
+     */
+    public function choose_owl($user_id = FALSE, $user_owl_id = FALSE)
+    {
+        if (!$user_id || !$user_owl_id)
+            return FALSE;
+
+        $where = array(
+            'user_id'       => $user_id
+        );
+
+        $update_data = array(
+            'user_owl_id'   => $user_owl_id
+        );
+
+        $this->db->where($where);
+        $this->db->update('users', $update_data);
     }
     //------------------------------------------------------------------
 
@@ -143,6 +167,26 @@ class Owl_model extends CI_Model {
 
         $this->db->select('*');
         $this->db->where('id', $owl_id);
+        $query = $this->db->get('owls');
+
+        if ($query->num_rows() > 0)
+            return $query;
+        else
+            return FALSE;
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * public get_owl_by_email()
+     */
+    public function get_owl_by_email($email = FALSE)
+    {
+        if (!$email)
+            return FALSE;
+
+        $this->db->select('*');
+        $this->db->where('user_admin', $email);
         $query = $this->db->get('owls');
 
         if ($query->num_rows() > 0)
