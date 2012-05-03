@@ -167,6 +167,13 @@ class Usermail {
         if (!$email || !$subject || !$data)
             return FALSE;
 
+        // Configure and initialize the email function
+        $config = array();
+        $config['useragent']    = 'MiOwl';
+        $config['mailtype']     = 'html';
+        $config['validate']     = TRUE;
+        $this->obj->email->initialize($config);
+
         // Setup the email
         $this->obj->email->from('no-reply@miowl.com', 'MiOWL');
         $this->obj->email->to($email);
