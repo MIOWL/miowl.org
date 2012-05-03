@@ -194,7 +194,7 @@ class Owl extends CI_Controller {
         if (isset($page_data['success']))
             $this->load->view('messages/message_page', $page_data);
         else
-            $this->load->view('auth/authorize', $page_data);
+            $this->load->view('auth/owl_authorize', $page_data);
     }
     //------------------------------------------------------------------
 

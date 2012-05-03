@@ -127,7 +127,7 @@ class Owl_model extends CI_Model {
 
         $this->db->insert('owls', $insert_data);
 
-        return $this->get_owl_by_email($email)->row()->id;
+        return $this->db->insert_id();
     }
     //------------------------------------------------------------------
 
