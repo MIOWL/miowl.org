@@ -124,19 +124,13 @@ class Owl extends CI_Controller {
         {
             if(!$this->input->post('new_owl'))                          // Existing Owl
             {
-                $page_data                  = array();
-                $page_data['page_title']    = "Owl Chosen";
- 
-                ## todo
-                # build view and model function to insert data
-                $this->load->view('auth/new_owl_chosen', $page_data);
+                $page_data['success']     = TRUE;
+                $page_data['msg']        = "Successfully chosen you're owl. Please check your email to finish the registration process.";
+                $page_data['redirect']    = '';
+                $this->load->view('messages/message_page', $page_data);
            }
             else                                                        // New Owl
             {
-                $page_data                  = array();
-                $page_data['page_title']    = "Owl Created";
-
-
                 $authcode = $this->_genActCode();
 
                 $this->Owl_model->add_owl(
@@ -156,9 +150,10 @@ class Owl extends CI_Controller {
                 ## todo
                 # build email cust
 
-                ## todo
-                # build view
-                $this->load->view('auth/new_owl_created', $page_data);
+                $page_data['success']     = TRUE;
+                $page_data['msg']        = "Successfully registered you're owl. Please check your email to finish the registration process.";
+                $page_data['redirect']    = '';
+                $this->load->view('messages/message_page', $page_data);
             }
         }
     }
