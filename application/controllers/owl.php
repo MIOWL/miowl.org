@@ -178,8 +178,11 @@ class Owl extends CI_Controller {
         // did the user submit?
         if ($this->form_validation->run())
         {
-            // activate the user
-            $this->Owl_model->activate_owl($this->input->post('auth_code'));
+            // activate the user's owl
+            $email = $this->Owl_model->activate_owl($this->input->post('auth_code'));
+
+            // welcome the user's owl
+            $this->owlmail->send_owl_welcome($email);
 
             $page_data['success']     = TRUE;
             $page_data['msg']         = "You're owl has been successfully activated.";

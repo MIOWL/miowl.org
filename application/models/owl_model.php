@@ -29,6 +29,11 @@ class Owl_model extends CI_Model {
             'owl_activation'   => ''
         );
 
+        $this->db->select('owl_email');
+        $this->db->where($where);
+        $query = $this->db->get('owls');
+        $email = $query->row()->owl_email;
+
         $this->db->where($where);
         $this->db->update('owls', $update_data);
     }

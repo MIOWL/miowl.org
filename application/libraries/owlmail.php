@@ -68,7 +68,7 @@ class owlmail {
 
         // Build up the email output
         $email_data  = $this->obj->load->view('email/head_foot/email_head.tpl', '', TRUE);      // Add email header
-        $email_data .= $this->obj->parser->parse('email/owl_welcome_email.tpl', NULL, TRUE);    // Build the email body
+        $email_data .= $this->obj->load->view('email/owl_welcome_email.tpl', NULL, TRUE);       // Build the email body
         $email_data .= $this->obj->load->view('email/head_foot/email_foot.tpl', '', TRUE);      // Add the email footer
 
         // Email Subject
