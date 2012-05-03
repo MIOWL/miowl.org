@@ -149,7 +149,7 @@ class Owl extends CI_Controller {
                                 $this->input->post('email'),
                                 $authcode
                             );
-                $this->Owl_model->choose_owl($this->session->userdata('user_id'), $this->input->post('owl'));
+                $this->Owl_model->choose_owl($this->session->userdata('user_id'), $owl_id);
                 $this->owlmail->send_activation($this->session->userdata('username'), $this->input->post('email'), $authcode);
 
                 $page_data['success']     = TRUE;
