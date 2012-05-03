@@ -126,7 +126,7 @@ class Browse extends CI_Controller {
         $data = array();
         $data['file_path'] = $upload_info->row()->full_path;
         $data['file_name'] = $file_name;
-        $this->load->view('download_file', $data);
+        $this->load->view('pages/download_file', $data);
     }
     //------------------------------------------------------------------
 
