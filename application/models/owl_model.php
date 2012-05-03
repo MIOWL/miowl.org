@@ -140,7 +140,7 @@ class Owl_model extends CI_Model {
         #if (!$user_id || !$user_owl_id)
         #    return FALSE;
 
-        die($user_id . $user_owl_id);
+        die("uid: " . $user_id . "<br>owl: " . $user_owl_id);
 
         $where = array(
             'id'       => $user_id
