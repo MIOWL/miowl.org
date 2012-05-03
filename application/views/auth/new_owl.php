@@ -9,7 +9,7 @@
 
     	<div id="body">
             <!-- choose existing owl -->
-            <form action="/owl/create" class="uniForm" method="post">
+            <form action="<?php print site_url('owl/create'); ?>" class="uniForm" method="post">
                 <?php
                     if($this->input->post('existing_owl'))
                         $this->load->view('messages/message_inline');
@@ -43,7 +43,7 @@
 
     <div id="body">
         <!-- register new owl -->
-        <form action="/owl/create" class="uniForm" method="post">
+        <form action="<?php print site_url('owl/create'); ?>" class="uniForm" method="post">
 
             <?php
                 if($this->input->post('new_owl'))
