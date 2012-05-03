@@ -2,7 +2,7 @@
 
     <h1>
         <center>
-            Owl Authorize!
+            Owl Activate!
         </center>
     </h1>
 

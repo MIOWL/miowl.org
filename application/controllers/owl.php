@@ -173,7 +173,7 @@ class Owl extends CI_Controller {
 
         $page_data = array(
             'code'          => $code,
-            'page_title'    => 'Owl Validate',
+            'page_title'    => 'Owl Activate',
         );
 
         // form validation rules
@@ -256,7 +256,7 @@ class Owl extends CI_Controller {
      */
     public function _valid_authcode($code)
     {
-        if (!$this->User_model->validate_authcode($code))
+        if (!$this->Owl_model->validate_authcode($code))
         {
             $this->form_validation->set_message('_valid_authcode', 'This account has already been activated, or the given authorization code is invalid.');
 
