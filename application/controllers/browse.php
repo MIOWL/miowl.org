@@ -120,7 +120,7 @@ class Browse extends CI_Controller {
         // Check the file has an ext, if not add it.
         $file_name = $upload_info->row()->file_name;
         $file_ext  = $upload_info->row()->file_ext;
-        if (!endswith($file_name, $file_ext))
+        if (!$this->endswith($file_name, $file_ext))
             $file_name = $file_name . $file_ext;
 
         $data = array();
