@@ -125,7 +125,7 @@ class Owl extends CI_Controller {
             if(!$this->input->post('new_owl'))                          // Existing Owl
             {
                 $this->Owl_model->choose_owl($this->session->userdata('user_id'), $this->input->post('owl'));
-                $this->owlmail->send_chosen($this->session->userdata('username'), $this->input->post('owl'), $this->session->userdata('email'));
+                $this->owlmail->send_chosen($this->session->userdata('username'), $this->Owl_model->get_owl_by_id($this->input->post('owl'))->row()->owl_name, $this->session->userdata('email'));
 
                 $page_data['success']     = TRUE;
                 $page_data['msg']        = "Successfully chosen you're owl. Please check your email to finish the registration process.";

@@ -131,7 +131,6 @@ class User extends CI_Controller {
             else {
                 $new_owl    = FALSE;
                 $owl_name   = $this->Owl_model->get_owl_by_id($this->input->post('owl'))->row()->owl_name;
-                #$owl_name   = $owl_name->row()->owl_name;
             }
 
             // send user email
