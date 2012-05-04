@@ -149,8 +149,14 @@ class User_model extends CI_Model {
             'user_activation'   => ''
         );
 
+        $this->db->select('*');
+        $this->db->where($where);
+        $query = $this->db->get('users');
+
         $this->db->where($where);
         $this->db->update('users', $update_data);
+
+        return $query;
     }
     //------------------------------------------------------------------
 

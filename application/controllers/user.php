@@ -120,9 +120,9 @@ class User extends CI_Controller {
             // register the user
             $this->User_model->add_user($this->input->post('username'), sha1(sha1($this->input->post('password')) . $salt), $this->input->post('email'), $salt, $authcode, $firstname, $lastname, $this->input->post('owl'));
 
-            $page_data['success']     = TRUE;
-            $page_data['msg']        = "Successfully registered you're account. Please check your email to finish the registration process.";
-            $page_data['redirect']    = '';
+            $page_data['success']   = TRUE;
+            $page_data['msg']       = "Successfully registered you're account. Please check your email to finish the registration process.";
+            $page_data['redirect']  = '';
 
             if($this->input->post('owl') == 'new') {
                 $new_owl    = TRUE;
@@ -130,7 +130,8 @@ class User extends CI_Controller {
             }
             else {
                 $new_owl    = FALSE;
-                $owl_name   = $this->Owl_model->get_owl_by_id($this->input->post('owl'));
+                $owl_name   = $this->Owl_model->get_owl_by_id($this->input->post('owl'))->row()->owl_name;
+                #$owl_name   = $owl_name->row()->owl_name;
             }
 
             // send user email
@@ -306,7 +307,12 @@ class User extends CI_Controller {
         if ($this->form_validation->run())
         {
             // activate the user
-            $this->User_model->activate_user($this->input->post('auth_code'));
+            $query = $this->User_model->activate_user($this->input->post('auth_code'));
+
+            // welcome the user
+            $username = $query->row()->user_name;
+            $email = $query->row()->user_email;
+            $this->usermail->send_welcome($username, $email);
 
             $page_data['success']     = TRUE;
             $page_data['msg']        = "You're account has been successfully activated.";
