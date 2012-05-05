@@ -229,16 +229,13 @@ class Owl extends CI_Controller {
     /**
      * public uploads()
      */
-    public function members($function = FALSE, $params = array())
+    public function members($function = 'list', $params = array())
     {
         // Do we need to login??
         if (!$this->login_check('owl-members-' . $function))
             return;
 
-        if (!$function)
-            return call_user_func_array(array($this, '_members_list'), $params);
-
-        elseif (method_exists($this, '_members_' . $function))
+        if (method_exists($this, '_members_' . $function))
             return call_user_func_array(array($this, '_members_' . $function), $params);
 
         else
