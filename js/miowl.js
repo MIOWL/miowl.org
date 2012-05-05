@@ -90,8 +90,8 @@ $(document).ready(function() {
             url: '/projects/miowl/owl/members/accept/' + id,
             dataType: 'text',
             success: function(response) {
-                if (response == 1) {
-                	alert('hide: ' + responce);
+                if (response == "1") {
+                	alert('hide: ' + response);
                 	$(this).parent('tr').hide();
                 } 
             }
