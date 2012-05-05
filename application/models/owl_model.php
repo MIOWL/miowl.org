@@ -143,18 +143,26 @@ class Owl_model extends CI_Model {
     /**
      * public choose_owl()
      */
-    public function choose_owl($user_id = FALSE, $user_owl_id = FALSE)
+    public function choose_owl($user_id = FALSE, $user_owl_id = FALSE, $is_admin = FALSE)
     {
         if (!$user_id || !$user_owl_id)
             return FALSE;
 
         $where = array(
-            'id'       => $user_id
+            'id'                    => $user_id
         );
 
-        $update_data = array(
-            'user_owl_id'   => $user_owl_id
-        );
+        if (!$is_admin) {
+            $update_data = array(
+                'user_owl_id'       => $user_owl_id
+            );
+        }
+        else {
+            $update_data = array(
+                'user_owl_id'       => $user_owl_id,
+                'user_owl_verified' => 'true'
+            );
+        }
 
         $this->db->where($where);
         $this->db->update('users', $update_data);
