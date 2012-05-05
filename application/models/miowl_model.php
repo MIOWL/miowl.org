@@ -38,7 +38,7 @@ class Miowl_model extends CI_Model {
         $this->db->where('user_owl_id', $owl_id);
 
         if (!$inclue_inactive)
-            $this->db->where('user_owl_verified', 'false');
+            $this->db->where('user_owl_verified', 'true');
 
         $query = $this->db->get('users');
 
