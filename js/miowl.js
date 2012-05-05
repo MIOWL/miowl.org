@@ -5,7 +5,7 @@
  * author: A. Wynn
  *
  */
-$(function () {
+$(document).ready(function() {
 
     /*!
      * close notification boxes
