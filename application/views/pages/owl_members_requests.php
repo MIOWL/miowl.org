@@ -30,7 +30,7 @@
                             'table_close'         => '</table>'
                       );
         $this->table->set_template($tmpl);
-        $this->table->set_heading('ID', 'Username', 'First Name', 'Last Name', 'Registration Date', 'Admin?', 'Uploader?');
+        $this->table->set_heading('ID', 'Username', 'First Name', 'Last Name', 'Registration Date', 'Approve', 'Deny');
         $this->table->set_empty("N/A");
 
         if($members)
@@ -44,8 +44,8 @@
                     $row->user_first_name,
                     $row->user_last_name,
                     $registration_date,
-                    '<center><span class="icon_font">U</span></center>',
-                    '<center><span class="icon_font">U</span></center>',
+                    '<center><span style="color:#63b52e !important" class="icon_font">.</span></center>',
+                    '<center><span style="color:#FF0000 !important" class="icon_font">\'</span></center>'
                 );
             }
         }
