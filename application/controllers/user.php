@@ -40,6 +40,7 @@ class User extends CI_Controller {
 
         // loads
         $this->load->library('usermail');
+        $this->load->library('owlmail');
     }
     //------------------------------------------------------------------
 
@@ -124,17 +125,22 @@ class User extends CI_Controller {
             $page_data['msg']       = "Successfully registered you're account. Please check your email to finish the registration process.";
             $page_data['redirect']  = '';
 
+            // Users name for emails
+            $name = $firstname . ' ' . $lastname . ' (' . $this->input->post('username') . ')';
+
             if($this->input->post('owl') == 'new') {
                 $new_owl    = TRUE;
                 $owl_name   = FALSE;
             }
             else {
                 $new_owl    = FALSE;
-                $owl_name   = $this->Owl_model->get_owl_by_id($this->input->post('owl'))->row()->owl_name;
+
+                $owl_info   = $this->Owl_model->get_owl_by_id($this->input->post('owl'));
+                $owl_name   = $owl_info->row()->owl_name;
+                $this->owlmail->inform_admin($name, $owl_info->row()->owl_email);
             }
 
             // send user email
-            $name = $firstname . ' ' . $lastname . ' (' . $this->input->post('username') . ')';
             $this->usermail->send_authcode($name, $this->input->post('email'), $authcode, $new_owl, $owl_name);
         }
 

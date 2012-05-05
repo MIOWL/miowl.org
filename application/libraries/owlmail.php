@@ -111,6 +111,32 @@ class owlmail {
 
 
     /**
+     * public inform_admin
+     */
+    public function inform_admin($username = FALSE, $email = FALSE)
+    {
+        if (!$username || !$email)
+            return FALSE;
+
+        // Build up the email output
+        $data = array(
+            'username'  => $username,
+        );
+
+        $email_data  = $this->obj->load->view('email/head_foot/email_head.tpl', NULL, TRUE);    // Add email header
+        $email_data .= $this->obj->parser->parse('email/owl_admin_inform.tpl', $data, TRUE);    // Build the email body
+        $email_data .= $this->obj->load->view('email/head_foot/email_foot.tpl', NULL, TRUE);    // Add the email footer
+
+        // Email Subject
+        $subject = 'MiOWL | New User Request';
+
+        // Send the email
+        return $this->send_email($email, $subject, $email_data);
+    }
+    //------------------------------------------------------------------
+
+
+    /**
      * public send_owl_accepted
      * function to send out an email to inform that the user has been accepted into the owl
      *
