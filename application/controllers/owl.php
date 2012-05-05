@@ -212,9 +212,6 @@ class Owl extends CI_Controller {
         if (!$this->login_check('owl-uploads'))
             return;
 
-        // Load the MiOwl Model
-        $this->load->model('miowl_model');
-
         // page data array
         $page_data                  = array();
         $page_data['page_title']    = "Uploads";
@@ -276,7 +273,7 @@ class Owl extends CI_Controller {
         // page data array
         $page_data                  = array();
         $page_data['page_title']    = "Owl Member Requests";
-        $page_data['members']       = $this->miowl_model->get_owl_uploads($this->session->userdata('owl'));
+        $page_data['members']       = $this->miowl_model->get_owl_unverified_members($this->session->userdata('owl'));
 
         // load the approp. page view
         $this->load->view('misc/owl_members_requests', $page_data);

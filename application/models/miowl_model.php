@@ -51,6 +51,27 @@ class Miowl_model extends CI_Model {
 
 
     /**
+     * public get_owl_unverified_members()
+     */
+    public function get_owl_unverified_members($owl_id = FALSE)
+    {
+        if (!$owl_id)
+            return FALSE;
+
+        $this->db->select('*');
+        $this->db->where('user_owl_id', $owl_id);
+        $this->db->where('user_owl_verified', 'false');
+        $query = $this->db->get('users');
+
+        if ($query->num_rows() > 0)
+            return $query;
+
+        return FALSE;
+    }
+    //------------------------------------------------------------------
+
+
+    /**
      * public get_image()
      */
     public function get_image($id = FALSE)
