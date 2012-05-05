@@ -27,6 +27,30 @@ class Miowl_model extends CI_Model {
      *******************************************************************/
 
     /**
+     * public get_owl_members()
+     */
+    public function get_owl_members($owl_id = FALSE, $inclue_inactive = FALSE)
+    {
+        if (!$owl_id)
+            return FALSE;
+
+        $this->db->select('*');
+        $this->db->where('user_owl_id', $owl_id);
+
+        if (!$inclue_inactive)
+            $this->db->where('user_owl_verified', 'true');
+
+        $query = $this->db->get('users');
+
+        if ($query->num_rows() > 0)
+            return $query;
+
+        return FALSE;
+    }
+    //------------------------------------------------------------------
+
+
+    /**
      * public get_image()
      */
     public function get_image($id = FALSE)
