@@ -46,8 +46,8 @@
                     $registration_date,
                     '<center><span class="icon_font">U</span></center>',
                     '<center><span class="icon_font">U</span></center>',
-                    '<center><span style="color:#63b52e" class="icon_font">.</span></center>',
-                    '<center><span style="color:#FF0000" class="icon_font">\'</span></center>'
+                    '<center><span style="color:#63b52e !important" class="icon_font">.</span></center>',
+                    '<center><span style="color:#FF0000 !important" class="icon_font">\'</span></center>'
                 );
             }
         }
