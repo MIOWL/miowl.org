@@ -113,9 +113,9 @@ class Owl_model extends CI_Model {
      * @param string $email         - Administrator Email
      * @param string $activation    - Activation Code
      */
-    public function add_owl($name = FALSE, $acronym = FALSE, $type = FALSE, $address = FALSE, $province = FALSE, $city = FALSE, $zip = FALSE, $tel = FALSE, $www = FALSE, $email = FALSE, $activation = FALSE)
+    public function add_owl($name = FALSE, $acronym = FALSE, $type = FALSE, $address = FALSE, $province = FALSE, $city = FALSE, $zip = FALSE, $tel = FALSE, $www = FALSE, $user_id = FALSE, $email = FALSE, $activation = FALSE)
     {
-        if (!$name || !$acronym || !$type || !$address || !$province || !$city || !$zip || !$email || !$activation)
+        if (!$name || !$acronym || !$type || !$address || !$province || !$city || !$zip || !$user_id || !$email || !$activation)
             return FALSE;
 
         $insert_data = array(
@@ -128,6 +128,7 @@ class Owl_model extends CI_Model {
             'owl_post_code'     => $zip,
             'owl_tel'           => $tel,
             'owl_site'          => $www,
+            'owl_admin_uid'     => $user_id,
             'owl_email'         => $email,
             'owl_activation'    => $activation
         );

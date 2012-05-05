@@ -122,10 +122,14 @@ class Owl extends CI_Controller {
         }
         else
         {
+            $name = $this->session->userdata('name') . ' (' . $this->session->userdata('username') . ')';
+
             if(!$this->input->post('new_owl'))                          // Existing Owl
             {
+                $owl_info = $this->Owl_model->get_owl_by_id($this->input->post('owl'));
                 $this->Owl_model->choose_owl($this->session->userdata('user_id'), $this->input->post('owl'));
-                $this->owlmail->send_chosen($this->session->userdata('username'), $this->Owl_model->get_owl_by_id($this->input->post('owl'))->row()->owl_name, $this->session->userdata('email'));
+                $this->owlmail->send_chosen($name, $owl_info->row()->owl_name, $this->session->userdata('email'));
+                $this->owlmail->inform_admin($name, $owl_info->row()->owl_email);
 
                 $page_data['success']     = TRUE;
                 $page_data['msg']        = "Successfully chosen you're owl. Please check your email to finish the registration process.";
@@ -146,11 +150,12 @@ class Owl extends CI_Controller {
                                 $this->input->post('zip'),
                                 $this->input->post('tel'),
                                 $this->input->post('site'),
+                                $this->session->userdata->('user_id'),
                                 $this->input->post('email'),
                                 $authcode
                             );
                 $this->Owl_model->choose_owl($this->session->userdata('user_id'), $owl_id);
-                $this->owlmail->send_activation($this->session->userdata('username'), $this->input->post('email'), $authcode);
+                $this->owlmail->send_activation($name, $this->input->post('email'), $authcode);
 
                 $page_data['success']     = TRUE;
                 $page_data['msg']        = "Successfully registered you're owl. Please check your email to finish the registration process.";
@@ -207,17 +212,16 @@ class Owl extends CI_Controller {
         if (!$this->login_check('owl-uploads'))
             return;
 
-        // Load the PixlDrop Model
-        $this->load->model('pixldrop_model');
+        // Load the MiOwl Model
+        $this->load->model('miowl_model');
 
         // page data array
         $page_data                  = array();
-        $page_data['page_title'] = "Uploads";
-        $username                  = $this->session->userdata('username');
-        $page_data['image']      = $this->pixldrop_model->get_user_images($username);
+        $page_data['page_title']    = "Uploads";
+        $page_data['uploads']       = $this->miowl_model->get_owl_uploads($this->session->userdata('owl'));
 
         // load the approp. page view
-        $this->load->view('misc/user_gallery', $page_data);
+        $this->load->view('misc/owl_uploads', $page_data);
     }
     //------------------------------------------------------------------
 

@@ -134,7 +134,8 @@ class User extends CI_Controller {
             }
 
             // send user email
-            $this->usermail->send_authcode($this->input->post('username'), $this->input->post('email'), $authcode, $new_owl, $owl_name);
+            $name = $firstname . ' ' . $lastname . ' (' . $this->input->post('username') . ')';
+            $this->usermail->send_authcode($name, $this->input->post('email'), $authcode, $new_owl, $owl_name);
         }
 
         if (isset($page_data['success']))
@@ -182,6 +183,7 @@ class User extends CI_Controller {
                             $session_data = array(
                                 'user_id'   => $user_query->row()->id,
                                 'username'  => $user_query->row()->user_name,
+                                'name'      => $user_query->row()->user_first_name . ' ' . $user_query->row()->user_last_name,
                                 'email'     => $user_query->row()->user_email,
                                 'owl'       => $user_query->row()->user_owl_id,
                                 'admin'     => $user_query->row()->user_admin === 'true' ? TRUE : FALSE,
@@ -309,9 +311,9 @@ class User extends CI_Controller {
             $query = $this->User_model->activate_user($this->input->post('auth_code'));
 
             // welcome the user
-            $username = $query->row()->user_name;
+            $name = $query->row()->user_first_name . ' ' . $query->row()->user_last_name . ' (' . $query->row()->user_name . ')';
             $email = $query->row()->user_email;
-            $this->usermail->send_welcome($username, $email);
+            $this->usermail->send_welcome($name, $email);
 
             $page_data['success']     = TRUE;
             $page_data['msg']        = "You're account has been successfully activated.";
@@ -357,7 +359,7 @@ class User extends CI_Controller {
                 // send user email
                 if (!$this->usermail->send_forgotpass
                         (
-                            $user_query->row()->user_name,
+                            $user_query->row()->user_first_name . ' ' . $user_query->row()->user_last_name . ' (' . $user_query->row()->user_name . ')',
                             $user_query->row()->user_email,
                             $authcode,
                             $this->session->userdata('ip_address')
