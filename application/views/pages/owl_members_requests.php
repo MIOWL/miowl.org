@@ -44,8 +44,8 @@
                     $row->user_first_name,
                     $row->user_last_name,
                     $registration_date,
-                    '<center><span style="color:#63b52e !important" class="icon_font">.</span></center>',
-                    '<center><span style="color:#FF0000 !important" class="icon_font">\'</span></center>'
+                    '<center><a href="' . $row->id . '" class="icon_font approve" style="color:#63b52e !important;">.</a></center>',
+                    '<center><a href="' . $row->id . '" class="icon_font deny" style="color:#FF0000 !important;">\'</a></center>'
                 );
             }
         }
