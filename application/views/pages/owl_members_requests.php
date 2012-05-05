@@ -38,6 +38,10 @@
             foreach($members->result() as $row)
             {
                 $registration_date = date("H:i:s d/m/Y", $row->user_registration_date);
+
+                $tmpl['row_start'] = '<tr id="r-' . $row->id . '">';
+                $this->table->set_template($tmpl);
+
                 $this->table->add_row(
                     $row->id,
                     $row->user_name,
