@@ -85,6 +85,9 @@ $(document).ready(function() {
 
     	// get href id
     	var id = $(this).attr('href');
+
+    	var test = $(this).parent('tr');
+
     	$.ajax({
             type: 'GET',
             url: '/projects/miowl/owl/members/accept/' + id,
@@ -92,7 +95,7 @@ $(document).ready(function() {
             success: function(response) {
                 if (response == "1") {
                 	alert('hide: ' + response);
-                	$(this).parent('tr').hide();
+                	$(test).empty();
                 } 
             }
         });
