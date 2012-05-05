@@ -150,7 +150,7 @@ class Owl extends CI_Controller {
                                 $this->input->post('zip'),
                                 $this->input->post('tel'),
                                 $this->input->post('site'),
-                                $this->session->userdata->('user_id'),
+                                $this->session->userdata('user_id'),
                                 $this->input->post('email'),
                                 $authcode
                             );
