@@ -45,7 +45,7 @@
                     $row->user_last_name,
                     $registration_date,
                     '<center><span class="icon_font">U</span></center>',
-                    '<center><span class="icon_font">U</span></center>',
+                    '<center><span class="icon_font">U</span></center>'
                 );
             }
         }
