@@ -226,6 +226,64 @@ class Owl extends CI_Controller {
     //------------------------------------------------------------------
 
 
+    /**
+     * public uploads()
+     */
+    public function members($function = FALSE, $params = array())
+    {
+        // Do we need to login??
+        if (!$this->login_check('owl-members-' . $function))
+            return;
+
+        if (!$function)
+            return call_user_func_array(array($this, '_members_list'), $params);
+
+        elseif (method_exists($this, '_members_' . $function))
+            return call_user_func_array(array($this, '_members_' . $function), $params);
+
+        else
+            show_404();
+    }
+    //------------------------------------------------------------------
+
+
+    //=================================================================================
+    // :member view functions
+    //=================================================================================
+
+
+    /**
+     * member function _members_list()
+     */
+    public function _members_list()
+    {
+        // page data array
+        $page_data                  = array();
+        $page_data['page_title']    = "Owl Members";
+        $page_data['members']       = $this->miowl_model->get_owl_uploads($this->session->userdata('owl'));
+
+        // load the approp. page view
+        $this->load->view('misc/owl_members', $page_data);
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * member function _members_requests()
+     */
+    public function _members_requests()
+    {
+        // page data array
+        $page_data                  = array();
+        $page_data['page_title']    = "Owl Member Requests";
+        $page_data['members']       = $this->miowl_model->get_owl_uploads($this->session->userdata('owl'));
+
+        // load the approp. page view
+        $this->load->view('misc/owl_members_requests', $page_data);
+    }
+    //------------------------------------------------------------------
+
+
     //=================================================================================
     // :custom callbacks
     //=================================================================================
