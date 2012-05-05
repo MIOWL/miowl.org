@@ -86,7 +86,7 @@ $(document).ready(function() {
     	// get href id
     	var id = $(this).attr('href');
 
-    	var test = $(this).parent('tr');
+    	var test = $(this).prev('tr');
 
     	$.ajax({
             type: 'GET',
@@ -96,11 +96,9 @@ $(document).ready(function() {
                 if (response == "1") {
                 	alert('hide: ' + response);
                 	$(test).empty();
-                } 
+                }
             }
         });
-
-
     });
 
     
