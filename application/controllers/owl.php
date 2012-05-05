@@ -229,11 +229,14 @@ class Owl extends CI_Controller {
     /**
      * public uploads()
      */
-    public function members($function = 'list', $params = array())
+    public function members($function = FALSE, $params = array())
     {
         // Do we need to login??
         if (!$this->login_check('owl-members-' . $function))
             return;
+
+        if (!$function)
+            $function = 'list';
 
         if (method_exists($this, '_members_' . $function))
             return call_user_func_array(array($this, '_members_' . $function), $params);
@@ -257,7 +260,7 @@ class Owl extends CI_Controller {
         // page data array
         $page_data                  = array();
         $page_data['page_title']    = "Owl Members";
-        $page_data['members']       = $this->miowl_model->get_owl_uploads($this->session->userdata('owl'));
+        $page_data['members']       = $this->miowl_model->get_owl_members($this->session->userdata('owl'));
 
         // load the approp. page view
         $this->load->view('misc/owl_members', $page_data);
