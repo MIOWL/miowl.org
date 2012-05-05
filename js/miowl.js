@@ -81,8 +81,7 @@ $(document).ready(function() {
      * accept member
      */
     $('.approve').click(function(e) {
-    	
-    	alert("cehcking");
+
     	e.preventDefault();
 
     	// get href id
@@ -93,8 +92,11 @@ $(document).ready(function() {
             url: '/projects/miowl/owl/members/accept/' + id,
             dataType: 'text',
             success: function(response) {
+                
+            	alert("in success: " + response);
+
                 if (response == 1) {
-                	alert("hide: " + response);
+                	
                 	$(this).parent('tr').hide();
                 } 
             }
