@@ -81,6 +81,8 @@ $(function () {
      * accept member
      */
     $('.approve').click(function(e) {
+    	
+    	alert("cehcking");
     	e.preventDefault();
 
     	// get href id
