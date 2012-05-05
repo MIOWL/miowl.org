@@ -92,7 +92,7 @@ $(document).ready(function() {
             dataType: 'text',
             success: function(response) {
                 if (response == "1") {
-                	$('#r-' + id).slideUp();
+                	$('#r-' + id).slideUp('slow');
                 }
             }
         });
@@ -114,7 +114,7 @@ $(document).ready(function() {
             dataType: 'text',
             success: function(response) {
                 if (response == "1") {
-                	$('#r-' + id).slideUp();
+                	$('#r-' + id).slideUp('slow');
                 }
             }
         });
