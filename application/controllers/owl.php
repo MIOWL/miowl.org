@@ -226,7 +226,7 @@ class Owl extends CI_Controller {
     /**
      * public members()
      */
-    public function members($function = FALSE, $params)
+    public function members($function = FALSE, $params = NULL)
     {
         // Do we need to login??
         if (!$this->login_check('owl-members-' . $function))
