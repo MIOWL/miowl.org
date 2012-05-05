@@ -236,7 +236,7 @@ class Owl extends CI_Controller {
             $function = 'list';
 
         if (method_exists($this, '_members_' . $function))
-            return call_user_func_array(array($this, '_members_' . $function), $params);
+            return call_user_func(array($this, '_members_' . $function), $params);
 
         else
             show_404();
