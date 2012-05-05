@@ -281,6 +281,26 @@ class Owl extends CI_Controller {
     //------------------------------------------------------------------
 
 
+    /**
+     * member function _members_accept()
+     */
+    public function _members_accept($user_id = FALSE)
+    {
+        print $this->miowl_model->owl_accept_member($this->session->userdata('owl'), $user_id);
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * member function _members_deny()
+     */
+    public function _members_deny($user_id = FALSE)
+    {
+        print $this->miowl_model->owl_deny_member($this->session->userdata('owl'), $user_id);
+    }
+    //------------------------------------------------------------------
+
+
     //=================================================================================
     // :custom callbacks
     //=================================================================================

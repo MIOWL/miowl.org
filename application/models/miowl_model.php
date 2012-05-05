@@ -72,6 +72,56 @@ class Miowl_model extends CI_Model {
 
 
     /**
+     * public owl_accept_member()
+     */
+    public function owl_accept_member($owl_id = FALSE, $user_id = FALSE)
+    {
+        if (!$owl_id || !$user_id)
+            return FALSE;
+
+        $this->db->set('user_owl_verified', 'true');
+        $where = array(
+            'id'                => $user_id,
+            'user_owl_id'       => $owl_id,
+            'user_owl_verified' => 'false'
+        );
+        $this->db->where($where);
+        $this->db->update('users');
+
+        if ($this->db->affected_rows() > 0)
+            return TRUE;
+
+        return FALSE;
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * public owl_deny_member()
+     */
+    public function owl_deny_member($owl_id = FALSE, $user_id = FALSE)
+    {
+        if (!$owl_id || !$user_id)
+            return FALSE;
+
+        $this->db->set('user_owl_verified', 'false');
+        $this->db->set('user_owl_id', 0);
+        $where = array(
+            'id'            => $user_id,
+            'user_owl_id'   => $owl_id,
+        );
+        $this->db->where($where);
+        $this->db->update('users');
+
+        if ($this->db->affected_rows() > 0)
+            return TRUE;
+
+        return FALSE;
+    }
+    //------------------------------------------------------------------
+
+
+    /**
      * public get_image()
      */
     public function get_image($id = FALSE)
@@ -122,7 +172,7 @@ class Miowl_model extends CI_Model {
         $this->db->set('upload_keep_duration', 0);
         $where = array(
             'upload_user'     => $user,
-            'id'             => $id
+            'id'              => $id
         );
         $this->db->where($where);
         $this->db->update('uploads');
