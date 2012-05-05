@@ -81,22 +81,17 @@ $(document).ready(function() {
      * accept member
      */
     $('.approve').click(function(e) {
-
     	e.preventDefault();
 
     	// get href id
     	var id = $(this).attr('href');
-
     	$.ajax({
             type: 'GET',
             url: '/projects/miowl/owl/members/accept/' + id,
             dataType: 'text',
             success: function(response) {
-                
-            	alert("in success: " + response);
-
                 if (response == 1) {
-                	
+                	alert('hide: ' + responce);
                 	$(this).parent('tr').hide();
                 } 
             }
