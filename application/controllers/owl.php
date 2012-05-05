@@ -276,7 +276,7 @@ class Owl extends CI_Controller {
         $page_data['members']       = $this->miowl_model->get_owl_unverified_members($this->session->userdata('owl'));
 
         // load the approp. page view
-        $this->load->view('misc/owl_members_requests', $page_data);
+        $this->load->view('pages/owl_members_requests', $page_data);
     }
     //------------------------------------------------------------------
 
