@@ -286,7 +286,7 @@ class Owl extends CI_Controller {
      */
     public function _members_accept($user_id = FALSE)
     {
-        print $this->miowl_model->owl_accept_member($this->session->userdata('owl'), $user_id);
+        print $this->miowl_model->owl_accept_member($this->session->userdata('owl'), $user_id)?1:0;
     }
     //------------------------------------------------------------------
 
@@ -296,7 +296,7 @@ class Owl extends CI_Controller {
      */
     public function _members_deny($user_id = FALSE)
     {
-        print $this->miowl_model->owl_deny_member($this->session->userdata('owl'), $user_id);
+        print $this->miowl_model->owl_deny_member($this->session->userdata('owl'), $user_id)?1:0;
     }
     //------------------------------------------------------------------
 
