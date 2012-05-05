@@ -92,14 +92,33 @@ $(document).ready(function() {
             dataType: 'text',
             success: function(response) {
                 if (response == "1") {
-                	alert('hide: ' + response);
-                	$('#r-' + id).empty();
+                	$('#r-' + id).slideUp();
                 }
             }
         });
     });
+    // ------------------------------------------------------------------------
 
-    
+    /*!
+     * deny member
+     */
+    $('.deny').click(function(e) {
+    	e.preventDefault();
+
+    	// get href id
+    	var id = $(this).attr('href');
+
+    	$.ajax({
+            type: 'GET',
+            url: '/projects/miowl/owl/members/deny/' + id,
+            dataType: 'text',
+            success: function(response) {
+                if (response == "1") {
+                	$('#r-' + id).slideUp();
+                }
+            }
+        });
+    });
     // ------------------------------------------------------------------------
 
 });
