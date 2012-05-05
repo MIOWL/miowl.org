@@ -106,7 +106,7 @@ class Owl extends CI_Controller {
             $page_data['province']      = $this->province_list;
 
             // fetch the owl data we need
-            $owl_data                   = $this->Owl_model->get_all_owls();
+            $owl_data                   = $this->owl_model->get_all_owls();
             if($owl_data) {
                 $owls                   = array();
                 foreach ($owl_data->result() as $row) {
@@ -126,8 +126,8 @@ class Owl extends CI_Controller {
 
             if(!$this->input->post('new_owl'))                          // Existing Owl
             {
-                $owl_info = $this->Owl_model->get_owl_by_id($this->input->post('owl'));
-                $this->Owl_model->choose_owl($this->session->userdata('user_id'), $this->input->post('owl'));
+                $owl_info = $this->owl_model->get_owl_by_id($this->input->post('owl'));
+                $this->owl_model->choose_owl($this->session->userdata('user_id'), $this->input->post('owl'));
                 $this->owlmail->send_chosen($name, $owl_info->row()->owl_name, $this->session->userdata('email'));
                 $this->owlmail->inform_admin($name, $owl_info->row()->owl_email);
 
@@ -140,7 +140,7 @@ class Owl extends CI_Controller {
             {
                 $authcode = $this->_genActCode();
 
-                $owl_id = $this->Owl_model->add_owl(
+                $owl_id = $this->owl_model->add_owl(
                                 $this->input->post('name'),
                                 $this->input->post('acronym'),
                                 $this->input->post('type'),
@@ -154,7 +154,7 @@ class Owl extends CI_Controller {
                                 $this->input->post('email'),
                                 $authcode
                             );
-                $this->Owl_model->choose_owl($this->session->userdata('user_id'), $owl_id, TRUE);
+                $this->owl_model->choose_owl($this->session->userdata('user_id'), $owl_id, TRUE);
                 $this->owlmail->send_activation($name, $this->input->post('email'), $authcode);
 
                 $page_data['success']     = TRUE;
@@ -184,7 +184,7 @@ class Owl extends CI_Controller {
         if ($this->form_validation->run())
         {
             // activate the user's owl
-            $email = $this->Owl_model->activate_owl($this->input->post('auth_code'));
+            $email = $this->owl_model->activate_owl($this->input->post('auth_code'));
 
             // welcome the user's owl
             $this->owlmail->send_owl_welcome($email);
@@ -260,7 +260,7 @@ class Owl extends CI_Controller {
         // page data array
         $page_data                  = array();
         $page_data['page_title']    = "Owl Members";
-        $page_data['members']       = $this->Miowl_model->get_owl_members($this->session->userdata('owl'));
+        $page_data['members']       = $this->miowl_model->get_owl_members($this->session->userdata('owl'));
 
         // load the approp. page view
         $this->load->view('pages/owl_members', $page_data);
@@ -297,7 +297,7 @@ class Owl extends CI_Controller {
      */
     public function _valid_reset_authcode($code)
     {
-        if (!$this->User_model->validate_authcode($code, TRUE))
+        if (!$this->user_model->validate_authcode($code, TRUE))
         {
             $this->form_validation->set_message('_valid_reset_authcode', 'The given authorization code is invalid.');
             return FALSE;
@@ -317,7 +317,7 @@ class Owl extends CI_Controller {
      */
     public function _valid_authcode($code)
     {
-        if (!$this->Owl_model->validate_authcode($code))
+        if (!$this->owl_model->validate_authcode($code))
         {
             $this->form_validation->set_message('_valid_authcode', 'This account has already been activated, or the given authorization code is invalid.');
 
@@ -349,7 +349,7 @@ class Owl extends CI_Controller {
             return FALSE;
         }
 
-        if ($this->User_model->validate_email($email))
+        if ($this->user_model->validate_email($email))
             return TRUE;
 
         $this->form_validation->set_message('_valid_email', 'This email address is already in use.');

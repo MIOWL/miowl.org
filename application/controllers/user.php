@@ -82,7 +82,7 @@ class User extends CI_Controller {
         $page_data['page_title']    = "Register";
 
         // fetch the owl data we need
-        $owl_data                   = $this->Owl_model->get_all_owls();
+        $owl_data                   = $this->owl_model->get_all_owls();
         if($owl_data) {
             $owls                   = array();
             foreach ($owl_data->result() as $row) {
@@ -119,7 +119,7 @@ class User extends CI_Controller {
             $lastname = humanize($this->input->post('lastname'));
 
             // register the user
-            $this->User_model->add_user($this->input->post('username'), sha1(sha1($this->input->post('password')) . $salt), $this->input->post('email'), $salt, $authcode, $firstname, $lastname, $this->input->post('owl'));
+            $this->user_model->add_user($this->input->post('username'), sha1(sha1($this->input->post('password')) . $salt), $this->input->post('email'), $salt, $authcode, $firstname, $lastname, $this->input->post('owl'));
 
             $page_data['success']   = TRUE;
             $page_data['msg']       = "Successfully registered you're account. Please check your email to finish the registration process.";
@@ -135,7 +135,7 @@ class User extends CI_Controller {
             else {
                 $new_owl    = FALSE;
 
-                $owl_info   = $this->Owl_model->get_owl_by_id($this->input->post('owl'));
+                $owl_info   = $this->owl_model->get_owl_by_id($this->input->post('owl'));
                 $owl_name   = $owl_info->row()->owl_name;
                 $this->owlmail->inform_admin($name, $owl_info->row()->owl_email);
             }
@@ -172,7 +172,7 @@ class User extends CI_Controller {
         if ($this->form_validation->run())
         {
             // check the username & password
-            $user_query = $this->User_model->get_user($this->input->post('username'));
+            $user_query = $this->user_model->get_user($this->input->post('username'));
 
             // did we find the user?
             if ($user_query)
@@ -199,7 +199,7 @@ class User extends CI_Controller {
                             $this->session->set_userdata($session_data);
 
                             // Set last login time
-                            $this->User_model->login_time($user_query->row()->user_name);
+                            $this->user_model->login_time($user_query->row()->user_name);
 
                             // displayed message page and redirect
                             $page_data['success']     = TRUE;
@@ -252,7 +252,7 @@ class User extends CI_Controller {
             $page_data['province']      = $this->province_list;
 
             // fetch the owl data we need
-            $owl_data                   = $this->Owl_model->get_all_owls();
+            $owl_data                   = $this->owl_model->get_all_owls();
             if($owl_data) {
                 $owls                   = array();
                 foreach ($owl_data->result() as $row) {
@@ -314,7 +314,7 @@ class User extends CI_Controller {
         if ($this->form_validation->run())
         {
             // activate the user
-            $query = $this->User_model->activate_user($this->input->post('auth_code'));
+            $query = $this->user_model->activate_user($this->input->post('auth_code'));
 
             // welcome the user
             $name = $query->row()->user_first_name . ' ' . $query->row()->user_last_name . ' (' . $query->row()->user_name . ')';
@@ -353,14 +353,14 @@ class User extends CI_Controller {
         // did the user submit
         if ($this->form_validation->run())
         {
-            $user_query = $this->User_model->get_user($this->input->post('username'));
+            $user_query = $this->user_model->get_user($this->input->post('username'));
             if ($user_query)
             {
                 // generate our authcode
                 $authcode = $this->_genActCode(20);
 
                 // add the reset info the the database
-                $this->User_model->add_reset_data($user_query->row()->user_name, $user_query->row()->user_email, $authcode);
+                $this->user_model->add_reset_data($user_query->row()->user_name, $user_query->row()->user_email, $authcode);
 
                 // send user email
                 if (!$this->usermail->send_forgotpass
@@ -426,7 +426,7 @@ class User extends CI_Controller {
             $password = sha1(sha1($this->input->post('new_password')) . $salt);
 
             // autherize the reset
-            $this->User_model->auth_reset($this->input->post('auth_code'), $password, $salt);
+            $this->user_model->auth_reset($this->input->post('auth_code'), $password, $salt);
 
             $page_data['success']     = TRUE;
             $page_data['msg']         = "You're account password has been successfully changed.";
@@ -484,7 +484,7 @@ class User extends CI_Controller {
                 $authcode = $this->_genActCode(20);
 
                 // register the user -- NEEDS WORK
-                #$this->User_model->add_user($this->input->post('username'), sha1(sha1($this->input->post('password')) . $salt), $this->input->post('email'), $salt, $authcode);
+                #$this->user_model->add_user($this->input->post('username'), sha1(sha1($this->input->post('password')) . $salt), $this->input->post('email'), $salt, $authcode);
 
                 $page_data['success']     = TRUE;
                 $page_data['msg']        = "Your account has been successfully updated. If you updated your email Please check your email to finish the update process.";
@@ -568,7 +568,7 @@ class User extends CI_Controller {
      */
     public function _valid_reset_authcode($code)
     {
-        if (!$this->User_model->validate_authcode($code, TRUE))
+        if (!$this->user_model->validate_authcode($code, TRUE))
         {
             $this->form_validation->set_message('_valid_reset_authcode', 'The given authorization code is invalid.');
             return FALSE;
@@ -588,7 +588,7 @@ class User extends CI_Controller {
      */
     public function _valid_authcode($code)
     {
-        if (!$this->User_model->validate_authcode($code))
+        if (!$this->user_model->validate_authcode($code))
         {
             $this->form_validation->set_message('_valid_authcode', 'This account has already been activated, or the given authorization code is invalid.');
 
@@ -609,7 +609,7 @@ class User extends CI_Controller {
      */
     public function _valid_username($username)
     {
-        if ($this->User_model->validate_username($username))
+        if ($this->user_model->validate_username($username))
             return TRUE;
 
         $this->form_validation->set_message('_valid_username', 'Sorry but that username already exists.');
@@ -638,7 +638,7 @@ class User extends CI_Controller {
             return FALSE;
         }
 
-        if ($this->User_model->validate_email($email))
+        if ($this->user_model->validate_email($email))
             return TRUE;
 
         $this->form_validation->set_message('_valid_email', 'This email address is already in use.');
