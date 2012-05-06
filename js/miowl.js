@@ -114,7 +114,9 @@ $(document).ready(function() {
             dataType: 'text',
             success: function(response) {
                 if (response == "1") {
-                	$('#r-' + id).slideUp('slow');
+                	$('#r-' + id).fadeOut('slow', function() {
+					    $('#r-' + id).empty();
+					});
                 }
             }
         });
