@@ -334,11 +334,11 @@ h3.info {
 .column { width: 49%; }
 .column.left { float: left; }
 .column.right { float: right; }
+.column.half { width: 39%; }
 .column.third { width: 32%; }
 .column.twothird { width: 66%; }
-.column.quarter { width: 22%; }
-.column.threequarter { width: 72%; }
-.column.half { width: 39%; }
+.column.quarter { width: 24%; }
+.column.threequarter { width: 74%; }
 .clear {
     display: block;
     clear: both;
