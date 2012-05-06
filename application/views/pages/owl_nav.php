@@ -2,8 +2,8 @@
 		<li style="list-style-type: none">members</li>
 		<ul>
 			<li><a href="<?php print site_url('owl/members'); ?>">list</a></li>
-			<li><a href="<?php print site_url('owl/requests'); ?>">requests</a></li>
-			<li><a href="<?php print site_url('owl/invite'); ?>">invite</a></li>
+			<li><a href="<?php print site_url('owl/members/requests'); ?>">requests</a></li>
+			<li><a href="<?php print site_url('owl/members/invite'); ?>">invite</a></li>
 			<li style="list-style-type: none">&nbsp;</li>
 		</ul>
 		<li style="list-style-type: none">catagories</li>
