@@ -304,7 +304,6 @@ h3.info {
 	padding: 10px;
 	text-align: right;
 }
-
 #nav a {
 	color: rgb(255,0,0);
 }
@@ -314,17 +313,27 @@ h3.info {
 | owl page styles
 |-----------------------
 */
-#owl_nav {
+/*#owl_nav {
 	float: left;
 	padding: 0px;
 	width: 200px;
 	display: block;
 }
-
 #owl_body {
 	float: right;
 	padding: 0px;
 	width: 700px;
 	display: block;
-}
+}*/
 
+/*
+|-----------------------
+| column styles
+|-----------------------
+*/
+.column { width: 49% }
+.column.left { float: left }
+.column.right { float: right }
+.column.third { width: 32% }
+.column.twothird { width: 66% }
+.column.half { width: 39%; }
