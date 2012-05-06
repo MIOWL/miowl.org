@@ -72,7 +72,7 @@ class User extends CI_Controller {
     /**
      * public register()
      */
-    public function register()
+    public function register($owl_id = FALSE)
     {
         // if a user is logged in redirect...
         if ($this->session->userdata('authed'))
@@ -93,6 +93,11 @@ class User extends CI_Controller {
             $owls                   = FALSE;
         }
         $page_data['owls']          = $owls;
+
+        $page_data['owl_id'] = FALSE;
+        if($owl_id != FALSE)
+            if(array_key_exists($owl_id, $owls)
+                $page_data['owl_id'] = $owl_id;
 
         // form validation rules
         $this->form_validation->set_rules('username', 'Username', 'required|trim|callback__valid_username');
