@@ -104,7 +104,7 @@ class Miowl_model extends CI_Model {
     /**
      * public get_owl_editor_members()
      */
-    public function get_owl_unverified_members($owl_id = FALSE)
+    public function get_owl_editor_members($owl_id = FALSE)
     {
         if (!$owl_id)
             return FALSE;
