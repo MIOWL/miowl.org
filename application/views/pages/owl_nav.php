@@ -15,8 +15,8 @@
 		</ul>
 		<li style="list-style-type: none">uploads</li>
 		<ul>
-			<li class="owl_nav_button"><a href="<?php print site_url('owl/uploads'); ?>">browse</a></li>
-			<li class="owl_nav_button"><a href="<?php print site_url('owl/uploads/upload'); ?>">upload</a></li>
+			<a href="<?php print site_url('owl/uploads'); ?>"><li class="owl_nav_button">browse</li></a>
+			<a href="<?php print site_url('owl/uploads/upload'); ?>"><li class="owl_nav_button">upload</li></a>
 			<li style="list-style-type: none">&nbsp;</li>
 		</ul>
 	</ul>
