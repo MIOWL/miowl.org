@@ -327,15 +327,12 @@ h3.info {
 	/* nothing here */
 }
 
-.owl_nav_button a, .owl_nav_button a:hover, .owl_nav_button a:active {
-	text-decoration: none;
-	color: #000;
-}
 .owl_nav_button {
 	list-style-type: none;
 	width: 60%;
 	margin: 2px -20px;
 	text-align: center;
+	display: block;
 
 	padding:5px 6px 5px 6px;
 	background: #fff;
