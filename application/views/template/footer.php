@@ -1,7 +1,6 @@
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds</p>
 </div>
 
-<?php /*
 <!-- ---------------------------------------------------------------------------------------------- -->
 <!-- -------------------------------------- JAVASCRRIPT HERE -------------------------------------- -->
 <!-- ---------------------------------------------------------------------------------------------- -->
@@ -12,6 +11,8 @@
 <script>
 	window.jQuery || document.write('<script src="<?php print site_url('/js/jquery.min.js'); ?>"><\/script>\n<script src="<?php print site_url('/js/jquery-ui.min.js'); ?>"><\/script>')
 </script>
+
+<!-- 3rd Party and Custom -->
 <script type="text/javascript" src="<?php print site_url('/js/miowl.js'); ?>"></script>
 <script type="text/javascript" src="<?php print site_url('/js/uni-form.jquery.min.js'); ?>"></script>
 <script type="text/javascript" src="<?php print site_url('/js/tips.js'); ?>"></script>
@@ -32,7 +33,6 @@
 </script>
 
 <!-- ---------------------------------------------------------------------------------------------- -->
-*/ ?>
 
 </body>
 </html>
