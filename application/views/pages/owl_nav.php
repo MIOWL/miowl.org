@@ -1,1 +1,19 @@
-this is the nav!
+	<ul>
+		<li>Members</li>
+		<ul>
+			<li>list</li>
+			<li>requests</li>
+			<li>invite</li>
+		</ul>
+		<li>catagories</li>
+		<ul>
+			<li>list</li>
+			<li>organize</li>
+			<li>create</li>
+		</ul>
+		<li>uploads</li>
+		<ul>
+			<li>upload</li>
+			<li>browse</li>
+		</ul>
+	</ul>
