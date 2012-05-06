@@ -2,7 +2,7 @@
 
 	<h1>
 		<center>
-			Owl Members
+			<?php print $page_title; ?>
 		</center>
 	</h1>
 
