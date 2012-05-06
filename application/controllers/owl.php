@@ -258,6 +258,7 @@ class Owl extends CI_Controller {
         $page_data                  = array();
         $page_data['page_title']    = "Owl Members";
         $page_data['members']       = $this->miowl_model->get_owl_members($this->session->userdata('owl'));
+        $page_data['admin']         = $this->miowl_model->get_owl_admin($this->session->userdata('owl'));
 
         // load the approp. page view
         $this->load->view('pages/owl_members', $page_data);
