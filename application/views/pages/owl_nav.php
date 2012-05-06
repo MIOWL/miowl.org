@@ -1,19 +1,19 @@
 	<ul>
-		<li>Members</li>
+		<li>members</li>
 		<ul>
-			<li>list</li>
-			<li>requests</li>
-			<li>invite</li>
+			<li><a href="<?php print site_url('owl/members'); ?>">list</a></li>
+			<li><a href="<?php print site_url('owl/requests'); ?>">requests</a></li>
+			<li><a href="<?php print site_url('owl/invite'); ?>">invite</a></li>
 		</ul>
 		<li>catagories</li>
 		<ul>
-			<li>list</li>
-			<li>organize</li>
-			<li>create</li>
+			<li><a href="<?php print site_url('owl/catagories'); ?>">list</a></li>
+			<li><a href="<?php print site_url('owl/catagories/organize'); ?>">organize</a></li>
+			<li><a href="<?php print site_url('owl/catagories/create'); ?>">create</a></li>
 		</ul>
 		<li>uploads</li>
 		<ul>
-			<li>upload</li>
-			<li>browse</li>
+			<li><a href="<?php print site_url('owl/uploads'); ?>">browse</a></li>
+			<li><a href="<?php print site_url('owl/uploads/upload'); ?>">upload</a></li>
 		</ul>
 	</ul>
