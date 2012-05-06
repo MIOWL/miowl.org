@@ -44,7 +44,7 @@ class Miowl_model extends CI_Model {
         //-------------------------------//
 
         $this->db->select('*');
-        $this->db->where('id', $query->row->owl_admin_uid);
+        $this->db->where('id', $query->row()->owl_admin_uid);
         $query = $this->db->get('owls');
 
         if ($query->num_rows() > 0)
