@@ -266,6 +266,54 @@ class Owl extends CI_Controller {
 
 
     /**
+     * member function _members_admin()
+     */
+    public function _members_admin()
+    {
+        // page data array
+        $page_data                  = array();
+        $page_data['page_title']    = "Owl Administrator Members";
+        $page_data['members']       = $this->miowl_model->get_owl_admin_members($this->session->userdata('owl'));
+
+        // load the approp. page view
+        $this->load->view('pages/owl_members', $page_data);
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * member function _members_editor()
+     */
+    public function _members_editor()
+    {
+        // page data array
+        $page_data                  = array();
+        $page_data['page_title']    = "Owl Editor Members";
+        $page_data['members']       = $this->miowl_model->get_owl_editor_members($this->session->userdata('owl'));
+
+        // load the approp. page view
+        $this->load->view('pages/owl_members', $page_data);
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * member function _members_user()
+     */
+    public function _members_user()
+    {
+        // page data array
+        $page_data                  = array();
+        $page_data['page_title']    = "Owl User Members";
+        $page_data['members']       = $this->miowl_model->get_owl_user_members($this->session->userdata('owl'));
+
+        // load the approp. page view
+        $this->load->view('pages/owl_members', $page_data);
+    }
+    //------------------------------------------------------------------
+
+
+    /**
      * member function _members_requests()
      */
     public function _members_requests()
