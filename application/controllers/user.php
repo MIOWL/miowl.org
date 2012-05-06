@@ -96,7 +96,7 @@ class User extends CI_Controller {
 
         $page_data['owl_id'] = FALSE;
         if($owl_id != FALSE)
-            if(array_key_exists($owl_id, $owls)
+            if(array_key_exists($owl_id, $owls))
                 $page_data['owl_id'] = $owl_id;
 
         // form validation rules
