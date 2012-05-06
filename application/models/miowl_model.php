@@ -113,7 +113,7 @@ class Miowl_model extends CI_Model {
         $this->db->where('user_owl_id', $owl_id);
         $this->db->where('user_owl_verified', 'true');
         $this->db->where('user_admin', 'true');
-        $this->db->where('user_editor', 'true');
+        $this->db->or_where('user_editor', 'true');
         $query = $this->db->get('users');
 
         if ($query->num_rows() > 0)
