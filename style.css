@@ -313,6 +313,9 @@ h3.info {
 | owl page styles
 |-----------------------
 */
+#owl_nav a {
+	color: rgb(255,0,0);
+}
 #owl_nav {
 	/* nothing here */
 }
