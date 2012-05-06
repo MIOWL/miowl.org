@@ -336,6 +336,8 @@ h3.info {
 .column.right { float: right; }
 .column.third { width: 32%; }
 .column.twothird { width: 66%; }
+.column.quarter { width: 22%; }
+.column.threequarter { width: 72%; }
 .column.half { width: 39%; }
 .clear {
     display: block;

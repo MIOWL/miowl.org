@@ -7,10 +7,10 @@
 	</h1>
 
     <div id="body">
-        <div id="owl_nav">
+        <div id="owl_nav" class="column left quarter">
             <?php $this->load->view('pages/owl_nav'); ?>
         </div>
-    	<div id="owl_body">
+        <div id="owl_body" class="column right threequarter">
             <table cellspacing="0" cellpadding="4" border="1" width="100%">
                 <thead>
                     <tr>
