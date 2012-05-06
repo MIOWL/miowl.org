@@ -160,6 +160,8 @@ class Owl_model extends CI_Model {
         else {
             $update_data = array(
                 'user_owl_id'       => $user_owl_id,
+                'user_admin'        => 'true',
+                'user_editor'       => 'true',
                 'user_owl_verified' => 'true'
             );
         }
