@@ -1,4 +1,4 @@
-	<ul style="list-style-type: none">
+	<ul>
 
 		<li>
 			members
