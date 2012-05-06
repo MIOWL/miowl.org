@@ -20,7 +20,7 @@
                         <th>Last Name</th>
                         <th>Registration Date</th>
                         <th>Admin</th>
-                        <th>Uploader</th>
+                        <th>Editor</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -46,7 +46,7 @@
                         </td>
                         <td>
                             <center>
-                            <?php if($this->session->userdata('uploader')) : ?>
+                            <?php if($this->session->userdata('editor')) : ?>
                                 <span style="color:#63b52e !important;" class="icon_font">.</span>
                             <?php else : ?>
                                 <span style="color:#FF0000 !important;" class="icon_font">'</span>
