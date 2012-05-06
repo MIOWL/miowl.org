@@ -313,63 +313,11 @@ h3.info {
 | owl page styles
 |-----------------------
 */
-#owl_nav {/*
-	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjU2JSIgc3RvcC1jb2xvcj0iIzI5YmJkOCIgc3RvcC1vcGFjaXR5PSIwLjU5Ii8+CiAgICA8c3RvcCBvZmZzZXQ9Ijk1JSIgc3RvcC1jb2xvcj0iIzI5ODlkOCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMCIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
-	background: -moz-linear-gradient(left,  rgba(255,255,255,0) 0%, rgba(41,187,216,0.59) 56%, rgba(41,137,216,1) 95%, rgba(255,255,255,0) 100%);
-	background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(255,255,255,0)), color-stop(56%,rgba(41,187,216,0.59)), color-stop(95%,rgba(41,137,216,1)), color-stop(100%,rgba(255,255,255,0)));
-	background: -webkit-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(41,187,216,0.59) 56%,rgba(41,137,216,1) 95%,rgba(255,255,255,0) 100%);
-	background: -o-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(41,187,216,0.59) 56%,rgba(41,137,216,1) 95%,rgba(255,255,255,0) 100%);
-	background: -ms-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(41,187,216,0.59) 56%,rgba(41,137,216,1) 95%,rgba(255,255,255,0) 100%);
-	background: linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(41,187,216,0.59) 56%,rgba(41,137,216,1) 95%,rgba(255,255,255,0) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#00ffffff',GradientType=1 );
-*/}
-#owl_body {
+#owl_nav {
 	/* nothing here */
 }
-
-#owl_nav ul {
-	list-style: none !important;
-}
-.owl_nav_button {
-	list-style-type: none;
-	width: 60%;
-	margin: 5px -20px;
-	text-align: center;
-	display: block;
-	text-decoration: none;
-
-	padding:5px 6px 5px 6px;
-	background: #fff;
-	cursor:pointer;
-	background-image: -webkit-gradient(
-		linear, left bottom, left top,
-		color-stop(1, #f5f5f5), color-stop(0.5, #ddd), color-stop(0.5, #eee), color-stop(0, #ccc) );
-	background-image: -moz-linear-gradient( center bottom, #f5f5f5 100%, #ddd 50%, #eee 50%, #ccc 0 );
-	border-bottom: #999 1px solid; border-right: #999 1px solid; text-shadow: 0 1px 0 #fff;
-	color: #333;
-	-webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px;
-}
-.owl_nav_button:hover {
-	background: #eee;
-	background-image: -webkit-gradient(
-		linear, left bottom, left top,
-		color-stop(1, #f5f5f5), color-stop(0.5, #ddd), color-stop(0.5, #eee), color-stop(0, #ccc) );
-	background-image: -moz-linear-gradient( center bottom, #f5f5f5 100%, #ddd 50%, #eee 50%, #ccc 0 );
-	border-bottom: #999 1px solid; border-right: #999 1px solid; text-shadow: 0 1px 0 #fff;
-	color: #30a9e7; -webkit-box-shadow: 0 0 10px #abe0f8; -moz-box-shadow: 0 0 10px #abe0f8; box-shadow: 0 0 10px #abe0f8;
-}
-.owl_nav_button:active {
-	background: #ccc;
-	background-image: -webkit-gradient(
-		linear, left bottom, left top,
-		color-stop(1, #288bbe), color-stop(0.5, #2d9ed8), color-stop(0.5, #2991c6), color-stop(0, #2ea2de) );
-	background-image: -moz-linear-gradient( center bottom, #288bbe 100%, #2d9ed8 50%, #2991c6 50%, #2ea2de 0 );
-	border-top: #666 1px solid;
-	border-left: #666 1px solid;
-	border-bottom: none;
-	border-right: none;
-	text-shadow: 0 -1px 0 #0a5a82;
-	color: #edf4f8;
+#owl_body {
+	/* nothing here */
 }
 
 /*
@@ -385,10 +333,5 @@ h3.info {
 .column.twothird { width: 66%; }
 .column.quarter { width: 24%; }
 .column.threequarter { width: 74%; }
-.clear {
-    display: block;
-    clear: both;
-    height: 0px !important;
-    width: 0px !important;
-}
+.clear {display: block; clear: both; height: 0px !important; width: 0px !important; }
 
