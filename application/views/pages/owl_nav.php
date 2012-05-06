@@ -5,9 +5,11 @@
 			<ul>
 				<li>
 					<a class="owl_nav_button" href="<?php print site_url('owl/members'); ?>">list</a>
-					<li><a class="owl_nav_button" href="<?php print site_url('owl/members/admin'); ?>">admins</a></li>
-					<li><a class="owl_nav_button" href="<?php print site_url('owl/members/editor'); ?>">editors</a></li>
-					<li><a class="owl_nav_button" href="<?php print site_url('owl/members/user'); ?>">users</a></li>
+					<ul>
+						<li><a class="owl_nav_button" href="<?php print site_url('owl/members/admin'); ?>">admins</a></li>
+						<li><a class="owl_nav_button" href="<?php print site_url('owl/members/editor'); ?>">editors</a></li>
+						<li><a class="owl_nav_button" href="<?php print site_url('owl/members/user'); ?>">users</a></li>
+					</ul>
 				</li>
 				<li><a class="owl_nav_button" href="<?php print site_url('owl/members/requests'); ?>">requests</a></li>
 				<li><a class="owl_nav_button" href="<?php print site_url('owl/members/invite'); ?>">invite</a></li>
