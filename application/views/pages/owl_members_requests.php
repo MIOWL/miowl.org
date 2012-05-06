@@ -54,6 +54,7 @@
                 </tbody>
             </table>
         </div>
+        <div class="clear">&nbsp;</div>
     </div>
 
 <?php $this->load->view('template/footer'); ?>

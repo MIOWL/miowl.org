@@ -331,9 +331,16 @@ h3.info {
 | column styles
 |-----------------------
 */
-.column { width: 49% }
-.column.left { float: left }
-.column.right { float: right }
-.column.third { width: 32% }
-.column.twothird { width: 66% }
+.column { width: 49%; }
+.column.left { float: left; }
+.column.right { float: right; }
+.column.third { width: 32%; }
+.column.twothird { width: 66%; }
 .column.half { width: 39%; }
+.clear {
+    display: block;
+    clear: both;
+    height: 0px !important;
+    width: 0px !important;
+}
+
