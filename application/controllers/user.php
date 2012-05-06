@@ -193,6 +193,7 @@ class User extends CI_Controller {
                                 'email'     => $user_query->row()->user_email,
                                 'owl'       => $user_query->row()->user_owl_id,
                                 'admin'     => $user_query->row()->user_admin === 'true' ? TRUE : FALSE,
+                                'uploader'  => $user_query->row()->user_uploader === 'true' ? TRUE : FALSE,
                                 'authed'    => TRUE,
                             );
 

@@ -7,52 +7,56 @@
 	</h1>
 
 	<div id="body">
-		<?php
+        <table cellspacing="0" cellpadding="4" border="1" width="100%">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Registration Date</th>
+                    <th>Admin</th>
+                    <th>Uploader</th>
+                </tr>
+            </thead>
+            <tbody>
 
-        $tmpl = array (
-                            'table_open'          => '<table width="100%" cellspacing="0" cellpadding="4" border="1">',
+<?php
+    if($members) :
+    foreach($members->result() as $row) :
+?>
+                <tr id="r-<?php print $row->id; ?>">
+                    <td><?php print $row->id; ?></td>
+                    <td><?php print $row->user_name; ?></td>
+                    <td><?php print $row->user_first_name; ?></td>
+                    <td><?php print $row->user_last_name; ?></td>
+                    <td><?php print date("H:i:s d/m/Y", $row->user_registration_date); ?></td>
+                    <td>
+                        <center>
+                        <?php if($this->session->userdata('admin')) : ?>
+                            <span style="color:#63b52e !important;" class="icon_font">.</span>
+                        <?php else : ?>
+                            <span style="color:#FF0000 !important;" class="icon_font">'</span>
+                        <?php endif; ?>
+                        </center>
+                    </td>
+                    <td>
+                        <center>
+                        <?php if($this->session->userdata('uploader')) : ?>
+                            <span style="color:#63b52e !important;" class="icon_font">.</span>
+                        <?php else : ?>
+                            <span style="color:#FF0000 !important;" class="icon_font">'</span>
+                        <?php endif; ?>
+                        </center>
+                    </td>
+                </tr>
+<?php
+    endforeach;
+    endif;
+?>
 
-                            'heading_row_start'   => '<tr>',
-                            'heading_row_end'     => '</tr>',
-                            'heading_cell_start'  => '<th>',
-                            'heading_cell_end'    => '</th>',
-
-                            'row_start'           => '<tr>',
-                            'row_end'             => '</tr>',
-                            'cell_start'          => '<td>',
-                            'cell_end'            => '</td>',
-
-                            'row_alt_start'       => '<tr>',
-                            'row_alt_end'         => '</tr>',
-                            'cell_alt_start'      => '<td>',
-                            'cell_alt_end'        => '</td>',
-
-                            'table_close'         => '</table>'
-                      );
-        $this->table->set_template($tmpl);
-        $this->table->set_heading('ID', 'Username', 'First Name', 'Last Name', 'Registration Date', 'Admin?', 'Uploader?');
-        $this->table->set_empty("N/A");
-
-        if($members)
-        {
-            foreach($members->result() as $row)
-            {
-                $registration_date = date("H:i:s d/m/Y", $row->user_registration_date);
-                $this->table->add_row(
-                    $row->id,
-                    $row->user_name,
-                    $row->user_first_name,
-                    $row->user_last_name,
-                    $registration_date,
-                    '<center><span class="icon_font">U</span></center>',
-                    '<center><span class="icon_font">U</span></center>'
-                );
-            }
-        }
-
-		print $this->table->generate();
-
-		?>
+            </tbody>
+        </table>
 	</div>
 
 <?php $this->load->view('template/footer'); ?>
