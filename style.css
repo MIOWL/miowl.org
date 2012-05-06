@@ -313,18 +313,16 @@ h3.info {
 | owl page styles
 |-----------------------
 */
-/*#owl_nav {
-	float: left;
-	padding: 0px;
-	width: 200px;
-	display: block;
+#owl_nav {
+	background-image: -webkit-linear-gradient(#b33630, #dc5f59);
+	background-image: -moz-linear-gradient(#b33630, #dc5f59);
+	background-image: -o-linear-gradient(#b33630, #dc5f59);
+	background-image: -ms-linear-gradient(#b33630, #dc5f59);
+	background-image: linear-gradient(#b33630, #dc5f59);
 }
 #owl_body {
-	float: right;
-	padding: 0px;
-	width: 700px;
-	display: block;
-}*/
+	/* nothing here */
+}
 
 /*
 |-----------------------
