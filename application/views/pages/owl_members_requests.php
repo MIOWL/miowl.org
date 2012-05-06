@@ -2,7 +2,7 @@
 
 	<h1>
 		<center>
-			Owl Members
+			Owl Member Requests
 		</center>
 	</h1>
 
