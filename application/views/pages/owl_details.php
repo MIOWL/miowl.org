@@ -11,8 +11,26 @@
             <?php $this->load->view('pages/owl_nav'); ?>
         </div>
         <div id="owl_body" class="column right threequarter">
-            THIS IS THE DETAILS PAGE!!!<br>
-            (as you can see its not finished...)
+
+            <div class="column left quarter">
+                <div id="owl_name">
+                    <?php print $details->row()->owl_name; ?>
+                </div>
+                <div id="owl_address">
+                    <?php print $details->row()->owl_address; ?>
+                    <br />
+                    <?php print $details->row()->owl_city; ?>
+                    <br />
+                    <?php print $details->row()->owl_province; ?>
+                    <br />
+                    <?php print $details->row()->owl_post_code; ?>
+                </div>
+            </div>
+            <div class="column right threequarter">
+                <div id="map_canvas">Loading Map...</div>
+            </div>
+            <div class="clear">&nbsp;</div>
+
         </div>
         <div class="clear">&nbsp;</div>
     </div>

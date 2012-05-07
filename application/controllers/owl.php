@@ -70,7 +70,7 @@ class Owl extends CI_Controller {
         // page data array
         $page_data                  = array();
         $page_data['page_title']    = "Owl Details";
-        #$page_data['details']       = $this->miowl_model->get_owl_details($this->session->userdata('owl'));
+        $page_data['details']       = $this->owl_model->get_owl_by_id($this->session->userdata('owl'));
 
         // load the approp. page view
         $this->load->view('pages/owl_details', $page_data);
@@ -372,7 +372,7 @@ class Owl extends CI_Controller {
         // page data array
         $page_data                  = array();
         $page_data['page_title']    = "Owl Member Invite";
-        $page_data['owl_info']       = $this->owl_model->get_owl_by_id($this->session->userdata('owl'));
+        $page_data['owl_info']      = $this->owl_model->get_owl_by_id($this->session->userdata('owl'));
 
         // load the approp. page view
         $this->load->view('pages/owl_members_invite', $page_data);
