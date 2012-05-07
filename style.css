@@ -317,7 +317,7 @@ h3.info {
 	color: rgb(255,0,0);
 }
 #owl_nav {
-	/* nothing here */
+	background: url(images/sidebar-short-left.png) no-repeat scroll 0 0 #FFFFFF;
 }
 #owl_body {
 	padding: 20px 0;
