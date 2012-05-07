@@ -17,13 +17,7 @@
                     <h2><?php print $details->row()->owl_name; ?></h2>
                 </div>
                 <div id="owl_address">
-                    <?php print $details->row()->owl_address; ?>
-                    <br />
-                    <?php print $details->row()->owl_city; ?>
-                    <br />
-                    <?php print $details->row()->owl_province; ?>
-                    <br />
-                    <?php print $details->row()->owl_post_code; ?>
+                    <?php print $address; ?>
                 </div>
             </div>
             <div class="column right threequarter">

@@ -67,12 +67,19 @@ class Owl extends CI_Controller {
         if (!$this->login_check('owl'))
             return;
 
+        $details = $this->owl_model->get_owl_by_id($this->session->userdata('owl'));
+        $address = $details->row()->owl_address . "\n" . 
+                   $details->row()->owl_city . "\n" . 
+                   $details->row()->owl_province . "\n" . 
+                   $details->row()->owl_post_code;
+
         // page data array
         $page_data                  = array();
         $page_data['page_title']    = "Owl Details";
-        $page_data['details']       = $this->owl_model->get_owl_by_id($this->session->userdata('owl'));
+        $page_data['details']       = $details;
         $page_data['google_maps']   = TRUE;
-        $page_data['location']      = array('-34.397', '150.644');
+        $page_data['address']       = str_replace("\n", '<br>', $address);
+        $page_data['location']      = $this->get_coordinates(str_replace("\n", ' ', $address));
 
         // load the approp. page view
         $this->load->view('pages/owl_details', $page_data);

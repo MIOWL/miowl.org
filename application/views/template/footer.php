@@ -26,16 +26,16 @@
 </script>
 <script type="text/javascript">
     $(document).ready(function() {
-        function generate_map(location1, location2) {
+        function generate_map(status, accuracy, location1, location2) {
             var myOptions = {
                 center: new google.maps.LatLng(location1, location2),
-                zoom: 8,
+                zoom: 17,
                 mapTypeId: google.maps.MapTypeId.HYBRID
             };
             var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
         };
 
-        generate_map($location['1'], $location['2']);
+        generate_map(<?php print $location; ?>);
     });
 </script>
 <?php endif; ?>
