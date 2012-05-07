@@ -9,7 +9,7 @@
     <meta name="language" content="en" />
 
     <!-- Title -->
-    <title>PixlDrop (Drop off &amp; Pick up)</title>
+    <title>MiOWL (Something else here!)</title>
 
     <!-- Icon -->
     <link rel="Shortcut Icon" href="<?php print site_url('favicon.ico'); ?>" type="image/x-icon" />
@@ -26,7 +26,6 @@
     <script type="text/javascript" src="<?php print site_url('/js/uni-form.jquery.min.js'); ?>"></script>
     <script type="text/javascript" src="<?php print site_url('/js/tips.js'); ?>"></script>
     <script type="text/javascript" src="<?php print site_url('/js/jquery.countdown.js'); ?>"></script>
-    <?php if(isset($owl_selection) && $owl_selection) : ?><script type="text/javascript" src="<?php print site_url('/js/owl_selection.js'); ?>"></script><?php endif; ?>
 
 </head>
 <body style="background:none repeat scroll 0 0 #F2F2F2;">
