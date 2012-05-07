@@ -79,7 +79,7 @@ class Owl extends CI_Controller {
         $page_data['details']       = $details;
         $page_data['google_maps']   = TRUE;
         $page_data['address']       = str_replace("\n", '<br>', $address);
-        $page_data['location']      = $this->get_coordinates(str_replace("\n", ' ', $address));
+        $page_data['location']      = $this->get_coordinates(str_replace("\n", ',', $address));
 
         // load the approp. page view
         $this->load->view('pages/owl_details', $page_data);
@@ -674,5 +674,36 @@ class Owl extends CI_Controller {
         return $randomString;
     }
     //------------------------------------------------------------------
+
+
+    /**
+     * private get_coordinates()
+     */
+    private function get_coordinates($address = FALSE)
+    {
+        if (!$address)
+            return FALSE;
+
+        $url = 'https://maps.google.com/maps/geo?q=';
+        $url .= urlencode($address);
+        $url .= '&output=csv&oe=utf8&sensor=false';
+
+        $ch = curl_init();
+        $timeout = 600;
+        curl_setopt($ch, CURLOPT_URL,               $url);
+        curl_setopt($ch, CURLOPT_USERAGENT,         $useragent);
+        curl_setopt($ch, CURLOPT_TIMEOUT,           $timeout);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT,    $timeout);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER,    TRUE);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER,    FALSE);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST,    FALSE);
+
+        $data = curl_exec($ch);
+        curl_close($ch);
+
+        return $data;
+    }
+    //------------------------------------------------------------------
+
 
 }
