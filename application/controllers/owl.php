@@ -61,10 +61,20 @@ class Owl extends CI_Controller {
     /**
      * public index()
      */
-    #public function index()
-    #{
-    #    #$this->login_check('', TRUE);
-    #}
+    public function index()
+    {
+        // Do we need to login??
+        if (!$this->login_check('owl'))
+            return;
+
+        // page data array
+        $page_data                  = array();
+        $page_data['page_title']    = "Owl Details";
+        #$page_data['details']       = $this->miowl_model->get_owl_details($this->session->userdata('owl'));
+
+        // load the approp. page view
+        $this->load->view('misc/owl_details', $page_data);
+    }
     //------------------------------------------------------------------
 
 

@@ -1,6 +1,15 @@
 	<ul>
 
 		<li>
+			MiOwl
+			<ul>
+				<li><a class="owl_nav_button" href="<?php print site_url('owl'); ?>">details</a></li>
+				<li><a class="owl_nav_button" href="<?php print site_url('owl/edit_details'); ?>">edit details</a></li>
+				<li style="list-style-type: none">&nbsp;</li>
+			</ul>
+		</li>
+
+		<li>
 			members
 			<ul>
 				<li>
