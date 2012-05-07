@@ -35,7 +35,7 @@
             var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
         };
 
-        generate_map(-34.397, 150.644);
+        generate_map($location['1'], $location['2']);
     });
 </script>
 <?php endif; ?>
