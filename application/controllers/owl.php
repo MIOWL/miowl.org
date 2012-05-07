@@ -71,6 +71,7 @@ class Owl extends CI_Controller {
         $page_data                  = array();
         $page_data['page_title']    = "Owl Details";
         $page_data['details']       = $this->owl_model->get_owl_by_id($this->session->userdata('owl'));
+        $page_data['google_maps']   = TRUE;
 
         // load the approp. page view
         $this->load->view('pages/owl_details', $page_data);

@@ -19,6 +19,27 @@
 <script type="text/javascript" src="<?php print site_url('/js/jquery.countdown.js'); ?>"></script>
 <?php if(isset($owl_selection) && $owl_selection) : ?><script type="text/javascript" src="<?php print site_url('/js/owl_selection.js'); ?>"></script><?php endif; ?>
 
+<?php if(isset($google_maps) && $google_maps) : ?>
+<!-- Google Maps -->
+<script type="text/javascript"
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwyacbEev3PdXvfNuAJZCrLy3StRXsKLI&sensor=false">
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        function generate_map(location1, location2) {
+            var myOptions = {
+                center: new google.maps.LatLng(location1, location2),
+                zoom: 8,
+                mapTypeId: google.maps.MapTypeId.HYBRID
+            };
+            var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+        };
+
+        generate_map(-34.397, 150.644);
+    });
+</script>
+<?php endif; ?>
+
 <!-- Google Analytics -->
 <script type="text/javascript">
   var _gaq = _gaq || [];
