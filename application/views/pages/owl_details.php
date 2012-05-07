@@ -12,7 +12,7 @@
         </div>
         <div id="owl_body" class="column right threequarter">
 
-            <div class="column left quarter">
+            <div class="column left third">
                 <div id="owl_name">
                     <h2><?php print $details->row()->owl_name; ?></h2>
                 </div>
@@ -20,7 +20,7 @@
                     <?php print $address; ?>
                 </div>
             </div>
-            <div class="column right threequarter">
+            <div class="column right twothird">
                 <div id="map_canvas">Loading Map...</div>
             </div>
             <div class="clear">&nbsp;</div>
