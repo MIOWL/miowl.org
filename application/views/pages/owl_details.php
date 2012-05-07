@@ -31,7 +31,7 @@
                   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwyacbEev3PdXvfNuAJZCrLy3StRXsKLI&sensor=false">
                 </script>
                 <script type="text/javascript">
-                    $(function() {
+                    $(document).ready(function() {
                         function generate_map(location1, location2) {
                             var myOptions = {
                                 center: new google.maps.LatLng(location1, location2),
