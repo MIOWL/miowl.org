@@ -22,7 +22,8 @@
 <?php if(isset($google_maps) && $google_maps) : ?>
 <!-- Google Maps -->
 <script type="text/javascript"
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgqrFeyh5GFQ08jcQ0PSDxhyeN2ciKzB0&sensor=false">
+  <?php $api_key = 'AIzaSyDgqrFeyh5GFQ08jcQ0PSDxhyeN2ciKzB0'; ?>
+  src="https://maps.googleapis.com/maps/api/js?key=<?php print $api_key; ?>&sensor=false">
 </script>
 <script type="text/javascript">
     $(document).ready(function() {
