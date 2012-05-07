@@ -18,11 +18,11 @@
 		</li>
 
 		<li>
-			catagories
+			categories
 			<ul>
-				<li><a class="owl_nav_button" href="<?php print site_url('owl/catagories'); ?>">list</a></li>
-				<li><a class="owl_nav_button" href="<?php print site_url('owl/catagories/organize'); ?>">organize</a></li>
-				<li><a class="owl_nav_button" href="<?php print site_url('owl/catagories/create'); ?>">create</a></li>
+				<li><a class="owl_nav_button" href="<?php print site_url('owl/categories'); ?>">list</a></li>
+				<li><a class="owl_nav_button" href="<?php print site_url('owl/categories/organize'); ?>">organize</a></li>
+				<li><a class="owl_nav_button" href="<?php print site_url('owl/categories/create'); ?>">create</a></li>
 				<li style="list-style-type: none">&nbsp;</li>
 			</ul>
 		</li>

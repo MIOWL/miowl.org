@@ -223,6 +223,11 @@ class Owl extends CI_Controller {
     //------------------------------------------------------------------
 
 
+    //=================================================================================
+    // :members view
+    //=================================================================================
+
+
     /**
      * public members()
      */
@@ -245,7 +250,7 @@ class Owl extends CI_Controller {
 
 
     //=================================================================================
-    // :member view functions
+    // :members view functions
     //=================================================================================
 
 
@@ -361,6 +366,85 @@ class Owl extends CI_Controller {
 
         // load the approp. page view
         $this->load->view('pages/owl_members_invite', $page_data);
+    }
+    //------------------------------------------------------------------
+
+
+    //=================================================================================
+    // :categories view
+    //=================================================================================
+
+
+    /**
+     * public categories()
+     */
+    public function categories($function = FALSE, $params = NULL)
+    {
+        // Do we need to login??
+        if (!$this->login_check('owl-categories-' . $function))
+            return;
+
+        if (!$function)
+            $function = 'list';
+
+        if (method_exists($this, '_categories_' . $function))
+            return call_user_func(array($this, '_categories_' . $function), $params);
+
+        else
+            show_404();
+    }
+    //------------------------------------------------------------------
+
+
+    //=================================================================================
+    // :categories view functions
+    //=================================================================================
+
+
+    /**
+     * categories function _categories_list()
+     */
+    public function _categories_list()
+    {
+        // page data array
+        $page_data                  = array();
+        $page_data['page_title']    = "All Owl File Categories";
+        #$page_data['categories']    = $this->miowl_model->get_owl_members($this->session->userdata('owl'));
+
+        // load the approp. page view
+        $this->load->view('pages/owl_categories', $page_data);
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * member function _categories_organize()
+     */
+    public function _categories_organize()
+    {
+        // page data array
+        $page_data                  = array();
+        $page_data['page_title']    = "Organize Owl File Categories";
+        #$page_data['categories']    = $this->miowl_model->get_owl_admin_members($this->session->userdata('owl'));
+
+        // load the approp. page view
+        $this->load->view('pages/owl_categories_organize', $page_data);
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * member function _categories_create()
+     */
+    public function _categories_create()
+    {
+        // page data array
+        $page_data                  = array();
+        $page_data['page_title']    = "Create New Owl File Category";
+        #$page_data['categories']    = $this->miowl_model->get_owl_editor_members($this->session->userdata('owl'));
+
+        // load the approp. page view
+        $this->load->view('pages/owl_categories_create', $page_data);
     }
     //------------------------------------------------------------------
 
