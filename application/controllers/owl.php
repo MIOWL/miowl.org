@@ -349,6 +349,22 @@ class Owl extends CI_Controller {
     //------------------------------------------------------------------
 
 
+    /**
+     * member function _members_invite()
+     */
+    public function _members_invite()
+    {
+        // page data array
+        $page_data                  = array();
+        $page_data['page_title']    = "Owl Member Invite";
+        $page_data['owl_info']       = $this->owl_model->get_owl_by_id($this->session->userdata('owl'));
+
+        // load the approp. page view
+        $this->load->view('pages/owl_members_invite', $page_data);
+    }
+    //------------------------------------------------------------------
+
+
     //=================================================================================
     // :custom callbacks
     //=================================================================================
