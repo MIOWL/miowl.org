@@ -15,7 +15,7 @@
             (as you can see its not finished...)
             <br>
             <br>
-            <pre><?php print var_dump($owl_info); ?></pre>
+            <pre><?php print var_dump($owl_info->result()); ?></pre>
         </div>
         <div class="clear">&nbsp;</div>
     </div>
