@@ -338,3 +338,11 @@ h3.info {
 .column.threequarter { width: 74%; }
 .clear {display: block; clear: both; height: 0px !important; width: 0px !important; }
 
+/*
+|-----------------------
+| google map styles
+|-----------------------
+*/
+#map_canvas {
+	height: 300px;
+}
