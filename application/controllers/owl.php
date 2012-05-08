@@ -88,6 +88,28 @@ class Owl extends CI_Controller {
 
 
     /**
+     * public edit_details()
+     */
+    public function edit_details()
+    {
+        // Do we need to login??
+        if (!$this->login_check('owl-edit_details'))
+            return;
+
+        $details = $this->owl_model->get_owl_by_id($this->session->userdata('owl'));
+
+        // page data array
+        $page_data                  = array();
+        $page_data['page_title']    = "[EDIT] Owl Details";
+        $page_data['details']       = $details;
+
+        // load the approp. page view
+        $this->load->view('pages/owl_details_edit', $page_data);
+    }
+    //------------------------------------------------------------------
+
+
+    /**
      * public create()
      */
     public function create()
