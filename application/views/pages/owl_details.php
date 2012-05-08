@@ -19,6 +19,14 @@
                 <div id="owl_address">
                     <?php print $address; ?>
                 </div>
+                <div id="owl_tel">
+                    <h3><span id="tel" class="icon_font">d</span> Telephone Number</h3>
+                    <?php print $details->row()->owl_tel; ?>
+                </div>
+                <div id="owl_website">
+                    <h3><span id="www" class="icon_font">@</span> Homepage</h3>
+                    <?php print $details->row()->owl_site; ?>
+                </div>
             </div>
             <div class="column right twothird">
                 <div id="map_canvas">Loading Map...</div>

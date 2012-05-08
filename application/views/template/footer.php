@@ -39,6 +39,17 @@
         generate_map(<?php print $location; ?>);
     });
 </script>
+<script type="text/javascript">
+    var chatSymbols = ['d', 'e'],
+        chatRate = 300,
+        chatIndex = 0,
+        chat = function() {
+                document.getElementById('tel').innerHTML = chatSymbols[chatIndex];
+                chatIndex = chatIndex < chatSymbols.length - 1 ? chatIndex + 1 : 0;
+                setTimeout(chat, chatRate);
+            };
+    chat();
+</script>
 <?php endif; ?>
 
 <!-- Google Analytics -->
