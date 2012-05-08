@@ -13,27 +13,37 @@
         <div id="owl_body" class="column right threequarter">
 
             <div class="column left third">
+
                 <div id="owl_name">
                     <h2><?php print $details->row()->owl_name; ?></h2>
                 </div>
-                <div id="owl_address">
+
+                <div id="owl_address" style="padding-left: 13px; margin-top: -13px;">
                     <?php print $address; ?>
                 </div>
+
                 <div id="owl_tel">
                     <h3>
                         Telephone Number
                         <span style="vertical-align: super; color: lightBlue ! important; text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.8);" id="tel" class="icon_font">d</span>
                     </h3>
-                    <?php print $details->row()->owl_tel == '0' ? 'N/A' : $details->row()->owl_tel; ?>
+                    <span style="padding-left: 13px; margin-top: -13px;">
+                        <?php print $details->row()->owl_tel == '0' ? 'N/A' : $details->row()->owl_tel; ?>
+                    </span>
                 </div>
+
                 <br>
+
                 <div id="owl_website">
                     <h3>
                         <span id="www" class="icon_font">K</span>
                         Homepage
                     </h3>
-                    <?php print $details->row()->owl_site == NULL ? 'N/A' : '<a href="' . $details->row()->owl_site . '" title="Owl Homepage" target="_BLANK">' . $details->row()->owl_site . '</a>'; ?>
+                    <span style="padding-left: 13px; margin-top: -13px;">
+                        <?php print $details->row()->owl_site == NULL ? 'N/A' : '<a href="' . $details->row()->owl_site . '" title="Owl Homepage" target="_BLANK">' . $details->row()->owl_site . '</a>'; ?>
+                    </span>
                 </div>
+
             </div>
             <div class="column right twothird">
                 <div id="map_canvas">Loading Map...</div>
