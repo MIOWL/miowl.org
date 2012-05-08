@@ -29,7 +29,7 @@
                 <br>
                 <div id="owl_website">
                     <h3>
-                        <span id="www" class="icon_font">@</span>
+                        <span id="www" class="icon_font">K</span>
                         Homepage
                     </h3>
                     <?php print $details->row()->owl_site == NULL ? 'N/A' : '<a href="' . $details->row()->owl_site . '" title="Owl Homepage" target="_BLANK">' . $details->row()->owl_site . '</a>'; ?>
