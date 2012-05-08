@@ -666,9 +666,9 @@ class Owl extends CI_Controller {
     /**
      * callback _is_this_unique()
      */
-    public function _is_this_unique($value, $owl_id)
+    public function _is_this_unique($value = FALSE, $owl_id)
     {
-        if (!$value)
+        if (!$value || $value == NULL)
         {
             #$this->form_validation->set_message('_is_this_unique', '%s is empty!');
             return FALSE;
