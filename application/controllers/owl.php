@@ -98,14 +98,72 @@ class Owl extends CI_Controller {
 
         $details = $this->owl_model->get_owl_by_id($this->session->userdata('owl'));
 
+        // form validation rules
+        $this->form_validation->set_rules('name', 'Organization Name', 'required|trim|is_unique[owls.owl_name]');
+        $this->form_validation->set_rules('acronym', 'Organization Acronym', 'required|trim|alpha_numeric|is_unique[owls.owl_name_short]');
+        $this->form_validation->set_rules('type', 'Owl Type', 'callback__valid_choice');
+        $this->form_validation->set_rules('address', 'Organization Address', 'required|trim');
+        $this->form_validation->set_rules('province', 'Province', 'callback__valid_choice');
+        $this->form_validation->set_rules('city', 'City', 'required|trim');
+        $this->form_validation->set_rules('zip', 'Postal Code', 'required|trim|alpha_numeric');
+        $this->form_validation->set_rules('tel', 'Phone Number', 'trim|numeric|is_unique[owls.owl_tel]');
+        $this->form_validation->set_rules('site', 'Website', 'trim|prep_url|callback__valid_url|is_unique[owls.owl_site]');
+        $this->form_validation->set_rules('email', 'Administrator Email', 'required|trim|valid_email|is_unique[owls.owl_email]');
+
         // page data array
         $page_data                  = array();
         $page_data['page_title']    = "[EDIT] Owl Details";
         $page_data['details']       = $details;
         $page_data['province']      = $this->province_list;
 
-        // load the approp. page view
-        $this->load->view('pages/owl_details_edit', $page_data);
+        if (!$this->form_validation->run())
+        {
+            // load the approp. page view
+            $this->load->view('pages/owl_details_edit', $page_data);
+        }
+        else
+        {
+            $name = $this->session->userdata('name') . ' (' . $this->session->userdata('username') . ')';
+
+            if(!$this->input->post('new_owl'))                          // Existing Owl
+            {
+                $owl_info = $this->owl_model->get_owl_by_id($this->input->post('owl'));
+                $this->owl_model->choose_owl($this->session->userdata('user_id'), $this->input->post('owl'));
+                $this->owlmail->send_chosen($name, $owl_info->row()->owl_name, $this->session->userdata('email'));
+                $this->owlmail->inform_admin($name, $owl_info->row()->owl_email);
+
+                $page_data['success']     = TRUE;
+                $page_data['msg']        = "Successfully chosen you're owl. Please check your email to finish the registration process.";
+                $page_data['redirect']    = '';
+                $this->load->view('messages/message_page', $page_data);
+           }
+            else                                                        // New Owl
+            {
+                $authcode = $this->_genActCode();
+
+                $owl_id = $this->owl_model->add_owl(
+                                $this->input->post('name'),
+                                $this->input->post('acronym'),
+                                $this->input->post('type'),
+                                $this->input->post('address'),
+                                $this->input->post('province'),
+                                $this->input->post('city'),
+                                $this->input->post('zip'),
+                                $this->input->post('tel'),
+                                $this->input->post('site'),
+                                $this->session->userdata('user_id'),
+                                $this->input->post('email'),
+                                $authcode
+                            );
+                $this->owl_model->choose_owl($this->session->userdata('user_id'), $owl_id, TRUE);
+                $this->owlmail->send_activation($name, $this->input->post('email'), $authcode);
+
+                $page_data['success']     = TRUE;
+                $page_data['msg']         = "Successfully updated you're owl.<br>If you updated your admin email please check your email to finish the update process.";
+                $page_data['redirect']    = 'miowl/owl';
+                $this->load->view('messages/message_page', $page_data);
+            }
+        }
     }
     //------------------------------------------------------------------
 
