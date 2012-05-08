@@ -20,12 +20,19 @@
                     <?php print $address; ?>
                 </div>
                 <div id="owl_tel">
-                    <h3><span id="tel" class="icon_font">d</span> Telephone Number</h3>
-                    <?php print $details->row()->owl_tel; ?>
+                    <h3>
+                        Telephone Number
+                        <span style="vertical-align: super; color: lightBlue ! important;" id="tel" class="icon_font">d</span>
+                    </h3>
+                    <?php print $details->row()->owl_tel === 0 ? 'N/A' : $details->row()->owl_tel; ?>
                 </div>
+                <br>
                 <div id="owl_website">
-                    <h3><span id="www" class="icon_font">@</span> Homepage</h3>
-                    <?php print $details->row()->owl_site; ?>
+                    <h3>
+                        <span id="www" class="icon_font">@</span>
+                        Homepage
+                    </h3>
+                    <?php print $details->row()->owl_site == NULL ? 'N/A' : '<a href="' . $details->row()->owl_site . '" title="Owl Homepage" target="_BLANK">' . $details->row()->owl_site . '</a>'; ?>
                 </div>
             </div>
             <div class="column right twothird">
