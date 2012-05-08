@@ -24,7 +24,7 @@
                         Telephone Number
                         <span style="vertical-align: super; color: lightBlue ! important;" id="tel" class="icon_font">d</span>
                     </h3>
-                    <?php print $details->row()->owl_tel === 0 ? 'N/A' : $details->row()->owl_tel; ?>
+                    <?php print $details->row()->owl_tel == '0' ? 'N/A' : $details->row()->owl_tel; ?>
                 </div>
                 <br>
                 <div id="owl_website">
