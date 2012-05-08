@@ -100,16 +100,16 @@ class Owl extends CI_Controller {
         $owl_id     = $this->session->userdata('owl');
 
         // form validation rules
-        $this->form_validation->set_rules('name', 'Organization Name', "required|trim|callback__is_unique[name,{$owl_id}]");
-        $this->form_validation->set_rules('acronym', 'Organization Acronym', "required|trim|alpha_numeric|callback__is_unique[acronym,{$owl_id}]");
+        $this->form_validation->set_rules('name', 'Organization Name', "required|trim|callback__is_this_unique[name,{$owl_id}]");
+        $this->form_validation->set_rules('acronym', 'Organization Acronym', "required|trim|alpha_numeric|callback__is_this_unique[acronym,{$owl_id}]");
         $this->form_validation->set_rules('type', 'Owl Type', 'callback__valid_choice');
         $this->form_validation->set_rules('address', 'Organization Address', 'required|trim');
         $this->form_validation->set_rules('province', 'Province', 'callback__valid_choice');
         $this->form_validation->set_rules('city', 'City', 'required|trim');
         $this->form_validation->set_rules('zip', 'Postal Code', 'required|trim|alpha_numeric');
-        $this->form_validation->set_rules('tel', 'Phone Number', "trim|numeric|callback__is_unique[tel,{$owl_id}]");
-        $this->form_validation->set_rules('site', 'Website', "trim|prep_url|callback__valid_url|callback__is_unique[site,{$owl_id}]");
-        $this->form_validation->set_rules('email', 'Administrator Email', "required|trim|valid_email|callback__is_unique[name,{$owl_id}]");
+        $this->form_validation->set_rules('tel', 'Phone Number', "trim|numeric|callback__is_this_unique[tel,{$owl_id}]");
+        $this->form_validation->set_rules('site', 'Website', "trim|prep_url|callback__valid_url|callback__is_this_unique[site,{$owl_id}]");
+        $this->form_validation->set_rules('email', 'Administrator Email', "required|trim|valid_email|callback__is_this_unique[name,{$owl_id}]");
 
         // page data array
         $page_data                  = array();
@@ -664,9 +664,9 @@ class Owl extends CI_Controller {
 
 
     /**
-     * callback _is_unique()
+     * callback _is_this_unique()
      */
-    public function _is_unique($value, $params)
+    public function _is_this_unique($value, $params)
     {
         list($name, $owl_id) = explode(',', $params);
 
