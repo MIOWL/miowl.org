@@ -14,10 +14,7 @@
 
             <form action="" class="uniForm" method="post">
 
-                <?php
-                    if($this->input->post('new_owl'))
-                        $this->load->view('messages/message_inline');
-                ?>
+                <?php $this->load->view('messages/message_inline'); ?>
 
                 <fieldset class="inlineLabels">
                     <div class="ctrlHolder">
