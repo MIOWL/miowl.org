@@ -22,7 +22,7 @@
                 <div id="owl_tel">
                     <h3>
                         Telephone Number
-                        <span style="vertical-align: super; color: lightBlue ! important;" id="tel" class="icon_font">d</span>
+                        <span style="vertical-align: super; color: lightBlue ! important; text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.8);" id="tel" class="icon_font">d</span>
                     </h3>
                     <?php print $details->row()->owl_tel == '0' ? 'N/A' : $details->row()->owl_tel; ?>
                 </div>
