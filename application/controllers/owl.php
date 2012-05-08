@@ -670,7 +670,7 @@ class Owl extends CI_Controller {
     {
         if (!$value)
         {
-            #$this->form_validation->set_message('_is_this_unique', '%s is empty!');
+            $this->form_validation->set_message('_is_this_unique', '%s is empty!');
             return FALSE;
         }
 
