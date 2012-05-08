@@ -96,19 +96,20 @@ class Owl extends CI_Controller {
         if (!$this->login_check('owl-edit_details'))
             return;
 
-        $details = $this->owl_model->get_owl_by_id($this->session->userdata('owl'));
+        $details    = $this->owl_model->get_owl_by_id($this->session->userdata('owl'));
+        $owl_id     = $this->session->userdata('owl');
 
         // form validation rules
-        $this->form_validation->set_rules('name', 'Organization Name', 'required|trim|is_unique[owls.owl_name]');
-        $this->form_validation->set_rules('acronym', 'Organization Acronym', 'required|trim|alpha_numeric|is_unique[owls.owl_name_short]');
+        $this->form_validation->set_rules('name', 'Organization Name', "required|trim|callback__is_unique[name,{$owl_id}]");
+        $this->form_validation->set_rules('acronym', 'Organization Acronym', "required|trim|alpha_numeric|callback__is_unique[acronym,{$owl_id}]");
         $this->form_validation->set_rules('type', 'Owl Type', 'callback__valid_choice');
         $this->form_validation->set_rules('address', 'Organization Address', 'required|trim');
         $this->form_validation->set_rules('province', 'Province', 'callback__valid_choice');
         $this->form_validation->set_rules('city', 'City', 'required|trim');
         $this->form_validation->set_rules('zip', 'Postal Code', 'required|trim|alpha_numeric');
-        $this->form_validation->set_rules('tel', 'Phone Number', 'trim|numeric|is_unique[owls.owl_tel]');
-        $this->form_validation->set_rules('site', 'Website', 'trim|prep_url|callback__valid_url|is_unique[owls.owl_site]');
-        $this->form_validation->set_rules('email', 'Administrator Email', 'required|trim|valid_email|is_unique[owls.owl_email]');
+        $this->form_validation->set_rules('tel', 'Phone Number', "trim|numeric|callback__is_unique[tel,{$owl_id}]");
+        $this->form_validation->set_rules('site', 'Website', "trim|prep_url|callback__valid_url|callback__is_unique[site,{$owl_id}]");
+        $this->form_validation->set_rules('email', 'Administrator Email', "required|trim|valid_email|callback__is_unique[name,{$owl_id}]");
 
         // page data array
         $page_data                  = array();
@@ -125,44 +126,36 @@ class Owl extends CI_Controller {
         {
             $name = $this->session->userdata('name') . ' (' . $this->session->userdata('username') . ')';
 
-            if(!$this->input->post('new_owl'))                          // Existing Owl
-            {
-                $owl_info = $this->owl_model->get_owl_by_id($this->input->post('owl'));
-                $this->owl_model->choose_owl($this->session->userdata('user_id'), $this->input->post('owl'));
-                $this->owlmail->send_chosen($name, $owl_info->row()->owl_name, $this->session->userdata('email'));
-                $this->owlmail->inform_admin($name, $owl_info->row()->owl_email);
+            /*
+            $authcode = $this->_genActCode();
 
-                $page_data['success']     = TRUE;
-                $page_data['msg']        = "Successfully chosen you're owl. Please check your email to finish the registration process.";
-                $page_data['redirect']    = '';
-                $this->load->view('messages/message_page', $page_data);
-           }
-            else                                                        // New Owl
-            {
-                $authcode = $this->_genActCode();
+            $owl_id = $this->owl_model->update_owl(
+                            $this->input->post('name'),
+                            $this->input->post('acronym'),
+                            $this->input->post('type'),
+                            $this->input->post('address'),
+                            $this->input->post('province'),
+                            $this->input->post('city'),
+                            $this->input->post('zip'),
+                            $this->input->post('tel'),
+                            $this->input->post('site'),
+                            $this->session->userdata('user_id'),
+                            $this->input->post('email'),
+                        );
 
-                $owl_id = $this->owl_model->add_owl(
-                                $this->input->post('name'),
-                                $this->input->post('acronym'),
-                                $this->input->post('type'),
-                                $this->input->post('address'),
-                                $this->input->post('province'),
-                                $this->input->post('city'),
-                                $this->input->post('zip'),
-                                $this->input->post('tel'),
-                                $this->input->post('site'),
-                                $this->session->userdata('user_id'),
-                                $this->input->post('email'),
-                                $authcode
-                            );
-                $this->owl_model->choose_owl($this->session->userdata('user_id'), $owl_id, TRUE);
-                $this->owlmail->send_activation($name, $this->input->post('email'), $authcode);
+            $owl_info = $this->owl_model->get_owl_by_id($this->input->post('owl'));
+            $this->owl_model->choose_owl($this->session->userdata('user_id'), $this->input->post('owl'));
+            $this->owlmail->send_chosen($name, $owl_info->row()->owl_name, $this->session->userdata('email'));
+            $this->owlmail->inform_admin($name, $owl_info->row()->owl_email);
 
-                $page_data['success']     = TRUE;
-                $page_data['msg']         = "Successfully updated you're owl.<br>If you updated your admin email please check your email to finish the update process.";
-                $page_data['redirect']    = 'miowl/owl';
-                $this->load->view('messages/message_page', $page_data);
-            }
+            $this->owlmail->send_activation($name, $this->input->post('email'), $authcode);
+            */
+
+            $page_data['success']     = TRUE;
+            $page_data['msg']         = "Successfully updated you're owl.<br>If you updated your admin email please check your email to finish the update process.";
+
+            // load the approp. page view
+            $this->load->view('pages/owl_details_edit', $page_data);
         }
     }
     //------------------------------------------------------------------
@@ -662,6 +655,30 @@ class Owl extends CI_Controller {
         if(!(bool) preg_match($pattern, $url))
         {
             $this->form_validation->set_message('_valid_url', 'The %s is invalid!');
+            return FALSE;
+        }
+
+        return TRUE;
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * callback _is_unique()
+     */
+    public function _is_unique($value, $params)
+    {
+        if (!$value)
+        {
+            $this->form_validation->set_message($name, '%s is empty!');
+            return FALSE;
+        }
+
+        list($name, $owl_id) = explode(',', $params);
+
+        if(in_array($value, $this->owl_model->get_all_owl_info_except($owl_id)->row_array()))
+        {
+            $this->form_validation->set_message($name, 'The %s is not unique!');
             return FALSE;
         }
 

@@ -173,6 +173,26 @@ class Owl_model extends CI_Model {
 
 
     /**
+     * public get_all_owl_info_except()
+     */
+    public function get_all_owl_info_except($owl_id = FALSE)
+    {
+        if (!$owl_id)
+            return FALSE;
+
+        $this->db->select('*');
+        $this->db->where('id !=', $owl_id);
+        $query = $this->db->get('owls');
+
+        if ($query->num_rows() > 0)
+            return $query;
+        else
+            return FALSE;
+    }
+    //------------------------------------------------------------------
+
+
+    /**
      * public get_owl_by_id()
      * function will pull needed owl info based on the passed int owl id.
      *
