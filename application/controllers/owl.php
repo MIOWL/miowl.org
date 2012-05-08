@@ -670,11 +670,11 @@ class Owl extends CI_Controller {
     {
         if (!$value)
         {
-            $this->form_validation->set_message('_is_this_unique', '%s is empty!');
+            #$this->form_validation->set_message('_is_this_unique', '%s is empty!');
             return FALSE;
         }
 
-        if(in_array($value, $this->owl_model->get_all_owl_info_except($owl_id)->result_array()))
+        if(in_array($value, $this->owl_model->get_all_owl_info_except($owl_id)->row_array()))
         {
             $this->form_validation->set_message('_is_this_unique', 'The %s is not unique!');
             return FALSE;
