@@ -102,6 +102,7 @@ class Owl extends CI_Controller {
         $page_data                  = array();
         $page_data['page_title']    = "[EDIT] Owl Details";
         $page_data['details']       = $details;
+        $page_data['province']      = $this->province_list;
 
         // load the approp. page view
         $this->load->view('pages/owl_details_edit', $page_data);

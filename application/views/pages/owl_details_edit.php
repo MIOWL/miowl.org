@@ -76,7 +76,7 @@
 
                     <div class="ctrlHolder">
                         <label for="tel">Phone Number (Optional)</label>
-                        <input type="text" name="tel" id="tel" size="35" class="textInput medium" autocompelete="OFF" value="<?php print set_value('tel') == '' ? $details->row()->owl_tel : set_value('tel'); ?>" />
+                        <input type="text" name="tel" id="tel" size="35" class="textInput medium" autocompelete="OFF" value="<?php print set_value('tel') != '' ? set_value('tel') : $details->row()->owl_tel != '0' ? $details->row()->owl_tel : NULL ; ?>" />
                     </div>
 
                     <div class="ctrlHolder">
