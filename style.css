@@ -322,6 +322,16 @@ h3.info {
 #owl_body {
 	padding: 20px 0;
 }
+.owl_body_details {
+	padding-left: 13px;
+	margin-top: -13px;
+	display: block;
+}
+.chat_glyph {
+	vertical-align: super;
+	color: lightBlue ! important;
+	text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.8);
+}
 
 /*
 |-----------------------
@@ -349,3 +359,4 @@ h3.info {
 	-moz-border-radius: 5px;
 	border-radius: 5px;
 }
+
