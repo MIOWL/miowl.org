@@ -15,7 +15,7 @@
             <div class="column left third">
 
                 <div id="owl_name">
-                    <h2><?php print $details->row()->owl_name; ?></h2>
+                    <h2>[<?php print $details->row()->owl_name_short; ?>] <?php print $details->row()->owl_name; ?></h2>
                 </div>
 
                 <div id="owl_address" class="owl_body_details">
