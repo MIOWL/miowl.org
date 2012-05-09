@@ -31,7 +31,7 @@
 ?>
                     <tr id="r-<?php print $row->id; ?>">
                         <td><?php print $row->id; ?></td>
-                        <td><?php print $this->session->userdata('admin') ? '<span class="icon_font">Q</span> ' : ''; ?><?php print $row->user_name; ?></td>
+                        <td><?php print ($this->session->userdata('admin') && $this->session->userdata('user_id') == $admin_id) ? '<span class="icon_font">Q</span> ' : ''; ?><?php print $row->user_name; ?></td>
                         <td><?php print $row->user_first_name; ?></td>
                         <td><?php print $row->user_last_name; ?></td>
                         <td><?php print date("H:i:s d/m/Y", $row->user_registration_date); ?></td>
