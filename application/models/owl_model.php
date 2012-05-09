@@ -141,6 +141,29 @@ class Owl_model extends CI_Model {
 
 
     /**
+     * public update_owl()
+     */
+    public function update_owl()
+    {
+        $update_data = array(
+            'owl_name'          => $this->input->post('name'),
+            'owl_name_short'    => $this->input->post('acronym'),
+            'owl_type'          => $this->input->post('type'),
+            'owl_address'       => $this->input->post('address'),
+            'owl_province'      => $this->input->post('province'),
+            'owl_city'          => $this->input->post('city'),
+            'owl_post_code'     => $this->input->post('zip'),
+            'owl_tel'           => $this->input->post('tel'),
+            'owl_site'          => $this->input->post('site')
+        );
+
+        $this->db->where('id', $this->session->userdata('owl'));
+        $this->db->update('owls', $update_data);
+    }
+    //------------------------------------------------------------------
+
+
+    /**
      * public choose_owl()
      */
     public function choose_owl($user_id = FALSE, $user_owl_id = FALSE, $is_admin = FALSE)

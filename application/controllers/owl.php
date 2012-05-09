@@ -126,33 +126,17 @@ class Owl extends CI_Controller {
         {
             $name = $this->session->userdata('name') . ' (' . $this->session->userdata('username') . ')';
 
-            /*
-            $authcode = $this->_genActCode();
+            $owl_id = $this->owl_model->update_owl();
 
-            $owl_id = $this->owl_model->update_owl(
-                            $this->input->post('name'),
-                            $this->input->post('acronym'),
-                            $this->input->post('type'),
-                            $this->input->post('address'),
-                            $this->input->post('province'),
-                            $this->input->post('city'),
-                            $this->input->post('zip'),
-                            $this->input->post('tel'),
-                            $this->input->post('site'),
-                            $this->session->userdata('user_id'),
-                            $this->input->post('email'),
-                        );
-
-            $owl_info = $this->owl_model->get_owl_by_id($this->input->post('owl'));
-            $this->owl_model->choose_owl($this->session->userdata('user_id'), $this->input->post('owl'));
-            $this->owlmail->send_chosen($name, $owl_info->row()->owl_name, $this->session->userdata('email'));
-            $this->owlmail->inform_admin($name, $owl_info->row()->owl_email);
-
-            $this->owlmail->send_activation($name, $this->input->post('email'), $authcode);
-            */
+            if ($this->input->post('email') != $details->row()->owl_email)
+            {
+                $authcode = $this->_genActCode();
+                $this->owlmail->send_notification($name, $details->row()->owl_email, $this->input->post('email'));
+                $this->owl_model->new_email($this->input->post('email'), $authcode);
+            }
 
             $page_data['success']     = TRUE;
-            $page_data['msg']         = "Successfully updated you're owl.<br>If you updated your admin email please check your email to finish the update process.";
+            $page_data['msg']         = "Successfully updated you're owl.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If you updated your admin email please check your email to finish the update process.";
 
             // load the approp. page view
             $this->load->view('pages/owl_details_edit', $page_data);
