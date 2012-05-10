@@ -11,8 +11,27 @@
             <?php $this->load->view('pages/owl_nav'); ?>
         </div>
         <div id="owl_body" class="column right threequarter">
-            THIS IS THE CATEGORIES PAGE!!!<br>
-            (as you can see its not finished...)
+
+<?php
+
+$categories_list = array();
+$attributes = array(
+                    'id'    => 'categories'
+                    );
+foreach ($categories->result() as $row) {
+    if($row->parent_id === "0") {
+        // Root Category
+        $categories_list[$row->id] = $row->name;
+    }
+    else {
+        // Sub Category
+        $categories_list[$row->parent_id][$row->id] = $row->name;
+    }
+}
+
+print ul($categories_list, $attributes);
+
+?>
         </div>
         <div class="clear">&nbsp;</div>
     </div>
