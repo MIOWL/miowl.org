@@ -31,13 +31,13 @@
 ?>
                     <tr id="r-<?php print $row->id; ?>">
                         <td><?php print $row->id; ?></td>
-                        <td><?php print $this->session->userdata('user_id') == $admin_id ? '<span class="icon_font">Q</span> ' : ''; ?><?php print $row->user_name; ?></td>
+                        <td><?php print $row->user_id == $admin_id ? '<span class="icon_font">Q</span> ' : ''; ?><?php print $row->user_name; ?></td>
                         <td><?php print $row->user_first_name; ?></td>
                         <td><?php print $row->user_last_name; ?></td>
                         <td><?php print date("H:i:s d/m/Y", $row->user_registration_date); ?></td>
                         <td>
                             <center>
-                            <?php if($this->session->userdata('admin')) : ?>
+                            <?php if($row->user_admin === 'true') : ?>
                                 <span style="color:#63b52e !important;" class="icon_font">.</span>
                             <?php else : ?>
                                 <span style="color:#FF0000 !important;" class="icon_font">'</span>
@@ -46,7 +46,7 @@
                         </td>
                         <td>
                             <center>
-                            <?php if($this->session->userdata('admin') || $this->session->userdata('editor')) : ?>
+                            <?php if($row->user_admin === 'true' || $row->user_editor === 'true') : ?>
                                 <span style="color:#63b52e !important;" class="icon_font">.</span>
                             <?php else : ?>
                                 <span style="color:#FF0000 !important;" class="icon_font">'</span>
