@@ -34,11 +34,11 @@
                                 <option value="<?php print $row->id; ?>" <?php echo set_select('sub_category', $row->parent_id, TRUE); ?>>
                                     <?php print $row->name; ?>
                                 </option>
-                            <?php else : ?>
+                            <?php /*else : ?>
                                 <option value="<?php print $row->id; ?>" <?php echo set_select('sub_category', $row->parent_id, TRUE); ?>>
                                     [error] <?php print $row->name; ?>
                                 </option>
-                            <?php /*endif;*/ endforeach; ?>
+                            <?php endif;*/ endforeach; ?>
                         </select>
                         <p class="formHint">If this is a sub category please choose it from the list.</p>
                     </div>
