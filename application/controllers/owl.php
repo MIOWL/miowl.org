@@ -522,7 +522,7 @@ class Owl extends CI_Controller {
         // page data array
         $page_data                  = array();
         $page_data['page_title']    = "Create New Owl File Category";
-        $page_data['categories']    = $this->miowl_model->get_owl_categories($this->session->userdata('owl'));
+        $page_data['categories']    = $this->miowl_model->get_owl_categories($this->session->userdata('owl'), FALSE);
 
         // form validation rules
         $this->form_validation->set_rules('name', 'Category Name', "required|trim|callback__unique_category[{$this->session->userdata('owl')}]");
