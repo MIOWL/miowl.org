@@ -506,7 +506,7 @@ class Owl extends CI_Controller {
         // page data array
         $page_data                  = array();
         $page_data['page_title']    = "Organize Owl File Categories";
-        #$page_data['categories']    = $this->miowl_model->get_owl_admin_members($this->session->userdata('owl'));
+        $page_data['categories']    = $this->miowl_model->get_owl_categories($this->session->userdata('owl'));
 
         // load the approp. page view
         $this->load->view('pages/owl_categories_organize', $page_data);
@@ -522,7 +522,7 @@ class Owl extends CI_Controller {
         // page data array
         $page_data                  = array();
         $page_data['page_title']    = "Create New Owl File Category";
-        #$page_data['categories']    = $this->miowl_model->get_owl_editor_members($this->session->userdata('owl'));
+        $page_data['categories']    = $this->miowl_model->get_owl_categories($this->session->userdata('owl'));
 
         // load the approp. page view
         $this->load->view('pages/owl_categories_create', $page_data);

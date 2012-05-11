@@ -32,6 +32,7 @@ foreach ($categories->result() as $row) {
 print ul($categories_list, $attributes);
 
 ?>
+
         </div>
         <div class="clear">&nbsp;</div>
     </div>

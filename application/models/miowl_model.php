@@ -382,14 +382,23 @@ class Miowl_model extends CI_Model {
     /**
      * public get_owl_categories()
      */
-    public function get_owl_categories($owl_id = FALSE)
+    public function get_owl_categories($owl_id = FALSE, $include_default = TRUE)
     {
         $this->db->select('*');
-        $this->db->where('owl_id', '0');
-        
-        if ($owl_id != FALSE)
-            $this->db->or_where('owl_id', $owl_id);
-        
+
+        if ($include_default) {
+            $this->db->where('owl_id', '0');
+            if ($owl_id != FALSE)
+                $this->db->or_where('owl_id', $owl_id);
+        }
+
+        else {
+            if ($owl_id != FALSE)
+                $this->db->where('owl_id', $owl_id);
+            else
+                return FALSE;
+        }
+
         $this->db->order_by("id", "ASC");
         $query = $this->db->get('categories');
 
