@@ -410,4 +410,22 @@ class Miowl_model extends CI_Model {
     //------------------------------------------------------------------
 
 
+    /**
+     * public add_category()
+     */
+    public function add_category()
+    {
+        $insert_data = array(
+            'name'      => $this->input->post('name'),
+            'parent_id' => $this->input->post('sub_category'),
+            'owl_id'    => $this->session->userdata('owl')
+        );
+
+        $this->db->insert('categories', $insert_data);
+
+        return $this->db->insert_id();
+    }
+    //------------------------------------------------------------------
+
+
 }

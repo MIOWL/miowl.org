@@ -524,6 +524,18 @@ class Owl extends CI_Controller {
         $page_data['page_title']    = "Create New Owl File Category";
         $page_data['categories']    = $this->miowl_model->get_owl_categories($this->session->userdata('owl'));
 
+        // form validation rules
+        $this->form_validation->set_rules('name', 'Category Name', "required|trim|callback__unique_category[{$owl_id}]");
+
+        if (!$this->form_validation->run())
+        {
+            // add the new category
+            $this->miowl_model->add_category();
+
+            $page_data['success']     = TRUE;
+            $page_data['msg']         = "You're new category has now been created.";
+        }
+
         // load the approp. page view
         $this->load->view('pages/owl_categories_create', $page_data);
     }
@@ -643,6 +655,28 @@ class Owl extends CI_Controller {
         if(!(bool) preg_match($pattern, $url))
         {
             $this->form_validation->set_message('_valid_url', 'The %s is invalid!');
+            return FALSE;
+        }
+
+        return TRUE;
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * callback _unique_category()
+     */
+    public function _unique_category($value = FALSE, $owl_id)
+    {
+        if (!$value)
+        {
+            #$this->form_validation->set_message('_unique_category', '%s is empty!');
+            return FALSE;
+        }
+
+        if(in_array($value, $this->miowl_model->get_owl_categories($owl_id)->row_array()))
+        {
+            $this->form_validation->set_message('_unique_category', 'The %s is not unique!');
             return FALSE;
         }
 
