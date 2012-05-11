@@ -28,9 +28,14 @@
                             <option value="0" <?php echo set_select('sub_category', '0', TRUE); ?>>
                                 None (top level category)
                             </option>
-                            <?php foreach ($categories->row() as $row) : if ($row->parent_id == "0") : ?>
+                            <?php foreach ($categories->row() as $row) : ?>
+                            <?php if ($row->parent_id == "0") : ?>
                                 <option value="<?php print $row->id; ?>" <?php echo set_select('sub_category', $row->parent_id, TRUE); ?>>
                                     <?php print $row->name; ?>
+                                </option>
+                            <?php else : ?>
+                                <option value="<?php print $row->id; ?>" <?php echo set_select('sub_category', $row->parent_id, TRUE); ?>>
+                                    [error] <?php print $row->name; ?>
                                 </option>
                             <?php endif; endforeach; ?>
                         </select>
