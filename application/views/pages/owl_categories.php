@@ -31,7 +31,7 @@ foreach ($categories->result() as $row) {
 
 print ul($categories_list, $attributes);
 
-print var_dump($categories_list);
+print var_dump($categories);
 
 ?>
 
