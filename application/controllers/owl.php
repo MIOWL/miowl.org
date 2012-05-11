@@ -668,12 +668,12 @@ class Owl extends CI_Controller {
      */
     public function _unique_category($value = FALSE, $owl_id)
     {
-        $categories = $this->miowl_model->get_owl_categories($owl_id, FALSE)->row_array();
+        $categories = $this->miowl_model->get_owl_categories($owl_id, FALSE);
 
         if (!$categories)
             return TRUE;
 
-        if(in_array($value, $categories))
+        if(in_array($value, $categories->row_array()))
         {
             $this->form_validation->set_message('_unique_category', 'The %s is not unique!');
             return FALSE;
