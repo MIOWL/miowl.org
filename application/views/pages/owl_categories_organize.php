@@ -60,7 +60,7 @@
                     if (!empty($categories_list))
                         print ul($categories_list, $attributes);
                     else
-                        print "<br>You have no custom categories created...";
+                        print "You have no custom categories created...";
                 ?>
             </div>
 
