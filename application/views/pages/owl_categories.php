@@ -31,6 +31,7 @@ foreach ($categories->result() as $row) {
 
 print ul($categories_list, $attributes);
 
+print '<br><pre>' . print_r($categories->result(), TRUE) . '</pre>';
 print '<br><pre>' . print_r($categories_list, TRUE) . '</pre>';
 
 ?>
