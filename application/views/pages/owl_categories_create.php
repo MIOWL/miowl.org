@@ -28,17 +28,12 @@
                             <option value="0" <?php echo set_select('sub_category', '0', TRUE); ?>>
                                 None (top level category)
                             </option>
-                            <?php foreach ($categories->row() as $row) : ?>
-                            <?php #print var_dump($row); ?>
-                            <?php #if ($row->parent_id == "0") : ?>
+                            <?php foreach ($categories->result() as $row) : ?>
+                            <?php if ($row->parent_id == "0") : ?>
                                 <option value="<?php print $row->id; ?>" <?php echo set_select('sub_category', $row->parent_id, TRUE); ?>>
                                     <?php print $row->name; ?>
                                 </option>
-                            <?php /*else : ?>
-                                <option value="<?php print $row->id; ?>" <?php echo set_select('sub_category', $row->parent_id, TRUE); ?>>
-                                    [error] <?php print $row->name; ?>
-                                </option>
-                            <?php endif;*/ endforeach; ?>
+                            <?php endif; endforeach; ?>
                         </select>
                         <p class="formHint">If this is a sub category please choose it from the list.</p>
                     </div>
