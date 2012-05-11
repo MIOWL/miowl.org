@@ -18,7 +18,7 @@
                 <fieldset class="inlineLabels">
                     <div class="ctrlHolder">
                         <label for="name">Category Name</label>
-                        <input type="text" name="name" id="name" size="35" class="textInput medium" autocompelete="OFF" value="<?php print set_value('name') == '' ? $details->row()->owl_name : set_value('name'); ?>" />
+                        <input type="text" name="name" id="name" size="35" class="textInput medium" autocompelete="OFF" value="<?php print set_value('name'); ?>" />
                         <p class="formHint">Your new category name.</p>
                     </div>
 
