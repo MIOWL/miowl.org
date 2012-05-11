@@ -25,7 +25,7 @@ foreach ($categories->result() as $row) {
     }
     else {
         // Sub Category
-        $categories_list[$row->parent_id][] = $row->name;
+        $categories_list[$row->parent_id][''] = $row->name;
     }
 }
 
