@@ -449,6 +449,13 @@ input::-moz-focus-inner {
     padding-left: 1em;
 }
 
+.h2_note {
+	position: relative;
+	top: -15px;
+	left: 10px;
+	color: #808080;
+}
+
 
 /*
 |-----------------------
@@ -514,7 +521,6 @@ input::-moz-focus-inner {
 .column.twothird { width: 66%; }
 .column.quarter { width: 24%; }
 .column.threequarter { width: 74%; }
-.clear {display: block; clear: both; height: 0px !important; width: 0px !important; }
 
 /*
 |-----------------------
