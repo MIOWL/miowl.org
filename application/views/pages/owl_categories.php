@@ -15,13 +15,11 @@
 <?php
 
 $categories_list = array();
-$attributes = array(
-                    'id'    => 'categories'
-                    );
+$attributes = array('id' => 'categories');
 foreach ($categories->result() as $row) {
     if($row->parent_id === "0") {
         // Root Category
-        $categories_list[$row->id] = $row->name;
+        $categories_list[$row->id] = array('name' => $row->name);
     }
     else {
         // Sub Category
