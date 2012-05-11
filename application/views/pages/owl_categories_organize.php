@@ -56,8 +56,11 @@
                                 $categories_list[$row->parent_id][$row->id] = $row->name;
                             }
                         }
-                    }
-                    print ul($categories_list, $attributes);
+                    }   
+                    if (!empty($categories_list))
+                        print ul($categories_list, $attributes);
+                    else
+                        print "<br>You have no custom categories created...";
                 ?>
             </div>
 
