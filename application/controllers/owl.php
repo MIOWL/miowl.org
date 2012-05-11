@@ -525,7 +525,7 @@ class Owl extends CI_Controller {
         $page_data['categories']    = $this->miowl_model->get_owl_categories($this->session->userdata('owl'));
 
         // form validation rules
-        $this->form_validation->set_rules('name', 'Category Name', "required|trim|callback__unique_category[{$owl_id}]");
+        $this->form_validation->set_rules('name', 'Category Name', "required|trim|callback__unique_category[{$this->session->userdata('owl')}]");
 
         if ($this->form_validation->run())
         {
