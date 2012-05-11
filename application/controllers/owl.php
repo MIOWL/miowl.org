@@ -527,7 +527,7 @@ class Owl extends CI_Controller {
         // form validation rules
         $this->form_validation->set_rules('name', 'Category Name', "required|trim|callback__unique_category[{$owl_id}]");
 
-        if (!$this->form_validation->run())
+        if ($this->form_validation->run())
         {
             // add the new category
             $this->miowl_model->add_category();
