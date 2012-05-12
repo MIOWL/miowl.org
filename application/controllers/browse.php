@@ -91,9 +91,9 @@ class Browse extends CI_Controller {
                     $row->id,
                     $timestamp,
                     $row->file_name,
-                    $this->db->miowl_model->get_category($row->upload_catagory)->result()->name,
+                    $this->miowl_model->get_category($row->upload_catagory)->result()->name,
                     $row->file_type,
-                    $this->db->owl_model->get_owl_by_id($row->owl)->result()->owl_name,
+                    $this->owl_model->get_owl_by_id($row->owl)->result()->owl_name,
                     '<center><a href="' . site_url('download/' . $row->id) . '" title="Downlaod this file!" target="_BLANK" class="icon_font">F</a></center>'
                 );
             }
