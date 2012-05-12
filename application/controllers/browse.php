@@ -86,8 +86,14 @@ class Browse extends CI_Controller {
             foreach($uploads->result() as $row)
             {
                 $timestamp = date("H:i:s d/m/Y", $row->upload_time);
-                $owl_info = $this->owl_model->get_owl_by_id($row->owl);
                 $cat_info = $this->miowl_model->get_category($row->upload_catagory);
+                $owl_info = $this->owl_model->get_owl_by_id($row->owl);
+
+                if (!$cat_info)
+                    die($row->upload_catagory);
+
+                if (!$owl_info)
+                    die($row->upload_owl);
 
                 $this->table->add_row(
                     $row->id,
