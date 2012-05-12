@@ -70,6 +70,12 @@
                 </div>
 
             </fieldset>
+
+            <div class="buttonHolder">
+                <a href="#">
+                    <button class="button" type="download">download</button>
+                </a>
+            </div>
         </form>
 
     </div>
