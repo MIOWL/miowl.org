@@ -72,8 +72,8 @@
             </fieldset>
 
             <div class="buttonHolder">
-                <a href="<?php print site_url('download/' . $info->row()->id); ?>">
-                    <button class="button" type="download">download</button>
+                <a href="<?php print site_url('download/' . $info->row()->id); ?>" target="_BLANK">
+                    <button class="button">download</button>
                 </a>
             </div>
         </form>
