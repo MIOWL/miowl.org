@@ -23,14 +23,14 @@ foreach ($categories->result() as $row) {
     }
     else {
         // Sub Category
-        $categories_list[$this->miowl_model->get_category($row->parent_id)->result()->name][$row->id] = $row->name;
+        $categories_list[$row->parent_id][$row->id] = $row->name;
     }
 }
 
-print ul($categories_list, $attributes);
+print ul($categories, $attributes);
 
+#print '<br><pre>' . print_r($categories->result(), TRUE) . '</pre>';
 print '<br><pre>' . print_r($categories_list, TRUE) . '</pre>';
-print '<br><pre>' . print_r($categories->result_array(), TRUE) . '</pre>';
 
 ?>
 
