@@ -75,6 +75,7 @@
 
         <div class="buttonHolder right">
             <br />
+            <button onclick="window.history.back()'" class="button">back</button>
             <button onclick="window.location.href='https://djekl.dlinkddns.com/projects/miowl/download/1'" class="button">download</button>
         </div>
         <div class="clear">&nbsp;</div>
