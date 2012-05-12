@@ -21,7 +21,7 @@
                         description
         -->
 
-        <form class="uniForm">
+        <div class="uniForm">
             <fieldset class="inlineLabels">
 
                 <div class="ctrlHolder">
@@ -71,7 +71,7 @@
 
             </fieldset>
 
-        </form>
+        </div>
 
         <div class="buttonHolder right">
             <br />
