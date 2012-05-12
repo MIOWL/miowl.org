@@ -91,9 +91,13 @@ class Browse extends CI_Controller {
 
                 if (!$cat_info)
                     die($row->upload_catagory);
+                else
+                    die(var_dump($cat_info));
 
                 if (!$owl_info)
                     die($row->upload_owl);
+                else
+                    die(var_dump($owl_info));
 
                 $this->table->add_row(
                     $row->id,
