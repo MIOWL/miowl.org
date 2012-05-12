@@ -86,16 +86,14 @@ class Browse extends CI_Controller {
             foreach($uploads->result() as $row)
             {
                 $timestamp = date("H:i:s d/m/Y", $row->upload_time);
-                $owl_info = $this->owl_model->get_owl_by_id($row->owl);
-                $cat_info = $this->miowl_model->get_category($row->upload_catagory);
 
                 $this->table->add_row(
                     $row->id,
                     $timestamp,
                     $row->file_name,
-                    $cat_info->result()->name,
+                    $this->miowl_model->get_category($row->upload_catagory)->result()->name,
                     $row->file_type,
-                    $owl_info->result()->owl_name,
+                    $this->owl_model->get_owl_by_id($row->owl)->result()->owl_name,
                     '<center><a href="' . site_url('download/' . $row->id) . '" title="Downlaod this file!" target="_BLANK" class="icon_font">F</a></center>'
                 );
             }
