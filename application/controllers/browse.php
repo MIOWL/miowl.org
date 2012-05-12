@@ -86,6 +86,10 @@ class Browse extends CI_Controller {
             foreach($uploads->result() as $row)
             {
                 $timestamp = date("H:i:s d/m/Y", $row->upload_time);
+                $owl_info = $this->owl_model->get_owl_by_id($row->owl);
+
+                if (!$owl_info)
+                    die($row->owl);
 
                 $this->table->add_row(
                     $row->id,
@@ -93,7 +97,7 @@ class Browse extends CI_Controller {
                     $row->file_name,
                     $this->miowl_model->get_category($row->upload_catagory)->result()->name,
                     $row->file_type,
-                    $this->owl_model->get_owl_by_id($row->owl)->result()->owl_name,
+                    $owl_info->result()->owl_name,
                     '<center><a href="' . site_url('download/' . $row->id) . '" title="Downlaod this file!" target="_BLANK" class="icon_font">F</a></center>'
                 );
             }
