@@ -30,18 +30,18 @@
                 </div>
 
                 <div class="ctrlHolder">
-                    <label for="upload_time">upload time</label>
-                    <input type="text" name="upload_time" id="upload_time" size="35" class="textInput medium" value="<?php print $info->row()->upload_time; ?>" disabled="disabled" />
+                    <label for="upload_time">upload time (gmt)</label>
+                    <input type="text" name="upload_time" id="upload_time" size="35" class="textInput medium" value="<?php print date("H:i:s d/m/Y", $info->row()->upload_time); ?>" disabled="disabled" />
                 </div>
 
                 <div class="ctrlHolder">
                     <label for="upload_user">upload user</label>
-                    <input type="text" name="upload_user" id="upload_user" size="35" class="textInput medium" value="<?php print $info->row()->upload_user; ?>" disabled="disabled" />
+                    <input type="text" name="upload_user" id="upload_user" size="35" class="textInput medium" value="<?php print $this->user_model->get_user_by_id($info->row()->upload_user)->row()->user_name; ?>" disabled="disabled" />
                 </div>
 
                 <div class="ctrlHolder">
                     <label for="owl">owl</label>
-                    <input type="text" name="owl" id="owl" size="35" class="textInput medium" value="<?php print $info->row()->owl; ?>" disabled="disabled" />
+                    <input type="text" name="owl" id="owl" size="35" class="textInput medium" value="<?php print $this->owl_model->get_owl_by_id($info->row()->owl)->row()->owl_name; ?>" disabled="disabled" />
                 </div>
 
                 <div class="ctrlHolder">
@@ -51,7 +51,7 @@
 
                 <div class="ctrlHolder">
                     <label for="upload_catagory">catagory</label>
-                    <input type="text" name="upload_catagory" id="upload_catagory" size="35" class="textInput medium" value="<?php print $info->row()->upload_catagory; ?>" disabled="disabled" />
+                    <input type="text" name="upload_catagory" id="upload_catagory" size="35" class="textInput medium" value="<?php print $this->miowl_model->get_category($info->row()->upload_catagory)->row()->name; ?>" disabled="disabled" />
                 </div>
 
                 <div class="ctrlHolder">
