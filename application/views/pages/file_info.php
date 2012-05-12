@@ -72,7 +72,7 @@
             </fieldset>
 
             <div class="buttonHolder">
-                <a href="#">
+                <a href="<?php print site_url('download/') . $info->row()->id; ?>">
                     <button class="button" type="download">download</button>
                 </a>
             </div>
