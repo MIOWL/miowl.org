@@ -66,7 +66,9 @@
 
                 <div class="ctrlHolder">
                     <label for="description">description</label>
-                    <input type="text" name="description" id="description" size="35" class="textInput medium" value="<?php print $info->row()->description; ?>" disabled="disabled" />
+                    <textarea name="description" id="description" size="35" class="textInput medium" rows="5" cols="50" disabled="disabled">
+                        <?php print $info->row()->description; ?>
+                    </textarea>
                 </div>
 
             </fieldset>
