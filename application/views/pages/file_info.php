@@ -71,12 +71,13 @@
 
             </fieldset>
 
-            <div class="buttonHolder right">
-                <button onclick="window.location.href='https://djekl.dlinkddns.com/projects/miowl/download/1'" class="button">download</button>
-            </div>
-            <div class="clear">&nbsp;</div>
-
         </form>
+
+        <div class="buttonHolder right">
+            <br />
+            <button onclick="window.location.href='https://djekl.dlinkddns.com/projects/miowl/download/1'" class="button">download</button>
+        </div>
+        <div class="clear">&nbsp;</div>
 
     </div>
 
