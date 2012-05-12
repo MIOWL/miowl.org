@@ -21,14 +21,16 @@
                         description
         -->
 
-        <fieldset class="inlineLabels">
+        <form>
+            <fieldset class="inlineLabels">
 
-            <div class="ctrlHolder">
-                <label for="id">File</label>
-                <input type="text" name="id" id="id" size="35" class="textInput medium" value="<?php print $info->row()->id; ?>" />
-            </div>
+                <div class="ctrlHolder">
+                    <label for="id">File</label>
+                    <input type="text" name="id" id="id" size="35" class="textInput medium" value="<?php print $info->row()->id; ?>" />
+                </div>
 
-        </fieldset>
+            </fieldset>
+        </form>
 
     </div>
 
