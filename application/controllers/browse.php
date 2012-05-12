@@ -103,9 +103,9 @@ class Browse extends CI_Controller {
                     $row->id,
                     $timestamp,
                     $row->file_name,
-                    $cat_info->result()->name,
+                    $cat_info->row()->name,
                     $row->file_type,
-                    $owl_info->result()->owl_name,
+                    $owl_info->row()->owl_name,
                     '<center><a href="' . site_url('download/' . $row->id) . '" title="Downlaod this file!" target="_BLANK" class="icon_font">F</a></center>'
                 );
             }
