@@ -92,6 +92,9 @@ class Browse extends CI_Controller {
                 if (!$cat_info)
                     die($row->upload_catagory);
 
+                print_r($cat_info);
+                die();
+
                 $this->table->add_row(
                     $row->id,
                     $timestamp,
