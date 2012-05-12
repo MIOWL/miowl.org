@@ -23,7 +23,7 @@ foreach ($categories->result() as $row) {
     }
     else {
         // Sub Category
-        $categories_list[$categories->row($row->parent_id)->name][$row->id] = $row->name;
+        $categories_list[$this->miowl_model->get_category($row->parent_id)->name][$row->id] = $row->name;
     }
 }
 

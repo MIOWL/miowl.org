@@ -428,4 +428,21 @@ class Miowl_model extends CI_Model {
     //------------------------------------------------------------------
 
 
+    /**
+     * public get_category()
+     */
+    public function get_category($id)
+    {
+        $this->db->select('*');
+        $this->db->where('id', $id);
+        $query = $this->db->get('categories');
+
+        if ($query->num_rows() > 0)
+            return $query;
+        else
+            return FALSE;
+    }
+    //------------------------------------------------------------------
+
+
 }
