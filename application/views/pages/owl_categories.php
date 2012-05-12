@@ -19,16 +19,17 @@ $attributes = array('id' => 'categories');
 foreach ($categories->result() as $row) {
     if($row->parent_id === "0") {
         // Root Category
-        $categories_list[$row->name] = array();
+        $categories_list[$row->id] = array($row->name);
     }
     else {
         // Sub Category
-        $categories_list[$categories->row($row->parent_id)->name] = $row->name;
+        $categories_list[$row->parent_id][$row->id] = $row->name;
     }
 }
 
 print ul($categories_list, $attributes);
 
+#print '<br><pre>' . print_r($categories->result(), TRUE) . '</pre>';
 print '<br><pre>' . print_r($categories_list, TRUE) . '</pre>';
 
 ?>
