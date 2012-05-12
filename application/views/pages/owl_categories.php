@@ -16,6 +16,8 @@
 
 $categories_list = array();
 $attributes = array('id' => 'categories');
+/*
+// This is fucked!!!
 foreach ($categories->result() as $row) {
     if($row->parent_id === "0") {
         // Root Category
@@ -26,11 +28,8 @@ foreach ($categories->result() as $row) {
         $categories_list[$row->parent_id][$row->id] = $row->name;
     }
 }
-
-print ul($categories, $attributes);
-
-#print '<br><pre>' . print_r($categories->result(), TRUE) . '</pre>';
-print '<br><pre>' . print_r($categories_list, TRUE) . '</pre>';
+*/
+print ul($categories->result_array(), $attributes);
 
 ?>
 
