@@ -93,7 +93,7 @@ class Browse extends CI_Controller {
                     $row->file_type,
                     $this->owl_model->get_owl_by_id($row->owl)->row()->owl_name,
                     '<center><a href="' . site_url('download/' . $row->id) . '" title="Downlaod this file!" target="_BLANK" class="icon_font">F</a></center>',
-                    '<center><a href="' . site_url('info/' . $row->id) . '" title="More info for this file!" class="icon_font">,</a></center>'
+                    '<center><a href="' . site_url('browse/info/' . $row->id) . '" title="More info for this file!" class="icon_font">,</a></center>'
                 );
             }
         }
@@ -126,6 +126,28 @@ class Browse extends CI_Controller {
         $data['file_path'] = $upload_info->row()->full_path;
         $data['file_name'] = $file_name;
         $this->load->view('pages/download_file', $data);
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * public info()
+     */
+    public function info($file_id = FALSE)
+    {
+        if(!$file_id)
+            redirect(site_url('browse'), 'location');
+
+        // Get the file info for this ID
+        $upload_info = $this->upload_model->get_upload_by_id($file_id);
+
+        // page data array
+        $page_data                  = array();
+        $page_data['page_title']    = "File Info | " . $upload_info->row()->file_name;
+        $page_data['info']          = $upload_info;
+
+        // load the approp. page view
+        $this->load->view('pages/file_info', $page_data);
     }
     //------------------------------------------------------------------
 
