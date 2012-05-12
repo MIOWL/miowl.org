@@ -2,7 +2,7 @@
 
 	<h1>
 		<center>
-			<?php print $page_title; ?>
+			File Info
 		</center>
 	</h1>
 
