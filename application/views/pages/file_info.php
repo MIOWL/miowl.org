@@ -26,7 +26,7 @@
             <div class="ctrlHolder">
                 <label for="id">File</label>
                 <span name="id" id="id" size="35" class="textInput medium" value="<?php print $info->row()->id; ?>">
-                    <?php print $details->row()->id; ?>
+                    <?php print $info->row()->id; ?>
                 </span>
             </div>
 
