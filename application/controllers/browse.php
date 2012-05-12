@@ -89,12 +89,6 @@ class Browse extends CI_Controller {
                 $owl_info = $this->owl_model->get_owl_by_id($row->owl);
                 $cat_info = $this->miowl_model->get_category($row->upload_catagory);
 
-                if (!$cat_info)
-                    die($row->upload_catagory);
-
-                print_r($cat_info);
-                die();
-
                 $this->table->add_row(
                     $row->id,
                     $timestamp,
