@@ -75,8 +75,8 @@
 
         <div class="buttonHolder right">
             <br />
-            <button onclick="javascript: history.go(-1)'" class="button">back</button>
-            <button onclick="window.location.href='https://djekl.dlinkddns.com/projects/miowl/download/1'" class="button">download</button>
+            <button onclick="window.location.href='<?php print site_url('browse'); ?>'" class="button">back</button>
+            <button onclick="window.location.href='<?php print site_url('download/' . $info->row()->id); ?>'" class="button">download</button>
         </div>
         <div class="clear">&nbsp;</div>
 
