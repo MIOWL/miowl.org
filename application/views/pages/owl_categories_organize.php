@@ -17,18 +17,12 @@
                 <span class="h2_note">NOTE: these cannot be modified in any way...</span>
                 <?php
                     $categories_list = array();
-                    $attributes = array(
-                                        'id'    => 'default_categories_list'
-                                        );
+                    $attributes = array('id' => 'default_categories_list');
                     foreach ($categories->result() as $row) {
                         if ($row->owl_id === "0") {
                             if($row->parent_id === "0") {
                                 // Root Category
-                                $categories_list[$row->id] = $row->name;
-                            }
-                            else {
-                                // Sub Category
-                                $categories_list[$row->parent_id][$row->id] = $row->name;
+                                $categories_list[] = $row->name;
                             }
                         }
                     }
@@ -42,21 +36,15 @@
                 <h2>Custom Categories</h2>
                 <?php
                     $categories_list = array();
-                    $attributes = array(
-                                        'id'    => 'custom_categories_list'
-                                        );
+                    $attributes = array('id' => 'custom_categories_list');
                     foreach ($categories->result() as $row) {
                         if ($row->owl_id != "0") {
                             if($row->parent_id === "0") {
                                 // Root Category
-                                $categories_list[$row->id] = $row->name;
-                            }
-                            else {
-                                // Sub Category
-                                $categories_list[$row->parent_id][$row->id] = $row->name;
+                                $categories_list[] = $row->name;
                             }
                         }
-                    }   
+                    }
                     if (!empty($categories_list))
                         print ul($categories_list, $attributes);
                     else
