@@ -444,6 +444,8 @@ input::-moz-focus-inner {
 .left { float:left; }
 .right { float:right; }
 
+.txt_center { text-align: center; }
+
 .al {
     text-align: left;
     padding-left: 1em;
