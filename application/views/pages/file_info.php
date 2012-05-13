@@ -15,7 +15,7 @@
                         upload_user
                         owl
                         file_name
-                        upload_catagory
+                        upload_category
                         upload_license
                         file_type
                         file_size
@@ -56,14 +56,14 @@
                 </div>
 
                 <div class="ctrlHolder">
-                    <label for="upload_catagory">catagory</label>
-                    <span name="upload_catagory" id="upload_catagory" size="35" class="textInput medium"><?php print $this->miowl_model->get_category($info->row()->upload_catagory)->row()->name; ?></span>
+                    <label for="upload_category">category</label>
+                    <span name="upload_category" id="upload_category" size="35" class="textInput medium"><?php print $this->miowl_model->get_category($info->row()->upload_category)->row()->name; ?></span>
                 </div>
 
                 <div class="ctrlHolder">
                     <label for="upload_license">license</label>
                     <?php $license = $this->miowl_model->get_license($info->row()->upload_license); ?>
-                    <span name="upload_license" id="upload_catagory" size="35" class="textInput medium">
+                    <span name="upload_license" id="upload_category" size="35" class="textInput medium">
                         <a href="<?php print $license->row()->url; ?>" target="_BLANK">
                             <?php print $license->row()->short_description; ?>
                         </a>
