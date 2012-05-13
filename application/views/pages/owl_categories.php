@@ -29,7 +29,14 @@ foreach ($categories->result() as $row) {
     }
 }
 */
-print ul($categories->result_array(), $attributes);
+foreach ($categories->result() as $row) {
+    if($row->parent_id === "0") {
+        // Root Category
+        $categories_list[] = $row->name;
+    }
+}
+#print ul($categories->result_array(), $attributes);
+print ul($categories_list, $attributes);
 
 ?>
 
