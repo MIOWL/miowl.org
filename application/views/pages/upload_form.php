@@ -22,13 +22,13 @@
                 </div>
 
                 <div class="ctrlHolder">
-                    <label for="filename">Name</label>
+                    <label for="filename">Name <span class="right">(optional)</span></label>
                     <input type="text" name="filename" id="filename" size="35" class="textInput medium" value="<?php print set_value('filename'); ?>" />
                     <p class="formHint">Choose the file's display name.<br><strong>NOTE:</strong> leave blank to use the uploaded filename.</p>
                 </div>
 
                 <div class="ctrlHolder">
-                    <label for="catagory">Catagory</label>
+                    <label for="catagory">Catagory <span class="right">(required)</span></label>
                     <select name="category" id="category" class="textInput medium" autocompelete="OFF" />
                         <?php foreach ($categories->result() as $row) : ?>
                         <?php if ($row->parent_id == "0") : ?>
