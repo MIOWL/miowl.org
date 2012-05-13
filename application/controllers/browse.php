@@ -78,7 +78,7 @@ class Browse extends CI_Controller {
                             'table_close'         => '</table>'
                       );
         $this->table->set_template($tmpl);
-        $this->table->set_heading('ID', 'Timestamp (GMT)', 'Filename', 'Catagory', 'License', 'File Type', 'Owl', 'Download', 'Info');
+        $this->table->set_heading('ID', 'Timestamp (GMT)', 'Filename', 'category', 'License', 'File Type', 'Owl', 'Download', 'Info');
         $this->table->set_empty("N/A");
 
         if($uploads)
@@ -89,7 +89,7 @@ class Browse extends CI_Controller {
                     $row->id,
                     date("H:i:s d/m/Y", $row->upload_time),
                     $row->file_name,
-                    $this->miowl_model->get_category($row->upload_catagory)->row()->name,
+                    $this->miowl_model->get_category($row->upload_category)->row()->name,
                     $this->miowl_model->get_license($row->upload_license)->row()->name,
                     $row->file_type,
                     $this->owl_model->get_owl_by_id($row->owl)->row()->owl_name,

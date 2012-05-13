@@ -97,7 +97,7 @@ class Upload_model extends CI_Model {
                                 $owl                = FALSE,
                                 $file_name          = FALSE,
                                 $full_path          = FALSE,
-                                $upload_catagory    = FALSE,
+                                $upload_category    = FALSE,
                                 $upload_category    = FALSE,
                                 $file_type          = FALSE,
                                 $client_name        = FALSE,
@@ -106,7 +106,7 @@ class Upload_model extends CI_Model {
                                 $description        = NULL
                               )
     {
-        if (!$upload_user || !$owl || !$file_name || !$full_path || !$upload_catagory || !$upload_category || !$file_type || !$client_name || !$file_size || !$file_ext)
+        if (!$upload_user || !$owl || !$file_name || !$full_path || !$upload_category || !$upload_category || !$file_type || !$client_name || !$file_size || !$file_ext)
             return FALSE;
 
         $insert_data = array(
@@ -131,13 +131,13 @@ class Upload_model extends CI_Model {
     /**
      * public update_upload()
      */
-    public function update_upload( $full_path = FALSE, $upload_catagory = FALSE, $client_name = FALSE, $description = NULL )
+    public function update_upload( $full_path = FALSE, $upload_category = FALSE, $client_name = FALSE, $description = NULL )
     {
-        if (!$full_path || !$upload_catagory || !$client_name)
+        if (!$full_path || !$upload_category || !$client_name)
             return FALSE;
 
         $update_data = array(
-                                'upload_catagory'   => $upload_catagory,
+                                'upload_category'   => $upload_category,
                                 'client_name'       => $client_name,
                                 'description'       => $description
                             );
