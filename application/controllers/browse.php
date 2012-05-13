@@ -78,7 +78,7 @@ class Browse extends CI_Controller {
                             'table_close'         => '</table>'
                       );
         $this->table->set_template($tmpl);
-        $this->table->set_heading('ID', 'Timestamp (GMT)', 'Filename', 'category', 'License', 'File Type', 'Owl', 'Download', 'Info');
+        $this->table->set_heading('ID', 'Timestamp (GMT)', 'Filename', 'Category', 'License', 'File Type', 'Owl', 'Download', 'Info');
         $this->table->set_empty("N/A");
 
         if($uploads)
