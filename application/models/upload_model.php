@@ -54,13 +54,13 @@ class Upload_model extends CI_Model {
     /**
      * public get_upload_by_owl()
      */
-    public function get_upload_by_owl($owl)
+    public function get_upload_by_owl($owl = FALSE)
     {
-        if (!$upload_id)
+        if (!$owl)
             return FALSE;
 
         $this->db->select('*');
-        $this->db->where('client_name', $owl);
+        $this->db->where('owl', $owl);
         $query = $this->db->get('uploads');
 
         if ($query->num_rows() > 0)
