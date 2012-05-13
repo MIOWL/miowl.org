@@ -85,7 +85,6 @@ class Browse extends CI_Controller {
         {
             foreach($uploads->result() as $row)
             {
-                die(print_r($this->miowl_model->get_license($row->upload_license)->row()->name));
                 $this->table->add_row(
                     $row->id,
                     date("H:i:s d/m/Y", $row->upload_time),
