@@ -27,7 +27,7 @@
 
 <?php
     if($members) :
-    foreach($members->result() as $row) :
+        foreach($members->result() as $row) :
 ?>
                     <tr id="r-<?php print $row->id; ?>">
                         <td><?php print $row->id; ?></td>
@@ -55,7 +55,7 @@
                         </td>
                     </tr>
 <?php
-    endforeach;
+        endforeach;
     endif;
 ?>
 

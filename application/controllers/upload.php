@@ -60,6 +60,7 @@ class Upload extends CI_Controller {
 
         $page_data = array();
         $page_data['allow_types'] = str_replace('|', ', ', $file_types);
+        $page_data['categories'] = $this->miowl_model->get_owl_categories($this->session->userdata('owl'));
 
         $this->load->library('upload', $config);
 

@@ -29,7 +29,14 @@
 
                 <div class="ctrlHolder">
                     <label for="catagory">Catagory</label>
-                    <input type="text" name="catagory" id="catagory" size="35" class="textInput medium" value="<?php print set_value('catagory'); ?>" />
+                    <select name="category" id="category" class="textInput medium" autocompelete="OFF" />
+                        <?php foreach ($categories->result() as $row) : ?>
+                        <?php if ($row->parent_id == "0") : ?>
+                            <option value="<?php print $row->id; ?>" <?php echo set_select('category', $row->id, TRUE); ?>>
+                                <?php print $row->name; ?>
+                            </option>
+                        <?php endif; endforeach; ?>
+                    </select>
                     <p class="formHint">Choose the file's catagory.</p>
                 </div>
 
