@@ -50,7 +50,7 @@
                             <a href="<?php print site_url('browse/info/' . $row->id); ?>" title="More info for this file!" target="_BLANK" class="icon_font">,</a>
                         </td>
                         <td>
-                            <a href="<?php print $row->id; ?>" title="Delete this file!" target="_BLANK" id="remove_<?php print $row->id; ?>" class="icon_font delete">'</a>
+                            <a href="<?php print $row->id; ?>" title="Delete this file!" target="_BLANK" id="remove_<?php print $row->id; ?>" class="icon_font remove">'</a>
                         </td>
                     </tr>
 <?php
