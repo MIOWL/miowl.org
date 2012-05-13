@@ -37,12 +37,17 @@
 
                 <div class="ctrlHolder">
                     <label for="upload_user">upload user</label>
-                    <span name="upload_user" id="upload_user" size="35" class="textInput medium"><?php print $this->user_model->get_user_by_id($info->row()->upload_user)->row()->user_name; ?></span>
+                    <?php $user = $this->user_model->get_user_by_id($info->row()->upload_user); ?>
+                    <span name="upload_user" id="upload_user" size="35" class="textInput medium"><?php print $user->row()->user_first_name; ?> <?php print $user->row()->user_last_name; ?> (<?php print $user->row()->user_name; ?>)</span>
                 </div>
 
                 <div class="ctrlHolder">
                     <label for="owl">owl</label>
-                    <span name="owl" id="owl" size="35" class="textInput medium"><?php print $this->owl_model->get_owl_by_id($info->row()->owl)->row()->owl_name; ?></span>
+                    <span name="owl" id="owl" size="35" class="textInput medium">
+                        <a href="<?php print site_url('browse/owl/' . $info->row()->owl); ?>">
+                            <?php print $this->owl_model->get_owl_by_id($info->row()->owl)->row()->owl_name; ?>
+                        </a>
+                    </span>
                 </div>
 
                 <div class="ctrlHolder">
