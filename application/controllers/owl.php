@@ -291,8 +291,8 @@ class Owl extends CI_Controller {
 
         // page data array
         $page_data                  = array();
-        $page_data['page_title']    = "Uploads";
-        $page_data['uploads']       = $this->miowl_model->get_owl_uploads($this->session->userdata('owl'));
+        $page_data['page_title']    = "Owl Uploads";
+        $page_data['uploads']       = $this->upload_model->get_upload_by_owl($this->session->userdata('owl'));
 
         // load the approp. page view
         $this->load->view('misc/owl_uploads', $page_data);
