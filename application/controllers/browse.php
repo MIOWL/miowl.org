@@ -85,7 +85,7 @@ class Browse extends CI_Controller {
         {
             foreach($uploads->result() as $row)
             {
-                die(print_r($this->miowl_model->get_category($row->upload_category)));
+                die(print_r($this->miowl_model->get_category($row->upload_category)->result()));
                 $this->table->add_row(
                     $row->id,
                     date("H:i:s d/m/Y", $row->upload_time),
