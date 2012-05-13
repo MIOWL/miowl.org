@@ -285,37 +285,21 @@ class Miowl_model extends CI_Model {
 
 
     /**
-     * public get_owl_license()
+     * public get_license()
      */
-    public function get_owl_license($id = FALSE, $default_license = FALSE)
+    public function get_license($id = FALSE)
     {
-        if (!$id)
-            return FALSE;
-
         $this->db->select('*');
 
-        if (!$default_license) {
-            $this->db->where('owl_id', $id);
-            $query = $this->db->get('license');
-        }
-        else {
-            $query = $this->db->get('default_license');
-        }
+        if ($id)
+            $this->db->where('id', $id);
+
+        $query = $this->db->get('license');
 
         if ($query->num_rows() > 0)
             return $query;
         else
             return FALSE;
-    }
-    //------------------------------------------------------------------
-
-
-    /**
-     * public get_default_license()
-     */
-    public function get_default_license()
-    {
-        return $this->get_owl_license(TRUE, TRUE);
     }
     //------------------------------------------------------------------
 

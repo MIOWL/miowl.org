@@ -61,8 +61,7 @@ class Upload extends CI_Controller {
         $page_data = array();
         $page_data['allow_types'] = str_replace('|', ', ', $file_types);
         $page_data['categories'] = $this->miowl_model->get_owl_categories($this->session->userdata('owl'));
-        $page_data['default_license'] = $this->miowl_model->get_default_license();
-        $page_data['license'] = $this->miowl_model->get_owl_license($this->session->userdata('owl'));
+        $page_data['license'] = $this->miowl_model->get_license();
 
         $this->load->library('upload', $config);
 
@@ -93,6 +92,7 @@ class Upload extends CI_Controller {
                 $owl                = $this->session->userdata('owl');
                 $full_path          = $upload_data['full_path'];
                 $upload_catagory    = $this->input->post('catagory');
+                $upload_license     = $this->input->post('license');
                 $file_type          = $upload_data['file_type'];
                 $client_name        = $upload_data['client_name'];
                 $file_size          = $upload_data['file_size'];
@@ -105,6 +105,7 @@ class Upload extends CI_Controller {
                             $file_name,
                             $full_path,
                             $upload_catagory,
+                            $upload_license,
                             $file_type,
                             $client_name,
                             $file_size,

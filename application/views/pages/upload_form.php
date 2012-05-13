@@ -43,16 +43,11 @@
                 <div class="ctrlHolder">
                     <label for="license">License <span class="right">(required)</span></label>
                     <select name="license" id="license" class="textInput medium" autocompelete="OFF" />
-                        <?php foreach ($default_license->result() as $row) : ?>
+                        <?php foreach ($license->result() as $row) : ?>
                             <option value="<?php print $row->id; ?>" <?php echo set_select('license', $row->id); ?>>
                                 <?php print $row->name; ?>
                             </option>
                         <?php endforeach; ?>
-                        <?php if ($license) : foreach ($license->result() as $row) : ?>
-                            <option value="<?php print $row->id; ?>" <?php echo set_select('license', $row->id); ?>>
-                                <?php print $row->name; ?>
-                            </option>
-                        <?php endforeach; endif; ?>
                     </select>
                     <p class="formHint">Choose the file's license.</p>
                 </div>
