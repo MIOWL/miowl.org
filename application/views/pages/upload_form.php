@@ -32,7 +32,7 @@
                     <select name="category" id="category" class="textInput medium" autocompelete="OFF" />
                         <?php foreach ($categories->result() as $row) : ?>
                         <?php if ($row->parent_id == "0") : ?>
-                            <option value="<?php print $row->id; ?>" <?php echo set_select('category', $row->id, TRUE); ?>>
+                            <option value="<?php print $row->id; ?>" <?php echo set_select('category', $row->id); ?>>
                                 <?php print $row->name; ?>
                             </option>
                         <?php endif; endforeach; ?>
