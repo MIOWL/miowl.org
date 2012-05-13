@@ -60,7 +60,7 @@
                     <?php $license = $this->miowl_model->get_license($info->row()->upload_license); ?>
                     <span name="upload_license" id="upload_catagory" size="35" class="textInput medium">
                         <a href="<?php print $license->row()->url; ?>" target="_BLANK">
-                            <?php print $license->row()->name; ?>
+                            <?php print $license->row()->short_description; ?>
                         </a>
                     </span>
                 </div>

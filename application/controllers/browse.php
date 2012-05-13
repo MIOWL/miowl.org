@@ -90,7 +90,7 @@ class Browse extends CI_Controller {
                     date("H:i:s d/m/Y", $row->upload_time),
                     $row->file_name,
                     $this->miowl_model->get_category($row->upload_catagory)->row()->name,
-                    $this->miowl_model->get_license($row->upload_license)->row()->short_description,
+                    $this->miowl_model->get_license($row->upload_license)->row()->name,
                     $row->file_type,
                     $this->owl_model->get_owl_by_id($row->owl)->row()->owl_name,
                     '<center><a href="' . site_url('download/' . $row->id) . '" title="Downlaod this file!" target="_BLANK" class="icon_font">F</a></center>',
