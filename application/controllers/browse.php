@@ -93,7 +93,7 @@ class Browse extends CI_Controller {
                     $this->miowl_model->get_category($row->upload_category)->row()->name,
                     '<a href="' . $lic->row()->url . '" target="_BLANK">' . $lic->row()->name . '</a>',
                     $row->file_type,
-                    '<a href="' . site_url('browse/owl/' . $info->row()->owl) . '">' . $this->owl_model->get_owl_by_id($row->owl)->row()->owl_name . '</a>',
+                    '<a href="' . site_url('browse/owl/' . $row->owl) . '">' . $this->owl_model->get_owl_by_id($row->owl)->row()->owl_name . '</a>',
                     '<center><a href="' . site_url('download/' . $row->id) . '" title="Downlaod this file!" target="_BLANK" class="icon_font">F</a></center>',
                     '<center><a href="' . site_url('browse/info/' . $row->id) . '" title="More info for this file!" class="icon_font">,</a></center>'
                 );
