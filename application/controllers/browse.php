@@ -85,6 +85,7 @@ class Browse extends CI_Controller {
         {
             foreach($uploads->result() as $row)
             {
+                die($row->upload_category);
                 $this->table->add_row(
                     $row->id,
                     date("H:i:s d/m/Y", $row->upload_time),
