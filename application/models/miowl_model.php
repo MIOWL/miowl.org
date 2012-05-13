@@ -313,7 +313,7 @@ class Miowl_model extends CI_Model {
     /**
      * public get_default_license()
      */
-    public function get_default_license($id)
+    public function get_default_license()
     {
         return $this->get_owl_license(TRUE, TRUE);
     }
