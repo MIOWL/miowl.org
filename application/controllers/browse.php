@@ -53,8 +53,6 @@ class Browse extends CI_Controller {
         $page_data = array();
         $page_data['page_title'] = 'File Browser';
 
-
-        #$uploads = $this->upload_model->get_amount(100);
         $uploads = $this->upload_model->get_all_uploads();
         $this->load->library('table');
         $tmpl = array (

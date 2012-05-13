@@ -107,7 +107,7 @@ class Owl extends CI_Controller {
         $this->form_validation->set_rules('province', 'Province', 'callback__valid_choice');
         $this->form_validation->set_rules('city', 'City', 'required|trim');
         $this->form_validation->set_rules('zip', 'Postal Code', 'required|trim|alpha_numeric');
-        $this->form_validation->set_rules('tel', 'Phone Number', "trim|numeric");
+        $this->form_validation->set_rules('tel', 'Phone Number', "trim");
         $this->form_validation->set_rules('site', 'Website', "trim|prep_url|callback__valid_url|callback__is_this_unique[{$owl_id}]");
         $this->form_validation->set_rules('email', 'Administrator Email', "required|trim|valid_email|callback__is_this_unique[{$owl_id}]");
 
