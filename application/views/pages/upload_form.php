@@ -52,7 +52,7 @@
                             <option value="<?php print $row->id; ?>" <?php echo set_select('license', $row->id); ?>>
                                 <?php print $row->name; ?>
                             </option>
-                        <?php endforeach; endif: ?>
+                        <?php endforeach; endif; ?>
                     </select>
                     <p class="formHint">Choose the file's license.</p>
                 </div>
