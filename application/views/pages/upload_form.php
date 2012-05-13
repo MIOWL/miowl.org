@@ -9,7 +9,7 @@
 	<div id="body">
 
         <!-- login -->
-        <?php echo form_open_multipart('upload/do_upload', array('class' => 'uniForm'));?>
+        <?php echo form_open_multipart('', array('class' => 'uniForm'));?>
 
             <?php $this->load->view('messages/message_inline'); ?>
 
