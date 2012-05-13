@@ -16,7 +16,7 @@
             <fieldset class="inlineLabels">
 
                 <div class="ctrlHolder">
-                    <label for="userfile">File</label>
+                    <label for="userfile">File (required)</label>
                     <input type="file" name="userfile" id="userfile" size="35" class="textInput medium" value="<?php print set_value('userfile'); ?>" />
                     <p class="formHint">Choose the file you want to upload. Must be <strong><?php print $allow_types; ?></strong></p>
                 </div>
@@ -41,7 +41,7 @@
                 </div>
 
                 <div class="ctrlHolder">
-                    <label for="description">Description</label>
+                    <label for="description">Description (required)</label>
                     <textarea name="description" id="description" size="35" class="textInput medium" rows="5" cols="50"><?php print trim(set_value('description')); ?></textarea>
                     <p class="formHint">Enter a description for the file.</p>
                 </div>
