@@ -28,7 +28,7 @@
                 </div>
 
                 <div class="ctrlHolder">
-                    <label for="catagory">Catagory <span class="right">(required)</span></label>
+                    <label for="category">Category <span class="right">(required)</span></label>
                     <select name="category" id="category" class="textInput medium" autocompelete="OFF" />
                         <?php foreach ($categories->result() as $row) : ?>
                         <?php if ($row->parent_id == "0") : ?>

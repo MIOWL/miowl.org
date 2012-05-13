@@ -98,6 +98,7 @@ class Upload_model extends CI_Model {
                                 $file_name          = FALSE,
                                 $full_path          = FALSE,
                                 $upload_catagory    = FALSE,
+                                $upload_category    = FALSE,
                                 $file_type          = FALSE,
                                 $client_name        = FALSE,
                                 $file_size          = FALSE,
@@ -105,7 +106,7 @@ class Upload_model extends CI_Model {
                                 $description        = NULL
                               )
     {
-        if (!$upload_user || !$owl || !$file_name || !$full_path || !$upload_catagory || !$file_type || !$client_name || !$file_size || !$file_ext)
+        if (!$upload_user || !$owl || !$file_name || !$full_path || !$upload_catagory || !$upload_category || !$file_type || !$client_name || !$file_size || !$file_ext)
             return FALSE;
 
         $insert_data = array(
@@ -114,7 +115,7 @@ class Upload_model extends CI_Model {
             'owl'               => $owl,
             'file_name'         => $file_name,
             'full_path'         => $full_path,
-            'upload_catagory'   => $upload_catagory,
+            'upload_category'   => $upload_category,
             'file_type'         => $file_type,
             'client_name'       => $client_name,
             'file_size'         => $file_size,

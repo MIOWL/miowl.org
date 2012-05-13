@@ -89,7 +89,7 @@ class Upload extends CI_Controller {
                 $upload_user        = $this->session->userdata('username');
                 $owl                = $this->session->userdata('owl');
                 $full_path          = $upload_data['full_path'];
-                $upload_catagory    = $this->input->post('catagory');
+                $upload_category    = $this->input->post('category');
                 $upload_license     = $this->input->post('license');
                 $file_type          = $upload_data['file_type'];
                 $client_name        = $upload_data['client_name'];
@@ -102,7 +102,7 @@ class Upload extends CI_Controller {
                             $owl,
                             $file_name,
                             $full_path,
-                            $upload_catagory,
+                            $upload_category,
                             $upload_license,
                             $file_type,
                             $client_name,
