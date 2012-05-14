@@ -333,8 +333,8 @@ class Owl extends CI_Controller {
     {
         // page data array
         $page_data                  = array();
-        $page_data['page_title']    = "Owl Uploads";
-        $page_data['uploads']       = $this->upload_model->get_deleted_by_owl($this->session->userdata('owl'));
+        $page_data['page_title']    = "Recycle Bin";
+        $page_data['uploads']       = $this->upload_model->get_deleted_by_owl();
 
         // load the approp. page view
         $this->load->view('pages/owl_uploads_bin', $page_data);

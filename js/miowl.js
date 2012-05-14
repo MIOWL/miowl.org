@@ -124,7 +124,7 @@ $(document).ready(function() {
     // ------------------------------------------------------------------------
 
     /*!
-     * deny member
+     * delete upload
      */
     $('.remove').click(function(e) {
         e.preventDefault();
@@ -135,6 +135,30 @@ $(document).ready(function() {
         $.ajax({
             type: 'GET',
             url: '/projects/miowl/owl/uploads/remove/' + id,
+            dataType: 'text',
+            success: function(response) {
+                if (response == "1") {
+                    $('#r-' + id).fadeOut('slow', function() {
+                        $('#r-' + id).empty();
+                    });
+                }
+            }
+        });
+    });
+    // ------------------------------------------------------------------------
+
+    /*!
+     * restore upload
+     */
+    $('.restore').click(function(e) {
+        e.preventDefault();
+
+        // get href id
+        var id = $(this).attr('href');
+
+        $.ajax({
+            type: 'GET',
+            url: '/projects/miowl/owl/uploads/restore/' + id,
             dataType: 'text',
             success: function(response) {
                 if (response == "1") {

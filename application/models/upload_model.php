@@ -201,6 +201,25 @@ class Upload_model extends CI_Model {
     //------------------------------------------------------------------
 
 
+    /**
+     * public get_deleted_by_owl()
+     */
+    public function get_deleted_by_owl()
+    {
+        $this->db->select('*');
+        $this->db->order_by("id", "ASC");
+        $this->db->where('owl', $this->session->userdata('owl'));
+        $this->db->where('deleted', 'true');
+        $query = $this->db->get('uploads');
+
+        if ($query->num_rows() > 0)
+            return $query;
+        else
+            return FALSE;
+    }
+    //------------------------------------------------------------------
+
+
 
     //=================================================================================
     // :private
