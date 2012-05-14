@@ -132,7 +132,7 @@ class Owl extends CI_Controller {
             {
                 $authcode = $this->_genActCode();
                 $this->owlmail->send_notification($name, $details->row()->owl_email, $this->input->post('email'));
-                $this->owl_model->new_email($this->input->post('email'));
+                $this->owl_model->new_email($details->row()->owl_email, $this->input->post('email'));
             }
 
             $page_data['success']     = TRUE;
