@@ -107,7 +107,8 @@ class Upload_model extends CI_Model {
                               )
     {
         if (!$upload_user || !$owl || !$file_name || !$full_path || !$upload_category || !$upload_license || !$file_type || !$client_name || !$file_size || !$file_ext)
-            return FALSE;
+            die('something is null');
+            #return FALSE;
 
         $insert_data = array(
             'upload_time'       => time(),
