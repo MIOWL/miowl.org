@@ -14,14 +14,17 @@ class Upload_model extends CI_Model {
      *
      * @param int $upload_id - upload id
      */
-    public function get_upload_by_id($upload_id)
+    public function get_upload_by_id($upload_id, $deleted = FALSE)
     {
         if (!$upload_id)
             return FALSE;
 
         $this->db->select('*');
         $this->db->where('id', $upload_id);
-        $this->db->where('deleted', 'false');
+        if (!$deleted)
+            $this->db->where('deleted', 'false');
+        else
+            $this->db->where('deleted', 'true');
         $query = $this->db->get('uploads');
 
         if ($query->num_rows() > 0)
@@ -35,14 +38,17 @@ class Upload_model extends CI_Model {
     /**
      * public get_upload_by_ext()
      */
-    public function get_upload_by_ext($ext)
+    public function get_upload_by_ext($ext, $deleted = FALSE)
     {
         if (!$ext)
             return FALSE;
 
         $this->db->select('*');
         $this->db->where('file_ext', '.' . $ext);
-        $this->db->where('deleted', 'false');
+        if (!$deleted)
+            $this->db->where('deleted', 'false');
+        else
+            $this->db->where('deleted', 'true');
         $query = $this->db->get('uploads');
 
         if ($query->num_rows() > 0)
@@ -56,14 +62,17 @@ class Upload_model extends CI_Model {
     /**
      * public get_upload_by_owl()
      */
-    public function get_upload_by_owl($owl = FALSE)
+    public function get_upload_by_owl($owl = FALSE, $deleted = FALSE)
     {
         if (!$owl)
             return FALSE;
 
         $this->db->select('*');
         $this->db->where('owl', $owl);
-        $this->db->where('deleted', 'false');
+        if (!$deleted)
+            $this->db->where('deleted', 'false');
+        else
+            $this->db->where('deleted', 'true');
         $query = $this->db->get('uploads');
 
         if ($query->num_rows() > 0)
@@ -75,14 +84,27 @@ class Upload_model extends CI_Model {
 
 
     /**
+     * public get_deleted_by_owl()
+     */
+    public function get_deleted_by_owl()
+    {
+        return $this->get_upload_by_owl($this->session->userdata('owl'), TRUE);
+    }
+    //------------------------------------------------------------------
+
+
+    /**
      * public get_all_uploads()
      * function will get all upload info for all uploads
      */
-    public function get_all_uploads()
+    public function get_all_uploads($deleted = FALSE)
     {
         $this->db->select('*');
         $this->db->order_by("id", "ASC");
-        $this->db->where('deleted', 'false');
+        if (!$deleted)
+            $this->db->where('deleted', 'false');
+        else
+            $this->db->where('deleted', 'true');
         $query = $this->db->get('uploads');
 
         if ($query->num_rows() > 0)
@@ -161,11 +183,14 @@ class Upload_model extends CI_Model {
     /**
      * public get_id_by_file_name()
      */
-    public function get_id_by_file_name($file_name)
+    public function get_id_by_file_name($file_name, $deleted = FALSE)
     {
         $this->db->select('id');
         $this->db->where('file_name', $file_name);
-        $this->db->where('deleted', 'false');
+        if (!$deleted)
+            $this->db->where('deleted', 'false');
+        else
+            $this->db->where('deleted', 'true');
         $query = $this->db->get('uploads');
 
         if ($query->num_rows() > 0)
@@ -179,9 +204,12 @@ class Upload_model extends CI_Model {
     /**
      * public delete()
      */
-    public function delete($owl = FALSE, $id = NULL )
+    public function delete($id = NULL )
     {
-        if (!$owl || !$id)
+        if (!$this->sesson->userdata('admin'))
+            return FALSE;
+
+        if (!$id)
             return FALSE;
 
         $update_data = array(
@@ -190,7 +218,7 @@ class Upload_model extends CI_Model {
         );
 
         $this->db->where('id', $id);
-        $this->db->where('owl', $owl);
+        $this->db->where('owl', $this->session->userdata('owl'));
         $this->db->update('uploads', $update_data);
 
         if ($this->db->affected_rows() > 0)
@@ -202,18 +230,27 @@ class Upload_model extends CI_Model {
 
 
     /**
-     * public get_deleted_by_owl()
+     * public restore()
      */
-    public function get_deleted_by_owl()
+    public function restore($id = NULL )
     {
-        $this->db->select('*');
-        $this->db->order_by("id", "ASC");
-        $this->db->where('owl', $this->session->userdata('owl'));
-        $this->db->where('deleted', 'true');
-        $query = $this->db->get('uploads');
+        if (!$this->sesson->userdata('admin'))
+            return FALSE;
 
-        if ($query->num_rows() > 0)
-            return $query;
+        if (!$id)
+            return FALSE;
+
+        $update_data = array(
+            'deleted' => 'false',
+            'remove_timestamp' => NULL
+        );
+
+        $this->db->where('id', $id);
+        $this->db->where('owl', $this->session->userdata('owl'));
+        $this->db->update('uploads', $update_data);
+
+        if ($this->db->affected_rows() > 0)
+            return TRUE;
         else
             return FALSE;
     }

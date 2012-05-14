@@ -16,7 +16,7 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Timestamp (GMT)</th>
+                        <th>Removal Timestamp (GMT)</th>
                         <th>Filename</th>
                         <th>Category</th>
                         <th>License</th>
@@ -35,7 +35,7 @@
 ?>
                     <tr id="r-<?php print $row->id; ?>">
                         <td><?php print $row->id; ?></td>
-                        <td><?php print date("H:i:s d/m/Y", $row->upload_time); ?></td>
+                        <td><?php print date("d/m/Y", $row->remove_timestamp); ?></td>
                         <td><?php print $row->file_name; ?></td>
                         <td><?php print $this->miowl_model->get_category($row->upload_category)->row()->name; ?></td>
                         <td>
@@ -48,7 +48,7 @@
                             <a href="<?php print site_url('download/' . $row->id); ?>" title="Downlaod this file!" target="_BLANK" class="icon_font">F</a>
                         </td>
                         <td>
-                            <a href="<?php print site_url('browse/info/' . $row->id); ?>" title="More info for this file!" target="_BLANK" class="icon_font">,</a>
+                            <a href="<?php print site_url('deleted/info/' . $row->id); ?>" title="More info for this file!" target="_BLANK" class="icon_font">,</a>
                         </td>
                         <td>
                             <a href="<?php print $row->id; ?>" title="Restore this file!" target="_BLANK" id="restore_<?php print $row->id; ?>" class="icon_font restore">i</a>

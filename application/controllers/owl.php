@@ -347,7 +347,17 @@ class Owl extends CI_Controller {
      */
     public function _uploads_remove($id = FALSE)
     {
-        print $this->upload_model->delete($this->session->userdata('owl'), $id)?1:0;
+        print $this->upload_model->delete($id)?1:0;
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * member function _uploads_restore()
+     */
+    public function _uploads_restore($id = FALSE)
+    {
+        print $this->upload_model->restore($id)?1:0;
     }
     //------------------------------------------------------------------
 
