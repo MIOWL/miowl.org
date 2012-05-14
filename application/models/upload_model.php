@@ -106,9 +106,13 @@ class Upload_model extends CI_Model {
                                 $description        = NULL
                               )
     {
-        if (!$upload_user || !$owl || !$file_name || !$full_path || !$upload_category || !$upload_license || !$file_type || !$client_name || !$file_size || !$file_ext)
-            die("something is null<br><br>upload_user: {$upload_user}<br>owl: {$owl}<br>file_name: {$file_name}<br>full_path: {$full_path}<br>upload_category: {$upload_category}<br>upload_license: {$upload_license}<br>file_type: {$file_type}<br>client_name: {$client_name}<br>file_size: {$file_size}<br>file_ext: {$file_ext}");
-            #return FALSE;
+        if (!$upload_user || !$owl || !$file_name || !$full_path || !$upload_license || !$file_type || !$client_name || !$file_size || !$file_ext) {
+
+            // Debugging only
+            #die("something is null<br><br>upload_user: {$upload_user}<br>owl: {$owl}<br>file_name: {$file_name}<br>full_path: {$full_path}<br>upload_category: {$upload_category}<br>upload_license: {$upload_license}<br>file_type: {$file_type}<br>client_name: {$client_name}<br>file_size: {$file_size}<br>file_ext: {$file_ext}");
+
+            return FALSE;
+        }
 
         $insert_data = array(
             'upload_time'       => time(),
