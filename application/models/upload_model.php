@@ -153,7 +153,7 @@ class Upload_model extends CI_Model {
                             );
 
         $this->db->where('full_path', $full_path);
-        $this->db->update('uploads', $insert_data);
+        $this->db->update('uploads', $update_data);
     }
     //------------------------------------------------------------------
 
@@ -191,7 +191,7 @@ class Upload_model extends CI_Model {
 
         $this->db->where('id', $id);
         $this->db->where('owl', $owl);
-        $this->db->update('uploads', $insert_data);
+        $this->db->update('uploads', $update_data);
 
         if ($this->db->affected_rows() > 0)
             return TRUE;
