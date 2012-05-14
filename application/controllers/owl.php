@@ -280,15 +280,41 @@ class Owl extends CI_Controller {
     //------------------------------------------------------------------
 
 
+    //=================================================================================
+    // :uploads view
+    //=================================================================================
+
+
     /**
      * public uploads()
      */
-    public function uploads()
+    public function uploads($function = FALSE, $params = NULL)
     {
         // Do we need to login??
-        if (!$this->login_check('owl-uploads'))
+        if (!$this->login_check('owl-uploads-' . $function))
             return;
 
+        if (!$function)
+            $function = 'list';
+
+        if (method_exists($this, '_uploads_' . $function))
+            return call_user_func(array($this, '_uploads_' . $function), $params);
+
+        show_404();
+    }
+    //------------------------------------------------------------------
+
+
+    //=================================================================================
+    // :upload view functions
+    //=================================================================================
+
+
+    /**
+     * upload function _uploads_list()
+     */
+    public function _uploads_list()
+    {
         // page data array
         $page_data                  = array();
         $page_data['page_title']    = "Owl Uploads";
@@ -296,6 +322,37 @@ class Owl extends CI_Controller {
 
         // load the approp. page view
         $this->load->view('pages/owl_uploads', $page_data);
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * upload function _uploads_upload()
+     */
+    /*public function _uploads_upload()
+    {
+        // page data array
+        $page_data                  = array();
+        $page_data['page_title']    = "Owl Uploads";
+
+        // load the approp. page view
+        $this->load->view('pages/owl_uploads_upload', $page_data);
+    }*/
+    //------------------------------------------------------------------
+
+
+    /**
+     * upload function _uploads_bin()
+     */
+    public function _uploads_bin()
+    {
+        // page data array
+        $page_data                  = array();
+        $page_data['page_title']    = "Owl Uploads";
+        $page_data['uploads']       = $this->upload_model->get_deleted_by_owl($this->session->userdata('owl'));
+
+        // load the approp. page view
+        $this->load->view('pages/owl_uploads_bin', $page_data);
     }
     //------------------------------------------------------------------
 
@@ -320,8 +377,7 @@ class Owl extends CI_Controller {
         if (method_exists($this, '_members_' . $function))
             return call_user_func(array($this, '_members_' . $function), $params);
 
-        else
-            show_404();
+        show_404();
     }
     //------------------------------------------------------------------
 
@@ -471,8 +527,7 @@ class Owl extends CI_Controller {
         if (method_exists($this, '_categories_' . $function))
             return call_user_func(array($this, '_categories_' . $function), $params);
 
-        else
-            show_404();
+        show_404();
     }
     //------------------------------------------------------------------
 

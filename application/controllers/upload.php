@@ -114,7 +114,12 @@ class Upload extends CI_Controller {
                 $page_data['page_title'] = 'Upload Success';
                 $page_data['upload_data'] = $upload_data;
 
-                $this->load->view('pages/upload_success', $page_data);
+                // Success Message
+                $page_data['success']     = TRUE;
+                $page_data['msg']         = "Upload Successful, upload another?";
+
+                #$this->load->view('pages/upload_success', $page_data);
+                $this->load->view('pages/upload_form', $page_data);
             }
         }
         else
