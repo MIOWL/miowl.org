@@ -22,6 +22,7 @@
 
 </head>
 <body>
+<noscript><?php die('Sorry, your browser does not support JavaScript!'); ?></noscript>
 
 <div id="container">
 
