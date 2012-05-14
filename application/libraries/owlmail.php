@@ -56,6 +56,40 @@ class owlmail {
 
 
     /**
+     * public notification
+     * function to send out a notification email to old and new administrator
+     *
+     * @return bool
+     */
+    public function send_notification($username = FALSE, $old_email = FALSE, $new_email = FALSE)
+    {
+        if (!$username || !$old_email || !$new_email)
+            return FALSE;
+
+        // Build up the email output
+        $data = array(
+            'username'  => $username,
+            'old_email' => $old_email,
+            'new_email' => $new_email
+        );
+
+        $email_data  = $this->obj->load->view('email/head_foot/email_head.tpl', NULL, TRUE);    // Add email header
+        $email_data .= $this->obj->parser->parse('email/owl_notification.tpl', $data, TRUE);      // Build the email body
+        $email_data .= $this->obj->load->view('email/head_foot/email_foot.tpl', NULL, TRUE);    // Add the email footer
+
+        // Email Subject
+        $subject = 'MiOWL | New Administrator Email';
+
+        // Email addresses
+        $email = "{$old_email}; {$new_email}";
+
+        // Send the email
+        return $this->send_email($email, $subject, $email_data);
+    }
+    //------------------------------------------------------------------
+
+
+    /**
      * public send_owl_welcome
      * function to send out the welcome email after successful activation
      *

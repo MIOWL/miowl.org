@@ -132,7 +132,7 @@ class Owl extends CI_Controller {
             {
                 $authcode = $this->_genActCode();
                 $this->owlmail->send_notification($name, $details->row()->owl_email, $this->input->post('email'));
-                $this->owl_model->new_email($this->input->post('email'), $authcode);
+                $this->owl_model->new_email($this->input->post('email'));
             }
 
             $page_data['success']     = TRUE;
@@ -323,21 +323,6 @@ class Owl extends CI_Controller {
         // load the approp. page view
         $this->load->view('pages/owl_uploads', $page_data);
     }
-    //------------------------------------------------------------------
-
-
-    /**
-     * upload function _uploads_upload()
-     */
-    /*public function _uploads_upload()
-    {
-        // page data array
-        $page_data                  = array();
-        $page_data['page_title']    = "Owl Uploads";
-
-        // load the approp. page view
-        $this->load->view('pages/owl_uploads_upload', $page_data);
-    }*/
     //------------------------------------------------------------------
 
 

@@ -43,6 +43,30 @@ class Owl_model extends CI_Model {
 
 
     /**
+     * public new_email()
+     */
+    public function new_email($old_email, $new_email)
+    {
+        if (!$old_email || !$new_email)
+            return FALSE;
+
+        $where = array(
+            'id'        => $this->session->userdata('owl'),
+            'owl_email' => $old_email
+        );
+
+        $update_data = array(
+            'owl_email'       => $new_email,
+            'owl_email_old'   => $old_email
+        );
+
+        $this->db->where($where);
+        $this->db->update('owls', $update_data);
+    }
+    //------------------------------------------------------------------
+
+
+    /**
      * public add_reset_data()
      * function add the reset data to the database for autherization later
      *
