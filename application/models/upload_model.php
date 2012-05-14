@@ -21,6 +21,7 @@ class Upload_model extends CI_Model {
 
         $this->db->select('*');
         $this->db->where('id', $upload_id);
+        $this->db->where('deleted', 'false');
         $query = $this->db->get('uploads');
 
         if ($query->num_rows() > 0)
@@ -41,6 +42,7 @@ class Upload_model extends CI_Model {
 
         $this->db->select('*');
         $this->db->where('file_ext', '.' . $ext);
+        $this->db->where('deleted', 'false');
         $query = $this->db->get('uploads');
 
         if ($query->num_rows() > 0)
@@ -61,6 +63,7 @@ class Upload_model extends CI_Model {
 
         $this->db->select('*');
         $this->db->where('owl', $owl);
+        $this->db->where('deleted', 'false');
         $query = $this->db->get('uploads');
 
         if ($query->num_rows() > 0)
@@ -79,6 +82,7 @@ class Upload_model extends CI_Model {
     {
         $this->db->select('*');
         $this->db->order_by("id", "ASC");
+        $this->db->where('deleted', 'false');
         $query = $this->db->get('uploads');
 
         if ($query->num_rows() > 0)
@@ -161,10 +165,36 @@ class Upload_model extends CI_Model {
     {
         $this->db->select('id');
         $this->db->where('file_name', $file_name);
+        $this->db->where('deleted', 'false');
         $query = $this->db->get('uploads');
 
         if ($query->num_rows() > 0)
             return $query->row('id');
+        else
+            return FALSE;
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * public delete()
+     */
+    public function delete($owl = FALSE, $id = NULL )
+    {
+        if (!$owl || !$id)
+            return FALSE;
+
+        $update_data = array(
+            'deleted' => 'true',
+            'remove_timestamp' => time()
+        );
+
+        $this->db->where('id', $id);
+        $this->db->where('owl', $owl);
+        $this->db->update('uploads', $insert_data);
+
+        if ($this->db->affected_rows() > 0)
+            return TRUE;
         else
             return FALSE;
     }

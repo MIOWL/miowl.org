@@ -123,4 +123,28 @@ $(document).ready(function() {
     });
     // ------------------------------------------------------------------------
 
+    /*!
+     * deny member
+     */
+    $('.remove').click(function(e) {
+        e.preventDefault();
+
+        // get href id
+        var id = $(this).attr('href');
+
+        $.ajax({
+            type: 'GET',
+            url: '/projects/miowl/owl/uploads/remove/' + id,
+            dataType: 'text',
+            success: function(response) {
+                if (response == "1") {
+                    $('#r-' + id).fadeOut('slow', function() {
+                        $('#r-' + id).empty();
+                    });
+                }
+            }
+        });
+    });
+    // ------------------------------------------------------------------------
+
 });
