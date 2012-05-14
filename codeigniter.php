@@ -1,4 +1,4 @@
-<noscript><php die('Sorry, your browser does not support JavaScript!'); ?></noscript>
+<noscript><?php print 'Sorry, your browser does not support JavaScript!'; exit; ?></noscript>
 <?php
 
 /*
