@@ -81,8 +81,8 @@ class owlmail {
         $subject = 'MiOWL | New Administrator Email';
 
         // Send the email
-        $this->send_email($old_email, $subject, $email_data);
-        $this->send_email($new_email, $subject, $email_data);
+        $email = "{$old_email}, {$new_email}";
+        $this->send_email($email, $subject, $email_data);
     }
     //------------------------------------------------------------------
 
