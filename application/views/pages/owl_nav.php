@@ -48,6 +48,8 @@
 				<li><a class="owl_nav_button" href="<?php print site_url('owl/uploads'); ?>">browse</a></li>
 <?php if ($this->session->userdata('editor')) : ?>
 				<li><a class="owl_nav_button" href="<?php print site_url('owl/uploads/upload'); ?>">upload</a></li>
+<?php endif; if ($this->session->userdata('admin')) : ?>
+				<li><a class="owl_nav_button" href="<?php print site_url('owl/uploads/bin'); ?>">recycle bin</a></li>
 <?php endif; ?>
 				<li style="list-style-type: none">&nbsp;</li>
 			</ul>
