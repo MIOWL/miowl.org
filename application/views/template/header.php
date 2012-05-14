@@ -22,7 +22,6 @@
 
 </head>
 <body>
-<noscript><?php print 'Sorry, your browser does not support JavaScript!'; ?></noscript>
 
 <div id="container">
 
