@@ -1,5 +1,5 @@
-    <p>{username},<br />
-    	Congratulations! You have successfully changed your administrator email address, below are the details.
+    <p>
+    	{username},<br />&nbsp;&nbsp;&nbsp;&nbsp;Congratulations! You have successfully changed your administrator email address, below are the details.
     </p>
     <p>
     	Old Administrator email address
