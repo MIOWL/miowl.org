@@ -101,7 +101,7 @@ class Browse extends CI_Controller {
         $page_data['table'] = $this->table->generate();
 
         // setup pagination lib
-        $config['base_url']         = site_url('save/browse');
+        $config['base_url']         = site_url('browse');
         $config['total_rows']       = $this->upload_model->total_uploads();
         $config['per_page']         = $limit;
         $config['anchor_class']     = 'class="button" ';
