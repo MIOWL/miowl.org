@@ -97,7 +97,7 @@ class Upload_model extends CI_Model {
      * public get_all_uploads()
      * function will get all upload info for all uploads
      */
-    public function get_all_uploads($deleted = FALSE)
+    public function get_all_uploads($deleted = FALSE, $limit = 20, $offset = FALSE)
     {
         $this->db->select('*');
         $this->db->order_by("id", "ASC");
@@ -105,7 +105,11 @@ class Upload_model extends CI_Model {
             $this->db->where('deleted', 'false');
         else
             $this->db->where('deleted', 'true');
-        $query = $this->db->get('uploads');
+
+        if (!$offset)
+            $query = $this->db->get('uploads');
+        else
+            $query = $this->db->get('uploads', $limit, $offset);
 
         if ($query->num_rows() > 0)
             return $query;
@@ -253,6 +257,28 @@ class Upload_model extends CI_Model {
             return TRUE;
         else
             return FALSE;
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * public total_uploads()
+     */
+    public function total_uploads($owl = FALSE, $deleted = FALSE)
+    {
+        $this->db->select('*');
+
+        if (!$deleted)
+            $this->db->where('deleted', 'false');
+        else
+            $this->db->where('deleted', 'true');
+
+        if ($owl)
+            $this->db->where('owl', $owl);
+
+        $query = $this->db->get('uploads');
+
+        return $query->num_rows();
     }
     //------------------------------------------------------------------
 

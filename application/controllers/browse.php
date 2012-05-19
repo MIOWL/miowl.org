@@ -44,7 +44,7 @@ class Browse extends CI_Controller {
     /**
      * public index()
      */
-    public function index($page = 0)
+    public function index($offset = 0, $limit = 5)
     {
         // Do we need to login??
         #if (!$this->login_check('browse'))
@@ -53,7 +53,8 @@ class Browse extends CI_Controller {
         $page_data = array();
         $page_data['page_title'] = 'File Browser';
 
-        $uploads = $this->upload_model->get_all_uploads();
+        $uploads = $this->upload_model->get_all_uploads($limit, $offset);
+
         $this->load->library('table');
         $tmpl = array (
             'table_open'          => '<table width="100%" cellspacing="0" cellpadding="4" border="1">',
@@ -99,9 +100,19 @@ class Browse extends CI_Controller {
 
         $page_data['table'] = $this->table->generate();
 
-        $page_data['base_url']      = site_url('browse') . '/';
-        $page_data['total_rows']    = $uploads ? $uploads->num_rows() : 0;
-        $page_data['per_page']      = 20;
+        // setup pagination lib
+        $config['base_url']         = site_url('save/browse');
+        $config['total_rows']       = $this->upload_model->total_uploads();
+        $config['per_page']         = $limit;
+        $config['anchor_class']     = 'class="button" ';
+        $config['cur_tag_open']     = '&nbsp;<div class="button danger current">';
+        $config['cur_tag_close']    = '</div>';
+
+        // init pagination
+        $this->pagination->initialize($config);
+
+        // load our view
+        $this->load->view('save/browse', $page_data);
 
         $this->load->view('pages/browse', $page_data);
     }
