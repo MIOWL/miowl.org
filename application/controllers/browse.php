@@ -99,7 +99,7 @@ class Browse extends CI_Controller {
 
         $page_data['table'] = $this->table->generate();
 
-        $page_data['base_url']      = $site_url('browse') . '/';
+        $page_data['base_url']      = site_url('browse') . '/';
         $page_data['total_rows']    = $uploads ? $uploads->num_rows() : 0;
         $page_data['per_page']      = 20;
 
