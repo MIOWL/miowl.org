@@ -44,7 +44,7 @@ class Browse extends CI_Controller {
     /**
      * public index()
      */
-    public function index($offset = 0, $limit = 15)
+    public function index($offset = 0, $limit = 10)
     {
         // Do we need to login??
         #if (!$this->login_check('browse'))
@@ -120,7 +120,7 @@ class Browse extends CI_Controller {
     /**
      * public index()
      */
-    public function owl($owl = FALSE, $offset = 0, $limit = 15)
+    public function owl($owl = FALSE, $offset = 0, $limit = 10)
     {
         $page_data = array();
         $page_data['page_title'] = 'File Browser | by owl';
