@@ -47,6 +47,7 @@ $route['404_override'] 						= 'error/error_404';
 $route['about'] 							= 'welcome/about';
 $route['download/(:num)'] 					= 'browse/download/$1';
 $route['owl/uploads/upload'] 				= 'upload/index';
+$route['browse/(:num)'] 					= 'browse/index/$1';
 
 
 /* End of file routes.php */

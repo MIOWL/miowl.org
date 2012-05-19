@@ -44,7 +44,7 @@ class Browse extends CI_Controller {
     /**
      * public index()
      */
-    public function index()
+    public function index($page = 0)
     {
         // Do we need to login??
         #if (!$this->login_check('browse'))
@@ -56,25 +56,25 @@ class Browse extends CI_Controller {
         $uploads = $this->upload_model->get_all_uploads();
         $this->load->library('table');
         $tmpl = array (
-                            'table_open'          => '<table width="100%" cellspacing="0" cellpadding="4" border="1">',
+            'table_open'          => '<table width="100%" cellspacing="0" cellpadding="4" border="1">',
 
-                            'heading_row_start'   => '<tr>',
-                            'heading_row_end'     => '</tr>',
-                            'heading_cell_start'  => '<th>',
-                            'heading_cell_end'    => '</th>',
+            'heading_row_start'   => '<tr>',
+            'heading_row_end'     => '</tr>',
+            'heading_cell_start'  => '<th>',
+            'heading_cell_end'    => '</th>',
 
-                            'row_start'           => '<tr>',
-                            'row_end'             => '</tr>',
-                            'cell_start'          => '<td>',
-                            'cell_end'            => '</td>',
+            'row_start'           => '<tr>',
+            'row_end'             => '</tr>',
+            'cell_start'          => '<td>',
+            'cell_end'            => '</td>',
 
-                            'row_alt_start'       => '<tr>',
-                            'row_alt_end'         => '</tr>',
-                            'cell_alt_start'      => '<td>',
-                            'cell_alt_end'        => '</td>',
+            'row_alt_start'       => '<tr>',
+            'row_alt_end'         => '</tr>',
+            'cell_alt_start'      => '<td>',
+            'cell_alt_end'        => '</td>',
 
-                            'table_close'         => '</table>'
-                      );
+            'table_close'         => '</table>'
+        );
         $this->table->set_template($tmpl);
         $this->table->set_heading('ID', 'Timestamp (GMT)', 'Filename', 'Category', 'License', 'File Type', 'Owl', 'Download', 'Info');
         $this->table->set_empty("N/A");
