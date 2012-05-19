@@ -174,6 +174,7 @@ class Browse extends CI_Controller {
 
         // setup pagination lib
         $config['base_url']         = site_url('browse/owl/' . $owl);
+        $config['uri_segment']      = 4;
         $config['total_rows']       = $this->upload_model->total_uploads($owl);
         $config['per_page']         = $limit;
         $config['anchor_class']     = 'class="button" ';
