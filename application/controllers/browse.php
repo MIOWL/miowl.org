@@ -76,7 +76,7 @@ class Browse extends CI_Controller {
             'table_close'         => '</table>'
         );
         $this->table->set_template($tmpl);
-        $this->table->set_heading('ID', 'Timestamp (GMT)', 'Filename', 'Category', 'License', 'File Type', 'Owl', 'Download', 'Info');
+        $this->table->set_heading('Timestamp (GMT)', 'Filename', 'Category', 'License', 'File Type', 'Owl', 'Download', 'Info');
         $this->table->set_empty("N/A");
 
         if($uploads)
@@ -85,7 +85,6 @@ class Browse extends CI_Controller {
             {
                 $lic = $this->miowl_model->get_license($row->upload_license);
                 $this->table->add_row(
-                    $row->id,
                     date("H:i:s d/m/Y", $row->upload_time),
                     $row->file_name,
                     $this->miowl_model->get_category($row->upload_category)->row()->name,
@@ -99,6 +98,10 @@ class Browse extends CI_Controller {
         }
 
         $page_data['table'] = $this->table->generate();
+
+        $page_data['base_url']      = $site_url('browse') . '/';
+        $page_data['total_rows']    = $uploads ? $uploads->num_rows() : 0;
+        $page_data['per_page']      = 20;
 
         $this->load->view('pages/browse', $page_data);
     }
