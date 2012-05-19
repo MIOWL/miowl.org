@@ -44,7 +44,7 @@ class Browse extends CI_Controller {
     /**
      * public index()
      */
-    public function index($offset = 0, $limit = 5)
+    public function index($offset = 0, $limit = 15)
     {
         // Do we need to login??
         #if (!$this->login_check('browse'))
