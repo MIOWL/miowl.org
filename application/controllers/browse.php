@@ -53,7 +53,7 @@ class Browse extends CI_Controller {
         $page_data = array();
         $page_data['page_title'] = 'File Browser';
 
-        $uploads = $this->upload_model->get_all_uploads($limit, $offset);
+        $uploads = $this->upload_model->get_all_uploads(FALSE, $limit, $offset);
 
         $this->load->library('table');
         $tmpl = array (
@@ -112,8 +112,6 @@ class Browse extends CI_Controller {
         $this->pagination->initialize($config);
 
         // load our view
-        $this->load->view('save/browse', $page_data);
-
         $this->load->view('pages/browse', $page_data);
     }
     //------------------------------------------------------------------
