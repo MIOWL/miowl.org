@@ -97,7 +97,7 @@ class Upload_model extends CI_Model {
      * public get_all_uploads()
      * function will get all upload info for all uploads
      */
-    public function get_all_uploads($deleted = FALSE, $limit = 20, $offset = FALSE)
+    public function get_all_uploads($deleted = FALSE, $limit = 0, $offset = FALSE)
     {
         $this->db->select('*');
         $this->db->order_by("id", "ASC");
