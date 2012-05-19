@@ -12,9 +12,9 @@
 
         <!-- pagination -->
         <div class="pagination">
-            <?php print $this->pagination->create_links(); ?>
+            <center><?php print $this->pagination->create_links(); ?></center>
         </div>
-        
+
 	</div>
 
 <?php $this->load->view('template/footer'); ?>
