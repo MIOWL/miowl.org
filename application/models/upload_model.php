@@ -62,7 +62,7 @@ class Upload_model extends CI_Model {
     /**
      * public get_upload_by_owl()
      */
-    public function get_upload_by_owl($owl = FALSE, $deleted = FALSE)
+    public function get_upload_by_owl($owl = FALSE, $deleted = FALSE, $limit = 15, $offset = 0)
     {
         if (!$owl)
             return FALSE;
@@ -73,7 +73,7 @@ class Upload_model extends CI_Model {
             $this->db->where('deleted', 'false');
         else
             $this->db->where('deleted', 'true');
-        $query = $this->db->get('uploads');
+        $query = $this->db->get('uploads', $limit, $offset);
 
         if ($query->num_rows() > 0)
             return $query;
