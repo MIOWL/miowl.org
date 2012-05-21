@@ -226,10 +226,10 @@ class Miowl_model extends CI_Model {
         $this->db->select('*');
 
         if ($include_default) {
-            $this->db->where('owl_id', '0');
-
             if ($parent_id != FALSE)
                     $this->db->where('parent_id', $parent_id);
+
+            $this->db->where('owl_id', '0');
 
             if ($owl_id != FALSE)
                 $this->db->or_where('owl_id', $owl_id);
@@ -238,10 +238,10 @@ class Miowl_model extends CI_Model {
         else {
             if ($owl_id != FALSE)
             {
-                $this->db->where('owl_id', $owl_id);
-
-            if ($parent_id != FALSE)
+                if ($parent_id != FALSE)
                     $this->db->where('parent_id', $parent_id);
+                
+                $this->db->where('owl_id', $owl_id);
             }
             else
                 return FALSE;
