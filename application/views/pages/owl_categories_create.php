@@ -22,7 +22,7 @@
                         <p class="formHint">Your new category name.</p>
                     </div>
 
-                    <div class="ctrlHolder" style="display: none">
+                    <div class="ctrlHolder">
                         <label for="sub_category">Sub Category?</label>
                         <select name="sub_category" id="sub_category" class="textInput medium" autocompelete="OFF" />
                             <option value="0" <?php echo set_select('sub_category', '0', TRUE); ?>>
