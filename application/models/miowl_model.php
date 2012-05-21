@@ -229,7 +229,7 @@ class Miowl_model extends CI_Model {
             $this->db->where('owl_id', '0');
 
             if ($parent_id)
-                    $this->db->and_where('parent_id', $parent_id);
+                    $this->db->where('parent_id', $parent_id);
 
             if ($owl_id != FALSE)
                 $this->db->or_where('owl_id', $owl_id);
@@ -241,7 +241,7 @@ class Miowl_model extends CI_Model {
                 $this->db->where('owl_id', $owl_id);
 
                 if ($parent_id)
-                    $this->db->and_where('parent_id', $parent_id);
+                    $this->db->where('parent_id', $parent_id);
             }
             else
                 return FALSE;
