@@ -553,8 +553,8 @@ class Owl extends CI_Controller {
 
 
         $page_data['root_categories'] = $this->miowl_model->get_owl_categories($this->session->userdata('owl'), TRUE, 21);
-        print $this->db->last_query();
-        die();
+        //print $this->db->last_query();
+        //die();
 
 
         //$page_data['categories']    = $this->miowl_model->get_owl_categories($this->session->userdata('owl'));
