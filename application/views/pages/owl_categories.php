@@ -21,15 +21,22 @@ foreach ($root_categories->result() as $cat)
 {
     print "- {$cat->name} <br />";
     
-    foreach($this->miowl_model->get_owl_categories($this->session->userdata('owl'), TRUE, $cat->id)->result() as $child1)
+    if (($child = $this->miowl_model->get_owl_categories($this->session->userdata('owl'), TRUE, $cat->id)))
     {
-        print "&nbsp;&nbsp;&nbsp;&nbsp; -- {$child1->name} <br />";
-
-        foreach($this->miowl_model->get_owl_categories($this->session->userdata('owl'), TRUE, $child1->id)->result() as $child2)
+        foreach($child->result() as $child1)
         {
-            print "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --- {$child2->name} <br />";
+            print "&nbsp;&nbsp;&nbsp;&nbsp; -- {$child1->name} <br />";
+
+            if (($child2 = $this->miowl_model->get_owl_categories($this->session->userdata('owl'), TRUE, $child1->id)))
+            {
+                foreach($child2->result() as $child3)
+                {
+                    print "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --- {$child3->name} <br />";
+                }
+            }
         }
     }
+
     print "<br />";
 }
 
