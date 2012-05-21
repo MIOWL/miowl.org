@@ -552,7 +552,7 @@ class Owl extends CI_Controller {
         $page_data['page_title']    = "All Owl File Categories";
 
 
-        $page_data['root_categories'] = $this->miowl_model->get_owl_categories($this->session->userdata('owl'), TRUE, '0');
+        $page_data['root_categories'] = $this->miowl_model->get_owl_categories($this->session->userdata('owl'), TRUE, 21);
         print $this->db->last_query();
         die();
 
