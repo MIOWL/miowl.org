@@ -19,7 +19,7 @@ $attributes = array('id' => 'categories');
 
 foreach ($root_categories->result() as $cat)
 {
-    print "- {$cat->name} <br />";
+    print "- {$cat->id} {$cat->name} <br />";
     
     if (($child = $this->miowl_model->get_owl_categories($this->session->userdata('owl'), TRUE, $cat->id)))
     {
@@ -28,13 +28,13 @@ foreach ($root_categories->result() as $cat)
         
         // foreach($child->result() as $child1)
         // {
-        //     print "&nbsp;&nbsp;&nbsp;&nbsp; -- {$child1->name} <br />";
+        //     print "&nbsp;&nbsp;&nbsp;&nbsp; -- {$child1->id} {$child1->name} <br />";
 
         //     if (($child2 = $this->miowl_model->get_owl_categories($this->session->userdata('owl'), TRUE, $child1->id)))
         //     {
         //         foreach($child2->result() as $child3)
         //         {
-        //             print "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --- {$child3->name} <br />";
+        //             print "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --- {$child3->id} {$child3->name} <br />";
         //         }
         //     }
         // }
