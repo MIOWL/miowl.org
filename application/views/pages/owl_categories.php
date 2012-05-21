@@ -29,11 +29,53 @@ foreach ($categories->result() as $row) {
     }
 }
 */
-foreach ($categories->result() as $row) {
-    if($row->parent_id === "0") {
-        // Root Category
-        $categories_list[] = $row->name;
+
+foreach ($root_categories->result() as $cat)
+{
+    print "- {$cat->name} <br />";
+    
+    foreach($this->miowl_model->get_owl_categories($this->session->userdata('owl'), TRUE, $cat->id)->result() as $child1)
+    {
+        print "&nbsp;&nbsp;&nbsp;&nbsp; -- {$child1->name} <br />";
+
+        foreach($this->miowl_model->get_owl_categories($this->session->userdata('owl'), TRUE, $child1->id)->result() as $child2)
+        {
+            print "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --- {$child2->name} <br />";
+        }
     }
+    print "<br />";
+}
+
+
+// foreach ($categories->result() as $row) {
+//     if($row->parent_id === "0") {
+//         // Root Category
+//         $categories_list[] = $row->name;
+//     }
+
+
+
+
+ ----------------------------------------------------
+ id     pid     cid 
+ ----------------------------------------------------
+ 1      0   
+ 2      0
+ 3      1
+ 4      3
+
+
+ 1
+    3
+        4
+ 2
+
+
+
+
+
+
+
 }
 #print ul($categories->result_array(), $attributes);
 print ul($categories_list, $attributes);
