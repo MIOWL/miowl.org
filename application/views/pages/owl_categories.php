@@ -53,29 +53,6 @@ foreach ($root_categories->result() as $cat)
 //         $categories_list[] = $row->name;
 //     }
 
-
-
-
- ----------------------------------------------------
- id     pid     cid 
- ----------------------------------------------------
- 1      0   
- 2      0
- 3      1
- 4      3
-
-
- 1
-    3
-        4
- 2
-
-
-
-
-
-
-
 }
 #print ul($categories->result_array(), $attributes);
 print ul($categories_list, $attributes);
