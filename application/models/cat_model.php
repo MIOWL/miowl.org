@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Miowl_model extends CI_Model {
+class Cat_model extends CI_Model {
 
     /*******************************************************************
      * PRIVATE VARS
@@ -98,7 +98,7 @@ class Miowl_model extends CI_Model {
         $this->db->order_by("id", "ASC");
         $this->db->where('parent_id', $pid);
         $query = $this->db->get('categories');
-        
+
         if ($query->num_rows() > 0)
             return $query;
 
