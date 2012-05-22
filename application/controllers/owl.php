@@ -550,7 +550,7 @@ class Owl extends CI_Controller {
         // page data array
         $page_data                  = array();
         $page_data['page_title']    = "All Owl File Categories";
-        $page_data['categories']    = $this->gen_categories();
+        #$page_data['categories']    = $this->gen_categories();
 
         // load the approp. page view
         $this->load->view('pages/owl_categories', $page_data);
