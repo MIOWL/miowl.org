@@ -88,7 +88,7 @@ class Browse extends CI_Controller {
                 $this->table->add_row(
                     date("H:i:s d/m/Y", $row->upload_time),
                     $row->file_name,
-                    $this->miowl_model->get_category($row->upload_category)->row()->name,
+                    $this->cat_model->get_category($row->upload_category)->row()->name,
                     '<a href="' . $lic->row()->url . '" target="_BLANK">' . $lic->row()->name . '</a>',
                     $row->file_type,
                     '<a href="' . site_url('browse/owl/' . $row->owl) . '">' . $this->owl_model->get_owl_by_id($row->owl)->row()->owl_name . '</a>',
