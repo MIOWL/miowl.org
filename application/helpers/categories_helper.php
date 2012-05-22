@@ -2,7 +2,7 @@
 
 if (!function_exists('gen_categories'))
 {
-    public function gen_categories()
+    function gen_categories()
     {   
         $cat_array = NULL;
 
