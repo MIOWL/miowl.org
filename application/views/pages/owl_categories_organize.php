@@ -14,12 +14,7 @@
 
             <div id="categories_list">
                 <h2>Categories</h2>
-                <?php
-                    if (!empty(gen_categories()))
-                        print ul(gen_categories(), array('id' => 'categories'));
-                    else
-                        print "You have no custom categories created...";
-                ?>
+                <?php print ul(gen_categories(), array('id' => 'categories')); ?>
             </div>
 
         </div>
