@@ -17,33 +17,7 @@
 $categories_list = array();
 $attributes = array('id' => 'categories');
 
-foreach ($root_categories->result() as $cat)
-{
-    print "- {$cat->id} {$cat->name} <br />";
-    
-    if (($child = $this->miowl_model->get_owl_categories($this->session->userdata('owl'), TRUE, $cat->id)))
-    {
-        print "<pre>" .  print_r($child->result(), TRUE) . "</pre>";
-        die();
-        
-        // foreach($child->result() as $child1)
-        // {
-        //     print "&nbsp;&nbsp;&nbsp;&nbsp; -- {$child1->id} {$child1->name} <br />";
-
-        //     if (($child2 = $this->miowl_model->get_owl_categories($this->session->userdata('owl'), TRUE, $child1->id)))
-        //     {
-        //         foreach($child2->result() as $child3)
-        //         {
-        //             print "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --- {$child3->id} {$child3->name} <br />";
-        //         }
-        //     }
-        // }
-    }
-
-    print "<br />";
-}
-
-//print ul($categories_list, $attributes);
+print ul(gen_categories(), $attributes);
 
 ?>
 
