@@ -268,13 +268,13 @@ class Upload_model extends CI_Model {
     {
         $this->db->select('*');
 
+        if ($owl != FALSE)
+            $this->db->where('owl', $owl);
+
         if (!$deleted)
             $this->db->where('deleted', 'false');
         else
             $this->db->where('deleted', 'true');
-
-        if ($owl)
-            $this->db->where('owl', $owl);
 
         $query = $this->db->get('uploads');
 
