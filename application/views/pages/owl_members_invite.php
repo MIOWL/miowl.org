@@ -33,8 +33,8 @@
                     </div>
 
                     <div class="ctrlHolder">
-                        <label for="body">Message <span class="right">(optional)</span></label>
-                        <textarea name="body" id="body" size="35" class="textInput medium" rows="5" cols="50"><?php print trim(set_value('body')); ?></textarea>
+                        <label for="msg">Message <span class="right">(optional)</span></label>
+                        <textarea name="msg" id="msg" size="35" class="textInput medium" rows="5" cols="50"><?php print trim(set_value('msg')); ?></textarea>
                         <p class="formHint">Just a quick message to be attached to the invite email.</p>
                     </div>
 
