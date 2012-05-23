@@ -313,7 +313,7 @@ class Owl extends CI_Controller {
     /**
      * upload function _uploads_list()
      */
-    public function _uploads_list($offset = 0, $limit = 8)
+    public function _uploads_list($offset = 0, $limit = 7)
     {
         // page data array
         $page_data                  = array();
@@ -341,7 +341,7 @@ class Owl extends CI_Controller {
     /**
      * upload function _uploads_bin()
      */
-    public function _uploads_bin($offset = 0, $limit = 8)
+    public function _uploads_bin($offset = 0, $limit = 7)
     {
         // page data array
         $page_data                  = array();
