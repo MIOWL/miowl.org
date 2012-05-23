@@ -219,13 +219,13 @@ class Browse extends CI_Controller {
     /**
      * public info()
      */
-    public function info($file_id = FALSE)
+    public function info($file_id = FALSE, $deleted = FALSE)
     {
         if(!$file_id)
             redirect(site_url('browse'), 'location');
 
         // Get the file info for this ID
-        $upload_info = $this->upload_model->get_upload_by_id($file_id);
+        $upload_info = $this->upload_model->get_upload_by_id($file_id, $deleted);
 
         // page data array
         $page_data                  = array();
