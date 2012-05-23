@@ -37,7 +37,7 @@
                         <td><?php print $row->id; ?></td>
                         <td><?php print date("d/m/Y", $row->remove_timestamp); ?></td>
                         <td><?php print $row->file_name; ?></td>
-                        <td><?php print $this->miowl_model->get_category($row->upload_category)->row()->name; ?></td>
+                        <td><?php print $this->cat_model->get_category($row->upload_category)->row()->name; ?></td>
                         <td>
                             <a href="<?php print $lic->row()->url; ?>" target="_BLANK">
                                 <?php print $lic->row()->name; ?>
