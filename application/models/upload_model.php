@@ -277,9 +277,9 @@ class Upload_model extends CI_Model {
 
 
     /**
-     * public total_uploads()
+     * public total_owl_uploads()
      */
-    public function total_uploads($owl = FALSE, $deleted = FALSE)
+    public function total_owl_uploads($owl = FALSE, $deleted = FALSE)
     {
         $this->db->select('*');
         $this->db->where('owl', $owl);
@@ -292,6 +292,17 @@ class Upload_model extends CI_Model {
         $query = $this->db->get('uploads');
 
         return $query->num_rows();
+    }
+    //------------------------------------------------------------------
+
+
+
+    /**
+     * public total_owl_uploads()
+     */
+    public function total_owl_deleted_uploads($owl = FALSE)
+    {
+        return $this->total_owl_uploads($owl, TRUE);
     }
     //------------------------------------------------------------------
 
