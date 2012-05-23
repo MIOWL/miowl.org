@@ -29,7 +29,7 @@
                     <div class="ctrlHolder">
                         <label for="email">Invitee Email <span class="right">(required)</span></label>
                         <input type="text" name="email" id="email" size="35" class="textInput medium" autocompelete="OFF" value="<?php print set_value('address'); ?>" />
-                        <p class="formHint">Your Organizations 1st line of address.</p>
+                        <p class="formHint">This is the email address of the person you are wanting to invite.</p>
                     </div>
 
                     <div class="ctrlHolder">
