@@ -320,6 +320,17 @@ class Owl extends CI_Controller {
         $page_data['page_title']    = "Owl Uploads";
         $page_data['uploads']       = $this->upload_model->get_upload_by_owl($this->session->userdata('owl'));
 
+        // setup pagination lib
+        $config['base_url']         = site_url('owl/uploads/list');
+        $config['total_rows']       = $this->upload_model->total_uploads();
+        $config['per_page']         = $limit;
+        $config['anchor_class']     = 'class="button" ';
+        $config['cur_tag_open']     = '&nbsp;<div class="button danger current">';
+        $config['cur_tag_close']    = '</div>';
+
+        // init pagination
+        $this->pagination->initialize($config);
+
         // load the approp. page view
         $this->load->view('pages/owl_uploads', $page_data);
     }
@@ -335,6 +346,17 @@ class Owl extends CI_Controller {
         $page_data                  = array();
         $page_data['page_title']    = "Recycle Bin";
         $page_data['uploads']       = $this->upload_model->get_deleted_by_owl();
+
+        // setup pagination lib
+        $config['base_url']         = site_url('owl/uploads/bin');
+        $config['total_rows']       = $this->upload_model->total_uploads();
+        $config['per_page']         = $limit;
+        $config['anchor_class']     = 'class="button" ';
+        $config['cur_tag_open']     = '&nbsp;<div class="button danger current">';
+        $config['cur_tag_close']    = '</div>';
+
+        // init pagination
+        $this->pagination->initialize($config);
 
         // load the approp. page view
         $this->load->view('pages/owl_uploads_bin', $page_data);
