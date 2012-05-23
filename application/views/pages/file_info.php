@@ -25,7 +25,7 @@
         <div
         class="uniForm"
         <?php if (isset($deleted) && $deleted) : ?>
-            style="background-image: url("<?php print base_url('images/data-deletion.jpg'); ?>"); background-position: center center; background-repeat: no-repeat;"
+            style="background-image: url(<?php print base_url('images/data-deletion.jpg'); ?>); background-position: center center; background-repeat: no-repeat;"
         <?php endif; ?>
         >
             
