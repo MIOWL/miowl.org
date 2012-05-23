@@ -2,7 +2,7 @@
 
 	<h1>
 		<center>
-			<?php print $page_title; ?>
+			<a href="<?php print base_url('browse'); ?>" title="Back to the default browse page"><< back</a> | <?php print $page_title; ?>
 		</center>
 	</h1>
 
