@@ -322,7 +322,7 @@ class Owl extends CI_Controller {
 
         // setup pagination lib
         $config['base_url']         = site_url('owl/uploads/list');
-        $config['total_rows']       = $this->upload_model->total_uploads($this->session->userdata('owl'));
+        $config['total_rows']       = $this->upload_model->total_owl_uploads($this->session->userdata('owl'));
         $config['per_page']         = $limit;
         $config['anchor_class']     = 'class="button" ';
         $config['cur_tag_open']     = '&nbsp;<div class="button danger current">';
@@ -349,7 +349,7 @@ class Owl extends CI_Controller {
 
         // setup pagination lib
         $config['base_url']         = site_url('owl/uploads/bin');
-        $config['total_rows']       = $this->upload_model->total_uploads($this->session->userdata('owl'), TRUE);
+        $config['total_rows']       = $this->upload_model->total_owl_deleted_uploads($this->session->userdata('owl'));
         $config['per_page']         = $limit;
         $config['anchor_class']     = 'class="button" ';
         $config['cur_tag_open']     = '&nbsp;<div class="button danger current">';

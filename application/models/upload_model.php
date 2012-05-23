@@ -264,12 +264,25 @@ class Upload_model extends CI_Model {
     /**
      * public total_uploads()
      */
+    public function total_uploads()
+    {
+        $this->db->select('*');
+        $this->db->where('deleted', 'false');
+        $query = $this->db->get('uploads');
+
+        return $query->num_rows();
+    }
+    //------------------------------------------------------------------
+
+
+
+    /**
+     * public total_uploads()
+     */
     public function total_uploads($owl = FALSE, $deleted = FALSE)
     {
         $this->db->select('*');
-
-        if ($owl != FALSE)
-            $this->db->where('owl', $owl);
+        $this->db->where('owl', $owl);
 
         if (!$deleted)
             $this->db->where('deleted', 'false');
