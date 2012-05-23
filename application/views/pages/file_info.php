@@ -94,6 +94,8 @@
             <button onclick="window.location.href='<?php print site_url('browse'); ?>'" class="button">back</button>
             <button onclick="window.location.href='<?php print site_url('download/' . $info->row()->id); ?>'" class="button">download</button>
         </div>
+
+        <p>if you are the owner then more buttons will be displayed. (edit/delete etc.)</p>
         <div class="clear">&nbsp;</div>
 
     </div>
