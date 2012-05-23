@@ -34,12 +34,11 @@
                     <div class="ctrlHolder">
                         <label for="category">Category <span class="right">(required)</span></label>
                         <select name="category" id="category" class="textInput large" autocompelete="OFF" />
-                            <?php foreach ($categories->result() as $row) : ?>
-                            <?php if ($row->parent_id == "0") : ?>
-                                <option value="<?php print $row->id; ?>" <?php echo set_select('category', $row->id); ?>>
-                                    <?php print $row->name; ?>
+                            <?php foreach (gen_drop_categories() as $category) : ?>
+                                <option value="<?php print $category['id']; ?>" <?php echo set_select('sub_category', $category['id']); ?>>
+                                    <?php print $category['name']; ?>
                                 </option>
-                            <?php endif; endforeach; ?>
+                            <?php endforeach; ?>
                         </select>
                         <p class="formHint">Choose the file's catagory.</p>
                     </div>
