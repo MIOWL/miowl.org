@@ -125,7 +125,7 @@ class Browse extends CI_Controller {
         $page_data = array();
         $page_data['page_title'] = 'File Browser | by owl';
 
-        $uploads = $this->upload_model->get_upload_by_owl($owl, FALSE, $limit, $offset);
+        $uploads = $this->upload_model->get_upload_by_owl($owl, $limit, $offset);
 
         $this->load->library('table');
         $tmpl = array (
@@ -160,7 +160,7 @@ class Browse extends CI_Controller {
                 $this->table->add_row(
                     date("H:i:s d/m/Y", $row->upload_time),
                     $row->file_name,
-                    $this->miowl_model->get_category($row->upload_category)->row()->name,
+                    $this->cat_model->get_category($row->upload_category)->row()->name,
                     '<a href="' . $lic->row()->url . '" target="_BLANK">' . $lic->row()->name . '</a>',
                     $row->file_type,
                     $this->owl_model->get_owl_by_id($row->owl)->row()->owl_name,
