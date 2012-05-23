@@ -313,16 +313,16 @@ class Owl extends CI_Controller {
     /**
      * upload function _uploads_list()
      */
-    public function _uploads_list($offset = 0, $limit = 10)
+    public function _uploads_list($offset = 0, $limit = 6)
     {
         // page data array
         $page_data                  = array();
         $page_data['page_title']    = "Owl Uploads";
-        $page_data['uploads']       = $this->upload_model->get_upload_by_owl($this->session->userdata('owl'));
+        $page_data['uploads']       = $this->upload_model->get_upload_by_owl($this->session->userdata('owl'), $limit, $offset);
 
         // setup pagination lib
         $config['base_url']         = site_url('owl/uploads/list');
-        $config['total_rows']       = $this->upload_model->total_uploads();
+        $config['total_rows']       = $this->upload_model->total_uploads($this->session->userdata('owl'));
         $config['per_page']         = $limit;
         $config['anchor_class']     = 'class="button" ';
         $config['cur_tag_open']     = '&nbsp;<div class="button danger current">';
@@ -340,16 +340,16 @@ class Owl extends CI_Controller {
     /**
      * upload function _uploads_bin()
      */
-    public function _uploads_bin($offset = 0, $limit = 10)
+    public function _uploads_bin($offset = 0, $limit = 6)
     {
         // page data array
         $page_data                  = array();
         $page_data['page_title']    = "Recycle Bin";
-        $page_data['uploads']       = $this->upload_model->get_deleted_by_owl();
+        $page_data['uploads']       = $this->upload_model->get_deleted_by_owl($limit, $offset);
 
         // setup pagination lib
         $config['base_url']         = site_url('owl/uploads/bin');
-        $config['total_rows']       = $this->upload_model->total_uploads();
+        $config['total_rows']       = $this->upload_model->total_uploads($this->session->userdata('owl'), TRUE);
         $config['per_page']         = $limit;
         $config['anchor_class']     = 'class="button" ';
         $config['cur_tag_open']     = '&nbsp;<div class="button danger current">';

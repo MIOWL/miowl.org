@@ -62,7 +62,7 @@ class Upload_model extends CI_Model {
     /**
      * public get_upload_by_owl()
      */
-    public function get_upload_by_owl($owl = FALSE, $deleted = FALSE, $limit = 15, $offset = 0)
+    public function get_upload_by_owl($owl = FALSE, $limit = 15, $offset = 0, $deleted = FALSE)
     {
         if (!$owl)
             return FALSE;
@@ -86,9 +86,9 @@ class Upload_model extends CI_Model {
     /**
      * public get_deleted_by_owl()
      */
-    public function get_deleted_by_owl()
+    public function get_deleted_by_owl($limit = 15, $offset = 0)
     {
-        return $this->get_upload_by_owl($this->session->userdata('owl'), TRUE);
+        return $this->get_upload_by_owl($this->session->userdata('owl'), $limit, $offset, TRUE);
     }
     //------------------------------------------------------------------
 
