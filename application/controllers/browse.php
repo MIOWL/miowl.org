@@ -124,6 +124,7 @@ class Browse extends CI_Controller {
     {
         $page_data = array();
         $page_data['page_title'] = 'File Browser | by owl (' . $this->owl_model->get_owl_by_id($owl)->row()->owl_name . ')';
+        $page_data['browse_by_owl'] = TRUE;
 
         $uploads = $this->upload_model->get_upload_by_owl($owl, $limit, $offset);
 

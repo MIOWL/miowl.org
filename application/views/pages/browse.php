@@ -2,7 +2,7 @@
 
 	<h1>
 		<center>
-			<a href="<?php print base_url('browse'); ?>" title="Back to the default browse page"><< back</a> | <?php print $page_title; ?>
+			<?php if (isset($browse_by_owl) && $browse_by_owl) : ?><a href="<?php print base_url('browse'); ?>" title="Back to the default browse page"><< back</a> | <?php endif; ?><?php print $page_title; ?>
 		</center>
 	</h1>
 
