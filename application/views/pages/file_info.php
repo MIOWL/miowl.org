@@ -57,7 +57,7 @@
 
                 <div class="ctrlHolder">
                     <label for="upload_category">category</label>
-                    <span name="upload_category" id="upload_category" size="35" class="textInput medium"><?php print $this->miowl_model->get_category($info->row()->upload_category)->row()->name; ?></span>
+                    <span name="upload_category" id="upload_category" size="35" class="textInput medium"><?php print $this->cat_model->get_category($info->row()->upload_category)->row()->name; ?></span>
                 </div>
 
                 <div class="ctrlHolder">
