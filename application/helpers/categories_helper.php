@@ -41,7 +41,7 @@ if (!function_exists('gen_categories'))
 
 if (!function_exists('gen_drop_categories'))
 {
-    function gen_drop_categories()
+    function gen_drop_categories($create_page = FALSE)
     {
         $CI =& get_instance();
         $cat_array = NULL;
@@ -60,12 +60,16 @@ if (!function_exists('gen_drop_categories'))
                     {
                         $cat_array[] = array('id' => $child->id, 'name' => '- ' . $child->name);
 
-                        // get our childs children
-                        if (($kids_kids = $CI->cat_model->get_children($child->id)))
+                        // Are we in the creation page? If so DON'T display this section...
+                        if (!$create_page)
                         {
-                            foreach ($kids_kids->result() as $childs_childs)
+                            // get our childs children
+                            if (($kids_kids = $CI->cat_model->get_children($child->id)))
                             {
-                                $cat_array[] = array('id' => $childs_childs->id, 'name' => '-- ' . $childs_childs->name);
+                                foreach ($kids_kids->result() as $childs_childs)
+                                {
+                                    $cat_array[] = array('id' => $childs_childs->id, 'name' => '-- ' . $childs_childs->name);
+                                }
                             }
                         }
                     }
