@@ -750,7 +750,7 @@ class Owl extends CI_Controller {
      */
     public function _unique_category($value = FALSE, $owl_id)
     {
-        $categories = $this->miowl_model->get_owl_categories($owl_id, FALSE);
+        $categories = $this->cat_model->get_owl_categories($owl_id, FALSE);
 
         if (!$categories)
             return TRUE;
