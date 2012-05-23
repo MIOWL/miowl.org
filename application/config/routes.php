@@ -48,7 +48,7 @@ $route['about'] 							= 'welcome/about';
 $route['download/(:num)'] 					= 'browse/download/$1';
 $route['owl/uploads/upload'] 				= 'upload/index';
 $route['browse/(:num)'] 					= 'browse/index/$1';
-$route['deleted/info/(:num)'] 				= 'browse/info/$1/TRUE'
+$route['deleted/info/(:num)'] 				= 'browse/info/$1/TRUE';
 
 
 /* End of file routes.php */
