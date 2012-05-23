@@ -612,7 +612,7 @@ class Owl extends CI_Controller {
         if ($this->form_validation->run())
         {
             // add the new category
-            $this->miowl_model->add_category();
+            $this->cat_model->add_category();
 
             $page_data['success']     = TRUE;
             $page_data['msg']         = "You're new category has now been created.";
