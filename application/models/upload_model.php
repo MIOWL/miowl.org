@@ -281,6 +281,9 @@ class Upload_model extends CI_Model {
      */
     public function total_owl_uploads($owl = FALSE, $deleted = FALSE)
     {
+        if (!$owl)
+            return FALSE;
+
         $this->db->select('*');
         $this->db->where('owl', $owl);
 
