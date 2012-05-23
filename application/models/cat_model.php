@@ -15,7 +15,7 @@ class Cat_model extends CI_Model {
     /**
      * public get_owl_categories()
      */
-    public function get_owl_categories($owl_id = FALSE, $include_default = TRUE, $parent_id = FALSE)
+    public function get_owl_categories($owl = FALSE, $include_default = TRUE, $parent_id = FALSE)
     {
         $this->db->select('*');
 
@@ -23,19 +23,19 @@ class Cat_model extends CI_Model {
             if ($parent_id != FALSE)
                     $this->db->where('parent_id', $parent_id);
 
-            $this->db->where('owl_id', '0');
+            $this->db->where('owl', '0');
 
-            if ($owl_id != FALSE)
-                $this->db->or_where('owl_id', $owl_id);
+            if ($owl != FALSE)
+                $this->db->or_where('owl', $owl);
         }
 
         else {
-            if ($owl_id != FALSE)
+            if ($owl != FALSE)
             {
                 if ($parent_id != FALSE)
                     $this->db->where('parent_id', $parent_id);
 
-                $this->db->where('owl_id', $owl_id);
+                $this->db->where('owl', $owl);
             }
             else
                 return FALSE;
@@ -60,7 +60,7 @@ class Cat_model extends CI_Model {
         $insert_data = array(
             'name'      => $this->input->post('name'),
             'parent_id' => $this->input->post('sub_category'),
-            'owl_id'    => $this->session->userdata('owl')
+            'owl'    => $this->session->userdata('owl')
         );
 
         $this->db->insert('categories', $insert_data);
