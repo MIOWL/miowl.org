@@ -231,6 +231,7 @@ class Browse extends CI_Controller {
         $page_data                  = array();
         $page_data['page_title']    = "File Info | " . $upload_info->row()->file_name;
         $page_data['info']          = $upload_info;
+        $page_data['deleted']       = $deleted;
 
         // load the approp. page view
         $this->load->view('pages/file_info', $page_data);

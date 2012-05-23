@@ -22,7 +22,9 @@
                         description
         -->
 
-        <div class="uniForm">
+        <div class="uniForm" <?php if ($deleted) : ?>style="background-image: url("<?php print base_url('images/data-deletion.jpg'); ?>"); background-position: center center; background-repeat: no-repeat;">
+            
+        </style><? endif ?>>
             <fieldset class="inlineLabels">
 
                 <div class="ctrlHolder">
