@@ -322,6 +322,7 @@ class Owl extends CI_Controller {
 
         // setup pagination lib
         $config['base_url']         = site_url('owl/uploads/list');
+        $config['uri_segment']      = 4;
         $config['total_rows']       = $this->upload_model->total_owl_uploads($this->session->userdata('owl'));
         $config['per_page']         = $limit;
         $config['anchor_class']     = 'class="button" ';
@@ -349,6 +350,7 @@ class Owl extends CI_Controller {
 
         // setup pagination lib
         $config['base_url']         = site_url('owl/uploads/bin');
+        $config['uri_segment']      = 4;
         $config['total_rows']       = $this->upload_model->total_owl_deleted_uploads($this->session->userdata('owl'));
         $config['per_page']         = $limit;
         $config['anchor_class']     = 'class="button" ';
