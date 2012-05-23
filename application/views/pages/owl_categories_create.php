@@ -28,12 +28,11 @@
                             <option value="0" <?php echo set_select('sub_category', '0', TRUE); ?>>
                                 None (top level category)
                             </option>
-                            <?php foreach ($categories->result() as $row) : ?>
-                            <?php if ($row->parent_id == "0") : ?>
-                                <option value="<?php print $row->id; ?>" <?php echo set_select('sub_category', $row->parent_id); ?>>
-                                    <?php print $row->name; ?>
+                            <?php foreach (gen_drop_categories() as $category) : ?>
+                                <option value="<?php print $category['id']; ?>" <?php echo set_select('sub_category', $category['id']); ?>>
+                                    <?php print $category['name']; ?>
                                 </option>
-                            <?php endif; endforeach; ?>
+                            <?php endforeach; ?>
                         </select>
                         <p class="formHint">If this is a sub category please choose it from the list.</p>
                     </div>
