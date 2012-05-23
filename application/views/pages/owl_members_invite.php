@@ -22,19 +22,19 @@
                 <fieldset class="inlineLabels">
                     <div class="ctrlHolder">
                         <label for="name">Invitee Name <span class="right">(required)</span></label>
-                        <input type="text" name="name" id="name" size="35" class="textInput medium" autocompelete="OFF" value="<?php print set_value('name'); ?>" />
+                        <input type="text" name="name" id="name" size="35" class="textInput large" autocompelete="OFF" value="<?php print set_value('name'); ?>" />
                         <p class="formHint">This is the name of the person you are wanting to invite.</p>
                     </div>
 
                     <div class="ctrlHolder">
                         <label for="email">Invitee Email <span class="right">(required)</span></label>
-                        <input type="text" name="email" id="email" size="35" class="textInput medium" autocompelete="OFF" value="<?php print set_value('address'); ?>" />
+                        <input type="text" name="email" id="email" size="35" class="textInput large" autocompelete="OFF" value="<?php print set_value('address'); ?>" />
                         <p class="formHint">This is the email address of the person you are wanting to invite.</p>
                     </div>
 
                     <div class="ctrlHolder">
                         <label for="msg">Message <span class="right">(optional)</span></label>
-                        <textarea name="msg" id="msg" size="35" class="textInput medium" rows="5" cols="50"><?php print trim(set_value('msg')); ?></textarea>
+                        <textarea name="msg" id="msg" size="35" class="textInput large" rows="5" cols="50"><?php print trim(set_value('msg')); ?></textarea>
                         <p class="formHint">Just a quick message to be attached to the invite email.</p>
                     </div>
 
