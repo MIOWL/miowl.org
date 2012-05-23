@@ -22,7 +22,7 @@
                         description
         -->
 
-        <div class="uniForm" <?php if (isset($deleted) && $deleted) : ?>style="background-image: url("<?php print base_url('images/data-deletion.jpg'); ?>"); background-position: center center; background-repeat: no-repeat;">
+        <div class="uniForm" <?php if (isset($deleted) && $deleted) : ?>style="background-image: url("<?php print base_url('images/data-deletion.jpg'); ?>"); background-position: center center; background-repeat: no-repeat;"<?php endif; ?>>
             
         </style><? endif ?>>
             <fieldset class="inlineLabels">
