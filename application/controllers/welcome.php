@@ -45,6 +45,10 @@ class Welcome extends CI_Controller {
      */
     public function index()
     {
+        if ($this->session->userdata('owl_verified')) {
+            redirect('/owl', 'location');
+            return;
+        }
         $page_data = array();
         $page_data['page_title'] = 'Medical Interprofessional Open-source Web-based Libraries';
         $this->load->view('pages/welcome_message', $page_data);
