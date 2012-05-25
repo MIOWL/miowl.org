@@ -40,12 +40,7 @@
 
 
 /* Default Routes */
-$CI =& get_instance();
-if (!$CI->session->userdata('owl_verified'))
-	$route['default_controller'] 				= "welcome";
-else
-	$route['default_controller'] 				= "owl";
-
+$route['default_controller'] 				= "welcome";
 $route['404_override'] 						= 'error/error_404';
 
 /* Custom Routes */
