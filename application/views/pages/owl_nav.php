@@ -3,7 +3,7 @@
 		<li>
 			MiOwl
 			<ul>
-				<li><a class="owl_nav_button" href="<?php print site_url('owl'); ?>">details</a></li>
+				<li><a class="owl_nav_button" href="<?php print site_url(); ?>">details</a></li>
 <?php if ($this->session->userdata('admin')) : ?>
 				<li><a class="owl_nav_button" href="<?php print site_url('owl/edit_details'); ?>">edit details</a></li>
 <?php endif; ?>
