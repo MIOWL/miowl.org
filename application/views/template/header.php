@@ -31,13 +31,12 @@
 		<?php if ($this->session->userdata('owl_verified')) : ?>
 			<div id="header_owl_name"><?php print $this->owl_model->get_owl_by_id($this->session->userdata('owl'))->row()->owl_name; ?></div>
 		<?php endif; ?>
-		<a href="<?php print site_url(); ?>" title="Go back home!">
+		<a id="site_logo" href="<?php print site_url(); ?>" title="Go back home!">
 			<img 
 				src="<?php print site_url('images/miowl_red_black_small.png'); ?>"
 				alt="MiOWL Logo"
 				width="500"
 				height="205"
-				id="site_logo"
 			>
 		</a>
 	</h1>

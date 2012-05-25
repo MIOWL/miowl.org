@@ -88,6 +88,8 @@ p.footer {
 
 #site_logo {
 	z-index: 999999999999999999;
+	width: 500;
+	height: 205;
 }
 
 #header_owl_name {

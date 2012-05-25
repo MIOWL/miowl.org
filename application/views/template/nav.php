@@ -9,7 +9,7 @@
 		if ($this->session->userdata('authed'))
 		{
 			# Logged in NAV
-			print "<a href='". site_url('owl') . "' title='View your Owl'>my owl</a>";							# my owl
+			print "<a href='". site_url() . "' title='View your Owl'>my owl</a>";							# my owl
 			print " | ";																						# spacer
 			print "<a href='". site_url('upload') . "' title='Upload a new file'>upload</a>";					# upload
 			print " | ";																						# spacer
