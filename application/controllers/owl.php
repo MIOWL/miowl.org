@@ -40,6 +40,11 @@ class Owl extends CI_Controller {
 
         // loads
         $this->load->library('owlmail');
+
+        if (!$this->session->userdata('owl_verified')) {
+            redirect('/welcome', 'location');
+            return;
+        }
     }
     //------------------------------------------------------------------
 

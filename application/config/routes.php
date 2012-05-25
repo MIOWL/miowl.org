@@ -40,7 +40,7 @@
 
 
 /* Default Routes */
-$route['default_controller'] 				= "welcome";
+$route['default_controller'] 				= "owl";
 $route['404_override'] 						= 'error/error_404';
 
 /* Custom Routes */
