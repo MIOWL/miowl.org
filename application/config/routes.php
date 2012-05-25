@@ -40,7 +40,11 @@
 
 
 /* Default Routes */
-$route['default_controller'] 				= "welcome";
+if (!$this->session->userdata('owl_verified'))
+	$route['default_controller'] 				= "welcome";
+else
+	$route['default_controller'] 				= "owl";
+
 $route['404_override'] 						= 'error/error_404';
 
 /* Custom Routes */
