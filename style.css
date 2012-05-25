@@ -96,10 +96,10 @@ p.footer {
 	z-index: 0;
 	position: relative;
 	height: 0pt;
-	top: 45px;
+	top: 15px;
 	font-size: 30px;
-	left: 169px;
 	color: rgb(0, 0, 0);
+	text-align: center;
 }
 
 
