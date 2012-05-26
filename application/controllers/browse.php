@@ -77,7 +77,7 @@ class Browse extends CI_Controller {
             'table_close'         => '</table>'
         );
         $this->table->set_template($tmpl);
-        $this->table->set_heading('Timestamp (GMT)', 'Filename', 'Category', 'License', 'File Type', 'Owl', 'Download', 'Info');
+        $this->table->set_heading('Owl', 'Category', 'Filename', 'License', 'File Type', 'Download', 'Info');
         $this->table->set_empty("N/A");
 
         if($uploads)
@@ -86,12 +86,11 @@ class Browse extends CI_Controller {
             {
                 $lic = $this->miowl_model->get_license($row->upload_license);
                 $this->table->add_row(
-                    date("H:i:s d/m/Y", $row->upload_time),
-                    $row->file_name,
+                    '<a href="' . site_url('browse/owl/' . $row->owl) . '">' . $this->owl_model->get_owl_by_id($row->owl)->row()->owl_name . '</a>',
                     $this->cat_model->get_category($row->upload_category)->row()->name,
+                    $row->file_name,
                     '<a href="' . $lic->row()->url . '" target="_BLANK">' . $lic->row()->name . '</a>',
                     $row->file_type,
-                    '<a href="' . site_url('browse/owl/' . $row->owl) . '">' . $this->owl_model->get_owl_by_id($row->owl)->row()->owl_name . '</a>',
                     '<center><a href="' . site_url('download/' . $row->id) . '" title="Downlaod this file!" target="_BLANK" class="icon_font">F</a></center>',
                     '<center><a href="' . site_url('browse/info/' . $row->id) . '" title="More info for this file!" class="icon_font">,</a></center>'
                 );
