@@ -62,6 +62,7 @@ class Search_model extends CI_Model {
 
         // find by keyword
         $this->db->like('uploads.file_name', $keyword);
+        $this->db->or_like('license.name', $keyword);
         // $this->db->like('owls.owl_name', $keyword);
         // $this->db->or_like('owls.owl_name_short', $keyword);
         // $this->db->or_like('categories.name', $keyword);
