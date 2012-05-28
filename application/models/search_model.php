@@ -79,9 +79,9 @@ class Search_model extends CI_Model {
         // $this->db->group_by(array('uploads.owl', 'uploads.upload_category', 'uploads.file_type', 'uploads.upload_license'));
 
         // fetch this thing
-        if($limit != FALSE)
-            $query = $this->db->get('uploads', $limit, $offset);
-        else
+        // if($limit != FALSE)
+        //     $query = $this->db->get('uploads', $limit, $offset);
+        // else
             $query = $this->db->get('uploads');
 
         // do we have any results?

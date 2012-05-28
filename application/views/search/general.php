@@ -17,8 +17,8 @@
                 <div>
                     <h2>General Site Search</h2>
                     <div>
-                    	<?php if(isset($query) && $query) : ?>
-                    		<pre><?php print_r($query); ?></pre>
+                    	<?php if($query_boob) : ?>
+                    		<pre><?php print_r($query_boob); ?></pre>
                     	<?php else : ?>
                     		FALSE
                     	<?php endif; ?>
