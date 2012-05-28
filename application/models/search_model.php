@@ -47,7 +47,7 @@ class Search_model extends CI_Model {
     private function search($keyword = NULL, $offset = 0, $limit = FALSE, $where = array())
     {
         // what do we want?
-        $this->db->select('
+/*        $this->db->select('
                 uploads.upload_user,
                 uploads.owl,
                 uploads.file_name,
@@ -60,6 +60,19 @@ class Search_model extends CI_Model {
                 owls.owl_name_short,
                 license.name,
                 categories.name
+            ');
+*/
+        $this->db->select('
+                uploads.upload_user,
+                uploads.owl,
+                uploads.file_name,
+                uploads.upload_category,
+                uploads.id,
+                uploads.upload_license,
+                uploads.file_type,
+                uploads.client_name,
+                uploads.description,
+                license.name
             ');
 
         // join the tables by the id's
