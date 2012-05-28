@@ -19,6 +19,8 @@
                     <div>
                     	<?php if(isset($query) && $query) : ?>
                     		<pre><?php print_r($query); ?></pre>
+                    	<?php else : ?>
+                    		FALSE
                     	<?php endif; ?>
                     </div>
                 </div>
