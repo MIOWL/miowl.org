@@ -81,7 +81,7 @@ Inner Join owls ON uploads.owl = owls.id
 Inner Join users ON uploads.upload_user = users.id
 Inner Join categories ON uploads.upload_category = categories.id
 WHERE
-uploads.file_name LIKE  '%" . $keyword . "%'
+license.short_description LIKE  '%" . $keyword . "%'
 ");
 
         // join the tables by the id's
