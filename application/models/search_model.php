@@ -50,10 +50,15 @@ class Search_model extends CI_Model {
         $this->db->select('uploads.*, owls.*, users.*, license.*, categories.*');
 
         // join the tables by the id's
-        $this->db->join('uploads u0', 'u0.upload_user = users.id');
-        $this->db->join('uploads u1', 'u1.owl = owls.id');
-        $this->db->join('uploads u2', 'u2.upload_category = categories.id');
-        $this->db->join('uploads u3', 'u3.upload_license = license.id');
+        // Inner Join license ON uploads.upload_license = license.id
+        // Inner Join owls ON uploads.owl = owls.id
+        // Inner Join users ON uploads.upload_user = users.id
+        // Inner Join categories ON uploads.upload_category = categories.id
+
+        $this->db->join('users', 'uploads.upload_user = users.id', 'inner');
+        $this->db->join('owls', 'uploads.owl = owls.id', 'inner');
+        $this->db->join('categories', 'uploads.upload_category = categories.id', 'inner');
+        $this->db->join('license', 'uploads.upload_license = license.id', 'inner');
 
         // find by keyword
         $this->db->like('owls.owl_name', $keyword);
