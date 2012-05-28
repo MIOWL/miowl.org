@@ -68,9 +68,9 @@ class Search_model extends CI_Model {
         // Inner Join users ON uploads.upload_user = users.id
         // Inner Join categories ON uploads.upload_category = categories.id
 
-        $this->db->join('users', 'uploads.upload_user = users.id', 'inner');
-        $this->db->join('owls', 'uploads.owl = owls.id', 'inner');
-        $this->db->join('categories', 'uploads.upload_category = categories.id', 'inner');
+        //$this->db->join('users', 'uploads.upload_user = users.id', 'inner');
+        //$this->db->join('owls', 'uploads.owl = owls.id', 'inner');
+        //$this->db->join('categories', 'uploads.upload_category = categories.id', 'inner');
         $this->db->join('license', 'uploads.upload_license = license.id', 'inner');
 
         // find by keyword
