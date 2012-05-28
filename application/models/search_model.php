@@ -68,7 +68,7 @@ class Search_model extends CI_Model {
         // $this->db->or_like('categories.name', $keyword);
         // $this->db->or_like('uploads.file_type', $keyword);
         // $this->db->or_like('license.name', $keyword);
-        // $this->db->or_like('license.short_description', $keyword);
+        $this->db->or_like('license.short_description', $keyword);
 
         // don't show deleted files
         //$this->db->where('uploads.deleted', 'false');
