@@ -69,14 +69,14 @@ class Search_model extends CI_Model {
         $this->db->or_like('license.short_description', $keyword);
 
         // don't show deleted files
-        $this->db->where('uploads.deleted', 'false');
+        //$this->db->where('uploads.deleted', 'false');
 
         // if extra where items are set, include them
-        if(!empty($where))
-            $this->db->where($where);
+        // if(!empty($where))
+        //     $this->db->where($where);
 
-        // group the data
-        $this->db->group_by(array('uploads.owl', 'uploads.upload_category', 'uploads.file_type', 'uploads.upload_license'));
+        // // group the data
+        // $this->db->group_by(array('uploads.owl', 'uploads.upload_category', 'uploads.file_type', 'uploads.upload_license'));
 
         // fetch this thing
         if($limit != FALSE)
