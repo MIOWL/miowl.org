@@ -62,18 +62,27 @@ class Search_model extends CI_Model {
                 categories.name
             ');
 */
-        $this->db->select('
-                uploads.upload_user,
-                uploads.owl,
-                uploads.file_name,
-                uploads.upload_category,
-                uploads.id,
-                uploads.upload_license,
-                uploads.file_type,
-                uploads.client_name,
-                uploads.description,
-                license.name
-            ');
+        $query = $this->db->query("SELECT
+uploads.upload_user,
+uploads.owl,
+uploads.file_name,
+uploads.upload_category,
+uploads.id,
+uploads.upload_license,
+uploads.file_type,
+uploads.client_name,
+uploads.description,
+owls.owl_name_short,
+license.name,
+categories.name
+FROM uploads
+Inner Join license ON uploads.upload_license = license.id
+Inner Join owls ON uploads.owl = owls.id
+Inner Join users ON uploads.upload_user = users.id
+Inner Join categories ON uploads.upload_category = categories.id
+WHERE
+uploads.file_name LIKE  '%" . $keyword . "%'
+");
 
         // join the tables by the id's
         // Inner Join license ON uploads.upload_license = license.id
@@ -84,7 +93,7 @@ class Search_model extends CI_Model {
         //$this->db->join('users', 'uploads.upload_user = users.id', 'inner');
         //$this->db->join('owls', 'uploads.owl = owls.id', 'inner');
         //$this->db->join('categories', 'uploads.upload_category = categories.id', 'inner');
-        $this->db->join('license', 'uploads.upload_license = license.id', 'inner');
+        //$this->db->join('license', 'uploads.upload_license = license.id', 'inner');
 
         // find by keyword
         //$this->db->like('uploads.file_name', $keyword);
@@ -94,7 +103,7 @@ class Search_model extends CI_Model {
         // $this->db->or_like('categories.name', $keyword);
         // $this->db->or_like('uploads.file_type', $keyword);
         // $this->db->or_like('license.name', $keyword);
-        $this->db->like('license.short_description', $keyword);
+        //$this->db->like('license.short_description', $keyword);
 
         // don't show deleted files
         //$this->db->where('uploads.deleted', 'false');
@@ -110,7 +119,7 @@ class Search_model extends CI_Model {
         // if($limit != FALSE)
         //     $query = $this->db->get('uploads', $limit, $offset);
         // else
-            $query = $this->db->get('uploads');
+            //$query = $this->db->get('uploads');
 
         // do we have any results?
         if ($query->num_rows() > 0)
