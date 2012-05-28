@@ -22,6 +22,7 @@ class Search extends CI_Controller {
         parent::__construct();
 
         // loads
+        $this->load->model('search_model');
     }
     //------------------------------------------------------------------
 
@@ -46,10 +47,11 @@ class Search extends CI_Controller {
      * This is the default search page.
      * Used to do the initial query.
      */
-    public function index()
+    public function index($keyword = 'djekl')
     {
         $page_data = array();
         $page_data['page_title'] = 'Search';
+        $page_data['query'] = $this->search_model->search_all($keyword);
         $this->load->view('search/general', $page_data);
     }
     //------------------------------------------------------------------

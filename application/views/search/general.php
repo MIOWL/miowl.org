@@ -16,9 +16,14 @@
 
                 <div>
                     <h2>General Site Search</h2>
+                    <div>
+                    	<?php if(isset($query) && $query) : ?>
+                    		<pre><?php print_r($query); ?></pre>
+                    	<?php endif; ?>
+                    </div>
                 </div>
 
-            <div class="clear">&nbsp;</div>
+            </div>
 
         </div>
         <div class="clear">&nbsp;</div>
