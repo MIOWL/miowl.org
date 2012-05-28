@@ -9,7 +9,6 @@
 	<div id="body">
         <div id="owl_nav" class="column left quarter">
             <?php $this->load->view('search/_nav'); ?>
-            <div class="clear">&nbsp;</div>
         </div>
         <div id="owl_body" class="column right threequarter">
 
