@@ -50,7 +50,7 @@ class Search_model extends CI_Model {
         $this->db->select('uploads.*, owls.*, users.*, license.*, categories.*');
 
         // join the tables by the id's
-        $this->db->join('uploads', 'uploads.upload_user = users.id');
+        $this->db->join('uploads u0', 'u0.upload_user = users.id');
         $this->db->join('uploads u1', 'u1.owl = owl.id');
         $this->db->join('uploads u2', 'u2.upload_category = categories.id');
         $this->db->join('uploads u3', 'u3.upload_license = license.id');
