@@ -41,85 +41,45 @@ class Search_model extends CI_Model {
     //=================================================================================
 
 
+    // DO INDIVIDUAL SEARCH !!!!!!!
+
     /**
      * private search()
      */
     private function search($keyword = NULL, $offset = 0, $limit = FALSE, $where = array())
     {
         // what do we want?
-/*        $this->db->select('
-                uploads.upload_user,
-                uploads.owl,
-                uploads.file_name,
-                uploads.upload_category,
-                uploads.id,
-                uploads.upload_license,
-                uploads.file_type,
-                uploads.client_name,
-                uploads.description,
-                owls.owl_name_short,
-                license.name,
-                categories.name
-            ');
-*/
-        $query = $this->db->query("SELECT
-uploads.upload_user,
-uploads.owl,
-uploads.file_name,
-uploads.upload_category,
-uploads.id,
-uploads.upload_license,
-uploads.file_type,
-uploads.client_name,
-uploads.description,
-owls.owl_name_short,
-license.name,
-categories.name
-FROM uploads
-Inner Join license ON uploads.upload_license = license.id
-Inner Join owls ON uploads.owl = owls.id
-Inner Join users ON uploads.upload_user = users.id
-Inner Join categories ON uploads.upload_category = categories.id
-WHERE
-license.short_description LIKE  '%" . $keyword . "%'
-");
+        $this->db->select('uploads.*, owls.*, users.*, license.*, categories.*');
 
         // join the tables by the id's
-        // Inner Join license ON uploads.upload_license = license.id
-        // Inner Join owls ON uploads.owl = owls.id
-        // Inner Join users ON uploads.upload_user = users.id
-        // Inner Join categories ON uploads.upload_category = categories.id
-
-        //$this->db->join('users', 'uploads.upload_user = users.id', 'inner');
-        //$this->db->join('owls', 'uploads.owl = owls.id', 'inner');
-        //$this->db->join('categories', 'uploads.upload_category = categories.id', 'inner');
-        //$this->db->join('license', 'uploads.upload_license = license.id', 'inner');
+        $this->db->join('users', 'uploads.upload_user = users.id', 'inner');
+        $this->db->join('owls', 'uploads.owl = owls.id', 'inner');
+        $this->db->join('categories', 'uploads.upload_category = categories.id', 'inner');
+        $this->db->join('license', 'uploads.upload_license = license.id', 'inner');
 
         // find by keyword
-        //$this->db->like('uploads.file_name', $keyword);
-        //$this->db->or_like('license.name', $keyword);
-        // $this->db->like('owls.owl_name', $keyword);
-        // $this->db->or_like('owls.owl_name_short', $keyword);
-        // $this->db->or_like('categories.name', $keyword);
-        // $this->db->or_like('uploads.file_type', $keyword);
-        // $this->db->or_like('license.name', $keyword);
-        //$this->db->like('license.short_description', $keyword);
+        $this->db->like('owls.owl_name', $keyword);
+        $this->db->or_like('owls.owl_name_short', $keyword);
+        $this->db->or_like('categories.name', $keyword);
+        $this->db->or_like('uploads.file_type', $keyword);
+        $this->db->or_like('license.name', $keyword);
+        $this->db->or_like('license.short_description', $keyword);
 
         // don't show deleted files
-        //$this->db->where('uploads.deleted', 'false');
+        $this->db->where('uploads.deleted', 'false');
 
         // if extra where items are set, include them
-        // if(!empty($where))
-        //     $this->db->where($where);
+        if(!empty($where))
+            $this->db->where($where);
 
-        // // group the data
-        // $this->db->group_by(array('uploads.owl', 'uploads.upload_category', 'uploads.file_type', 'uploads.upload_license'));
+        // group the data
+        $this->db->group_by(array('uploads.owl', 'uploads.upload_category', 'uploads.file_type', 'uploads.upload_license'));
 
         // fetch this thing
-        // if($limit != FALSE)
-        //     $query = $this->db->get('uploads', $limit, $offset);
-        // else
-            //$query = $this->db->get('uploads');
+        if($limit != FALSE)
+            $query = $this->db->get('uploads', $limit, $offset);
+        else
+            $query = $this->db->get('uploads');
 
         // do we have any results?
         if ($query->num_rows() > 0)
@@ -130,29 +90,4 @@ license.short_description LIKE  '%" . $keyword . "%'
     //------------------------------------------------------------------
 
 
-    /**
-     * search_saves()
-     */
-    public function search_saves($keyword, $limit = 15, $offset = 0)
-    {
-        $this->db->select('savesdb.id, savesdb.uid, savesdb.title_id, savesdb.title_save, savesdb.title_name, savesdb.save_file, savesdb.save_oname, savesdb.save_desc, savesdb.save_size, savesdb.date_added, savesdb.uploaded_by, savesdb.downloads, savesdb.rating, savesdb.`status`, users.user_name, users.user_alias');
-        $this->db->join('users', 'savesdb.uploaded_by = users.id', 'inner');
-        $this->db->like('savesdb.title_save', $keyword);
-        $this->db->or_like('savesdb.title_id', $keyword);
-        $this->db->or_like('savesdb.title_id_int', $keyword);
-        $this->db->or_like('savesdb.title_name', $keyword);
-        $this->db->or_like('savesdb.save_file', $keyword);
-        $this->db->or_like('users.user_name', $keyword);
-        $this->db->or_like('users.user_alias', $keyword);
-        $this->db->order_by('savesdb.date_added', 'desc');
-        $query = $this->db->get('savesdb', $limit, $offset);
-
-        if ($query->num_rows() > 0)
-            return $query;
-
-        return FALSE;
-    }
-    // -------------------------------------------------------------------------------
-    
-    
 }
