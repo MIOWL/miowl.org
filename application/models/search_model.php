@@ -74,14 +74,14 @@ class Search_model extends CI_Model {
         $this->db->join('license', 'uploads.upload_license = license.id', 'inner');
 
         // find by keyword
-        $this->db->like('uploads.file_name', $keyword);
-        $this->db->or_like('license.name', $keyword);
+        //$this->db->like('uploads.file_name', $keyword);
+        //$this->db->or_like('license.name', $keyword);
         // $this->db->like('owls.owl_name', $keyword);
         // $this->db->or_like('owls.owl_name_short', $keyword);
         // $this->db->or_like('categories.name', $keyword);
         // $this->db->or_like('uploads.file_type', $keyword);
         // $this->db->or_like('license.name', $keyword);
-        $this->db->or_like('license.short_description', $keyword);
+        $this->db->like('license.short_description', $keyword);
 
         // don't show deleted files
         //$this->db->where('uploads.deleted', 'false');
