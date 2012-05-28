@@ -18,7 +18,7 @@
                     <h2>General Site Search</h2>
                     <div>
                     	<?php if($query_boob) : ?>
-                    		<pre><?php print_r($query_boob); ?></pre>
+                    		<pre><?php print_r($query_boob->result()); ?></pre>
                     	<?php else : ?>
                     		FALSE
                     	<?php endif; ?>
