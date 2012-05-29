@@ -23,6 +23,11 @@
                     		FALSE
                     	<?php endif; ?>
                     </div>
+
+                    <!-- pagination -->
+                    <div class="pagination">
+                        <center><?php print $this->pagination->create_links(); ?></center>
+                    </div>
                 </div>
 
             </div>
