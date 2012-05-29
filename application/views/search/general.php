@@ -18,7 +18,7 @@
                     <h2>General Site Search</h2>
                     <div>
                     	<?php if($query) : ?>
-                    		<?php $this->table->generate($query->result_array()); ?>
+                    		<?php print $this->table->generate($query->result_array()); ?>
                     	<?php else : ?>
                     		FALSE
                     	<?php endif; ?>
