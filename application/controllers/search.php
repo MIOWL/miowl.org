@@ -7,6 +7,8 @@ class Search extends CI_Controller {
     //=================================================================================
 
 
+    private $per_page_limit = 7;
+
 
     //=================================================================================
     // :public
@@ -47,17 +49,17 @@ class Search extends CI_Controller {
      * This is the default search page.
      * Used to do the initial query.
      */
-    public function index($keyword = 'djekl')
+    public function index($keyword = 'djekl', $offset = 0)
     {
         $page_data = array();
         $page_data['page_title'] = 'Search';
-        $page_data['query'] = $this->search_model->search_all($keyword);
+        $page_data['query'] = $this->search_model->search_all($keyword, $offset, $this->per_page_limit);
 
         // setup pagination lib
         $config['base_url']         = site_url('search/index');
         $config['uri_segment']      = 3;
         $config['total_rows']       = $this->search_model->search_all($keyword, FALSE, FALSE);
-        $config['per_page']         = $limit;
+        $config['per_page']         = $this->per_page_limit;
         $config['anchor_class']     = 'class="button" ';
         $config['cur_tag_open']     = '&nbsp;<div class="button danger current">';
         $config['cur_tag_close']    = '</div>';
