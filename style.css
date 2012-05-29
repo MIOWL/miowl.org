@@ -620,7 +620,8 @@ table img {
 	zoom: 1; /* ie7 hack for display:inline-block */
 	*display: inline;
 	border: solid 1px #d2d2d2;
-	padding: 3px 5px;
+	padding: 3px 5px 5px 3px;
+	margin-bottom: 1.5em;
 	
 	-webkit-border-radius: 2em;
 	-moz-border-radius: 2em;
@@ -642,7 +643,7 @@ table img {
 .searchform .searchfield {
 	background: #fff;
 	padding: 6px 6px 6px 8px;
-	width: 202px;
+	width: 47.5em;
 	border: solid 1px #bcbbbb;
 	outline: none;
 
