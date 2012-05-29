@@ -573,7 +573,7 @@ table thead tr {
 
 table thead tr th {
     padding: 0;
-    text-align: left;
+    text-align: center;
 }
 
 table tbody {
@@ -589,9 +589,8 @@ table tbody tr td {
     padding: 0.5em;
 }
 
-table thead tr th:last-child,
-table tbody tr td:last-child {
-    text-align: right;
+table thead tr th {
+
 }
 
 table img {
