@@ -13,7 +13,7 @@
 					<a href="<?php print site_url('browse/owl/' . $row->owl_id); ?>"><?php print $row->owl_name; ?></a>
 				</td>
 				<td>
-					<?php print $row()->cat_name; ?>
+					<?php print $row->cat_name; ?>
 				</td>
 				<td>
 					<?php print $row->file_name; ?>
