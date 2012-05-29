@@ -7,29 +7,25 @@
 	</h1>
 
 	<div id="body">
-        <div id="owl_nav" class="column left quarter">
+        <div id="search_nav" class="column left quarter">
             <?php $this->load->view('search/_nav'); ?>
         </div>
-        <div id="owl_body" class="column right threequarter">
+        <div id="search_body" class="column right threequarter">
 
-            <div class="column left third">
-
+            <div>
+                <h2>General Site Search</h2>
                 <div>
-                    <h2>General Site Search</h2>
-                    <div>
-                    	<?php if($query) : ?>
-                    		<?php print $this->table->generate($query); ?>
-                    	<?php else : ?>
-                    		FALSE
-                    	<?php endif; ?>
-                    </div>
-
-                    <!-- pagination -->
-                    <div class="pagination">
-                        <center><?php print $this->pagination->create_links(); ?></center>
-                    </div>
+                	<?php if($query) : ?>
+                		<?php print $this->table->generate($query); ?>
+                	<?php else : ?>
+                		FALSE
+                	<?php endif; ?>
                 </div>
 
+                <!-- pagination -->
+                <div class="pagination">
+                    <center><?php print $this->pagination->create_links(); ?></center>
+                </div>
             </div>
 
         </div>
