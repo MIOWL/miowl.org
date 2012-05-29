@@ -7,7 +7,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<?php foreach ($query->result()) as $row) : ?>
+		<?php foreach ($query->result() as $row) : ?>
 			<tr>
 				<td>
 					<a href="<?php print site_url('browse/owl/' . $row->owl_id); ?>"><?php print $row->owl_name; ?></a>
