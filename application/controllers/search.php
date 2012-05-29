@@ -51,7 +51,7 @@ class Search extends CI_Controller {
     {
         $page_data = array();
         $page_data['page_title'] = 'Search';
-        $page_data['query'] = $this->search_model->search_uploads($keyword);
+        $page_data['query'] = $this->search_model->search_all($keyword);
 
         print '<pre>' . print_r($this->db->last_query(), TRUE) . '</pre>';
 
