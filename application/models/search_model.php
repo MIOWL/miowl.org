@@ -15,10 +15,10 @@ class Search_model extends CI_Model {
         "minute" => 60,       // seconds in a minute (60 seconds)
         "second" => 1         // 1 second
     );
+    //------------------------------------------------------------------
 
     // This is the sort/grouping we will use accross the whole search
-    private $group_by = array('uploads.owl', 'uploads.upload_category', 'uploads.file_type', 'uploads.upload_license');
-
+    private $order_by = array('owls.owl_name', 'categories.parent_id', 'categories.id', 'uploads.file_type', 'license.name');
     //------------------------------------------------------------------
 
 
@@ -85,15 +85,31 @@ class Search_model extends CI_Model {
     //=================================================================================
 
 
-    // DO INDIVIDUAL SEARCH !!!!!!!
-
     /**
      * private search()
      */
     private function search($keyword = NULL, $offset = 0, $limit = FALSE, $where = array())
     {
         // what do we want?
-        $this->db->select('uploads.*, owls.*, users.*, license.*, categories.*');
+        $this->db->select('
+                categories.id,
+                categories.name,
+                categories.parent_id,
+                owls.id,
+                owls.owl_name,
+                owls.owl_name_short,
+                users.id,
+                users.user_name,
+                uploads.id,
+                uploads.file_type,
+                uploads.client_name,
+                uploads.file_ext,
+                license.id,
+                license.name,
+                license.url,
+                users.user_first_name,
+                users.user_last_name
+            ');
 
         // join the tables by the id's
         $this->db->join('users', 'uploads.upload_user = users.id', 'inner');
@@ -116,8 +132,10 @@ class Search_model extends CI_Model {
         if(!empty($where))
             $this->db->where($where);
 
-        // group the data
-        $this->db->group_by($this->group_by);
+        // order the data
+        foreach ($this->order_by as $sort) {
+            $this->db->order_by($sort, 'ASC');
+        }
 
         // fetch this thing
         if($limit != FALSE)
