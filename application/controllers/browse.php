@@ -91,8 +91,8 @@ class Browse extends CI_Controller {
                     $row->file_name,
                     '<a href="' . $lic->row()->url . '" target="_BLANK">' . $lic->row()->name . '</a>',
                     $row->file_type,
-                    '<center><a href="' . site_url('download/' . $row->id) . '" title="Downlaod this file!" target="_BLANK" class="icon_font">F</a></center>',
-                    '<center><a href="' . site_url('browse/info/' . $row->id) . '" title="More info for this file!" class="icon_font">,</a></center>'
+                    '<a href="' . site_url('download/' . $row->id) . '" title="Downlaod this file!" target="_BLANK" class="icon_font">F</a>',
+                    '<a href="' . site_url('browse/info/' . $row->id) . '" title="More info for this file!" class="icon_font">,</a>'
                 );
             }
         }
