@@ -92,24 +92,23 @@ class Search_model extends CI_Model {
     {
         // what do we want?
         $this->db->select('
-                categories.id,
+                categories.id AS cat_id,
                 categories.name,
                 categories.parent_id,
-                owls.id,
+                owls.id AS owl_id,
                 owls.owl_name,
                 owls.owl_name_short,
-                users.id,
+                users.id AS usr_id,
                 users.user_name,
-                uploads.id,
+                users.user_first_name,
+                users.user_last_name,
+                uploads.id AS up_id,
                 uploads.file_type,
                 uploads.client_name,
                 uploads.file_ext,
-                license.id,
+                license.id AS lic_id,
                 license.name,
-                license.url,
-                users.user_name,
-                users.user_first_name,
-                users.user_last_name
+                license.url
             ');
 
         // join the tables by the id's
