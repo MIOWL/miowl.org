@@ -63,7 +63,7 @@ class Search_model extends CI_Model {
             $this->db->where($where);
 
         // group the data
-        $this->db->group_by($this->$group_by);
+        $this->db->group_by($this->group_by);
 
         // fetch this thing
         if($limit != FALSE)
@@ -117,7 +117,7 @@ class Search_model extends CI_Model {
             $this->db->where($where);
 
         // group the data
-        $this->db->group_by($this->$group_by);
+        $this->db->group_by($this->group_by);
 
         // fetch this thing
         if($limit != FALSE)
