@@ -29,12 +29,12 @@ class Search_model extends CI_Model {
     /**
      * public search_all()
      */
-    public function search_all($keyword = FALSE)
+    public function search_all($keyword = FALSE, $offset = 0, $limit = 7, $where = array())
     {
         if (!$keyword)
             return FALSE;
 
-        return $this->search($keyword);
+        return $this->search($keyword, $offset, $limit, $where);
     }
     //------------------------------------------------------------------
 
