@@ -57,7 +57,7 @@ class Browse extends CI_Controller {
 
         $this->load->library('table');
         $tmpl = array (
-            'table_open'          => '<table width="100%" cellspacing="0" cellpadding="4" border="1">',
+            'table_open'          => '<table>',
 
             'heading_row_start'   => '<tr>',
             'heading_row_end'     => '</tr>',
