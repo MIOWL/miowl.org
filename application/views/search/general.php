@@ -14,6 +14,8 @@
 
             <div>
                 <h2>General Site Search</h2>
+                <?php $this->load->view('search/__search_bar'); ?>
+                <br />
                 <div>
                 	<?php if($query) : ?>
                 		<?php $this->load->view('search/__table'); ?>
