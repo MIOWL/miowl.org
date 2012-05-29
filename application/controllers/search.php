@@ -58,7 +58,7 @@ class Search extends CI_Controller {
         // setup pagination lib
         $config['base_url']         = site_url('search/index');
         $config['uri_segment']      = 3;
-        $config['total_rows']       = $this->search_model->search_all($keyword, FALSE, FALSE);
+        $config['total_rows']       = (($rows = $this->search_model->search_all($keyword, FALSE, FALSE))) ? $rows->num_rows() : 0;
         $config['per_page']         = $this->per_page_limit;
         $config['anchor_class']     = 'class="button" ';
         $config['cur_tag_open']     = '&nbsp;<div class="button danger current">';
