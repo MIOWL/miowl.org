@@ -16,7 +16,7 @@
                 <h2>General Site Search</h2>
                 <div>
                 	<?php if($query) : ?>
-                		<?php print $this->table->generate($query); ?>
+                		<?php $this->load->view('search/__table'); ?>
                 	<?php else : ?>
                 		FALSE
                 	<?php endif; ?>
