@@ -107,6 +107,7 @@ class Search_model extends CI_Model {
                 license.id,
                 license.name,
                 license.url,
+                users.user_name,
                 users.user_first_name,
                 users.user_last_name
             ');
