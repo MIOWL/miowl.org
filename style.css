@@ -573,7 +573,7 @@ table thead tr {
 
 table thead tr th {
     padding: 0;
-    text-align: center;
+    text-align: left;
 }
 
 table tbody {
