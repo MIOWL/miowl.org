@@ -105,7 +105,7 @@ class Search extends CI_Controller {
         // setup pagination lib
         $config['base_url']         = base_url('search/results');
         $config['uri_segment']      = 3;
-        $config['total_rows']       = (($rows = $this->search_model->search_all($search['keyword'], FALSE, FALSE))) ? $rows->num_rows() : 0;
+        $config['total_rows']       = (($rows = $this->search_model->search_all($search['keyword']))) ? $rows->num_rows() : 0;
         $config['per_page']         = $this->per_page_limit;
         $config['anchor_class']     = 'class="button" ';
         $config['cur_tag_open']     = '&nbsp;<div class="button current">';
@@ -165,7 +165,7 @@ class Search extends CI_Controller {
      */
     public function _spam_check($str)
     {
-        return $this->search_model->search_all($search['keyword'], FALSE, FALSE);
+        return $this->search_model->search_all($search['keyword']);
     }
     //------------------------------------------------------------------
 
