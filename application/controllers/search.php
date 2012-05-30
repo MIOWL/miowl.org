@@ -68,7 +68,7 @@ class Search extends CI_Controller {
     {
         // fetch the data from the get param
         $keyword    = $this->input->get('keyword');
-        $offset     = isset($this->input->get('per_page')) ? $this->input->get('per_page') * $this->per_page_limit: 0;
+        $offset     = is_null($this->input->get('per_page')) ? $this->input->get('per_page') * $this->per_page_limit: 0;
 
         // setup our page data
         $page_data = array();
