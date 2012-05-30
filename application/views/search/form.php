@@ -24,6 +24,8 @@
                         <input type="text" name="keyword" id="keyword" size="35" class="textInput medium" autocompelete="OFF" value="<?php print set_value('keyword'); ?>" />
                     </div>
 
+                    <pre><?php print_r($searchOptions); ?></pre>
+
                     <?php foreach ($searchOptions as $name => $description) : ?>
                         <div class="ctrlHolder">
                             <label for="<?php print $name; ?>">$description</label>
