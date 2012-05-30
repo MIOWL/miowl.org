@@ -100,7 +100,7 @@ class Search extends CI_Controller {
         $page_data['page_title'] = 'Search Results';
         $page_data['keyword'] = $search['keyword'];
         $page_data['query'] = $this->search_model->search_all($search['keyword'], $offset, $this->per_page_limit);
-        $page_data['searchOptions'] = $searchSettings;
+        $page_data['searchVars'] = $searchSettings;
 
         // setup pagination lib
         $config['base_url']         = base_url('search/results');
