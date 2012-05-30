@@ -66,10 +66,10 @@ class Search extends CI_Controller {
      */
     public function results($offset = 0)
     {
-        print '<pre>' . $this->uri->uri_string() . '</pre><br />';
-        print '<pre>' . $this->uri->ruri_string() . '</pre><br />';
-        print '<pre>' . $this->uri->segment_array() . '</pre><br />';
-        print '<pre>' . $this->uri->rsegment_array() . '</pre><br />';
+        print '<pre>uri_string()\n' . $this->uri->uri_string() . '</pre><br />';
+        print '<pre>ruri_string()\n' . $this->uri->ruri_string() . '</pre><br />';
+        print '<pre>segment_array()\n' . $this->uri->segment_array() . '</pre><br />';
+        print '<pre>rsegment_array()\n' . $this->uri->rsegment_array() . '</pre><br />';
 
         // fetch the data from the get param
         $keyword    = $this->input->get('keyword');
