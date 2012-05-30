@@ -163,9 +163,13 @@ class Search extends CI_Controller {
     /**
      * callback _valid_search()
      */
-    public function _spam_check($str)
+    public function _valid_search($str)
     {
-        return $this->search_model->search_all($search['keyword']);
+        if($this->search_model->search_all($search['keyword']))
+            return TRUE;
+        
+        $this->form_validation->set_message('_valid_search', 'No results found...');
+        return FALSE;
     }
     //------------------------------------------------------------------
 
