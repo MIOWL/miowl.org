@@ -49,62 +49,45 @@ class Search extends CI_Controller {
      * This is the default search page.
      * Used to do the initial query.
      */
-    public function index($keyword = 'djekl', $offset = 0)
+    public function index()
     {
         $page_data = array();
-        $page_data['page_title'] = 'Search';
+        $page_data['page_title'] = 'Search Form';
+
+        $this->load->view('search/form', $page_data);
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * public results()
+     *
+     * Search Results Page
+     */
+    public function results($offset = 0)
+    {
+        // fetch the data from the get param
+        $keyword = $this->input->get('keyword');
+
+        // setup our page data
+        $page_data = array();
+        $page_data['page_title'] = 'Search Results';
         $page_data['keyword'] = $keyword;
         $page_data['query'] = $this->search_model->search_all($keyword, $offset, $this->per_page_limit);
 
         // setup pagination lib
-        $config['base_url']         = site_url('search/index/' . $keyword);
+        $config['base_url']         = base_url('search/' . $offset . '/results.php');
         $config['uri_segment']      = 4;
         $config['total_rows']       = (($rows = $this->search_model->search_all($keyword, FALSE, FALSE))) ? $rows->num_rows() : 0;
         $config['per_page']         = $this->per_page_limit;
         $config['anchor_class']     = 'class="button" ';
-        $config['cur_tag_open']     = '&nbsp;<div class="button danger current">';
+        $config['cur_tag_open']     = '&nbsp;<div class="button current">';
         $config['cur_tag_close']    = '</div>';
 
         // init pagination
         $this->pagination->initialize($config);
 
         $this->load->view('search/general', $page_data);
-    }
-    //------------------------------------------------------------------
-
-
-    /**
-     * public owl()
-     *
-     * Search via Owl
-     */
-    public function owl()
-    {
-        $this->gen_results();
-    }
-    //------------------------------------------------------------------
-
-
-    /**
-     * public user()
-     *
-     * Search via Username (username / firstname / lastname)
-     */
-    public function user()
-    {
-        $this->gen_results();
-    }
-    //------------------------------------------------------------------
-
-
-    /**
-     * public general()
-     *
-     * General Site Wide Search
-     */
-    public function general()
-    {
-        $this->gen_results();
     }
     //------------------------------------------------------------------
 
