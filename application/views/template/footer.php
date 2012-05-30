@@ -35,9 +35,9 @@
         $(".<?php print $name; ?>").prop("checked", false);
       },
       {
-        switch_on_container_path: '<?php print site_url("images/switch_container_on.png"): ?>',
-        switch_off_container_path: '<?php print site_url("images/switch_container_off.png"): ?>',
-        switch_path: '<?php print site_url("images/switch.png"): ?>'
+        switch_on_container_path: '<?php print site_url("images/switch_container_on.png"); ?>',
+        switch_off_container_path: '<?php print site_url("images/switch_container_off.png"); ?>',
+        switch_path: '<?php print site_url("images/switch.png"); ?>'
       }
     );
   <?php endforeach; ?>
