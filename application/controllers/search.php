@@ -59,6 +59,9 @@ class Search extends CI_Controller {
         $page_data = array();
         $page_data['page_title'] = 'Search Form';
 
+        // form validation rules
+        $this->form_validation->set_rules('keyword', 'Search Term', 'required|trim|callback__valid_search');
+
         // did the user submit
         if ($this->form_validation->run())
         {
@@ -146,6 +149,21 @@ class Search extends CI_Controller {
 
         // build the post data into the session
         $this->session->set_userdata('search', $this->input->post(NULL, TRUE));
+    }
+    //------------------------------------------------------------------
+
+
+    //=================================================================================
+    // :custom callbacks
+    //=================================================================================
+
+
+    /**
+     * callback _valid_search()
+     */
+    public function _spam_check($str)
+    {
+        return $this->search_model->search_all($search['keyword'], FALSE, FALSE);
     }
     //------------------------------------------------------------------
 
