@@ -58,6 +58,9 @@ class Search extends CI_Controller {
         // did the user submit
         if ($this->form_validation->run())
         {
+            print '<pre>' . print_r($this->input->post(),  TRUE) . '</pre>';
+            print '<pre>' . print_r($this->session->userdata('search'),  TRUE) . '</pre>';
+
             // build the search data
             $this->build_search();
 
