@@ -76,13 +76,16 @@ class Search extends CI_Controller {
         $page_data['query'] = $this->search_model->search_all($keyword, $offset, $this->per_page_limit);
 
         // setup pagination lib
-        $config['base_url']         = base_url('search/' . $offset . '/results.php');
-        $config['uri_segment']      = 2;
-        $config['total_rows']       = (($rows = $this->search_model->search_all($keyword, FALSE, FALSE))) ? $rows->num_rows() : 0;
-        $config['per_page']         = $this->per_page_limit;
-        $config['anchor_class']     = 'class="button" ';
-        $config['cur_tag_open']     = '&nbsp;<div class="button current">';
-        $config['cur_tag_close']    = '</div>';
+        // $config['base_url']             = base_url('search/' . $offset . '/results.php');
+        // $config['uri_segment']          = 2;
+        $config['base_url']             = base_url('search/results.php');
+        $config['total_rows']           = (($rows = $this->search_model->search_all($keyword, FALSE, FALSE))) ? $rows->num_rows() : 0;
+        $config['per_page']             = $this->per_page_limit;
+        $config['use_page_numbers']     = TRUE;
+        $config['page_query_string']    = TRUE;
+        $config['anchor_class']         = 'class="button" ';
+        $config['cur_tag_open']         = '&nbsp;<div class="button current">';
+        $config['cur_tag_close']        = '</div>';
 
         // init pagination
         $this->pagination->initialize($config);
