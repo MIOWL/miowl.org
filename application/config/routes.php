@@ -50,6 +50,7 @@ $route['owl/uploads/upload'] 				= 'upload/index';
 $route['browse/(:num)'] 					= 'browse/index/$1';
 $route['deleted/info/(:num)'] 				= 'browse/info/$1/TRUE';
 $route['search/(:num)/results'] 			= 'search/results/$1';
+$route['search/(:num)/results.php'] 		= 'search/results/$1';
 
 
 /* End of file routes.php */
