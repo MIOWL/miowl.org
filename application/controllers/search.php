@@ -51,6 +51,7 @@ class Search extends CI_Controller {
      */
     public function index()
     {
+        $this->build_search();
             print '<pre>' . print_r($this->input->post(),  TRUE) . '</pre>';
             print '<pre>' . print_r($this->session->userdata('search'),  TRUE) . '</pre>';
 
