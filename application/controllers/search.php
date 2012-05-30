@@ -91,16 +91,16 @@ class Search extends CI_Controller {
             redirect(site_url('search'), 'location');
 
         // build the optional search options (tickbox)
-        $searchOptions = array();
-        $searchOptions['s_filename'] = 'Search Filenames';
-        $searchOptions['s_owl'] = 'Search Owl Names';
+        $searchSettings = array();
+        $searchSettings['s_filename'] = 'Search Filenames';
+        $searchSettings['s_owl'] = 'Search Owl Names';
 
         // setup our page data
         $page_data = array();
         $page_data['page_title'] = 'Search Results';
         $page_data['keyword'] = $search['keyword'];
         $page_data['query'] = $this->search_model->search_all($search['keyword'], $offset, $this->per_page_limit);
-        $page_data['searchOptions'] = $searchOptions;
+        $page_data['searchOptions'] = $searchSettings;
 
         // setup pagination lib
         $config['base_url']         = base_url('search/results');
