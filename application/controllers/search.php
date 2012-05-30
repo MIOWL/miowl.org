@@ -51,10 +51,6 @@ class Search extends CI_Controller {
      */
     public function index()
     {
-        $this->build_search();
-            print '<pre>' . print_r($this->input->post(),  TRUE) . '</pre>';
-            print '<pre>' . print_r($this->session->userdata('search'),  TRUE) . '</pre>';
-
         // setup our page data
         $page_data = array();
         $page_data['page_title'] = 'Search Form';
@@ -91,7 +87,7 @@ class Search extends CI_Controller {
         $search = $this->session->userdata('search');
 
         // if we don't have a keyword, send them to the search page
-        if(!isset($search['keyword']))
+        if(!isset($search['keyword']) && $search['keyword'] != NULL)
             redirect(site_url('search'), 'location');
 
         // setup our page data
