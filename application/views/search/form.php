@@ -13,7 +13,7 @@
         <div id="search_body" class="column right threequarter">
 
             <!-- Search Form -->
-            <form action="<?php print base_url('search/0/results.php'); ?>" class="uniForm" method="get">
+            <form action="" class="uniForm" method="post">
 
                 <?php $this->load->view('messages/message_inline'); ?>
 

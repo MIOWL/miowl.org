@@ -51,10 +51,24 @@ class Search extends CI_Controller {
      */
     public function index()
     {
+        // setup our page data
         $page_data = array();
         $page_data['page_title'] = 'Search Form';
 
-        $this->load->view('search/form', $page_data);
+        // did the user submit
+        if ($this->form_validation->run())
+        {
+            // build the search data
+            $this->build_search();
+
+            // redirect to the results page
+            redirect(site_url('search/results'), 'location');
+        }
+        else
+        {
+            // load our view
+            $this->load->view('search/form', $page_data);
+        }
     }
     //------------------------------------------------------------------
 
@@ -66,25 +80,23 @@ class Search extends CI_Controller {
      */
     public function results($offset = 0)
     {
-        print "<pre>uri_string()\n" . $this->uri->uri_string() . '</pre><br />';
-        print "<pre>ruri_string()\n" . $this->uri->ruri_string() . '</pre><br />';
-        print "<pre>segment_array()\n" . print_r($this->uri->segment_array(), TRUE) . '</pre><br />';
-        print "<pre>rsegment_array()\n" . print_r($this->uri->rsegment_array(), TRUE) . '</pre><br />';
+        // get our search data
+        $search = $this->session->userdata('search');
 
-        // fetch the data from the get param
-        $keyword    = $this->input->get('keyword');
+        // if we don't have a keyword, send them to the search page
+        if(!isset($search['keyword']))
+            redirect(site_url('search'), 'location');
 
         // setup our page data
         $page_data = array();
         $page_data['page_title'] = 'Search Results';
-        $page_data['keyword'] = $keyword;
-        $page_data['query'] = $this->search_model->search_all($keyword, $offset, $this->per_page_limit);
+        $page_data['keyword'] = $search['keyword'];
+        $page_data['query'] = $this->search_model->search_all($search['keyword'], $offset, $this->per_page_limit);
 
         // setup pagination lib
-        $config['base_url']         = base_url('search/' . $offset . '/results.php?keyword=' . $keyword);
-        // $config['base_url']         = base_url('search/results/' . $offset . '/?keyword=' . $keyword);
+        $config['base_url']         = base_url('search/results');
         $config['uri_segment']      = 3;
-        $config['total_rows']       = (($rows = $this->search_model->search_all($keyword, FALSE, FALSE))) ? $rows->num_rows() : 0;
+        $config['total_rows']       = (($rows = $this->search_model->search_all($search['keyword'], FALSE, FALSE))) ? $rows->num_rows() : 0;
         $config['per_page']         = $this->per_page_limit;
         $config['anchor_class']     = 'class="button" ';
         $config['cur_tag_open']     = '&nbsp;<div class="button current">';
@@ -93,6 +105,7 @@ class Search extends CI_Controller {
         // init pagination
         $this->pagination->initialize($config);
 
+        // load our view
         $this->load->view('search/general', $page_data);
     }
     //------------------------------------------------------------------
@@ -113,6 +126,22 @@ class Search extends CI_Controller {
         $page_data = array();
         $page_data['page_title'] = 'Search Results';
         $this->load->view('search/general', $page_data);
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * private build_search()
+     *
+     * This is used to build up the search data.
+     */
+    private function build_search()
+    {
+        // remove the search data if it exists (to avoid any issues)
+        $this->session->unset_userdata('search');
+
+        // build the post data into the session
+        $this->session->set_userdata('search', $this->input->post(NULL, TRUE));
     }
     //------------------------------------------------------------------
 
