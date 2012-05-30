@@ -18,7 +18,31 @@
 <script type="text/javascript" src="<?php print site_url('/js/uni-form.jquery.min.js'); ?>"></script>
 <script type="text/javascript" src="<?php print site_url('/js/tips.js'); ?>"></script>
 <script type="text/javascript" src="<?php print site_url('/js/jquery.countdown.js'); ?>"></script>
-<?php if(isset($owl_selection) && $owl_selection) : ?><script type="text/javascript" src="<?php print site_url('/js/owl_selection.js'); ?>"></script><?php endif; ?>
+
+<?php if(isset($owl_selection) && $owl_selection) : ?>
+  <script type="text/javascript" src="<?php print site_url('/js/owl_selection.js'); ?>"></script>
+<?php endif; ?>
+
+<?php if(isset($searchOptions)) : ?>
+  <script type="text/javascript" src="<?php print site_url('/js/jquery.option-switch.js'); ?>"></script>
+  <script type="text/javascript">
+  <?php foreach ($searchOptions as $name => $description) : ?>
+    $('.<?php print $name; ?>Image').optionSwitch("off", 
+      function() {
+        $(".<?php print $name; ?>").prop("checked", true);
+      },
+      function() {
+        $(".<?php print $name; ?>").prop("checked", false);
+      },
+      {
+        switch_on_container_path: '<?php print site_url("images/switch_container_on.png"): ?>',
+        switch_off_container_path: '<?php print site_url("images/switch_container_off.png"): ?>',
+        switch_path: '<?php print site_url("images/switch.png"): ?>'
+      }
+    );
+  <?php endforeach; ?>
+  </script>
+<?php endif; ?>
 
 <?php if(isset($google_maps) && $google_maps) : ?>
 <!-- Google Maps -->

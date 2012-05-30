@@ -18,10 +18,19 @@
                 <?php $this->load->view('messages/message_inline'); ?>
 
                 <fieldset class="inlineLabels">
+
                     <div class="ctrlHolder">
                         <label for="keyword">Keyword</label>
                         <input type="text" name="keyword" id="keyword" size="35" class="textInput medium" autocompelete="OFF" value="<?php print set_value('keyword'); ?>" />
                     </div>
+
+                    <?php foreach ($searchOptions as $name => $description) : ?>
+                        <div class="ctrlHolder">
+                            <label for="<?php print $name; ?>">$description</label>
+                            <div class="<?php print $name; ?>Image"></div>
+                            <input type="checkbox" name="<?php print $name; ?>" id="<?php print $name; ?>" class="<?php print $name; ?>" autocompelete="OFF" style="display: none" />
+                        </div>
+                    <?php endforeach; ?>
 
                 </fieldset>
 
