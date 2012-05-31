@@ -113,7 +113,18 @@ class Search_model extends CI_Model {
         $this->db->join('categories', 'uploads.upload_category = categories.id', 'inner');
         $this->db->join('license', 'uploads.upload_license = license.id', 'inner');
 
-        // find by keyword
+        // find by keyword and exctact the search area's from the session
+        $like_set = FALSE;
+        foreach ($this->session->userdata('search') as $area => $value) {
+            if($value === 'on' && $area != 'keyword')
+                if(!$like_set)
+                {
+                    $this->db->like(str_replace('-', '.', $area), $keyword);
+                }
+                else
+                    $this->db->or_like(str_replace('-', '.', $area), $keyword);
+        }
+/*
         $this->db->like('uploads.file_name', $keyword);
         $this->db->or_like('owls.owl_name', $keyword);
         $this->db->or_like('owls.owl_name_short', $keyword);
@@ -121,7 +132,7 @@ class Search_model extends CI_Model {
         $this->db->or_like('uploads.file_type', $keyword);
         $this->db->or_like('license.name', $keyword);
         $this->db->or_like('license.short_description', $keyword);
-
+*/
         // don't show deleted files
         $this->db->where('uploads.deleted', 'false');
 
