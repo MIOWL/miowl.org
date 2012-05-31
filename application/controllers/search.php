@@ -51,7 +51,6 @@ class Search extends CI_Controller {
      */
     public function index()
     {
-        print '<pre>' . print_r($this->db->last_query(), TRUE) . '</pre>';
         // build the optional search options (tickbox)
         $search_vars = array();
         $search_vars['uploads-file_name'] = 'Search Filenames';
@@ -95,6 +94,7 @@ class Search extends CI_Controller {
      */
     public function results($offset = 0)
     {
+        print '<pre>' . print_r($this->db->last_query(), TRUE) . '</pre>';
         // get our search data
         $search = $this->session->userdata('search');
 
