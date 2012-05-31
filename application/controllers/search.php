@@ -53,13 +53,13 @@ class Search extends CI_Controller {
     {
         // build the optional search options (tickbox)
         $search_vars = array();
-        $search_vars['uploads.file_name'] = 'Search Filenames';
-        $search_vars['owls.owl_name'] = 'Search Owl Names';
-        $search_vars['owls.owl_name_short'] = 'Search Owl Acronym';
-        $search_vars['categories.name'] = 'Search Category Names';
-        $search_vars['uploads.file_type'] = 'Search File Types';
-        $search_vars['license.name'] = 'Search License Names';
-        $search_vars['license.short_description'] = 'Search License Descriptions';
+        $search_vars['uploads-file_name'] = 'Search Filenames';
+        $search_vars['owls-owl_name'] = 'Search Owl Names';
+        $search_vars['owls-owl_name_short'] = 'Search Owl Acronym';
+        $search_vars['categories-name'] = 'Search Category Names';
+        $search_vars['uploads-file_type'] = 'Search File Types';
+        $search_vars['license-name'] = 'Search License Names';
+        $search_vars['license-short_description'] = 'Search License Descriptions';
 
         // setup our page data
         $page_data = array();
