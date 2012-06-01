@@ -89,10 +89,10 @@ class Search_model extends CI_Model {
         {
             foreach ($where as $key => $value) {
                 // if ($key === 0) {
-                //     $this->db->where($value);
+                //     $this->db->having($value);
                 // }
                 // else {
-                    $this->db->or_where($value);
+                    $this->db->or_having($value);
                 // }
             }
         }
