@@ -88,12 +88,12 @@ class Search_model extends CI_Model {
         if($where != FALSE)
         {
             foreach ($where as $key => $value) {
-                if ($key === 0) {
-                    $this->db->where($value);
-                }
-                else {
+                // if ($key === 0) {
+                //     $this->db->where($value);
+                // }
+                // else {
                     $this->db->or_where($value);
-                }
+                // }
             }
         }
 
