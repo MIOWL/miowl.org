@@ -40,6 +40,9 @@
                         <label for="s_lic_id">Search within specific licenses?</label>
                         <div class="s_lic_id" style="display: inline-block;" >
                             <span style="margin: 0.5em 0pt 0pt 17em;">TODO</span>
+                            <br />
+                            <span style="margin: 0.5em 0pt 0pt 17em;">TODO</span>
+                            <br />
                         </div>
                     <p class="formHint">Choose the owl licenses you wish to search within.<br /><strong>NOTE:</strong> selecting none will search all.</p>
                     </div>
