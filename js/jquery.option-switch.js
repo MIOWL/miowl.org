@@ -41,7 +41,7 @@ jQuery.fn.optionSwitch = function(start_state, switched_on_callback, switched_of
 		});
 
 		// do the required callbacks for the state
-		jQuery(this).ready(function(){
+		$(function(){
 			if(state == 'on') {
 				switched_on_callback;
 			}
