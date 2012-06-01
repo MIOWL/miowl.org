@@ -28,7 +28,7 @@
                         <label for="s_file_ext">Search for a specific filetype?</label>
                         <div class="s_file_ext" style="display: inline-block;" >
                             <?php foreach (array('txt', 'rtf', 'pdf', 'doc', 'docx') as $ext) : ?>
-                                <input type="checkbox" name="file_ext-<?php print $ext; ?>" id="file_ext-<?php print $ext; ?>" class="" autocompelete="OFF" style="margin: 0.5em 0pt 0pt 17em;" />
+                                <input type="checkbox" name="file_ext-<?php print $ext; ?>" id="file_ext-<?php print $ext; ?>" class="" autocompelete="OFF" />
                                     &nbsp;&nbsp;&nbsp;&nbsp;<?php print $ext; ?>
                                 <br />
                             <?php endforeach; ?>
