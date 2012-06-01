@@ -137,14 +137,12 @@ class Search extends CI_Controller {
 
         foreach ($this->session->userdata('search') as $haystack => $value) {
             foreach ($find_arr as $needle) {
-                if (strlen(strstr($haystack,$needle))>0)
+                if (strlen(strstr($haystack,$needle)) > 0)
                 {
-                    print "TRUE \n <br /> \n\n";
                     switch ($needle)
                     {
                         case 'owls-':
                             $where[] = array('uploads.owl' => str_replace($needle, '', $haystack));
-                            print "'uploads.owl' => ".str_replace($needle, '', $haystack)." \n\n";
                             break;
                         
                         default:
@@ -153,8 +151,6 @@ class Search extends CI_Controller {
                 }
             }
         }
-
-        print '<pre>' . print_r($where, TRUE) . '</pre>';
 
         return $this->search_model->search_all($keyword, $offset, $limit, $where);
     }
