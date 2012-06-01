@@ -142,7 +142,7 @@ class Search extends CI_Controller {
                     switch ($needle)
                     {
                         case 'owls-':
-                            $where[] = array('uploads.owl' => str_replace($needle, '', $haystack));
+                            $where[] = array('owl_id' => str_replace($needle, '', $haystack));
                             break;
                         
                         default:
