@@ -26,8 +26,7 @@
 
                     <div class="ctrlHolder">
                         <label for="s_owl_id">Search within specific owls?</label>
-                        <div class="s_owl_id_Image"></div>
-                        <div class="s_owl_id" style="display: block;" >
+                        <div class="s_owl_id" style="display: inline-block;" >
                             <?php foreach ($this->owl_model->get_all_owls()->result() as $row) : ?>
                                 <input type="checkbox" name="owls-<?php print $row->id; ?>" id="owls-<?php print $row->id; ?>" class="" autocompelete="OFF" style="margin: 0.5em 0pt 0pt 17em;" />
                                     &nbsp;&nbsp;&nbsp;&nbsp;<?php print $row->owl_name; ?>
@@ -38,9 +37,8 @@
                     </div>
 
                     <div class="ctrlHolder">
-                        <label for="s_owl_id">Search within specific licenses?</label>
-                        <div class="s_lic_id_Image"></div>
-                        <div class="s_lic_id" style="display: block;" >
+                        <label for="s_lic_id">Search within specific licenses?</label>
+                        <div class="s_lic_id" style="display: inline-block;" >
                             <span style="margin: 0.5em 0pt 0pt 17em;">TODO</span>
                         </div>
                     <p class="formHint">Choose the owl licenses you wish to search within.<br /><strong>NOTE:</strong> selecting none will search all.</p>

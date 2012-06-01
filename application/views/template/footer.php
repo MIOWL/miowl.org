@@ -23,28 +23,6 @@
   <script type="text/javascript" src="<?php print site_url('/js/owl_selection.js'); ?>"></script>
 <?php endif; ?>
 
-<?php if(isset($search_vars)) : ?>
-  <!-- Fancy IOS Switch Button -->
-  <script type="text/javascript" src="<?php print site_url('/js/jquery.option-switch.js'); ?>"></script>
-  <script type="text/javascript">
-  <?php foreach ($this->session->userdata('find_arr') as $name) : ?>
-    $('.<?php print $name; ?>_Image').optionSwitch("on", 
-      function() {
-        $(".<?php print $name; ?>").css('display', 'block' );
-      },
-      function() {
-        $(".<?php print $name; ?>").css('display', 'none');
-      },
-      {
-        switch_on_container_path: '<?php print site_url("images/switch_container_on.png"); ?>',
-        switch_off_container_path: '<?php print site_url("images/switch_container_off.png"); ?>',
-        switch_path: '<?php print site_url("images/switch.png"); ?>'
-      }
-    );
-  <?php endforeach; ?>
-  </script>
-<?php endif; ?>
-
 <?php if(isset($google_maps) && $google_maps) : ?>
   <!-- Google Maps -->
   <script type="text/javascript"
