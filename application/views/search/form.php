@@ -40,7 +40,7 @@
                         <label for="s_owl_id">Search within specific owls?</label>
                         <div class="s_owl_id" style="display: inline-block;" >
                             <?php foreach ($this->owl_model->get_all_owls()->result() as $row) : ?>
-                                <input type="checkbox" name="owls-<?php print $row->id; ?>" id="owls-<?php print $row->id; ?>" class="" autocompelete="OFF" style="margin: 0.5em 0pt 0pt 17em;" />
+                                <input type="checkbox" name="owls-<?php print $row->id; ?>" id="owls-<?php print $row->id; ?>" class="" autocompelete="OFF" style="margin: 0.5em 0pt 0pt 16.5em;" />
                                     &nbsp;&nbsp;&nbsp;&nbsp;<?php print $row->owl_name; ?>
                                 <br />
                             <?php endforeach; ?>
