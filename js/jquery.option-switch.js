@@ -17,6 +17,14 @@ jQuery.fn.optionSwitch = function(start_state, switched_on_callback, switched_of
 		jQuery.extend(settings, options);
 	}
 
+	// do the required callbacks for the state
+	if(state == 'on') {
+		switched_on_callback;
+	}
+	else {
+		switched_off_callback;
+	}
+
 	// create the switch
 	return this.each(function() {
 
