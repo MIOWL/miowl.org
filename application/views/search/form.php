@@ -26,14 +26,15 @@
 
                     <div class="ctrlHolder">
                         <label for="s_owl_id">Search within specific owls?</label>
-                        <div class="s_owl_id_Image">Loading...</div>
-                        <div class="s_owl_id" style="display: none;" >
+                        <div class="s_owl_id_Image"></div>
+                        <div class="s_owl_id" style="display: block;" >
                             <?php foreach ($this->owl_model->get_all_owls()->result() as $row) : ?>
                                 <input type="checkbox" id="owls-<?php print $row->id; ?>" class="" autocompelete="OFF" style="margin: 0.5em 0pt 0pt 17em;" />
                                     &nbsp;&nbsp;&nbsp;&nbsp;<?php print $row->owl_name; ?>
                                 <br />
                             <?php endforeach; ?>
                         </div>
+                    <p class="formHint">Choose the owl's you wish to search within.<br /><strong>NOTE:</strong> selecting none will search all.</p>
                     </div>
 
                 </fieldset>
