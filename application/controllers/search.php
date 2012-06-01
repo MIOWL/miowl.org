@@ -51,15 +51,9 @@ class Search extends CI_Controller {
      */
     public function index()
     {
-        print '<pre>' . print_r($this->db->last_query(), TRUE) . '</pre>';
         // build the optional search options (tickbox)
         $search_vars = array();
         $search_vars['s_owl_id'] = 'Search Certain Owls';
-
-        // setup our page data
-        $page_data = array();
-        $page_data['page_title'] = 'Search Form';
-        $page_data['search_vars'] = $search_vars;
 
         // form validation rules
         $this->form_validation->set_rules('keyword', 'Search Term', 'required|trim|callback__valid_search');

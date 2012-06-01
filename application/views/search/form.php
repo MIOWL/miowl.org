@@ -24,32 +24,17 @@
                         <input type="text" name="keyword" id="keyword" size="35" class="textInput medium" autocompelete="OFF" value="<?php print set_value('keyword'); ?>" />
                     </div>
 
-                    <?php foreach ($search_vars as $name => $description) : ?>
-                        <div class="ctrlHolder">
-                            <label for="<?php print $name; ?>"><?php print $description; ?></label>
-                            <div class="<?php print $name; ?>Image"></div>
-                            <div class="<?php print $name; ?>" style="display: none;" >
-                                <input type="checkbox" name="<?php print $name; ?>1" id="<?php print $name; ?>1" class="<?php print $name; ?>1" autocompelete="OFF" />
-                                    &nbsp;&nbsp;&nbsp;&nbsp;<?php print $description; ?>
+                    <div class="ctrlHolder">
+                        <label for="s_owl_id">Search within specific owls?</label>
+                        <div class="s_owl_id_Image"></div>
+                        <div class="s_owl_id" style="display: none;" >
+                            <?php foreach ($this->owl_model->get_all_owls()->result() as $row) : ?>
+                                <input type="checkbox" id="owls-<?php print $row->id; ?>" class="" autocompelete="OFF" style="margin: 0.5em 0pt 0pt 17em;" />
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<?php print $row->name; ?>
                                 <br />
-                                <input type="checkbox" name="<?php print $name; ?>2" id="<?php print $name; ?>2" class="<?php print $name; ?>2" autocompelete="OFF" />
-                                    &nbsp;&nbsp;&nbsp;&nbsp;<?php print $description; ?>
-                                <br />
-                                <input type="checkbox" name="<?php print $name; ?>3" id="<?php print $name; ?>3" class="<?php print $name; ?>3" autocompelete="OFF" />
-                                    &nbsp;&nbsp;&nbsp;&nbsp;<?php print $description; ?>
-                                <br />
-                                <input type="checkbox" name="<?php print $name; ?>4" id="<?php print $name; ?>4" class="<?php print $name; ?>4" autocompelete="OFF" />
-                                    &nbsp;&nbsp;&nbsp;&nbsp;<?php print $description; ?>
-                                <br />
-                                <input type="checkbox" name="<?php print $name; ?>5" id="<?php print $name; ?>5" class="<?php print $name; ?>5" autocompelete="OFF" />
-                                    &nbsp;&nbsp;&nbsp;&nbsp;<?php print $description; ?>
-                                <br />
-                                <input type="checkbox" name="<?php print $name; ?>6" id="<?php print $name; ?>6" class="<?php print $name; ?>6" autocompelete="OFF" />
-                                    &nbsp;&nbsp;&nbsp;&nbsp;<?php print $description; ?>
-                                <br />
-                            </div>
+                            <?php endforach; ?>
                         </div>
-                    <?php endforeach; ?>
+                    </div>
 
                 </fieldset>
 
