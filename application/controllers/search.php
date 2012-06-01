@@ -124,13 +124,32 @@ class Search extends CI_Controller {
     /**
      * private gen_results()
      *
-     * Private function to do the search via the vars given above...
+     * Private function to do the search via the vars given in the post.
      */
-    private function gen_results()
+    private function gen_results($keyword = FALSE, $offset = 0, $limit = FALSE)
     {
-        $page_data = array();
-        $page_data['page_title'] = 'Search Results';
-        $this->load->view('search/general', $page_data);
+        // build up the where array
+        $where      = array();
+
+        // these are the things we are looking for
+        $find_arr   = array('owls-');
+
+        foreach ($this->input->post(NULL, TRUE) as $key => $value) {
+            foreach ($find_arr as $find) {
+                if (strpos($key, $find)) {
+                    switch ($find) {
+                        case 'owls-':
+                            $where[] = array('owl' => str_replace($find, NULL, $key));
+                            break;
+                        
+                        default:
+                            break;
+                    }
+                }
+            }
+        }
+
+        return $this->search_model->search_uploads($keyword, $offset, $limit, $where);
     }
     //------------------------------------------------------------------
 

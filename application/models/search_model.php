@@ -60,7 +60,11 @@ class Search_model extends CI_Model {
 
         // if extra where items are set, include them
         if(!empty($where))
-            $this->db->where($where);
+        {
+            foreach ($where as $where) {
+                $this->db->where($where);
+            }
+        }
 
         // group the data
         $this->db->group_by($this->group_by);
