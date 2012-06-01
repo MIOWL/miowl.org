@@ -26,13 +26,13 @@
 
                     <div class="ctrlHolder">
                         <label for="s_owl_id">Search within specific owls?</label>
-                        <div class="s_owl_id_Image"></div>
+                        <div class="s_owl_id_Image">Loading...</div>
                         <div class="s_owl_id" style="display: none;" >
-                            <?php foreach ($this->owl_model->get_all_owls()->result() as $row) : ?>
+                            <?php foreach (($this->owl_model->get_all_owls())->result() as $row) : ?>
                                 <input type="checkbox" id="owls-<?php print $row->id; ?>" class="" autocompelete="OFF" style="margin: 0.5em 0pt 0pt 17em;" />
                                     &nbsp;&nbsp;&nbsp;&nbsp;<?php print $row->name; ?>
                                 <br />
-                            <?php endforach; ?>
+                            <?php endforeach; ?>
                         </div>
                     </div>
 
