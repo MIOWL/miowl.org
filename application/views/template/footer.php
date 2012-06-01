@@ -27,8 +27,8 @@
   <!-- Fancy IOS Switch Button -->
   <script type="text/javascript" src="<?php print site_url('/js/jquery.option-switch.js'); ?>"></script>
   <script type="text/javascript">
-  <?php foreach ($search_vars as $name => $description) : ?>
-    $('.<?php print $name; ?>Image').optionSwitch("off", 
+  <?php foreach (array('s_owl_id') as $name) : ?>
+    $('.<?php print $name; ?>_Image').optionSwitch("off", 
       function() {
         $(".<?php print $name; ?>").css('display', 'block' );
       },

@@ -54,6 +54,7 @@ class Search extends CI_Controller {
         // setup our page data
         $page_data = array();
         $page_data['page_title'] = 'Search Form';
+        $page_data['search_vars'] = TRUE; // Used to load the jQuery in the footer
 
         // form validation rules
         $this->form_validation->set_rules('keyword', 'Search Term', 'required|trim|callback__valid_search');
