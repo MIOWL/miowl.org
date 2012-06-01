@@ -141,6 +141,10 @@ class Search extends CI_Controller {
                 {
                     switch ($needle)
                     {
+                        case 'file_ext-':
+                            $where[] = array('file_ext' => str_replace($needle, '', $haystack));
+                            break;
+
                         case 'owls-':
                             $where[] = array('owl_id' => str_replace($needle, '', $haystack));
                             break;
