@@ -133,7 +133,7 @@ class Search extends CI_Controller {
         // these are the things we are looking for
         $find_arr   = array('owls-');
 
-        foreach ($this->input->post(NULL, TRUE) as $key => $value) {
+        foreach ($this->session->userdata('search') as $key => $value) {
             foreach ($find_arr as $find) {
                 if (strpos($key, $find)) {
                     switch ($find) {
