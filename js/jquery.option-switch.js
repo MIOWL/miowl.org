@@ -40,16 +40,6 @@ jQuery.fn.optionSwitch = function(start_state, switched_on_callback, switched_of
 			jQuery(this).css("background", settings.mouse_out);
 		});
 
-		// do the required callbacks for the state
-		$(function(){
-			if(state == 'on') {
-				switched_on_callback;
-			}
-			else {
-				switched_off_callback;
-			}
-		});
-
 		// click handling
 		jQuery(this).click(function() {
 			if(state == 'on') {
