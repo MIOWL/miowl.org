@@ -135,13 +135,15 @@ class Search extends CI_Controller {
         // these are the things we are looking for
         $find_arr   = array('owls-');
 
-        foreach ($this->session->userdata('search') as $key => $value) {
-            foreach ($find_arr as $find) {
-                if (strpos($key, $find)) {
+        foreach ($this->session->userdata('search') as $haystack => $value) {
+            foreach ($find_arr as $needle) {
+                if (strlen(strstr($haystack,$needle))>0)
+                {
                     print "TRUE \n <br /> \n\n";
-                    switch ($find) {
+                    switch ($needle)
+                    {
                         case 'owls-':
-                            $where[] = array('uploads.owl' => str_replace($find, '', $key));
+                            $where[] = array('uploads.owl' => str_replace($needle, '', $haystack));
                             print "'uploads.owl' => {str_replace($find, '', $key)} \n\n";
                             break;
                         

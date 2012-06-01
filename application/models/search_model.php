@@ -85,15 +85,12 @@ class Search_model extends CI_Model {
         $this->db->where('uploads.deleted', 'false');
 
         // if extra where items are set, include them
-        // if($where != FALSE)
-        // {
-            print '<pre>';
+        if($where != FALSE)
+        {
             foreach ($where as $key => $value) {
                 $this->db->where($value);
-                print "'{$key}' = '{$value}'\n";
             }
-            print '</pre>';
-        // }
+        }
 
         // order the data
         foreach ($this->order_by as $sort) {
@@ -105,8 +102,6 @@ class Search_model extends CI_Model {
             $query = $this->db->get('uploads', $limit, $offset);
         else
             $query = $this->db->get('uploads');
-
-        #print '<pre>' . print_r($this->db->last_query(), TRUE) . '</pre>';
 
         // do we have any results?
         if ($query->num_rows() > 0)
