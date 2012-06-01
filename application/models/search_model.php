@@ -74,28 +74,14 @@ class Search_model extends CI_Model {
 
         // find by keyword
         $this->db->like('uploads.file_name', $keyword);
-        // $this->db->or_like('owls.owl_name', $keyword);
-        // $this->db->or_like('owls.owl_name_short', $keyword);
-        // $this->db->or_like('categories.name', $keyword);
-        // $this->db->or_like('uploads.file_type', $keyword);
-        // $this->db->or_like('license.name', $keyword);
-        // $this->db->or_like('license.short_description', $keyword);
 
         // don't show deleted files
         $this->db->where('uploads.deleted', 'false');
 
         // if extra where items are set, include them
         if($where != FALSE)
-        {
-            foreach ($where as $key => $value) {
-                // if ($key === 0) {
-                //     $this->db->having($value);
-                // }
-                // else {
-                    $this->db->or_having($value);
-                // }
-            }
-        }
+            foreach ($where as $key => $value)
+                $this->db->or_having($value);
 
         // order the data
         foreach ($this->order_by as $sort) {

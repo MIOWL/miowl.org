@@ -56,6 +56,10 @@ class Search extends CI_Controller {
         $page_data['page_title'] = 'Search Form';
         $page_data['search_vars'] = TRUE; // Used to load the jQuery in the footer
 
+        // set some session data for use later, and clear 1st
+        $this->session->unset_userdata('find_arr');
+        $this->session->set_userdata('find_arr', array('owls-', 'lic-'));
+
         // form validation rules
         $this->form_validation->set_rules('keyword', 'Search Term', 'required|trim|callback__valid_search');
 
@@ -132,11 +136,8 @@ class Search extends CI_Controller {
         // build up the where array
         $where      = array();
 
-        // these are the things we are looking for
-        $find_arr   = array('owls-');
-
         foreach ($this->session->userdata('search') as $haystack => $value) {
-            foreach ($find_arr as $needle) {
+            foreach ($this->session->userdata('find_arr') as $needle) {
                 if (strlen(strstr($haystack,$needle)) > 0)
                 {
                     switch ($needle)
@@ -144,7 +145,11 @@ class Search extends CI_Controller {
                         case 'owls-':
                             $where[] = array('owl_id' => str_replace($needle, '', $haystack));
                             break;
-                        
+
+                        case 'lic-':
+                            $where[] = array('lic_id' => str_replace($needle, '', $haystack));
+                            break;
+
                         default:
                             break;
                     }

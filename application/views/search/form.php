@@ -37,6 +37,15 @@
                     <p class="formHint">Choose the owl's you wish to search within.<br /><strong>NOTE:</strong> selecting none will search all.</p>
                     </div>
 
+                    <div class="ctrlHolder">
+                        <label for="s_owl_id">Search within specific licenses?</label>
+                        <div class="s_lic_id_Image"></div>
+                        <div class="s_lic_id" style="display: block;" >
+                            <span style="margin: 0.5em 0pt 0pt 17em;">TODO</span>
+                        </div>
+                    <p class="formHint">Choose the owl licenses you wish to search within.<br /><strong>NOTE:</strong> selecting none will search all.</p>
+                    </div>
+
                 </fieldset>
 
                 <div class="buttonHolder">
