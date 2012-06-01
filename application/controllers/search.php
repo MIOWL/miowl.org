@@ -138,9 +138,11 @@ class Search extends CI_Controller {
         foreach ($this->session->userdata('search') as $key => $value) {
             foreach ($find_arr as $find) {
                 if (strpos($key, $find)) {
+                    print "TRUE \n <br /> \n\n";
                     switch ($find) {
                         case 'owls-':
                             $where[] = array('uploads.owl' => str_replace($find, '', $key));
+                            print "'uploads.owl' => {str_replace($find, '', $key)} \n\n";
                             break;
                         
                         default:
