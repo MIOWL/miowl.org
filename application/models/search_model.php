@@ -87,9 +87,12 @@ class Search_model extends CI_Model {
         // if extra where items are set, include them
         if(!empty($where))
         {
-            foreach ($where as $where) {
-                $this->db->where($where);
+            print '<pre>';
+            foreach ($where as $key => $value) {
+                $this->db->where($key, $value);
+                print "{$key} = {$value}\n";
             }
+            print '</pre>';
         }
 
         // order the data

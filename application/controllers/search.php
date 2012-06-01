@@ -138,7 +138,7 @@ class Search extends CI_Controller {
                 if (strpos($key, $find)) {
                     switch ($find) {
                         case 'owls-':
-                            $where[] = array('owl' => str_replace($find, NULL, $key));
+                            $where[] = array('uploads.owl' => str_replace($find, '', $key));
                             break;
                         
                         default:
