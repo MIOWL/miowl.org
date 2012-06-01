@@ -84,7 +84,6 @@ class Search extends CI_Controller {
      */
     public function results($offset = 0)
     {
-        print '<pre>' . print_r($this->db->last_query(), TRUE) . '</pre>';
         // get our search data
         $search = $this->session->userdata('search');
 
@@ -96,12 +95,14 @@ class Search extends CI_Controller {
         $page_data = array();
         $page_data['page_title'] = 'Search Results';
         $page_data['keyword'] = $search['keyword'];
-        $page_data['query'] = $this->search_model->search_all($search['keyword'], $offset, $this->per_page_limit);
+        $page_data['query'] = $this->gen_results($search['keyword'], $offset, $this->per_page_limit);
+
+        print '<pre>' . print_r($this->db->last_query(), TRUE) . '</pre>';
 
         // setup pagination lib
         $config['base_url']         = base_url('search/results');
         $config['uri_segment']      = 3;
-        $config['total_rows']       = (($rows = $this->search_model->search_all($search['keyword']))) ? $rows->num_rows() : 0;
+        $config['total_rows']       = (($rows = $this->gen_results($search['keyword']))) ? $rows->num_rows() : 0;
         $config['per_page']         = $this->per_page_limit;
         $config['anchor_class']     = 'class="button" ';
         $config['cur_tag_open']     = '&nbsp;<div class="button current">';
