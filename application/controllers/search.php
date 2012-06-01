@@ -97,8 +97,6 @@ class Search extends CI_Controller {
         $page_data['keyword'] = $search['keyword'];
         $page_data['query'] = $this->gen_results($search['keyword'], $offset, $this->per_page_limit);
 
-        print '<pre>' . print_r($this->db->last_query(), TRUE) . '</pre>';
-
         // setup pagination lib
         $config['base_url']         = base_url('search/results');
         $config['uri_segment']      = 3;
@@ -150,7 +148,7 @@ class Search extends CI_Controller {
             }
         }
 
-        return $this->search_model->search_uploads($keyword, $offset, $limit, $where);
+        return $this->search_model->search_all($keyword, $offset, $limit, $where);
     }
     //------------------------------------------------------------------
 

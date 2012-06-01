@@ -39,51 +39,6 @@ class Search_model extends CI_Model {
     //------------------------------------------------------------------
 
 
-    /**
-     * public search_uploads()
-     */
-    public function search_uploads($keyword = FALSE, $offset = 0, $limit = FALSE, $where = array())
-    {
-        if (!$keyword)
-            return FALSE;
-
-        // what do we want?
-        $this->db->select('*');
-
-        // find by keyword
-        $this->db->like('file_name', $keyword);
-        $this->db->or_like('client_name', $keyword);
-        $this->db->or_like('description', $keyword);
-
-        // don't show deleted files
-        $this->db->where('deleted', 'false');
-
-        // if extra where items are set, include them
-        if(!empty($where))
-        {
-            foreach ($where as $where) {
-                $this->db->where($where);
-            }
-        }
-
-        // group the data
-        $this->db->group_by($this->group_by);
-
-        // fetch this thing
-        if($limit != FALSE)
-            $query = $this->db->get('uploads', $limit, $offset);
-        else
-            $query = $this->db->get('uploads');
-
-        // do we have any results?
-        if ($query->num_rows() > 0)
-            return $query;
-
-        return FALSE;
-    }
-    //------------------------------------------------------------------
-
-
     //=================================================================================
     // :PRIVATE FUNCTIONS
     //=================================================================================
@@ -131,7 +86,11 @@ class Search_model extends CI_Model {
 
         // if extra where items are set, include them
         if(!empty($where))
-            $this->db->where($where);
+        {
+            foreach ($where as $where) {
+                $this->db->where($where);
+            }
+        }
 
         // order the data
         foreach ($this->order_by as $sort) {
@@ -143,6 +102,8 @@ class Search_model extends CI_Model {
             $query = $this->db->get('uploads', $limit, $offset);
         else
             $query = $this->db->get('uploads');
+
+        print '<pre>' . print_r($this->db->last_query(), TRUE) . '</pre>';
 
         // do we have any results?
         if ($query->num_rows() > 0)
