@@ -30,7 +30,7 @@
                         <div class="s_owl_id" style="display: none;" >
                             <?php foreach ($this->owl_model->get_all_owls()->result() as $row) : ?>
                                 <input type="checkbox" id="owls-<?php print $row->id; ?>" class="" autocompelete="OFF" style="margin: 0.5em 0pt 0pt 17em;" />
-                                    &nbsp;&nbsp;&nbsp;&nbsp;<?php print $row->name; ?>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<?php print $row->owl_name; ?>
                                 <br />
                             <?php endforeach; ?>
                         </div>
