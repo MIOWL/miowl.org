@@ -57,7 +57,7 @@ class Search extends CI_Controller {
 
         // set some session data for use later, and clear 1st
         $this->session->unset_userdata('find_arr');
-        $this->session->set_userdata('find_arr', array('owls-', 'lic-'));
+        $this->session->set_userdata('find_arr', array('file_ext-', 'owls-', 'lic-'));
 
         // form validation rules
         $this->form_validation->set_rules('keyword', 'Search Term', 'required|trim|callback__valid_search');
