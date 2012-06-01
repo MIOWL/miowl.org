@@ -28,7 +28,14 @@
                         <div class="ctrlHolder">
                             <label for="<?php print $name; ?>"><?php print $description; ?></label>
                             <div class="<?php print $name; ?>Image"></div>
-                            <input type="checkbox" name="<?php print $name; ?>" id="<?php print $name; ?>" class="<?php print $name; ?>" autocompelete="OFF" checked="checked" style="display: none" />
+                            <div class="<?php print $name; ?>">
+                                <input type="checkbox" name="<?php print $name; ?>" id="<?php print $name; ?>" class="<?php print $name; ?>" autocompelete="OFF" checked="checked" />
+                                <input type="checkbox" name="<?php print $name; ?>" id="<?php print $name; ?>" class="<?php print $name; ?>" autocompelete="OFF" checked="checked" />
+                                <input type="checkbox" name="<?php print $name; ?>" id="<?php print $name; ?>" class="<?php print $name; ?>" autocompelete="OFF" checked="checked" />
+                                <input type="checkbox" name="<?php print $name; ?>" id="<?php print $name; ?>" class="<?php print $name; ?>" autocompelete="OFF" checked="checked" />
+                                <input type="checkbox" name="<?php print $name; ?>" id="<?php print $name; ?>" class="<?php print $name; ?>" autocompelete="OFF" checked="checked" />
+                                <input type="checkbox" name="<?php print $name; ?>" id="<?php print $name; ?>" class="<?php print $name; ?>" autocompelete="OFF" checked="checked" />
+                            </div>
                         </div>
                     <?php endforeach; ?>
 
