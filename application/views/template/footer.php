@@ -28,7 +28,7 @@
   <script type="text/javascript" src="<?php print site_url('/js/jquery.option-switch.js'); ?>"></script>
   <script type="text/javascript">
   <?php foreach ($search_vars as $name => $description) : ?>
-    $('.<?php print $name; ?>Image').optionSwitch("on", 
+    $('.<?php print $name; ?>Image').optionSwitch("off", 
       function() {
         $(".<?php print $name; ?>").css('display', 'block' );
       },

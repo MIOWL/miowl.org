@@ -29,12 +29,12 @@
                             <label for="<?php print $name; ?>"><?php print $description; ?></label>
                             <div class="<?php print $name; ?>Image"></div>
                             <div class="<?php print $name; ?>">
-                                <input type="checkbox" name="<?php print $name; ?>" id="<?php print $name; ?>" class="<?php print $name; ?>" autocompelete="OFF" checked="checked" />
-                                <input type="checkbox" name="<?php print $name; ?>" id="<?php print $name; ?>" class="<?php print $name; ?>" autocompelete="OFF" checked="checked" />
-                                <input type="checkbox" name="<?php print $name; ?>" id="<?php print $name; ?>" class="<?php print $name; ?>" autocompelete="OFF" checked="checked" />
-                                <input type="checkbox" name="<?php print $name; ?>" id="<?php print $name; ?>" class="<?php print $name; ?>" autocompelete="OFF" checked="checked" />
-                                <input type="checkbox" name="<?php print $name; ?>" id="<?php print $name; ?>" class="<?php print $name; ?>" autocompelete="OFF" checked="checked" />
-                                <input type="checkbox" name="<?php print $name; ?>" id="<?php print $name; ?>" class="<?php print $name; ?>" autocompelete="OFF" checked="checked" />
+                                <input type="checkbox" name="<?php print $name; ?>1" id="<?php print $name; ?>" class="<?php print $name; ?>" autocompelete="OFF" />
+                                <input type="checkbox" name="<?php print $name; ?>2" id="<?php print $name; ?>" class="<?php print $name; ?>" autocompelete="OFF" />
+                                <input type="checkbox" name="<?php print $name; ?>3" id="<?php print $name; ?>" class="<?php print $name; ?>" autocompelete="OFF" />
+                                <input type="checkbox" name="<?php print $name; ?>4" id="<?php print $name; ?>" class="<?php print $name; ?>" autocompelete="OFF" />
+                                <input type="checkbox" name="<?php print $name; ?>5" id="<?php print $name; ?>" class="<?php print $name; ?>" autocompelete="OFF" />
+                                <input type="checkbox" name="<?php print $name; ?>6" id="<?php print $name; ?>" class="<?php print $name; ?>" autocompelete="OFF" />
                             </div>
                         </div>
                     <?php endforeach; ?>
