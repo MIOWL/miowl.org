@@ -129,7 +129,8 @@ class Search extends CI_Controller {
      */
     private function gen_results($keyword = FALSE, $offset = 0, $limit = FALSE, $reset = FALSE)
     {
-        print '<pre>' . print_r($this->db->last_query(), TRUE) . '</pre>';
+        print '<script type="text/javascript">alert("gen_results")</script>';
+
         // build the search data
         $this->build_search($reset);
 
@@ -194,7 +195,14 @@ class Search extends CI_Controller {
      */
     public function _valid_search($keyword)
     {
-        if($this->gen_results($keyword, 0, FALSE, TRUE))
+        print '<script type="text/javascript">alert("_valid_search")</script>';
+
+        // Get the search data
+        $query = $this->gen_results($keyword, 0, FALSE, TRUE);
+
+        print '<pre>' . print_r($this->db->last_query(), TRUE) . '</pre>';
+
+        if($query)
             return TRUE;
         
         $this->form_validation->set_message('_valid_search', 'No results found...');
