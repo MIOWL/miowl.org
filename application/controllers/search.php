@@ -65,9 +65,6 @@ class Search extends CI_Controller {
         // did the user submit
         if ($this->form_validation->run())
         {
-            // build the search data
-            $this->build_search();
-
             // redirect to the results page
             redirect(site_url('search/results'), 'location');
         }
@@ -130,10 +127,15 @@ class Search extends CI_Controller {
      *
      * Private function to do the search via the vars given in the post.
      */
-    private function gen_results($keyword = FALSE, $offset = 0, $limit = FALSE)
+    private function gen_results($keyword = FALSE, $offset = 0, $limit = FALSE, $reset = FALSE)
     {
+        print '<pre>' . print_r($this->db->last_query(), TRUE) . '</pre>';
+        // build the search data
+        $this->build_search($reset);
+
         // build up the where array
         $where      = array();
+        $having     = array();
 
         foreach ($this->session->userdata('search') as $haystack => $value) {
             foreach ($this->session->userdata('find_arr') as $needle) {
@@ -142,15 +144,15 @@ class Search extends CI_Controller {
                     switch ($needle)
                     {
                         case 'file_ext-':
-                            $where[] = array('file_ext' => str_replace($needle, '', $haystack));
+                            $where[] = array('file_ext' => str_replace($needle, '.', $haystack));
                             break;
 
                         case 'owls-':
-                            $where[] = array('owl_id' => str_replace($needle, '', $haystack));
+                            $having[] = array('owl_id' => str_replace($needle, '', $haystack));
                             break;
 
                         case 'lic-':
-                            $where[] = array('lic_id' => str_replace($needle, '', $haystack));
+                            $having[] = array('lic_id' => str_replace($needle, '', $haystack));
                             break;
 
                         default:
@@ -160,7 +162,7 @@ class Search extends CI_Controller {
             }
         }
 
-        return $this->search_model->search_all($keyword, $offset, $limit, $where);
+        return $this->search_model->search_all($keyword, $offset, $limit, $where, $having);
     }
     //------------------------------------------------------------------
 
@@ -170,10 +172,11 @@ class Search extends CI_Controller {
      *
      * This is used to build up the search data.
      */
-    private function build_search()
+    private function build_search($reset = FALSE)
     {
         // remove the search data if it exists (to avoid any issues)
-        $this->session->unset_userdata('search');
+        if($reset)
+            $this->session->unset_userdata('search');
 
         // build the post data into the session
         $this->session->set_userdata('search', $this->input->post(NULL, TRUE));
@@ -191,7 +194,7 @@ class Search extends CI_Controller {
      */
     public function _valid_search($keyword)
     {
-        if($this->search_model->search_all($keyword))
+        if($this->gen_results($keyword, 0, FALSE, TRUE))
             return TRUE;
         
         $this->form_validation->set_message('_valid_search', 'No results found...');

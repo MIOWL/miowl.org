@@ -47,7 +47,7 @@ class Search_model extends CI_Model {
     /**
      * private search()
      */
-    private function search($keyword = NULL, $offset = 0, $limit = FALSE, $where = FALSE)
+    private function search($keyword = NULL, $offset = 0, $limit = FALSE, $where = FALSE, $having = FALSE)
     {
         // what do we want?
         $this->db->select('
@@ -78,8 +78,11 @@ class Search_model extends CI_Model {
         // don't show deleted files
         $this->db->where('uploads.deleted', 'false');
 
-        // if extra where items are set, include them
+        // if extra items are set, include them
         if($where != FALSE)
+            foreach ($where as $key => $value)
+                $this->db->or_where($value);
+        if($having != FALSE)
             foreach ($where as $key => $value)
                 $this->db->or_having($value);
 

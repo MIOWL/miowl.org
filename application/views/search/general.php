@@ -20,7 +20,7 @@
                 	<?php if($query) : ?>
                 		<?php $this->load->view('search/__table'); ?>
                 	<?php else : ?>
-                		FALSE
+                		No Results Found...
                 	<?php endif; ?>
                 </div>
 
