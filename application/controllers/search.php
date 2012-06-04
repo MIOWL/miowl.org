@@ -62,12 +62,12 @@ class Search extends CI_Controller {
         // form validation rules
         $this->form_validation->set_rules('keyword', 'Search Term', 'required|trim|callback__valid_search');
 
+        // build the search data
+        $this->build_search();
+
         // did the user submit
         if ($this->form_validation->run())
         {
-            // build the search data
-            $this->build_search();
-
             // redirect to the results page
             redirect(site_url('search/results'), 'location');
         }
