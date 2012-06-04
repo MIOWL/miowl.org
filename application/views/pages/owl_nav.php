@@ -56,7 +56,7 @@
 			</ul>
 		</li>
 
-<?php elseif($this->uri->segment(1) === 'owls' : ?>
+<?php elseif($this->uri->segment(1) === 'owls') : ?>
 
 		<li>
 			MiOwl
