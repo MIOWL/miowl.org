@@ -97,7 +97,7 @@ class Search extends CI_Controller {
         $page_data['page_title'] = 'Search Results';
         $page_data['keyword'] = $search['keyword'];
         $page_data['query'] = $this->gen_results($search['keyword'], $offset, $this->per_page_limit);
-        $page_data['search'] = $this->userdata->session('search');
+        $page_data['search_data'] = $this->userdata->session('search');
 
         print '<pre>' . print_r($this->db->last_query(), TRUE) . '</pre>';
 
