@@ -136,7 +136,7 @@ class Search extends CI_Controller {
         $where      = array();
         $having     = array();
 
-        $search = $this->input->post(NULL, TRUE); # : $this->session->userdata('search');
+        $search = $this->input->post(NULL, TRUE) ? $this->input->post(NULL, TRUE) : $this->session->userdata('search');
 
         print '<script type="text/javascript">alert("';
         print $search;
