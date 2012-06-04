@@ -47,7 +47,7 @@ class Search_model extends CI_Model {
     /**
      * private search()
      */
-    private function search($keyword = NULL, $offset = 0, $limit = FALSE, $where = FALSE, $having = FALSE)
+    private function search($keyword = NULL, $offset = 0, $limit = FALSE, $having = FALSE)
     {
         // what do we want?
         $this->db->select('

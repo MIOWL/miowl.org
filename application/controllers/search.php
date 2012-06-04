@@ -130,7 +130,6 @@ class Search extends CI_Controller {
     private function gen_results($keyword = FALSE, $offset = 0, $limit = FALSE)
     {
         // build up the where array
-        $where      = array();
         $having     = array();
 
         $search = $this->input->post(NULL, TRUE);
@@ -165,12 +164,7 @@ class Search extends CI_Controller {
             }
         }
 
-        if(empty($where))
-            $where = FALSE;
-        if(empty($having))
-            $having = FALSE;
-
-        return $this->search_model->search_all($keyword, $offset, $limit, $where, $having);
+        return $this->search_model->search_all($keyword, $offset, $limit, $having);
     }
     //------------------------------------------------------------------
 
