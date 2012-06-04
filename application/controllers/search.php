@@ -165,6 +165,11 @@ class Search extends CI_Controller {
             }
         }
 
+        if(empty($where))
+            $where = FALSE;
+        if(empty($having))
+            $having = FALSE;
+
         return $this->search_model->search_all($keyword, $offset, $limit, $where, $having);
     }
     //------------------------------------------------------------------
