@@ -66,7 +66,17 @@ class Owls extends CI_Controller {
     /**
      * public index()
      */
-    public function index($owl = FALSE)
+    public function index()
+    {
+        print 'You need to choose an owl here...';
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * public index()
+     */
+    public function display($owl = FALSE)
     {
         $details = $this->owl_model->get_owl_by_id($owl);
         $address = $details->row()->owl_address . "\n" . 
