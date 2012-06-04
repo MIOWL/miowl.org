@@ -25,18 +25,6 @@
                     </div>
 
                     <div class="ctrlHolder">
-                        <label for="s_file_ext">Search for a specific filetype?</label>
-                        <div class="s_file_ext" style="display: inline-block;" >
-                            <?php foreach (array('txt', 'rtf', 'pdf', 'doc', 'docx') as $ext) : ?>
-                                <input type="checkbox" name="file_ext-<?php print $ext; ?>" id="file_ext-<?php print $ext; ?>" class="" autocompelete="OFF" />
-                                    &nbsp;&nbsp;&nbsp;&nbsp;<?php print $ext; ?>
-                                <br />
-                            <?php endforeach; ?>
-                        </div>
-                    <p class="formHint">Choose the owl licenses you wish to search within.<br /><strong>NOTE:</strong> selecting none will search all.</p>
-                    </div>
-
-                    <div class="ctrlHolder">
                         <label for="s_owl_id">Search within specific owls?</label>
                         <div class="s_owl_id" style="display: inline-block;" >
                             <?php foreach ($this->owl_model->get_all_owls()->result() as $row) : ?>
@@ -52,6 +40,18 @@
                         <label for="s_lic_id">Search within specific licenses?</label>
                         <div class="s_lic_id" style="display: inline-block;" >
                             <span>TODO</span>
+                        </div>
+                    <p class="formHint">Choose the owl licenses you wish to search within.<br /><strong>NOTE:</strong> selecting none will search all.</p>
+                    </div>
+
+                    <div class="ctrlHolder">
+                        <label for="s_file_ext">Search for a specific filetype?</label>
+                        <div class="s_file_ext" style="display: inline-block;" >
+                            <?php foreach (array('txt', 'rtf', 'pdf', 'doc', 'docx') as $ext) : ?>
+                                <input type="checkbox" name="file_ext-<?php print $ext; ?>" id="file_ext-<?php print $ext; ?>" class="" autocompelete="OFF" />
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<?php print $ext; ?>
+                                <br />
+                            <?php endforeach; ?>
                         </div>
                     <p class="formHint">Choose the owl licenses you wish to search within.<br /><strong>NOTE:</strong> selecting none will search all.</p>
                     </div>
