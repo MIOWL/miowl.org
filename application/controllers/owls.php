@@ -37,14 +37,6 @@ class Owls extends CI_Controller {
     {
         // init parent
         parent::__construct();
-
-        // loads
-        $this->load->library('owlmail');
-
-        if (!$this->session->userdata('owl_verified')) {
-            redirect('/welcome', 'location');
-            return;
-        }
     }
     //------------------------------------------------------------------
 
