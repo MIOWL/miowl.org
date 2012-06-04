@@ -65,6 +65,9 @@ class Search extends CI_Controller {
         // did the user submit
         if ($this->form_validation->run())
         {
+            // build the search data
+            $this->build_search();
+
             // redirect to the results page
             redirect(site_url('search/results'), 'location');
         }
@@ -127,18 +130,15 @@ class Search extends CI_Controller {
      *
      * Private function to do the search via the vars given in the post.
      */
-    private function gen_results($keyword = FALSE, $offset = 0, $limit = FALSE, $reset = FALSE)
+    private function gen_results($keyword = FALSE, $offset = 0, $limit = FALSE, $POST = FALSE)
     {
-        print '<script type="text/javascript">alert("gen_results")</script>';
-
-        // build the search data
-        $this->build_search($reset);
-
         // build up the where array
         $where      = array();
         $having     = array();
 
-        foreach ($this->session->userdata('search') as $haystack => $value) {
+        $search = $POST ? $this->input->post(NULL, TRUE) : $this->session->userdata('search');
+
+        foreach ($search as $haystack => $value) {
             foreach ($this->session->userdata('find_arr') as $needle) {
                 if (strlen(strstr($haystack,$needle)) > 0)
                 {
@@ -173,11 +173,10 @@ class Search extends CI_Controller {
      *
      * This is used to build up the search data.
      */
-    private function build_search($reset = FALSE)
+    private function build_search()
     {
         // remove the search data if it exists (to avoid any issues)
-        if($reset)
-            $this->session->unset_userdata('search');
+        $this->session->unset_userdata('search');
 
         // build the post data into the session
         $this->session->set_userdata('search', $this->input->post(NULL, TRUE));
@@ -195,14 +194,7 @@ class Search extends CI_Controller {
      */
     public function _valid_search($keyword)
     {
-        print '<script type="text/javascript">alert("_valid_search")</script>';
-
-        // Get the search data
-        $query = $this->gen_results($keyword, 0, FALSE, TRUE);
-
-        print '<pre>' . print_r($this->db->last_query(), TRUE) . '</pre>';
-
-        if($query)
+        if($this->gen_results($keyword, 0, FALSE, TRUE))
             return TRUE;
         
         $this->form_validation->set_message('_valid_search', 'No results found...');
