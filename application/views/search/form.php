@@ -12,8 +12,6 @@
         </div>
         <div id="search_body" class="column right threequarter">
 
-            <pre><?php print_r($search_data); ?></pre>
-
             <!-- Search Form -->
             <form action="" class="uniForm" method="post">
 
