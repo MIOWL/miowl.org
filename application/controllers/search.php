@@ -70,6 +70,7 @@ class Search extends CI_Controller {
         }
         else
         {
+            print '<pre>' . print_r($this->db->last_query(), TRUE) . '</pre>';
             // load our view
             $this->load->view('search/form', $page_data);
         }
