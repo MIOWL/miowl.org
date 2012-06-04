@@ -83,7 +83,7 @@ class Search_model extends CI_Model {
             foreach ($where as $key => $value)
                 $this->db->or_where($value);
         if($having != FALSE)
-            foreach ($where as $key => $value)
+            foreach ($having as $key => $value)
                 $this->db->or_having($value);
 
         // order the data
