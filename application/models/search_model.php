@@ -81,8 +81,10 @@ class Search_model extends CI_Model {
         if($having != FALSE)
             foreach ($having as $keyz)
                 foreach ($keyz as $key => $value)
-                    $this->db->or_having($value);
-        print '<pre>' . print_r($having, TRUE) . '</pre>';
+                    if($key != 0)
+                        $this->db->or_having($value);
+                    else
+                        $this->db->having($value);
 
         // order the data
         foreach ($this->order_by as $sort) {
