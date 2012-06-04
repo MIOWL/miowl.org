@@ -133,7 +133,7 @@ class Search extends CI_Controller {
         $where      = array();
         $having     = array();
 
-        $search = $this->input->post(NULL, TRUE)
+        $search = $this->input->post(NULL, TRUE);
 
         if($search != FALSE)
             $this->build_search();
