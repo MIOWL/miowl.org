@@ -28,7 +28,7 @@
                         <label for="s_owl_id">Search within specific owls?</label>
                         <div class="s_owl_id" style="display: inline-block;" >
                             <?php foreach ($this->owl_model->get_all_owls()->result() as $row) : ?>
-                                <input type="checkbox" name="owls-<?php print $row->id; ?>" id="owls-<?php print $row->id; ?>" value="<?php print $row->id; ?>" <?php echo set_checkbox('owls-' . $row->id, $row->id); ?> autocompelete="OFF" style="margin: 0.5em 0pt 0pt 16.5em;" />
+                                <input type="checkbox" name="owls-<?php print $row->id; ?>" value="<?php print $row->id; ?>" <?php print set_checkbox('owls-' . $row->id, $row->id); ?> autocompelete="OFF" style="margin: 0.5em 0pt 0pt 16.5em;" />
                                     &nbsp;&nbsp;&nbsp;&nbsp;<?php print $row->owl_name; ?>
                                 <br />
                             <?php endforeach; ?>
@@ -48,7 +48,7 @@
                         <label for="s_file_ext">Search for a specific filetype?</label>
                         <div class="s_file_ext" style="display: inline-block;" >
                             <?php foreach (array('txt', 'rtf', 'pdf', 'doc', 'docx') as $ext) : ?>
-                                <input type="checkbox" name="file_ext-<?php print $ext; ?>" id="file_ext-<?php print $ext; ?>" value="<?php print $ext; ?>" <?php echo set_checkbox('file_ext-' . $ext, $ext); ?> autocompelete="OFF" />
+                                <input type="checkbox" name="file_ext-<?php print $ext; ?>" value="<?php print $ext; ?>" <?php print set_checkbox('file_ext-' . $ext, $ext); ?> autocompelete="OFF" />
                                     &nbsp;&nbsp;&nbsp;&nbsp;<?php print $ext; ?>
                                 <br />
                             <?php endforeach; ?>
