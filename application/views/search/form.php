@@ -48,7 +48,7 @@
                         <label for="s_file_ext">Search for a specific filetype?</label>
                         <div class="s_file_ext" style="display: inline-block;" >
                             <?php foreach (array('txt', 'rtf', 'pdf', 'doc', 'docx') as $ext) : ?>
-                                <input type="checkbox" name="file_ext-<?php print $ext; ?>" value="<?php print $ext; ?>" <?php if(isset($search['file_ext-' . $ext])) print 'checked="checked"'; ?> autocompelete="OFF" />
+                                <input type="checkbox" name="file_ext-<?php print $ext; ?>" value="<?php print $ext; ?>" <?php if($search['file_ext-' . $ext]) print 'checked="checked"'; ?> autocompelete="OFF" />
                                     &nbsp;&nbsp;&nbsp;&nbsp;<?php print $ext; ?>
                                 <br />
                             <?php endforeach; ?>
