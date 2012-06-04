@@ -176,6 +176,8 @@ class Search extends CI_Controller {
      */
     private function build_search()
     {
+        print '<script type="text/javascript">alert("build_search()");</script>';
+        
         // remove the search data if it exists (to avoid any issues)
         $this->session->unset_userdata('search');
 
