@@ -146,15 +146,15 @@ class Search extends CI_Controller {
                     switch ($needle)
                     {
                         case 'file_ext-':
-                            $having[] = array('file_ext' => str_replace($needle, '.', $haystack));
+                            $having[][] = array('file_ext' => str_replace($needle, '.', $haystack));
                             break;
 
                         case 'owls-':
-                            $having[] = array('owl_id' => str_replace($needle, '', $haystack));
+                            $having[][] = array('owl_id' => str_replace($needle, '', $haystack));
                             break;
 
                         case 'lic-':
-                            $having[] = array('lic_id' => str_replace($needle, '', $haystack));
+                            $having[][] = array('lic_id' => str_replace($needle, '', $haystack));
                             break;
 
                         default:

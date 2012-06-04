@@ -78,17 +78,11 @@ class Search_model extends CI_Model {
         // don't show deleted files
         $this->db->where('uploads.deleted', 'false');
 
-        // if extra items are set, include them
-        // if($where != FALSE)
-        //     foreach ($where as $key => $value)
-        //         if($key != 0)
-        //             $this->db->or_where($value);
-        //         else
-        //             $this->db->where($value);
-
         if($having != FALSE)
-            foreach ($having as $key => $value)
-                $this->db->or_having($value);
+            foreach ($having as $keyz)
+                foreach ($keyz as $key => $value)
+                    $this->db->or_having($value);
+        print '<pre>' . print_r($having, TRUE) . '</pre>';
 
         // order the data
         foreach ($this->order_by as $sort) {
