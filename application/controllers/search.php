@@ -139,7 +139,8 @@ class Search extends CI_Controller {
         $search = $this->input->post(NULL, TRUE); # : $this->session->userdata('search');
 
         print '<script type="text/javascript">alert("';
-        print $POST_data ? '$this->input->post(NULL, TRUE)' : '$this->session->userdata(\'search\')';
+        print $search;
+        #print $POST_data ? '$this->input->post(NULL, TRUE)' : '$this->session->userdata(\'search\')';
         print '");</script>';
 
         foreach ($search as $haystack => $value) {
