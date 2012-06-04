@@ -137,7 +137,7 @@ class Search extends CI_Controller {
         $having     = array();
 
         $search = $POST ? $this->input->post(NULL, TRUE) : $this->session->userdata('search');
-        print $POST ? '$this->input->post(NULL, TRUE)' : '$this->session->userdata('search')';
+        print $POST ? '$this->input->post(NULL, TRUE)' : '$this->session->userdata(\'search\')';
 
         foreach ($search as $haystack => $value) {
             foreach ($this->session->userdata('find_arr') as $needle) {
