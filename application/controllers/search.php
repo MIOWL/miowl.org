@@ -62,9 +62,6 @@ class Search extends CI_Controller {
         // form validation rules
         $this->form_validation->set_rules('keyword', 'Search Term', 'required|trim|callback__valid_search');
 
-        // build the search data
-        $this->build_search();
-
         // did the user submit
         if ($this->form_validation->run())
         {
@@ -130,18 +127,18 @@ class Search extends CI_Controller {
      *
      * Private function to do the search via the vars given in the post.
      */
-    private function gen_results($keyword = FALSE, $offset = 0, $limit = FALSE, $POST_data = FALSE)
+    private function gen_results($keyword = FALSE, $offset = 0, $limit = FALSE)
     {
         // build up the where array
         $where      = array();
         $having     = array();
 
-        $search = $this->input->post(NULL, TRUE) ? $this->input->post(NULL, TRUE) : $this->session->userdata('search');
+        $search = $this->input->post(NULL, TRUE)
 
-        print '<script type="text/javascript">alert("';
-        print $search;
-        #print $POST_data ? '$this->input->post(NULL, TRUE)' : '$this->session->userdata(\'search\')';
-        print '");</script>';
+        if($search != FALSE)
+            $this->build_search();
+
+        $search = $this->session->userdata('search');
 
         foreach ($search as $haystack => $value) {
             foreach ($this->session->userdata('find_arr') as $needle) {
@@ -180,8 +177,6 @@ class Search extends CI_Controller {
      */
     private function build_search()
     {
-        // print '<script type="text/javascript">alert("build_search()");</script>';
-
         // remove the search data if it exists (to avoid any issues)
         $this->session->unset_userdata('search');
 
@@ -201,7 +196,7 @@ class Search extends CI_Controller {
      */
     public function _valid_search($keyword)
     {
-        if($this->gen_results($keyword, 0, FALSE, TRUE))
+        if($this->gen_results($keyword, 0, FALSE))
             return TRUE;
         
         $this->form_validation->set_message('_valid_search', 'No results found...');
