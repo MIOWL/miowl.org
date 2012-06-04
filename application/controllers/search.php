@@ -54,7 +54,7 @@ class Search extends CI_Controller {
         // setup our page data
         $page_data = array();
         $page_data['page_title'] = 'Search Form';
-        $page_data['search_data'] = $this->userdata->session('search');
+        $page_data['search_data'] = $this->session->userdata('search');
 
         // set some session data for use later, and clear 1st
         $this->session->unset_userdata('find_arr');
