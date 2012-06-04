@@ -71,7 +71,7 @@
 			members
 			<ul>
 				<li>
-					<a class="owl_nav_button" href="<?php print site_url('owl/members/list/' . $owl); ?>">list</a>
+					<a class="owl_nav_button" href="<?php print site_url('owls/members/list/' . $owl); ?>">list</a>
 					<ul>
 						<li><a class="owl_nav_button" href="<?php print site_url('owls/members/admin/' . $owl); ?>">admins</a></li>
 						<li><a class="owl_nav_button" href="<?php print site_url('owls/members/editor/' . $owl); ?>">editors</a></li>
