@@ -130,16 +130,16 @@ class Search extends CI_Controller {
      *
      * Private function to do the search via the vars given in the post.
      */
-    private function gen_results($keyword = FALSE, $offset = 0, $limit = FALSE, $POST = FALSE)
+    private function gen_results($keyword = FALSE, $offset = 0, $limit = FALSE, $POST_data = FALSE)
     {
         // build up the where array
         $where      = array();
         $having     = array();
 
-        $search = $POST ? $this->input->post(NULL, TRUE) : $this->session->userdata('search');
+        $search = $POST_data ? $this->input->post(NULL, TRUE) : $this->session->userdata('search');
 
         print '<script type="text/javascript">alert("';
-        print $POST ? '$this->input->post(NULL, TRUE)' : '$this->session->userdata(\'search\')';
+        print $POST_data ? '$this->input->post(NULL, TRUE)' : '$this->session->userdata(\'search\')';
         print '");</script>';
 
         foreach ($search as $haystack => $value) {
@@ -179,7 +179,7 @@ class Search extends CI_Controller {
      */
     private function build_search()
     {
-        print '<script type="text/javascript">alert("build_search()");</script>';
+        // print '<script type="text/javascript">alert("build_search()");</script>';
 
         // remove the search data if it exists (to avoid any issues)
         $this->session->unset_userdata('search');
