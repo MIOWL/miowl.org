@@ -11,7 +11,7 @@
             <?php $this->load->view('pages/owl_nav'); ?>
         </div>
         <div id="owl_body" class="column right threequarter">
-            <table cellspacing="0" cellpadding="4" border="1" width="100%">
+            <table>
                 <thead>
                     <tr>
                         <th>ID</th>
