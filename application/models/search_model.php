@@ -81,7 +81,7 @@ class Search_model extends CI_Model {
         if($having != FALSE)
             foreach ($having as $keyz)
                 foreach ($keyz as $key => $value)
-                    if($key != 0)
+                    if($key != '0')
                         $this->db->or_having($value);
                     else
                         $this->db->having($value);
