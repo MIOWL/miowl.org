@@ -62,7 +62,7 @@
 			MiOwl
 			<ul>
 				<li><a class="owl_nav_button" href="<?php print site_url('owls'); ?>">choose new owl</a></li>
-				<li><a class="owl_nav_button" href="<?php print site_url('owls/details/' . $owl); ?>">details</a></li>
+				<li><a class="owl_nav_button" href="<?php print site_url('owls/display/' . $owl); ?>">details</a></li>
 				<li style="list-style-type: none">&nbsp;</li>
 			</ul>
 		</li>
