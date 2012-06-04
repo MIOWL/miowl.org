@@ -140,28 +140,23 @@ class Search extends CI_Controller {
 
         $search = $this->session->userdata('search');
 
-        foreach ($search as $haystack => $value) {
-            foreach ($this->session->userdata('find_arr') as $needle) {
-                if (strlen(strstr($haystack,$needle)) > 0)
-                {
-                    switch ($needle)
-                    {
-                        case 'owls-':
-                            $having['owl_id'][] = array('owl_id' => str_replace($needle, '', $haystack));
-                            break;
+        foreach ($search as $key => $value) {
+            switch ($key)
+            {
+                case 'owls':
+                    $having['owl_id'][] = array('owl_id' => $value);
+                    break;
 
-                        case 'lic-':
-                            $having['lic_id'][] = array('lic_id' => str_replace($needle, '', $haystack));
-                            break;
+                case 'lic':
+                    $having['lic_id'][] = array('lic_id' => $value);
+                    break;
 
-                        case 'file_ext-':
-                            $having['file_ext'][] = array('file_ext' => str_replace($needle, '.', $haystack));
-                            break;
+                case 'file_ext':
+                    $having['file_ext'][] = array('file_ext' => $value);
+                    break;
 
-                        default:
-                            break;
-                    }
-                }
+                default:
+                    break;
             }
         }
 
