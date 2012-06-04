@@ -83,6 +83,7 @@ class Owls extends CI_Controller {
         $page_data['google_maps']   = TRUE;
         $page_data['address']       = str_replace("\n", '<br>', $address);
         $page_data['location']      = $this->get_coordinates(str_replace("\n", ',', $address));
+        $page_data['owl']           = $owl;
 
         // load the approp. page view
         $this->load->view('pages/owl_details', $page_data);
@@ -104,6 +105,7 @@ class Owls extends CI_Controller {
         $page_data                  = array();
         $page_data['page_title']    = "Owl Uploads";
         $page_data['uploads']       = $this->upload_model->get_upload_by_owl($owl, $limit, $offset);
+        $page_data['owl']           = $owl;
 
         // setup pagination lib
         $config['base_url']         = site_url('owls/uploads/list/' . $owl);
@@ -159,6 +161,7 @@ class Owls extends CI_Controller {
         $page_data['page_title']    = "All Owl Members";
         $page_data['members']       = $this->miowl_model->get_owl_members($owl);
         $page_data['admin_id']      = $this->owl_model->get_owl_by_id($owl)->row()->owl_admin_uid;
+        $page_data['owl']           = $owl;
 
         // load the approp. page view
         $this->load->view('pages/owl_members', $page_data);
@@ -176,6 +179,7 @@ class Owls extends CI_Controller {
         $page_data['page_title']    = "Owl Administrator Members";
         $page_data['members']       = $this->miowl_model->get_owl_admin_members($owl);
         $page_data['admin_id']      = $this->owl_model->get_owl_by_id($owl)->row()->owl_admin_uid;
+        $page_data['owl']           = $owl;
 
         // load the approp. page view
         $this->load->view('pages/owl_members', $page_data);
@@ -193,6 +197,7 @@ class Owls extends CI_Controller {
         $page_data['page_title']    = "Owl Editor Members";
         $page_data['members']       = $this->miowl_model->get_owl_editor_members($owl);
         $page_data['admin_id']      = $this->owl_model->get_owl_by_id($owl)->row()->owl_admin_uid;
+        $page_data['owl']           = $owl;
 
         // load the approp. page view
         $this->load->view('pages/owl_members', $page_data);
@@ -210,6 +215,7 @@ class Owls extends CI_Controller {
         $page_data['page_title']    = "Owl User Members";
         $page_data['members']       = $this->miowl_model->get_owl_user_members($owl);
         $page_data['admin_id']      = $this->owl_model->get_owl_by_id($owl)->row()->owl_admin_uid;
+        $page_data['owl']           = $owl;
 
         // load the approp. page view
         $this->load->view('pages/owl_members', $page_data);
