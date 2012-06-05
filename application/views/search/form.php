@@ -52,9 +52,9 @@
                                             &nbsp;&nbsp;&nbsp;&nbsp;<?php print $lic->name; ?>
                                         <br />
                                     <?php endforeach; ?>
+                            <?php /*
                                     <hr />
 
-                            <?php /*
                                 </div>
                             <?php endforeach; ?>
                             */ ?>
