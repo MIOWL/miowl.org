@@ -40,19 +40,24 @@
                         <label for="s_lic_id">Search within specific licenses?</label>
                         <div class="s_lic_id" style="display: inline-block;" >
 
+                            <?php /*
                             <?php foreach ($this->owl_model->get_all_owls()->result() as $owl) : ?>
                                 <div id="owls_lic-<?php print $owl->id; ?>" style="display:<?php print (isset($search_data['owls-' . $owl->id])) ? 'block' : 'none'; ?>">
+                            */ ?>
 
                                     <span><?php print $owl->owl_name; ?><br />
-                                    <?php foreach ($this->lic_model->get_owl_licenses($owl->id)->result() as $lic) : ?>
+                                    <?php /* foreach ($this->lic_model->get_owl_licenses($owl->id)->result() as $lic) : */ ?>
+                                    <?php foreach ($this->lic_model->get_owl_licenses()->result() as $lic) : ?>
                                         <input type="checkbox" name="lic-<?php print $lic->id; ?>" id="lic-<?php print $lic->id; ?>" value="<?php print $lic->id; ?>" <?php if(isset($search_data['lic-' . $lic->id])) print 'checked="checked"'; ?> autocompelete="OFF" />
                                             &nbsp;&nbsp;&nbsp;&nbsp;<?php print $lic->name; ?>
                                         <br />
                                     <?php endforeach; ?>
                                     <hr />
 
+                            <?php /*
                                 </div>
                             <?php endforeach; ?>
+                            */ ?>
 
                         </div>
                     <p class="formHint">Choose the owl licenses you wish to search within.<br /><strong>NOTE:</strong> selecting none will search all.</p>
