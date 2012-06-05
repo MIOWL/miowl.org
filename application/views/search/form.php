@@ -41,7 +41,7 @@
                         <div class="s_lic_id" style="display: inline-block;" >
 
                             <?php foreach ($this->owl_model->get_all_owls()->result() as $owl) : ?>
-                                <div id="owls_lic-<?php print $owl->id; ?>" style="display:none">
+                                <div id="owls_lic-<?php print $owl->id; ?>" style="display:<?php print (isset($search_data['owls-' . $owl->id])) ? 'block' : 'none'; ?>">
 
                                     <span><?php print $owl->owl_name; ?><br />
                                     <?php foreach ($this->lic_model->get_owl_licenses($owl->id)->result() as $lic) : ?>
@@ -50,7 +50,6 @@
                                         <br />
                                     <?php endforeach; ?>
                                     <hr />
-                                    <br />
 
                                 </div>
                             <?php endforeach; ?>
