@@ -43,11 +43,14 @@
                             <?php foreach ($this->owl_model->get_all_owls()->result() as $owl) : ?>
                                 <div id="owls_lic-<?php print $owl->id; ?>" style="display:none">
 
+                                    <span><?php print $owl->name; ?><br />
                                     <?php foreach ($this->lic_model->get_owl_licenses($owl->id)->result() as $lic) : ?>
                                         <input type="checkbox" name="lic-<?php print $lic->id; ?>" id="lic-<?php print $lic->id; ?>" value="<?php print $lic->id; ?>" <?php if(isset($search_data['lic-' . $lic->id])) print 'checked="checked"'; ?> autocompelete="OFF" />
                                             &nbsp;&nbsp;&nbsp;&nbsp;<?php print $lic->name; ?>
                                         <br />
                                     <?php endforeach; ?>
+                                    <br />
+                                    <hr />
 
                                 </div>
                             <?php endforeach; ?>
