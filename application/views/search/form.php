@@ -28,7 +28,7 @@
                         <label for="s_owl_id">Search within specific owls?</label>
                         <div class="s_owl_id" style="display: inline-block;" >
                             <?php foreach ($this->owl_model->get_all_owls()->result() as $row) : ?>
-                                <input type="checkbox" name="owls-<?php print $row->id; ?>" value="<?php print $row->id; ?>" <?php if(isset($search_data['owls-' . $row->id])) print 'checked="checked"'; ?> autocompelete="OFF" style="margin: 0.5em 0pt 0pt 16.5em;" />
+                                <input type="checkbox" name="owls-<?php print $row->id; ?>" id="owls-<?php print $row->id; ?>" value="<?php print $row->id; ?>" <?php if(isset($search_data['owls-' . $row->id])) print 'checked="checked"'; ?> autocompelete="OFF" style="margin: 0.5em 0pt 0pt 16.5em;" />
                                     &nbsp;&nbsp;&nbsp;&nbsp;<?php print $row->owl_name; ?>
                                 <br />
                             <?php endforeach; ?>
@@ -39,7 +39,23 @@
                     <div class="ctrlHolder">
                         <label for="s_lic_id">Search within specific licenses?</label>
                         <div class="s_lic_id" style="display: inline-block;" >
-                            <span>TODO</span>
+
+                            <?php /*
+                            <?php foreach ($this->owl_model->get_all_owls()->result() as $owl) : ?>
+                                <div id="owls_lic-<?php print $row->id; ?>" style="display:none">
+                            */ ?>
+
+                                    <?php foreach ($this->lic_model->get_owl_licenses($owl->id)->result() as $lic) : ?>
+                                        <input type="checkbox" name="lic-<?php print $lic->id; ?>" id="lic-<?php print $lic->id; ?>" value="<?php print $lic->id; ?>" <?php if(isset($search_data['lic-' . $lic->id])) print 'checked="checked"'; ?> autocompelete="OFF" style="margin: 0.5em 0pt 0pt 16.5em;" />
+                                            &nbsp;&nbsp;&nbsp;&nbsp;<?php print $lic->name; ?>
+                                        <br />
+                                    <?php endforeach; ?>
+
+                            <?php /*
+                                </div>
+                            <?php endforeach; ?>
+                            */ ?>
+
                         </div>
                     <p class="formHint">Choose the owl licenses you wish to search within.<br /><strong>NOTE:</strong> selecting none will search all.</p>
                     </div>

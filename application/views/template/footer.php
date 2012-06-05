@@ -23,6 +23,17 @@
   <script type="text/javascript" src="<?php print site_url('/js/owl_selection.js'); ?>"></script>
 <?php endif; ?>
 
+<?php if(isset($search_page) && $search_page) : ?>
+  <!-- Fancy Search jQuery -->
+  <script type="text/javascript">
+    <?php foreach ($this->owl_model->get_all_owls()->result() as $row) : ?>
+      $('#owls-<?php print $row->id; ?>').click(function() {
+          $("#owls_lic-<?php print $row->id; ?>").toggle(this.checked);
+      });
+    <?php endforeach; ?>
+  </script>
+<?php endif; ?>
+
 <?php if(isset($google_maps) && $google_maps) : ?>
   <!-- Google Maps -->
   <script type="text/javascript"
