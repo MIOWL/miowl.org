@@ -28,7 +28,7 @@
                             <option value="0" <?php echo set_select('sub_category', '0', TRUE); ?>>
                                 None (top level category)
                             </option>
-                            <?php foreach (gen_drop_categories(TRUE) as $category) : ?>
+                            <?php foreach (gen_drop_categories(FALSE, TRUE) as $category) : ?>
                                 <option value="<?php print $category['id']; ?>" <?php echo set_select('sub_category', $category['id']); ?>>
                                     <?php print $category['name']; ?>
                                 </option>

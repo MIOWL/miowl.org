@@ -14,7 +14,12 @@
 
             <div id="categories_list">
                 <h2>Categories</h2>
-                <?php print ul(gen_categories(), array('id' => 'categories')); ?>
+                <?php
+                    if(isset($owl))
+                        print ul(gen_categories($owl), array('id' => 'categories'));
+                    else
+                        print ul(gen_categories(), array('id' => 'categories'));
+                ?>
             </div>
 
         </div>
