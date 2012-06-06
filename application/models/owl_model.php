@@ -325,6 +325,29 @@ class Owl_model extends CI_Model {
     //------------------------------------------------------------------
 
 
+    /**
+     * public get_owl_name()
+     * function will return the Owl Name via the Owl ID.
+     *
+     * @param int $owl_id           - owl id
+     */
+    public function get_owl_name($owl_id = FALSE)
+    {
+        if (!$owl_id)
+            return FALSE;
+
+        $this->db->select('*');
+        $this->db->where('id', $owl_id);
+        $query = $this->db->get('owls');
+
+        if ($query->num_rows() > 0)
+            return $query->results()->owl_name;
+        else
+            return FALSE;
+    }
+    //------------------------------------------------------------------
+
+
     //=================================================================================
     // :validation callbacks
     //=================================================================================
