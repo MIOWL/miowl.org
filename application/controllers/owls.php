@@ -60,7 +60,12 @@ class Owls extends CI_Controller {
      */
     public function index()
     {
-        print 'You need to choose an owl here...';
+        // page data array
+        $page_data                  = array();
+        $page_data['page_title']    = "Owl Choice";
+
+        // load the approp. page view
+        $this->load->view('pages/owl_choice', $page_data);
     }
     //------------------------------------------------------------------
 
