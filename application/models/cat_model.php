@@ -95,8 +95,6 @@ class Cat_model extends CI_Model {
         if ($owl === FALSE)
             $owl = $this->session->userdata('owl');
 
-        print $owl;
-
         $this->db->order_by("id", "ASC");
         $this->db->where('parent_id', $pid);
         $this->db->having('owl', $owl);
