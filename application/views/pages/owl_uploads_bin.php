@@ -16,7 +16,7 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Removal Timestamp (GMT)</th>
+                        <th>Removed</th>
                         <th>Filename</th>
                         <th>Category</th>
                         <th>License</th>
