@@ -11,12 +11,7 @@
             <?php $this->load->view('pages/owl_nav'); ?>
         </div>
         <div id="owl_body" class="column right threequarter">
-            <?php
-                if(isset($owl))
-                    print ul(gen_categories($owl), array('id' => 'categories'));
-                else
-                    print ul(gen_categories(), array('id' => 'categories'));
-            ?>
+            <?php print ul(gen_categories($owl), array('id' => 'categories')); ?>
         </div>
         <div class="clear">&nbsp;</div>
     </div>
