@@ -2,7 +2,7 @@
 <?php if($this->uri->segment(1) === 'owls') : ?>
 
 		<li>
-			MiOwl
+			<?php print $this->owl_model->get_owl_by_id($owl)->results()->owl_name; ?>
 			<ul>
 				<li><a class="owl_nav_button" href="<?php print site_url('owls'); ?>">choose new owl</a></li>
 				<li><a class="owl_nav_button" href="<?php print site_url('owls/display/' . $owl); ?>">details</a></li>
