@@ -99,7 +99,7 @@ class Cat_model extends CI_Model {
 
         $this->db->order_by("id", "ASC");
         $this->db->where('parent_id', $pid);
-        $this->db->having('owl', $this->session->userdata('owl'));
+        $this->db->having('owl', $owl);
         $query = $this->db->get('categories');
 
         print '<pre>' . print_r($this->db->last_query(), TRUE) . '</pre>';
