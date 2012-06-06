@@ -11,7 +11,7 @@
             <?php $this->load->view('pages/owl_nav'); ?>
         </div>
         <div id="owl_body" class="column right threequarter">
-            <?php print ul(gen_categories($owl), array('id' => 'categories')); ?>
+            <?php print ul($categories, array('id' => 'categories')); ?>
         </div>
         <div class="clear">&nbsp;</div>
     </div>
