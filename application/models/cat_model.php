@@ -102,6 +102,8 @@ class Cat_model extends CI_Model {
         $this->db->having('owl', $this->session->userdata('owl'));
         $query = $this->db->get('categories');
 
+        print '<pre>' . print_r($this->db->last_query(), TRUE) . '</pre>';
+
         if ($query->num_rows() > 0)
             return $query;
 

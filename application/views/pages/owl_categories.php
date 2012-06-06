@@ -12,7 +12,6 @@
         </div>
         <div id="owl_body" class="column right threequarter">
             <?php print ul($categories, array('id' => 'categories')); ?>
-            <?php print '<pre>' . print_r($this->db->last_query(), TRUE) . '</pre>'; ?>
         </div>
         <div class="clear">&nbsp;</div>
     </div>
