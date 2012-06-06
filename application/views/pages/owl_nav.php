@@ -1,5 +1,47 @@
 	<ul>
-<?php if($this->uri->segment(1) === 'owl') : ?>
+<?php if($this->uri->segment(1) != 'owls') : ?>
+
+		<li>
+			MiOwl
+			<ul>
+				<li><a class="owl_nav_button" href="<?php print site_url('owls'); ?>">choose new owl</a></li>
+				<li><a class="owl_nav_button" href="<?php print site_url('owls/display/' . $owl); ?>">details</a></li>
+				<li style="list-style-type: none">&nbsp;</li>
+			</ul>
+		</li>
+
+		<li>
+			members
+			<ul>
+				<li>
+					<a class="owl_nav_button" href="<?php print site_url('owls/members/list/' . $owl); ?>">list</a>
+					<ul>
+						<li><a class="owl_nav_button" href="<?php print site_url('owls/members/admin/' . $owl); ?>">admins</a></li>
+						<li><a class="owl_nav_button" href="<?php print site_url('owls/members/editor/' . $owl); ?>">editors</a></li>
+						<li><a class="owl_nav_button" href="<?php print site_url('owls/members/user/' . $owl); ?>">users</a></li>
+					</ul>
+				</li>
+				<li style="list-style-type: none">&nbsp;</li>
+			</ul>
+		</li>
+
+		<li>
+			categories
+			<ul>
+				<li><a class="owl_nav_button" href="<?php print site_url('owls/categories/' . $owl); ?>">list</a></li>
+				<li style="list-style-type: none">&nbsp;</li>
+			</ul>
+		</li>
+
+		<li>
+			uploads
+			<ul>
+				<li><a class="owl_nav_button" href="<?php print site_url('owls/uploads/' . $owl); ?>">browse</a></li>
+				<li style="list-style-type: none">&nbsp;</li>
+			</ul>
+		</li>
+
+<?php else : ?>
 
 		<li>
 			MiOwl
@@ -52,48 +94,6 @@
 	<?php endif; if ($this->session->userdata('admin')) : ?>
 				<li><a class="owl_nav_button" href="<?php print site_url('owl/uploads/bin'); ?>">recycle bin</a></li>
 	<?php endif; ?>
-				<li style="list-style-type: none">&nbsp;</li>
-			</ul>
-		</li>
-
-<?php elseif($this->uri->segment(1) === 'owls') : ?>
-
-		<li>
-			MiOwl
-			<ul>
-				<li><a class="owl_nav_button" href="<?php print site_url('owls'); ?>">choose new owl</a></li>
-				<li><a class="owl_nav_button" href="<?php print site_url('owls/display/' . $owl); ?>">details</a></li>
-				<li style="list-style-type: none">&nbsp;</li>
-			</ul>
-		</li>
-
-		<li>
-			members
-			<ul>
-				<li>
-					<a class="owl_nav_button" href="<?php print site_url('owls/members/list/' . $owl); ?>">list</a>
-					<ul>
-						<li><a class="owl_nav_button" href="<?php print site_url('owls/members/admin/' . $owl); ?>">admins</a></li>
-						<li><a class="owl_nav_button" href="<?php print site_url('owls/members/editor/' . $owl); ?>">editors</a></li>
-						<li><a class="owl_nav_button" href="<?php print site_url('owls/members/user/' . $owl); ?>">users</a></li>
-					</ul>
-				</li>
-				<li style="list-style-type: none">&nbsp;</li>
-			</ul>
-		</li>
-
-		<li>
-			categories
-			<ul>
-				<li><a class="owl_nav_button" href="<?php print site_url('owls/categories/' . $owl); ?>">list</a></li>
-				<li style="list-style-type: none">&nbsp;</li>
-			</ul>
-		</li>
-
-		<li>
-			uploads
-			<ul>
-				<li><a class="owl_nav_button" href="<?php print site_url('owls/uploads/' . $owl); ?>">browse</a></li>
 				<li style="list-style-type: none">&nbsp;</li>
 			</ul>
 		</li>
