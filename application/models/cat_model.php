@@ -96,6 +96,8 @@ class Cat_model extends CI_Model {
             return;
 #            $owl = $this->session->userdata('owl');
 
+        print $owl;
+
         $this->db->order_by("id", "ASC");
         $this->db->where('owl', $this->session->userdata('owl'));
         $this->db->where('parent_id', $pid);
