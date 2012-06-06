@@ -341,7 +341,7 @@ class Owl_model extends CI_Model {
         $query = $this->db->get('owls');
 
         if ($query->num_rows() > 0)
-            return $query->results()->owl_name;
+            return $query->row()->owl_name;
         else
             return FALSE;
     }
