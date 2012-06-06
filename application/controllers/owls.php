@@ -64,6 +64,18 @@ class Owls extends CI_Controller {
         $page_data                  = array();
         $page_data['page_title']    = "Owl Choice";
 
+        // form validation rules
+        $this->form_validation->set_rules('owl', 'Owl Choice', 'callback__valid_choice');
+
+        // did the user submit
+        if ($this->form_validation->run())
+        {
+            // redirect to the results page
+            redirect(site_url('owls/display/' . $this->input->post('owl')), 'location');
+
+            return;
+        }
+
         // load the approp. page view
         $this->load->view('pages/owl_choice', $page_data);
     }
@@ -253,6 +265,25 @@ class Owls extends CI_Controller {
     //=================================================================================
     // :custom callbacks
     //=================================================================================
+
+
+    /**
+     * callback _valid_choice()
+     * function will validate that the user has not selected a default drop down value.
+     *
+     * @param string $choice - choice to validate
+     */
+    public function _valid_choice($choice = FALSE)
+    {
+        if (!$choice || $choice == 'default')
+        {
+            $this->form_validation->set_message('_valid_choice', 'The %s field has an invalid choice!');
+            return FALSE;
+        }
+
+        return TRUE;
+    }
+    //------------------------------------------------------------------
 
 
     //=================================================================================
