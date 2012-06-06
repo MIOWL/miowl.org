@@ -92,7 +92,7 @@ class Cat_model extends CI_Model {
      */
     public function get_roots($owl = FALSE, $pid = '0')
     {
-        if (!$owl)
+        if ($owl === FALSE)
             $owl = $this->session->userdata('owl');
 
         print $owl;
