@@ -1,5 +1,5 @@
 	<ul>
-<?php if($this->uri->segment(1) != 'owls') : ?>
+<?php if($this->uri->segment(1) === 'owls') : ?>
 
 		<li>
 			MiOwl
