@@ -15,14 +15,14 @@ if (!function_exists('gen_categories'))
                 $cat_array[$root->name] = array();
 
                 // child this roots children
-                if (($kids = $CI->cat_model->get_children($root->id, $owl)))
+                if (($kids = $CI->cat_model->get_children($owl, $root->id)))
                 {
                     foreach ($kids->result() as $child)
                     {
                         $cat_array[$root->name][$child->name] = array();
 
                         // get our childs children
-                        if (($kids_kids = $CI->cat_model->get_children($child->id, $owl)))
+                        if (($kids_kids = $CI->cat_model->get_children($owl, $child->id)))
                         {
                             foreach ($kids_kids->result() as $childs_childs)
                             {
@@ -54,7 +54,7 @@ if (!function_exists('gen_drop_categories'))
                 $cat_array[] = array('id' => $root->id, 'name' => $root->name);
 
                 // child this roots children
-                if (($kids = $CI->cat_model->get_children($root->id, $owl)))
+                if (($kids = $CI->cat_model->get_children($owl, $root->id)))
                 {
                     foreach ($kids->result() as $child)
                     {
@@ -64,7 +64,7 @@ if (!function_exists('gen_drop_categories'))
                         if (!$create_page)
                         {
                             // get our childs children
-                            if (($kids_kids = $CI->cat_model->get_children($child->id, $owl)))
+                            if (($kids_kids = $CI->cat_model->get_children($owl, $child->id)))
                             {
                                 foreach ($kids_kids->result() as $childs_childs)
                                 {

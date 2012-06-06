@@ -111,7 +111,7 @@ class Cat_model extends CI_Model {
     /**
      * get our parent cat's children()
      */
-    public function get_children($pid, $owl = FALSE)
+    public function get_children($owl = FALSE, $pid = '0')
     {
         return $this->get_roots($owl, $pid);
     }
