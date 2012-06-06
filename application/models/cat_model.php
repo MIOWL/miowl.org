@@ -90,10 +90,10 @@ class Cat_model extends CI_Model {
     /**
      * get root categories funciton()
      */
-    public function get_roots($owl = FALSE, $pid = '0')
+    public function get_roots($owl = $this->session->userdata('owl'), $pid = '0')
     {
-        if ($owl === FALSE)
-            $owl = $this->session->userdata('owl');
+        // if ($owl === FALSE)
+        //     $owl = $this->session->userdata('owl');
 
         $this->db->order_by("id", "ASC");
         $this->db->where('owl', $this->session->userdata('owl'));
