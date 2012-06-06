@@ -4,7 +4,6 @@ if (!function_exists('gen_categories'))
 {
     function gen_categories($owl = FALSE)
     {
-        print $owl;
         $CI =& get_instance();
         $cat_array = NULL;
 
