@@ -12,7 +12,7 @@
         </div>
         <div id="owl_body" class="column right threequarter">
             <p>Deleted uploads are stored here for up to 30 days from the date of removal. After this time they will be perminantly removed.<br><br>You can un-delete them during this time if you wish.</p>
-            <table cellspacing="0" cellpadding="4" border="1" width="100%" class="txt_center">
+            <table>
                 <thead>
                     <tr>
                         <th>ID</th>
