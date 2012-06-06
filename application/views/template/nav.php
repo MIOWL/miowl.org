@@ -9,7 +9,7 @@
 		if ($this->session->userdata('authed'))
 		{
 			# Logged in NAV
-			print "<a href='". site_url() . "' title='View your Owl'>my owl</a>";							# my owl
+			print "<a href='". site_url() . "' title='View your Owl'>my owl</a>";								# my owl
 			print " | ";																						# spacer
 			print "<a href='". site_url('upload') . "' title='Upload a new file'>upload</a>";					# upload
 			print " | ";																						# spacer
@@ -17,6 +17,8 @@
 
 		# These are non specific nav options
 		print "<a href='". site_url('browse') . "' title='Browse all the files'>browse</a>";					# browse
+		print " | ";																							# spacer
+		print "<a href='". site_url('owl\'s') . "' title='Browse all the Owl\'s on the site'>browse</a>";		# owls
 		print " | ";																							# spacer
 		print "<a href='". site_url('search') . "' title='Search for a file'>search</a>";						# search
 		print " | ";																							# spacer
