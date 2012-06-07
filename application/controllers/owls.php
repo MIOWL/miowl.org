@@ -125,8 +125,8 @@ class Owls extends CI_Controller {
         $page_data['owl']           = $owl;
 
         // setup pagination lib
-        $config['base_url']         = site_url('owls/uploads/list/' . $owl);
-        $config['uri_segment']      = 5;
+        $config['base_url']         = site_url('owls/uploads/' . $owl);
+        $config['uri_segment']      = 4;
         $config['total_rows']       = $this->upload_model->total_owl_uploads($owl);
         $config['per_page']         = $limit;
         $config['anchor_class']     = 'class="button" ';
