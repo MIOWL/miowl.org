@@ -28,7 +28,7 @@
                         <label for="s_owl_id">Search within specific owls?</label>
                         <div class="s_owl_id" style="display: inline-block;" >
                             <?php foreach ($this->owl_model->get_all_owls()->result() as $row) : ?>
-                                <input type="checkbox" name="owls-<?php print $row->id; ?>" id="owls-<?php print $row->id; ?>" value="<?php print $row->id; ?>" <?php if(isset($search_data['owls-' . $row->id])) print 'checked="checked"'; ?> autocompelete="OFF" style="margin: 0.5em 0pt 0pt 16.5em;" />
+                                <input type="checkbox" name="owls-<?php print $row->id; ?>" id="owls-<?php print $row->id; ?>" value="<?php print $row->id; ?>" <?php if(isset($this->input->post('owls-' . $row->id))) print 'checked="checked"'; ?> autocompelete="OFF" style="margin: 0.5em 0pt 0pt 16.5em;" />
                                     &nbsp;&nbsp;&nbsp;&nbsp;<?php print $row->owl_name; ?>
                                 <br />
                             <?php endforeach; ?>
@@ -42,13 +42,13 @@
 
                             <?php /*
                             <?php foreach ($this->owl_model->get_all_owls()->result() as $owl) : ?>
-                                <div id="owls_lic-<?php print $owl->id; ?>" style="display:<?php print (isset($search_data['owls-' . $owl->id])) ? 'block' : 'none'; ?>">
+                                <div id="owls_lic-<?php print $owl->id; ?>" style="display:<?php print (isset($this->input->post('owls-' . $owl->id))) ? 'block' : 'none'; ?>">
 
                                     <span><?php print $owl->owl_name; ?><br />
                                     <?php foreach ($this->lic_model->get_owl_licenses($owl->id)->result() as $lic) : ?>
                             */ ?>
                                     <?php foreach ($this->lic_model->get_owl_licenses()->result() as $lic) : ?>
-                                        <input type="checkbox" name="lic-<?php print $lic->id; ?>" id="lic-<?php print $lic->id; ?>" value="<?php print $lic->id; ?>" <?php if(isset($search_data['lic-' . $lic->id])) print 'checked="checked"'; ?> autocompelete="OFF" />
+                                        <input type="checkbox" name="lic-<?php print $lic->id; ?>" id="lic-<?php print $lic->id; ?>" value="<?php print $lic->id; ?>" <?php if(isset($this->input->post('lic-' . $lic->id))) print 'checked="checked"'; ?> autocompelete="OFF" />
                                             &nbsp;&nbsp;&nbsp;&nbsp;<?php print $lic->name; ?>
                                         <br />
                                     <?php endforeach; ?>
@@ -67,7 +67,7 @@
                         <label for="s_file_ext">Search for a specific filetype?</label>
                         <div class="s_file_ext" style="display: inline-block;" >
                             <?php foreach (array('txt', 'rtf', 'pdf', 'doc', 'docx') as $ext) : ?>
-                                <input type="checkbox" name="file_ext-<?php print $ext; ?>" value="<?php print $ext; ?>" <?php if(isset($search_data['file_ext-' . $ext])) print 'checked="checked"'; ?> autocompelete="OFF" />
+                                <input type="checkbox" name="file_ext-<?php print $ext; ?>" value="<?php print $ext; ?>" <?php if(isset($this->input->post('file_ext-' . $ext))) print 'checked="checked"'; ?> autocompelete="OFF" />
                                     &nbsp;&nbsp;&nbsp;&nbsp;<?php print $ext; ?>
                                 <br />
                             <?php endforeach; ?>
