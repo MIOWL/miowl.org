@@ -3,7 +3,7 @@
 
 	<h1>
 		<center>
-			<?php echo $heading; ?>
+			404 Page Not Found
 		</center>
 	</h1>
 
@@ -11,7 +11,7 @@
 		<center>
 
 			<div class="notification error" style="width: 400px ! important; text-align: left ! important;">
-			        <p><strong>Error:</strong> </p><p><?php echo $message; ?></p>
+			        <p><strong>Error:</strong> </p><p>The page you requested was not found.</p>
 			<p></p>
 			</div>
 
