@@ -45,6 +45,8 @@ class Error extends CI_Controller {
      */
     public function error_404()
     {
+        $this->output->set_status_header(404);
+        
         $page_data = array();
         $page_data['page_title'] = '404 Page Not Found';
         $this->load->view('error/error_404', $page_data);
