@@ -54,7 +54,7 @@
                             */ ?>
                                     <?php foreach ($this->lic_model->get_owl_licenses()->result() as $lic) : ?>
                                         <input type="checkbox" name="lic-<?php print $lic->id; ?>" id="lic-<?php print $lic->id; ?>" value="<?php print $lic->id; ?>" <?php if($this->input->post('lic-' . $lic->id)) print 'checked="checked"'; ?> autocompelete="OFF" />
-                                            &nbsp;&nbsp;&nbsp;&nbsp;<?php print $lic->name; ?>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;<?php print $lic->name; ?> - <?php print $lic->short_description; ?>
                                         <br />
                                     <?php endforeach; ?>
                             <?php /*
