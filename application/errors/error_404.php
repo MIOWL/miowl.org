@@ -22,4 +22,9 @@
 		</center>
 	</div>
 
-<?php $meh->load->view('template/footer'); ?>
+  <div class="clear">&nbsp;</div>
+	<p class="footer">&nbsp;</p>
+</div>
+
+</body>
+</html>
