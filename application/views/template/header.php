@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 
     <!-- Title -->
-    <title><?php if(isset($page_title)) print $page_title . ' | ' ?>MiOWL (Something else here!)</title>
+    <title><?php if(isset($page_title)) print $page_title elseif (isset($heading))  print $heading . ' | '; ?>MiOWL (Something else here!)</title>
 
     <!-- Icon -->
     <link rel="Shortcut Icon" href="<?php print site_url('favicon.ico'); ?>" type="image/x-icon" />

@@ -82,3 +82,17 @@ if (!function_exists('gen_drop_categories'))
     }
 }
 
+if (!function_exists('cat_breadcrumb'))
+{
+    function cat_breadcrumb($cat_id = FALSE)
+    {
+        if(!$cat_id)
+            return FALSE;
+
+        $CI =& get_instance();
+        $breadcrumb = NULL;
+
+        return $breadcrumb;
+    }
+}
+
