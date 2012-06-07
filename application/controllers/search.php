@@ -90,7 +90,7 @@ class Search extends CI_Controller {
         $search = $this->session->userdata('search');
 
         // if we don't have a keyword, send them to the search page
-        if(!isset($search['keyword']) || $search['keyword'] != NULL)
+        if(!isset($search['keyword']) || $search['keyword'] === NULL)
             redirect(site_url('search'), 'location');
 
         // setup our page data
