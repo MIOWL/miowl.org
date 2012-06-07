@@ -1,4 +1,5 @@
-<?php $this->load->view('template/header'); ?>
+<?php $meh =& get_instance(); ?>
+<?php $meh->load->view('template/header'); ?>
 
 	<h1>
 		<center>
@@ -17,4 +18,4 @@
 		</center>
 	</div>
 
-<?php $this->load->view('template/footer'); ?>
+<?php $meh->load->view('template/footer'); ?>
