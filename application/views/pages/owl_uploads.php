@@ -36,7 +36,7 @@
                         <td><?php print $row->id; ?></td>
                         <td><?php print date("H:i:s d/m/Y", $row->upload_time); ?></td>
                         <td><?php print $row->file_name; ?></td>
-                        <td><?php print $this->cat_model->get_category($row->upload_category)->row()->name; ?></td>
+                        <td><?php print cat_breadcrumb($row->upload_category); ?></td>
                         <td>
                             <a href="<?php print $lic->row()->url; ?>" target="_BLANK">
                                 <?php print $lic->row()->name; ?>
