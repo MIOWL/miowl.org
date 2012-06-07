@@ -105,7 +105,7 @@ if (!function_exists('cat_breadcrumb'))
                 if (($chosen_sub = $CI->cat_model->get_category($chosen->row()->parent_id)))
                 {
                     // prepend our breadcrumb
-                    $breadcrumb = $chosen_sub->row()->name . " > {$breadcrumb}";
+                    $breadcrumb = $chosen_sub->row()->name . " &gt; {$breadcrumb}";
 
                     // is this a root cat?
                     if($chosen_sub->row()->parent_id != 0)
@@ -114,7 +114,7 @@ if (!function_exists('cat_breadcrumb'))
                         if (($chosen_sub_sub = $CI->cat_model->get_category($chosen_sub->row()->parent_id)))
                         {
                             // prepend our breadcrumb
-                            $breadcrumb = $chosen_sub_sub->row()->name . " > {$breadcrumb}";
+                            $breadcrumb = $chosen_sub_sub->row()->name . " &gt; {$breadcrumb}";
                         }
                     }
                 }
