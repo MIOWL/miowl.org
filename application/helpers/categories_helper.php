@@ -92,6 +92,35 @@ if (!function_exists('cat_breadcrumb'))
         $CI =& get_instance();
         $breadcrumb = NULL;
 
+        // get our category information
+        if (($chosen = $CI->cat_model->get_category($cat_id)))
+        {
+            // start our breadcrumb
+            $breadcrumb = $chosen->row()->name;
+
+            // is this a root cat?
+            if($chosen->row()->parent_id != 0)
+            {
+                // who is it a child of?
+                if (($chosen_sub = $CI->cat_model->get_category($chosen->row()->parent_id)))
+                {
+                    // prepend our breadcrumb
+                    $breadcrumb = $chosen_sub->row()->name . " > {$breadcrumb}";
+
+                    // is this a root cat?
+                    if($chosen_sub->row()->parent_id != 0)
+                    {
+                        // who is it a child of?
+                        if (($chosen_sub_sub = $CI->cat_model->get_category($chosen_sub->row()->parent_id)))
+                        {
+                            // prepend our breadcrumb
+                            $breadcrumb = $chosen_sub_sub->row()->name . " > {$breadcrumb}";
+                        }
+                    }
+                }
+            }
+        }
+
         return $breadcrumb;
     }
 }
