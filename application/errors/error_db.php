@@ -10,7 +10,7 @@
 	<div id="body">
 		<center>
 
-			<div class="notification error">
+			<div class="notification error" style="width: 400px ! important; text-align: left ! important;">
 			        <p><strong>Error:</strong> </p><p><?php echo $message; ?></p>
 			<p></p>
 			</div>
