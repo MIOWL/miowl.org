@@ -37,7 +37,7 @@
                     <p class="formHint">Choose the type of owl you wish to search within.</p>
                     </div>
 
-                    <div id="province" class="ctrlHolder" style="display: none" >
+                    <div id="province-selection" class="ctrlHolder" >
                         <label for="province">Province</label>
                         <div style="display: inline-block;" >
                             <?php foreach ($province_list as $province) : ?>
@@ -49,7 +49,7 @@
                     <p class="formHint">Choose the province search within.</p>
                     </div>
 
-                    <div id="owls" class="ctrlHolder" style="display: none" >
+                    <div id="owls-selection" class="ctrlHolder" >
                         <label for="s_owl_id">Search within specific owls?</label>
                         <div class="s_owl_id" style="display: inline-block;" >
                             <?php foreach ($this->owl_model->get_all_owls()->result() as $row) : ?>
@@ -81,10 +81,10 @@
         $("#type").change(function () {
             var str = $("#selecter option:selected").text();
             if(str != "default") {
-                $("#province").css("display","block");
+                $("#province-selection").css("display","block");
             }
             else{
-                $("#province").css("display","none");
+                $("#province-selection").css("display","none");
             }
         }).change();
     </script>
