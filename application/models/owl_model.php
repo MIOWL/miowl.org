@@ -283,6 +283,29 @@ class Owl_model extends CI_Model {
 
 
     /**
+     * public get_owl_by_type()
+     * function will pull needed owl info based on the passed int owl type.
+     *
+     * @param int $owl_type - owl type (clinic/hospital)
+     */
+    public function get_owl_by_type($owl_type = FALSE)
+    {
+        $this->db->select('id', 'owl_name');
+
+        if ($owl_id != FALSE && $owl_id != 'both')
+            $this->db->where('owl_type', $owl_type);
+
+        $query = $this->db->get('owls');
+
+        if ($query->num_rows() > 0)
+            return $query;
+        else
+            return FALSE;
+    }
+    //------------------------------------------------------------------
+
+
+    /**
      * public get_all_owls()
      * function will get all owl info for all owls
      *
