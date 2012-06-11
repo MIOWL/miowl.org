@@ -147,28 +147,23 @@ class Search extends CI_Controller {
         $return_data = FALSE;
 
         // lets see what we want to get results for
-        switch ($type) {
-            case 'type':
+        if ($type == 'type') {
                 if(($data = $this->owl_model->get_owl_by_type($value))) {
                     $return_data = array()
                     foreach ($data-results() as $row) {
                         $return_data[] = $row->owl_province;
                     }
                 }
-                break;
+            }
 
-            case 'province':
+        elseif ($type == 'province') {
                 if(($data = $this->owl_model->get_owl_by_province($value))) {
                     $return_data = array()
                     foreach ($data-results() as $row) {
                         $return_data[$row->id] = $row->owl_name;
                     }
                 }
-                break;
-
-            default:
-                break;
-        }
+            }
 
         // do we have a valid output
         $output = $return_data === FALSE ? array() : $output;
