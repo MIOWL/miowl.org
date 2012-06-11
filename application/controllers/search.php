@@ -72,6 +72,7 @@ class Search extends CI_Controller {
         $page_data['page_title']    = 'Search Form';
         $page_data['search_page']   = FALSE; // Used in the footer for jQuery code
         $page_data['search_data']   = $this->session->userdata('search');
+        $page_data['province_list'] = $this->province_list;
 
         // set some session data for use later, and clear 1st
         $this->session->unset_userdata('find_arr');
