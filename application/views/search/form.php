@@ -26,22 +26,18 @@
                         <input type="text" name="keyword" id="keyword" size="35" class="textInput medium" autocompelete="OFF" value="<?php print set_value('keyword'); ?>" />
                     </div>
 
-                    <div class="ctrlHolder">
+                    <div class="ctrlHolder" >
                         <label for="type">Clinic, Hospital or Both?</label>
-                        <div style="display: inline-block;" >
-                                <input type="radio" name="type" id="type" value="clinic" autocompelete="OFF" />
-                                    &nbsp;&nbsp;&nbsp;&nbsp;Clinic
-                                <br />
-                                <input type="radio" name="type" id="type" value="hospital" autocompelete="OFF" />
-                                    &nbsp;&nbsp;&nbsp;&nbsp;Hospital
-                                <br />
-                                <input type="radio" name="type" id="type" value="both" autocompelete="OFF" />
-                                    &nbsp;&nbsp;&nbsp;&nbsp;Both
-                        </div>
+                        <select id="type" name="type" >
+                            <option value="default" autocompelete="OFF" <?php echo set_select('type', 'default', TRUE); ?> />Select...</option>
+                            <option value="clinic" autocompelete="OFF" <?php echo set_select('type', 'clinic'); ?> />Clinic</option>
+                            <option value="hospital" autocompelete="OFF" <?php echo set_select('type', 'hospital'); ?> />Hospital</option>
+                            <option value="both" autocompelete="OFF" <?php echo set_select('type', 'both'); ?> />Both</option>
+                        </select>
                     <p class="formHint">Choose the type of owl you wish to search within.</p>
                     </div>
 
-                    <div class="ctrlHolder">
+                    <div id="province" class="ctrlHolder" style="display: none" >
                         <label for="province">Province</label>
                         <div style="display: inline-block;" >
                             <?php foreach ($province_list as $province) : ?>
@@ -53,7 +49,7 @@
                     <p class="formHint">Choose the province search within.</p>
                     </div>
 
-                    <div class="ctrlHolder">
+                    <div id="owls" class="ctrlHolder" style="display: none" >
                         <label for="s_owl_id">Search within specific owls?</label>
                         <div class="s_owl_id" style="display: inline-block;" >
                             <?php foreach ($this->owl_model->get_all_owls()->result() as $row) : ?>
@@ -79,5 +75,19 @@
         <div class="clear">&nbsp;</div>
         */ ?>
     </div>
+
+    <!-- Page Javascript -->
+    <script type="text/javascript">
+        $("#type").change(function () {
+            var str = $("#selecter option:selected").text();
+            if(str != "default") {
+                $("#province").css("display","block");
+            }
+            else{
+                $("#province").css("display","none");
+            }
+        }).change();
+    </script>
+    <!-- --------------- -->
 
 <?php $this->load->view('template/footer'); ?>
