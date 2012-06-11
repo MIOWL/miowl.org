@@ -79,7 +79,7 @@
     <!-- Page Javascript -->
     <script type="text/javascript">
         $("#type").change(function () {
-            var str = $("#selecter option:selected").text();
+            var str = $("#selecter option:selected").value();
             if(str != "default") {
                 $("#province-selection").css("display","block");
             }
