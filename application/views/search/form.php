@@ -79,8 +79,8 @@
     <!-- Page Javascript -->
     <script type="text/javascript">
         $("#type").change(function () {
-            var str = $("#selecter option:selected").value();
-            if(str === "default") {
+            var str = $("#type option:selected").val();
+            if(str != "default") {
                 $("#province-selection").css("display","block");
             }
             else{
