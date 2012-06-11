@@ -40,7 +40,7 @@
                     <div id="province-selection" class="ctrlHolder" >
                         <label for="province">Province</label>
                         <div style="display: inline-block;" >
-                            <input type="checkbox" id="select_all-owls" autocompelete="OFF" />&nbsp;&nbsp;&nbsp;&nbsp; Select All
+                            <input type="checkbox" id="select_all-owls" autocompelete="OFF" /> Select All
                             <br />
                             <?php foreach ($province_list as $province) : ?>
                                 &nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="province" id="province-<?php print $province; ?>" value="<?php print $province; ?>" <?php if($this->input->post('province-' . $province)) print 'checked="checked"'; ?> autocompelete="OFF" />
