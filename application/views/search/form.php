@@ -85,7 +85,7 @@
             }
             else{
                 $("#province-selection").css("display","none");
-                $("#selection-selection").css("display","none");
+                $("#owls-selection").css("display","none");
             }
         }).change();
     </script>
