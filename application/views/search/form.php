@@ -55,7 +55,7 @@
                             <input type="checkbox" name="s_owl_id" id="select_all-owls" value="<?php print $row->id; ?>" <?php if($this->input->post('owls-' . $row->id)) print 'checked="checked"'; ?> autocompelete="OFF" />&nbsp;&nbsp;&nbsp;&nbsp;Select All
                             <br />
                             <?php foreach ($this->owl_model->get_all_owls()->result() as $row) : ?>
-                                &nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="owls-<?php print $row->id; ?>" id="owls-<?php print $row->id; ?>" value="<?php print $row->id; ?>" <?php if($this->input->post('owls-' . $row->id)) print 'checked="checked"'; ?> autocompelete="OFF" />
+                                <input type="checkbox" name="owls-<?php print $row->id; ?>" id="owls-<?php print $row->id; ?>" value="<?php print $row->id; ?>" <?php if($this->input->post('owls-' . $row->id)) print 'checked="checked"'; ?> autocompelete="OFF" />
                                     &nbsp;&nbsp;&nbsp;&nbsp;<?php print $row->owl_name; ?>
                                 <br />
                             <?php endforeach; ?>
