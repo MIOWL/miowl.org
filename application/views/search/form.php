@@ -40,11 +40,14 @@
                     <div id="province-selection" class="ctrlHolder" >
                         <label for="province">Province</label>
                         <div style="display: inline-block;" >
+                            <input type="checkbox" id="select_all-owls" autocompelete="OFF" />&nbsp;&nbsp;&nbsp;&nbsp; Select All
+                            <br />
                             <?php foreach ($province_list as $province) : ?>
-                                <input type="checkbox" name="province" id="province-<?php print $province; ?>" value="<?php print $province; ?>" <?php if($this->input->post('province-' . $province)) print 'checked="checked"'; ?> autocompelete="OFF" />
+                                &nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="province" id="province-<?php print $province; ?>" value="<?php print $province; ?>" <?php if($this->input->post('province-' . $province)) print 'checked="checked"'; ?> autocompelete="OFF" />
                                     &nbsp;&nbsp;&nbsp;&nbsp;<?php print $province; ?>
                                 <br />
                             <?php endforeach; ?>
+                            <input type="checkbox" id="select_all-owls" autocompelete="OFF" />&nbsp;&nbsp;&nbsp;&nbsp; Select All
                         </div>
                     <p class="formHint">Choose the province search within.</p>
                     </div>
@@ -60,7 +63,6 @@
                                 <br />
                             <?php endforeach; ?>
                             <input type="checkbox" id="select_all-owls" autocompelete="OFF" />&nbsp;&nbsp;&nbsp;&nbsp; Select All
-                            <br />
                     <p class="formHint">Choose the owl's you wish to search within.<br /><strong>NOTE:</strong> selecting none will search all.</p>
                     </div>
 
