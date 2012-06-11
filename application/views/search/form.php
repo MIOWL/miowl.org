@@ -34,7 +34,7 @@
                             <option value="hospital" autocompelete="OFF" <?php echo set_select('type', 'hospital'); ?> />Hospital</option>
                             <option value="both" autocompelete="OFF" <?php echo set_select('type', 'both'); ?> />Both</option>
                         </select>
-                    <p class="formHint">Choose the type of owl you wish to search within.</p>
+                        <p class="formHint">Choose the type of owl you wish to search within.</p>
                     </div>
 
                     <div id="province-selection" class="ctrlHolder" >
@@ -48,7 +48,7 @@
                                 <br />
                             <?php endforeach; ?>
                         </div>
-                    <p class="formHint">Choose the province search within.</p>
+                        <p class="formHint">Choose the province search within.</p>
                     </div>
 
                     <div id="owls-selection" class="ctrlHolder" >
@@ -59,7 +59,8 @@
                                     &nbsp;&nbsp;&nbsp;&nbsp;<?php print $row->owl_name; ?>
                                 <br />
                             <?php endforeach; ?>
-                    <p class="formHint">Choose the owl's you wish to search within.<br /><strong>NOTE:</strong> selecting none will search all.</p>
+                        </div>
+                        <p class="formHint">Choose the owl's you wish to search within.<br /><strong>NOTE:</strong> selecting none will search all.</p>
                     </div>
 
                 </fieldset>
