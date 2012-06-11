@@ -97,7 +97,8 @@
 
         <div class="buttonHolder right">
             <br />
-            <button onclick="window.location.href='<?php print site_url('browse'); ?>'" class="button">back</button>
+            <!-- <button onclick="javascript:history.back()" class="button">back</button> -->
+            <a href="javascript:history.back()" class="button">back</a>
             <button onclick="window.location.href='<?php print site_url('download/' . $info->row()->id); ?>'" class="button">download</button>
         </div>
 

@@ -8,6 +8,22 @@ class Search extends CI_Controller {
 
 
     private $per_page_limit = 7;
+    private $province_list = array(
+        'Alberta',
+        'British Columbia',
+        'Manitoba',
+        'New Brunswick',
+        'Newfoundland and Labrador',
+        'Northwest Territories',
+        'Nova Scotia',
+        'Nunavut',
+        'Ontario',
+        'Prince Edward Island',
+        'Quebec',
+        'Saskatchewan',
+        'Yukon'
+    );
+
 
 
     //=================================================================================

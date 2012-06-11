@@ -27,57 +27,42 @@
                     </div>
 
                     <div class="ctrlHolder">
+                        <label for="type">Clinic, Hospital or Both?</label>
+                        <div style="display: inline-block;" >
+                                <input type="radio" name="type" id="type" value="clinic" autocompelete="OFF" />
+                                    &nbsp;&nbsp;&nbsp;&nbsp;Clinic
+                                <br />
+                                <input type="radio" name="type" id="type" value="hospital" autocompelete="OFF" />
+                                    &nbsp;&nbsp;&nbsp;&nbsp;Hospital
+                                <br />
+                                <input type="radio" name="type" id="type" value="both" autocompelete="OFF" />
+                                    &nbsp;&nbsp;&nbsp;&nbsp;Both
+                        </div>
+                    <p class="formHint">Choose the type of owl you wish to search within.</p>
+                    </div>
+
+                    <div class="ctrlHolder">
+                        <label for="province">Province</label>
+                        <div style="display: inline-block;" >
+                            <?php foreach ($province_list as $province) : ?>
+                                <input type="checkbox" name="province" id="province-<?php print $province; ?>" value="<?php print $province; ?>" <?php if($this->input->post('province-' . $province)) print 'checked="checked"'; ?> autocompelete="OFF" />
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<?php print $province; ?>
+                                <br />
+                            <?php endforeach; ?>
+                        </div>
+                    <p class="formHint">Choose the province search within.</p>
+                    </div>
+
+                    <div class="ctrlHolder">
                         <label for="s_owl_id">Search within specific owls?</label>
                         <div class="s_owl_id" style="display: inline-block;" >
                             <?php foreach ($this->owl_model->get_all_owls()->result() as $row) : ?>
-                                <!--
-                                <input type="checkbox" name="owls-<?php print $row->id; ?>" id="owls-<?php print $row->id; ?>" value="<?php print $row->id; ?>" <?php if($this->input->post('owls-' . $row->id)) print 'checked="checked"'; ?> autocompelete="OFF" style="margin: 0.5em 0pt 0pt 16.5em;" />
-                                -->
                                 <input type="checkbox" name="owls-<?php print $row->id; ?>" id="owls-<?php print $row->id; ?>" value="<?php print $row->id; ?>" <?php if($this->input->post('owls-' . $row->id)) print 'checked="checked"'; ?> autocompelete="OFF" />
                                     &nbsp;&nbsp;&nbsp;&nbsp;<?php print $row->owl_name; ?>
                                 <br />
                             <?php endforeach; ?>
                         </div>
                     <p class="formHint">Choose the owl's you wish to search within.<br /><strong>NOTE:</strong> selecting none will search all.</p>
-                    </div>
-
-                    <div class="ctrlHolder">
-                        <label for="s_lic_id">Search within specific licenses?</label>
-                        <div class="s_lic_id" style="display: inline-block;" >
-
-                            <?php /*
-                            <?php foreach ($this->owl_model->get_all_owls()->result() as $owl) : ?>
-                                <div id="owls_lic-<?php print $owl->id; ?>" style="display:<?php print ($this->input->post('owls-' . $owl->id)) ? 'block' : 'none'; ?>">
-
-                                    <span><?php print $owl->owl_name; ?><br />
-                                    <?php foreach ($this->lic_model->get_owl_licenses($owl->id)->result() as $lic) : ?>
-                            */ ?>
-                                    <?php foreach ($this->lic_model->get_owl_licenses()->result() as $lic) : ?>
-                                        <input type="checkbox" name="lic-<?php print $lic->id; ?>" id="lic-<?php print $lic->id; ?>" value="<?php print $lic->id; ?>" <?php if($this->input->post('lic-' . $lic->id)) print 'checked="checked"'; ?> autocompelete="OFF" />
-                                            &nbsp;&nbsp;&nbsp;&nbsp;<?php print $lic->name; ?> (<?php print $lic->short_description; ?>)
-                                        <br />
-                                    <?php endforeach; ?>
-                            <?php /*
-                                    <hr />
-
-                                </div>
-                            <?php endforeach; ?>
-                            */ ?>
-
-                        </div>
-                    <p class="formHint">Choose the owl licenses you wish to search within.<br /><strong>NOTE:</strong> selecting none will search all.</p>
-                    </div>
-
-                    <div class="ctrlHolder">
-                        <label for="s_file_ext">Search for a specific filetype?</label>
-                        <div class="s_file_ext" style="display: inline-block;" >
-                            <?php foreach (array('txt', 'rtf', 'pdf', 'doc', 'docx') as $ext) : ?>
-                                <input type="checkbox" name="file_ext-<?php print $ext; ?>" value="<?php print $ext; ?>" <?php if($this->input->post('file_ext-' . $ext)) print 'checked="checked"'; ?> autocompelete="OFF" />
-                                    &nbsp;&nbsp;&nbsp;&nbsp;<?php print $ext; ?>
-                                <br />
-                            <?php endforeach; ?>
-                        </div>
-                    <p class="formHint">Choose the owl licenses you wish to search within.<br /><strong>NOTE:</strong> selecting none will search all.</p>
                     </div>
 
                 </fieldset>

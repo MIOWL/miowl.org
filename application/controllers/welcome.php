@@ -46,7 +46,7 @@ class Welcome extends CI_Controller {
     public function index()
     {
         if ($this->session->userdata('owl_verified')) {
-            redirect('/owl', 'location');
+            redirect('/', 'location');
             return;
         }
 
