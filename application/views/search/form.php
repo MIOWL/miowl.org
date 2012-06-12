@@ -21,11 +21,6 @@
 
                 <fieldset class="inlineLabels">
 
-                    <div class="ctrlHolder">
-                        <label for="keyword">Keyword</label>
-                        <input type="text" name="keyword" id="keyword" size="35" class="textInput medium" value="<?php print set_value('keyword'); ?>" />
-                    </div>
-
                     <div class="ctrlHolder" >
                         <label for="type">Clinic, Hospital or Both?</label>
                         <select id="type" name="type" >
@@ -81,6 +76,11 @@
                             <span class="delete button" onclick="uncheckAll('.owl_list')" > Uncheck All </span>
                         </div>
                         <p class="formHint">Choose the owl's you wish to search within.<br /><strong>NOTE:</strong> selecting none will search all.</p>
+                    </div>
+
+                    <div class="ctrlHolder">
+                        <label for="keyword">Keyword</label>
+                        <input type="text" name="keyword" id="keyword" size="35" class="textInput medium" value="<?php print set_value('keyword'); ?>" />
                     </div>
 
                 </fieldset>
