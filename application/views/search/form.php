@@ -117,9 +117,9 @@
             $("select").val('default');
 
             // hide the div's again
-            // $("#province-selection").css("display","none");
-            // $("#owl-selection").css("display","none");
-            // $("#keyword-selection").css("display","none");
+            $("#province-selection").css("display","none");
+            $("#owl-selection").css("display","none");
+            $("#keyword-selection").css("display","none");
         });
 
         // type selection change
