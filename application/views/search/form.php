@@ -41,7 +41,7 @@
                         <label for="province">Province</label>
                         <div id="province_list" style="display: inline-block;" >
                             <?php foreach ($province_list as $province) : ?>
-                                <input type="checkbox" name="province" id="province-<?php print $province; ?>" value="<?php print $province; ?>" <?php if($this->input->post('province-' . $province)) print 'checked="checked"'; ?> />
+                                <input type="checkbox" name="province[]" id="province-<?php print $province; ?>" value="<?php print $province; ?>" <?php if($this->input->post('province-' . $province)) print 'checked="checked"'; ?> />
                                     &nbsp;&nbsp;&nbsp;&nbsp;<?php print $province; ?>
                                 <br />
                             <?php endforeach; ?>
