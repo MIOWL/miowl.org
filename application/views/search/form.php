@@ -124,6 +124,8 @@
             var str = $("#type option:selected").val();
             if(str != "default") {
                 $("#province-selection").css("display","block");
+                $("#owl-selection").css("display","none");
+                $("#keyword-selection").css("display","none");
             }
             else {
                 $("#province-selection").css("display","none");
@@ -134,6 +136,7 @@
         function province_list() {
             if($(".province_list:checked").length > 0) {
                 $("#owl-selection").css("display","block");
+                $("#keyword-selection").css("display","none");
             }
             else {
                 $("#owl-selection").css("display","none");
