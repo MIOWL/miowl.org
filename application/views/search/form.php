@@ -38,15 +38,15 @@
                     </div>
 
                     <div id="province-selection" class="ctrlHolder" >
-                        <label for="province">Province</label>
+                        <label for="province[]">Province</label>
                         <div id="province_list" style="display: inline-block;" >
                             <?php foreach ($province_list as $province) : ?>
-                                <input type="checkbox" name="province[]" id="province-<?php print $province; ?>" value="<?php print $province; ?>" <?php print set_checkbox('province[]', $province); ?> />
+                                <input type="checkbox" name="province[]" class="province_list" value="<?php print $province; ?>" <?php print set_checkbox('province[]', $province); ?> />
                                     &nbsp;&nbsp;&nbsp;&nbsp;<?php print $province; ?>
                                 <br />
                             <?php endforeach; ?>
-                            <span class="save button"   onclick="checkAll(document.search.province[])"   > Check All </span>
-                            <span class="delete button" onclick="uncheckAll(document.search.province[])" > Uncheck All </span>
+                            <span class="save button"   onclick="checkAll('.province_list')"   > Check All </span>
+                            <span class="delete button" onclick="uncheckAll('.province_list')" > Uncheck All </span>
                         </div>
                         <p class="formHint">Choose the province search within.</p>
                     </div>
@@ -55,12 +55,12 @@
                         <label for="owl">Search within specific owls?</label>
                         <div id="owl" style="display: inline-block;" >
                             <?php foreach ($this->owl_model->get_all_owls()->result() as $row) : ?>
-                                <input type="checkbox" name="owl[]" id="owl" value="<?php print $row->id; ?>" <?php print set_checkbox('owl[]', $row->id); ?> />
+                                <input type="checkbox" name="owl[]" class="owl_list" value="<?php print $row->id; ?>" <?php print set_checkbox('owl[]', $row->id); ?> />
                                     &nbsp;&nbsp;&nbsp;&nbsp;<?php print $row->owl_name; ?>
                                 <br />
                             <?php endforeach; ?>
-                            <span class="save button"   onclick="checkAll(document.search.owl[])"   > Check All </span>
-                            <span class="delete button" onclick="uncheckAll(document.search.owl[])" > Uncheck All </span>
+                            <span class="save button"   onclick="checkAll(.owl_list)"   > Check All </span>
+                            <span class="delete button" onclick="uncheckAll(.owl_list)" > Uncheck All </span>
                         </div>
                         <p class="formHint">Choose the owl's you wish to search within.<br /><strong>NOTE:</strong> selecting none will search all.</p>
                     </div>
@@ -98,8 +98,10 @@
         // checkAll/uncheckAll functions
         function checkAll(field)
         {
-        for (i = 0; i < field.length; i++)
-            field[i].checked = true ;
+            $(field).each(function (i)
+            {
+                $(this).checked = true ;
+            }
         }
 
         function uncheckAll(field)
