@@ -67,6 +67,7 @@ class Search extends CI_Controller {
      */
     public function index()
     {
+        print '<pre>' . print_r($this->input->post(NULL, TRUE), TRUE) . '</pre>';
         // setup our page data
         $page_data = array();
         $page_data['page_title']    = 'Search Form';
