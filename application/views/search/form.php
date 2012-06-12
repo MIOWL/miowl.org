@@ -101,13 +101,15 @@
             $(field).each(function (i)
             {
                 $(this).checked = true ;
-            }
+            });
         }
 
         function uncheckAll(field)
         {
-        for (i = 0; i < field.length; i++)
-            field[i].checked = false ;
+            $(field).each(function (i)
+            {
+                $(this).checked = false ;
+            });
         }
     </script>
     <!-- --------------- -->
