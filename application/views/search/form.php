@@ -102,18 +102,21 @@
     <script type="text/javascript">
         // hide the areas from a clear button
         $("button[type=reset]").click(function(e) {
+            // prevent the default
             e.preventDefault();
 
+            // reset all checkbox's
             $("input[type=checkbox]").each(function() {
                 this.checked = false ;
             });
 
-            $("input[type=text]").each(function() {
-                this.text = null ;
-            });
+            // reset all the text input box's
+            $("input[type=text]").text = null;
 
+            // reset all the select box's
             $("select").val('default');
 
+            // hide the div's again
             // $("#province-selection").css("display","none");
             // $("#owl-selection").css("display","none");
             // $("#keyword-selection").css("display","none");
