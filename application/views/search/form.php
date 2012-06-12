@@ -41,9 +41,18 @@
                         <label for="province[]">Province</label>
                         <div id="province_list" style="display: inline-block;" >
                             <?php $i=0; foreach ($province_list as $province) : ?>
-                                <input type="checkbox" name="province[]" class="province_list" value="<?php print $province; ?>" <?php $plist = $this->input->post('province'); print isset($plist[$i]) ? 'checked="checked"' : NULL;) ?> />
-                                    &nbsp;&nbsp;&nbsp;&nbsp;<?php print $province; ?>
-                                <br /><?php $i++; ?>
+                                <input
+                                    type="checkbox"
+                                    name="province[]"
+                                    class="province_list"
+                                    value="<?php print $province; ?>"
+                                    <?php
+                                        $plist = $this->input->post('province');
+                                        print isset($plist[$i]) ? 'checked="checked"' : NULL);
+                                        $i++;
+                                    ?>
+                                />&nbsp;&nbsp;&nbsp;&nbsp;<?php print $province; ?>
+                                <br />
                             <?php endforeach; ?>
                             <span class="save button"   onclick="checkAll('.province_list')"   > Check All </span>
                             <span class="delete button" onclick="uncheckAll('.province_list')" > Uncheck All </span>
