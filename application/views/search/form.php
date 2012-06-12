@@ -111,7 +111,7 @@
             });
 
             $("select").each(function (i) {
-                this.val('default');
+                $("select").val('default');
             });
 
             $("#province-selection").css("display","none");
