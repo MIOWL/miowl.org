@@ -41,7 +41,7 @@
                         <label for="province">Province</label>
                         <div id="province_list" style="display: inline-block;" >
                             <?php foreach ($province_list as $province) : ?>
-                                <input type="checkbox" name="province[]" id="province-<?php print $province; ?>" value="<?php print $province; ?>" <?php print set_select('province', $province); ?> />
+                                <input type="checkbox" name="province[]" id="province-<?php print $province; ?>" value="<?php print $province; ?>" <?php print set_checkbox('province[]', $province); ?> />
                                     &nbsp;&nbsp;&nbsp;&nbsp;<?php print $province; ?>
                                 <br />
                             <?php endforeach; ?>
@@ -55,7 +55,7 @@
                         <label for="owl">Search within specific owls?</label>
                         <div id="owl" style="display: inline-block;" >
                             <?php foreach ($this->owl_model->get_all_owls()->result() as $row) : ?>
-                                <input type="checkbox" name="owl[]" id="owl" value="<?php print $row->id; ?>" <?php print set_select('owl', $row->id); ?> />
+                                <input type="checkbox" name="owl[]" id="owl" value="<?php print $row->id; ?>" <?php print set_checkbox('owl[]', $row->id); ?> />
                                     &nbsp;&nbsp;&nbsp;&nbsp;<?php print $row->owl_name; ?>
                                 <br />
                             <?php endforeach; ?>
