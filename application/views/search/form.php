@@ -101,21 +101,21 @@
     <!-- Page Javascript -->
     <script type="text/javascript">
         // hide the areas from a clear button
-        // $("button[type=reset]").click(function() {
-        //     $("input[type=checkbox]").each(function (i) {
-        //         this.checked = false ;
-        //     });
+        $("button[type=reset]").click(function() {
+            $("input[type=checkbox]").each(function (i) {
+                this.checked = false ;
+            });
 
-        //     $("input[type=text]").each(function (i) {
-        //         this.text = null ;
-        //     });
+            $("input[type=text]").each(function (i) {
+                this.text = null ;
+            });
 
-        //     $("select").val('default');
+            $("select").val('default');
 
-        //     $("#province-selection").css("display","none");
-        //     $("#owl-selection").css("display","none");
-        //     $("#keyword-selection").css("display","none");
-        // });
+            $("#province-selection").css("display","none");
+            $("#owl-selection").css("display","none");
+            $("#keyword-selection").css("display","none");
+        });
 
         // type selection change
         $("#type").change(function () {
