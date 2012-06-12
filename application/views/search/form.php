@@ -64,8 +64,17 @@
                         <label for="owl">Search within specific owls?</label>
                         <div id="owl" style="display: inline-block;" >
                             <?php foreach ($this->owl_model->get_all_owls()->result() as $row) : ?>
-                                <input type="checkbox" name="owl[]" class="owl_list" value="<?php print $row->id; ?>" <?php print set_checkbox('owl[]', $row->id); ?> />
-                                    &nbsp;&nbsp;&nbsp;&nbsp;<?php print $row->owl_name; ?>
+                                <input
+                                    type="checkbox"
+                                    name="owl[]"
+                                    class="owl_list"
+                                    value="<?php print $row->id; ?>"
+                                    <?php
+                                        $plist = $this->input->post('owl');
+                                        if(is_array($plist))
+                                            print in_array($row->id, $plist) ? 'checked="checked"' : NULL;
+                                    ?>
+                                />&nbsp;&nbsp;&nbsp;&nbsp;<?php print $row->owl_name; ?>
                                 <br />
                             <?php endforeach; ?>
                             <span class="save button"   onclick="checkAll('.owl_list')"   > Check All </span>
