@@ -59,8 +59,8 @@
                                     &nbsp;&nbsp;&nbsp;&nbsp;<?php print $row->owl_name; ?>
                                 <br />
                             <?php endforeach; ?>
-                            <span class="save button"   onclick="checkAll(.owl_list)"   > Check All </span>
-                            <span class="delete button" onclick="uncheckAll(.owl_list)" > Uncheck All </span>
+                            <span class="save button"   onclick="checkAll('.owl_list')"   > Check All </span>
+                            <span class="delete button" onclick="uncheckAll('.owl_list')" > Uncheck All </span>
                         </div>
                         <p class="formHint">Choose the owl's you wish to search within.<br /><strong>NOTE:</strong> selecting none will search all.</p>
                     </div>
