@@ -116,7 +116,7 @@
         // checkAll/uncheckAll functions
         function checkAll(field)
         {
-            field.each(function (i)
+            $(field).each(function (i)
             {
                 $(this).checked = true ;
             });
@@ -124,7 +124,7 @@
 
         function uncheckAll(field)
         {
-            field.each(function (i)
+            $(field).each(function (i)
             {
                 this.checked = false ;
             });
