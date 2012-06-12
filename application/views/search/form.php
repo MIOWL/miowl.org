@@ -15,7 +15,7 @@
         */ ?>
 
             <!-- Search Form -->
-            <form action="" class="uniForm" method="post">
+            <form action="" name="search" class="uniForm" method="post">
 
                 <?php $this->load->view('messages/message_inline'); ?>
 
@@ -39,21 +39,21 @@
 
                     <div id="province-selection" class="ctrlHolder" >
                         <label for="province">Province</label>
-                        <div style="display: inline-block;" >
-                            <input type="checkbox" id="select_all-owls" autocompelete="OFF" /> Select All
-                            <br />
+                        <div id="province_list" style="display: inline-block;" >
                             <?php foreach ($province_list as $province) : ?>
-                                &nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="province" id="province-<?php print $province; ?>" value="<?php print $province; ?>" <?php if($this->input->post('province-' . $province)) print 'checked="checked"'; ?> autocompelete="OFF" />
+                                <input type="checkbox" name="province" id="province-<?php print $province; ?>" value="<?php print $province; ?>" <?php if($this->input->post('province-' . $province)) print 'checked="checked"'; ?> autocompelete="OFF" />
                                     &nbsp;&nbsp;&nbsp;&nbsp;<?php print $province; ?>
                                 <br />
                             <?php endforeach; ?>
+                            <input type=button name="CheckAll"   value="Check All"   onClick="checkAll(document.search.province)">
+                            <input type=button name="UnCheckAll" value="Uncheck All" onClick="uncheckAll(document.search.province)">
                         </div>
                         <p class="formHint">Choose the province search within.</p>
                     </div>
 
                     <div id="owls-selection" class="ctrlHolder" >
                         <label for="s_owl_id">Search within specific owls?</label>
-                        <div class="s_owl_id" style="display: inline-block;" >
+                        <div class="s_owl_id" id="owl_list" style="display: inline-block;" >
                             <?php foreach ($this->owl_model->get_all_owls()->result() as $row) : ?>
                                 <input type="checkbox" name="owls-<?php print $row->id; ?>" id="owls-<?php print $row->id; ?>" value="<?php print $row->id; ?>" <?php if($this->input->post('owls-' . $row->id)) print 'checked="checked"'; ?> autocompelete="OFF" />
                                     &nbsp;&nbsp;&nbsp;&nbsp;<?php print $row->owl_name; ?>
@@ -80,6 +80,8 @@
 
     <!-- Page Javascript -->
     <script type="text/javascript">
+
+        // type selection change
         $("#type").change(function () {
             var str = $("#type option:selected").val();
             if(str != "default") {
@@ -90,6 +92,19 @@
                 $("#owls-selection").css("display","none");
             }
         }).change();
+
+        // checkAll/uncheckAll functions
+        function checkAll(field)
+        {
+        for (i = 0; i < field.length; i++)
+            field[i].checked = true ;
+        }
+
+        function uncheckAll(field)
+        {
+        for (i = 0; i < field.length; i++)
+            field[i].checked = false ;
+        }
     </script>
     <!-- --------------- -->
 
