@@ -110,9 +110,7 @@
                 this.text = null ;
             });
 
-            $("select").each(function (i) {
-                $("select").val('default');
-            });
+            $("select").val('default');
 
             $("#province-selection").css("display","none");
             $("#owl-selection").css("display","none");
