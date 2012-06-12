@@ -141,8 +141,8 @@
                 $("#province-selection").css("display","block");
                 $("#owl-selection").css("display","none");
                 $("#keyword-selection").css("display","none");
-                // province_list();
-                // owl_list();
+                province_list();
+                owl_list();
             }
             else {
                 $("#province-selection").css("display","none");
@@ -154,7 +154,7 @@
             if($(".province_list:checked").length > 0) {
                 $("#owl-selection").css("display","block");
                 $("#keyword-selection").css("display","none");
-                // owl_list();
+                owl_list();
             }
             else {
                 $("#owl-selection").css("display","none");
