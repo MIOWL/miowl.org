@@ -43,7 +43,7 @@
                             <?php $i=0; foreach ($province_list as $province) : ?>
                                 <input type="checkbox" name="province[]" class="province_list" value="<?php print $province; ?>" <?php print isset((($plist = $this->input->post('province')))[$i]) ? 'checked="checked"' : NULL;) ?> />
                                     &nbsp;&nbsp;&nbsp;&nbsp;<?php print $province; ?>
-                                <br />
+                                <br /><?php $i++; ?>
                             <?php endforeach; ?>
                             <span class="save button"   onclick="checkAll('.province_list')"   > Check All </span>
                             <span class="delete button" onclick="uncheckAll('.province_list')" > Uncheck All </span>
