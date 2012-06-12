@@ -41,26 +41,26 @@
                         <label for="province">Province</label>
                         <div id="province_list" style="display: inline-block;" >
                             <?php foreach ($province_list as $province) : ?>
-                                <input type="checkbox" name="province[]" id="province-<?php print $province; ?>" value="<?php print $province; ?>" <?php if($this->input->post('province-' . $province)) print 'checked="checked"'; ?> />
+                                <input type="checkbox" name="province[]" id="province-<?php print $province; ?>" value="<?php print $province; ?>" <?php print set_select('province[]', $province); ?> />
                                     &nbsp;&nbsp;&nbsp;&nbsp;<?php print $province; ?>
                                 <br />
                             <?php endforeach; ?>
-                            <span class="save button"   onclick="checkAll(document.search.province)"   > Check All </span>
-                            <span class="delete button" onclick="uncheckAll(document.search.province)" > Uncheck All </span>
+                            <span class="save button"   onclick="checkAll(document.search.province[])"   > Check All </span>
+                            <span class="delete button" onclick="uncheckAll(document.search.province[])" > Uncheck All </span>
                         </div>
                         <p class="formHint">Choose the province search within.</p>
                     </div>
 
                     <div id="owls-selection" class="ctrlHolder" >
-                        <label for="s_owl_id">Search within specific owls?</label>
-                        <div class="s_owl_id" id="owl_list" style="display: inline-block;" >
+                        <label for="owl">Search within specific owls?</label>
+                        <div id="owl" style="display: inline-block;" >
                             <?php foreach ($this->owl_model->get_all_owls()->result() as $row) : ?>
-                                <input type="checkbox" name="owls-<?php print $row->id; ?>" id="owls-<?php print $row->id; ?>" value="<?php print $row->id; ?>" <?php if($this->input->post('owls-' . $row->id)) print 'checked="checked"'; ?> />
+                                <input type="checkbox" name="owl[]" id="owl" value="<?php print $row->id; ?>" <?php print set_select('owl[]', $row->id); ?> />
                                     &nbsp;&nbsp;&nbsp;&nbsp;<?php print $row->owl_name; ?>
                                 <br />
                             <?php endforeach; ?>
-                            <span class="save button"   onclick="checkAll(document.search.province)"   > Check All </span>
-                            <span class="delete button" onclick="uncheckAll(document.search.province)" > Uncheck All </span>
+                            <span class="save button"   onclick="checkAll(document.search.owl[])"   > Check All </span>
+                            <span class="delete button" onclick="uncheckAll(document.search.owl[])" > Uncheck All </span>
                         </div>
                         <p class="formHint">Choose the owl's you wish to search within.<br /><strong>NOTE:</strong> selecting none will search all.</p>
                     </div>
