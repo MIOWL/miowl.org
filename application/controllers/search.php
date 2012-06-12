@@ -81,6 +81,7 @@ class Search extends CI_Controller {
 
         // form validation rules
         $this->form_validation->set_rules('keyword', 'Search Term', 'required|trim|callback__valid_search');
+        $this->form_validation->set_rules('type', 'Owl Type', 'callback__valid_choice');
 
         // did the user submit
         if ($this->form_validation->run())
@@ -261,6 +262,25 @@ class Search extends CI_Controller {
         
         $this->form_validation->set_message('_valid_search', 'No results found...');
         return FALSE;
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * callback _valid_choice()
+     * function will validate that the user has not selected a default drop down value.
+     *
+     * @param string $choice - choice to validate
+     */
+    public function _valid_choice($choice = FALSE)
+    {
+        if (!$choice || $choice == 'default')
+        {
+            $this->form_validation->set_message('_valid_choice', 'The %s field has an invalid choice!');
+            return FALSE;
+        }
+
+        return TRUE;
     }
     //------------------------------------------------------------------
 
