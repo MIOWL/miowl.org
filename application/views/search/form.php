@@ -101,7 +101,7 @@
     <!-- Page Javascript -->
     <script type="text/javascript">
         // hide the areas from a clear button
-        $("button[type=reset]").click(function() {
+        /*$("button[type=reset]").click(function() {
             $("input[type=checkbox]").each(function (i) {
                 this.checked = false ;
             });
@@ -115,7 +115,7 @@
             $("#province-selection").css("display","none");
             $("#owl-selection").css("display","none");
             $("#keyword-selection").css("display","none");
-        });
+        });*/
 
         // type selection change
         $("#type").change(function () {
