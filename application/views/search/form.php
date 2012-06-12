@@ -149,7 +149,7 @@
             }
         }
         function province_list() {
-            if($(".province_list:checked").length > 0) {
+            if(($("#type option:selected").val() != "default") && ($(".province_list:checked").length > 0)) {
                 $("#owl-selection").css("display","block");
                 $("#keyword-selection").css("display","none");
                 owl_list();
@@ -160,7 +160,7 @@
             }
         }
         function owl_list() {
-            if($(".owl_list:checked").length > 0) {
+            if(($("#type option:selected").val() != "default") && ($(".province_list:checked").length > 0) && ($(".owl_list:checked").length > 0)) {
                 $("#keyword-selection").css("display","block");
             }
             else {
