@@ -102,7 +102,19 @@
     <script type="text/javascript">
         // hide the areas from a clear button
         $("button[type=reset]").click(function() {
-            $("#province-selection").css("display","block");
+            $("input[type=checkbox]").each(function (i) {
+                this.checked = false ;
+            });
+
+            $("input[type=text]").each(function (i) {
+                this.text = null ;
+            });
+
+            $("select").each(function (i) {
+                this.val('default');
+            });
+
+            $("#province-selection").css("display","none");
             $("#owl-selection").css("display","none");
             $("#keyword-selection").css("display","none");
         });
@@ -161,8 +173,7 @@
         // checkAll/uncheckAll functions
         function checkAll(field)
         {
-            $(field).each(function (i)
-            {
+            $(field).each(function(i) {
                 this.checked = true ;
             });
 
@@ -176,8 +187,7 @@
 
         function uncheckAll(field)
         {
-            $(field).each(function (i)
-            {
+            $(field).each(function(i) {
                 this.checked = false ;
             });
 
