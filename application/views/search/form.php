@@ -45,8 +45,8 @@
                                     &nbsp;&nbsp;&nbsp;&nbsp;<?php print $province; ?>
                                 <br />
                             <?php endforeach; ?>
-                            <input type=button name="CheckAll"   value="Check All"   onClick="checkAll(document.search.province)">
-                            <input type=button name="UnCheckAll" value="Uncheck All" onClick="uncheckAll(document.search.province)">
+                            <input type="button"class="button" name="CheckAll"   value="Check All"   onClick="checkAll(document.search.province)">
+                            <input type="button"class="button" name="UnCheckAll" value="Uncheck All" onClick="uncheckAll(document.search.province)">
                         </div>
                         <p class="formHint">Choose the province search within.</p>
                     </div>
