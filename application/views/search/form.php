@@ -102,9 +102,12 @@
     <script type="text/javascript">
         // hide the areas from a clear button
         $("button[type=reset]").click(function() {
-            $("input[type=checkbox]").each(function (i) {
-                this.checked = false ;
-            });
+            // $("input[type=checkbox]").each(function (i) {
+            //     this.checked = false ;
+            // });
+
+            uncheckAll('.province_list');
+            uncheckAll('.owl_list');
 
             $("input[type=text]").each(function (i) {
                 this.text = null ;
