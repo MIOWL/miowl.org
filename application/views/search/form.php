@@ -40,7 +40,7 @@
                     <div id="province-selection" class="ctrlHolder" >
                         <label for="province[]">Province</label>
                         <div id="province_list" style="display: inline-block;" >
-                            <?php $i=0; foreach ($province_list as $province) : ?>
+                            <?php foreach ($province_list as $province) : ?>
                                 <input
                                     type="checkbox"
                                     name="province[]"
@@ -48,8 +48,7 @@
                                     value="<?php print $province; ?>"
                                     <?php
                                         $plist = $this->input->post('province');
-                                        print isset($plist[$i]) ? 'checked="checked"' : NULL;
-                                        $i++;
+                                        print isset($plist[$province]) ? 'checked="checked"' : NULL;
                                     ?>
                                 />&nbsp;&nbsp;&nbsp;&nbsp;<?php print $province; ?>
                                 <br />
