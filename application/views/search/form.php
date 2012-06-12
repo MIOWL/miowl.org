@@ -100,6 +100,12 @@
 
     <!-- Page Javascript -->
     <script type="text/javascript">
+        // hide the areas from a clear button
+        $("button[type=reset]").click(function() {
+            $("#province-selection").css("display","block");
+            $("#owl-selection").css("display","none");
+            $("#keyword-selection").css("display","none");
+        });
 
         // type selection change
         $("#type").change(function () {
