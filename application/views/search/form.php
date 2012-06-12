@@ -107,12 +107,33 @@
             if(str != "default") {
                 $("#province-selection").css("display","block");
             }
-            else{
+            else {
                 $("#province-selection").css("display","none");
                 $("#owl-selection").css("display","none");
                 $("#keyword-selection").css("display","none");
             }
         }).change();
+
+        //check we have at least one checkbox chosen in the province list
+        $('.province_list').click(function() {
+            if($(".province_list:checked").length > 0) {
+                $("#owl-selection").css("display","block");
+            }
+            else {
+                $("#owl-selection").css("display","none");
+                $("#keyword-selection").css("display","none");
+            }
+        });
+
+        //check we have at least one checkbox chosen in the owl list
+        $('.owl_list').click(function() {
+            if($(".owl_list:checked").length > 0) {
+                $("#keyword-selection").css("display","block");
+            }
+            else {
+                $("#keyword-selection").css("display","none");
+            }
+        });
 
         // checkAll/uncheckAll functions
         function checkAll(field)
