@@ -55,7 +55,7 @@
                         <p class="formHint">Choose the province search within.</p>
                     </div>
 
-                    <div id="owls-selection" class="ctrlHolder" >
+                    <div id="owl-selection" class="ctrlHolder" >
                         <label for="owl">Search within specific owls?</label>
                         <div id="owl" style="display: inline-block;" >
                             <?php foreach ($this->owl_model->get_all_owls()->result() as $row) : ?>
@@ -75,10 +75,10 @@
                             <span class="save button"   onclick="checkAll('.owl_list')"   > Check All </span>
                             <span class="delete button" onclick="uncheckAll('.owl_list')" > Uncheck All </span>
                         </div>
-                        <p class="formHint">Choose the owl's you wish to search within.<br /><strong>NOTE:</strong> selecting none will search all.</p>
+                        <p class="formHint">Choose the owl's you wish to search within.</p>
                     </div>
 
-                    <div class="ctrlHolder">
+                    <div id="keyword-selection" class="ctrlHolder">
                         <label for="keyword">Keyword</label>
                         <input type="text" name="keyword" id="keyword" size="35" class="textInput medium" value="<?php print set_value('keyword'); ?>" />
                     </div>
@@ -109,7 +109,8 @@
             }
             else{
                 $("#province-selection").css("display","none");
-                $("#owls-selection").css("display","none");
+                $("#owl-selection").css("display","none");
+                $("#keyword-selection").css("display","none");
             }
         }).change();
 
