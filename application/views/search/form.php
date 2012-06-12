@@ -111,7 +111,7 @@
             });
 
             // reset all the text input box's
-            $("input[type=text]").text = null;
+            $("input[type=text]").val(null);
 
             // reset all the select box's
             $("select").val('default');
