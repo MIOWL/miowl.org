@@ -86,7 +86,7 @@
                 </fieldset>
 
                 <div class="buttonHolder">
-                    <button class="button" type="reset" onclick="type_list()">Clear</button>
+                    <button class="button" type="reset">Clear</button>
                     <button class="button" type="submit">Search</button>
                 </div>
 
