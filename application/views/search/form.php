@@ -48,7 +48,7 @@
                                     value="<?php print $province; ?>"
                                     <?php
                                         $plist = $this->input->post('province');
-                                        print isset($plist[$i]) ? 'checked="checked"' : NULL);
+                                        print isset($plist[$i]) ? 'checked="checked"' : NULL;
                                         $i++;
                                     ?>
                                 />&nbsp;&nbsp;&nbsp;&nbsp;<?php print $province; ?>
