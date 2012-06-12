@@ -23,16 +23,16 @@
 
                     <div class="ctrlHolder">
                         <label for="keyword">Keyword</label>
-                        <input type="text" name="keyword" id="keyword" size="35" class="textInput medium" autocompelete="OFF" value="<?php print set_value('keyword'); ?>" />
+                        <input type="text" name="keyword" id="keyword" size="35" class="textInput medium" value="<?php print set_value('keyword'); ?>" />
                     </div>
 
                     <div class="ctrlHolder" >
                         <label for="type">Clinic, Hospital or Both?</label>
                         <select id="type" name="type" >
-                            <option value="default" autocompelete="OFF" <?php echo set_select('type', 'default', TRUE); ?> />Select...</option>
-                            <option value="clinic" autocompelete="OFF" <?php echo set_select('type', 'clinic'); ?> />Clinic</option>
-                            <option value="hospital" autocompelete="OFF" <?php echo set_select('type', 'hospital'); ?> />Hospital</option>
-                            <option value="both" autocompelete="OFF" <?php echo set_select('type', 'both'); ?> />Both</option>
+                            <option value="default" <?php print set_select('type', 'default', TRUE); ?> />Select...</option>
+                            <option value="clinic" <?php print set_select('type', 'clinic'); ?> />Clinic</option>
+                            <option value="hospital" <?php print set_select('type', 'hospital'); ?> />Hospital</option>
+                            <option value="both" <?php print set_select('type', 'both'); ?> />Both</option>
                         </select>
                         <p class="formHint">Choose the type of owl you wish to search within.</p>
                     </div>
@@ -41,7 +41,7 @@
                         <label for="province">Province</label>
                         <div id="province_list" style="display: inline-block;" >
                             <?php foreach ($province_list as $province) : ?>
-                                <input type="checkbox" name="province" id="province-<?php print $province; ?>" value="<?php print $province; ?>" <?php if($this->input->post('province-' . $province)) print 'checked="checked"'; ?> autocompelete="OFF" />
+                                <input type="checkbox" name="province" id="province-<?php print $province; ?>" value="<?php print $province; ?>" <?php if($this->input->post('province-' . $province)) print 'checked="checked"'; ?> />
                                     &nbsp;&nbsp;&nbsp;&nbsp;<?php print $province; ?>
                                 <br />
                             <?php endforeach; ?>
@@ -55,10 +55,12 @@
                         <label for="s_owl_id">Search within specific owls?</label>
                         <div class="s_owl_id" id="owl_list" style="display: inline-block;" >
                             <?php foreach ($this->owl_model->get_all_owls()->result() as $row) : ?>
-                                <input type="checkbox" name="owls-<?php print $row->id; ?>" id="owls-<?php print $row->id; ?>" value="<?php print $row->id; ?>" <?php if($this->input->post('owls-' . $row->id)) print 'checked="checked"'; ?> autocompelete="OFF" />
+                                <input type="checkbox" name="owls-<?php print $row->id; ?>" id="owls-<?php print $row->id; ?>" value="<?php print $row->id; ?>" <?php if($this->input->post('owls-' . $row->id)) print 'checked="checked"'; ?> />
                                     &nbsp;&nbsp;&nbsp;&nbsp;<?php print $row->owl_name; ?>
                                 <br />
                             <?php endforeach; ?>
+                            <span class="save button"   onclick="checkAll(document.search.province)"   > Check All </span>
+                            <span class="delete button" onclick="uncheckAll(document.search.province)" > Uncheck All </span>
                         </div>
                         <p class="formHint">Choose the owl's you wish to search within.<br /><strong>NOTE:</strong> selecting none will search all.</p>
                     </div>
