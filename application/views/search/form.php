@@ -118,7 +118,7 @@
         {
             $(field).each(function (i)
             {
-                $(this).checked = true ;
+                this.checked = true ;
             });
         }
 
