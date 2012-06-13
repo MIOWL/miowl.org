@@ -145,7 +145,7 @@
             if(str != "default") {
                 $.getJSON('get_results/type/' + str, function(data) {
                     $('.result').text('Type list load was performed.');
-                    data.each(function(value){
+                    $(data).each(function(value){
                         // todo
                     });
                 });
@@ -171,7 +171,7 @@
 
                 $.get('get_results/province/' + province_list, function(data) {
                     $('.result').text('Province List load was performed.');
-                    data.each(function(value){
+                    $(data).each(function(value){
                         // todo
                     });
                 });
