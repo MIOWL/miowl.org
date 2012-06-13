@@ -143,10 +143,9 @@
         function type_list() {
             var str = $("#type option:selected").val();
             if(str != "default") {
-                $.get('get_results/type/' + str, function(data) {
-                    // $('.result').text(data);
+                $.getJSON('get_results/type/' + str, function(data) {
+                    $('.result').text(data);
                     alert('Load was performed.');
-                    alert(data);
                 });
 
                 $("#province-selection").css("display","block");
@@ -169,9 +168,8 @@
                 });
 
                 $.get('get_results/province/' + province_list, function(data) {
-                    // $('.result').text(data);
+                    $('.result').text(data);
                     alert('Load was performed.');
-                    alert(data);
                 });
 
                 $("#owl-selection").css("display","block");
