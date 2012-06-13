@@ -245,12 +245,14 @@ class Search extends CI_Controller {
         // if(!$input)
         //     return FALSE;
 
+        $output = array();
         foreach ($input as $key => $value) {
             if(is_array($value))
-                $post_data[$key] = $this->urldecode_array($value);
+                $output[$key] = $this->urldecode_array($value);
             else
-                $post_data[$key] = urldecode($value);
+                $output[$key] = urldecode($value);
         }
+        return $output;
     }
     //------------------------------------------------------------------
 
