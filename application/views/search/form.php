@@ -145,9 +145,11 @@
             if(str != "default") {
                 $.getJSON('get_results/type/' + str, function(data) {
                     $('.result').text('Type list load was performed.');
+                    var input_list = null;
                     $(data).each(function(value){
-                        // todo
+                        input_list += '<input type="checkbox" name="province[]" class="province_list" value="$province" checked="checked" />&nbsp;&nbsp;&nbsp;&nbsp; $province <br />';
                     });
+                    $('#province-selection').text(input_list);
                 });
 
                 $("#province-selection").css("display","block");
@@ -171,9 +173,11 @@
 
                 $.get('get_results/province/' + province_list, function(data) {
                     $('.result').text('Province List load was performed.');
+                    var owl_list = null;
                     $(data).each(function(value){
-                        // todo
+                        owl_list += '<input type="checkbox" name="owl[]" class="owl_list" value="id" checked="checked" />&nbsp;&nbsp;&nbsp;&nbsp; owl_name <br />';
                     });
+                    $('#owl-selection').text(owl_list);
                 });
 
                 $("#owl-selection").css("display","block");
