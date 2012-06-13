@@ -193,7 +193,9 @@ class Search extends CI_Controller {
     {
         $search = $this->input->post(NULL, TRUE);
 
-        if($search != FALSE)
+        if(!$search)
+            return FALSE;
+        else
             $this->build_search();
 
         $search = $this->session->userdata('search');
