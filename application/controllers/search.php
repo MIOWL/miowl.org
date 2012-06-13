@@ -164,13 +164,11 @@ class Search extends CI_Controller {
             }
         }
 
-        print '<pre>' . print_r($this->db->last_query(), TRUE) . '</pre>';
-
         // do we have a valid output
         $output = ($return_data == FALSE) || empty($return_data) ? array() : array_unique($return_data);
 
         // set our JSON header
-        #@header('Content-type: application/json');
+        @header('Content-type: application/json');
 
         // print out our output in JSON
         print json_encode($output);
