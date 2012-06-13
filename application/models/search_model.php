@@ -78,13 +78,34 @@ class Search_model extends CI_Model {
         // don't show deleted files
         $this->db->where('uploads.deleted', 'false');
 
-        if($having != FALSE)
-            foreach ($having as $keyz)
-                foreach ($keyz as $key => $value)
-                    if($key != '0')
-                        $this->db->or_having($value);
-                    else
-                        $this->db->having($value);
+        if($having) {
+            if(isset($having['owls.owl_type']))
+                $this->db->having($value);
+
+            foreach ($having['owls.owl_province'] as $owl_province) {
+                $i=0;
+                foreach ($owl_province as $value) {
+                    if($i != '0') {
+                        $this->db->or_having('owls.owl_province', $value);
+                    else {
+                        $this->db->having('owls.owl_province', $value);
+                    }
+                    $i++;
+                }
+            }
+
+            foreach ($having['owls.id'] as $owl_id) {
+                $i=0;
+                foreach ($owl_id as $value) {
+                    if($i != '0') {
+                        $this->db->or_having('owls.id', $value);
+                    else {
+                        $this->db->having('owls.id', $value);
+                    }
+                    $i++;
+                }
+            }
+        }
 
         // order the data
         foreach ($this->order_by as $sort) {
