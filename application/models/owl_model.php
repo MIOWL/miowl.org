@@ -290,7 +290,7 @@ class Owl_model extends CI_Model {
      */
     public function get_owl_by_type($owl_type = FALSE)
     {
-        $this->db->select('id', 'owl_name');
+        $this->db->select(*);
 
         if ($owl_type != FALSE && $owl_type != 'both')
             $this->db->where('owl_type', $owl_type);
