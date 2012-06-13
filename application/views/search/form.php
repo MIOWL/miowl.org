@@ -144,8 +144,10 @@
             var str = $("#type option:selected").val();
             if(str != "default") {
                 $.getJSON('get_results/type/' + str, function(data) {
-                    $('.result').text(data);
-                    alert('Load was performed.');
+                    $('.result').text('Type list load was performed.');
+                    data.each(function(value){
+                        // todo
+                    });
                 });
 
                 $("#province-selection").css("display","block");
@@ -168,8 +170,10 @@
                 });
 
                 $.get('get_results/province/' + province_list, function(data) {
-                    $('.result').text(data);
-                    alert('Load was performed.');
+                    $('.result').text('Province List load was performed.');
+                    data.each(function(value){
+                        // todo
+                    });
                 });
 
                 $("#owl-selection").css("display","block");
