@@ -313,7 +313,7 @@ class Owl_model extends CI_Model {
      */
     public function get_owl_by_province($province = FALSE)
     {
-        if (!$owl_type)
+        if (!$province)
             return FALSE;
 
         $this->db->select('*');
