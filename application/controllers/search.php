@@ -223,7 +223,7 @@ class Search extends CI_Controller {
         $post_data = $this->input->post(NULL, TRUE);
         $search_array = array();
         $search_data['keyword']                     = $post_data['keyword'];
-        $search_data['having']['owls.owl_province'] = $post_data['province';
+        $search_data['having']['owls.owl_province'] = $post_data['province'];
         $search_data['having']['owls.id']           = $post_data['owl'];
 
         // build the post data into the session
