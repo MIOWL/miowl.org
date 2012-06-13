@@ -70,21 +70,16 @@ class Search extends CI_Controller {
         // setup our page data
         $page_data = array();
         $page_data['page_title']    = 'Search Form';
-        $page_data['search_page']   = FALSE; // Used in the footer for jQuery code
         $page_data['search_data']   = $this->session->userdata('search');
         $page_data['province_list'] = $this->province_list;
-
-        // set some session data for use later, and clear 1st
-        $this->session->unset_userdata('find_arr');
-        $this->session->set_userdata('find_arr', array('file_ext-', 'owls-', 'lic-'));
 
         // form validation rules
         $this->form_validation->set_rules('keyword', 'Search Term', 'required|trim|callback__valid_search');
         $this->form_validation->set_rules('type', 'Owl Type', 'callback__valid_choice');
 
-        print '<pre>' . print_r($this->urldecode_array($this->input->post(NULL, TRUE)), TRUE) . '</pre>';
+        // print '<pre>' . print_r($this->urldecode_array($this->input->post(NULL, TRUE)), TRUE) . '</pre>';
         // print '<pre>' . print_r($this->input->post(NULL, TRUE), TRUE) . '</pre>';
-        // print '<pre>' . print_r($this->db->last_query(), TRUE) . '</pre>';
+        print '<pre>' . print_r($this->db->last_query(), TRUE) . '</pre>';
 
         // did the user submit
         if ($this->form_validation->run())
@@ -226,6 +221,11 @@ class Search extends CI_Controller {
         $post_data = $this->urldecode_array($this->input->post(NULL, TRUE));
         $search_array = array();
         $search_array['keyword']                     = $post_data['keyword'];
+
+        if($post_data['type'] != 'both')
+            $search_array['having']['owls.owl_type'] = $post_data['type'];
+
+        $search_array['having']['owls.owl_province'] = $post_data['province'];
         $search_array['having']['owls.owl_province'] = $post_data['province'];
         $search_array['having']['owls.id']           = $post_data['owl'];
 
