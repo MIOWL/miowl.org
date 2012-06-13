@@ -242,8 +242,8 @@ class Search extends CI_Controller {
      */
     private function urldecode_array($input = FALSE)
     {
-        if(!$input)
-            return FALSE;
+        // if(!$input)
+        //     return FALSE;
 
         foreach ($input as $key => $value) {
             if(is_array($value))
