@@ -80,7 +80,7 @@ class Search_model extends CI_Model {
 
         if($having) {
             if(isset($having['owls.owl_type']))
-                $this->db->having($value);
+                $this->db->having($having['owls.owl_type']);
 
             foreach ($having['owls.owl_province'] as $owl_province) {
                 $i=0;
