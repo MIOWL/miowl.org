@@ -164,6 +164,8 @@ class Search extends CI_Controller {
             }
         }
 
+        print '<pre>' . print_r($this->db->last_query(), TRUE) . '</pre>';
+
         // do we have a valid output
         $output = ($return_data == FALSE) || empty($return_data) ? array() : array_unique($return_data);
 
