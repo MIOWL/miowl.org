@@ -189,11 +189,8 @@ class Search extends CI_Controller {
      *
      * Private function to do the search via the vars given in the post.
      */
-    private function gen_results($keyword = FALSE, $offset = 0, $limit = FALSE)
+    private function gen_results($offset = 0, $limit = FALSE)
     {
-        // build up the where array
-        $having     = array();
-
         $search = $this->input->post(NULL, TRUE);
 
         if($search != FALSE)
@@ -201,32 +198,7 @@ class Search extends CI_Controller {
 
         $search = $this->session->userdata('search');
 
-        foreach ($search as $haystack => $value) {
-            foreach ($this->session->userdata('find_arr') as $needle) {
-                if (strlen(strstr($haystack,$needle)) > 0)
-                {
-                    switch ($needle)
-                    {
-                        case 'owls-':
-                            $having['owl_id'][] = array('owl_id' => str_replace($needle, '', $haystack));
-                            break;
-
-                        case 'lic-':
-                            $having['lic_id'][] = array('lic_id' => str_replace($needle, '', $haystack));
-                            break;
-
-                        case 'file_ext-':
-                            $having['file_ext'][] = array('file_ext' => str_replace($needle, '.', $haystack));
-                            break;
-
-                        default:
-                            break;
-                    }
-                }
-            }
-        }
-
-        return $this->search_model->search_all($keyword, $offset, $limit, $having);
+        return $this->search_model->search_all($search['keyword'], $offset, $limit, $search['having']);
     }
     //------------------------------------------------------------------
 
@@ -241,8 +213,14 @@ class Search extends CI_Controller {
         // remove the search data if it exists (to avoid any issues)
         $this->session->unset_userdata('search');
 
+        // build up the session data from the post data
+        $search_array = array();
+        $search_data['keyword']                     = $this->input->post('keyword');
+        $search_data['having']['owls.owl_province'] = $this->input->post('province');
+        $search_data['having']['owls.id']           = $this->input->post('owl');
+
         // build the post data into the session
-        $this->session->set_userdata('search', $this->input->post(NULL, TRUE));
+        $this->session->set_userdata('search', $search_array);
     }
     //------------------------------------------------------------------
 
@@ -257,7 +235,7 @@ class Search extends CI_Controller {
      */
     public function _valid_search($keyword)
     {
-        if($this->gen_results($keyword, 0, FALSE))
+        if($this->gen_results())
             return TRUE;
         
         $this->form_validation->set_message('_valid_search', 'No results found...');
