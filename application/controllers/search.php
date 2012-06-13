@@ -202,7 +202,7 @@ class Search extends CI_Controller {
         $search = $this->session->userdata('search');
 
         $query = $this->search_model->search_all($search['keyword'], $offset, $limit, $search['having']);
-        print '<pre>' . print_r($this->db->last_query(), TRUE) . '</pre>';
+        // print '<pre>' . print_r($this->db->last_query(), TRUE) . '</pre>';
         return $query;
     }
     //------------------------------------------------------------------
