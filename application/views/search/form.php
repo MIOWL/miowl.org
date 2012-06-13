@@ -147,7 +147,7 @@
                     $('.result').text('Type list load was performed.');
                     var input_list = '';
                     $(data).each(function(value){
-                        input_list += '<input type="checkbox" name="province[]" class="province_list" value="$province" checked="checked" />&nbsp;&nbsp;&nbsp;&nbsp; $province <br />';
+                        input_list += '<input type="checkbox" name="province[]" class="province_list" value="' + data[name] + '" />&nbsp;&nbsp;&nbsp;&nbsp;' + data[name] + '<br />';
                     });
                     input_list += '<span class="save button"   onclick="checkAll(\'.province_list\')"   > Check All </span><span class="delete button" onclick="uncheckAll(\'.province_list\')" > Uncheck All </span>';
                     $('#province-selection').html(input_list);
@@ -176,8 +176,9 @@
                     $('.result').text('Province List load was performed.');
                     var owl_list = '';
                     $(data).each(function(value){
-                        owl_list += '<input type="checkbox" name="owl[]" class="owl_list" value="id" checked="checked" />&nbsp;&nbsp;&nbsp;&nbsp; owl_name <br />';
+                        owl_list += '<input type="checkbox" name="owl[]" class="owl_list" value="' + data[id] + '" />&nbsp;&nbsp;&nbsp;&nbsp;' + data[name] + '<br />';
                     });
+                    input_list += '<span class="save button"   onclick="checkAll(\'.owl_list\')"   > Check All </span><span class="delete button" onclick="uncheckAll(\'.owl_list\')" > Uncheck All </span>';
                     $('#owl-selection').html(owl_list);
                 });
 
