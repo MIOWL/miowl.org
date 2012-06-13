@@ -82,7 +82,7 @@ class Search_model extends CI_Model {
             if(isset($having['owls.owl_type']))
                 $this->db->having('owls.owl_type', $having['owls.owl_type']);
 
-            foreach ($having['owls.owl_province'] as $owl_province) {
+            // foreach ($having['owls.owl_province'] as $owl_province) {
                 $i=0;
                 foreach ($owl_province as $value) {
                     if($i != '0')
@@ -91,9 +91,9 @@ class Search_model extends CI_Model {
                         $this->db->having('owls.owl_province', $value);
                     $i++;
                 }
-            }
+            // }
 
-            foreach ($having['owls.id'] as $owl_id) {
+            // foreach ($having['owls.id'] as $owl_id) {
                 $i=0;
                 foreach ($owl_id as $value) {
                     if($i != '0')
@@ -102,7 +102,7 @@ class Search_model extends CI_Model {
                         $this->db->having('owls.id', $value);
                     $i++;
                 }
-            }
+            // }
         }
 
         // order the data
