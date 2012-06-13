@@ -149,16 +149,9 @@ class Search extends CI_Controller {
         // lets see what we want to get results for
         if ($type == 'type') {
                 if(($data = $this->owl_model->get_owl_by_type($value))) {
-                    $list_data      = array();
-                    $return_data    = $this->province_list;
-                    $i              = 0;
-
+                    $return_data = array();
                     foreach ($data->result() as $row)
-                        $list_data[] = $row->owl_province;
-
-                    foreach ($return_data as $val)
-                        if(!in_array($val, $list_data))
-                            unset($return_data[$val]);
+                        $return_data[] = $row->owl_province;
                 }
             }
 
