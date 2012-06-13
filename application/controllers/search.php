@@ -154,7 +154,7 @@ class Search extends CI_Controller {
         }
 
         elseif ($type == 'province') {
-            $province_list = explode('-', str_replace('null-', NULL, $value));
+            $province_list = explode('-', $value);
             foreach ($province_list as $value) {
                 if(($data = $this->owl_model->get_owl_by_province($value))) {
                     foreach ($data->result() as $row) {

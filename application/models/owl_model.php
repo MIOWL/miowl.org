@@ -288,11 +288,11 @@ class Owl_model extends CI_Model {
      *
      * @param string $owl_type - owl type (clinic/hospital)
      */
-    public function get_owl_by_type($owl_type = FALSE)
+    public function get_owl_by_type($owl_type = 'both')
     {
         $this->db->select('*');
 
-        if ($owl_type != FALSE && $owl_type != 'both')
+        if ($owl_type != 'both')
             $this->db->where('owl_type', $owl_type);
 
         $query = $this->db->get('owls');
