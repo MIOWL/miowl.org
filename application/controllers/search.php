@@ -116,14 +116,14 @@ class Search extends CI_Controller {
         $page_data = array();
         $page_data['page_title'] = 'Search Results';
         $page_data['keyword'] = $search['keyword'];
-        $page_data['query'] = $this->gen_results($search['keyword'], $offset, $this->per_page_limit);
+        $page_data['query'] = $this->gen_results($offset, $this->per_page_limit);
 
         // print '<pre>' . print_r($this->db->last_query(), TRUE) . '</pre>';
 
         // setup pagination lib
         $config['base_url']         = base_url('search/results');
         $config['uri_segment']      = 3;
-        $config['total_rows']       = (($rows = $this->gen_results($search['keyword']))) ? $rows->num_rows() : 0;
+        $config['total_rows']       = (($rows = $this->gen_results())) ? $rows->num_rows() : 0;
         $config['per_page']         = $this->per_page_limit;
         $config['anchor_class']     = 'class="button" ';
         $config['cur_tag_open']     = '&nbsp;<div class="button current">';
@@ -194,8 +194,6 @@ class Search extends CI_Controller {
         $search = $this->input->post(NULL, TRUE);
 
         if($search)
-            return FALSE;
-        else
             $this->build_search();
 
         $search = $this->session->userdata('search');
@@ -222,9 +220,9 @@ class Search extends CI_Controller {
         // build up the session data from the post data
         $post_data = $this->input->post(NULL, TRUE);
         $search_array = array();
-        $search_data['keyword']                     = $post_data['keyword'];
-        $search_data['having']['owls.owl_province'] = $post_data['province'];
-        $search_data['having']['owls.id']           = $post_data['owl'];
+        $search_array['keyword']                     = $post_data['keyword'];
+        $search_array['having']['owls.owl_province'] = $post_data['province'];
+        $search_array['having']['owls.id']           = $post_data['owl'];
 
         // build the post data into the session
         $this->session->set_userdata('search', $search_array);
