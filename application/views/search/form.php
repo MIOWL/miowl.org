@@ -144,7 +144,7 @@
             var str = $("#type option:selected").val();
             if(str != "default") {
                 $.get('search/get_results/type/' + str, function(data) {
-                    $('.result').html(data);
+                    $('.result').text(data);
                     alert('Load was performed.');
                 });
 
@@ -168,7 +168,7 @@
                 });
 
                 $.get('search/get_results/province/' + province_list, function(data) {
-                    $('.result').html(data);
+                    $('.result').text(data);
                     alert('Load was performed.');
                 });
 
