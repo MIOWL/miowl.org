@@ -169,7 +169,7 @@ class Search extends CI_Controller {
         $output = $return_data === FALSE ? array() : $output;
 
         // set our JSON header
-        @header('Content-type: application/json');
+        #@header('Content-type: application/json');
 
         // print out our output in JSON
         print json_encode($output);
