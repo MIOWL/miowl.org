@@ -59,7 +59,7 @@
 
                     <div id="owl-selection" class="ctrlHolder" >
                         <label for="owl">Search within specific owls?</label>
-                        <div id="owl" style="display: inline-block;" >
+                        <div id="owl_list" style="display: inline-block;" >
                             <?php foreach ($this->owl_model->get_all_owls()->result() as $row) : ?>
                                 <input
                                     type="checkbox"
@@ -150,7 +150,7 @@
                         input_list += '<input type="checkbox" name="province[]" class="province_list" value="' + value['name'] + '" />&nbsp;&nbsp;&nbsp;&nbsp;' + value['name'] + '<br />';
                     });
                     input_list += '<span class="save button"   onclick="checkAll(\'.province_list\')"   > Check All </span><span class="delete button" onclick="uncheckAll(\'.province_list\')" > Uncheck All </span>';
-                    $('#province-selection').html(input_list);
+                    $('#province-list').html(input_list);
                 });
 
                 $("#province-selection").css("display","block");
@@ -179,7 +179,7 @@
                         owl_list += '<input type="checkbox" name="owl[]" class="owl_list" value="' + value[id] + '" />&nbsp;&nbsp;&nbsp;&nbsp;' + value['name'] + '<br />';
                     });
                     input_list += '<span class="save button"   onclick="checkAll(\'.owl_list\')"   > Check All </span><span class="delete button" onclick="uncheckAll(\'.owl_list\')" > Uncheck All </span>';
-                    $('#owl-selection').html(owl_list);
+                    $('#owl-list').html(owl_list);
                 });
 
                 $("#owl-selection").css("display","block");
