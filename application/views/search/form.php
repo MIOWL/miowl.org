@@ -146,8 +146,8 @@
                 $.getJSON('get_results/type/' + str, function(data) {
                     $('.result').text('Type list load was performed.');
                     var input_list = '';
-                    $(data).each(function(value){
-                        input_list += '<input type="checkbox" name="province[]" class="province_list" value="' + value.name + '" />&nbsp;&nbsp;&nbsp;&nbsp;' + value.name + '<br />';
+                    $(data).each(function(key, val){
+                        input_list += '<input type="checkbox" name="province[]" class="province_list" value="' + val.name + '" />&nbsp;&nbsp;&nbsp;&nbsp;' + val.name + '<br />';
                     });
                     input_list += '<span class="save button"   onclick="checkAll(\'.province_list\')"   > Check All </span><span class="delete button" onclick="uncheckAll(\'.province_list\')" > Uncheck All </span>';
                     $('#province_list').html(input_list);
@@ -175,8 +175,8 @@
                 $.get('get_results/province/' + province_list, function(data) {
                     $('.result').text('Province List load was performed.');
                     var owl_list = '';
-                    $(data).each(function(value){
-                        owl_list += '<input type="checkbox" name="owl[]" class="owl_list" value="' + value.id + '" />&nbsp;&nbsp;&nbsp;&nbsp;' + value.name + '<br />';
+                    $(data).each(function(key, val){
+                        owl_list += '<input type="checkbox" name="owl[]" class="owl_list" value="' + val.id + '" />&nbsp;&nbsp;&nbsp;&nbsp;' + val.name + '<br />';
                     });
                     input_list += '<span class="save button"   onclick="checkAll(\'.owl_list\')"   > Check All </span><span class="delete button" onclick="uncheckAll(\'.owl_list\')" > Uncheck All </span>';
                     $('#owl-list').html(owl_list);
