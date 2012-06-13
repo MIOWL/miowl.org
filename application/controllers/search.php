@@ -165,7 +165,8 @@ class Search extends CI_Controller {
         }
 
         // do we have a valid output
-        $output = ($return_data == FALSE) || empty($return_data) ? array() : array_unique($return_data);
+        #$output = ($return_data == FALSE) || empty($return_data) ? array() : array_unique($return_data);
+        $output = ($return_data == FALSE) || empty($return_data) ? array() : $return_data;
 
         // set our JSON header
         @header('Content-type: application/json');
