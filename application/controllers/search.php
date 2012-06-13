@@ -150,7 +150,7 @@ class Search extends CI_Controller {
         if ($type == 'type') {
                 if(($data = $this->owl_model->get_owl_by_type($value))) {
                     $return_data = array();
-                    foreach ($data->results() as $row) {
+                    foreach ($data->result() as $row) {
                         $return_data[] = $row->owl_province;
                     }
                 }
@@ -159,7 +159,7 @@ class Search extends CI_Controller {
         elseif ($type == 'province') {
                 if(($data = $this->owl_model->get_owl_by_province($value))) {
                     $return_data = array();
-                    foreach ($data->results() as $row) {
+                    foreach ($data->result() as $row) {
                         $return_data[$row->id] = $row->owl_name;
                     }
                 }
