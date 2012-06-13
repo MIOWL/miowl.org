@@ -193,7 +193,7 @@ class Search extends CI_Controller {
     {
         $search = $this->input->post(NULL, TRUE);
 
-        if(!$search)
+        if($search)
             return FALSE;
         else
             $this->build_search();
