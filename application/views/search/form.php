@@ -178,7 +178,7 @@
                     $(data).each(function(key, val){
                         owl_list += '<input type="checkbox" name="owl[]" class="owl_list" value="' + val.id + '" />&nbsp;&nbsp;&nbsp;&nbsp;' + val.name + '<br />';
                     });
-                    input_list += '<span class="save button"   onclick="checkAll(\'.owl_list\')"   > Check All </span><span class="delete button" onclick="uncheckAll(\'.owl_list\')" > Uncheck All </span>';
+                    owl_list += '<span class="save button"   onclick="checkAll(\'.owl_list\')"   > Check All </span><span class="delete button" onclick="uncheckAll(\'.owl_list\')" > Uncheck All </span>';
                     $('#owl-list').html(owl_list);
                 });
 
