@@ -167,7 +167,7 @@
         }
         function province_list() {
             if(($("#type option:selected").val() != "default") && ($(".province_list:checked").length > 0)) {
-                var province_list = '';
+                var province_list = null;
                 $(".province_list:checked").each(function() {
                     province_list += '-' + $(this).val();
                 });
