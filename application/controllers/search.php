@@ -82,7 +82,8 @@ class Search extends CI_Controller {
         $this->form_validation->set_rules('keyword', 'Search Term', 'required|trim|callback__valid_search');
         $this->form_validation->set_rules('type', 'Owl Type', 'callback__valid_choice');
 
-        print '<pre>' . print_r($this->input->post(NULL, TRUE), TRUE) . '</pre>';
+        print '<pre>' . print_r($this->urldecode_array($this->input->post(NULL, TRUE)), TRUE) . '</pre>';
+        // print '<pre>' . print_r($this->input->post(NULL, TRUE), TRUE) . '</pre>';
         // print '<pre>' . print_r($this->db->last_query(), TRUE) . '</pre>';
 
         // did the user submit
