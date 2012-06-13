@@ -84,7 +84,8 @@ class Search_model extends CI_Model {
 
             // foreach ($having['owls.owl_province'] as $owl_province) {
                 $i=0;
-                foreach ($owl_province as $value) {
+                // foreach ($owl_province as $value) {
+                foreach ((($owl_province = $having['owls.owl_province'])) as $value) {
                     if($i != '0')
                         $this->db->or_having('owls.owl_province', $value);
                     else
@@ -95,7 +96,8 @@ class Search_model extends CI_Model {
 
             // foreach ($having['owls.id'] as $owl_id) {
                 $i=0;
-                foreach ($owl_id as $value) {
+                // foreach ($owl_id as $value) {
+                foreach ((($owl_id = $having['owls.id'])) as $value) {
                     if($i != '0')
                         $this->db->or_having('owls.id', $value);
                     else
