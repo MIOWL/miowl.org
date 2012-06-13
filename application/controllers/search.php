@@ -79,7 +79,7 @@ class Search extends CI_Controller {
 
         // print '<pre>' . print_r($this->urldecode_array($this->input->post(NULL, TRUE)), TRUE) . '</pre>';
         // print '<pre>' . print_r($this->input->post(NULL, TRUE), TRUE) . '</pre>';
-        print '<pre>' . print_r($this->db->last_query(), TRUE) . '</pre>';
+        // print '<pre>' . print_r($this->db->last_query(), TRUE) . '</pre>';
 
         // did the user submit
         if ($this->form_validation->run())
@@ -116,7 +116,7 @@ class Search extends CI_Controller {
         $page_data['keyword'] = $search['keyword'];
         $page_data['query'] = $this->gen_results($offset, $this->per_page_limit);
 
-        print '<pre>' . print_r($this->db->last_query(), TRUE) . '</pre>';
+        // print '<pre>' . print_r($this->db->last_query(), TRUE) . '</pre>';
 
         // setup pagination lib
         $config['base_url']         = base_url('search/results');
