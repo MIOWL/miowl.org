@@ -156,9 +156,9 @@ class Search extends CI_Controller {
                     foreach ($data->result() as $row)
                         $list_data[] = $row->owl_province;
 
-                    for ($i=0; $i < count($return_data); $i++)
-                        if(!in_array($return_data[$i], $list_data))
-                            unset($return_data[$i]);
+                    foreach ($return_data as $val)
+                        if(!in_array($val, $list_data))
+                            unset($return_data[$val]);
                 }
             }
 
