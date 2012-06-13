@@ -145,10 +145,11 @@
             if(str != "default") {
                 $.getJSON('get_results/type/' + str, function(data) {
                     $('.result').text('Type list load was performed.');
-                    var input_list = null;
+                    var input_list = '';
                     $(data).each(function(value){
                         input_list += '<input type="checkbox" name="province[]" class="province_list" value="$province" checked="checked" />&nbsp;&nbsp;&nbsp;&nbsp; $province <br />';
                     });
+                    input_list += '<span class="save button"   onclick="checkAll(\'.province_list\')"   > Check All </span><span class="delete button" onclick="uncheckAll(\'.province_list\')" > Uncheck All </span>';
                     $('#province-selection').html(input_list);
                 });
 
