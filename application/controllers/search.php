@@ -220,10 +220,11 @@ class Search extends CI_Controller {
         $this->session->unset_userdata('search');
 
         // build up the session data from the post data
+        $post_data = $this->input->post(NULL, TRUE);
         $search_array = array();
-        $search_data['keyword']                     = $this->input->post('keyword');
-        $search_data['having']['owls.owl_province'] = $this->input->post('province');
-        $search_data['having']['owls.id']           = $this->input->post('owl');
+        $search_data['keyword']                     = $post_data['keyword'];
+        $search_data['having']['owls.owl_province'] = $post_data['province';
+        $search_data['having']['owls.id']           = $post_data['owl'];
 
         // build the post data into the session
         $this->session->set_userdata('search', $search_array);
