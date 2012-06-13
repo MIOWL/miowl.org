@@ -149,7 +149,7 @@
                     $(data).each(function(value){
                         input_list += '<input type="checkbox" name="province[]" class="province_list" value="$province" checked="checked" />&nbsp;&nbsp;&nbsp;&nbsp; $province <br />';
                     });
-                    $('#province-selection').text(input_list);
+                    $('#province-selection').html(input_list);
                 });
 
                 $("#province-selection").css("display","block");
@@ -173,11 +173,11 @@
 
                 $.get('get_results/province/' + province_list, function(data) {
                     $('.result').text('Province List load was performed.');
-                    var owl_list = null;
+                    var owl_list = '';
                     $(data).each(function(value){
                         owl_list += '<input type="checkbox" name="owl[]" class="owl_list" value="id" checked="checked" />&nbsp;&nbsp;&nbsp;&nbsp; owl_name <br />';
                     });
-                    $('#owl-selection').text(owl_list);
+                    $('#owl-selection').html(owl_list);
                 });
 
                 $("#owl-selection").css("display","block");
