@@ -54,6 +54,8 @@ class Search_model extends CI_Model {
                 owls.id AS owl_id,
                 owls.owl_name,
                 owls.owl_name_short,
+                owls.owl_type AS owl_type,
+                owls.owl_province AS owl_province,
                 categories.parent_id AS cat_pid,
                 categories.id AS cat_id,
                 categories.name AS cat_name,
@@ -80,31 +82,25 @@ class Search_model extends CI_Model {
 
         if($having) {
             if(isset($having['owls.owl_type']))
-                $this->db->having('owls.owl_type', $having['owls.owl_type']);
+                $this->db->having('owl_type', $having['owls.owl_type']);
 
-            // foreach ($having['owls.owl_province'] as $owl_province) {
-                $i=0;
-                // foreach ($owl_province as $value) {
-                foreach ((($owl_province = $having['owls.owl_province'])) as $value) {
-                    if($i != '0')
-                        $this->db->or_having('owls.owl_province', $value);
-                    else
-                        $this->db->having('owls.owl_province', $value);
-                    $i++;
-                }
-            // }
+            $i=0;
+            foreach ((($owl_province = $having['owls.owl_province'])) as $value) {
+                if($i != '0')
+                    $this->db->or_having('owl_province', $value);
+                else
+                    $this->db->having('owl_province', $value);
+                $i++;
+            }
 
-            // foreach ($having['owls.id'] as $owl_id) {
-                $i=0;
-                // foreach ($owl_id as $value) {
-                foreach ((($owl_id = $having['owls.id'])) as $value) {
-                    if($i != '0')
-                        $this->db->or_having('owls.id', $value);
-                    else
-                        $this->db->having('owls.id', $value);
-                    $i++;
-                }
-            // }
+            $i=0;
+            foreach ((($owl_id = $having['owls.id'])) as $value) {
+                if($i != '0')
+                    $this->db->or_having('owls_id', $value);
+                else
+                    $this->db->having('owls_id', $value);
+                $i++;
+            }
         }
 
         // order the data
