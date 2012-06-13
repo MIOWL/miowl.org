@@ -82,7 +82,7 @@ class Search extends CI_Controller {
         $this->form_validation->set_rules('keyword', 'Search Term', 'required|trim|callback__valid_search');
         $this->form_validation->set_rules('type', 'Owl Type', 'callback__valid_choice');
 
-        print '<pre>' . print_r($this->input->post(NULL, FALSE), TRUE) . '</pre>';
+        print '<pre>' . print_r($this->input->post(NULL, TRUE), TRUE) . '</pre>';
         // print '<pre>' . print_r($this->db->last_query(), TRUE) . '</pre>';
 
         // did the user submit
@@ -224,8 +224,8 @@ class Search extends CI_Controller {
         // build up the session data from the post data
         $post_data = $this->input->post(NULL, TRUE);
         $search_array = array();
-        $search_array['keyword']                     = $post_data['keyword'];
-        $search_array['having']['owls.owl_province'] = $post_data['province'];
+        $search_array['keyword']                     = urldecode($post_data['keyword']);
+        $search_array['having']['owls.owl_province'] = urldecode($post_data['province']);
         $search_array['having']['owls.id']           = $post_data['owl'];
 
         // build the post data into the session
