@@ -81,11 +81,11 @@ class Search_model extends CI_Model {
         $this->db->where('uploads.deleted', 'false');
 
         if($having) {
-            if(isset($having['owls.owl_type']))
-                $this->db->having('owl_type', $having['owls.owl_type']);
+            if(isset($having['owl_type']))
+                $this->db->having('owl_type', $having['owl_type']);
 
             $i=0;
-            foreach ((($owl_province = $having['owls.owl_province'])) as $value) {
+            foreach ($having['owl_province'] as $value) {
                 if($i != '0')
                     $this->db->or_having('owl_province', $value);
                 else
@@ -94,11 +94,11 @@ class Search_model extends CI_Model {
             }
 
             $i=0;
-            foreach ((($owl_id = $having['owls.id'])) as $value) {
+            foreach ($having['owl_id'] as $value) {
                 if($i != '0')
-                    $this->db->or_having('owls_id', $value);
+                    $this->db->or_having('owl_id', $value);
                 else
-                    $this->db->having('owls_id', $value);
+                    $this->db->having('owl_id', $value);
                 $i++;
             }
         }

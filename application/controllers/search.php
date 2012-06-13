@@ -223,11 +223,10 @@ class Search extends CI_Controller {
         $search_array['keyword']                     = $post_data['keyword'];
 
         if($post_data['type'] != 'both')
-            $search_array['having']['owls.owl_type'] = $post_data['type'];
+            $search_array['having']['owl_type'] = $post_data['type'];
 
-        $search_array['having']['owls.owl_province'] = $post_data['province'];
-        $search_array['having']['owls.owl_province'] = $post_data['province'];
-        $search_array['having']['owls.id']           = $post_data['owl'];
+        $search_array['having']['owl_province'] = $post_data['province'];
+        $search_array['having']['owl_id']           = $post_data['owl'];
 
         // build the post data into the session
         $this->session->set_userdata('search', $search_array);
