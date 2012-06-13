@@ -67,7 +67,6 @@ class Search extends CI_Controller {
      */
     public function index()
     {
-        print '<pre>' . print_r($this->input->post(NULL, TRUE), TRUE) . '</pre>';
         // setup our page data
         $page_data = array();
         $page_data['page_title']    = 'Search Form';
@@ -82,6 +81,9 @@ class Search extends CI_Controller {
         // form validation rules
         $this->form_validation->set_rules('keyword', 'Search Term', 'required|trim|callback__valid_search');
         $this->form_validation->set_rules('type', 'Owl Type', 'callback__valid_choice');
+
+        // print '<pre>' . print_r($this->input->post(NULL, TRUE), TRUE) . '</pre>';
+        print '<pre>' . print_r($this->db->last_query(), TRUE) . '</pre>';
 
         // did the user submit
         if ($this->form_validation->run())
