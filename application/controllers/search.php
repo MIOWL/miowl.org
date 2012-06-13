@@ -210,6 +210,10 @@ class Search extends CI_Controller {
      */
     private function build_search()
     {
+        // save the post data for ref later
+        $this->session->unset_userdata('post');
+        $this->session->set_userdata('post', $this->input->post(NULL, TRUE));
+
         // remove the search data if it exists (to avoid any issues)
         $this->session->unset_userdata('search');
 
