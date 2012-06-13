@@ -167,7 +167,7 @@
                     province_list += '-' + $(this).val();
                 });
 
-                $.get('search/get_results/type/' + province_list, function(data) {
+                $.get('search/get_results/province/' + province_list, function(data) {
                     $('.result').html(data);
                     alert('Load was performed.');
                 });
