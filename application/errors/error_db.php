@@ -9,7 +9,7 @@
 
 	<div id="body">
 			<div class="notification error">
-			        <p><strong>Error:</strong> </p><p><?php echo $message; ?></p>
+			        <p><strong>Error:</strong> </p><pre><?php echo $message; ?></pre>
 			<p></p>
 			</div>
 		</center>
