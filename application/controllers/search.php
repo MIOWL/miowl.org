@@ -242,6 +242,7 @@ class Search extends CI_Controller {
      */
     private function urldecode_array($input = FALSE)
     {
+        print '<pre>' . print_r($input, TRUE) . '</pre>'
         // if(!$input)
         //     return FALSE;
 
