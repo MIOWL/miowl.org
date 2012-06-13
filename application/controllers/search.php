@@ -248,7 +248,7 @@ class Search extends CI_Controller {
             if(is_array($value))
                 $post_data[$key] = $this->urldecode_array($value);
             else
-                $post_data[$key] = urldecode($value)
+                $post_data[$key] = urldecode($value);
         }
     }
     //------------------------------------------------------------------
