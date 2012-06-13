@@ -144,22 +144,19 @@ class Search extends CI_Controller {
     public function get_results($type = FALSE, $value = FALSE)
     {
         // set our default
-        $return_data = FALSE;
+        $return_data = array();
 
         // lets see what we want to get results for
         if ($type == 'type') {
-            if(($data = $this->owl_model->get_owl_by_type($value))) {
-                $return_data = array();
+            if(($data = $this->owl_model->get_owl_by_type($value)))
                 foreach ($data->result() as $row)
                     $return_data[] = $row->owl_province;
-            }
         }
 
         elseif ($type == 'province') {
             $province_list = explode('-', str_replace('null-', NULL, $value));
             foreach ($province_list as $value) {
                 if(($data = $this->owl_model->get_owl_by_province($value))) {
-                    $return_data = array();
                     foreach ($data->result() as $row) {
                         $return_data[$row->id] = $row->owl_name;
                     }
@@ -168,7 +165,7 @@ class Search extends CI_Controller {
         }
 
         // do we have a valid output
-        $output = $return_data == FALSE ? array() : array_unique($return_data);
+        $output = ($return_data == FALSE) || empty($return_data) ? array() : array_unique($return_data);
 
         // set our JSON header
         @header('Content-type: application/json');
