@@ -284,9 +284,9 @@ class Owl_model extends CI_Model {
 
     /**
      * public get_owl_by_type()
-     * function will pull needed owl info based on the passed int owl type.
+     * function will pull needed owl info based on the passed string owl type.
      *
-     * @param int $owl_type - owl type (clinic/hospital)
+     * @param string $owl_type - owl type (clinic/hospital)
      */
     public function get_owl_by_type($owl_type = FALSE)
     {
@@ -295,6 +295,29 @@ class Owl_model extends CI_Model {
         if ($owl_type != FALSE && $owl_type != 'both')
             $this->db->where('owl_type', $owl_type);
 
+        $query = $this->db->get('owls');
+
+        if ($query->num_rows() > 0)
+            return $query;
+        else
+            return FALSE;
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * public get_owl_by_province()
+     * function will pull needed owl info based on the passed string province.
+     *
+     * @param string $province - owl province
+     */
+    public function get_owl_by_province($province = FALSE)
+    {
+        if (!$owl_type)
+            return FALSE;
+
+        $this->db->select('*');
+        $this->db->where('owl_province', $province);
         $query = $this->db->get('owls');
 
         if ($query->num_rows() > 0)

@@ -19,6 +19,8 @@
 
                 <?php $this->load->view('messages/message_inline'); ?>
 
+                <div><br/><pre><span class="result">loading...</span></pre><br/></div>
+
                 <fieldset class="inlineLabels">
 
                     <div class="ctrlHolder" >
@@ -141,6 +143,11 @@
         function type_list() {
             var str = $("#type option:selected").val();
             if(str != "default") {
+                $.get('search/get_results/type/' + str, function(data) {
+                    $('.result').html(data);
+                    alert('Load was performed.');
+                });
+
                 $("#province-selection").css("display","block");
                 $("#owl-selection").css("display","none");
                 $("#keyword-selection").css("display","none");
@@ -155,6 +162,16 @@
         }
         function province_list() {
             if(($("#type option:selected").val() != "default") && ($(".province_list:checked").length > 0)) {
+                var province_list = null;
+                $(".province_list:checked").each(function() {
+                    province_list += '-' + $(this).val();
+                });
+
+                $.get('search/get_results/type/' + province_list, function(data) {
+                    $('.result').html(data);
+                    alert('Load was performed.');
+                });
+
                 $("#owl-selection").css("display","block");
                 $("#keyword-selection").css("display","none");
                 owl_list();
