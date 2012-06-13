@@ -222,14 +222,34 @@ class Search extends CI_Controller {
         $this->session->unset_userdata('search');
 
         // build up the session data from the post data
-        $post_data = $this->input->post(NULL, TRUE);
+        $post_data = $this->urldecode_array($this->input->post(NULL, TRUE));
         $search_array = array();
-        $search_array['keyword']                     = urldecode($post_data['keyword']);
-        $search_array['having']['owls.owl_province'] = urldecode($post_data['province']);
+        $search_array['keyword']                     = $post_data['keyword'];
+        $search_array['having']['owls.owl_province'] = $post_data['province'];
         $search_array['having']['owls.id']           = $post_data['owl'];
 
         // build the post data into the session
         $this->session->set_userdata('search', $search_array);
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * private urldecode_array()
+     *
+     * This is used to url decode array data. i.e. POST data
+     */
+    private function urldecode_array($input = FALSE)
+    {
+        if(!$input)
+            return FALSE;
+
+        foreach ($input as $key => $value) {
+            if(is_array($value))
+                $post_data[$key] = $this->urldecode_array($value);
+            else
+                $post_data[$key] = urldecode($value)
+        }
     }
     //------------------------------------------------------------------
 
