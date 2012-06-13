@@ -143,7 +143,7 @@
         function type_list() {
             var str = $("#type option:selected").val();
             if(str != "default") {
-                $.get('search/get_results/type/' + str, function(data) {
+                $.get('get_results/type/' + str, function(data) {
                     // $('.result').text(data);
                     alert('Load was performed.');
                     alert(data);
@@ -168,7 +168,7 @@
                     province_list += '-' + $(this).val();
                 });
 
-                $.get('search/get_results/province/' + province_list, function(data) {
+                $.get('get_results/province/' + province_list, function(data) {
                     // $('.result').text(data);
                     alert('Load was performed.');
                     alert(data);
