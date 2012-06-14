@@ -143,7 +143,7 @@
             if(str != "default") {
                 $.getJSON('get_results/type/' + str, function(data) {
                     var input_list = '';
-                    $.each(data.name, function(i, name){
+                    $.each(data.names, function(i, name){
                         input_list += '<input type="checkbox" name="province[]" class="province_list" value="' + name + '" />&nbsp;&nbsp;&nbsp;&nbsp;' + name + '<br />';
                     });
                     input_list += '<span class="save button"   onclick="checkAll(\'.province_list\')"   > Check All </span><span class="delete button" onclick="uncheckAll(\'.province_list\')" > Uncheck All </span>';
@@ -171,8 +171,8 @@
 
                 $.get('get_results/province/' + province_list, function(data) {
                     var owl_list = '';
-                    $.each(data.items, function(i, val){
-                        owl_list += '<input type="checkbox" name="owl[]" class="owl_list" value="' + val.id + '" />&nbsp;&nbsp;&nbsp;&nbsp;' + val.name + '<br />';
+                    $.each(data.owls, function(i, owl){
+                        owl_list += '<input type="checkbox" name="owl[]" class="owl_list" value="' + owl.id + '" />&nbsp;&nbsp;&nbsp;&nbsp;' + owl.name + '<br />';
                     });
                     owl_list += '<span class="save button"   onclick="checkAll(\'.owl_list\')"   > Check All </span><span class="delete button" onclick="uncheckAll(\'.owl_list\')" > Uncheck All </span>';
                     $('#owl-list').html(owl_list);
