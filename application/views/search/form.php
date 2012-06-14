@@ -17,8 +17,6 @@
             <!-- Search Form -->
             <form action="" name="search" class="uniForm" method="post">
 
-                <br /><br /><br /><div id="debug">loading...</div><br /><br /><br />
-
                 <?php $this->load->view('messages/message_inline'); ?>
 
                 <fieldset class="inlineLabels">
