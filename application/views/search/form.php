@@ -170,6 +170,7 @@
                     });
                     owl_list += '<span class="save button" onclick="checkAll(\'.owl_list\')"   > Check All </span><span class="delete button" onclick="uncheckAll(\'.owl_list\')" > Uncheck All </span>';
                     $('#owl-list').html(owl_list);
+                    alert(owl_list);
                 });
 
                 $("#owl-selection").css("display","block");
