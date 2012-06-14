@@ -40,6 +40,7 @@ function type_list() {
             });
             input_list += '<span class="save button" onclick="checkAll(\'.province_list\')" > Check All </span><span class="delete button" onclick="uncheckAll(\'.province_list\')" > Uncheck All </span>';
             $('#province_list').html(input_list);
+            type_list();
         });
 
         $("#province-selection").css("display","block");
@@ -61,13 +62,14 @@ function province_list() {
             province_list += '-' + $(this).val();
         });
 
-        $.get('get_results/province/' + province_list, function(data) {
+        $.getJSON('get_results/province/' + province_list, function(data) {
             var owl_list = '';
             $(data.owls).each(function(i, owl){
                 owl_list += '<input type="checkbox" name="owl[]" class="owl_list" value="' + owl.id + '" onclick="owl_list()" />&nbsp;&nbsp;&nbsp;&nbsp;' + owl.name + '<br />';
             });
             owl_list += '<span class="save button" onclick="checkAll(\'.owl_list\')"   > Check All </span><span class="delete button" onclick="uncheckAll(\'.owl_list\')" > Uncheck All </span>';
             $('#owl_list').html(owl_list);
+            type_list();
         });
 
         $("#owl-selection").css("display","block");
