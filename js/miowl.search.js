@@ -40,7 +40,7 @@ function type_list() {
             });
             input_list += '<span class="save button" onclick="checkAll(\'.province_list\')" > Check All </span><span class="delete button" onclick="uncheckAll(\'.province_list\')" > Uncheck All </span>';
             $('#province_list').html(input_list);
-            type_list();
+            owl_list();
         });
 
         $("#province-selection").css("display","block");
