@@ -123,19 +123,13 @@
         });
 
         // type selection change
-        $("#type").change(function() {
-            type_list();
-        }).change();
+        $("#type").change(function() { type_list(); }).change();
 
         //check we have at least one checkbox chosen in the province list
-        $('.province_list').click(function() {
-            province_list();
-        });
+        $('.province_list').click(function() { province_list(); });
 
         //check we have at least one checkbox chosen in the owl list
-        $('.owl_list').click(function() {
-            owl_list();
-        });
+        $('.owl_list').click(function() { owl_list(); });
 
         // list functions
         function type_list() {
@@ -144,9 +138,9 @@
                 $.getJSON('get_results/type/' + str, function(data) {
                     var input_list = '';
                     $(data.names).each(function(i, name){
-                        input_list += '<input type="checkbox" name="province[]" class="province_list" value="' + name + '" />&nbsp;&nbsp;&nbsp;&nbsp;' + name + '<br />';
+                        input_list += '<input type="checkbox" name="province[]" class="province_list" value="' + name + '" onclick="province_list()" />&nbsp;&nbsp;&nbsp;&nbsp;' + name + '<br />';
                     });
-                    input_list += '<span class="save button"   onclick="checkAll(\'.province_list\')"   > Check All </span><span class="delete button" onclick="uncheckAll(\'.province_list\')" > Uncheck All </span>';
+                    input_list += '<span class="save button" onclick="checkAll(\'.province_list\')" > Check All </span><span class="delete button" onclick="uncheckAll(\'.province_list\')" > Uncheck All </span>';
                     $('#province_list').html(input_list);
                 });
 
@@ -172,9 +166,9 @@
                 $.get('get_results/province/' + province_list, function(data) {
                     var owl_list = '';
                     $(data.owls).each(function(i, owl){
-                        owl_list += '<input type="checkbox" name="owl[]" class="owl_list" value="' + owl.id + '" />&nbsp;&nbsp;&nbsp;&nbsp;' + owl.name + '<br />';
+                        owl_list += '<input type="checkbox" name="owl[]" class="owl_list" value="' + owl.id + '" onclick="owl_list()" />&nbsp;&nbsp;&nbsp;&nbsp;' + owl.name + '<br />';
                     });
-                    owl_list += '<span class="save button"   onclick="checkAll(\'.owl_list\')"   > Check All </span><span class="delete button" onclick="uncheckAll(\'.owl_list\')" > Uncheck All </span>';
+                    owl_list += '<span class="save button" onclick="checkAll(\'.owl_list\')"   > Check All </span><span class="delete button" onclick="uncheckAll(\'.owl_list\')" > Uncheck All </span>';
                     $('#owl-list').html(owl_list);
                 });
 
