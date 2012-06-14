@@ -17,6 +17,8 @@
             <!-- Search Form -->
             <form action="" name="search" class="uniForm" method="post">
 
+                <br /><br /><br /><div id="debug">loading...</div><br /><br /><br />
+
                 <?php $this->load->view('messages/message_inline'); ?>
 
                 <fieldset class="inlineLabels">
@@ -170,7 +172,7 @@
                     });
                     owl_list += '<span class="save button" onclick="checkAll(\'.owl_list\')"   > Check All </span><span class="delete button" onclick="uncheckAll(\'.owl_list\')" > Uncheck All </span>';
                     $('#owl-list').html(owl_list);
-                    alert($('#owl-list').val());
+                    $('#debug').text(owl_list);
                 });
 
                 $("#owl-selection").css("display","block");
