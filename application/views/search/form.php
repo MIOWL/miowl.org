@@ -171,7 +171,7 @@
 
                 $.get('get_results/province/' + province_list, function(data) {
                     var owl_list = '';
-                    $.each(data.items, function(i, item){
+                    $.each(data.items, function(i, val){
                         owl_list += '<input type="checkbox" name="owl[]" class="owl_list" value="' + val.id + '" />&nbsp;&nbsp;&nbsp;&nbsp;' + val.name + '<br />';
                     });
                     owl_list += '<span class="save button"   onclick="checkAll(\'.owl_list\')"   > Check All </span><span class="delete button" onclick="uncheckAll(\'.owl_list\')" > Uncheck All </span>';
