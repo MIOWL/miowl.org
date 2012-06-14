@@ -13,15 +13,11 @@
     <link rel="stylesheet" href="<?php print site_url('/style.css'); ?>" type="text/css" media="screen" charset="utf-8" />
 
 	<!-- jQuery -->
-	<?php /*
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 	<script>
 		window.jQuery || document.write('<script src="<?php print site_url('/js/jquery.min.js'); ?>"><\/script>\n<script src="<?php print site_url('/js/jquery-ui.min.js'); ?>"><\/script>')
 	</script>
-	*/?>
-	<script src="<?php print site_url('/js/jquery.min.js'); ?>"></script>
-	<script src="<?php print site_url('/js/jquery-ui.min.js'); ?>"></script>
 
 	<!-- 3rd Party and Custom -->
 	<script type="text/javascript" src="<?php print site_url('/js/miowl.js'); ?>"></script>
