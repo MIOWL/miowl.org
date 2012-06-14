@@ -158,7 +158,7 @@ class Search extends CI_Controller {
             foreach ($province_list as $value) {
                 if(($data = $this->owl_model->get_owl_by_province($value))) {
                     foreach ($data->result() as $row) {
-                        $return_data[] = array('id'=>$row->id, 'name'=>$row->owl_name);
+                        $return_data['items'][] = array('id'=>$row->id, 'name'=>$row->owl_name);
                     }
                 }
             }
@@ -166,7 +166,7 @@ class Search extends CI_Controller {
 
         // do we have a valid output
         #$output = ($return_data == FALSE) || empty($return_data) ? array() : array_unique($return_data);
-        $output = ($return_data == FALSE) || empty($return_data) ? array() : $return_data;
+        $output = ($return_data == FALSE) || empty($return_data) ? array() : array('json' => $return_data);
 
         // set our JSON header
         @header('Content-type: application/json');

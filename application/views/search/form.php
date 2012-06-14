@@ -19,8 +19,6 @@
 
                 <?php $this->load->view('messages/message_inline'); ?>
 
-                <div><br/><pre><span class="result">loading...</span></pre><br/></div>
-
                 <fieldset class="inlineLabels">
 
                     <div class="ctrlHolder" >
@@ -144,10 +142,9 @@
             var str = $("#type option:selected").val();
             if(str != "default") {
                 $.getJSON('get_results/type/' + str, function(data) {
-                    $('.result').text('Type list load was performed.');
                     var input_list = '';
-                    $(data).each(function(key, val){
-                        input_list += '<input type="checkbox" name="province[]" class="province_list" value="' + val.name + '" />&nbsp;&nbsp;&nbsp;&nbsp;' + val.name + '<br />';
+                    $.each(data.name, function(i, name){
+                        input_list += '<input type="checkbox" name="province[]" class="province_list" value="' + name + '" />&nbsp;&nbsp;&nbsp;&nbsp;' + name + '<br />';
                     });
                     input_list += '<span class="save button"   onclick="checkAll(\'.province_list\')"   > Check All </span><span class="delete button" onclick="uncheckAll(\'.province_list\')" > Uncheck All </span>';
                     $('#province_list').html(input_list);
@@ -173,9 +170,8 @@
                 });
 
                 $.get('get_results/province/' + province_list, function(data) {
-                    $('.result').text('Province List load was performed.');
                     var owl_list = '';
-                    $(data).each(function(key, val){
+                    $.each(data.items, function(i, item){
                         owl_list += '<input type="checkbox" name="owl[]" class="owl_list" value="' + val.id + '" />&nbsp;&nbsp;&nbsp;&nbsp;' + val.name + '<br />';
                     });
                     owl_list += '<span class="save button"   onclick="checkAll(\'.owl_list\')"   > Check All </span><span class="delete button" onclick="uncheckAll(\'.owl_list\')" > Uncheck All </span>';
