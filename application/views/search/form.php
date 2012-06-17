@@ -32,7 +32,7 @@
                         <p class="formHint">Choose the type of owl you wish to search within.</p>
                     </div>
 
-                    <div id="province-selection" class="ctrlHolder" >
+                    <div id="provinceSelection" class="ctrlHolder" >
                         <label for="province[]">Province</label>
                         <div id="province_list" style="display: inline-block;" >
                             <?php foreach ($province_list as $province) : ?>
@@ -55,7 +55,7 @@
                         <p class="formHint">Choose the province search within.</p>
                     </div>
 
-                    <div id="owl-selection" class="ctrlHolder" >
+                    <div id="owlSelection" class="ctrlHolder" >
                         <label for="owl">Search within specific owls?</label>
                         <div id="owl_list" style="display: inline-block;" >
                             <?php foreach ($this->owl_model->get_all_owls()->result() as $row) : ?>
@@ -78,7 +78,7 @@
                         <p class="formHint">Choose the owl's you wish to search within.</p>
                     </div>
 
-                    <div id="keyword-selection" class="ctrlHolder">
+                    <div id="keywordSelection" class="ctrlHolder">
                         <label for="keyword">Keyword</label>
                         <input type="text" name="keyword" id="keyword" size="35" class="textInput medium" value="<?php print set_value('keyword'); ?>" />
                     </div>
