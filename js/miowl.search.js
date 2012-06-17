@@ -98,7 +98,6 @@ function type_list() {
         }
         if(("#keyword-selection").css("display") != "none") {
             $(this).hide(effect, options, timeLimit);
-            alert($(this).css("display"));
         }
     }
     else {
@@ -110,7 +109,6 @@ function type_list() {
         }
         if(("#keyword-selection").css("display") != "none") {
             $(this).hide(effect, options, timeLimit);
-            alert($(this).css("display"));
         }
     }
 }
