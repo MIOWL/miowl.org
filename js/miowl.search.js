@@ -23,6 +23,9 @@ var options = {};
  * reset form function()
  */
 function resetForm() {
+    // reset loaded var
+    loaded = false;
+
     // reset all checkbox's
     $("input[type=checkbox]").each(function() {
         this.checked = false ;
@@ -35,11 +38,13 @@ function resetForm() {
     $("select").val('default');
 
     // hide the div's again
-    $("#provinceSelection").hide(effect, options, timeLimit);
-    $("#owlSelection").hide(effect, options, timeLimit);
-    $("#keywordSelection").hide(effect, options, timeLimit);
-
-    loaded = true;
+    $("#provinceSelection").hide(effect, options, timeLimit, function(){
+        $("#owlSelection").hide(effect, options, timeLimit, function(){
+            $("#keywordSelection").hide(effect, options, timeLimit, function(){
+                loaded = true;
+            });
+        });
+    });
 }
 
 /*
