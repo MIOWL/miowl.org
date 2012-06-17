@@ -81,6 +81,9 @@ function uncheckAll(field)
 function type_list() {
     var str = $("#type option:selected").val();
     if(str != "default") {
+        // empty the province section
+        $("#provinceSelection").html('');
+
         $.getJSON('get_results/type/' + str, function(data) {
             var input_list = '';
             $(data.names).each(function(i, name){
@@ -96,12 +99,15 @@ function type_list() {
     }
     else {
         if($("#provinceSelection").css("display") != "none") {
-            $("#provinceSelection").hide(effect, options, timeLimit, province_list).html('');
+            $("#provinceSelection").hide(effect, options, timeLimit, province_list);
         }
     }
 }
 function province_list() {
     if(($("#type option:selected").val() != "default") && ($(".province_list:checked").length > 0)) {
+        // empty the owl section
+        $("#owlSelection").html('');
+
         var province_list = null;
         $(".province_list:checked").each(function() {
             province_list += '-' + $(this).val();
@@ -122,7 +128,7 @@ function province_list() {
     }
     else {
         if($("#owlSelection").css("display") != "none") {
-            $("#owlSelection").hide(effect, options, timeLimit, owl_list).html('');
+            $("#owlSelection").hide(effect, options, timeLimit, owl_list);
         }
     }
 }
