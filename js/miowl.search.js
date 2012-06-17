@@ -156,15 +156,15 @@ $("button[type=reset]").click(function(e) {
 /*
  * type selection change
  */
-$("#type").change(function() { type_list(); }).change();
+// $("#type").change(function() { type_list(); }).change();
 
 /*
  * check we have at least one checkbox chosen in the province list
  */
-$('.province_list').click(function() { province_list(); });
+// $('.province_list').click(function() { province_list(); });
 
 /*
  * check we have at least one checkbox chosen in the owl list
  */
-$('.owl_list').click(function() { owl_list(); });
+// $('.owl_list').click(function() { owl_list(); });
 

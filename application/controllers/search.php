@@ -77,8 +77,6 @@ class Search extends CI_Controller {
         $this->form_validation->set_rules('keyword', 'Search Term', 'required|trim|callback__valid_search');
         $this->form_validation->set_rules('type', 'Owl Type', 'callback__valid_choice');
 
-        // print '<pre>' . print_r($this->urldecode_array($this->input->post(NULL, TRUE)), TRUE) . '</pre>';
-        // print '<pre>' . print_r($this->input->post(NULL, TRUE), TRUE) . '</pre>';
         // print '<pre>' . print_r($this->db->last_query(), TRUE) . '</pre>';
 
         // did the user submit
@@ -116,7 +114,7 @@ class Search extends CI_Controller {
         $page_data['keyword'] = $search['keyword'];
         $page_data['query'] = $this->gen_results($offset, $this->per_page_limit);
 
-        // print '<pre>' . print_r($this->db->last_query(), TRUE) . '</pre>';
+        print '<pre>' . print_r($this->db->last_query(), TRUE) . '</pre>';
 
         // setup pagination lib
         $config['base_url']         = base_url('search/results');
@@ -138,8 +136,11 @@ class Search extends CI_Controller {
 
     /**
      * public get_results()
-     *
      * Used in the search form to get the relivent information
+     *
+     * @param $type - this is the type of search we are wanting to do. (type or province)
+     * @param $value - this is the search data for the SQL
+     * @return JSON output
      */
     public function get_results($type = FALSE, $value = FALSE)
     {
@@ -165,8 +166,8 @@ class Search extends CI_Controller {
         }
 
         // do we have a valid output
-        #$output = ($return_data == FALSE) || empty($return_data) ? array() : array_unique($return_data);
-        $output = ($return_data == FALSE) || empty($return_data) ? array() : $return_data;
+        $output = ($return_data == FALSE) || empty($return_data) ? array() : array_unique($return_data);
+        #$output = ($return_data == FALSE) || empty($return_data) ? array() : $return_data;
 
         // set our JSON header
         @header('Content-type: application/json');
