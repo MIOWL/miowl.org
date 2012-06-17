@@ -20,10 +20,16 @@ function resetForm() {
     // this is the speed for the hide animation
     var timeLimit = 5000; //this is in milliseconds
 
+    // this is the effect we wish to use
+    var effect = 'slide';
+
+    // this is the effect options
+    var options = {};
+
     // hide the div's again
-    $("#province-selection").hide( 'slide', {}, timeLimit );
-    $("#owl-selection").hide( 'slide', {}, timeLimit );
-    $("#keyword-selection").hide( 'slide', {}, timeLimit );
+    $("#province-selection").hide(effect, options, timeLimit);
+    $("#owl-selection").hide(effect, options, timeLimit);
+    $("#keyword-selection").hide(effect, options, timeLimit);
 }
 
 /*
