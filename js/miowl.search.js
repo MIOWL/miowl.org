@@ -90,6 +90,12 @@ function type_list() {
             $('#province_list').html(input_list);
         });
 
+        var test = "";
+        test += "\"" + $("#provinceSelection").css("display") + "\"";
+        test += "\"" + $("#owlSelection").css("display") + "\"";
+        test += "\"" + $("#keywordSelection").css("display") + "\"";
+        alert(test);
+
         if($("#provinceSelection").css("display") != "block") {
             $("#provinceSelection").show(effect, options, timeLimit, province_list);
         }
