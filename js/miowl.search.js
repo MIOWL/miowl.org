@@ -91,9 +91,9 @@ function type_list() {
         });
 
         var display = "";
-        display = ("#provinceSelection").css("display") + "\n\n";
-        display += ("#owlSelection").css("display") + "\n\n";
-        display += ("#keywordSelection").css("display");
+        display = $("#provinceSelection").css("display") + "\n\n";
+        display += $("#owlSelection").css("display") + "\n\n";
+        display += $("#keywordSelection").css("display");
         alert(display);
         
         if($("#provinceSelection").css("display") != "block") {
