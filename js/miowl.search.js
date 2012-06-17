@@ -38,13 +38,12 @@ function resetForm() {
     $("select").val('default');
 
     // hide the div's again
-    $("#provinceSelection").hide(effect, options, timeLimit, function(){
-        $("#owlSelection").hide(effect, options, timeLimit, function(){
-            $("#keywordSelection").hide(effect, options, timeLimit, function(){
-                loaded = true;
-            });
-        });
-    });
+    $("#provinceSelection").hide(effect, options, timeLimit);
+    $("#owlSelection").hide(effect, options, timeLimit);
+    $("#keywordSelection").hide(effect, options, timeLimit);
+
+    // set the loaded var
+    loaded = true;
 }
 
 /*
