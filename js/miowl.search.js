@@ -1,8 +1,11 @@
-// hide the areas from a clear button
-$("button[type=reset]").click(function(e) {
-    // prevent the default
-    e.preventDefault();
+/* ********************************************************************************************** */
+/* functions list                                                                                 */
+/* ********************************************************************************************** */
 
+/*
+ * reset form function()
+ */
+function resetForm() {
     // reset all checkbox's
     $("input[type=checkbox]").each(function() {
         this.checked = false ;
@@ -14,22 +17,56 @@ $("button[type=reset]").click(function(e) {
     // reset all the select box's
     $("select").val('default');
 
+    // this is the speed for the hide animation
+    var timeLimit = 5000; //this is in milliseconds
+
     // hide the div's again
-    $("#province-selection").css("display","none");
-    $("#owl-selection").css("display","none");
-    $("#keyword-selection").css("display","none");
-});
+    $("#province-selection").hide( slide, {}, timeLimit );
+    $("#owl-selection").hide( slide, {}, timeLimit );
+    $("#keyword-selection").hide( slide, {}, timeLimit );
+}
 
-// type selection change
-$("#type").change(function() { type_list(); }).change();
+/*
+ * checkAll function()
+ *
+ * @param field - the field we want to look at
+ */
+function checkAll(field)
+{
+    $(field).each(function() {
+        this.checked = true ;
+    });
 
-//check we have at least one checkbox chosen in the province list
-$('.province_list').click(function() { province_list(); });
+    if(field === '.province_list') {
+        province_list();
+    }
+    if(field === '.owl_list') {
+        owl_list();
+    }
+}
 
-//check we have at least one checkbox chosen in the owl list
-$('.owl_list').click(function() { owl_list(); });
+/*
+ * uncheckAll function()
+ *
+ * @param field - the field we want to look at
+ */
+function uncheckAll(field)
+{
+    $(field).each(function() {
+        this.checked = false ;
+    });
 
-// list functions
+    if(field === '.province_list') {
+        province_list();
+    }
+    if(field === '.owl_list') {
+        owl_list();
+    }
+}
+
+/*
+ * list functions()
+ */
 function type_list() {
     var str = $("#type option:selected").val();
     if(str != "default") {
@@ -91,31 +128,43 @@ function owl_list() {
     }
 }
 
-// checkAll/uncheckAll functions
-function checkAll(field)
-{
-    $(field).each(function() {
-        this.checked = true ;
-    });
 
-    if(field === '.province_list') {
-        province_list();
-    }
-    if(field === '.owl_list') {
-        owl_list();
-    }
-}
 
-function uncheckAll(field)
-{
-    $(field).each(function() {
-        this.checked = false ;
-    });
+/* ********************************************************************************************** */
+/* use the functions                                                                              */
+/* ********************************************************************************************** */
 
-    if(field === '.province_list') {
-        province_list();
-    }
-    if(field === '.owl_list') {
-        owl_list();
-    }
-}
+/*
+ * Set our default settings
+ */
+$(function() {
+    resetForm();
+});
+
+
+/*
+ * hide the areas from a clear button
+ */
+$("button[type=reset]").click(function(e) {
+    // prevent the default
+    e.preventDefault();
+
+    // run the reset function
+    resetForm();
+});
+
+/*
+ * type selection change
+ */
+$("#type").change(function() { type_list(); }).change();
+
+/*
+ * check we have at least one checkbox chosen in the province list
+ */
+$('.province_list').click(function() { province_list(); });
+
+/*
+ * check we have at least one checkbox chosen in the owl list
+ */
+$('.owl_list').click(function() { owl_list(); });
+
