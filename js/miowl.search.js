@@ -81,8 +81,8 @@ function uncheckAll(field)
 function type_list() {
     var str = $("#type option:selected").val();
     if(str != "default") {
-        // empty the province section
-        $("#provinceSelection").html('');
+        // empty the province list
+        $('#province_list').html('<span class="save button" onclick="checkAll(\'.province_list\')" > Check All </span><span class="delete button" onclick="uncheckAll(\'.province_list\')" > Uncheck All </span>');
 
         $.getJSON('get_results/type/' + str, function(data) {
             var input_list = '';
@@ -105,8 +105,8 @@ function type_list() {
 }
 function province_list() {
     if(($("#type option:selected").val() != "default") && ($(".province_list:checked").length > 0)) {
-        // empty the owl section
-        $("#owlSelection").html('');
+        // empty the owl list
+        $("#owl_list").html('<span class="save button" onclick="checkAll(\'.owl_list\')"   > Check All </span><span class="delete button" onclick="uncheckAll(\'.owl_list\')" > Uncheck All </span>');
 
         var province_list = null;
         $(".province_list:checked").each(function() {
