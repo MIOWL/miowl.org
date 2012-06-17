@@ -91,24 +91,24 @@ function type_list() {
         });
 
         if($("#provinceSelection").css("display") != "block") {
-            $(this).show(effect, options, timeLimit, province_list);
+            $("#provinceSelection").show(effect, options, timeLimit, province_list);
         }
         if($("#owlSelection").css("display") != "none") {
-            $(this).hide(effect, options, timeLimit, owl_list);
+            $("#owlSelection").hide(effect, options, timeLimit, owl_list);
         }
         if($("#keywordSelection").css("display") != "none") {
-            $(this).hide(effect, options, timeLimit);
+            $("#keywordSelection").hide(effect, options, timeLimit);
         }
     }
     else {
         if($("#provinceSelection").css("display") != "none") {
-            $(this).show(effect, options, timeLimit, province_list);
+            $("#provinceSelection").show(effect, options, timeLimit, province_list);
         }
         if($("#owlSelection").css("display") != "none") {
-            $(this).hide(effect, options, timeLimit, owl_list);
+            $("#owlSelection").hide(effect, options, timeLimit, owl_list);
         }
         if($("#keywordSelection").css("display") != "none") {
-            $(this).hide(effect, options, timeLimit);
+            $("#keywordSelection").hide(effect, options, timeLimit);
         }
     }
 }
@@ -129,30 +129,30 @@ function province_list() {
         });
 
         if($("#owlSelection").css("display") != "block") {
-            $(this).hide(effect, options, timeLimit, owl_list);
+            $("#owlSelection").hide(effect, options, timeLimit, owl_list);
         }
         if($("#keywordSelection").css("display") != "none") {
-            $(this).hide(effect, options, timeLimit);
+            $("#keywordSelection").hide(effect, options, timeLimit);
         }
     }
     else {
         if($("#owlSelection").css("display") != "none") {
-            $(this).hide(effect, options, timeLimit, owl_list);
+            $("#owlSelection").hide(effect, options, timeLimit, owl_list);
         }
         if($("#keywordSelection").css("display") != "none") {
-            $(this).hide(effect, options, timeLimit);
+            $("#keywordSelection").hide(effect, options, timeLimit);
         }
     }
 }
 function owl_list() {
     if(($("#type option:selected").val() != "default") && ($(".province_list:checked").length > 0) && ($(".owl_list:checked").length > 0)) {
         if($("#keywordSelection").css("display") != "block") {
-            $(this).hide(effect, options, timeLimit);
+            $("#keywordSelection").hide(effect, options, timeLimit);
         }
     }
     else {
         if($("#keywordSelection").css("display") != "none") {
-            $(this).hide(effect, options, timeLimit);
+            $("#keywordSelection").hide(effect, options, timeLimit);
         }
     }
 }
