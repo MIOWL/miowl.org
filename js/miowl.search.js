@@ -81,7 +81,7 @@ function uncheckAll(field)
 function type_list() {
     var str = $("#type option:selected").val();
     if(str != "default") {
-        $.getJSON('get_results/type/' + str, function(data) {
+        $.getJSON('search/get_results/type/' + str, function(data) {
             var input_list = '';
             $(data.names).each(function(i, name){
                 input_list += '<input type="checkbox" name="province[]" class="province_list" value="' + name + '" onclick="province_list()" />&nbsp;&nbsp;&nbsp;&nbsp;' + name + '<br />';
@@ -125,7 +125,7 @@ function province_list() {
             province_list += '-' + $(this).val();
         });
 
-        $.getJSON('get_results/province/' + province_list, function(data) {
+        $.getJSON('search/get_results/province/' + province_list, function(data) {
             var owl_list = '';
             $(data.owls).each(function(i, owl){
                 owl_list += '<input type="checkbox" name="owl[]" class="owl_list" value="' + owl.id + '" onclick="owl_list()" />&nbsp;&nbsp;&nbsp;&nbsp;' + owl.name + '<br />';
