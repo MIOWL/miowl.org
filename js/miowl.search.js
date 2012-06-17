@@ -98,8 +98,8 @@ function type_list() {
         }
         if(("#keyword-selection").css("display") != "none") {
             $(this).hide(effect, options, timeLimit);
+            alert($(this).css("display"));
         }
-        alert($("#province-selection").css("display"));
     }
     else {
         if($("#province-selection").css("display") != "none") {
@@ -110,6 +110,7 @@ function type_list() {
         }
         if(("#keyword-selection").css("display") != "none") {
             $(this).hide(effect, options, timeLimit);
+            alert($(this).css("display"));
         }
     }
 }
