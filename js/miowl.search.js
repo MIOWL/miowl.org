@@ -21,7 +21,7 @@ function resetForm() {
     var timeLimit = 5000; //this is in milliseconds
 
     // this is the effect we wish to use
-    var effect = 'slide';
+    var effect = 'blind';
 
     // this is the effect options
     var options = {};
