@@ -38,6 +38,8 @@ function resetForm() {
     $("#provinceSelection").hide(effect, options, timeLimit);
     $("#owlSelection").hide(effect, options, timeLimit);
     $("#keywordSelection").hide(effect, options, timeLimit);
+
+    loaded = true;
 }
 
 /*
@@ -153,7 +155,6 @@ function owl_list() {
  */
 $(function() {
     resetForm();
-    loaded = true;
 });
 
 
