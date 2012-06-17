@@ -96,7 +96,7 @@ function type_list() {
     }
     else {
         if($("#provinceSelection").css("display") != "none") {
-            $("#provinceSelection").hide(effect, options, timeLimit, province_list);
+            $("#provinceSelection").hide(effect, options, timeLimit, province_list).html('');
         }
     }
 }
@@ -122,7 +122,7 @@ function province_list() {
     }
     else {
         if($("#owlSelection").css("display") != "none") {
-            $("#owlSelection").hide(effect, options, timeLimit, owl_list);
+            $("#owlSelection").hide(effect, options, timeLimit, owl_list).html('');
         }
     }
 }
