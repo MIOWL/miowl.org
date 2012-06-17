@@ -94,12 +94,12 @@ function type_list() {
         });
 
         if($("#provinceSelection").css("display") != "block") {
-            $("#provinceSelection").show(effect, options, timeLimit, province_list);
+            $("#provinceSelection").stop(true).show(effect, options, timeLimit, province_list);
         }
     }
     else {
         if($("#provinceSelection").css("display") != "none") {
-            $("#provinceSelection").hide(effect, options, timeLimit, province_list);
+            $("#provinceSelection").stop(true).hide(effect, options, timeLimit, province_list);
         }
     }
 }
@@ -123,24 +123,24 @@ function province_list() {
         });
 
         if($("#owlSelection").css("display") != "block") {
-            $("#owlSelection").show(effect, options, timeLimit, owl_list);
+            $("#owlSelection").stop(true).show(effect, options, timeLimit, owl_list);
         }
     }
     else {
         if($("#owlSelection").css("display") != "none") {
-            $("#owlSelection").hide(effect, options, timeLimit, owl_list);
+            $("#owlSelection").stop(true).hide(effect, options, timeLimit, owl_list);
         }
     }
 }
 function owl_list() {
     if(($("#type option:selected").val() != "default") && ($(".province_list:checked").length > 0) && ($(".owl_list:checked").length > 0)) {
         if($("#keywordSelection").css("display") != "block") {
-            $("#keywordSelection").show(effect, options, timeLimit);
+            $("#keywordSelection").stop(true).show(effect, options, timeLimit);
         }
     }
     else {
         if($("#keywordSelection").css("display") != "none") {
-            $("#keywordSelection").hide(effect, options, timeLimit);
+            $("#keywordSelection").stop(true).hide(effect, options, timeLimit);
         }
     }
 }
