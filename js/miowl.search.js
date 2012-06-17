@@ -1,4 +1,18 @@
 /* ********************************************************************************************** */
+/* vars                                                                                           */
+/* ********************************************************************************************** */
+
+// this is the speed for the hide animation
+var timeLimit = 5000; //this is in milliseconds
+
+// this is the effect we wish to use
+var effect = 'blind';
+
+// this is the effect options
+var options = {};
+
+
+/* ********************************************************************************************** */
 /* functions list                                                                                 */
 /* ********************************************************************************************** */
 
@@ -16,15 +30,6 @@ function resetForm() {
 
     // reset all the select box's
     $("select").val('default');
-
-    // this is the speed for the hide animation
-    var timeLimit = 5000; //this is in milliseconds
-
-    // this is the effect we wish to use
-    var effect = 'blind';
-
-    // this is the effect options
-    var options = {};
 
     // hide the div's again
     $("#province-selection").hide(effect, options, timeLimit);
@@ -83,20 +88,16 @@ function type_list() {
             });
             input_list += '<span class="save button" onclick="checkAll(\'.province_list\')" > Check All </span><span class="delete button" onclick="uncheckAll(\'.province_list\')" > Uncheck All </span>';
             $('#province_list').html(input_list);
-            province_list();
-            owl_list();
         });
 
-        $("#province-selection").css("display","block");
-        $("#owl-selection").css("display","none");
-        $("#keyword-selection").css("display","none");
-        province_list();
-        owl_list();
+        $("#province-selection").show(effect, options, timeLimit, province_list);
+        $("#owl-selection").hide(effect, options, timeLimit, owl_list);
+        $("#keyword-selection").hide(effect, options, timeLimit);
     }
     else {
-        $("#province-selection").css("display","none");
-        $("#owl-selection").css("display","none");
-        $("#keyword-selection").css("display","none");
+        $("#province-selection").hide(effect, options, timeLimit, province_list);
+        $("#owl-selection").hide(effect, options, timeLimit);
+        $("#keyword-selection").hide(effect, options, timeLimit);
     }
 }
 function province_list() {
@@ -113,24 +114,22 @@ function province_list() {
             });
             owl_list += '<span class="save button" onclick="checkAll(\'.owl_list\')"   > Check All </span><span class="delete button" onclick="uncheckAll(\'.owl_list\')" > Uncheck All </span>';
             $('#owl_list').html(owl_list);
-            owl_list();
         });
 
-        $("#owl-selection").css("display","block");
-        $("#keyword-selection").css("display","none");
-        owl_list();
+        $("#owl-selection").show(effect, options, timeLimit, owl_list);
+        $("#keyword-selection").hide(effect, options, timeLimit);
     }
     else {
-        $("#owl-selection").css("display","none");
-        $("#keyword-selection").css("display","none");
+        $("#owl-selection").hide(effect, options, timeLimit, owl_list);
+        $("#keyword-selection").hide(effect, options, timeLimit);
     }
 }
 function owl_list() {
     if(($("#type option:selected").val() != "default") && ($(".province_list:checked").length > 0) && ($(".owl_list:checked").length > 0)) {
-        $("#keyword-selection").css("display","block");
+        $("#keyword-selection").show(effect, options, timeLimit);
     }
     else {
-        $("#keyword-selection").css("display","none");
+        $("#keyword-selection").hide(effect, options, timeLimit);
     }
 }
 
@@ -162,15 +161,15 @@ $("button[type=reset]").click(function(e) {
 /*
  * type selection change
  */
-// $("#type").change(function() { type_list(); }).change();
+$("#type").change(function() { type_list(); }).change();
 
 /*
  * check we have at least one checkbox chosen in the province list
  */
-// $('.province_list').click(function() { province_list(); });
+$('.province_list').click(function() { province_list(); });
 
 /*
  * check we have at least one checkbox chosen in the owl list
  */
-// $('.owl_list').click(function() { owl_list(); });
+$('.owl_list').click(function() { owl_list(); });
 
