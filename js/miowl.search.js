@@ -90,13 +90,18 @@ function type_list() {
             $('#province_list').html(input_list);
         });
 
+        var display = "";
+        display = ("#provinceSelection").css("display") + "\n\n";
+        display += ("#owlSelection").css("display") + "\n\n";
+        display += ("#keywordSelection").css("display");
+        alert(display);
+        
         if($("#provinceSelection").css("display") != "block") {
             $(this).show(effect, options, timeLimit, province_list);
         }
         if($("#owlSelection").css("display") != "none") {
             $(this).hide(effect, options, timeLimit, owl_list);
         }
-        alert(("#owlSelection").css("display"));
         if(("#keywordSelection").css("display") != "none") {
             $(this).hide(effect, options, timeLimit);
         }
