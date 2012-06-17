@@ -80,7 +80,7 @@ function uncheckAll(field)
  */
 function type_list() {
     var str = $("#type option:selected").val();
-    if(loaded && str != "default") {
+    if(str != "default") {
         $.getJSON('get_results/type/' + str, function(data) {
             var input_list = '';
             $(data.names).each(function(i, name){
