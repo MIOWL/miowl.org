@@ -2,12 +2,8 @@
 /* vars                                                                                           */
 /* ********************************************************************************************** */
 
-// loaded bool
-var loaded = false;
-
 // this is the speed for the hide animation
-// var timeLimit = 2500; //this is in milliseconds
-var timeLimit = 0; //this is in milliseconds
+var timeLimit = 2500; //this is in milliseconds
 
 // this is the effect we wish to use
 var effect = 'blind';
@@ -24,9 +20,6 @@ var options = {};
  * reset form function()
  */
 function resetForm() {
-    // reset loaded var
-    loaded = false;
-
     // reset all checkbox's
     $("input[type=checkbox]").each(function() {
         this.checked = false ;
@@ -42,9 +35,6 @@ function resetForm() {
     $("#provinceSelection").hide(effect, options, timeLimit);
     $("#owlSelection").hide(effect, options, timeLimit);
     $("#keywordSelection").hide(effect, options, timeLimit);
-
-    // set the loaded var
-    loaded = true;
 }
 
 /*
@@ -111,7 +101,7 @@ function type_list() {
     }
 }
 function province_list() {
-    if(loaded && ($("#type option:selected").val() != "default") && ($(".province_list:checked").length > 0)) {
+    if(($("#type option:selected").val() != "default") && ($(".province_list:checked").length > 0)) {
         var province_list = null;
         $(".province_list:checked").each(function() {
             province_list += '-' + $(this).val();
@@ -137,7 +127,7 @@ function province_list() {
     }
 }
 function owl_list() {
-    if(loaded && ($("#type option:selected").val() != "default") && ($(".province_list:checked").length > 0) && ($(".owl_list:checked").length > 0)) {
+    if(($("#type option:selected").val() != "default") && ($(".province_list:checked").length > 0) && ($(".owl_list:checked").length > 0)) {
         if($("#keywordSelection").css("display") != "block") {
             $("#keywordSelection").show(effect, options, timeLimit);
         }
@@ -158,9 +148,9 @@ function owl_list() {
 /*
  * Set our default settings
  */
-$(function() {
-    resetForm();
-});
+// $(function() {
+//     resetForm();
+// });
 
 
 /*
