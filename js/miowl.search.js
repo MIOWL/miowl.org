@@ -93,19 +93,13 @@ function type_list() {
             $('#province_list').html(input_list);
         });
 
-        var test = "";
-        test += "\"" + $("#provinceSelection").css("display") + "\"";
-        test += "\"" + $("#owlSelection").css("display") + "\"";
-        test += "\"" + $("#keywordSelection").css("display") + "\"";
-        alert(test);
-
         if($("#provinceSelection").css("display") != "block") {
             $("#provinceSelection").show(effect, options, timeLimit, province_list);
         }
     }
     else {
         if($("#provinceSelection").css("display") != "none") {
-            $("#provinceSelection").show(effect, options, timeLimit, province_list);
+            $("#provinceSelection").hide(effect, options, timeLimit, province_list);
         }
     }
 }
@@ -126,7 +120,7 @@ function province_list() {
         });
 
         if($("#owlSelection").css("display") != "block") {
-            $("#owlSelection").hide(effect, options, timeLimit, owl_list);
+            $("#owlSelection").show(effect, options, timeLimit, owl_list);
         }
     }
     else {
@@ -138,7 +132,7 @@ function province_list() {
 function owl_list() {
     if(loaded && ($("#type option:selected").val() != "default") && ($(".province_list:checked").length > 0) && ($(".owl_list:checked").length > 0)) {
         if($("#keywordSelection").css("display") != "block") {
-            $("#keywordSelection").hide(effect, options, timeLimit);
+            $("#keywordSelection").show(effect, options, timeLimit);
         }
     }
     else {
