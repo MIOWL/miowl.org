@@ -94,12 +94,12 @@ function type_list() {
         });
 
         if($("#provinceSelection").css("display") != "block") {
-            $("#provinceSelection").stop(true).show(effect, options, timeLimit, province_list);
+            $("#provinceSelection").stop(true, true).show(effect, options, timeLimit, province_list);
         }
     }
     else {
         if($("#provinceSelection").css("display") != "none") {
-            $("#provinceSelection").stop(true).hide(effect, options, timeLimit, province_list);
+            $("#provinceSelection").stop(true, true).hide(effect, options, timeLimit, province_list);
         }
     }
 }
@@ -123,24 +123,24 @@ function province_list() {
         });
 
         if($("#owlSelection").css("display") != "block") {
-            $("#owlSelection").stop(true).show(effect, options, timeLimit, owl_list);
+            $("#owlSelection").stop(true, true).show(effect, options, timeLimit, owl_list);
         }
     }
     else {
         if($("#owlSelection").css("display") != "none") {
-            $("#owlSelection").stop(true).hide(effect, options, timeLimit, owl_list);
+            $("#owlSelection").stop(true, true).hide(effect, options, timeLimit, owl_list);
         }
     }
 }
 function owl_list() {
     if(($("#type option:selected").val() != "default") && ($(".province_list:checked").length > 0) && ($(".owl_list:checked").length > 0)) {
         if($("#keywordSelection").css("display") != "block") {
-            $("#keywordSelection").stop(true).show(effect, options, timeLimit);
+            $("#keywordSelection").stop(true, true).show(effect, options, timeLimit);
         }
     }
     else {
         if($("#keywordSelection").css("display") != "none") {
-            $("#keywordSelection").stop(true).hide(effect, options, timeLimit);
+            $("#keywordSelection").stop(true, true).hide(effect, options, timeLimit);
         }
     }
 }
