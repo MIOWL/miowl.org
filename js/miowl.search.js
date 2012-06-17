@@ -20,6 +20,8 @@ var options = {};
  * reset form function()
  */
 function resetForm() {
+    $(document).stop(true, true);
+
     // reset all checkbox's
     $("input[type=checkbox]").each(function() {
         this.checked = false ;
@@ -44,6 +46,8 @@ function resetForm() {
  */
 function checkAll(field)
 {
+    $(document).stop(true, true);
+
     $(field).each(function() {
         this.checked = true ;
     });
@@ -63,6 +67,8 @@ function checkAll(field)
  */
 function uncheckAll(field)
 {
+    $(document).stop(true, true);
+
     $(field).each(function() {
         this.checked = false ;
     });
@@ -79,6 +85,8 @@ function uncheckAll(field)
  * list functions()
  */
 function type_list() {
+    $(document).stop(true, true);
+
     var str = $("#type option:selected").val();
     if(str != "default") {
         // empty the province list
@@ -104,6 +112,8 @@ function type_list() {
     }
 }
 function province_list() {
+    $(document).stop(true, true);
+
     if(($("#type option:selected").val() != "default") && ($(".province_list:checked").length > 0)) {
         // empty the owl list
         $("#owl_list").html('<span class="save button" onclick="checkAll(\'.owl_list\')"   > Check All </span><span class="delete button" onclick="uncheckAll(\'.owl_list\')" > Uncheck All </span>');
@@ -133,6 +143,8 @@ function province_list() {
     }
 }
 function owl_list() {
+    $(document).stop(true, true);
+
     if(($("#type option:selected").val() != "default") && ($(".province_list:checked").length > 0) && ($(".owl_list:checked").length > 0)) {
         if($("#keywordSelection").css("display") != "block") {
             $("#keywordSelection").stop(true, true).show(effect, options, timeLimit);
@@ -163,6 +175,8 @@ function owl_list() {
  * hide the areas from a clear button
  */
 $("button[type=reset]").click(function(e) {
+    $(document).stop(true, true);
+
     // prevent the default
     e.preventDefault();
 
@@ -173,15 +187,15 @@ $("button[type=reset]").click(function(e) {
 /*
  * type selection change
  */
-$("#type").change(function() { type_list(); }).change();
+$("#type").stop(true, true).change(function() { type_list(); }).change();
 
 /*
  * check we have at least one checkbox chosen in the province list
  */
-$('.province_list').click(function() { province_list(); });
+$('.province_list').stop(true, true).click(function() { province_list(); });
 
 /*
  * check we have at least one checkbox chosen in the owl list
  */
-$('.owl_list').click(function() { owl_list(); });
+$('.owl_list').stop(true, true).click(function() { owl_list(); });
 
