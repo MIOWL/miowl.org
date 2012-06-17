@@ -21,9 +21,9 @@ function resetForm() {
     var timeLimit = 5000; //this is in milliseconds
 
     // hide the div's again
-    $("#province-selection").effect( slide, {}, timeLimit );
-    $("#owl-selection").effect( slide, {}, timeLimit );
-    $("#keyword-selection").effect( slide, {}, timeLimit );
+    $("#province-selection").hide( 'slide', {}, timeLimit );
+    $("#owl-selection").hide( 'slide', {}, timeLimit );
+    $("#keyword-selection").hide( 'slide', {}, timeLimit );
 }
 
 /*
