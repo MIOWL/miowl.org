@@ -96,7 +96,7 @@ function type_list() {
         if($("#owl-selection").css("display") != "none") {
             $(this).hide(effect, options, timeLimit, owl_list);
         }
-        alert(("#keyword-selection").css("display"));
+        alert(("#owl-selection").css("display"));
         if(("#keyword-selection").css("display") != "none") {
             $(this).hide(effect, options, timeLimit);
         }
