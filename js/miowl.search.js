@@ -20,7 +20,7 @@ var options = {};
  * reset form function()
  */
 function resetForm() {
-    $(document).stop(true, true);
+    $(document);
 
     // reset all checkbox's
     $("input[type=checkbox]").each(function() {
@@ -46,7 +46,7 @@ function resetForm() {
  */
 function checkAll(field)
 {
-    $(document).stop(true, true);
+    $(document);
 
     $(field).each(function() {
         this.checked = true ;
@@ -67,7 +67,7 @@ function checkAll(field)
  */
 function uncheckAll(field)
 {
-    $(document).stop(true, true);
+    $(document);
 
     $(field).each(function() {
         this.checked = false ;
@@ -85,7 +85,7 @@ function uncheckAll(field)
  * list functions()
  */
 function type_list() {
-    $(document).stop(true, true);
+    $(document);
 
     var str = $("#type option:selected").val();
     if(str != "default") {
@@ -102,17 +102,17 @@ function type_list() {
         });
 
         if($("#provinceSelection").css("display") != "block") {
-            $("#provinceSelection").stop(true, true).show(effect, options, timeLimit, province_list);
+            $("#provinceSelection").show(effect, options, timeLimit, province_list);
         }
     }
     else {
         if($("#provinceSelection").css("display") != "none") {
-            $("#provinceSelection").stop(true, true).hide(effect, options, timeLimit, province_list);
+            $("#provinceSelection").hide(effect, options, timeLimit, province_list);
         }
     }
 }
 function province_list() {
-    $(document).stop(true, true);
+    $(document);
 
     if(($("#type option:selected").val() != "default") && ($(".province_list:checked").length > 0)) {
         // empty the owl list
@@ -133,26 +133,26 @@ function province_list() {
         });
 
         if($("#owlSelection").css("display") != "block") {
-            $("#owlSelection").stop(true, true).show(effect, options, timeLimit, owl_list);
+            $("#owlSelection").show(effect, options, timeLimit, owl_list);
         }
     }
     else {
         if($("#owlSelection").css("display") != "none") {
-            $("#owlSelection").stop(true, true).hide(effect, options, timeLimit, owl_list);
+            $("#owlSelection").hide(effect, options, timeLimit, owl_list);
         }
     }
 }
 function owl_list() {
-    $(document).stop(true, true);
+    $(document);
 
     if(($("#type option:selected").val() != "default") && ($(".province_list:checked").length > 0) && ($(".owl_list:checked").length > 0)) {
         if($("#keywordSelection").css("display") != "block") {
-            $("#keywordSelection").stop(true, true).show(effect, options, timeLimit);
+            $("#keywordSelection").show(effect, options, timeLimit);
         }
     }
     else {
         if($("#keywordSelection").css("display") != "none") {
-            $("#keywordSelection").stop(true, true).hide(effect, options, timeLimit);
+            $("#keywordSelection").hide(effect, options, timeLimit);
         }
     }
 }
@@ -175,8 +175,6 @@ function owl_list() {
  * hide the areas from a clear button
  */
 $("button[type=reset]").click(function(e) {
-    $(document).stop(true, true);
-
     // prevent the default
     e.preventDefault();
 
@@ -187,15 +185,15 @@ $("button[type=reset]").click(function(e) {
 /*
  * type selection change
  */
-$("#type").stop(true, true).change(function() { type_list(); }).change();
+$("#type").change(function() { type_list(); }).change();
 
 /*
  * check we have at least one checkbox chosen in the province list
  */
-$('.province_list').stop(true, true).click(function() { province_list(); });
+$('.province_list').click(function() { province_list(); });
 
 /*
  * check we have at least one checkbox chosen in the owl list
  */
-$('.owl_list').stop(true, true).click(function() { owl_list(); });
+$('.owl_list').click(function() { owl_list(); });
 
