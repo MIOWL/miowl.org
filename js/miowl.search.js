@@ -3,7 +3,7 @@
 /* ********************************************************************************************** */
 
 // this is the speed for the hide animation
-var timeLimit = 5000; //this is in milliseconds
+var timeLimit = 2500; //this is in milliseconds
 
 // this is the effect we wish to use
 var effect = 'blind';
