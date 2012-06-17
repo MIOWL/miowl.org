@@ -96,7 +96,7 @@ function type_list() {
         if($("#owl-selection").css('display') != 'none') {
             $(this).hide(effect, options, timeLimit, owl_list);
         }
-        if("#keyword-selection").css('display') != 'none') {
+        if(("#keyword-selection").css('display') != 'none') {
             $(this).hide(effect, options, timeLimit);
         }
     }
@@ -107,7 +107,7 @@ function type_list() {
         if($("#owl-selection").css('display') != 'none') {
             $(this).hide(effect, options, timeLimit, owl_list);
         }
-        if("#keyword-selection").css('display') != 'none') {
+        if(("#keyword-selection").css('display') != 'none') {
             $(this).hide(effect, options, timeLimit);
         }
     }
@@ -131,7 +131,7 @@ function province_list() {
         if($("#owl-selection").css('display') != 'block') {
             $(this).hide(effect, options, timeLimit, owl_list);
         }
-        if("#keyword-selection").css('display') != 'none') {
+        if(("#keyword-selection").css('display') != 'none') {
             $(this).hide(effect, options, timeLimit);
         }
     }
@@ -139,19 +139,19 @@ function province_list() {
         if($("#owl-selection").css('display') != 'none') {
             $(this).hide(effect, options, timeLimit, owl_list);
         }
-        if("#keyword-selection").css('display') != 'none') {
+        if(("#keyword-selection").css('display') != 'none') {
             $(this).hide(effect, options, timeLimit);
         }
     }
 }
 function owl_list() {
     if(($("#type option:selected").val() != "default") && ($(".province_list:checked").length > 0) && ($(".owl_list:checked").length > 0)) {
-        if("#keyword-selection").css('display') != 'block') {
+        if(("#keyword-selection").css('display') != 'block') {
             $(this).hide(effect, options, timeLimit);
         }
     }
     else {
-        if("#keyword-selection").css('display') != 'none') {
+        if(("#keyword-selection").css('display') != 'none') {
             $(this).hide(effect, options, timeLimit);
         }
     }
