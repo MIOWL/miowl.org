@@ -90,24 +90,24 @@ function type_list() {
             $('#province_list').html(input_list);
         });
 
-        if($("#province-selection").css('display') != 'block' {
+        if($("#province-selection").css('display') != 'block') {
             $(this).show(effect, options, timeLimit, province_list);
         }
-        if($("#owl-selection").css('display') != 'none' {
+        if($("#owl-selection").css('display') != 'none') {
             $(this).hide(effect, options, timeLimit, owl_list);
         }
-        if("#keyword-selection").css('display') != 'none' {
+        if("#keyword-selection").css('display') != 'none') {
             $(this).hide(effect, options, timeLimit);
         }
     }
     else {
-        if($("#province-selection").css('display') != 'none' {
+        if($("#province-selection").css('display') != 'none') {
             $(this).show(effect, options, timeLimit, province_list);
         }
-        if($("#owl-selection").css('display') != 'none' {
+        if($("#owl-selection").css('display') != 'none') {
             $(this).hide(effect, options, timeLimit, owl_list);
         }
-        if("#keyword-selection").css('display') != 'none' {
+        if("#keyword-selection").css('display') != 'none') {
             $(this).hide(effect, options, timeLimit);
         }
     }
@@ -128,30 +128,30 @@ function province_list() {
             $('#owl_list').html(owl_list);
         });
 
-        if($("#owl-selection").css('display') != 'block' {
+        if($("#owl-selection").css('display') != 'block') {
             $(this).hide(effect, options, timeLimit, owl_list);
         }
-        if("#keyword-selection").css('display') != 'none' {
+        if("#keyword-selection").css('display') != 'none') {
             $(this).hide(effect, options, timeLimit);
         }
     }
     else {
-        if($("#owl-selection").css('display') != 'none' {
+        if($("#owl-selection").css('display') != 'none') {
             $(this).hide(effect, options, timeLimit, owl_list);
         }
-        if("#keyword-selection").css('display') != 'none' {
+        if("#keyword-selection").css('display') != 'none') {
             $(this).hide(effect, options, timeLimit);
         }
     }
 }
 function owl_list() {
     if(($("#type option:selected").val() != "default") && ($(".province_list:checked").length > 0) && ($(".owl_list:checked").length > 0)) {
-        if("#keyword-selection").css('display') != 'block' {
+        if("#keyword-selection").css('display') != 'block') {
             $(this).hide(effect, options, timeLimit);
         }
     }
     else {
-        if("#keyword-selection").css('display') != 'none' {
+        if("#keyword-selection").css('display') != 'none') {
             $(this).hide(effect, options, timeLimit);
         }
     }
