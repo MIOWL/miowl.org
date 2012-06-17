@@ -32,9 +32,9 @@ function resetForm() {
     $("select").val('default');
 
     // hide the div's again
-    $("#province-selection").hide(effect, options, timeLimit);
-    $("#owl-selection").hide(effect, options, timeLimit);
-    $("#keyword-selection").hide(effect, options, timeLimit);
+    $("#provinceSelection").hide(effect, options, timeLimit);
+    $("#owlSelection").hide(effect, options, timeLimit);
+    $("#keywordSelection").hide(effect, options, timeLimit);
 }
 
 /*
@@ -90,25 +90,25 @@ function type_list() {
             $('#province_list').html(input_list);
         });
 
-        if($("#province-selection").css("display") != "block") {
+        if($("#provinceSelection").css("display") != "block") {
             $(this).show(effect, options, timeLimit, province_list);
         }
-        if($("#owl-selection").css("display") != "none") {
+        if($("#owlSelection").css("display") != "none") {
             $(this).hide(effect, options, timeLimit, owl_list);
         }
-        alert(("#owl-selection").css("display"));
-        if(("#keyword-selection").css("display") != "none") {
+        alert(("#owlSelection").css("display"));
+        if(("#keywordSelection").css("display") != "none") {
             $(this).hide(effect, options, timeLimit);
         }
     }
     else {
-        if($("#province-selection").css("display") != "none") {
+        if($("#provinceSelection").css("display") != "none") {
             $(this).show(effect, options, timeLimit, province_list);
         }
-        if($("#owl-selection").css("display") != "none") {
+        if($("#owlSelection").css("display") != "none") {
             $(this).hide(effect, options, timeLimit, owl_list);
         }
-        if(("#keyword-selection").css("display") != "none") {
+        if(("#keywordSelection").css("display") != "none") {
             $(this).hide(effect, options, timeLimit);
         }
     }
@@ -129,30 +129,30 @@ function province_list() {
             $('#owl_list').html(owl_list);
         });
 
-        if($("#owl-selection").css("display") != "block") {
+        if($("#owlSelection").css("display") != "block") {
             $(this).hide(effect, options, timeLimit, owl_list);
         }
-        if(("#keyword-selection").css("display") != "none") {
+        if(("#keywordSelection").css("display") != "none") {
             $(this).hide(effect, options, timeLimit);
         }
     }
     else {
-        if($("#owl-selection").css("display") != "none") {
+        if($("#owlSelection").css("display") != "none") {
             $(this).hide(effect, options, timeLimit, owl_list);
         }
-        if(("#keyword-selection").css("display") != "none") {
+        if(("#keywordSelection").css("display") != "none") {
             $(this).hide(effect, options, timeLimit);
         }
     }
 }
 function owl_list() {
     if(($("#type option:selected").val() != "default") && ($(".province_list:checked").length > 0) && ($(".owl_list:checked").length > 0)) {
-        if(("#keyword-selection").css("display") != "block") {
+        if(("#keywordSelection").css("display") != "block") {
             $(this).hide(effect, options, timeLimit);
         }
     }
     else {
-        if(("#keyword-selection").css("display") != "none") {
+        if(("#keywordSelection").css("display") != "none") {
             $(this).hide(effect, options, timeLimit);
         }
     }
