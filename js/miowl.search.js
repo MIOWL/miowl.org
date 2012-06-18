@@ -36,10 +36,6 @@ $(function() {
         $("#provinceSelection").hide();
         $("#owlSelection").hide();
         $("#keywordSelection").hide();
-        // $("#provinceSelection").hide(effect, options, timeLimit);
-        // $("#owlSelection").hide(effect, options, timeLimit);
-        // $("#keywordSelection").hide(effect, options, timeLimit);
-
     }
 
     /*
@@ -99,12 +95,12 @@ $(function() {
             });
 
             if($("#provinceSelection").css("display") != "block") {
-                $("#provinceSelection").show(effect, options, timeLimit, province_list);
+                $("#provinceSelection").show('fast', province_list);
             }
         }
         else {
             if($("#provinceSelection").css("display") != "none") {
-                $("#provinceSelection").hide(effect, options, timeLimit, province_list);
+                $("#provinceSelection").hide('fast', province_list);
             }
         }
     }
@@ -129,12 +125,12 @@ $(function() {
             });
 
             if($("#owlSelection").css("display") != "block") {
-                $("#owlSelection").show(effect, options, timeLimit, owl_list);
+                $("#owlSelection").show('fast', owl_list);
             }
         }
         else {
             if($("#owlSelection").css("display") != "none") {
-                $("#owlSelection").hide(effect, options, timeLimit, owl_list);
+                $("#owlSelection").hide('fast', owl_list);
             }
         }
     }
