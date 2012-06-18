@@ -142,14 +142,14 @@ class Search extends CI_Controller {
      * @param $value - this is the search data for the SQL
      * @return JSON output
      */
-    public function get_results($type = FALSE, $value = FALSE)
+    public function get_results($type = FALSE, $owl_type = FALSE, $province_list = FALSE)
     {
         // set our default
         $return_data = array();
 
         // lets see what we want to get results for
         if ($type == 'type') {
-            if(($data = $this->owl_model->get_owl_by_type($value)))
+            if(($data = $this->owl_model->get_owl_by_type($owl_type)))
             {
                 $names = array();
 
@@ -162,9 +162,9 @@ class Search extends CI_Controller {
         }
 
         elseif ($type == 'province') {
-            $province_list = explode('-', str_replace('null-', NULL, $value));
+            // $province_list = explode('-', str_replace('null-', NULL, $value));
             foreach ($province_list as $value) {
-                if(($data = $this->owl_model->get_owl_by_province($value))) {
+                if(($data = $this->owl_model->get_owl_by_province($value, $owl_type))) {
                     foreach ($data->result() as $row) {
                         $return_data['owls'][] = array('id'=>$row->id, 'name'=>$row->owl_name);
                     }

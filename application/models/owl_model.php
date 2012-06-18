@@ -311,13 +311,17 @@ class Owl_model extends CI_Model {
      *
      * @param string $province - owl province
      */
-    public function get_owl_by_province($province = FALSE)
+    public function get_owl_by_province($province = FALSE, $owl_type = FALSE)
     {
         if (!$province)
             return FALSE;
 
         $this->db->select('*');
         $this->db->where('owl_province', $province);
+
+        if($type != FALSE && $type != 'both')
+            $this->db->having('owl_type', $owl_type);
+
         $query = $this->db->get('owls');
 
         if ($query->num_rows() > 0)

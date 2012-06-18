@@ -20,8 +20,6 @@ var options = {};
  * reset form function()
  */
 function resetForm() {
-    $(document);
-
     // reset all checkbox's
     $("input[type=checkbox]").each(function() {
         this.checked = false ;
@@ -46,8 +44,6 @@ function resetForm() {
  */
 function checkAll(field)
 {
-    $(document);
-
     $(field).each(function() {
         this.checked = true ;
     });
@@ -67,8 +63,6 @@ function checkAll(field)
  */
 function uncheckAll(field)
 {
-    $(document);
-
     $(field).each(function() {
         this.checked = false ;
     });
@@ -85,8 +79,6 @@ function uncheckAll(field)
  * list functions()
  */
 function type_list() {
-    $(document);
-
     var str = $("#type option:selected").val();
     if(str != "default") {
         // empty the province list
@@ -112,9 +104,8 @@ function type_list() {
     }
 }
 function province_list() {
-    $(document);
-
-    if(($("#type option:selected").val() != "default") && ($(".province_list:checked").length > 0)) {
+    var str = $("#type option:selected").val();
+    if((str != "default") && ($(".province_list:checked").length > 0)) {
         // empty the owl list
         $("#owl_list").html('<span class="save button" onclick="checkAll(\'.owl_list\')"   > Check All </span><span class="delete button" onclick="uncheckAll(\'.owl_list\')" > Uncheck All </span>');
 
@@ -123,7 +114,7 @@ function province_list() {
             province_list += '-' + $(this).val();
         });
 
-        $.getJSON('get_results/province/' + province_list, function(data) {
+        $.getJSON('get_results/province/' + str + '/' + province_list, function(data) {
             var owl_list = '';
             $(data.owls).each(function(i, owl){
                 owl_list += '<input type="checkbox" name="owl[]" class="owl_list" value="' + owl.id + '" onclick="owl_list()" />&nbsp;&nbsp;&nbsp;&nbsp;' + owl.name + '<br />';
@@ -143,9 +134,8 @@ function province_list() {
     }
 }
 function owl_list() {
-    $(document);
-
-    if(($("#type option:selected").val() != "default") && ($(".province_list:checked").length > 0) && ($(".owl_list:checked").length > 0)) {
+    var str = $("#type option:selected").val();
+    if((str != "default") && ($(".province_list:checked").length > 0) && ($(".owl_list:checked").length > 0)) {
         if($("#keywordSelection").css("display") != "block") {
             $("#keywordSelection").show(effect, options, timeLimit);
         }
@@ -162,14 +152,6 @@ function owl_list() {
 /* ********************************************************************************************** */
 /* use the functions                                                                              */
 /* ********************************************************************************************** */
-
-/*
- * Set our default settings
- */
-// $(function() {
-//     resetForm();
-// });
-
 
 /*
  * hide the areas from a clear button
