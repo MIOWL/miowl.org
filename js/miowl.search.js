@@ -2,14 +2,8 @@
 /* vars                                                                                           */
 /* ********************************************************************************************** */
 
-// this is the speed for the hide animation
-var timeLimit = 250; //this is in milliseconds
-
-// this is the effect we wish to use
-var effect = 'blind';
-
-// this is the effect options
-var options = {};
+// this is the timeout for delay's
+var timeLimit = 800; //this is in milliseconds
 
 
 /* ********************************************************************************************** */
@@ -32,9 +26,9 @@ function resetForm() {
     $("select").val('default');
 
     // hide the div's again
-    $("#provinceSelection").hide();
-    $("#owlSelection").hide();
-    $("#keywordSelection").hide();
+    $("#provinceSelection").hide().delay(timeLimit);
+    $("#owlSelection").hide().delay(timeLimit);
+    $("#keywordSelection").hide().delay(timeLimit);
 }
 
 /*
@@ -94,12 +88,12 @@ function type_list() {
         });
 
         if($("#provinceSelection").css("display") != "block") {
-            $("#provinceSelection").show();
+            $("#provinceSelection").show().delay(timeLimit);
         }
     }
     else {
         if($("#provinceSelection").css("display") != "none") {
-            $("#provinceSelection").hide();
+            $("#provinceSelection").hide().delay(timeLimit);
         }
     }
     province_list();
@@ -125,12 +119,12 @@ function province_list() {
         });
 
         if($("#owlSelection").css("display") != "block") {
-            $("#owlSelection").show();
+            $("#owlSelection").show().delay(timeLimit);
         }
     }
     else {
         if($("#owlSelection").css("display") != "none") {
-            $("#owlSelection").hide();
+            $("#owlSelection").hide().delay(timeLimit);
         }
     }
     owl_list;
@@ -139,12 +133,12 @@ function owl_list() {
     var str = $("#type option:selected").val();
     if((str != "default") && ($(".province_list:checked").length > 0) && ($(".owl_list:checked").length > 0)) {
         if($("#keywordSelection").css("display") != "block") {
-            $("#keywordSelection").show();
+            $("#keywordSelection").show().delay(timeLimit);
         }
     }
     else {
         if($("#keywordSelection").css("display") != "none") {
-            $("#keywordSelection").hide();
+            $("#keywordSelection").hide().delay(timeLimit);
         }
     }
 }
