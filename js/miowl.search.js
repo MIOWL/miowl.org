@@ -153,29 +153,34 @@ function owl_list() {
 /* use the functions                                                                              */
 /* ********************************************************************************************** */
 
-/*
- * hide the areas from a clear button
- */
-$("button[type=reset]").click(function(e) {
-    // prevent the default
-    e.preventDefault();
-
-    // run the reset function
+$.(function(
     resetForm();
-});
 
-/*
- * type selection change
- */
-$("#type").change(function() { type_list(); }).change();
+    /*
+     * hide the areas from a clear button
+     */
+    $("button[type=reset]").click(function(e) {
+        // prevent the default
+        e.preventDefault();
 
-/*
- * check we have at least one checkbox chosen in the province list
- */
-$('.province_list').click(function() { province_list(); });
+        // run the reset function
+        resetForm();
+    });
 
-/*
- * check we have at least one checkbox chosen in the owl list
- */
-$('.owl_list').click(function() { owl_list(); });
+    /*
+     * type selection change
+     */
+    $("#type").change(function() { type_list(); }).change();
+
+    /*
+     * check we have at least one checkbox chosen in the province list
+     */
+    $('.province_list').click(function() { province_list(); });
+
+    /*
+     * check we have at least one checkbox chosen in the owl list
+     */
+    $('.owl_list').click(function() { owl_list(); });
+));
+
 
