@@ -153,7 +153,7 @@ function owl_list() {
 /* use the functions                                                                              */
 /* ********************************************************************************************** */
 
-$.(function(
+$(function() {
     resetForm();
 
     /*
@@ -181,6 +181,6 @@ $.(function(
      * check we have at least one checkbox chosen in the owl list
      */
     $('.owl_list').click(function() { owl_list(); });
-));
+});
 
 
