@@ -33,9 +33,13 @@ $(function() {
         $("select").val('default');
 
         // hide the div's again
-        $("#provinceSelection").hide(effect, options, timeLimit);
-        $("#owlSelection").hide(effect, options, timeLimit);
-        $("#keywordSelection").hide(effect, options, timeLimit);
+        $("#provinceSelection").hide();
+        $("#owlSelection").hide();
+        $("#keywordSelection").hide();
+        // $("#provinceSelection").hide(effect, options, timeLimit);
+        // $("#owlSelection").hide(effect, options, timeLimit);
+        // $("#keywordSelection").hide(effect, options, timeLimit);
+
     }
 
     /*
@@ -138,12 +142,12 @@ $(function() {
         var str = $("#type option:selected").val();
         if((str != "default") && ($(".province_list:checked").length > 0) && ($(".owl_list:checked").length > 0)) {
             if($("#keywordSelection").css("display") != "block") {
-                $("#keywordSelection").show(effect, options, timeLimit);
+                $("#keywordSelection").show();
             }
         }
         else {
             if($("#keywordSelection").css("display") != "none") {
-                $("#keywordSelection").hide(effect, options, timeLimit);
+                $("#keywordSelection").hide();
             }
         }
     }
