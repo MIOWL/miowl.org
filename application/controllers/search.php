@@ -114,8 +114,6 @@ class Search extends CI_Controller {
         $page_data['keyword'] = $search['keyword'];
         $page_data['query'] = $this->gen_results($offset, $this->per_page_limit);
 
-        print '<pre>' . print_r($this->db->last_query(), TRUE) . '</pre>';
-
         // setup pagination lib
         $config['base_url']         = base_url('search/results');
         $config['uri_segment']      = 3;
@@ -173,8 +171,7 @@ class Search extends CI_Controller {
         }
 
         // do we have a valid output
-        $output = ($return_data == FALSE) || empty($return_data) ? array() : array_unique($return_data);
-        #$output = ($return_data == FALSE) || empty($return_data) ? array() : $return_data;
+        $output = ($return_data == FALSE) || empty($return_data) ? array() : $return_data;
 
         // set our JSON header
         @header('Content-type: application/json');
@@ -249,8 +246,8 @@ class Search extends CI_Controller {
      */
     private function urldecode_array($input = FALSE)
     {
-        // if(!$input)
-        //     return FALSE;
+        if(!$input)
+            return FALSE;
 
         $output = array();
         foreach ($input as $key => $value) {
@@ -304,4 +301,4 @@ class Search extends CI_Controller {
 
 }
 
-// EOF
+// eof.
