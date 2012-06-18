@@ -95,14 +95,15 @@ $(function() {
             });
 
             if($("#provinceSelection").css("display") != "block") {
-                $("#provinceSelection").show('fast', function () { province_list(); });
+                $("#provinceSelection").show('fast');
             }
         }
         else {
             if($("#provinceSelection").css("display") != "none") {
-                $("#provinceSelection").hide('fast', function () { province_list(); });
+                $("#provinceSelection").hide('fast');
             }
         }
+        province_list();
     }
     function province_list() {
         var str = $("#type option:selected").val();
@@ -125,14 +126,15 @@ $(function() {
             });
 
             if($("#owlSelection").css("display") != "block") {
-                $("#owlSelection").show('fast', function () { owl_list; });
+                $("#owlSelection").show('fast');
             }
         }
         else {
             if($("#owlSelection").css("display") != "none") {
-                $("#owlSelection").hide('fast', function () { owl_list; });
+                $("#owlSelection").hide('fast');
             }
         }
+        owl_list;
     }
     function owl_list() {
         var str = $("#type option:selected").val();
