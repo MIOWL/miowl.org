@@ -95,12 +95,12 @@ $(function() {
             });
 
             if($("#provinceSelection").css("display") != "block") {
-                $("#provinceSelection").show('fast', province_list);
+                $("#provinceSelection").show('fast', function () { province_list(); });
             }
         }
         else {
             if($("#provinceSelection").css("display") != "none") {
-                $("#provinceSelection").hide('fast', province_list);
+                $("#provinceSelection").hide('fast', function () { province_list(); });
             }
         }
     }
@@ -125,12 +125,12 @@ $(function() {
             });
 
             if($("#owlSelection").css("display") != "block") {
-                $("#owlSelection").show('fast', owl_list);
+                $("#owlSelection").show('fast', function () { owl_list; });
             }
         }
         else {
             if($("#owlSelection").css("display") != "none") {
-                $("#owlSelection").hide('fast', owl_list);
+                $("#owlSelection").hide('fast', function () { owl_list; });
             }
         }
     }
@@ -138,12 +138,12 @@ $(function() {
         var str = $("#type option:selected").val();
         if((str != "default") && ($(".province_list:checked").length > 0) && ($(".owl_list:checked").length > 0)) {
             if($("#keywordSelection").css("display") != "block") {
-                $("#keywordSelection").show();
+                $("#keywordSelection").show('fast');
             }
         }
         else {
             if($("#keywordSelection").css("display") != "none") {
-                $("#keywordSelection").hide();
+                $("#keywordSelection").hide('fast');
             }
         }
     }
