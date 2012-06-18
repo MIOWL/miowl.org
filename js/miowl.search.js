@@ -2,10 +2,6 @@
 /* vars                                                                                           */
 /* ********************************************************************************************** */
 
-// this is the timeout for delay's
-var timeLimit = 800; //this is in milliseconds
-
-
 /* ********************************************************************************************** */
 /* functions list                                                                                 */
 /* ********************************************************************************************** */
@@ -26,9 +22,9 @@ function resetForm() {
     $("select").val('default');
 
     // hide the div's again
-    $("#provinceSelection").hide().delay(timeLimit);
-    $("#owlSelection").hide().delay(timeLimit);
-    $("#keywordSelection").hide().delay(timeLimit);
+    $("#provinceSelection").hide();
+    $("#owlSelection").hide();
+    $("#keywordSelection").hide();
 }
 
 /*
@@ -88,12 +84,12 @@ function type_list() {
         });
 
         if($("#provinceSelection").css("display") != "block") {
-            $("#provinceSelection").show().delay(timeLimit);
+            $("#provinceSelection").show();
         }
     }
     else {
         if($("#provinceSelection").css("display") != "none") {
-            $("#provinceSelection").hide().delay(timeLimit);
+            $("#provinceSelection").hide();
         }
     }
     province_list();
@@ -119,12 +115,12 @@ function province_list() {
         });
 
         if($("#owlSelection").css("display") != "block") {
-            $("#owlSelection").show().delay(timeLimit);
+            $("#owlSelection").show();
         }
     }
     else {
         if($("#owlSelection").css("display") != "none") {
-            $("#owlSelection").hide().delay(timeLimit);
+            $("#owlSelection").hide();
         }
     }
     owl_list;
@@ -133,12 +129,12 @@ function owl_list() {
     var str = $("#type option:selected").val();
     if((str != "default") && ($(".province_list:checked").length > 0) && ($(".owl_list:checked").length > 0)) {
         if($("#keywordSelection").css("display") != "block") {
-            $("#keywordSelection").show().delay(timeLimit);
+            $("#keywordSelection").show();
         }
     }
     else {
         if($("#keywordSelection").css("display") != "none") {
-            $("#keywordSelection").hide().delay(timeLimit);
+            $("#keywordSelection").hide();
         }
     }
 }
