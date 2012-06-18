@@ -319,7 +319,7 @@ class Owl_model extends CI_Model {
         $this->db->select('*');
         $this->db->where('owl_province', $province);
 
-        if($type != FALSE && $type != 'both')
+        if($owl_type != FALSE && $owl_type != 'both')
             $this->db->having('owl_type', $owl_type);
 
         $query = $this->db->get('owls');
