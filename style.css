@@ -698,8 +698,9 @@ table img {
     list-style-type:none;
     background-image:url('images/bc_separator.gif'); 
     background-repeat:no-repeat; 
-    background-position:right;
-    padding-left:15px;
+    /*background-position:right;*/
+    background-position:left center;
+    padding-left:8px;
 	display:inline-block;
     color:#333333;
 	float:left;
