@@ -38,18 +38,18 @@
                         <td>
                             <center>
                             <?php if($row->user_admin === 'true') : ?>
-                                <span style="color:#63b52e !important;" class="icon_font">.</span>
+                                <a href="promote:editor" style="color:#63b52e !important;" class="userAction icon_font">.</a>
                             <?php else : ?>
-                                <span style="color:#FF0000 !important;" class="icon_font">'</span>
+                                <a href="demote:editor" style="color:#FF0000 !important;" class="userAction icon_font">'</a>
                             <?php endif; ?>
                             </center>
                         </td>
                         <td>
                             <center>
                             <?php if($row->user_admin === 'true' || $row->user_editor === 'true') : ?>
-                                <span style="color:#63b52e !important;" class="icon_font">.</span>
+                                <a href="promote:editor" style="color:#63b52e !important;" class="userAction icon_font">.</a>
                             <?php else : ?>
-                                <span style="color:#FF0000 !important;" class="icon_font">'</span>
+                                <a href="demote:editor" style="color:#FF0000 !important;" class="userAction icon_font">'</a>
                             <?php endif; ?>
                             </center>
                         </td>
@@ -64,5 +64,56 @@
         </div>
         <div class="clear">&nbsp;</div>
 	</div>
+
+    <!-- Page Javascript -->
+    <script type="text/javascript">
+        $(function() {
+            $('.userAction').click(function(e) {
+                // prevent the default action, e.g., following a link
+                e.preventDefault()
+
+                // get the data from the form
+                var data = $(this).attr('href').split(':');
+
+                // what is the action?
+                var action = data[0];
+
+                // get the usergroup from the href
+                var group = data[1];
+
+                // do the dialog function
+                userDialog(group);
+            });
+
+            function userDialog(action, group) {
+                $('<div></div>')
+                .html('<span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>This will ' + action + ' the user to "<strong>' + group.toUpperCase() + '</strong>"?')
+                .dialog({
+                    title: camesString(action) + ' the user?',
+                    autoOpen: true,
+                    resizable: false,
+                    height:140,
+                    modal: true,
+                    buttons: {
+                        "Confirm": function() {
+                            $( this ).dialog( "close" );
+                            alert('user upgraded to ' + group);
+                        },
+                        Cancel: function() {
+                            $( this ).dialog( "close" );
+                        }
+                    }
+                });
+            };
+
+            function camesString(str) {
+                str = str.toLowerCase().replace(/\b[a-z]/g, function(letter) {
+                    return letter.toUpperCase();
+                });
+                return str
+            }
+        });
+    </script>
+    <!-- --------------- -->
 
 <?php $this->load->view('template/footer'); ?>
