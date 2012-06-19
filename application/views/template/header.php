@@ -13,7 +13,8 @@
     <link rel="stylesheet" href="<?php print site_url('/style.css'); ?>" type="text/css" media="screen" charset="utf-8" />
 
     <!-- jQuery UI CSS -->
-    <link rel="stylesheet" href="<?php print site_url('/css/jquery-ui.css'); ?>" type="text/css" media="screen" charset="utf-8" />
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/themes/blitzer/jquery-ui.css" type="text/css" media="screen" charset="utf-8" />
+    <!-- <link rel="stylesheet" href="<?php print site_url('/css/jquery-ui.css'); ?>" type="text/css" media="screen" charset="utf-8" /> -->
 
 	<!-- jQuery -->
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
