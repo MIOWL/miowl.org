@@ -530,7 +530,7 @@ class Owl extends CI_Controller {
      */
     public function _members_promote($group = FALSE, $user_id = FALSE)
     {
-        print json_encode(array('success'=>'false'));
+        print json_encode(array('success'=>'true'));
     }
     //------------------------------------------------------------------
 
@@ -540,7 +540,7 @@ class Owl extends CI_Controller {
      */
     public function _members_demote($group = FALSE, $user_id = FALSE)
     {
-        print json_encode(array('success'=>'false'));
+        print json_encode(array('success'=>'true'));
     }
     //------------------------------------------------------------------
 
