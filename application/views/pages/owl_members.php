@@ -132,7 +132,7 @@
                                 success: function(response) {
                                     if (response == "1") {
                                         // update the view to reflect this change
-                                        element
+                                        $( element )
                                             .attr('href', href)
                                             .attr('style', style)
                                             .text(str)
