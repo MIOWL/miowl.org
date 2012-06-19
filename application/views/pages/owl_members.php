@@ -86,8 +86,14 @@
             });
 
             function userDialog(action, group) {
+                // are we going from someting or to something
+                if(action = 'promote')
+                    var toFrom = 'to';
+                else
+                    var toFrom = 'from';
+
                 $('<div></div>')
-                .html('<span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>This will ' + action + ' the user to "<strong>' + group.toUpperCase() + '</strong>"?')
+                .html('<span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>This will ' + action + ' the user ' + toFrom + ' "<strong>' + group.toUpperCase() + '</strong>"?')
                 .dialog({
                     title: camesString(action) + ' the user?',
                     autoOpen: true,
