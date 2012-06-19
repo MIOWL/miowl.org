@@ -93,10 +93,12 @@
                 if(action == 'promote') {
                     var toFrom = 'to';
                     var href = 'demote:' + group;
+                    var style = 'color:#63b52e !important';
                     var str = ".";
                 } else {
                     var toFrom = 'from';
                     var href = 'promote:' + group;
+                    var style = 'color:#FF0000 !important';
                     var str = "'";
                 }
 
@@ -119,16 +121,15 @@
                                     element
                                         .hide()
                                         .attr('href', href)
+                                        .attr('style', style)
                                         .text(str)
                                         .show()
                                     ;
                             //     }
                             // });
 
-                            element.effect("highlight", {}, 3000);
-
                             // alert the user for now
-                            alert('user upgraded to ' + group);
+                            // alert('user upgraded to ' + group);
                         },
                         Cancel: function() {
                             $( this ).dialog( "close" );
