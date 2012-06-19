@@ -125,7 +125,7 @@
                             $( this ).dialog( "close" );
 
                             // get the JSON data from the request
-                            $.getJSON('<?php print base_url(); ?>/owl/members/'+ action + '/' + group + '/' + uid, function(data) {
+                            $.getJSON('/projects/miowl/owl/members/'+ action + '/' + group + '/' + uid, function(data) {
                                 if( $(data.success) == 'true' ) {
                                     // update the view to reflect this change
                                     element
