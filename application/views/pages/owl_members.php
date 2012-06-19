@@ -88,7 +88,7 @@
                 var element = $(this);
 
                 // do the dialog function
-                userDialog(action, group, element);
+                userDialog(action, group, uid, element);
             });
 
             function userDialog(action, group, uid, element) {
@@ -124,11 +124,13 @@
                             uri += '/' + group;
                             uri += '/' + uid;
 
+                            alert(uri);
+
                             // get the JSON data from the request
                             // $.getJSON(uri, function(data) {
                             //     if( $(data.success) == 'true' ) {
                                     // update the view to reflect this change
-                                    $(element)
+                                    element
                                         .attr('href', href)
                                         .attr('style', style)
                                         .text(str)
