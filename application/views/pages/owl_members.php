@@ -92,8 +92,12 @@
                 // are we going from someting or to something
                 if(action == 'promote') {
                     var toFrom = 'to';
+                    var href = 'demote:' + group;
+                    var str = ".";
                 } else {
                     var toFrom = 'from';
+                    var href = 'promote:' + group;
+                    var str = "'";
                 }
 
                 $('<div></div>')
@@ -110,19 +114,21 @@
                             $( this ).dialog( "close" );
 
                             // get the JSON data from the request
-                            /*$.getJSON('search/get_results/type/' + str, function(data) {
-                                var input_list = '';
-                                $(data.names).each(function(i, name){
-                                    input_list += '<input type="checkbox" name="province[]" class="province_list" value="' + name + '" onclick="province_list()" />&nbsp;&nbsp;&nbsp;&nbsp;' + name + '<br />';
-                                });
-                                input_list += '<span class="save button" onclick="checkAll(\'.province_list\')" > Check All </span><span class="delete button" onclick="uncheckAll(\'.province_list\')" > Uncheck All </span>';
-                                $('#province_list').html(input_list);
-                            });*/
+                            // $.getJSON('search/get_results/type/' + str, function(data) {
+                            //     if( $(data.success) == 'true' ) {
+                                    element
+                                        .hide()
+                                        .attr('href', href)
+                                        .text(str)
+                                        .show()
+                                    ;
+                            //     }
+                            // });
 
                             element.effect("highlight", {}, 3000);
 
                             // alert the user for now
-                            // alert('user upgraded to ' + group);
+                            alert('user upgraded to ' + group);
                         },
                         Cancel: function() {
                             $( this ).dialog( "close" );
