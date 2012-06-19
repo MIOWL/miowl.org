@@ -119,11 +119,9 @@
                             // $.getJSON('search/get_results/type/' + str, function(data) {
                             //     if( $(data.success) == 'true' ) {
                                     element
-                                        .hide()
                                         .attr('href', href)
                                         .attr('style', style)
                                         .text(str)
-                                        .show()
                                     ;
                             //     }
                             // });
