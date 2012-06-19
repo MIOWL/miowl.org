@@ -84,6 +84,12 @@
                 // get the User ID
                 var uid = data[2];
 
+                alert(
+                        'action:' + action + "\n" +
+                        'group:' + group + "\n" +
+                        'uid:' + uid
+                    );
+
                 // get the calling element
                 var element = $(this);
 
@@ -119,25 +125,25 @@
                             $( this ).dialog( "close" );
 
                             // build the uri
-                            var url = '<?php print base_url(); ?>/owl/members/'+ action;
+                            var uri = '<?php print base_url(); ?>/owl/members';
+                            uri += '/'+ action;
+                            uri += '/' + group;
+                            uri += '/' + uid;
 
-                            $.ajax({
-                                type: 'POST',
-                                url: '<?php print base_url(); ?>/owl/members/'+ action,
-                                data:{
-                                    group: group,
-                                    uid: uid
-                                },
-                                dataType: 'text',
-                                success: function(response) {
-                                    if (response == "1") {
-                                        // update the view to reflect this change
-                                        $( element )
-                                            .attr('href', href)
-                                            .attr('style', style)
-                                            .text(str)
-                                        ;
-                                    }
+                            alert(uri);
+
+                            // get the JSON data from the request
+                            $.getJSON(uri, function(data) {
+                                if( $(data.success) == 'true' ) {
+                                    // update the view to reflect this change
+                                    element
+                                        .attr('href', href)
+                                        .attr('style', style)
+                                        .text(str)
+                                    ;
+                                }
+                                else {
+                                    alert('Sorry, an error has occured. Please report this to the site admin.');
                                 }
                             });
                         },
