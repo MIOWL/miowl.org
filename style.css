@@ -702,11 +702,12 @@ table img {
     background-position:left center;
     padding:0 4px 0 10px;
 	display:inline-block;
-    color:#333333;
+	color: #888;
 	float:left;
 }
 
 .breadcrumb li.last {
-    background-image:none; 
-    padding-right: 10px;
+	/* background-image:none; */
+    /* padding-right: 10px; */
+    color:#333;
 }

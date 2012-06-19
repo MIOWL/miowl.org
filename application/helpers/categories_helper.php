@@ -139,7 +139,7 @@ if (!function_exists('cat_breadcrumb_ul'))
         if (($chosen = $CI->cat_model->get_category($cat_id)))
         {
             // start our breadcrumb
-            $breadcrumb = '<li>' . $chosen->row()->name . "</li>{$breadcrumb}";
+            $breadcrumb = '<li class="last">' . $chosen->row()->name . "</li>{$breadcrumb}";
 
             // is this a root cat?
             if($chosen->row()->parent_id != 0)
