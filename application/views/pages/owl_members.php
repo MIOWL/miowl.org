@@ -84,6 +84,12 @@
                 // get the User ID
                 var uid = data[2];
 
+                alert(
+                        'action:' + action + "\n" +
+                        'group:' + group + "\n" +
+                        'uid:' + uid
+                    );
+
                 // get the calling element
                 var element = $(this);
 
