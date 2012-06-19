@@ -119,24 +119,26 @@
                             $( this ).dialog( "close" );
 
                             // build the uri
-                            var uri = '/projects/miowl/owl/members/'+ action + '/' + group + '/' + uid + '/';
+                            var url = '<?php print base_url(); ?>/owl/members/'+ action;
 
-                            alert(uri);
-
-                            // get the JSON data from the request
-                            $.getJSON(uri, function(data) {
-                                if( $(data.success) == 'true' ) {
+                            $.post( url, {
+                                'group': group,
+                                'uid': uid
+                            },
+                              function(response) {
+                                    if (response == "1") {
                                     // update the view to reflect this change
-                                    element
-                                        .attr('href', href)
-                                        .attr('style', style)
-                                        .text(str)
-                                    ;
+                                        element
+                                            .attr('href', href)
+                                            .attr('style', style)
+                                            .text(str)
+                                        ;
+                                    }
+                                    else {
+                                        alert('Sorry, an error has occured. Please report this to the site admin.');
+                                    }
                                 }
-                                else {
-                                    alert('Sorry, an error has occured. Please report this to the site admin.');
-                                }
-                            });
+                            );
                         },
                         Cancel: function() {
                             $( this ).dialog( "close" );
