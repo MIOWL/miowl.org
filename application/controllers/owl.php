@@ -530,7 +530,7 @@ class Owl extends CI_Controller {
      */
     public function _members_promote($group = FALSE, $user_id = FALSE)
     {
-        print json_encode(array('success'=>'false'));
+        print "0";
     }
     //------------------------------------------------------------------
 
@@ -540,7 +540,7 @@ class Owl extends CI_Controller {
      */
     public function _members_demote($group = FALSE, $user_id = FALSE)
     {
-        print $this->miowl_model->owl_deny_member($this->session->userdata('owl'), $user_id)?1:0;
+        print "0";
     }
     //------------------------------------------------------------------
 
