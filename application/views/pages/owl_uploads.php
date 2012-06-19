@@ -14,10 +14,8 @@
             <table>
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Timestamp (GMT)</th>
-                        <th>Filename</th>
                         <th>Category</th>
+                        <th>Filename</th>
                         <th>License</th>
                         <th>File Type</th>
                         <th>Download</th>
@@ -33,10 +31,8 @@
             $lic = $this->miowl_model->get_license($row->upload_license);
 ?>
                     <tr id="r-<?php print $row->id; ?>">
-                        <td><?php print $row->id; ?></td>
-                        <td><?php print date("H:i:s d/m/Y", $row->upload_time); ?></td>
-                        <td><?php print $row->file_name; ?></td>
                         <td><?php print cat_breadcrumb($row->upload_category); ?></td>
+                        <td><?php print $row->file_name; ?></td>
                         <td>
                             <a href="<?php print $lic->row()->url; ?>" target="_BLANK">
                                 <?php print $lic->row()->name; ?>
