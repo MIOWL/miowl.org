@@ -38,18 +38,18 @@
                         <td>
                             <center>
                             <?php if($row->user_admin === 'true') : ?>
-                                <a href="promote:admin" style="color:#63b52e !important;" class="userAction icon_font">.</a>
+                                <a href="demote:admin" style="color:#63b52e !important;" class="userAction icon_font">.</a>
                             <?php else : ?>
-                                <a href="demote:admin" style="color:#FF0000 !important;" class="userAction icon_font">'</a>
+                                <a href="promote:admin" style="color:#FF0000 !important;" class="userAction icon_font">'</a>
                             <?php endif; ?>
                             </center>
                         </td>
                         <td>
                             <center>
                             <?php if($row->user_admin === 'true' || $row->user_editor === 'true') : ?>
-                                <a href="promote:editor" style="color:#63b52e !important;" class="userAction icon_font">.</a>
+                                <a href="demote:editor" style="color:#63b52e !important;" class="userAction icon_font">.</a>
                             <?php else : ?>
-                                <a href="demote:editor" style="color:#FF0000 !important;" class="userAction icon_font">'</a>
+                                <a href="promote:editor" style="color:#FF0000 !important;" class="userAction icon_font">'</a>
                             <?php endif; ?>
                             </center>
                         </td>
