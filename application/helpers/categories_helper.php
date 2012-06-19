@@ -139,7 +139,7 @@ if (!function_exists('cat_breadcrumb_ul'))
         if (($chosen = $CI->cat_model->get_category($cat_id)))
         {
             // start our breadcrumb
-            $breadcrumb = "<li>" . $chosen->row()->name . "</li>{$breadcrumb}";
+            $breadcrumb = '<li class="last">' . $chosen->row()->name . "</li>{$breadcrumb}";
 
             // is this a root cat?
             if($chosen->row()->parent_id != 0)
@@ -148,7 +148,7 @@ if (!function_exists('cat_breadcrumb_ul'))
                 if (($chosen_sub = $CI->cat_model->get_category($chosen->row()->parent_id)))
                 {
                     // prepend our breadcrumb
-                    $breadcrumb = "<li>" . $chosen_sub->row()->name . "</li>{$breadcrumb}";
+                    $breadcrumb = '<li>' . $chosen_sub->row()->name . "</li>{$breadcrumb}";
 
                     // is this a root cat?
                     if($chosen_sub->row()->parent_id != 0)
@@ -157,7 +157,7 @@ if (!function_exists('cat_breadcrumb_ul'))
                         if (($chosen_sub_sub = $CI->cat_model->get_category($chosen_sub->row()->parent_id)))
                         {
                             // prepend our breadcrumb
-                            $breadcrumb = "<li>" . $chosen_sub_sub->row()->name . "</li>{$breadcrumb}";
+                            $breadcrumb = '<li>' . $chosen_sub_sub->row()->name . "</li>{$breadcrumb}";
                         }
                     }
                 }

@@ -696,7 +696,7 @@ table img {
 
 .breadcrumb li {
     list-style-type:none;
-    background-image:url('bc_separator.gif'); 
+    background-image:url('images/bc_separator.gif'); 
     background-repeat:no-repeat; 
     background-position:right;
     padding-left:15px;
