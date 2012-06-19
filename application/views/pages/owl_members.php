@@ -122,10 +122,9 @@
                             var url = '<?php print base_url(); ?>/owl/members/'+ action;
 
                             $.post( url, {
-                                'group': group,
-                                'uid': uid
-                            },
-                              function(response) {
+                                group_data: group,
+                                uid_data: uid
+                            }, function(response) {
                                     if (response == "1") {
                                     // update the view to reflect this change
                                         element
