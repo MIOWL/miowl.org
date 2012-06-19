@@ -120,6 +120,8 @@
                                 $('#province_list').html(input_list);
                             });*/
 
+                            element.effect("highlight", {}, 3000);
+
                             // alert the user for now
                             alert('user upgraded to ' + group);
                         },
