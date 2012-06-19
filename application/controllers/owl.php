@@ -528,7 +528,7 @@ class Owl extends CI_Controller {
     /**
      * member function _members_promote()
      */
-    public function _members_promote($group = FALSE, $user_id = FALSE)
+    public function _members_promote()
     {
         print "0";
     }
@@ -538,7 +538,7 @@ class Owl extends CI_Controller {
     /**
      * member function _members_demote()
      */
-    public function _members_demote($group = FALSE, $user_id = FALSE)
+    public function _members_demote()
     {
         print "0";
     }

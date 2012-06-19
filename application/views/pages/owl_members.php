@@ -121,23 +121,25 @@
                             // build the uri
                             var url = '<?php print base_url(); ?>/owl/members/'+ action;
 
-                            $.post( url, {
-                                group_data: group,
-                                uid_data: uid
-                            }, function(response) {
+                            $.ajax({
+                                type: 'POST',
+                                url: '<?php print base_url(); ?>/owl/members/'+ action,
+                                data:{
+                                    group: group,
+                                    uid: uid
+                                },
+                                dataType: 'text',
+                                success: function(response) {
                                     if (response == "1") {
-                                    // update the view to reflect this change
+                                        // update the view to reflect this change
                                         element
                                             .attr('href', href)
                                             .attr('style', style)
                                             .text(str)
                                         ;
                                     }
-                                    else {
-                                        alert('Sorry, an error has occured. Please report this to the site admin.');
-                                    }
                                 }
-                            );
+                            });
                         },
                         Cancel: function() {
                             $( this ).dialog( "close" );
