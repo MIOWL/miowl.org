@@ -84,12 +84,6 @@
                 // get the User ID
                 var uid = data[2];
 
-                alert(
-                        'action:' + action + "\n" +
-                        'group:' + group + "\n" +
-                        'uid:' + uid
-                    );
-
                 // get the calling element
                 var element = $(this);
 
@@ -124,8 +118,13 @@
                             // close the dialog box
                             $( this ).dialog( "close" );
 
+                            // build the uri
+                            var uri = '/projects/miowl/owl/members/'+ action + '/' + group + '/' + uid + '/';
+
+                            alert(uri);
+
                             // get the JSON data from the request
-                            $.getJSON('/projects/miowl/owl/members/'+ action + '/' + group + '/' + uid, function(data) {
+                            $.getJSON(uri, function(data) {
                                 if( $(data.success) == 'true' ) {
                                     // update the view to reflect this change
                                     element
