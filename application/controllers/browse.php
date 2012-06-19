@@ -87,7 +87,7 @@ class Browse extends CI_Controller {
                 $lic = $this->miowl_model->get_license($row->upload_license);
                 $this->table->add_row(
                     '<a href="' . site_url('browse/owl/' . $row->owl) . '">' . $this->owl_model->get_owl_by_id($row->owl)->row()->owl_name . '</a>',
-                    cat_breadcrumb($row->upload_category),
+                    cat_breadcrumb_ul($row->upload_category),
                     $row->file_name,
                     '<a href="' . $lic->row()->url . '" target="_BLANK">' . $lic->row()->name . '</a>',
                     $row->file_type,

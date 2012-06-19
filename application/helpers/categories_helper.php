@@ -125,3 +125,46 @@ if (!function_exists('cat_breadcrumb'))
     }
 }
 
+if (!function_exists('cat_breadcrumb_ul'))
+{
+    function cat_breadcrumb_ul($cat_id = FALSE)
+    {
+        if(!$cat_id)
+            return FALSE;
+
+        $CI =& get_instance();
+        $breadcrumb = '</ul>';
+
+        // get our category information
+        if (($chosen = $CI->cat_model->get_category($cat_id)))
+        {
+            // start our breadcrumb
+            $breadcrumb = "<li>" . {$chosen->row()->name . "</li>{$breadcrumb}";
+
+            // is this a root cat?
+            if($chosen->row()->parent_id != 0)
+            {
+                // who is it a child of?
+                if (($chosen_sub = $CI->cat_model->get_category($chosen->row()->parent_id)))
+                {
+                    // prepend our breadcrumb
+                    $breadcrumb = "<li>" . $chosen_sub->row()->name . "</li>{$breadcrumb}";
+
+                    // is this a root cat?
+                    if($chosen_sub->row()->parent_id != 0)
+                    {
+                        // who is it a child of?
+                        if (($chosen_sub_sub = $CI->cat_model->get_category($chosen_sub->row()->parent_id)))
+                        {
+                            // prepend our breadcrumb
+                            $breadcrumb = "<li>" . $chosen_sub_sub->row()->name . "</li>{$breadcrumb}";
+                        }
+                    }
+                }
+            }
+        }
+
+        return '<ul class="breadcrumb">' . $breadcrumb;
+    }
+}
+

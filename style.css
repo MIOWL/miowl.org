@@ -675,3 +675,37 @@ table img {
 	-ms-filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#9e9e9e', endColorstr='#454545'); /* ie8 */
 }
 
+/*
+|============================================
+| Breadcrumb Style
+|============================================
+*/
+.breadcrumb {
+    font: 11px Arial, Helvetica, sans-serif;
+    background-image:url('images/bc_bg.gif'); 
+    background-repeat:repeat-x;
+	height:30px;
+    line-height:30px;
+    color:#888;
+    border:solid 1px #cacaca;
+    width:100%;
+    overflow:hidden;
+    margin:0px;
+    padding:0px;
+}
+
+.breadcrumb li {
+    list-style-type:none;
+    background-image:url('bc_separator.gif'); 
+    background-repeat:no-repeat; 
+    background-position:right;
+    padding-left:15px;
+	display:inline-block;
+    color:#333333;
+	float:left;
+}
+
+.breadcrumb li.last {
+    background-image:none; 
+    padding-right: 10px;
+}

@@ -31,7 +31,7 @@
             $lic = $this->miowl_model->get_license($row->upload_license);
 ?>
                     <tr id="r-<?php print $row->id; ?>">
-                        <td><?php print cat_breadcrumb($row->upload_category); ?></td>
+                        <td><?php print cat_breadcrumb_ul($row->upload_category); ?></td>
                         <td><?php print $row->file_name; ?></td>
                         <td>
                             <a href="<?php print $lic->row()->url; ?>" target="_BLANK">
