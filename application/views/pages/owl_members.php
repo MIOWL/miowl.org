@@ -128,7 +128,7 @@
                             // $.getJSON(uri, function(data) {
                             //     if( $(data.success) == 'true' ) {
                                     // update the view to reflect this change
-                                    element
+                                    $(element)
                                         .attr('href', href)
                                         .attr('style', style)
                                         .text(str)
