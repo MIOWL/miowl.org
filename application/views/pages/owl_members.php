@@ -87,7 +87,7 @@
 
             function userDialog(action, group) {
                 // are we going from someting or to something
-                if(action = 'promote') {
+                if(action == 'promote') {
                     var toFrom = 'to';
                 } else {
                     var toFrom = 'from';
