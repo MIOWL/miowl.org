@@ -124,22 +124,20 @@
                             uri += '/' + group;
                             uri += '/' + uid;
 
-                            alert(uri);
-
                             // get the JSON data from the request
-                            // $.getJSON(uri, function(data) {
-                            //     if( $(data.success) == 'true' ) {
+                            $.getJSON(uri, function(data) {
+                                if( $(data.success) == 'true' ) {
                                     // update the view to reflect this change
                                     element
                                         .attr('href', href)
                                         .attr('style', style)
                                         .text(str)
                                     ;
-                            //     }
-                            //     else {
-                            //         alert('Sorry, an error has occured. Please report this to the site admin.');
-                            //     }
-                            // });
+                                }
+                                else {
+                                    alert('Sorry, an error has occured. Please report this to the site admin.');
+                                }
+                            });
                         },
                         Cancel: function() {
                             $( this ).dialog( "close" );
