@@ -526,6 +526,26 @@ class Owl extends CI_Controller {
 
 
     /**
+     * member function _members_promote()
+     */
+    public function _members_promote($group = FALSE, $user_id = FALSE)
+    {
+        print json_encode(array('success'=>'false'));
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * member function _members_demote()
+     */
+    public function _members_demote($group = FALSE, $user_id = FALSE)
+    {
+        print $this->miowl_model->owl_deny_member($this->session->userdata('owl'), $user_id)?1:0;
+    }
+    //------------------------------------------------------------------
+
+
+    /**
      * member function _members_invite()
      */
     public function _members_invite()

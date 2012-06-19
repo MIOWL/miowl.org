@@ -38,18 +38,18 @@
                         <td>
                             <center>
                             <?php if($row->user_admin === 'true') : ?>
-                                <a href="demote:admin" style="color:#63b52e !important;" class="userAction icon_font">.</a>
+                                <a href="demote:admin:<?php print $row->id; ?>" style="color:#63b52e !important;" class="userAction icon_font">.</a>
                             <?php else : ?>
-                                <a href="promote:admin" style="color:#FF0000 !important;" class="userAction icon_font">'</a>
+                                <a href="promote:admin:<?php print $row->id; ?>" style="color:#FF0000 !important;" class="userAction icon_font">'</a>
                             <?php endif; ?>
                             </center>
                         </td>
                         <td>
                             <center>
                             <?php if($row->user_admin === 'true' || $row->user_editor === 'true') : ?>
-                                <a href="demote:editor" style="color:#63b52e !important;" class="userAction icon_font">.</a>
+                                <a href="demote:editor:<?php print $row->id; ?>" style="color:#63b52e !important;" class="userAction icon_font">.</a>
                             <?php else : ?>
-                                <a href="promote:editor" style="color:#FF0000 !important;" class="userAction icon_font">'</a>
+                                <a href="promote:editor:<?php print $row->id; ?>" style="color:#FF0000 !important;" class="userAction icon_font">'</a>
                             <?php endif; ?>
                             </center>
                         </td>
@@ -81,6 +81,9 @@
                 // get the usergroup from the href
                 var group = data[1];
 
+                // get the User ID
+                var uid = data[2];
+
                 // get the calling element
                 var element = $(this);
 
@@ -88,16 +91,16 @@
                 userDialog(action, group, element);
             });
 
-            function userDialog(action, group, element) {
+            function userDialog(action, group, uid, element) {
                 // are we going from someting or to something
                 if(action == 'promote') {
                     var toFrom = 'to';
-                    var href = 'demote:' + group;
+                    var href = 'demote:' + group + ':' + uid;
                     var style = 'color:#63b52e !important';
                     var str = ".";
                 } else {
                     var toFrom = 'from';
-                    var href = 'promote:' + group;
+                    var href = 'promote:' + group + ':' + uid;
                     var style = 'color:#FF0000 !important';
                     var str = "'";
                 }
@@ -116,18 +119,19 @@
                             $( this ).dialog( "close" );
 
                             // get the JSON data from the request
-                            // $.getJSON('search/get_results/type/' + str, function(data) {
-                            //     if( $(data.success) == 'true' ) {
+                            $.getJSON('<?php print base_url(); ?>/owl/members/'+ action + '/' + group + '/' + uid, function(data) {
+                                if( $(data.success) == 'true' ) {
+                                    // update the view to reflect this change
                                     element
                                         .attr('href', href)
                                         .attr('style', style)
                                         .text(str)
                                     ;
-                            //     }
-                            // });
-
-                            // alert the user for now
-                            // alert('user upgraded to ' + group);
+                                }
+                                else {
+                                    alert('Sorry, an error has occured. Please report this to the site admin.');
+                                }
+                            });
                         },
                         Cancel: function() {
                             $( this ).dialog( "close" );
