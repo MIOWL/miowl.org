@@ -81,11 +81,15 @@
                 // get the usergroup from the href
                 var group = data[1];
 
+                // get the calling element
+                var element = $(this);
+                alert(element);
+
                 // do the dialog function
-                userDialog(action, group);
+                userDialog(action, group, element);
             });
 
-            function userDialog(action, group) {
+            function userDialog(action, group, element) {
                 // are we going from someting or to something
                 if(action == 'promote') {
                     var toFrom = 'to';
@@ -103,7 +107,20 @@
                     modal: true,
                     buttons: {
                         "Confirm": function() {
+                            // close the dialog box
                             $( this ).dialog( "close" );
+
+                            // get the JSON data from the request
+                            $.getJSON('search/get_results/type/' + str, function(data) {
+                                var input_list = '';
+                                $(data.names).each(function(i, name){
+                                    input_list += '<input type="checkbox" name="province[]" class="province_list" value="' + name + '" onclick="province_list()" />&nbsp;&nbsp;&nbsp;&nbsp;' + name + '<br />';
+                                });
+                                input_list += '<span class="save button" onclick="checkAll(\'.province_list\')" > Check All </span><span class="delete button" onclick="uncheckAll(\'.province_list\')" > Uncheck All </span>';
+                                $('#province_list').html(input_list);
+                            });
+
+                            // alert the user for now
                             alert('user upgraded to ' + group);
                         },
                         Cancel: function() {
