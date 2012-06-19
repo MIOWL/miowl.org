@@ -83,7 +83,6 @@
 
                 // get the calling element
                 var element = $(this);
-                alert(element);
 
                 // do the dialog function
                 userDialog(action, group, element);
@@ -123,7 +122,7 @@
                             element.effect("highlight", {}, 3000);
 
                             // alert the user for now
-                            alert('user upgraded to ' + group);
+                            // alert('user upgraded to ' + group);
                         },
                         Cancel: function() {
                             $( this ).dialog( "close" );
