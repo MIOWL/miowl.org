@@ -111,14 +111,14 @@
                             $( this ).dialog( "close" );
 
                             // get the JSON data from the request
-                            $.getJSON('search/get_results/type/' + str, function(data) {
+                            /*$.getJSON('search/get_results/type/' + str, function(data) {
                                 var input_list = '';
                                 $(data.names).each(function(i, name){
                                     input_list += '<input type="checkbox" name="province[]" class="province_list" value="' + name + '" onclick="province_list()" />&nbsp;&nbsp;&nbsp;&nbsp;' + name + '<br />';
                                 });
                                 input_list += '<span class="save button" onclick="checkAll(\'.province_list\')" > Check All </span><span class="delete button" onclick="uncheckAll(\'.province_list\')" > Uncheck All </span>';
                                 $('#province_list').html(input_list);
-                            });
+                            });*/
 
                             // alert the user for now
                             alert('user upgraded to ' + group);
