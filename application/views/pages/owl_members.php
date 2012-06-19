@@ -99,7 +99,7 @@
                     title: camesString(action) + ' the user?',
                     autoOpen: true,
                     resizable: false,
-                    height:151,
+                    height:auto,
                     modal: true,
                     buttons: {
                         "Confirm": function() {
