@@ -86,8 +86,6 @@ if (!function_exists('cat_breadcrumb'))
 {
     function cat_breadcrumb($cat_id = FALSE)
     {
-        return cat_breadcrumb_ul($cat_id);
-
         if(!$cat_id)
             return FALSE;
 
