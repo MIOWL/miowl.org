@@ -82,7 +82,7 @@
                 var group = data[1];
 
                 // do the dialog function
-                userDialog(group);
+                userDialog(action, group);
             });
 
             function userDialog(action, group) {
