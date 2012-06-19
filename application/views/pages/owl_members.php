@@ -126,7 +126,7 @@
 
                             // get the JSON data from the request
                             $.getJSON(uri, function(data) {
-                                if( $(data.success) == 'true' ) {
+                                if( data.success == 'true' ) {
                                     // update the view to reflect this change
                                     element
                                         .attr('href', href)
