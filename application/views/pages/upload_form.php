@@ -63,7 +63,7 @@
 
                     <div class="ctrlHolder">
                         <label for="revDate">Revision Date <span class="right">(optional)</span></label>
-                        <input name="revDate" id="revDate"type="text" class="textInput large"><?php print trim(set_value('revDate')); ?></textarea>
+                        <input name="revDate" id="revDate"type="text" class="textInput small"><?php print trim(set_value('revDate')); ?></textarea>
                         <p class="formHint">If a revision date is required for this file, please choose above.</p>
                     </div>
 
