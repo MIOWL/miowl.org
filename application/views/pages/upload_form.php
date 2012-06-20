@@ -82,8 +82,12 @@
     <!-- Page Javascript -->
     <script type="text/javascript">
         $(function() {
-            $( "#revDate" ).datepicker();
-       });
+            $( "#revDate" ).datepicker({
+                showOn: "button",
+                buttonImage: "<?php print base_url(); ?>/images/calendar.gif",
+                buttonImageOnly: true
+            });
+        });
     </script>
     <!-- --------------- -->
 
