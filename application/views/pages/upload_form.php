@@ -85,7 +85,8 @@
             $( "#revDate" ).datepicker({
                 showOn: "button",
                 buttonImage: "<?php print base_url(); ?>/images/calendar.gif",
-                buttonImageOnly: true
+                buttonImageOnly: true,
+                dateFormat: "dd/mm/yy"
             });
         });
     </script>
