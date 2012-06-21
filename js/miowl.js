@@ -88,7 +88,7 @@ $(document).ready(function() {
 
     	$.ajax({
             type: 'GET',
-            url: '/projects/miowl/owl/members/accept/' + id,
+            url: '/owl/members/accept/' + id,
             dataType: 'text',
             success: function(response) {
                 if (response == "1") {
@@ -110,7 +110,7 @@ $(document).ready(function() {
 
     	$.ajax({
             type: 'GET',
-            url: '/projects/miowl/owl/members/deny/' + id,
+            url: '/owl/members/deny/' + id,
             dataType: 'text',
             success: function(response) {
                 if (response == "1") {
@@ -134,7 +134,7 @@ $(document).ready(function() {
 
         $.ajax({
             type: 'GET',
-            url: '/projects/miowl/owl/uploads/remove/' + id,
+            url: '/owl/uploads/remove/' + id,
             dataType: 'text',
             success: function(response) {
                 if (response == "1") {
@@ -158,7 +158,7 @@ $(document).ready(function() {
 
         $.ajax({
             type: 'GET',
-            url: '/projects/miowl/owl/uploads/restore/' + id,
+            url: '/owl/uploads/restore/' + id,
             dataType: 'text',
             success: function(response) {
                 if (response == "1") {
