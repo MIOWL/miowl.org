@@ -6,7 +6,7 @@ SetEnv TZ Europe/London
 
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteBase /projects/miowl
+    RewriteBase /
 
     #Removes access to the system folder by users.
     #Additionally this will allow you to create a System.php controller,

@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'https://djekl.dlinkddns.com/projects/miowl/';
+$config['base_url']	= 'http://miowl.org/';
 
 /*
 |--------------------------------------------------------------------------

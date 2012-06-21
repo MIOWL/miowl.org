@@ -48,7 +48,7 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
+$db['default']['hostname'] = 'lister.binslashbash.org';
 $db['default']['username'] = 'miowl';
 $db['default']['password'] = 'hLLc9vV356pnSWLZ';
 $db['default']['database'] = 'miowl_db';
