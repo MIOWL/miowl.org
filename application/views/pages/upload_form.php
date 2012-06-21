@@ -21,7 +21,7 @@
 
                     <div class="ctrlHolder">
                         <label for="userfile">File <span class="right">(required)</span></label>
-                        <input type="file" name="userfile" id="userfile" size="35" class="textInput large" value="<?php print set_value('userfile'); ?>" />
+                        <input type="file" name="userfile" id="userfile" size="35" class="textInput large" />
                         <p class="formHint">Choose the file you want to upload. Must be <strong><?php print $allow_types; ?></strong></p>
                     </div>
 
@@ -35,7 +35,7 @@
                         <label for="category">Category <span class="right">(required)</span></label>
                         <select name="category" id="category" class="textInput large" autocompelete="OFF" />
                             <?php foreach (gen_drop_categories() as $category) : ?>
-                                <option value="<?php print $category['id']; ?>" <?php echo set_select('sub_category', $category['id']); ?>>
+                                <option value="<?php print $category['id']; ?>" <?php echo set_select('category', $category['id']); ?>>
                                     <?php print $category['name']; ?>
                                 </option>
                             <?php endforeach; ?>

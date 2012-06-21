@@ -65,7 +65,11 @@ class Upload extends CI_Controller {
         $this->load->library('upload', $config);
 
         // form validation rules
-        $this->form_validation->set_rules('description', 'Description', 'required');
+        $this->form_validation->set_rules('filename', 'File Name', 'trim');
+        $this->form_validation->set_rules('category', 'Upload Category', 'required|trim');
+        $this->form_validation->set_rules('license', 'Upload License', 'required|trim');
+        $this->form_validation->set_rules('description', 'Description', 'required|trim');
+        $this->form_validation->set_rules('revDate', 'Revision Date', 'required|trim');
 
         if($this->form_validation->run())
         {
