@@ -31,27 +31,49 @@
                         <p class="formHint">Choose the file's display name.<br><strong>NOTE:</strong> leave blank to use the uploaded filename.</p>
                     </div>
 
-                    <div class="ctrlHolder">
+<div class="ctrlHolder">
                         <label for="category">Category <span class="right">(required)</span></label>
                         <select name="category" id="category" class="textInput large" autocompelete="OFF" />
-                            <?php foreach (gen_drop_categories() as $category) : ?>
-                                <option value="<?php print $category['id']; ?>" <?php echo set_select('category', $category['id']); ?>>
-                                    <?php print $category['name']; ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
+                                                            <option value="21" >
+                                    special                                </option>
+                                                            <option value="22" >
+                                    - test                                </option>
+                                                            <option value="23" >
+                                    - anotherone                                </option>
+                                                            <option value="34" >
+                                    -- yet another                                </option>
+                                                            <option value="40" >
+                                    -- meh                                </option>
+                                                            <option value="24" >
+                                    - testing                                </option>
+                                                            <option value="42" >
+                                    -- elle test                                </option>
+                                                            <option value="25" >
+                                    special 1                                </option>
+                                                            <option value="27" >
+                                    - testingcat                                </option>
+                                                            <option value="26" >
+                                    testing 123                                </option>
+                                                            <option value="32" >
+                                    meh                                </option>
+                                                            <option value="41" >
+                                    meh                                </option>
+                                                    </select>
                         <p class="formHint">Choose the file's catagory.</p>
                     </div>
 
                     <div class="ctrlHolder">
                         <label for="license">License <span class="right">(required)</span></label>
                         <select name="license" id="license" class="textInput large" autocompelete="OFF" />
-                            <?php foreach ($license->result() as $row) : ?>
-                                <option value="<?php print $row->id; ?>" <?php echo set_select('license', $row->id); ?>>
-                                    <?php print $row->name; ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
+                                                            <option value="1" >
+                                    GPL 3.0                                </option>
+                                                            <option value="4" >
+                                    BSD                                </option>
+                                                            <option value="2" >
+                                    LGPL 3.0                                </option>
+                                                            <option value="3" >
+                                    MIT                                </option>
+                                                    </select>
                         <p class="formHint">Choose the file's license.</p>
                     </div>
 
