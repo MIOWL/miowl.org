@@ -34,8 +34,8 @@
                 <?php
                     if(time() >= $info->row()->revision_date)
                     {
-                        $page_data['error'] = TRUE;
-                        $page_data['msg'] = "This file needs to be reviewed!\n<br />\nReview date was " . date("d/m/Y", $info->row()->revision_date);
+                        $error  = TRUE;
+                        $msg    = "This file needs to be reviewed!\n<br />\nReview date was " . date("d/m/Y", $info->row()->revision_date);
                     }
 
                     $this->load->view('messages/message_inline');
