@@ -59,8 +59,8 @@ class Upload extends CI_Controller {
         $config['encrypt_name'] = TRUE;
         $this->load->library('upload', $config);
 
-        print '<pre>' . print_r($this->upload->data()) . '</pre>';
-        print '<pre>' . print_r($this->input->post(NULL, TRUE)) . '</pre>';
+        print '<pre>' . print_r($this->upload->data(), TRUE) . '</pre>';
+        print '<pre>' . print_r($this->input->post(NULL, TRUE), TRUE) . '</pre>';
 
         $page_data = array();
         $page_data['allow_types'] = str_replace('|', ', ', $file_types);
