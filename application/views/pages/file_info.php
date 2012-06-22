@@ -32,7 +32,7 @@
             <fieldset class="inlineLabels">
 
                 <?php
-                    if(time() >= $meh)
+                    if(time() >= $info->row()->revision_date)
                     {
                         $page_data['error'] = TRUE;
                         $page_data['msg'] = "This file needs to be reviewed!\n<br />\nReview date was " . date("d/m/Y", $info->row()->revision_date);
