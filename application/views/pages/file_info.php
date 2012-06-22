@@ -31,6 +31,16 @@
             
             <fieldset class="inlineLabels">
 
+                <?php
+                    if(time() >= $meh)
+                    {
+                        $page_data['error'] = TRUE;
+                        $page_data['msg'] = "This file needs to be reviewed!\n<br />\nReview date was " . date("d/m/Y", $info->row()->revision_date);
+                    }
+
+                    $this->load->view('messages/message_inline');
+                ?>
+
                 <div class="ctrlHolder">
                     <label for="id">file id</label>
                     <span name="id" id="id" size="35" class="textInput medium"><?php print $info->row()->id; ?></span>
