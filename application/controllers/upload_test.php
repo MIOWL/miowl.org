@@ -40,6 +40,8 @@ class Upload_test extends CI_Controller {
         $config['encrypt_name'] = TRUE;
         $this->load->library('upload', $config);
 
+        $page_data['allow_types'] = str_replace('|', ', ', $file_types);
+
         // form validation rules
         $this->form_validation->set_rules('filename', 'File Name', 'trim');
 
