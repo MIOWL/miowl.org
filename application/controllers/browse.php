@@ -231,6 +231,12 @@ class Browse extends CI_Controller {
         $page_data['info']          = $upload_info;
         $page_data['deleted']       = $deleted;
 
+        if(time() >= $upload_info->row()->revision_date)
+        {
+            $error  = TRUE;
+            $msg    = "This file needs to be reviewed!\n<br />\nReview date was " . date("d/m/Y", $info->row()->revision_date);
+        }
+
         // load the approp. page view
         $this->load->view('pages/file_info', $page_data);
     }
