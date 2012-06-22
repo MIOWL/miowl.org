@@ -73,6 +73,7 @@ class Upload extends CI_Controller {
 
         if($this->form_validation->run())
         {
+            print "validated\n";
             if (!$this->upload->do_upload())
             {
                 $page_data['page_title'] = 'Upload Failure';
@@ -83,6 +84,7 @@ class Upload extends CI_Controller {
             }
             else
             {
+                print " -- good upload\n";
                 $upload_data = $this->upload->data();
 
                 $file_name = $this->input->post('filename') == ""
@@ -122,8 +124,12 @@ class Upload extends CI_Controller {
                         $page_data['page_title'] = 'Upload Failure';
                         $page_data['error'] = TRUE;
                         $page_data['msg'] = "Something went wrong with the database...";
+                        $this->load->view('pages/upload_form', $page_data);
                         return;
                     }
+                else {
+                    print " -- good db insert\n";
+                }
 
                 $page_data['page_title'] = 'Upload Success';
                 $page_data['upload_data'] = $upload_data;
@@ -138,6 +144,7 @@ class Upload extends CI_Controller {
         }
         else
         {
+            print "invalid form :(\n";
             $page_data['page_title'] = 'Upload';
             $this->load->view('pages/upload_form', $page_data);
         }
