@@ -50,6 +50,8 @@ class Upload extends CI_Controller {
         if (!$this->login_check('upload'))
             return;
 
+        print '<pre>' . print_r($this->input->post(NULL, TRUE)) . '</pre>';
+
         // What are the allowed file types? [seperate via pipe (|)]
         $file_types = 'txt|rtf|pdf|doc|docx';
 
@@ -66,10 +68,10 @@ class Upload extends CI_Controller {
 
         // form validation rules
         $this->form_validation->set_rules('filename', 'File Name', 'trim');
-        $this->form_validation->set_rules('category', 'Upload Category', 'required|trim');
-        $this->form_validation->set_rules('license', 'Upload License', 'required|trim');
-        $this->form_validation->set_rules('description', 'Description', 'required|trim');
-        $this->form_validation->set_rules('revDate', 'Revision Date', 'required|trim');
+        $this->form_validation->set_rules('category', 'Upload Category', 'trim|required');
+        $this->form_validation->set_rules('license', 'Upload License', 'trim|required');
+        $this->form_validation->set_rules('description', 'Description', 'trim|required');
+        $this->form_validation->set_rules('revDate', 'Revision Date', 'trim|required');
 
         if($this->form_validation->run())
         {
@@ -81,6 +83,7 @@ class Upload extends CI_Controller {
                 $page_data['msg'] = trim($this->upload->display_errors());
 
                 $this->load->view('pages/upload_form', $page_data);
+                return;
             }
             else
             {
@@ -140,6 +143,7 @@ class Upload extends CI_Controller {
 
                 $this->load->view('pages/upload_success', $page_data);
                 #$this->load->view('pages/upload_form', $page_data);
+                return;
             }
         }
         else
@@ -147,6 +151,7 @@ class Upload extends CI_Controller {
             print "invalid form :(\n";
             $page_data['page_title'] = 'Upload';
             $this->load->view('pages/upload_form', $page_data);
+            return;
         }
     }
     //------------------------------------------------------------------
