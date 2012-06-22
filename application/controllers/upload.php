@@ -82,10 +82,7 @@ class Upload extends CI_Controller {
             $this->load->view('pages/upload_form', $page_data);
             return;
         }
-        else
-        {
-            print " -- good upload\n";
-            if($this->form_validation->run())
+        elseif($this->form_validation->run())
             {
                 print "validated\n";
                 $upload_data = $this->upload->data();
