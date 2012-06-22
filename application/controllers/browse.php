@@ -236,6 +236,8 @@ class Browse extends CI_Controller {
             $page_data['info']      = TRUE;
             $nbsp                   = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
             $page_data['msg']       = "This file needs to be reviewed!\n<br />\n{$nbsp}Review date was " . date("d/m/Y", $upload_info->row()->revision_date);
+
+            // TODO: Email admin members about review
         }
 
         // load the approp. page view
