@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Upload extends CI_Controller {
+class Upload_test extends CI_Controller {
 
     //=================================================================================
     // :private vars
