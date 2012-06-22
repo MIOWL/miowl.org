@@ -76,6 +76,7 @@ class Upload extends CI_Controller {
         if(!$this->form_validation->run())
         {
             print "invalid form :(\n";
+                print validation_errors();
             $page_data['page_title'] = 'Upload';
             $this->load->view('pages/upload_form', $page_data);
             return;
