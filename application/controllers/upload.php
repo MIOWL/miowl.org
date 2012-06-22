@@ -73,21 +73,21 @@ class Upload extends CI_Controller {
         $this->form_validation->set_rules('description', 'Description', 'trim|required');
         $this->form_validation->set_rules('revDate', 'Revision Date', 'trim|required');
 
-        if($this->form_validation->run())
+        if (!$this->upload->do_upload())
         {
-            print "validated\n";
-            if (!$this->upload->do_upload())
-            {
-                $page_data['page_title'] = 'Upload Failure';
-                $page_data['error'] = TRUE;
-                $page_data['msg'] = trim($this->upload->display_errors());
+            $page_data['page_title'] = 'Upload Failure';
+            $page_data['error'] = TRUE;
+            $page_data['msg'] = trim($this->upload->display_errors());
 
-                $this->load->view('pages/upload_form', $page_data);
-                return;
-            }
-            else
+            $this->load->view('pages/upload_form', $page_data);
+            return;
+        }
+        else
+        {
+            print " -- good upload\n";
+            if($this->form_validation->run())
             {
-                print " -- good upload\n";
+                print "validated\n";
                 $upload_data = $this->upload->data();
 
                 $file_name = $this->input->post('filename') == ""
