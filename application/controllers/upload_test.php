@@ -26,6 +26,7 @@ class Upload_test extends CI_Controller {
 
     public function upload()
     {
+print validation_errors();
         print '<pre>' . print_r($_FILES, TRUE) . '</pre>';
         print '<pre>' . print_r($this->input->post(NULL, TRUE), TRUE) . '</pre>';
 
