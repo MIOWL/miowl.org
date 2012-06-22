@@ -99,8 +99,10 @@ class Upload extends CI_Controller {
                 $file_size          = $upload_data['file_size'];
                 $file_ext           = $upload_data['file_ext'];
                 $description        = str_replace(array("\r\n","\r","\n"), '\n', trim($this->input->post('description')));
-                $revDate            = explode('/', $this->input->post('revDate'));
-                $revDate            = $revDate[2] . $revDate[1] . $revDate[0];
+
+                $revDate            = $this->input->post('revDate') == ""
+                                        ? NULL
+                                        : strtotime($this->input->post('revDate'));
 
                 $this->upload_model->add_upload(
                             $upload_user,
@@ -113,7 +115,8 @@ class Upload extends CI_Controller {
                             $client_name,
                             $file_size,
                             $file_ext,
-                            $description
+                            $description,
+                            $revDate
                           );
 
                 $page_data['page_title'] = 'Upload Success';
@@ -123,8 +126,8 @@ class Upload extends CI_Controller {
                 $page_data['success']     = TRUE;
                 $page_data['msg']         = "Upload Successful, upload another?";
 
-                #$this->load->view('pages/upload_success', $page_data);
-                $this->load->view('pages/upload_form', $page_data);
+                $this->load->view('pages/upload_success', $page_data);
+                #$this->load->view('pages/upload_form', $page_data);
             }
         }
         else
