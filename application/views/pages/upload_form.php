@@ -86,11 +86,10 @@
                 showOn: "button",
                 buttonImage: "/images/calendar.gif",
                 buttonImageOnly: true,
-                dateFormat: "dd/mm/yy"
-                <?php
+                dateFormat: "dd/mm/yy"<?php
                     $date = trim(set_value('revDate'));
                     if($date != NULL || $date != "")
-                        print ',defaultDate : "'. $date .'"';
+                        print ",\n\t\t\t\tdefaultDate : \"". $date ."\"\n";
                 ?>
             });
         });
