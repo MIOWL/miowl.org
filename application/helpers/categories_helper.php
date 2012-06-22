@@ -134,6 +134,7 @@ if (!function_exists('cat_breadcrumb_ul'))
 
         $CI =& get_instance();
         $breadcrumb = '</ul>';
+        $breadcrumb_text = cat_breadcrumb($cat_id);
 
         // get our category information
         if (($chosen = $CI->cat_model->get_category($cat_id)))
@@ -164,7 +165,7 @@ if (!function_exists('cat_breadcrumb_ul'))
             }
         }
 
-        return '<ul class="breadcrumb">' . $breadcrumb;
+        return '<ul class="breadcrumb" title="' . $breadcrumb_text . '">' . $breadcrumb;
     }
 }
 
