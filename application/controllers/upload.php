@@ -50,9 +50,6 @@ class Upload extends CI_Controller {
         if (!$this->login_check('upload'))
             return;
 
-        print '<pre>' . print_r($this->upload->data()) . '</pre>';
-        print '<pre>' . print_r($this->input->post(NULL, TRUE)) . '</pre>';
-
         // What are the allowed file types? [seperate via pipe (|)]
         $file_types = 'txt|rtf|pdf|doc|docx';
 
@@ -60,12 +57,14 @@ class Upload extends CI_Controller {
         $config['allowed_types'] = $file_types;
         $config['max_size'] = '102400000'; // 10MB
         $config['encrypt_name'] = TRUE;
+        $this->load->library('upload', $config);
+
+        print '<pre>' . print_r($this->upload->data()) . '</pre>';
+        print '<pre>' . print_r($this->input->post(NULL, TRUE)) . '</pre>';
 
         $page_data = array();
         $page_data['allow_types'] = str_replace('|', ', ', $file_types);
         $page_data['license'] = $this->miowl_model->get_license();
-
-        $this->load->library('upload', $config);
 
         // form validation rules
         $this->form_validation->set_rules('filename', 'File Name', 'trim');
