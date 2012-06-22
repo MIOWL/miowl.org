@@ -36,7 +36,7 @@ class Upload_test extends CI_Controller {
 
         $config['upload_path'] = './uploads/';
         $config['allowed_types'] = $file_types;
-        $config['max_size'] = '102400000'; // 10MB
+        $config['max_size'] = '1024000000'; // 10MB
         $config['encrypt_name'] = TRUE;
         $this->load->library('upload', $config);
 
