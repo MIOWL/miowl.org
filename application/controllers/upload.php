@@ -41,7 +41,7 @@ class Upload extends CI_Controller {
     //------------------------------------------------------------------
 
 
-    public function orig()
+    public function index()
     {
         // Do we need to login??
         if (!$this->login_check('upload'))
@@ -63,10 +63,10 @@ class Upload extends CI_Controller {
 
         // form validation rules
         $this->form_validation->set_rules('filename', 'File Name', 'trim');
-        $this->form_validation->set_rules('category', 'Upload Category', 'required|trim');
-        $this->form_validation->set_rules('license', 'Upload License', 'required|trim');
-        $this->form_validation->set_rules('description', 'Description', 'required|trim');
-        $this->form_validation->set_rules('revDate', 'Revision Date', 'required|trim');
+        $this->form_validation->set_rules('category', 'Upload Category', 'trim|required');
+        $this->form_validation->set_rules('license', 'Upload License', 'trim|required');
+        $this->form_validation->set_rules('description', 'Description', 'trim|required');
+        $this->form_validation->set_rules('revDate', 'Revision Date', 'trim');
 
         if($this->form_validation->run())
         {
@@ -97,6 +97,10 @@ class Upload extends CI_Controller {
                 $file_ext           = $upload_data['file_ext'];
                 $description        = str_replace(array("\r\n","\r","\n"), '\n', trim($this->input->post('description')));
 
+                $revDate            = $this->input->post('revDate') == ""
+                                        ? NULL
+                                        : strtotime($this->input->post('revDate'));
+
                 $this->upload_model->add_upload(
                             $upload_user,
                             $owl,
@@ -108,7 +112,8 @@ class Upload extends CI_Controller {
                             $client_name,
                             $file_size,
                             $file_ext,
-                            $description
+                            $description,
+                            $revDate
                           );
 
                 $page_data['page_title'] = 'Upload Success';
@@ -134,7 +139,7 @@ class Upload extends CI_Controller {
      /**
      * public index()
      */
-    public function index()
+    public function old()
     {
         // Do we need to login??
         if (!$this->login_check('upload'))
