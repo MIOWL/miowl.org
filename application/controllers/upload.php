@@ -143,7 +143,7 @@ class Upload extends CI_Controller {
                 #$this->load->view('pages/upload_form', $page_data);
                 return;
             }
-        }
+        // }
         else
         {
             print "invalid form :(\n";
