@@ -63,7 +63,7 @@
 
                     <div class="ctrlHolder">
                         <label for="revDate">Revision Date <span class="right">(optional)</span></label>
-                        <input name="revDate" id="revDate"type="text" class="textInput small"><?php print trim(set_value('revDate')); ?></textarea>
+                        <input name="revDate" id="revDate"type="text" class="textInput small" value="<?php print trim(set_value('revDate')); ?>" />
                         <p class="formHint">If a revision date is required for this file, please choose above.</p>
                     </div>
 
@@ -87,6 +87,11 @@
                 buttonImage: "/images/calendar.gif",
                 buttonImageOnly: true,
                 dateFormat: "dd/mm/yy"
+                <?php
+                    $date = trim(set_value('revDate'));
+                    if($date != NULL || $date != "")
+                        print ',defaultDate : "'. $date .'"';
+                ?>
             });
         });
     </script>
