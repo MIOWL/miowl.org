@@ -59,9 +59,6 @@ class Upload extends CI_Controller {
         $config['encrypt_name'] = TRUE;
         $this->load->library('upload', $config);
 
-        print '<pre>' . print_r($this->upload->data(), TRUE) . '</pre>';
-        print '<pre>' . print_r($this->input->post(NULL, TRUE), TRUE) . '</pre>';
-
         $page_data = array();
         $page_data['allow_types'] = str_replace('|', ', ', $file_types);
         $page_data['license'] = $this->miowl_model->get_license();
@@ -72,6 +69,9 @@ class Upload extends CI_Controller {
         $this->form_validation->set_rules('license', 'Upload License', 'trim|required');
         $this->form_validation->set_rules('description', 'Description', 'trim|required');
         $this->form_validation->set_rules('revDate', 'Revision Date', 'trim|required');
+
+        print '<pre>' . print_r($_FILES, TRUE) . '</pre>';
+        print '<pre>' . print_r($this->input->post(NULL, TRUE), TRUE) . '</pre>';
 
         if(!$this->form_validation->run())
         {
@@ -87,6 +87,7 @@ class Upload extends CI_Controller {
             if ($_FILES["userfile"]["name"])
             {
                 $this->upload->do_upload();
+        print '<pre>' . print_r($this->upload->data(), TRUE) . '</pre>';
                 $errors = $this->upload->display_errors();
                 if ($errors)
                     die($errors);
