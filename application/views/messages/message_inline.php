@@ -24,7 +24,7 @@
 
 <?php if (isset($alert)) : ?>
 <!-- alert message -->
-<div class="notification error">
+<div class="notification attention">
         <a href="javascript:viod(0)" class="close-notification" title="Hide Notification" rel="tooltip">x</a>
         <p><strong>Alert:</strong> <?php print $msg; ?></p>
 </div>
@@ -32,7 +32,7 @@
 
 <?php if (isset($info)) : ?>
 <!-- infor. message -->
-<div class="notification error">
+<div class="notification information">
         <a href="javascript:viod(0)" class="close-notification" title="Hide Notification" rel="tooltip">x</a>
         <p><strong>Information:</strong> <?php print $msg; ?></p>
 </div>
@@ -40,7 +40,7 @@
 
 <?php if (isset($note)) : ?>
 <!-- note -->
-<div class="notification error">
+<div class="notification information">
         <a href="javascript:viod(0)" class="close-notification" title="Hide Notification" rel="tooltip">x</a>
         <p><strong>Note:</strong> <?php print $msg; ?></p>
 </div>
