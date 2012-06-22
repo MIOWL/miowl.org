@@ -234,7 +234,7 @@ class Browse extends CI_Controller {
         if(time() >= $upload_info->row()->revision_date)
         {
             $page_data['info']      = TRUE;
-            $nbsp                   = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+            $nbsp                   = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
             $page_data['msg']       = "This file needs to be reviewed!\n<br />\n{$nbsp}Review date was " . date("d/m/Y", $upload_info->row()->revision_date);
         }
 
