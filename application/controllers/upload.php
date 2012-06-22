@@ -53,7 +53,7 @@ class Upload extends CI_Controller {
         // What are the allowed file types? [seperate via pipe (|)]
         $file_types = 'txt|rtf|pdf|doc|docx';
 
-        $config['upload_path'] = './uploads/';
+        $config['upload_path'] = '/uploads/';
         $config['allowed_types'] = $file_types;
         $config['max_size'] = '102400000'; // 10MB
         $config['encrypt_name'] = TRUE;
@@ -73,17 +73,41 @@ class Upload extends CI_Controller {
         $this->form_validation->set_rules('description', 'Description', 'trim|required');
         $this->form_validation->set_rules('revDate', 'Revision Date', 'trim|required');
 
-        if (!$this->upload->do_upload())
+        if(!$this->form_validation->run())
         {
-            $page_data['page_title'] = 'Upload Failure';
-            $page_data['error'] = TRUE;
-            $page_data['msg'] = trim($this->upload->display_errors());
-
+            print "invalid form :(\n";
+            $page_data['page_title'] = 'Upload';
             $this->load->view('pages/upload_form', $page_data);
             return;
         }
-        elseif($this->form_validation->run())
+        else
+        {
+            // Use PHP's internal $_FILES superglobal to test for valid
+            if ($_FILES["userfile"]["name"])
             {
+                $this->upload->do_upload();
+                $errors = $this->upload->display_errors();
+                if ($errors)
+                    die($errors);
+                else
+                    print '<pre>' . print_r($this->upload->data(), TRUE) . '</pre>';
+
+                die();
+            }
+            else{
+            // if (!$this->upload->do_upload())
+            // {
+                $page_data['page_title'] = 'Upload Failure';
+                $page_data['error'] = TRUE;
+                $page_data['msg'] = trim($this->upload->display_errors());
+
+                $this->load->view('pages/upload_form', $page_data);
+                return;
+            // }
+            // else
+            // {
+            }
+            return;
                 print "validated\n";
                 $upload_data = $this->upload->data();
 
@@ -142,13 +166,6 @@ class Upload extends CI_Controller {
                 #$this->load->view('pages/upload_form', $page_data);
                 return;
             }
-        // }
-        else
-        {
-            print "invalid form :(\n";
-            $page_data['page_title'] = 'Upload';
-            $this->load->view('pages/upload_form', $page_data);
-            return;
         }
     }
     //------------------------------------------------------------------
