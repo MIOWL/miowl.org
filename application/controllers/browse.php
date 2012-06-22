@@ -228,7 +228,7 @@ class Browse extends CI_Controller {
         // page data array
         $page_data                  = array();
         $page_data['page_title']    = "File Info | " . $upload_info->row()->file_name;
-        $page_data['info']          = $upload_info;
+        $page_data['upload_info']   = $upload_info;
         $page_data['deleted']       = $deleted;
 
         if(time() >= $upload_info->row()->revision_date)
