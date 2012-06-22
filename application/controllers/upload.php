@@ -50,6 +50,7 @@ class Upload extends CI_Controller {
         if (!$this->login_check('upload'))
             return;
 
+        print '<pre>' . print_r($this->upload->data()) . '</pre>';
         print '<pre>' . print_r($this->input->post(NULL, TRUE)) . '</pre>';
 
         // What are the allowed file types? [seperate via pipe (|)]
