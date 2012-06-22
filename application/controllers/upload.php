@@ -104,7 +104,7 @@ class Upload extends CI_Controller {
                                         ? NULL
                                         : strtotime($this->input->post('revDate'));
 
-                $this->upload_model->add_upload(
+                if (!$this->upload_model->add_upload(
                             $upload_user,
                             $owl,
                             $file_name,
@@ -117,7 +117,13 @@ class Upload extends CI_Controller {
                             $file_ext,
                             $description,
                             $revDate
-                          );
+                          ))
+                    {
+                        $page_data['page_title'] = 'Upload Failure';
+                        $page_data['error'] = TRUE;
+                        $page_data['msg'] = "Something went wrong with the database...";
+                        return;
+                    }
 
                 $page_data['page_title'] = 'Upload Success';
                 $page_data['upload_data'] = $upload_data;
