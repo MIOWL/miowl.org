@@ -86,7 +86,7 @@
                 showOn: "button",
                 buttonImage: "/images/calendar.gif",
                 buttonImageOnly: true,
-                dateFormat: "dd/mm/yy"
+                dateFormat: "dd MM yy"
             });
         });
     </script>

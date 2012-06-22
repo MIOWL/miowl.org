@@ -46,9 +46,6 @@ class Upload extends CI_Controller {
      */
     public function index()
     {
-                $revDate            = explode('/', $this->input->post('revDate'));
-                $revDate            = $revDate[2] . $revDate[1] . $revDate[0];
-                print $revDate;
         // Do we need to login??
         if (!$this->login_check('upload'))
             return;
