@@ -6,7 +6,7 @@ class Cron extends CI_Controller {
 // :private vars
 //=================================================================================
 
-    private $seperator = "\r\n\r\n============================================================================\r\n\r\n";
+    private $seperator = "\r\n============================================================================\r\n\r\n";
 
 
 //=================================================================================
@@ -62,6 +62,18 @@ class Cron extends CI_Controller {
 //=================================================================================
 // :private
 //=================================================================================
+
+    /**
+     * public header()
+     * this function is used to print our the cron head. Date/Time and function ran
+     */
+    private function header($function = 'N/A')
+    {
+        print $this->seperator;
+        print "==    FUNCTION : \t\t\t" . $function . " \t\t\t ==" . PHP_EOL;
+        print "== DATE - TIME : \t\t\t" . date(DATE_RFC822) . " \t\t\t ==" . PHP_EOL;
+    }
+    //------------------------------------------------------------------
 
 
 }
