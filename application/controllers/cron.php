@@ -6,7 +6,7 @@ class Cron extends CI_Controller {
 // :private vars
 //=================================================================================
 
-    private $seperator = "\r\n============================================================================\r\n\r\n";
+    private $seperator = "\r\n//=================================================================================\r\n";
 
 
 //=================================================================================
@@ -33,9 +33,13 @@ class Cron extends CI_Controller {
     /**
      * public remap
      */
-    public function _remap($method)
+    public function _remap($method, $params = array())
     {
-        $this->header($method);
+        if (method_exists($this, $method))
+        {
+            $this->header($method);
+            return call_user_func_array(array($this, $method), $params);
+        }
     }
     //------------------------------------------------------------------
 
@@ -80,8 +84,8 @@ class Cron extends CI_Controller {
     private function header($function = 'N/A')
     {
         print $this->seperator;
-        print "==    FUNCTION : \t" . $function . " \t ==\r\n";
-        print "== DATE - TIME : \t" . date(DATE_RFC822) . " \t ==\r\n";
+        print "// :FUNCTION : \t\"" . $function . "\"\r\n";
+        print "// :DATE/TIME : \t" . date(DATE_RFC822) . "\r\n";
     }
     //------------------------------------------------------------------
 
