@@ -72,7 +72,7 @@ class Cron extends CI_Controller {
             $this->header($method);
             return call_user_func_array(array($this, $method), $params);
         }
-        $this->404_notFound();
+        return $this->404_notFound();
     }
     //------------------------------------------------------------------
 
