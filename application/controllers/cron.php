@@ -33,9 +33,9 @@ class Cron extends CI_Controller {
     /**
      * public remap
      */
-    public function _remap($method, $params = array())
+    public function _remap($method)
     {
-        print header($method);
+        $this->header($method);
     }
     //------------------------------------------------------------------
 
