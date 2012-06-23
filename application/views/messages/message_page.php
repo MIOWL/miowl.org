@@ -43,7 +43,7 @@
 
         <!-- redirect to $location -->
         <script type="text/javascript">
-            setTimeout("location.href='<?php print site_url($redirect); ?>';", 3000);
+            setTimeout("location.href='<?php print site_url(); ?>';", 3000);
         </script>
     </div>
 <script type="text/javascript">

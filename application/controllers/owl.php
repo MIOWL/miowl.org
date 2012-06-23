@@ -1,11 +1,42 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+/**
+ * ------------------------------------------------------------------------------
+ * 
+ * MiOWL                                                     (v1) | codename dave
+ * 
+ * ------------------------------------------------------------------------------
+ *
+ * Copyright (c) 2012, Alan Wynn
+ * 
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ * 
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ * 
+ * ------------------------------------------------------------------------------ */
+
 class Owl extends CI_Controller {
 
-    //=================================================================================
-    // :private vars
-    //=================================================================================
-
+//=================================================================================
+// :private vars
+//=================================================================================
 
     var $province_list = array(
                                 'Alberta',
@@ -24,11 +55,9 @@ class Owl extends CI_Controller {
                               );
 
 
-
-    //=================================================================================
-    // :public
-    //=================================================================================
-
+//=================================================================================
+// :public
+//=================================================================================
 
     /**
      * public construct
@@ -285,10 +314,9 @@ class Owl extends CI_Controller {
     //------------------------------------------------------------------
 
 
-    //=================================================================================
-    // :uploads view
-    //=================================================================================
-
+//=================================================================================
+// :uploads view
+//=================================================================================
 
     /**
      * public uploads()
@@ -310,10 +338,9 @@ class Owl extends CI_Controller {
     //------------------------------------------------------------------
 
 
-    //=================================================================================
-    // :upload view functions
-    //=================================================================================
-
+//=================================================================================
+// :upload view functions
+//=================================================================================
 
     /**
      * upload function _uploads_list()
@@ -391,10 +418,9 @@ class Owl extends CI_Controller {
     //------------------------------------------------------------------
 
 
-    //=================================================================================
-    // :members view
-    //=================================================================================
-
+//=================================================================================
+// :members view
+//=================================================================================
 
     /**
      * public members()
@@ -416,10 +442,9 @@ class Owl extends CI_Controller {
     //------------------------------------------------------------------
 
 
-    //=================================================================================
-    // :members view functions
-    //=================================================================================
-
+//=================================================================================
+// :members view functions
+//=================================================================================
 
     /**
      * member function _members_list()
@@ -555,16 +580,58 @@ class Owl extends CI_Controller {
         $page_data['page_title']    = "Owl Member Invite";
         $page_data['owl_info']      = $this->owl_model->get_owl_by_id($this->session->userdata('owl'));
 
+        // form validation rules
+        $this->form_validation->set_rules('name', 'Invitee Name', 'required|trim');
+        $this->form_validation->set_rules('email', 'Invitee Email', 'required|trim|valid_email|callback__valid_email');
+        $this->form_validation->set_rules('msg', 'Message', 'trim');
+
+        // did the user submit
+        if ($this->form_validation->run())
+        {
+            // Setup the name to be humanized
+            $this->load->helper('inflector');
+            $toName   = humanize($this->input->post('name'));
+
+            // get and set the rest of the vars we will be using here
+            $toEmail    = $this->input->post('email');
+            $msg        = $this->input->post('msg');
+            $fromName   = '(' . $this->session->userdata('username') . ') ' . $this->session->userdata('name');
+            $fromEmail  = $this->session->userdata('email');
+            $owl_id     = $this->session->userdata('owl');
+            $owl_name   = $this->owl_model->get_owl_name($owl_id);
+
+            // send user invite email
+            $send_email = $this->usermail->send_invite(
+                $toName,        // to name
+                $toEmail,       // to email
+                $fromName,      // from name
+                $fromEmail,     // from email
+                $msg,           // the message from the user
+                $owl_id,        // the owl id
+                $owl_name       // the owl name
+            );
+
+            if( $send_email )
+            {
+                $page_data['success']   = TRUE;
+                $page_data['msg']       = "Successfully invited '{$toName}' via the email address '{$toEmail}'";
+            }
+            else
+            {
+                $page_data['alert']     = TRUE;
+                $page_data['msg']       = "There was an error sending the email to address '{$toEmail}'";
+            }
+        }
+
         // load the approp. page view
         $this->load->view('pages/owl_members_invite', $page_data);
     }
     //------------------------------------------------------------------
 
 
-    //=================================================================================
-    // :categories view
-    //=================================================================================
-
+//=================================================================================
+// :categories view
+//=================================================================================
 
     /**
      * public categories()
@@ -586,10 +653,9 @@ class Owl extends CI_Controller {
     //------------------------------------------------------------------
 
 
-    //=================================================================================
-    // :categories view functions
-    //=================================================================================
-
+//=================================================================================
+// :categories view functions
+//=================================================================================
 
     /**
      * categories function _categories_list()
@@ -651,10 +717,9 @@ class Owl extends CI_Controller {
     //------------------------------------------------------------------
 
 
-    //=================================================================================
-    // :custom callbacks
-    //=================================================================================
-
+//=================================================================================
+// :custom callbacks
+//=================================================================================
 
     /**
      * callback _valid_reset_authcode()
@@ -815,10 +880,9 @@ class Owl extends CI_Controller {
     //------------------------------------------------------------------
 
 
-    //=================================================================================
-    // :private
-    //=================================================================================
-
+//=================================================================================
+// :private
+//=================================================================================
 
     /**
      * private login_check()
@@ -933,3 +997,5 @@ class Owl extends CI_Controller {
 
 
 }
+
+// eof.
