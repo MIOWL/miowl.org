@@ -3,7 +3,7 @@
     font-size: 10px;
     opacity: .8;
     filter: alpha(opacity=80);
-    background: url(../images/tooltip.gif) no-repeat;
+    background: url(../images/tooltip.png) no-repeat;
 }
 
 .tipsy-inner {
