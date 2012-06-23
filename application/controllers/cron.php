@@ -72,6 +72,7 @@ class Cron extends CI_Controller {
             $this->header($method);
             return call_user_func_array(array($this, $method), $params);
         }
+        $this->404_notFound();
     }
     //------------------------------------------------------------------
 
@@ -124,7 +125,8 @@ class Cron extends CI_Controller {
         print $this->seperator . PHP_EOL;
 
         // start the output here
-        $this->printy("/**
+        $this->printy("
+/**
  * ------------------------------------------------------------------------------
  * 
  * MiOWL                                                     (v1) | codename dave
@@ -154,7 +156,8 @@ class Cron extends CI_Controller {
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
  * 
- * ------------------------------------------------------------------------------ */");
+ * ------------------------------------------------------------------------------ */
+");
 
         // print the bottom seperator
         print $this->seperator . PHP_EOL;
@@ -165,6 +168,17 @@ class Cron extends CI_Controller {
 //=================================================================================
 // :private
 //=================================================================================
+
+    /**
+     * private 404_notFound()
+     * this function is used when an invalid function is called...
+     */
+    private function 404_notFound()
+    {
+        print "Error 404 - Not Found!" . PHP_EOL;
+    }
+    //------------------------------------------------------------------
+
 
     /**
      * private header()
