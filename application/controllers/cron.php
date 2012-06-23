@@ -80,8 +80,8 @@ class Cron extends CI_Controller {
     private function header($function = 'N/A')
     {
         print $this->seperator;
-        print "==    FUNCTION : \t\t\t" . $function . " \t\t\t ==" . PHP_EOL;
-        print "== DATE - TIME : \t\t\t" . date(DATE_RFC822) . " \t\t\t ==" . PHP_EOL;
+        print "==    FUNCTION : \t" . $function . " \t ==\r\n";
+        print "== DATE - TIME : \t" . date(DATE_RFC822) . " \t ==\r\n";
     }
     //------------------------------------------------------------------
 
