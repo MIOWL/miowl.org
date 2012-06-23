@@ -30,7 +30,8 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
  * 
- * ------------------------------------------------------------------------------ */
+ * ------------------------------------------------------------------------------
+ */
 
 class Cron extends CI_Controller {
 
@@ -84,9 +85,6 @@ class Cron extends CI_Controller {
      */
     public function takeOutTheTrash()
     {
-        // print the top seperator
-        print $this->seperator . PHP_EOL;
-
         // start the output here
         $this->printy("Sorry, this function is not yet coded");
 
@@ -104,9 +102,6 @@ class Cron extends CI_Controller {
      */
     public function inactiveMembers()
     {
-        // print the top seperator
-        print $this->seperator . PHP_EOL;
-
         // start the output here
         $this->printy("Sorry, this function is not yet coded");
 
@@ -121,10 +116,6 @@ class Cron extends CI_Controller {
      */
     public function lic()
     {
-        // print the top seperator
-        print $this->seperator . PHP_EOL;
-
-        // start the output here
         print("/**
  * ------------------------------------------------------------------------------
  * 
@@ -187,6 +178,7 @@ class Cron extends CI_Controller {
         print $this->seperator;
         print "// :FUNCTION \t\"" . $function . "\"\r\n";
         print "// :DATE/TIME\t" . date(DATE_RFC822);
+        print $this->seperator . PHP_EOL;
     }
     //------------------------------------------------------------------
 

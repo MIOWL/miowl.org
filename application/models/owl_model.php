@@ -30,7 +30,8 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
  * 
- * ------------------------------------------------------------------------------ */
+ * ------------------------------------------------------------------------------
+ */
 
 class Owl_model extends CI_Model {
 
