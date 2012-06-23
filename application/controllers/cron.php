@@ -7,6 +7,8 @@ class Cron extends CI_Controller {
     //=================================================================================
 
 
+    var $seperator = PHP_EOL.PHP_EOL."============================================================================".PHP_EOL.PHP_EOL;
+
 
     //=================================================================================
     // :public
@@ -37,7 +39,9 @@ class Cron extends CI_Controller {
      */
     public function takeOutTheTrash()
     {
-        print "Sorry, this function is not yet coded".PHP_EOL;
+        print $seperator;
+        print "Sorry, this function is not yet coded";
+        print $seperator;
     }
     //------------------------------------------------------------------
 
@@ -50,7 +54,9 @@ class Cron extends CI_Controller {
      */
     public function inactiveMembers()
     {
-        print "Sorry, this function is not yet coded".PHP_EOL;
+        print $seperator;
+        print "Sorry, this function is not yet coded";
+        print $seperator;
     }
     //------------------------------------------------------------------
 
