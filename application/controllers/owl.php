@@ -601,6 +601,7 @@ class Owl extends CI_Controller {
             $owl_name   = $this->owl_model->get_owl_name($owl_id);
 
             // send user invite email
+            $this->load->library('usermail');
             $send_email = $this->usermail->send_invite(
                 $toName,        // to name
                 $toEmail,       // to email
