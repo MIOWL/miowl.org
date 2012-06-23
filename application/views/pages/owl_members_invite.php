@@ -25,7 +25,7 @@
 
                     <div class="ctrlHolder">
                         <label for="email">Invitee Email <span class="right">(required)</span></label>
-                        <input type="text" name="email" id="email" size="35" class="textInput large" autocompelete="OFF" value="<?php print set_value('address'); ?>" />
+                        <input type="text" name="email" id="email" size="35" class="textInput large" autocompelete="OFF" value="<?php print set_value('email'); ?>" />
                         <p class="formHint">This is the email address of the person you are wanting to invite.</p>
                     </div>
 
