@@ -325,6 +325,7 @@ class Owl_model extends CI_Model {
         if ($owl_type != 'both')
             $this->db->where('owl_type', $owl_type);
 
+        $this->db->order_by('owl_name', 'ASC');
         $query = $this->db->get('owls');
 
         if ($query->num_rows() > 0)
@@ -352,6 +353,7 @@ class Owl_model extends CI_Model {
         if($owl_type != FALSE && $owl_type != 'both')
             $this->db->having('owl_type', $owl_type);
 
+        $this->db->order_by('owl_name', 'ASC');
         $query = $this->db->get('owls');
 
         if ($query->num_rows() > 0)
