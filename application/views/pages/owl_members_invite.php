@@ -11,10 +11,7 @@
             <?php $this->load->view('pages/owl_nav'); ?>
         </div>
         <div id="owl_body" class="column right threequarter">
-            THIS IS THE INVITE PAGE!!!<br>
-            (as you can see its not finished only designed...)
-            <br>
-            <br>
+
             <form action="" class="uniForm" method="post">
 
                 <?php $this->load->view('messages/message_inline'); ?>

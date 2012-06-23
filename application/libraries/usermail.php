@@ -228,7 +228,7 @@ class Usermail {
         $subject = 'MiOWL | Invite';
 
         // Send the email
-        return $this->send_email($email, $subject, $email_data);
+        return $this->send_email($toEmail, $subject, $email_data);
     }
     //------------------------------------------------------------------
 
