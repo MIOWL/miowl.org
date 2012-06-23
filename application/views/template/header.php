@@ -46,7 +46,15 @@
 
 	<h1>
 		<?php if ($this->session->userdata('owl_verified')) : ?>
-			<div id="header_owl_name"><?php print $this->owl_model->get_owl_by_id($this->session->userdata('owl'))->row()->owl_name; ?></div>
+			<div id="header_owl_name">
+				<?php
+					$owl_data 		= $this->owl_model->get_owl_by_id($this->session->userdata('owl'));
+					$owl_name 		= $owl_data->row()->owl_name;
+					$owl_name_short = $owl_data->row()->owl_name_short;
+
+					print (strlen($owl_name) =< 28) ? $owl_name : '['.$owl_name_short.']';
+				?>
+			</div>
 		<?php endif; ?>
 		<a id="site_logo" href="<?php print site_url(); ?>" title="Go back home!">
 			<img 
