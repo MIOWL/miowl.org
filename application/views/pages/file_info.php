@@ -93,6 +93,11 @@
                     <span name="description" id="description" class="textInput medium"><?php print str_replace(array("\n", '\n'), "<br>", $upload_info->row()->description); ?></span>
                 </div>
 
+                <div class="ctrlHolder">
+                    <label for="revDate">revision date</label>
+                    <span name="revDate" id="revDate" class="textInput medium"><?php print date("d/m/Y", $upload_info->row()->revision_date); ?></span>
+                </div>
+
             </fieldset>
 
         </div>
