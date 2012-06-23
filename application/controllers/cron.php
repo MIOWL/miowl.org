@@ -31,6 +31,16 @@ class Cron extends CI_Controller {
 
 
     /**
+     * public remap
+     */
+    public function _remap($method, $params = array())
+    {
+        print header($method);
+    }
+    //------------------------------------------------------------------
+
+
+    /**
      * public takeOutTheTrash()
      * this function is used to do the nightly cleanup via the cron task
      * it delete's the files that were deleted 30 days ago
