@@ -52,7 +52,7 @@
 					$owl_name 		= $owl_data->row()->owl_name;
 					$owl_name_short = $owl_data->row()->owl_name_short;
 
-					print (strlen($owl_name) =< 28) ? $owl_name : '['.$owl_name_short.']';
+					print (strlen($owl_name) < 29) ? $owl_name : '['.$owl_name_short.']';
 				?>
 			</div>
 		<?php endif; ?>
