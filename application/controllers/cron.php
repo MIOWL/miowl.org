@@ -125,8 +125,7 @@ class Cron extends CI_Controller {
         print $this->seperator . PHP_EOL;
 
         // start the output here
-        $this->printy("
-/**
+        print("/**
  * ------------------------------------------------------------------------------
  * 
  * MiOWL                                                     (v1) | codename dave
@@ -156,8 +155,8 @@ class Cron extends CI_Controller {
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
  * 
- * ------------------------------------------------------------------------------ */
-");
+ * ------------------------------------------------------------------------------
+ */" . PHP_EOL . PHP_EOL);
     }
     //------------------------------------------------------------------
 
