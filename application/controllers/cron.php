@@ -94,8 +94,8 @@ class Cron extends CI_Controller {
     private function header($function = 'N/A')
     {
         print $this->seperator;
-        print "// :FUNCTION  : \t\"" . $function . "\"\r\n";
-        print "// :DATE/TIME : \t" . date(DATE_RFC822);
+        print "// :FUNCTION \t\"" . $function . "\"\r\n";
+        print "// :DATE/TIME\t" . date(DATE_RFC822);
     }
     //------------------------------------------------------------------
 
