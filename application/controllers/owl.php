@@ -595,7 +595,7 @@ class Owl extends CI_Controller {
             // get and set the rest of the vars we will be using here
             $toEmail    = $this->input->post('email');
             $msg        = $this->input->post('msg');
-            $fromName   = '(' . $this->session->userdata('username') . ') ' . $this->session->userdata('name');
+            $fromName   = $this->session->userdata('name') . ' (' . $this->session->userdata('username') . ')';
             $fromEmail  = $this->session->userdata('email');
             $owl_id     = $this->session->userdata('owl');
             $owl_name   = $this->owl_model->get_owl_name($owl_id);
