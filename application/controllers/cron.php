@@ -72,7 +72,7 @@ class Cron extends CI_Controller {
             $this->header($method);
             return call_user_func_array(array($this, $method), $params);
         }
-        return $this->404_notFound();
+        $this->e404_notFound();
     }
     //------------------------------------------------------------------
 
@@ -170,10 +170,10 @@ class Cron extends CI_Controller {
 //=================================================================================
 
     /**
-     * private 404_notFound()
+     * private e404_notFound()
      * this function is used when an invalid function is called...
      */
-    private function 404_notFound()
+    private function e404_notFound()
     {
         print "Error 404 - Not Found!" . PHP_EOL;
     }
