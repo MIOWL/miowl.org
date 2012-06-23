@@ -180,6 +180,59 @@ class Usermail {
     //------------------------------------------------------------------
 
 
+    /**
+     * public send_invite
+     * function to send out an invite email
+     *
+     * @return bool
+     */
+    public function send_invite(
+        $toName = FALSE,
+        $toEmail = FALSE,
+        $fromName = FALSE,
+        $fromEmail = FALSE,
+        $msg = FALSE,
+        $owl_id = FALSE,
+        $owl_name = FALSE
+    )
+    {
+        if (
+               !$toName
+            || !$toEmail
+            || !$fromName
+            || !$fromEmail
+            || !$owl_id
+            || !$owl_name
+        )
+            return FALSE;
+
+        if ( !$msg )
+            $msg = "No message given...";
+
+        // Build up the email output
+        $data = array(
+            'toName'    => $toName,
+            'toEmail'   => $toEmail,
+            'fromName'  => $fromName,
+            'fromEmail' => $fromEmail,
+            'msg'       => $msg,
+            'owl_id'    => $owl_id,
+            'owl_name'  => $owl_name
+        );
+
+        $email_data  = $this->obj->load->view('email/head_foot/email_head.tpl', '', TRUE);  // Add email header
+        $email_data .= $this->obj->parser->parse('email/invite_email.tpl', $data, TRUE);    // Build the email body
+        $email_data .= $this->obj->load->view('email/head_foot/email_foot.tpl', '', TRUE);  // Add the email footer
+
+        // Email Subject
+        $subject = 'MiOWL | Invite';
+
+        // Send the email
+        return $this->send_email($email, $subject, $email_data);
+    }
+    //------------------------------------------------------------------
+
+
 //=================================================================================
 // :private
 //=================================================================================
