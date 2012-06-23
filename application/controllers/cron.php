@@ -51,9 +51,14 @@ class Cron extends CI_Controller {
      */
     public function takeOutTheTrash()
     {
-        print $this->seperator;
-        print "Sorry, this function is not yet coded" . PHP_EOL;
-        print $this->seperator;
+        // print the top seperator
+        print $this->seperator . PHP_EOL;
+
+        // start the output here
+        $this->printy("Sorry, this function is not yet coded");
+
+        // print the bottom seperator
+        print $this->seperator . PHP_EOL;
     }
     //------------------------------------------------------------------
 
@@ -66,9 +71,14 @@ class Cron extends CI_Controller {
      */
     public function inactiveMembers()
     {
-        print $this->seperator;
-        print "Sorry, this function is not yet coded" . PHP_EOL;
-        print $this->seperator;
+        // print the top seperator
+        print $this->seperator . PHP_EOL;
+
+        // start the output here
+        $this->printy("Sorry, this function is not yet coded");
+
+        // print the bottom seperator
+        print $this->seperator . PHP_EOL;
     }
     //------------------------------------------------------------------
 
@@ -78,16 +88,31 @@ class Cron extends CI_Controller {
 //=================================================================================
 
     /**
-     * public header()
+     * private header()
      * this function is used to print our the cron head. Date/Time and function ran
      */
     private function header($function = 'N/A')
     {
         print $this->seperator;
-        print "// :FUNCTION : \t\"" . $function . "\"\r\n";
-        print "// :DATE/TIME : \t" . date(DATE_RFC822) . "\r\n";
+        print "// :FUNCTION  : \t\"" . $function . "\"\r\n";
+        print "// :DATE/TIME : \t" . date(DATE_RFC822);
     }
     //------------------------------------------------------------------
+
+
+    /*
+     * private printy()
+     * this is used to do the nice output for the cron
+     *
+     * @param string - this is the string we wish to print
+     */
+    private function printy($string = FALSE)
+    {
+        if( !$string )
+            return FALSE;
+
+        print "\t" . $string . PHP_EOL;
+    }
 
 
 }
