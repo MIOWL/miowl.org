@@ -215,7 +215,7 @@ class Usermail {
             'toEmail'   => $toEmail,
             'fromName'  => $fromName,
             'fromEmail' => $fromEmail,
-            'msg'       => $msg,
+            'msg'       => nl2br($msg),
             'owl_id'    => $owl_id,
             'owl_name'  => $owl_name
         );
