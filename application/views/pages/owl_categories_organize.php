@@ -42,7 +42,7 @@
                         </td>
                         <td>
                             <?php if ($is_in_use) : ?>
-                                <span style="color:#FF0000 !important; opacity: 0.25 !important;"<img src="/images/icons/recycle_bin.png" title="cannot remove this category" alt="cannot remove" width="25px" height="25px" /></span>
+                                <span style="color:#FF0000 !important; opacity: 0.25 !important;"><img src="/images/icons/recycle_bin.png" title="cannot remove this category" alt="cannot remove" width="25px" height="25px" /></span>
                             <?php else : ?>
                                 <a style="color:#FF0000 !important;" href="<?php print $row->id; ?>"><img src="/images/icons/recycle_bin.png" title="remove this category" alt="remove" width="25px" height="25px" /></a>
                             <?php endif; ?>
