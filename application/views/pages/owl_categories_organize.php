@@ -44,7 +44,7 @@
                             <?php if ($is_in_use) : ?>
                                 <span style="color:#FF0000 !important; opacity: 0.25 !important;"><img src="/images/icons/recycle_bin.png" title="cannot remove this category" alt="cannot remove" width="25px" height="25px" /></span>
                             <?php else : ?>
-                                <a style="color:#FF0000 !important;" href="<?php print $row->id; ?>"><img src="/images/icons/recycle_bin.png" title="remove this category" alt="remove" width="25px" height="25px" /></a>
+                                <a style="color:#FF0000 !important;" href="<?php print $row->id; ?>" class="remove"><img src="/images/icons/recycle_bin.png" title="remove this category" alt="remove" width="25px" height="25px" /></a>
                             <?php endif; ?>
                         </td>
                     </tr>
@@ -64,5 +64,52 @@
         </div>
         <div class="clear">&nbsp;</div>
     </div>
+
+    <!-- Page Javascript -->
+    <script type="text/javascript">
+        $(function() {
+            $('.remove').click(function(e) {
+                // prevent the default action, e.g., following a link
+                e.preventDefault()
+
+                // get the data from the form
+                var id = $(this).attr('href');
+
+                // setup and load the dialog box
+                $('<div></div>')
+                .html('<span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>This will delete the category')
+                .dialog({
+                    title: 'delete the category?',
+                    autoOpen: true,
+                    resizable: false,
+                    modal: true,
+                    buttons: {
+                        "Confirm": function() {
+                            // close the dialog box
+                            $( this ).dialog( "close" );
+
+                            // build the uri
+                            var uri = '/owl/categories/remove/' + id;
+
+                            // get the JSON data from the request
+                            $.getJSON(uri, function(data) {
+                                if( data.success == 'true' ) {
+                                    // update the view to reflect this change
+                                    $('#r-' + id).hide();
+                                }
+                                else {
+                                    alert('Sorry, an error has occured. Please report this to the site admin.');
+                                }
+                            });
+                        },
+                        Cancel: function() {
+                            $( this ).dialog( "close" );
+                        }
+                    }
+                });
+            };
+        });
+    </script>
+    <!-- --------------- -->
 
 <?php $this->load->view('template/footer'); ?>

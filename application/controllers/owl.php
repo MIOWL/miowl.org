@@ -740,6 +740,19 @@ class Owl extends CI_Controller {
     //------------------------------------------------------------------
 
 
+    /**
+     * member function _categories_remove()
+     */
+    public function _categories_remove($id = FALSE)
+    {
+        if (!$id)
+            return print json_encode( array('success' => 'false') );
+
+        return print json_encode( array('success' => 'true') );
+    }
+    //------------------------------------------------------------------
+
+
 //=================================================================================
 // :custom callbacks
 //=================================================================================

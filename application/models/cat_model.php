@@ -207,6 +207,30 @@ class Cat_model extends CI_Model {
     //------------------------------------------------------------------
 
 
+    /**
+     * public delete()
+     * remove the cat
+     */
+    public function delete($id = FALSE)
+    {
+        if (!$this->session->userdata('editor'))
+            return FALSE;
+
+        if (!$id)
+            return FALSE;
+
+        $this->db->where('id', $id);
+        $this->db->where('owl', $this->session->userdata('owl'));
+        $this->db->delete('categories');
+
+        if ($this->db->affected_rows() > 0)
+            return TRUE;
+
+        return FALSE;
+    }
+    //------------------------------------------------------------------
+
+
 }
 
 // eof.
