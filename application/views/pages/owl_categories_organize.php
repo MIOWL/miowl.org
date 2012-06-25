@@ -17,6 +17,90 @@
                 <?php print ul(gen_categories(), array('id' => 'categories')) ?>
             </div>
 
+            <?php
+                    $this->load->library('table');
+                    $tmpl = array (
+                        'table_open'          => '<table>',
+
+                        'heading_row_start'   => '<tr>',
+                        'heading_row_end'     => '</tr>',
+                        'heading_cell_start'  => '<th>',
+                        'heading_cell_end'    => '</th>',
+
+                        'row_start'           => '<tr>',
+                        'row_end'             => '</tr>',
+                        'cell_start'          => '<td>',
+                        'cell_end'            => '</td>',
+
+                        'row_alt_start'       => '<tr>',
+                        'row_alt_end'         => '</tr>',
+                        'cell_alt_start'      => '<td>',
+                        'cell_alt_end'        => '</td>',
+
+                        'table_close'         => '</table>'
+                    );
+                    $this->table->set_template($tmpl);
+                    $this->table->set_heading('id', 'name', 'parent_id', 'owl');
+                    $this->table->set_empty("N/A");
+
+                    foreach($categories->result() as $row)
+                    {
+                        $this->table->add_row   (
+                            $row->id,
+                            $row->name,
+                            $parent_id,
+                            $owl
+                        );
+                    }
+
+                    $output = $this->table->generate();
+
+                    print $output;
+            ?>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Registration Date</th>
+                        <th>Approve</th>
+                        <th>Deny</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+<?php /*
+    if($members) :
+    foreach($members->result() as $row) :
+?>
+                    <tr id="r-<?php print $row->id; ?>">
+                        <td><?php print $row->id; ?></td>
+                        <td><?php print $row->user_name; ?></td>
+                        <td><?php print $row->user_first_name; ?></td>
+                        <td><?php print $row->user_last_name; ?></td>
+                        <td><?php print date("H:i:s d/m/Y", $row->user_registration_date); ?></td>
+                        <td>
+                            <center>
+                                <a style="color:#63b52e !important;" class="icon_font approve" href="<?php print $row->id; ?>">.</a>
+                            </center>
+                        </td>
+                        <td>
+                            <center>
+                                <a style="color:#FF0000 !important;" class="icon_font deny" href="<?php print $row->id; ?>">'</a>
+                            </center>
+                        </td>
+                    </tr>
+<?php
+    endforeach;
+    endif;
+*/ ?>
+
+                </tbody>
+            </table>
+
         </div>
         <div class="clear">&nbsp;</div>
     </div>
