@@ -30,7 +30,7 @@
                 <tbody>
 
 <?php
-    if($members) :
+    if($categories) :
     foreach($categories->result() as $row) :
         $edit = $remove = 'todo';
 ?>
