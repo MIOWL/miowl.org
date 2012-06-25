@@ -35,7 +35,7 @@
         $edit = $remove = 'todo';
 ?>
                     <tr id="r-<?php print $row->id; ?>">
-                        <td><?php print $row->name; ?></td>
+                        <td><?php print cat_breadcrumb_ul($row->id); ?><?php/* print $row->name; */?></td>
                         <td>
                             <a style="color:#63b52e !important;" href="<?php print $row->id; ?>"><img src="/images/icons/edit.gif" title="edit this category" alt="edit" width="16px" height="16px" /></a>
                         </td>
