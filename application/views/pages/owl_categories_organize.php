@@ -61,42 +61,35 @@
             <table>
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Username</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Registration Date</th>
-                        <th>Approve</th>
-                        <th>Deny</th>
+                        <th>name</th>
+                        <th>edit</th>
+                        <th>remove</th>
                     </tr>
                 </thead>
                 <tbody>
 
-<?php /*
+<?php
     if($members) :
-    foreach($members->result() as $row) :
+    foreach($categories->result() as $row) :
+        $edit = $remove = 'todo';
 ?>
                     <tr id="r-<?php print $row->id; ?>">
-                        <td><?php print $row->id; ?></td>
-                        <td><?php print $row->user_name; ?></td>
-                        <td><?php print $row->user_first_name; ?></td>
-                        <td><?php print $row->user_last_name; ?></td>
-                        <td><?php print date("H:i:s d/m/Y", $row->user_registration_date); ?></td>
+                        <td><?php print $row->name; ?></td>
                         <td>
                             <center>
-                                <a style="color:#63b52e !important;" class="icon_font approve" href="<?php print $row->id; ?>">.</a>
+                                <a style="color:#63b52e !important;" class="icon_font" href="<?php print $row->id; ?>">.</a>
                             </center>
                         </td>
                         <td>
                             <center>
-                                <a style="color:#FF0000 !important;" class="icon_font deny" href="<?php print $row->id; ?>">'</a>
+                                <a style="color:#FF0000 !important;" class="icon_font" href="<?php print $row->id; ?>">'</a>
                             </center>
                         </td>
                     </tr>
 <?php
     endforeach;
     endif;
-*/ ?>
+?>
 
                 </tbody>
             </table>
