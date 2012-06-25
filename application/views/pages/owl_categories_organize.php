@@ -48,8 +48,8 @@
                         $this->table->add_row   (
                             $row->id,
                             $row->name,
-                            $parent_id,
-                            $owl
+                            $row->parent_id,
+                            $row->owl
                         );
                     }
 
