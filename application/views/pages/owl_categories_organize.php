@@ -40,16 +40,16 @@
                         'table_close'         => '</table>'
                     );
                     $this->table->set_template($tmpl);
-                    $this->table->set_heading('id', 'name', 'parent_id', 'owl');
+                    $this->table->set_heading('name', 'edit', 'remove');
                     $this->table->set_empty("N/A");
 
                     foreach($categories->result() as $row)
                     {
+                        $edit = $remove = 'todo';
                         $this->table->add_row   (
-                            $row->id,
                             $row->name,
-                            $row->parent_id,
-                            $row->owl
+                            $edit,
+                            $remove
                         );
                     }
 
