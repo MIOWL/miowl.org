@@ -107,6 +107,7 @@ class Cat_model extends CI_Model {
         $this->db->order_by("owl", "ASC");
         $this->db->order_by("parent_id", "ASC");
         $this->db->order_by("name", "ASC");
+        $this->db->from('categories');
         return $this->db->count_all_results();
     }
     //------------------------------------------------------------------
