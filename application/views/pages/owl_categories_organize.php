@@ -37,14 +37,10 @@
                     <tr id="r-<?php print $row->id; ?>">
                         <td><?php print $row->name; ?></td>
                         <td>
-                            <center>
-                                <a style="color:#63b52e !important;" class="icon_font" href="<?php print $row->id; ?>">.</a>
-                            </center>
+                            <a style="color:#63b52e !important;" class="icon_font" href="<?php print $row->id; ?>">.</a>
                         </td>
                         <td>
-                            <center>
-                                <a style="color:#FF0000 !important;" class="icon_font" href="<?php print $row->id; ?>">'</a>
-                            </center>
+                            <a style="color:#FF0000 !important;" class="icon_font" href="<?php print $row->id; ?>">'</a>
                         </td>
                     </tr>
 <?php
