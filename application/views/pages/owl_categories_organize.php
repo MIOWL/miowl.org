@@ -26,11 +26,12 @@
 <?php
     if($categories) :
     foreach($categories->result() as $row) :
+        $is_in_use = $this->cat_model->in_use($row->id);
 ?>
                     <tr id="r-<?php print $row->id; ?>">
                         <td><?php print cat_breadcrumb_ul($row->id); ?><?php /*print $row->name;*/ ?></td>
                         <td>
-                            <?php if ( $this->cat_model->in_use($row->id) ) : ?>
+                            <?php if ( $is_in_use ) : ?>
                                 <span style="color:#63b52e !important;" class="icon_font">.</span>
                             <?php else : ?>
                                 <span style="color:#FF0000 !important;" class="icon_font">'</span>
@@ -40,7 +41,11 @@
                             <a style="color:#63b52e !important;" href="<?php print $row->id; ?>"><img src="/images/icons/edit.gif" title="edit this category" alt="edit" width="16px" height="16px" /></a>
                         </td>
                         <td>
-                            <a style="color:#FF0000 !important;" href="<?php print $row->id; ?>"><img src="/images/icons/recycle_bin.png" title="edit this category" alt="edit" width="25px" height="25px" /></a>
+                            <?php if ($is_in_use) : ?>
+                                <span style="color:#FF0000 !important; opacity: 0.25 !important;"<img src="/images/icons/recycle_bin.png" title="cannot remove this category" alt="cannot remove" width="25px" height="25px" /></span>
+                            <?php else : ?>
+                                <a style="color:#FF0000 !important;" href="<?php print $row->id; ?>"><img src="/images/icons/recycle_bin.png" title="remove this category" alt="remove" width="25px" height="25px" /></a>
+                            <?php endif; ?>
                         </td>
                     </tr>
 <?php
