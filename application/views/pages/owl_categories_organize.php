@@ -37,7 +37,7 @@
                     <tr id="r-<?php print $row->id; ?>">
                         <td><?php print $row->name; ?></td>
                         <td>
-                            <a style="color:#63b52e !important;" class="icon_font" href="<?php print $row->id; ?>">.</a>
+                            <a style="color:#63b52e !important;" href="<?php print $row->id; ?>"><img src="/images/icons/edit.gif" title"edit this category" alt="edit" /></a>
                         </td>
                         <td>
                             <a style="color:#FF0000 !important;" class="icon_font" href="<?php print $row->id; ?>">'</a>
