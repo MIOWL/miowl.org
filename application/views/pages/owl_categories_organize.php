@@ -12,51 +12,12 @@
         </div>
         <div id="owl_body" class="column right threequarter">
 
+            <!--
             <div id="categories_list">
                 <h2>Categories</h2>
                 <?php print ul(gen_categories(), array('id' => 'categories')) ?>
             </div>
-
-            <?php
-                    $this->load->library('table');
-                    $tmpl = array (
-                        'table_open'          => '<table>',
-
-                        'heading_row_start'   => '<tr>',
-                        'heading_row_end'     => '</tr>',
-                        'heading_cell_start'  => '<th>',
-                        'heading_cell_end'    => '</th>',
-
-                        'row_start'           => '<tr>',
-                        'row_end'             => '</tr>',
-                        'cell_start'          => '<td>',
-                        'cell_end'            => '</td>',
-
-                        'row_alt_start'       => '<tr>',
-                        'row_alt_end'         => '</tr>',
-                        'cell_alt_start'      => '<td>',
-                        'cell_alt_end'        => '</td>',
-
-                        'table_close'         => '</table>'
-                    );
-                    $this->table->set_template($tmpl);
-                    $this->table->set_heading('name', 'edit', 'remove');
-                    $this->table->set_empty("N/A");
-
-                    foreach($categories->result() as $row)
-                    {
-                        $edit = $remove = 'todo';
-                        $this->table->add_row   (
-                            $row->name,
-                            $edit,
-                            $remove
-                        );
-                    }
-
-                    $output = $this->table->generate();
-
-                    print $output;
-            ?>
+            -->
 
             <table>
                 <thead>
