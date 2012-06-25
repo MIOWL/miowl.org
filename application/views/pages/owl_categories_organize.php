@@ -40,7 +40,7 @@
                             <a style="color:#63b52e !important;" href="<?php print $row->id; ?>"><img src="/images/icons/edit.gif" title="edit this category" alt="edit" width="16px" height="16px" /></a>
                         </td>
                         <td>
-                            <a style="color:#FF0000 !important;" href="<?php print $row->id; ?>"><img src="/images/icons/trash.png" title="edit this category" alt="edit" width="20px" height="20px" /></a>
+                            <a style="color:#FF0000 !important;" href="<?php print $row->id; ?>"><img src="/images/icons/recycle_bin.png" title="edit this category" alt="edit" width="20px" height="20px" /></a>
                         </td>
                     </tr>
 <?php
