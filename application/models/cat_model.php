@@ -73,8 +73,8 @@ class Cat_model extends CI_Model {
                 return FALSE;
         }
 
-        $this->db->order_by("owl", "ASC");
-        $this->db->order_by("name", "ASC");
+        // $this->db->order_by("owl", "ASC");
+        // $this->db->order_by("name", "ASC");
         $this->db->order_by("parent_id", "ASC");
         $query = $this->db->get('categories');
 
