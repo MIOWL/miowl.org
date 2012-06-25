@@ -686,8 +686,9 @@ class Owl extends CI_Controller {
      */
     public function _categories_organize($offset = 0)
     {
+        print $this->cat_model->count_owl_categories($this->session->userdata('owl'));
         // set the pageination limit
-        $limit = 5;
+        $limit = 15;
 
         // page data array
         $page_data                  = array();
