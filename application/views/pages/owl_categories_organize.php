@@ -23,6 +23,7 @@
                 <thead>
                     <tr>
                         <th>name</th>
+                        <th>in use?</th>
                         <th>edit</th>
                         <th>remove</th>
                     </tr>
@@ -36,6 +37,13 @@
 ?>
                     <tr id="r-<?php print $row->id; ?>">
                         <td><?php print cat_breadcrumb_ul($row->id); ?><?php /*print $row->name;*/ ?></td>
+                        <td>
+                            <?php if ( $this->cat_model->in_use($row->id) ) : ?>
+                                <span style="color:#63b52e !important;" class="icon_font">.</span>
+                            <?php else : ?>
+                                <span style="color:#FF0000 !important;" class="icon_font">'</span>
+                            <?php endif; ?>
+                        </td>
                         <td>
                             <a style="color:#63b52e !important;" href="<?php print $row->id; ?>"><img src="/images/icons/edit.gif" title="edit this category" alt="edit" width="16px" height="16px" /></a>
                         </td>

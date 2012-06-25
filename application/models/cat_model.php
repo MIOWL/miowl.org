@@ -122,7 +122,8 @@ class Cat_model extends CI_Model {
 
 
     /**
-     * get root categories funciton()
+     * public get_roots()
+     * get root categories
      */
     public function get_roots($owl = FALSE, $pid = '0')
     {
@@ -143,11 +144,38 @@ class Cat_model extends CI_Model {
 
 
     /**
-     * get our parent cat's children()
+     * public get_children()
+     * get our parent cat's children
      */
     public function get_children($owl = FALSE, $pid = '0')
     {
         return $this->get_roots($owl, $pid);
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * public in_use()
+     * is this cat in use?
+     */
+    public function in_use($id = FALSE)
+    {
+        if (!$id)
+            return FALSE;
+
+        // does the cat have children?
+        $this->db->where('parent_id', $id);
+        $query = $this->db->get('categories');
+        if ($query->num_rows() > 0)
+            return TRUE;
+
+        // does the cat have files inside it?
+        $this->db->where('upload_category', $id);
+        $query = $this->db->get('uploads');
+        if ($query->num_rows() > 0)
+            return TRUE;
+
+        return FALSE;
     }
     //------------------------------------------------------------------
 
