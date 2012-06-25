@@ -47,16 +47,12 @@ class Cat_model extends CI_Model {
     /**
      * public get_owl_categories()
      */
-    public function get_owl_categories($owl = FALSE, $include_default = TRUE, $parent_id = FALSE)
+    public function get_owl_categories($owl = FALSE, $include_default = TRUE, $offset = 0, $limit = FALSE, $count = FALSE)
     {
         $this->db->select('*');
 
         if ($include_default) {
-            if ($parent_id != FALSE)
-                    $this->db->where('parent_id', $parent_id);
-
             $this->db->where('owl', '0');
-
             if ($owl != FALSE)
                 $this->db->or_where('owl', $owl);
         }
@@ -64,9 +60,6 @@ class Cat_model extends CI_Model {
         else {
             if ($owl != FALSE)
             {
-                if ($parent_id != FALSE)
-                    $this->db->where('parent_id', $parent_id);
-
                 $this->db->where('owl', $owl);
             }
             else
@@ -76,12 +69,28 @@ class Cat_model extends CI_Model {
         $this->db->order_by("owl", "ASC");
         $this->db->order_by("parent_id", "ASC");
         $this->db->order_by("name", "ASC");
-        $query = $this->db->get('categories');
+        if (!$limit)
+            $query = $this->db->get('categories');
+        else
+            $query = $this->db->get('categories', $limit, $offset);
 
         if ($query->num_rows() > 0)
-            return $query;
+            if ($count)
+                return $this->db->count_all_results();
+            else
+                return $query;
         else
             return FALSE;
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * public get_owl_categories()
+     */
+    public function count_owl_categories($owl = FALSE, $include_default = TRUE)
+    {
+        return $this->get_owl_categories($owl, $include_default, 0, FALSE, TRUE);
     }
     //------------------------------------------------------------------
 

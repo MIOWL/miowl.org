@@ -684,12 +684,26 @@ class Owl extends CI_Controller {
     /**
      * member function _categories_organize()
      */
-    public function _categories_organize()
+    public function _categories_organize($offset = 0)
     {
+        // set the pageination limit
+        $limit = 15;
+
         // page data array
         $page_data                  = array();
         $page_data['page_title']    = "Organize Owl File Categories";
-        $page_data['categories']    = $this->cat_model->get_owl_categories($this->session->userdata('owl'));
+        $page_data['categories']    = $this->cat_model->get_owl_categories($this->session->userdata('owl'), TRUE, $offset, $limit);
+
+        // setup pagination lib
+        $config['base_url']         = site_url('owl/categories/organize');
+        $config['total_rows']       = $this->cat_model->count_owl_categories($this->session->userdata('owl'));
+        $config['per_page']         = $limit;
+        $config['anchor_class']     = 'class="button" ';
+        $config['cur_tag_open']     = '&nbsp;<div class="button danger current">';
+        $config['cur_tag_close']    = '</div>';
+
+        // init pagination
+        $this->pagination->initialize($config);
 
         // load the approp. page view
         $this->load->view('pages/owl_categories_organize', $page_data);
