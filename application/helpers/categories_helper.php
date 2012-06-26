@@ -74,7 +74,7 @@ if (!function_exists('gen_categories'))
 
 if (!function_exists('gen_drop_categories'))
 {
-    function gen_drop_categories($owl = FALSE, $create_page = FALSE)
+    function gen_drop_categories($owl = FALSE, $create_page = FALSE, $cat_id = FALSE)
     {
         $CI =& get_instance();
         $cat_array = NULL;
@@ -84,14 +84,20 @@ if (!function_exists('gen_drop_categories'))
         {
             foreach ($roots->result() as $root)
             {
-                $cat_array[] = array('id' => $root->id, 'name' => $root->name);
+                if ($create_page && $cat_id != FALSE && $cat_id == $root->id)
+                    $cat_array[] = array('id' => $root->id, 'name' => $root->name, 'selected' => TRUE);
+                else
+                    $cat_array[] = array('id' => $root->id, 'name' => $root->name);
 
                 // child this roots children
                 if (($kids = $CI->cat_model->get_children($owl, $root->id)))
                 {
                     foreach ($kids->result() as $child)
                     {
-                        $cat_array[] = array('id' => $child->id, 'name' => '- ' . $child->name);
+                        if ($create_page && $cat_id != FALSE && $cat_id == $child->id)
+                            $cat_array[] = array('id' => $child->id, 'name' => '- ' . $child->name, 'selected' => TRUE);
+                        else
+                            $cat_array[] = array('id' => $child->id, 'name' => '- ' . $child->name);
 
                         // Are we in the creation page? If so DON'T display this section...
                         if (!$create_page)

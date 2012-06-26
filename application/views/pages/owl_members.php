@@ -70,7 +70,7 @@
         $(function() {
             $('.userAction').click(function(e) {
                 // prevent the default action, e.g., following a link
-                e.preventDefault()
+                e.preventDefault();
 
                 // get the data from the form
                 var data = $(this).attr('href').split(':');
@@ -92,22 +92,21 @@
             });
 
             function userDialog(action, group, uid, element) {
+                // setup our vars
+                var toFrom = 'from',
+                    href = 'promote:' + group + ':' + uid,
+                    style = 'color:#FF0000 !important',
+                    str = "'";
+
                 // are we going from someting or to something
-                if(action == 'promote') {
-                    var toFrom = 'to';
-                    var href = 'demote:' + group + ':' + uid;
-                    var style = 'color:#63b52e !important';
-                    var str = ".";
-                } else {
-                    var toFrom = 'from';
-                    var href = 'promote:' + group + ':' + uid;
-                    var style = 'color:#FF0000 !important';
-                    var str = "'";
+                if (action == 'promote') {
+                    toFrom = 'to';
+                    href = 'demote:' + group + ':' + uid;
+                    style = 'color:#63b52e !important';
+                    str = ".";
                 }
 
-                $('<div></div>')
-                .html('<span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>This will ' + action + ' the user ' + toFrom + ' "<strong>' + group.toUpperCase() + '</strong>"?')
-                .dialog({
+                $('<div></div>').html('<span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>This will ' + action + ' the user ' + toFrom + ' "<strong>' + group.toUpperCase() + '</strong>"?').dialog({
                     title: camesString(action) + ' the user?',
                     autoOpen: true,
                     resizable: false,
@@ -116,23 +115,19 @@
                     buttons: {
                         "Confirm": function() {
                             // close the dialog box
-                            $( this ).dialog( "close" );
+                            $(this).dialog("close");
 
                             // build the uri
-                            var uri = '<?php print base_url(); ?>/owl/members';
-                            uri += '/'+ action;
+                            var uri = '/owl/members';
+                            uri += '/' + action;
                             uri += '/' + group;
                             uri += '/' + uid;
 
                             // get the JSON data from the request
                             $.getJSON(uri, function(data) {
-                                if( data.success == 'true' ) {
+                                if (data.success == 'true') {
                                     // update the view to reflect this change
-                                    element
-                                        .attr('href', href)
-                                        .attr('style', style)
-                                        .text(str)
-                                    ;
+                                    element.attr('href', href).attr('style', style).text(str);
                                 }
                                 else {
                                     alert('Sorry, an error has occured. Please report this to the site admin.');
@@ -140,17 +135,17 @@
                             });
                         },
                         Cancel: function() {
-                            $( this ).dialog( "close" );
+                            $(this).dialog("close");
                         }
                     }
                 });
-            };
+            }
 
             function camesString(str) {
                 str = str.toLowerCase().replace(/\b[a-z]/g, function(letter) {
                     return letter.toUpperCase();
                 });
-                return str
+                return str;
             }
         });
     </script>

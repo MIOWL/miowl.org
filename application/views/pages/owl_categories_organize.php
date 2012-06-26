@@ -38,7 +38,7 @@
                             <?php endif; ?>
                         </td>
                         <td>
-                            <a style="color:#63b52e !important;" href="<?php print $row->id; ?>"><img src="/images/icons/edit.gif" title="edit this category" alt="edit" width="16px" height="16px" /></a>
+                            <a style="color:#63b52e !important;" href="<?php print $row->id.':'.$row->parent_id.':'.$row->name; ?>"><img src="/images/icons/edit.gif" title="edit this category" alt="edit" width="16px" height="16px" /></a>
                         </td>
                         <td>
                             <?php if ($is_in_use) : ?>
@@ -70,33 +70,34 @@
         $(function() {
             $('.del').click(function(e) {
                 // prevent the default action, e.g., following a link
-                e.preventDefault()
+                e.preventDefault();
 
                 // get the data from the form
-                var id = $(this).attr('href');
+                var data = $(this).attr('href').split(':'),
+                    cat_id = data[0],
+                    cat_pid = data[1],
+                    cat_name = data[2];
 
                 // setup and load the dialog box
-                $('<div></div>')
-                .html('<span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>This will delete the category')
-                .dialog({
-                    title: 'delete the category?',
+                $('<div></div>').html('<span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>This will delete the category <strong>' + cat_name + '</strong>').dialog({
+                    title: 'delete this category?',
                     autoOpen: true,
                     resizable: false,
                     modal: true,
                     buttons: {
                         "Confirm": function() {
                             // close the dialog box
-                            $( this ).dialog( "close" );
+                            $(this).dialog("close");
 
                             // build the uri
-                            var uri = '/owl/categories/remove/' + id;
+                            var uri = '/owl/categories/remove/' + cat_id;
 
                             // get the JSON data from the request
                             $.getJSON(uri, function(data) {
-                                if( data.success == 'true' ) {
+                                if (data.success == 'true') {
                                     // update the view to reflect this change
-                                    $('#r-' + id).fadeOut('slow', function() {
-                                        $('#r-' + id).empty();
+                                    $('#r-' + cat_id).fadeOut('slow', function() {
+                                        $('#r-' + cat_id).empty();
                                     });
                                 }
                                 else {
@@ -105,7 +106,7 @@
                             });
                         },
                         Cancel: function() {
-                            $( this ).dialog( "close" );
+                            $(this).dialog("close");
                         }
                     }
                 });
