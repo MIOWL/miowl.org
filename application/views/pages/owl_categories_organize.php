@@ -162,7 +162,7 @@
                                         }, "html");
 
                                         // update the href to reflect this change
-                                        $(this).attr('href', cat_id + ':' + response.subcat + ':' + response.name);
+                                        $(this).attr('href', cat_id + ':' + response.subcat + ':' + response.namez);
                                     }
                                     else {
                                         alert('Sorry, an error has occured. Please report this to the site admin.');
