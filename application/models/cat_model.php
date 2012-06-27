@@ -250,8 +250,11 @@ class Cat_model extends CI_Model {
         if (!$this->session->userdata('editor'))
             return $return;
 
-        if (!$id || !$name || !$subcat)
+        if (!$id || !$name)
             return $return;
+
+        if (!$subcat)
+            $subcat = '0';
 
         $this->db->set('name', $name);
         $this->db->set('parent_id', $subcat);
