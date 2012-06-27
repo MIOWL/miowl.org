@@ -238,7 +238,7 @@ class Miowl_model extends CI_Model {
         $this->db->set('user_owl_id', 0);
         $where = array(
             'id'            => $user_id,
-            'user_owl_id'   => $owl_id,
+            'user_owl_id'   => $owl_id
         );
         $this->db->where($where);
         $this->db->update('users');

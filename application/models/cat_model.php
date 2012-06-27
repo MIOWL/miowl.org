@@ -242,10 +242,10 @@ class Cat_model extends CI_Model {
     {
         // setup the return data
         $return = array();
-        $return['success'] = FALSE;
-        $return['id'] = $id;
-        $return['name'] = $name;
-        $return['subcat'] = $subcat;
+        $return['success']  = FALSE;
+        $return['id']       = $id;
+        $return['name']     = $name;
+        $return['subcat']   = $subcat;
 
         if (!$this->session->userdata('editor'))
             return $return;
@@ -253,10 +253,14 @@ class Cat_model extends CI_Model {
         if (!$id || !$name || !$subcat)
             return $return;
 
-        $data   = array('name'=>$name, 'parent_id'=>$subcat);
-        $where  = array('id'=>$id, 'owl'=>$this->session->userdata('owl'));
-
-        $this->db->update_string('categories', $data, $where);
+        $this->db->set('name', $name);
+        $this->db->set('parent_id', $subcat);
+        $where = array(
+            'id'    => $id,
+            'owl'   => $this->session->userdata('owl')
+        );
+        $this->db->where($where);
+        $this->db->update('categories');
 
         if ($this->db->affected_rows() > 0)
            $return['success'] = TRUE;
