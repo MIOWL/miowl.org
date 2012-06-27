@@ -33,11 +33,21 @@
  * ------------------------------------------------------------------------------
  */
 
-class Session extends CI_Controller {
+class Lic_model extends CI_Model {
 
 //=================================================================================
-// :vars
+// :private vars
 //=================================================================================
+
+    private $units = array(
+        "year"   => 29030400, // seconds in a year   (12 months)
+        "month"  => 2419200,  // seconds in a month  (4 weeks)
+        "week"   => 604800,   // seconds in a week   (7 days)
+        "day"    => 86400,    // seconds in a day    (24 hours)
+        "hour"   => 3600,     // seconds in an hour  (60 minutes)
+        "minute" => 60,       // seconds in a minute (60 seconds)
+        "second" => 1         // 1 second
+    );
 
 
 //=================================================================================
@@ -45,38 +55,69 @@ class Session extends CI_Controller {
 //=================================================================================
 
     /**
-     * public construct
+     * public deleted_uploads()
+     * this function is used to get uploads that were deleted over 30 days ago
      */
-    public function __construct()
+    public function deleted_uploads()
     {
-        // init parent
-        parent::__construct();
+        $this->db->select('*');
+        $this->db->having("deleted", "true");
+        $this->db->where("remove_timestamp <=", ( time() - $this->units['month'] ) );
+        $query = $this->db->get('uploads');
 
-        // loads
+        if ($query->num_rows() > 0)
+            return $query;
+        else
+            return FALSE;
     }
     //------------------------------------------------------------------
 
 
     /**
-     * public remap
+     * public cleanup_uploads()
+     * this function is used to delete uploads that were deleted over 30 days ago
      */
-    public function _remap($method, $params = array())
+    public function cleanup_uploads()
     {
-        if (method_exists($this, $method))
-        {
-            return call_user_func_array(array($this, $method), $params);
-        }
-        show_404();
+        $this->db->having("deleted", "true");
+        $this->db->where("remove_timestamp <=", ( time() - $this->units['month'] ) );
+        $this->db->delete('uploads');
+
+        return $this->db->affected_rows();
     }
     //------------------------------------------------------------------
 
 
     /**
-     * public index()
+     * public inactive_users()
+     * this function is used to get users who have not activated after 30 days
      */
-    public function index()
+    public function inactive_users()
     {
-    print '<pre>' . print_r($this->session->all_userdata(), TRUE) . '</pre>';
+        $this->db->select('*');
+        $this->db->having("user_active", "no");
+        $this->db->where("user_registration_date", ( time() - $this->units['month']) );
+        $query = $this->db->get('users');
+
+        if ($query->num_rows() > 0)
+            return $query;
+        else
+            return FALSE;
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * public cleanup_users()
+     * this function is used to delete users who have not activated after 60 days
+     */
+    public function cleanup_users()
+    {
+        $this->db->having("user_active", "no");
+        $this->db->where("user_registration_date <=", ( time() - ( $this->units['month'] * 2 ) ) );
+        $this->db->delete('users');
+
+        return $this->db->affected_rows();
     }
     //------------------------------------------------------------------
 

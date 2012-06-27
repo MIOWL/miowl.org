@@ -40,10 +40,19 @@ class Cron extends CI_Controller {
 //=================================================================================
 
     private $seperator = "\r\n//=================================================================================\r\n";
+    private $units = array(
+        "year"   => 29030400, // seconds in a year   (12 months)
+        "month"  => 2419200,  // seconds in a month  (4 weeks)
+        "week"   => 604800,   // seconds in a week   (7 days)
+        "day"    => 86400,    // seconds in a day    (24 hours)
+        "hour"   => 3600,     // seconds in an hour  (60 minutes)
+        "minute" => 60,       // seconds in a minute (60 seconds)
+        "second" => 1         // 1 second
+    );
 
 
 //=================================================================================
-// :public
+// :public functions
 //=================================================================================
 
     /**
@@ -85,8 +94,34 @@ class Cron extends CI_Controller {
      */
     public function takeOutTheTrash()
     {
+        // get the delete information
+        $toDelete = $this->cron_model->deleted_uploads();
+
+        // do we have any files to delete?
+        if (!$toDelete) {
+            $this->printy("There were no files that were deleted more than 30 days ago...");
+            print $this->seperator . PHP_EOL;
+            return;
+        }
+
+        // count the total files to be deleted
+        $count = $toDelete->num_rows();
+
         // start the output here
-        $this->printy("Sorry, this function is not yet coded");
+        $this->printy("Starting the removal of files that were deleted more than 30 days ago...");
+        $this->printy("There are a total of {$count} files that will be removed.");
+
+        // // delete the files
+        // foreach ($toDelete->result() as $row) {
+        //     if (unlink($row->full_path))
+        //         $this->printy("[" . $row->id . "]" $row->file_name "has been removed.");
+        //     else
+        //         $this->printy("Error removing file - " $row->full_path);
+        // }
+
+        // // delete from the database
+        // $sqlDelete = $this->cron_model->cleanup_uploads();
+        // $this->printy($sqlDelete . "uploads have been removed from the database.");
 
         // print the bottom seperator
         print $this->seperator . PHP_EOL;
@@ -153,7 +188,7 @@ class Cron extends CI_Controller {
 
 
 //=================================================================================
-// :private
+// :private functions
 //=================================================================================
 
     /**

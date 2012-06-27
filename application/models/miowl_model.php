@@ -41,22 +41,19 @@ class Miowl_model extends CI_Model {
 
     private $extend_error = NULL;
 
-    private $units = array
-                      (
-                       "year"   => 29030400, // seconds in a year   (12 months)
-                       "month"  => 2419200,  // seconds in a month  (4 weeks)
-                       "week"   => 604800,   // seconds in a week   (7 days)
-                       "day"    => 86400,    // seconds in a day    (24 hours)
-                       "hour"   => 3600,     // seconds in an hour  (60 minutes)
-                       "minute" => 60,       // seconds in a minute (60 seconds)
-                       "second" => 1         // 1 second
-                      );
-
-    //------------------------------------------------------------------
+    private $units = array(
+        "year"   => 29030400, // seconds in a year   (12 months)
+        "month"  => 2419200,  // seconds in a month  (4 weeks)
+        "week"   => 604800,   // seconds in a week   (7 days)
+        "day"    => 86400,    // seconds in a day    (24 hours)
+        "hour"   => 3600,     // seconds in an hour  (60 minutes)
+        "minute" => 60,       // seconds in a minute (60 seconds)
+        "second" => 1         // 1 second
+    );
 
 
 //=================================================================================
-// :public
+// :public functions
 //=================================================================================
 
     /**
@@ -269,6 +266,11 @@ class Miowl_model extends CI_Model {
             return FALSE;
     }
     //------------------------------------------------------------------
+
+
+//=================================================================================
+// :private functions
+//=================================================================================
 
 
 }
