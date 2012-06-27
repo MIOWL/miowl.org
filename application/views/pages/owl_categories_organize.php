@@ -160,7 +160,7 @@
                                         }, "html");
 
                                         // update the href to reflect this change
-                                        $('.catedit', $('#r-' + cat_id)).attr('href', cat_id + ':' + response.subcat + ':' + response.name);
+                                        $(this).attr('href', cat_id + ':' + response.subcat + ':' + response.name);
                                     }
                                     else {
                                         alert('Sorry, an error has occured. Please report this to the site admin.');

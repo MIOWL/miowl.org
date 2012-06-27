@@ -219,6 +219,9 @@ class Cat_model extends CI_Model {
         if (!$id)
             return FALSE;
 
+        if($this->in_use($id))
+            return FALSE;
+
         $this->db->where('id', $id);
         $this->db->where('owl', $this->session->userdata('owl'));
         $this->db->delete('categories');

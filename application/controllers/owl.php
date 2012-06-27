@@ -741,19 +741,6 @@ class Owl extends CI_Controller {
 
 
     /**
-     * member function _categories_remove()
-     */
-    public function _categories_remove($id = FALSE)
-    {
-        if (!$id)
-            return print json_encode( array('success' => 'false') );
-
-        return print json_encode( array('success' => 'true') );
-    }
-    //------------------------------------------------------------------
-
-
-    /**
      * member function _categories_select_list()
      */
     public function _categories_select_list($pid = FALSE)
@@ -798,6 +785,22 @@ class Owl extends CI_Controller {
         $return['subcat']   = $this->input->post('subcat');
 
         print json_encode($return);
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * member function _categories_remove()
+     */
+    public function _categories_remove($id = FALSE)
+    {
+        if (!$id)
+            return print json_encode( array('success' => 'false') );
+
+        if ($this->cat_model->delete($id))
+            return print json_encode( array('success' => 'true') );
+        else
+            return print json_encode( array('success' => 'false') );
     }
     //------------------------------------------------------------------
 
