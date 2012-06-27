@@ -118,7 +118,7 @@
                 // prevent the default action, e.g., following a link
                 e.preventDefault();
 
-                $( "#dialog:ui-dialog" ).dialog( "destroy" );
+                $( "#dialog" ).remove();
 
                 // get the data from the form
                 var data = $(this).attr('href').split(':'),
