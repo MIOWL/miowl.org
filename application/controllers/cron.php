@@ -115,11 +115,11 @@ class Cron extends CI_Controller {
         // delete the files
         foreach ($toDelete->result() as $row)
         {
-            $this->printy("[" . $row->id . "]" $row->file_name " - " $row->full_path);
+            $this->printy("[" . $row->id . "]" . $row->file_name . " - " . $row->full_path);
             // if ( unlink( $row->full_path ) )
-            //     $this->printy("[" . $row->id . "]" $row->file_name "has been removed.");
+            //     $this->printy("[" . $row->id . "]" . $row->file_name . "has been removed.");
             // else
-            //     $this->printy("Error removing file - " $row->full_path);
+            //     $this->printy("Error removing file - " . $row->full_path);
         }
 
         // delete from the database
