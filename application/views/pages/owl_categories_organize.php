@@ -38,7 +38,7 @@
                             <?php endif; ?>
                         </td>
                         <td>
-                            <a style="color:#63b52e !important;" href="<?php print $row->id.':'.$row->parent_id.':'.$row->name; ?>" class="edit"><img src="/images/icons/edit.gif" title="edit this category" alt="edit" width="16px" height="16px" /></a>
+                            <a style="color:#63b52e !important;" href="<?php print $row->id.':'.$row->parent_id.':'.$row->name; ?>" class="catedit"><img src="/images/icons/edit.gif" title="edit this category" alt="edit" width="16px" height="16px" /></a>
                         </td>
                         <td>
                             <?php if ($is_in_use) : ?>
@@ -146,7 +146,7 @@
                 }
             }
 
-            $('.edit').click(function(e) {
+            $('.catedit').click(function(e) {
                 // prevent the default action, e.g., following a link
                 e.preventDefault();
 
