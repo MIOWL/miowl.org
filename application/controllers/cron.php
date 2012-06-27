@@ -117,14 +117,14 @@ class Cron extends CI_Controller {
         {
             // $this->printy("[" . $row->id . "]" . $row->file_name . " - " . $row->full_path);
             if ( unlink( $row->full_path ) )
-                $this->printy("[" . $row->id . "]" . $row->file_name . "has been removed.");
+                $this->printy("[" . $row->id . "]" . $row->file_name . " has been removed.");
             else
                 $this->printy("Error removing file - " . $row->full_path);
         }
 
         // delete from the database
-        // $sqlDelete = $this->cron_model->cleanup_uploads();
-        // $this->printy($sqlDelete . "uploads have been removed from the database.");
+        $sqlDelete = $this->cron_model->cleanup_uploads();
+        $this->printy($sqlDelete . " uploads have been removed from the database.");
 
         // print the bottom seperator
         print $this->seperator . PHP_EOL;
