@@ -167,7 +167,8 @@ class Cron extends CI_Controller {
      */
     private function lic()
     {
-        print("/**
+        print("
+/**
  * ------------------------------------------------------------------------------
  * 
  * MiOWL                                                     (v1) | codename dave
