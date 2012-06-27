@@ -171,11 +171,11 @@
                                 var bValid = true;
                                 allFields.removeClass("ui-state-error");
 
-                                bValid = bValid && checkLength(name, "Category Name", 3, 16);
-                                bValid = bValid && checkLength(subcat, "Sub Category", 3, 16);
-                                bValid = bValid && checkRegexp(name, /^([0-9a-zA-Z])+$/, "Category Name field only allows the following : a-z 0-9");
+                                // bValid = bValid && checkLength(name, "Category Name", 3, 16);
+                                // bValid = bValid && checkLength(subcat, "Sub Category", 3, 16);
+                                // bValid = bValid && checkRegexp(name, /^([0-9a-zA-Z])+$/, "Category Name field only allows the following : a-z 0-9");
 
-                                if (bValid) {
+                                // if (bValid) {
                                     // build the uri
                                     var uri = '/owl/members';
 
@@ -203,7 +203,7 @@
 
                                     // close the dialog box
                                     $(this).dialog("close");
-                                }
+                                // }
                             },
                             Cancel: function() {
                                 $(this).dialog("close");
