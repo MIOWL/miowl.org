@@ -118,6 +118,7 @@
                 // prevent the default action, e.g., following a link
                 e.preventDefault();
 
+                // remove the previous dialog box if there is one
                 $( "#dialog" ).remove();
 
                 // get the data from the form
