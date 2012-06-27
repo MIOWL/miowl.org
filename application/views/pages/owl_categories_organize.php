@@ -158,62 +158,62 @@
 
                 $.get('/owl/categories/select_list/' + cat_pid, function(response) {
                     var select_list = response;
-                },
-                "html");
 
-                // create and load the dialog form
-                $('<div></div>').html('<p class="validateTips">All form fields are required.</p><form><fieldset><label for="name">Category Name</label><input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all" value="' + cat_name + '" /><label for="subcat">Sub Category</label><select name="subcat" id="subcat" class="select ui-widget-content ui-corner-all">' + select_list + 'M/select></fieldset></form>').dialog({
-                    title: 'Edit the Category',
-                    autoOpen: true,
-                    resizable: false,
-                    modal: true,
-                    buttons: {
-                        "Edit": function() {
-                            var bValid = true;
-                            allFields.removeClass("ui-state-error");
+                    // create and load the dialog form
+                    $('<div></div>').html('<p class="validateTips">All form fields are required.</p><form><fieldset><label for="name">Category Name</label><input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all" value="' + cat_name + '" /><label for="subcat">Sub Category</label><select name="subcat" id="subcat" class="select ui-widget-content ui-corner-all">' + select_list + 'M/select></fieldset></form>').dialog({
+                        title: 'Edit the Category',
+                        autoOpen: true,
+                        resizable: false,
+                        modal: true,
+                        buttons: {
+                            "Edit": function() {
+                                var bValid = true;
+                                allFields.removeClass("ui-state-error");
 
-                            bValid = bValid && checkLength(name, "Category Name", 3, 16);
-                            bValid = bValid && checkLength(subcat, "Sub Category", 3, 16);
-                            bValid = bValid && checkRegexp(name, /^([0-9a-zA-Z])+$/, "Category Name field only allows the following : a-z 0-9");
+                                bValid = bValid && checkLength(name, "Category Name", 3, 16);
+                                bValid = bValid && checkLength(subcat, "Sub Category", 3, 16);
+                                bValid = bValid && checkRegexp(name, /^([0-9a-zA-Z])+$/, "Category Name field only allows the following : a-z 0-9");
 
-                            if (bValid) {
-                                // build the uri
-                                var uri = '/owl/members';
+                                if (bValid) {
+                                    // build the uri
+                                    var uri = '/owl/members';
 
-                                // get the JSON data from the request
-                                $.post('/owl/categories/edit/', {
-                                    name: name.val(),
-                                    subcat: subcat.val()
-                                },
-                                function(response) {
-                                    // was the edit a success?
-                                    if (response.success == 'true') {
-                                        // get the new breadcrumb
-                                        $.get('/owl/categories/select_list/' + cat_id, function(data) {
-                                            // var breadcrumb = response;
-                                            $('td:first', $('#r-' + cat_id)).html(data);
-                                        }, "html");
+                                    // get the JSON data from the request
+                                    $.post('/owl/categories/edit/', {
+                                        name: name.val(),
+                                        subcat: subcat.val()
+                                    },
+                                    function(response) {
+                                        // was the edit a success?
+                                        if (response.success == 'true') {
+                                            // get the new breadcrumb
+                                            $.get('/owl/categories/select_list/' + cat_id, function(data) {
+                                                // var breadcrumb = response;
+                                                $('td:first', $('#r-' + cat_id)).html(data);
+                                            }, "html");
 
-                                        // update the href to reflect this change
-                                        element.attr('href', cat_id + ':' + response.subcat + ':' + response.name);
-                                    }
-                                    else {
-                                        alert('Sorry, an error has occured. Please report this to the site admin.');
-                                    }
-                                }, "json");
+                                            // update the href to reflect this change
+                                            element.attr('href', cat_id + ':' + response.subcat + ':' + response.name);
+                                        }
+                                        else {
+                                            alert('Sorry, an error has occured. Please report this to the site admin.');
+                                        }
+                                    }, "json");
 
-                                // close the dialog box
+                                    // close the dialog box
+                                    $(this).dialog("close");
+                                }
+                            },
+                            Cancel: function() {
                                 $(this).dialog("close");
                             }
                         },
-                        Cancel: function() {
-                            $(this).dialog("close");
+                        close: function() {
+                            allFields.val("").removeClass("ui-state-error");
                         }
-                    },
-                    close: function() {
-                        allFields.val("").removeClass("ui-state-error");
-                    }
-                });
+                    });
+                },
+                "html");
             });
         });
     </script>
