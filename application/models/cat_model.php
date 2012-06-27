@@ -244,7 +244,7 @@ class Cat_model extends CI_Model {
         $return = array();
         $return['success']  = FALSE;
         $return['id']       = $id;
-        $return['namez']     = $name;
+        $return['name']     = $name;
         $return['subcat']   = $subcat;
 
         if (!$this->session->userdata('editor'))

@@ -791,7 +791,7 @@ class Owl extends CI_Controller {
         $return             = array();
         $return['success']  = $edit['success'];
         $return['id']       = $edit['id'];
-        $return['name']     = $edit['name'];
+        $return['namez']     = $edit['name'];
         $return['subcat']   = $edit['subcat'];
 
         print json_encode($return);
