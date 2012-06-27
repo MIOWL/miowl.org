@@ -175,6 +175,10 @@
                             }
                         },
                         close: function() {
+                            var name = $("#dialog_name"),
+                                subcat = $("#dialog_subcat"),
+                                allFields = $([]).add(name).add(subcat);
+
                             allFields.val("").removeClass("ui-state-error");
                         }
                     });
