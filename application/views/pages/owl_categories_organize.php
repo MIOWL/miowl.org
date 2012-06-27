@@ -125,7 +125,8 @@
                     cat_name = data[2];
 
                 $.get('/owl/categories/select_list/' + cat_pid, function(response) {
-                    var select_list = response;
+                    var select_list = response,
+                    tips = $(".validateTips");
 
                     function updateTips(t) {
                         tips.text(t).addClass("ui-state-highlight");
@@ -166,14 +167,15 @@
                                 var name = $("#dialog_name"),
                                     subcat = $("#dialog_subcat"),
                                     allFields = $([]).add(name).add(subcat),
-                                    tips = $(".validateTips"),
                                     bValid = true;
+
+                                tips = $(".validateTips");
 
                                 allFields.removeClass("ui-state-error");
 
-                                bValid = bValid && checkLength(name, "Category Name", 3, 16);
-                                bValid = bValid && checkLength(subcat, "Sub Category", 3, 16);
-                                bValid = bValid && checkRegexp(name, /^([0-9a-zA-Z])+$/, "Category Name field only allows the following : a-z 0-9");
+                                // bValid = bValid && checkLength(name, "Category Name", 3, 16);
+                                // bValid = bValid && checkLength(subcat, "Sub Category", 3, 16);
+                                // bValid = bValid && checkRegexp(name, /^([0-9a-zA-Z])+$/, "Category Name field only allows the following : a-z 0-9");
 
                                 if (bValid) {
                                     // build the uri
