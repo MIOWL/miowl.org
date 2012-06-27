@@ -780,7 +780,10 @@ class Owl extends CI_Controller {
     public function _categories_edit()
     {
         if (!$this->cat_model->edit())
-            die(json_encode($array('success'=>FALSE)));
+        {
+            print json_encode( array( 'success' => FALSE ) );
+            return;
+        }
 
         $return             = array();
         $return['success']  = TRUE;
