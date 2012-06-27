@@ -38,7 +38,7 @@
                             <?php endif; ?>
                         </td>
                         <td>
-                            <a style="color:#63b52e !important;" href="<?php print $row->id.':'.$row->parent_id.':'.$row->name; ?>"><img src="/images/icons/edit.gif" title="edit this category" alt="edit" width="16px" height="16px" /></a>
+                            <a style="color:#63b52e !important;" href="<?php print $row->id.':'.$row->parent_id.':'.$row->name; ?>" class"edit"><img src="/images/icons/edit.gif" title="edit this category" alt="edit" width="16px" height="16px" /></a>
                         </td>
                         <td>
                             <?php if ($is_in_use) : ?>
@@ -108,6 +108,109 @@
                         Cancel: function() {
                             $(this).dialog("close");
                         }
+                    }
+                });
+            });
+        });
+
+        $(function() {
+            var name = $("#name"),
+                subcat = $("#subcat"),
+                allFields = $([]).add(name).add(subcat),
+                tips = $(".validateTips");
+
+            function updateTips(t) {
+                tips.text(t).addClass("ui-state-highlight");
+                setTimeout(function() {
+                    tips.removeClass("ui-state-highlight", 1500);
+                }, 500);
+            }
+
+            function checkLength(o, n, min, max) {
+                if (o.val().length > max || o.val().length < min) {
+                    o.addClass("ui-state-error");
+                    updateTips("Length of " + n + " must be between " + min + " and " + max + ".");
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+
+            function checkRegexp(o, regexp, n) {
+                if (!(regexp.test(o.val()))) {
+                    o.addClass("ui-state-error");
+                    updateTips(n);
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+
+            $('.edit').click(function(e) {
+                // prevent the default action, e.g., following a link
+                e.preventDefault();
+
+                // get the data from the form
+                var data = $(this).attr('href').split(':'),
+                    cat_id = data[0],
+                    cat_pid = data[1],
+                    cat_name = data[2];
+
+                $.get('/owl/categories/select_list/' + cat_pid), function(response) {
+                    var select_list = response;
+                }, "html");
+
+                // create and load the dialog form
+                $('<div></div>').html('<p class="validateTips">All form fields are required.</p><form><fieldset><label for="name">Category Name</label><input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all" value="' + cat_name + '" /><label for="subcat">Sub Category</label><select name="subcat" id="subcat" class="select ui-widget-content ui-corner-all">' + select_list + 'M/select></fieldset></form>').dialog({
+                    title: 'Edit the Category',
+                    autoOpen: true,
+                    resizable: false,
+                    modal: true,
+                    buttons: {
+                        "Edit": function() {
+                            var bValid = true;
+                            allFields.removeClass("ui-state-error");
+
+                            bValid = bValid && checkLength(name, "Category Name", 3, 16);
+                            bValid = bValid && checkLength(subcat, "Sub Category", 3, 16);
+                            bValid = bValid && checkRegexp(name, /^([0-9a-zA-Z])+$/, "Category Name field only allows the following : a-z 0-9");
+
+                            if (bValid) {
+                                // build the uri
+                                var uri = '/owl/members';
+
+                                // get the JSON data from the request
+                                $.post('/owl/categories/edit/', {
+                                    name: name.val(),
+                                    subcat: subcat.val()
+                                },
+                                function(response) {
+                                    // was the edit a success?
+                                    if (response.success == 'true') {
+                                        // get the new breadcrumb
+                                        $.get('/owl/categories/select_list/' + cat_id), function(data) {
+                                            // var breadcrumb = response;
+                                            $('td:first', $('#r-' + cat_id)).html(data);
+                                        }, "html");
+
+                                        // update the href to reflect this change
+                                        element.attr('href', cat_id + ':' + response.subcat + ':' + response.name);
+                                    }
+                                    else {
+                                        alert('Sorry, an error has occured. Please report this to the site admin.');
+                                    }
+                                }, "json");
+
+                                // close the dialog box
+                                $(this).dialog("close");
+                            }
+                        },
+                        Cancel: function() {
+                            $(this).dialog("close");
+                        }
+                    },
+                    close: function() {
+                        allFields.val("").removeClass("ui-state-error");
                     }
                 });
             });

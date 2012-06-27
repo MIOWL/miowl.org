@@ -758,18 +758,46 @@ class Owl extends CI_Controller {
      */
     public function _categories_select_list($pid = FALSE)
     {
-        if ($pid == FALSE || $pid == 0 || $pid == '0')
-            print '<option value="0" selected="selected">None (top level category)</option>'.PHP_EOL;
+        if (!$pid || $pid == 0 || $pid == '0')
+            print '<option value="0" selected="selected">None (top level category)</option>';
         else
-            print '<option value="0">None (top level category)</option>'.PHP_EOL;
+            print '<option value="0">None (top level category)</option>';
 
         foreach (gen_drop_categories(FALSE, TRUE, $pid) as $category)
         {
-            if ($category['selected'])
-                print '<option value="' . $category['id'] . '" selected="selected">' . $category['name'] . '</option>'.PHP_EOL;
+            if (isset($category['selected']) && $category['selected'])
+                print '<option value="' . $category['id'] . '" selected="selected">' . $category['name'] . '</option>';
             else
-                print '<option value="' . $category['id'] . '">' . $category['name'] . '</option>'.PHP_EOL;
+                print '<option value="' . $category['id'] . '">' . $category['name'] . '</option>';
         }
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * member function _categories_select_list()
+     */
+    public function _categories_breadcrumb($id = FALSE)
+    {
+        if (!$id || $pid == 0 || $pid == '0')
+            print 'invalid';
+        else
+            print cat_breadcrumb_ul($id);
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * member function _categories_edit()
+     */
+    public function _categories_edit()
+    {
+        $return             = array();
+        $return['success']  = TRUE;
+        $return['name']     = $this->input->post('name');
+        $return['subcat']   = $this->input->post('subcat');
+
+        print json_encode($return);
     }
     //------------------------------------------------------------------
 
