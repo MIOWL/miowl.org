@@ -188,13 +188,13 @@
                                         // was the edit a success?
                                         if (response.success) {
                                             // get the new breadcrumb
-                                            $.get('/owl/categories/select_list/' + cat_id, function(data) {
+                                            $.get('/owl/categories/breadcrumb/', function(data) {
                                                 // var breadcrumb = response;
                                                 $('td:first', $('#r-' + cat_id)).html(data);
                                             }, "html");
 
                                             // update the href to reflect this change
-                                            element.attr('href', cat_id + ':' + response.subcat + ':' + response.name);
+                                            $('#r-' + cat_id)).attr('href', cat_id + ':' + response.subcat + ':' + response.name);
                                         }
                                         else {
                                             alert('Sorry, an error has occured. Please report this to the site admin.');
