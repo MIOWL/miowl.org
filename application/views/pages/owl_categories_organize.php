@@ -125,11 +125,7 @@
                     cat_name = data[2];
 
                 $.get('/owl/categories/select_list/' + cat_pid, function(response) {
-                    var select_list = response,
-                        name = $("#name"),
-                        subcat = $("#subcat"),
-                        allFields = $([]).add(name).add(subcat),
-                        tips = $(".validateTips");
+                    var select_list = response;
 
                     function updateTips(t) {
                         tips.text(t).addClass("ui-state-highlight");
@@ -159,7 +155,7 @@
                     }
 
                     // create and load the dialog form
-                    $('<div></div>').html('<p class="validateTips">All form fields are required.</p><form><fieldset><label for="name">Category Name</label><input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all" value="' + cat_name + '" /><label for="subcat">Sub Category</label><select name="subcat" id="subcat" class="select ui-widget-content ui-corner-all">' + select_list + 'M/select></fieldset></form>').dialog({
+                    $('<div></div>').html('<p class="validateTips">All form fields are required.</p><form><fieldset><label for="name">Category Name</label><input type="text" name="name" id="dialog_name" class="text ui-widget-content ui-corner-all" value="' + cat_name + '" /><label for="subcat">Sub Category</label><select name="subcat" id="dialog_subcat" class="select ui-widget-content ui-corner-all">' + select_list + 'M/select></fieldset></form>').dialog({
                         title: 'Edit the Category',
                         autoOpen: true,
                         resizable: false,
@@ -167,14 +163,19 @@
                         modal: true,
                         buttons: {
                             "Edit": function() {
-                                var bValid = true;
+                                var name = $("#dialog_name"),
+                                    subcat = $("#dialog_subcat"),
+                                    allFields = $([]).add(name).add(subcat),
+                                    tips = $(".validateTips"),
+                                    bValid = true;
+
                                 allFields.removeClass("ui-state-error");
 
-                                // bValid = bValid && checkLength(name, "Category Name", 3, 16);
-                                // bValid = bValid && checkLength(subcat, "Sub Category", 3, 16);
-                                // bValid = bValid && checkRegexp(name, /^([0-9a-zA-Z])+$/, "Category Name field only allows the following : a-z 0-9");
+                                bValid = bValid && checkLength(name, "Category Name", 3, 16);
+                                bValid = bValid && checkLength(subcat, "Sub Category", 3, 16);
+                                bValid = bValid && checkRegexp(name, /^([0-9a-zA-Z])+$/, "Category Name field only allows the following : a-z 0-9");
 
-                                // if (bValid) {
+                                if (bValid) {
                                     // build the uri
                                     var uri = '/owl/members';
 
@@ -202,7 +203,7 @@
 
                                     // close the dialog box
                                     $(this).dialog("close");
-                                // }
+                                }
                             },
                             Cancel: function() {
                                 $(this).dialog("close");

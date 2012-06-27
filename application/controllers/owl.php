@@ -779,7 +779,7 @@ class Owl extends CI_Controller {
      */
     public function _categories_breadcrumb($id = FALSE)
     {
-        if (!$id || $pid == 0 || $pid == '0')
+        if (!$id)
             print 'invalid';
         else
             print cat_breadcrumb_ul($id);
