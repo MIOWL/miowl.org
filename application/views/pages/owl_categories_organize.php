@@ -188,7 +188,7 @@
                                         // was the edit a success?
                                         if (response.success) {
                                             // get the new breadcrumb
-                                            $.get('/owl/categories/breadcrumb/', function(data) {
+                                            $.get('/owl/categories/breadcrumb/' + cat_id, function(data) {
                                                 // var breadcrumb = response;
                                                 $('td:first', $('#r-' + cat_id)).html(data);
                                             }, "html");
