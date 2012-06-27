@@ -779,7 +779,8 @@ class Owl extends CI_Controller {
      */
     public function _categories_edit()
     {
-        if (!$this->cat_model->edit())
+        $edit = $this->cat_model->edit();
+        if (!$edit)
         {
             print json_encode( array( 'success' => FALSE ) );
             return;
@@ -787,6 +788,7 @@ class Owl extends CI_Controller {
 
         $return             = array();
         $return['success']  = TRUE;
+        $return['id']       = $this->input->post('id');
         $return['name']     = $this->input->post('name');
         $return['subcat']   = $this->input->post('subcat');
 
