@@ -74,7 +74,7 @@ if (!function_exists('gen_categories'))
 
 if (!function_exists('gen_drop_categories'))
 {
-    function gen_drop_categories($owl = FALSE, $create_page = FALSE, $cat_id = FALSE)
+    function gen_drop_categories($owl = FALSE, $create_page = FALSE, $cat_pid = FALSE)
     {
         $CI =& get_instance();
         $cat_array = NULL;
@@ -84,7 +84,7 @@ if (!function_exists('gen_drop_categories'))
         {
             foreach ($roots->result() as $root)
             {
-                if ($create_page && $cat_id != FALSE && $cat_id == $root->id)
+                if ($create_page && $cat_pid != FALSE && $cat_pid == $root->id)
                     $cat_array[] = array('id' => $root->id, 'name' => $root->name, 'selected' => TRUE);
                 else
                     $cat_array[] = array('id' => $root->id, 'name' => $root->name);
@@ -94,7 +94,7 @@ if (!function_exists('gen_drop_categories'))
                 {
                     foreach ($kids->result() as $child)
                     {
-                        if ($create_page && $cat_id != FALSE && $cat_id == $child->id)
+                        if ($create_page && $cat_pid != FALSE && $cat_pid == $child->id)
                             $cat_array[] = array('id' => $child->id, 'name' => '- ' . $child->name, 'selected' => TRUE);
                         else
                             $cat_array[] = array('id' => $child->id, 'name' => '- ' . $child->name);

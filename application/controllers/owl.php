@@ -753,6 +753,27 @@ class Owl extends CI_Controller {
     //------------------------------------------------------------------
 
 
+    /**
+     * member function _categories_select_list()
+     */
+    public function _categories_select_list($pid = FALSE)
+    {
+        if ($pid == FALSE || $pid == 0 || $pid == '0')
+            print '<option value="0" selected="selected">None (top level category)</option>'.PHP_EOL;
+        else
+            print '<option value="0">None (top level category)</option>'.PHP_EOL;
+
+        foreach (gen_drop_categories(FALSE, TRUE, $pid) as $category)
+        {
+            if ($category['selected'])
+                print '<option value="' . $category['id'] . '" selected="selected">' . $category['name'] . '</option>'.PHP_EOL;
+            else
+                print '<option value="' . $category['id'] . '">' . $category['name'] . '</option>'.PHP_EOL;
+        }
+    }
+    //------------------------------------------------------------------
+
+
 //=================================================================================
 // :custom callbacks
 //=================================================================================
