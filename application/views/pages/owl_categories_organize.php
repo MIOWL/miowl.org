@@ -125,7 +125,7 @@
                     cat_name = data[2];
 
                 $.get('/owl/categories/select_list/' + cat_pid, function(response) {
-                    var select_list = response,
+                    var select_list = response;
 
                     // create and load the dialog form
                     $('<div></div>').html('<p class="validateTips">All form fields are required.</p><form><fieldset><label for="name">Category Name</label><input type="text" name="name" id="dialog_name" class="text ui-widget-content ui-corner-all" value="' + cat_name + '" /><label for="subcat">Sub Category</label><select name="subcat" id="dialog_subcat" class="select ui-widget-content ui-corner-all">' + select_list + 'M/select></fieldset></form>').dialog({
