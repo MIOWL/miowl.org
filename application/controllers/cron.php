@@ -110,17 +110,20 @@ class Cron extends CI_Controller {
 
         // start the output here
         $this->printy("Starting the removal of files that were deleted more than 30 days ago...");
+        $this->printy("");
         $this->printy("There are a total of {$count} files that will be removed.");
+        $this->printy("");
 
         // delete the files
         foreach ($toDelete->result() as $row)
         {
             // $this->printy("[" . $row->id . "]" . $row->file_name . " - " . $row->full_path);
-            if ( unlink( $row->full_path ) )
-                $this->printy("[" . $row->id . "]" . $row->file_name . " has been removed.");
+            if ( file_exists( $row->full_path ) && unlink( $row->full_path ) )
+                $this->printy("[" . $row->id . "]" . $row->file_name . " has been removed." . PHP_EOL);
             else
-                $this->printy("Error removing file - " . $row->full_path);
+                $this->printy("Error removing file - " . $row->full_path . PHP_EOL);
         }
+        $this->printy("");
 
         // delete from the database
         $sqlDelete = $this->cron_model->cleanup_uploads();
