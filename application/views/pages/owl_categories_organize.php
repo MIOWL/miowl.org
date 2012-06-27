@@ -122,7 +122,8 @@
                 var data = $(this).attr('href').split(':'),
                     cat_id = data[0],
                     cat_pid = data[1],
-                    cat_name = data[2];
+                    cat_name = data[2],
+                    old_uri = $(this).attr('href');
 
                 // get the owl list
                 $.get('/owl/categories/select_list/' + cat_pid, function(response) {
@@ -162,7 +163,7 @@
                                         }, "html");
 
                                         // update the href to reflect this change
-                                        $(this).attr('href', cat_id + ':' + response.subcat + ':' + response.namez);
+                                        $('a href['+old_uri+']').attr('href', cat_id + ':' + response.subcat + ':' + response.namez);
                                     }
                                     else {
                                         alert('Sorry, an error has occured. Please report this to the site admin.');
