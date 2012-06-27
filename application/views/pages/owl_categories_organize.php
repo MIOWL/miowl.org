@@ -186,7 +186,7 @@
                                     },
                                     function(response) {
                                         // was the edit a success?
-                                        if (response.success == 'true') {
+                                        if (response.success) {
                                             // get the new breadcrumb
                                             $.get('/owl/categories/select_list/' + cat_id, function(data) {
                                                 // var breadcrumb = response;
