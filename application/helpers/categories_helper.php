@@ -87,7 +87,7 @@ if (!function_exists('gen_drop_categories'))
                 if ($create_page && $cat_pid != FALSE && $cat_pid == $root->id)
                     $cat_array[] = array('id' => $root->id, 'name' => $root->name, 'selected' => TRUE);
                 else
-                    $cat_array[] = array('id' => $root->id, 'name' => $root->name);
+                    $cat_array[] = array('id' => $root->id, 'name' => $root->name, 'selected' => FALSE);
 
                 // child this roots children
                 if (($kids = $CI->cat_model->get_children($owl, $root->id)))
@@ -97,7 +97,7 @@ if (!function_exists('gen_drop_categories'))
                         if ($create_page && $cat_pid != FALSE && $cat_pid == $child->id)
                             $cat_array[] = array('id' => $child->id, 'name' => '- ' . $child->name, 'selected' => TRUE);
                         else
-                            $cat_array[] = array('id' => $child->id, 'name' => '- ' . $child->name);
+                            $cat_array[] = array('id' => $child->id, 'name' => '- ' . $child->name, 'selected' => FALSE);
 
                         // Are we in the creation page? If so DON'T display this section...
                         if (!$create_page)
