@@ -156,9 +156,10 @@
                     cat_pid = data[1],
                     cat_name = data[2];
 
-                $.get('/owl/categories/select_list/' + cat_pid), function(response) {
+                $.get('/owl/categories/select_list/' + cat_pid, function(response) {
                     var select_list = response;
-                } );
+                },
+                "html");
 
                 // create and load the dialog form
                 $('<div></div>').html('<p class="validateTips">All form fields are required.</p><form><fieldset><label for="name">Category Name</label><input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all" value="' + cat_name + '" /><label for="subcat">Sub Category</label><select name="subcat" id="subcat" class="select ui-widget-content ui-corner-all">' + select_list + 'M/select></fieldset></form>').dialog({
@@ -188,10 +189,10 @@
                                     // was the edit a success?
                                     if (response.success == 'true') {
                                         // get the new breadcrumb
-                                        $.get('/owl/categories/select_list/' + cat_id), function(data) {
+                                        $.get('/owl/categories/select_list/' + cat_id, function(data) {
                                             // var breadcrumb = response;
                                             $('td:first', $('#r-' + cat_id)).html(data);
-                                        } );
+                                        }, "html");
 
                                         // update the href to reflect this change
                                         element.attr('href', cat_id + ':' + response.subcat + ':' + response.name);
