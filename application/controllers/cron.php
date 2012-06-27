@@ -64,6 +64,7 @@ class Cron extends CI_Controller {
         parent::__construct();
 
         // loads
+        $this->load->model('cron_model');
 
         // check if we are within CLI
         if( !$this->input->is_cli_request() )
