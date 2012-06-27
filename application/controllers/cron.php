@@ -39,7 +39,7 @@ class Cron extends CI_Controller {
 // :private vars
 //=================================================================================
 
-    private $seperator = "\r\n//=================================================================================\r\n";
+    private $seperator = "\r\n//===============================================================================\r\n";
     private $units = array(
         "year"   => 29030400, // seconds in a year   (12 months)
         "month"  => 2419200,  // seconds in a month  (4 weeks)
