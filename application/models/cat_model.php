@@ -234,6 +234,35 @@ class Cat_model extends CI_Model {
     //------------------------------------------------------------------
 
 
+    /**
+     * public edit()
+     * edit the cat
+     */
+    public function edit()
+    {
+        if (!$this->session->userdata('editor'))
+            return FALSE;
+
+        $id     = $this->input->post('id');
+        $name   = $this->input->post('name');
+        $subcat = $this->input->post('subcat');
+
+        if (!$id || !$name || !$subcat)
+            return FALSE;
+
+        $data   = array('name'=>$name, 'parent_id'=>$subcat);
+        $where  = array('id'=>$id, 'owl'=>$this->session->userdata('owl'));
+
+        $this->db->update_string('categories', $data, $where);
+
+        if ($this->db->affected_rows() > 0)
+            return TRUE;
+
+        return FALSE;
+    }
+    //------------------------------------------------------------------
+
+
 }
 
 // eof.

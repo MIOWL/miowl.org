@@ -124,6 +124,7 @@
                     cat_pid = data[1],
                     cat_name = data[2];
 
+                // get the owl list
                 $.get('/owl/categories/select_list/' + cat_pid, function(response) {
                     var select_list = response;
 
@@ -147,6 +148,7 @@
 
                                 // get the JSON data from the request
                                 $.post('/owl/categories/edit/', {
+                                    id: cat_id,
                                     name: name.val(),
                                     subcat: subcat.val()
                                 },

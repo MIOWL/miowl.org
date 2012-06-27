@@ -779,6 +779,9 @@ class Owl extends CI_Controller {
      */
     public function _categories_edit()
     {
+        if (!$this->cat_model->edit())
+            print json_encode($array('success'=>FALSE));
+
         $return             = array();
         $return['success']  = TRUE;
         $return['name']     = $this->input->post('name');
