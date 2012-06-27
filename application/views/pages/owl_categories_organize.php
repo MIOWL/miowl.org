@@ -164,6 +164,7 @@
                         title: 'Edit the Category',
                         autoOpen: true,
                         resizable: false,
+                        width: 300,
                         modal: true,
                         buttons: {
                             "Edit": function() {
