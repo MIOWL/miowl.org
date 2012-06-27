@@ -238,17 +238,20 @@ class Cat_model extends CI_Model {
      * public edit()
      * edit the cat
      */
-    public function edit()
+    public function edit($id = FALSE, $name = FALSE, $subcat = FALSE)
     {
-        if (!$this->session->userdata('editor'))
-            return FALSE;
+        // setup the return data
+        $return = array();
+        $return['success'] = FALSE;
+        $return['id'] = $id;
+        $return['name'] = $name;
+        $return['subcat'] = $subcat;
 
-        $id     = $this->input->post('id');
-        $name   = $this->input->post('name');
-        $subcat = $this->input->post('subcat');
+        if (!$this->session->userdata('editor'))
+            return $return;
 
         if (!$id || !$name || !$subcat)
-            return FALSE;
+            return $return;
 
         $data   = array('name'=>$name, 'parent_id'=>$subcat);
         $where  = array('id'=>$id, 'owl'=>$this->session->userdata('owl'));
@@ -256,9 +259,9 @@ class Cat_model extends CI_Model {
         $this->db->update_string('categories', $data, $where);
 
         if ($this->db->affected_rows() > 0)
-            return TRUE;
+           $return['success'] = TRUE;
 
-        return FALSE;
+        return $return;
     }
     //------------------------------------------------------------------
 

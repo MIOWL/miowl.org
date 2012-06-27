@@ -784,12 +784,15 @@ class Owl extends CI_Controller {
         $name   = $this->input->post('name');
         $subcat = $this->input->post('subcat');
 
+        // do the edit
+        $edit = $this->cat_model->edit($id, $name, $subcat);
+
         // setup the return data
         $return             = array();
-        $return['success']  = $this->cat_model->edit($id, $name, $subcat);
-        $return['id']       = $id;
-        $return['name']     = $name;
-        $return['subcat']   = $subcat;
+        $return['success']  = $edit['success'];
+        $return['id']       = $edit['id'];
+        $return['name']     = $edit['name'];
+        $return['subcat']   = $edit['subcat'];
 
         print json_encode($return);
         return;
