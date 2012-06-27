@@ -130,7 +130,7 @@
                     var select_list = response;
 
                     // create and load the dialog form
-                    $('<div></div>').html('<p class="validateTips">All form fields are required.</p><form><fieldset><label for="name" class="left">Category Name</label><input type="text" name="name" id="dialog_name" class="text ui-widget-content ui-corner-all right" value="' + cat_name + '" /><br /><br /><label for="subcat" class="left">Sub Category</label><select name="subcat" id="dialog_subcat" class="select ui-widget-content ui-corner-all right">' + select_list + 'M/select></fieldset></form>').dialog({
+                    $('<div></div>').html('<p class="validateTips">All form fields are required.</p><fieldset><span class="left">Category Name</span><span id="dialog_name" class="text ui-widget-content ui-corner-all right">' + cat_name + '</span><br /><br /><span class="left">Sub Category</span><select name="subcat" id="dialog_subcat" class="select ui-widget-content ui-corner-all right">' + select_list + '</select>').dialog({
                         title: 'Edit the Category',
                         autoOpen: true,
                         resizable: false,
