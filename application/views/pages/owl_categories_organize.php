@@ -114,38 +114,6 @@
         });
 
         $(function() {
-            var name = $("#name"),
-                subcat = $("#subcat"),
-                allFields = $([]).add(name).add(subcat),
-                tips = $(".validateTips");
-
-            function updateTips(t) {
-                tips.text(t).addClass("ui-state-highlight");
-                setTimeout(function() {
-                    tips.removeClass("ui-state-highlight", 1500);
-                }, 500);
-            }
-
-            function checkLength(o, n, min, max) {
-                if (o.val().length > max || o.val().length < min) {
-                    o.addClass("ui-state-error");
-                    updateTips("Length of " + n + " must be between " + min + " and " + max + ".");
-                    return false;
-                } else {
-                    return true;
-                }
-            }
-
-            function checkRegexp(o, regexp, n) {
-                if (!(regexp.test(o.val()))) {
-                    o.addClass("ui-state-error");
-                    updateTips(n);
-                    return false;
-                } else {
-                    return true;
-                }
-            }
-
             $('.catedit').click(function(e) {
                 // prevent the default action, e.g., following a link
                 e.preventDefault();
@@ -157,7 +125,38 @@
                     cat_name = data[2];
 
                 $.get('/owl/categories/select_list/' + cat_pid, function(response) {
-                    var select_list = response;
+                    var select_list = response,
+                        name = $("#name"),
+                        subcat = $("#subcat"),
+                        allFields = $([]).add(name).add(subcat),
+                        tips = $(".validateTips");
+
+                    function updateTips(t) {
+                        tips.text(t).addClass("ui-state-highlight");
+                        setTimeout(function() {
+                            tips.removeClass("ui-state-highlight", 1500);
+                        }, 500);
+                    }
+
+                    function checkLength(o, n, min, max) {
+                        if (o.val().length > max || o.val().length < min) {
+                            o.addClass("ui-state-error");
+                            updateTips("Length of " + n + " must be between " + min + " and " + max + ".");
+                            return false;
+                        } else {
+                            return true;
+                        }
+                    }
+
+                    function checkRegexp(o, regexp, n) {
+                        if (!(regexp.test(o.val()))) {
+                            o.addClass("ui-state-error");
+                            updateTips(n);
+                            return false;
+                        } else {
+                            return true;
+                        }
+                    }
 
                     // create and load the dialog form
                     $('<div></div>').html('<p class="validateTips">All form fields are required.</p><form><fieldset><label for="name">Category Name</label><input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all" value="' + cat_name + '" /><label for="subcat">Sub Category</label><select name="subcat" id="subcat" class="select ui-widget-content ui-corner-all">' + select_list + 'M/select></fieldset></form>').dialog({
