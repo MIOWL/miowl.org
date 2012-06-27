@@ -118,6 +118,8 @@
                 // prevent the default action, e.g., following a link
                 e.preventDefault();
 
+                $('#dialog').dialog( "destroy" );
+
                 // get the data from the form
                 var data = $(this).attr('href').split(':'),
                     cat_id = data[0],
@@ -130,7 +132,7 @@
                     var select_list = response;
 
                     // create and load the dialog form
-                    $('<div></div>').html('<p class="validateTips">All form fields are required.</p><fieldset><span class="left">Category Name</span><input type="text" id="dialog_name" class="text ui-widget-content ui-corner-all right" style="width: 185px;" value="' + cat_name + '" /><br /><span class="left">Sub Category</span><select name="subcat" id="dialog_subcat" class="select ui-widget-content ui-corner-all right">' + select_list + '</select>').dialog({
+                    $('<div id="dialog"></div>').html('<p class="validateTips">All form fields are required.</p><fieldset><span class="left">Category Name</span><input type="text" id="dialog_name" class="text ui-widget-content ui-corner-all right" style="width: 185px;" value="' + cat_name + '" /><br /><span class="left">Sub Category</span><select name="subcat" id="dialog_subcat" class="select ui-widget-content ui-corner-all right">' + select_list + '</select>').dialog({
                         title: 'Edit the Category',
                         autoOpen: true,
                         resizable: false,
