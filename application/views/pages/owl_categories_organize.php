@@ -163,7 +163,9 @@
                                         }, "html");
 
                                         // update the href to reflect this change
-                                        $('a href['+old_uri+']').attr('href', cat_id + ':' + response.subcat + ':' + response.namez);
+                                        var new_uri = cat_id + ':' + response.subcat + ':' + response.namez;
+                                        $('a href['+old_uri+']').attr('href', new_uri);
+                                        alert(old_uri + "\r\n\r\n" + new_uri);
                                     }
                                     else {
                                         alert('Sorry, an error has occured. Please report this to the site admin.');
