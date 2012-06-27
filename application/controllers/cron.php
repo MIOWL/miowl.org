@@ -80,8 +80,13 @@ class Cron extends CI_Controller {
     {
         if (method_exists($this, $method))
         {
-            $this->header($method);
+            // print the license
             $this->lic();
+
+            // print the header
+            $this->header($method);
+
+            // do the requested function
             return call_user_func_array(array($this, $method), $params);
         }
         $this->e404_notFound();
