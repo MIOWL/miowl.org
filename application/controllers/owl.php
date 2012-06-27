@@ -779,11 +779,17 @@ class Owl extends CI_Controller {
      */
     public function _categories_edit()
     {
+        // get the post data
+        $id     = $this->input->post('id');
+        $name   = $this->input->post('name');
+        $subcat = $this->input->post('subcat');
+
+        // setup the return data
         $return             = array();
-        $return['success']  = $this->cat_model->edit();
-        $return['id']       = $this->input->post('id');
-        $return['name']     = $this->input->post('name');
-        $return['subcat']   = $this->input->post('subcat');
+        $return['success']  = $this->cat_model->edit($id, $name, $subcat);
+        $return['id']       = $id;
+        $return['name']     = $name;
+        $return['subcat']   = $subcat;
 
         print json_encode($return);
         return;
