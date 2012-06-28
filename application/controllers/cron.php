@@ -209,6 +209,7 @@ class Cron extends CI_Controller {
             $this->printy(PHP_EOL);
         }
 
+        $this->printy("Now lets cleanup the inactive members (over 60 days)...");
         $this->printy("There are a total of {$deleteCount} users to delete today.");
         $this->printy(PHP_EOL);
         // remove the inactive members
