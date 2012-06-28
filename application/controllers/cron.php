@@ -118,9 +118,9 @@ class Cron extends CI_Controller {
 
         // start the output here
         $this->printy("Starting the removal of files that were deleted more than 30 days ago...");
-        $this->printy("");
+        $this->printy(PHP_EOL);
         $this->printy("There are a total of {$count} files that will be removed.");
-        $this->printy("");
+        $this->printy(PHP_EOL);
 
         // delete the files
         foreach ($toDelete->result() as $row)
@@ -131,7 +131,8 @@ class Cron extends CI_Controller {
             else
                 $this->printy("Error removing file - " . $row->full_path . PHP_EOL);
         }
-        $this->printy("");
+        $this->printy(PHP_EOL);
+
 
         // delete from the database
         $sqlDelete = $this->cron_model->cleanup_uploads();
@@ -179,11 +180,11 @@ class Cron extends CI_Controller {
         $deleteCount    = !$deleted_members ? 0 : $deleted_members->num_rows();
 
         // start the output here
-        $this->printy(" ");
+        $this->printy(PHP_EOL);
         $this->printy("Lets start by sending out emails to the inactive members...");
-        $this->printy(" ");
+        $this->printy(PHP_EOL);
         $this->printy("There are a total of {$inactiveCount} emails to be sent today.");
-        $this->printy(" ");
+        $this->printy(PHP_EOL);
 
         // send out the emails to every member
         if ($inactiveCount > 0)
@@ -207,7 +208,8 @@ class Cron extends CI_Controller {
                 else
                     $this->printy("\tError sending email..." . PHP_EOL);
             }
-            $this->printy("");
+            $this->printy(PHP_EOL);
+
         }
 
 /*        // delete the files
@@ -219,7 +221,8 @@ class Cron extends CI_Controller {
             else
                 $this->printy("Error removing file - " . $row->full_path . PHP_EOL);
         }
-        $this->printy("");
+        $this->printy(PHP_EOL);
+
 
         // delete from the database
         $sqlDelete = $this->cron_model->cleanup_uploads();
