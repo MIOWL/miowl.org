@@ -199,8 +199,11 @@ class Cron extends CI_Controller {
                 $email          = $row->user_email;
                 $auth_code      = $row->user_activation;
 
+                // some output
                 $this->printy("Sending reminder {$email_count}");
                 $this->printy("\t[" . $user_id . "] " . $username . " - " . $email . " - " . $auth_code);
+
+                // send the email
                 if ( $this->cronmail->resend_authcode( $username, $email, $auth_code ) )
                     $this->printy("\tEmail successfully sent." . PHP_EOL);
                 else
@@ -222,9 +225,10 @@ class Cron extends CI_Controller {
             {
                 // setup the vars
                 $user_id = $row->id;
+                $cleanup = $this->cron_model->cleanup_owls($user_id);
 
                 // if this user is an admin of an inactive owl, remove it
-                if ( $this->cron_model->cleanup_owls($user_id) )
+                if ( $cleanup )
                     $owl_deleted_count++;
 
                 // do the database cleanup
