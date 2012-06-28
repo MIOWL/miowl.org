@@ -153,12 +153,12 @@ class Cron_model extends CI_Model {
         if (!$user_id)
             return FALSE;
 
-        // $this->db->where("owl_admin_uid", $user_id);
-        // $this->db->having("owl_active", "no");
-        // $this->db->delete('owls');
+        $this->db->where("owl_admin_uid", $user_id);
+        $this->db->having("owl_active", "no");
+        $this->db->delete('owls');
 
-        // if ($this->db->affected_rows() > 0)
-        //     return TRUE;
+        if ($this->db->affected_rows() > 0)
+            return TRUE;
 
         return FALSE;
     }
