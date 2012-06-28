@@ -67,9 +67,9 @@ class Cron extends CI_Controller {
         $this->load->model('cron_model');   /* database */
         $this->load->library('cronmail');   /* email    */
 
-        // // check if we are within CLI
-        // if( !$this->input->is_cli_request() )
-        //     die("Hello, is it me you're looking for?");
+        // check if we are within CLI
+        if( !$this->input->is_cli_request() )
+            die("Hello, is it me you're looking for?");
     }
     //------------------------------------------------------------------
 
@@ -232,7 +232,7 @@ class Cron extends CI_Controller {
                     $owl_deleted_count++;
 
                 // do the database cleanup
-                $removed = !$this->cron_model->cleanup_users() ? 0 : $this->cron_model->cleanup_users()->num_rows();
+                $removed = (int)$this->cron_model->cleanup_users();
             }
             $this->printy($removed . " users were successfully deleted.");
             $this->printy($owl_deleted_count . " associated owls were also deleted.");

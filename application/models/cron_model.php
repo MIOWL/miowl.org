@@ -129,7 +129,8 @@ class Cron_model extends CI_Model {
      */
     public function cleanup_users($days = 60)
     {
-        return $this->inactive_users($days);
+        // temp show the inactive users count so not to actually remove the user...
+        return !$this->inactive_users($days) ? 0 : $this->inactive_users($days)->num_rows();
         // $this->db->having("user_active", "no");
         // $this->db->where("user_registration_date <=", ( time() - ( $days * $this->units['day'] ) ) );
         // $this->db->delete('users');
@@ -151,12 +152,12 @@ class Cron_model extends CI_Model {
         if (!$user_id)
             return FALSE;
 
-        $this->db->where("owl_admin_uid", $user_id);
-        $this->db->having("owl_active", "no");
-        $this->db->delete('owls');
+        // $this->db->where("owl_admin_uid", $user_id);
+        // $this->db->having("owl_active", "no");
+        // $this->db->delete('owls');
 
-        if ($this->db->affected_rows() > 0)
-            return TRUE;
+        // if ($this->db->affected_rows() > 0)
+        //     return TRUE;
 
         return FALSE;
     }
