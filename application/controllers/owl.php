@@ -70,11 +70,6 @@ class Owl extends CI_Controller {
 
         // loads
         $this->load->library('owlmail');
-
-        if (!$this->session->userdata('owl_verified')) {
-            redirect('/welcome', 'location');
-            return;
-        }
     }
     //------------------------------------------------------------------
 
@@ -101,6 +96,11 @@ class Owl extends CI_Controller {
         // Do we need to login??
         if (!$this->login_check('owl'))
             return;
+
+        if (!$this->session->userdata('owl_verified')) {
+            redirect('/welcome', 'location');
+            return;
+        }
 
         $details = $this->owl_model->get_owl_by_id($this->session->userdata('owl'));
         $address = $details->row()->owl_address . "\n" . 
@@ -130,6 +130,11 @@ class Owl extends CI_Controller {
         // Do we need to login??
         if (!$this->login_check('owl-edit_details'))
             return;
+
+        if (!$this->session->userdata('owl_verified')) {
+            redirect('/welcome', 'location');
+            return;
+        }
 
         $details    = $this->owl_model->get_owl_by_id($this->session->userdata('owl'));
         $owl_id     = $this->session->userdata('owl');
@@ -328,6 +333,11 @@ class Owl extends CI_Controller {
         if (!$this->login_check('owl-uploads-' . $function))
             return;
 
+        if (!$this->session->userdata('owl_verified')) {
+            redirect('/welcome', 'location');
+            return;
+        }
+
         if (!$function)
             $function = 'list';
 
@@ -400,7 +410,7 @@ class Owl extends CI_Controller {
 
 
     /**
-     * member function _uploads_remove()
+     * upload function _uploads_remove()
      */
     public function _uploads_remove($id = FALSE)
     {
@@ -410,7 +420,7 @@ class Owl extends CI_Controller {
 
 
     /**
-     * member function _uploads_restore()
+     * upload function _uploads_restore()
      */
     public function _uploads_restore($id = FALSE)
     {
@@ -431,6 +441,11 @@ class Owl extends CI_Controller {
         // Do we need to login??
         if (!$this->login_check('owl-members-' . $function))
             return;
+
+        if (!$this->session->userdata('owl_verified')) {
+            redirect('/welcome', 'location');
+            return;
+        }
 
         if (!$function)
             $function = 'list';
@@ -650,6 +665,11 @@ class Owl extends CI_Controller {
         if (!$this->login_check('owl-categories-' . $function))
             return;
 
+        if (!$this->session->userdata('owl_verified')) {
+            redirect('/welcome', 'location');
+            return;
+        }
+
         if (!$function)
             $function = 'list';
 
@@ -682,7 +702,7 @@ class Owl extends CI_Controller {
 
 
     /**
-     * member function _categories_organize()
+     * categories function _categories_organize()
      */
     public function _categories_organize($offset = 0)
     {
@@ -713,7 +733,7 @@ class Owl extends CI_Controller {
 
 
     /**
-     * member function _categories_create()
+     * categories function _categories_create()
      */
     public function _categories_create()
     {
@@ -741,7 +761,7 @@ class Owl extends CI_Controller {
 
 
     /**
-     * member function _categories_select_list()
+     * categories function _categories_select_list()
      */
     public function _categories_select_list($pid = FALSE)
     {
@@ -762,7 +782,7 @@ class Owl extends CI_Controller {
 
 
     /**
-     * member function _categories_select_list()
+     * categories function _categories_select_list()
      */
     public function _categories_breadcrumb($id = FALSE)
     {
@@ -775,7 +795,7 @@ class Owl extends CI_Controller {
 
 
     /**
-     * member function _categories_edit()
+     * categories function _categories_edit()
      */
     public function _categories_edit()
     {
@@ -801,7 +821,7 @@ class Owl extends CI_Controller {
 
 
     /**
-     * member function _categories_remove()
+     * categories function _categories_remove()
      */
     public function _categories_remove($id = FALSE)
     {
