@@ -190,7 +190,13 @@ class Cron extends CI_Controller {
             // setup the count
             $count = 0;
 
-            foreach ($inactive_members->result() as $row)
+            // get the data we need
+            $inactive_result = $inactive_members->result();
+
+            // free up the result (this is due to an error in code)
+            $inactive_members->free_result();
+
+            foreach ($inactive_result->result() as $row)
             {
                 // setup the vars
                 $email_count    = ($count++) . ' of ' . $inactiveCount;
@@ -221,7 +227,13 @@ class Cron extends CI_Controller {
             // setup the counts
             $owl_deleted_count  = 0;
 
-            foreach ($deleted_members->result() as $row)
+            // get the data we need
+            $deleted_result = $deleted_members->result();
+
+            // free up the result (this is due to an error in code)
+            $deleted_members->free_result();
+
+            foreach ($deleted_result as $row)
             {
                 // setup the vars
                 $user_id = $row->id;

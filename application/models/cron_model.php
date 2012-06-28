@@ -132,11 +132,11 @@ class Cron_model extends CI_Model {
         // temp show the inactive users count so not to actually remove the user...
         return !$this->inactive_users($days) ? 0 : $this->inactive_users($days)->num_rows();
 
-        // $this->db->having("user_active", "no");
-        // $this->db->where("user_registration_date <=", ( time() - ( $days * $this->units['day'] ) ) );
-        // $this->db->delete('users');
+        $this->db->having("user_active", "no");
+        $this->db->where("user_registration_date <=", ( time() - ( $days * $this->units['day'] ) ) );
+        $this->db->delete('users');
 
-        // return $this->db->affected_rows();
+        return $this->db->affected_rows();
     }
     //------------------------------------------------------------------
 
