@@ -200,7 +200,7 @@ class Cron extends CI_Controller {
                 $auth_code      = $row->user_activation;
 
                 $this->printy("Sending reminder {$email_count}");
-                $this->printy("\t[" . $user_id . "]" . $username . " - " . $email);
+                $this->printy("\t[" . $user_id . "] " . $username . " - " . $email . " - " . $auth_code);
                 if ( $this->cronmail->resend_authcode( $username, $email, $auth_code ) )
                     $this->printy("\tEmail successfully sent." . PHP_EOL);
                 else
