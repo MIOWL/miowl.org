@@ -63,8 +63,8 @@ class Cronmail {
      */
     public function resend_authcode($username = FALSE, $email = FALSE, $auth_code = FALSE)
     {
-        if (!$username || !$email || !$auth_code)
-            return FALSE;
+        // if (!$username || !$email || !$auth_code)
+        //     return FALSE;
 
         // Build up the email output
         $data = array(

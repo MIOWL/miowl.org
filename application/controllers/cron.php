@@ -193,7 +193,7 @@ class Cron extends CI_Controller {
             foreach ($inactive_members->result() as $row)
             {
                 // setup the vars
-                $email_count    = ($count++) . 'of' . $inactiveCount;
+                $email_count    = ($count++) . ' of ' . $inactiveCount;
                 $user_id        = $row->id;
                 $username       = $row->user_name;
                 $email          = $row->user_email;
