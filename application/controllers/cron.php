@@ -67,9 +67,9 @@ class Cron extends CI_Controller {
         $this->load->model('cron_model');   /* database */
         $this->load->library('cronmail');   /* email    */
 
-        // check if we are within CLI
-        if( !$this->input->is_cli_request() )
-            die("Hello, is it me you're looking for?");
+        // // check if we are within CLI
+        // if( !$this->input->is_cli_request() )
+        //     die("Hello, is it me you're looking for?");
     }
     //------------------------------------------------------------------
 
