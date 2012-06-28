@@ -118,7 +118,6 @@ class Cron extends CI_Controller {
 
         // start the output here
         $this->printy("Starting the removal of files that were deleted more than 30 days ago...");
-        $this->printy(PHP_EOL);
         $this->printy("There are a total of {$count} files that will be removed.");
         $this->printy(PHP_EOL);
 
@@ -182,7 +181,6 @@ class Cron extends CI_Controller {
         // start the output here
         $this->printy(PHP_EOL);
         $this->printy("Lets start by sending out emails to the inactive members...");
-        $this->printy(PHP_EOL);
         $this->printy("There are a total of {$inactiveCount} emails to be sent today.");
         $this->printy(PHP_EOL);
 
