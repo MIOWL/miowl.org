@@ -155,16 +155,16 @@ class Cron extends CI_Controller {
         $inactive_members   = $this->cron_model->inactive_users(30);    /* these are the members we are re-sending activation to                */
         $deleted_members    = $this->cron_model->inactive_users(60);    /* these are the members we are deleteing and removing the owls from    */
 
-        // do we have any inactive members (60 days)?
-        if (!$deleted_members)
-            $this->printy("There are no inactive members from within 60 days ago...");
-
         // do we have any inactive members (30 days)?
         if (!$inactive_members)
             $this->printy("There are no inactive members from within 30 days ago...");
 
+        // do we have any inactive members (60 days)?
+        if (!$deleted_members)
+            $this->printy("There are no inactive members from within 60 days ago...");
+
         // if we have 0 inactive members then were done for today...
-        if (!$deleted_members && !$inactive_members)
+        if (!$inactive_members && !$deleted_members)
         {
             print $this->seperator . PHP_EOL;
             return;
