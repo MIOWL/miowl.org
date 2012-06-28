@@ -179,10 +179,11 @@ class Cron extends CI_Controller {
         $deleteCount    = !$deleted_members ? 0 : $deleted_members->num_rows();
 
         // start the output here
+        $this->printy(" ");
         $this->printy("Lets start by sending out emails to the inactive members...");
-        $this->printy("");
+        $this->printy(" ");
         $this->printy("There are a total of {$inactiveCount} emails to be sent today.");
-        $this->printy("");
+        $this->printy(" ");
 
         // send out the emails to every member
         if ($inactiveCount > 0)
