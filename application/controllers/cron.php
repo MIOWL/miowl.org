@@ -175,7 +175,8 @@ class Cron extends CI_Controller {
         //------------------------------------------------------------------
 
         // count the total files to be deleted
-        $inactiveCount = $inactive_members->num_rows();
+        $inactiveCount  = !$inactive_members ? 0 : $inactive_members->num_rows();
+        $deleteCount    = !$deleted_members ? 0 : $deleted_members->num_rows();
 
         // start the output here
         $this->printy("Lets start by sending out emails to the inactive members...");
