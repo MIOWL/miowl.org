@@ -152,7 +152,7 @@ class Cron extends CI_Controller {
     public function inactiveMembers()
     {
         // fetch the inactive members lists
-        $inactive_members   = $this->cron_model->inactive_users(1);    /* these are the members we are re-sending activation to                */
+        $inactive_members   = $this->cron_model->inactive_users(30);    /* these are the members we are re-sending activation to                */
         $deleted_members    = $this->cron_model->inactive_users(60);    /* these are the members we are deleteing and removing the owls from    */
 
         // do we have any inactive members (30 days)?
