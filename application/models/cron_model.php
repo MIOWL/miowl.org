@@ -57,6 +57,8 @@ class Cron_model extends CI_Model {
     /**
      * public deleted_uploads()
      * this function is used to get uploads that were deleted over 30 days ago
+     *
+     * @return object - the database query object
      */
     public function deleted_uploads()
     {
@@ -76,6 +78,8 @@ class Cron_model extends CI_Model {
     /**
      * public cleanup_uploads()
      * this function is used to delete uploads that were deleted over 30 days ago
+     *
+     * @return int - the number of deleted uploads
      */
     public function cleanup_uploads()
     {
@@ -90,13 +94,16 @@ class Cron_model extends CI_Model {
 
     /**
      * public inactive_users()
-     * this function is used to get users who have not activated after 30 days
+     * this function is used to get users who have not activated after given $days
+     *
+     * @param $days - this is the number of days we want to check (default 30)
+     * @return object - the database query object
      */
-    public function inactive_users()
+    public function inactive_users($days = 30)
     {
         $this->db->select('*');
         $this->db->having("user_active", "no");
-        $this->db->where("user_registration_date", ( time() - $this->units['month']) );
+        $this->db->where("user_registration_date", ( time() - ( $days * $this->units['day'] ) ) );
         $query = $this->db->get('users');
 
         if ($query->num_rows() > 0)
@@ -110,6 +117,8 @@ class Cron_model extends CI_Model {
     /**
      * public cleanup_users()
      * this function is used to delete users who have not activated after 60 days
+     *
+     * @return int - the number of deleted users
      */
     public function cleanup_users()
     {
@@ -118,6 +127,30 @@ class Cron_model extends CI_Model {
         $this->db->delete('users');
 
         return $this->db->affected_rows();
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * public cleanup_owls()
+     * this function is used to delete owls who have not activated with the given ADMIN UID
+     *
+     * @param $user_id - this is the admin user id that we want to check the owl of
+     * @return bool
+     */
+    public function cleanup_owls($user_id = FALSE)
+    {
+        if (!$user_id)
+            return FALSE;
+
+        $this->db->having("owl_active", "no");
+        $this->db->where("owl_admin_uid", $user_id;
+        $this->db->delete('owls');
+
+        if ($this->db->affected_rows() > 0)
+            return TRUE;
+
+        return FALSE;
     }
     //------------------------------------------------------------------
 

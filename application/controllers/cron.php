@@ -64,7 +64,8 @@ class Cron extends CI_Controller {
         parent::__construct();
 
         // loads
-        $this->load->model('cron_model');
+        $this->load->model('cron_model');   /* database */
+        $this->load->library('cronmail');   /* email    */
 
         // check if we are within CLI
         if( !$this->input->is_cli_request() )
@@ -105,7 +106,8 @@ class Cron extends CI_Controller {
         $toDelete = $this->cron_model->deleted_uploads();
 
         // do we have any files to delete?
-        if (!$toDelete) {
+        if (!$toDelete)
+        {
             $this->printy("There were no files that were deleted more than 30 days ago...");
             print $this->seperator . PHP_EOL;
             return;
@@ -149,9 +151,78 @@ class Cron extends CI_Controller {
      */
     public function inactiveMembers()
     {
-        // start the output here
-        $this->printy("Sorry, this function is not yet coded");
+        // fetch the inactive members lists
+        $inactive_members   = $this->cron_model->inactive_users(30);    /* these are the members we are re-sending activation to                */
+        $deleted_members    = $this->cron_model->inactive_users(60);    /* these are the members we are deleteing and removing the owls from    */
 
+        // do we have any inactive members (60 days)?
+        if (!$deleted_members)
+            $this->printy("There are no inactive members from within 60 days ago...");
+
+        // do we have any inactive members (30 days)?
+        if (!$inactive_members)
+            $this->printy("There are no inactive members from within 30 days ago...");
+
+        // if we have 0 inactive members then were done for today...
+        if (!$deleted_members && !$inactive_members)
+        {
+            print $this->seperator . PHP_EOL;
+            return;
+        }
+
+        //------------------------------------------------------------------
+        // ok so if you are still here, lets get to work
+        //------------------------------------------------------------------
+
+        // count the total files to be deleted
+        $inactiveCount = $inactive_members->num_rows();
+
+        // start the output here
+        $this->printy("Lets start by sending out emails to the inactive members...");
+        $this->printy("");
+        $this->printy("There are a total of {$inactiveCount} emails to be sent today.");
+        $this->printy("");
+
+        // send out the emails to every member
+        if ($inactiveCount > 0)
+        {
+            // setup the count
+            $count = 0;
+
+            foreach ($inactive_members->result() as $row)
+            {
+                // setup the vars
+                $email_count    = ($count++) . 'of' . $inactiveCount;
+                $user_id        = $row->id;
+                $username       = $row->user_name;
+                $email          = $row->user_email;
+                $auth_code      = $row->user_activation;
+
+                $this->printy("Sending reminder {$email_count}");
+                $this->printy("\t[" . $user_id . "]" . $username . " - " . $email);
+                if ( $this->cronmail->resend_authcode( $username, $email, $auth_code ) )
+                    $this->printy("\tEmail successfully sent." . PHP_EOL);
+                else
+                    $this->printy("\tError sending email..." . PHP_EOL);
+            }
+            $this->printy("");
+        }
+
+/*        // delete the files
+        foreach ($toDelete->result() as $row)
+        {
+            // $this->printy("[" . $row->id . "]" . $row->file_name . " - " . $row->full_path);
+            if ( file_exists( $row->full_path ) && unlink( $row->full_path ) )
+                $this->printy("[" . $row->id . "]" . $row->file_name . " has been removed." . PHP_EOL);
+            else
+                $this->printy("Error removing file - " . $row->full_path . PHP_EOL);
+        }
+        $this->printy("");
+
+        // delete from the database
+        $sqlDelete = $this->cron_model->cleanup_uploads();
+        $this->printy($sqlDelete . " uploads have been removed from the database.");
+*/
         // print the bottom seperator
         print $this->seperator . PHP_EOL;
     }
