@@ -217,7 +217,7 @@ class Cron extends CI_Controller {
             // setup the counts
             $owl_deleted_count  = 0;
 
-            foreach ($inactive_members->result() as $row)
+            foreach ($deleted_members->result() as $row)
             {
                 // setup the vars
                 $user_id = $row->id;
