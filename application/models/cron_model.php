@@ -148,15 +148,15 @@ class Cron_model extends CI_Model {
      */
     public function cleanup_owls($user_id = FALSE)
     {
-        if (!$user_id)
-            return FALSE;
+        // if (!$user_id)
+        //     return FALSE;
 
-        $this->db->having("owl_active", "no");
-        $this->db->where("owl_admin_uid", $user_id);
-        $this->db->delete('owls');
+        // $this->db->having("owl_active", "no");
+        // $this->db->where("owl_admin_uid", $user_id);
+        // $this->db->delete('owls');
 
-        if ($this->db->affected_rows() > 0)
-            return TRUE;
+        // if ($this->db->affected_rows() > 0)
+        //     return TRUE;
 
         return FALSE;
     }
