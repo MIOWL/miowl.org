@@ -105,9 +105,9 @@ class Cron_model extends CI_Model {
         $this->db->having("user_active", "no");
 
         // if days more than 30 then do a longer search
-        if ($days <= 30)
-            $this->db->where("user_registration_date", ( time() - ( $days * $this->units['day'] ) ) );
-        else
+        // if ($days <= 30)
+        //     $this->db->where("user_registration_date", ( time() - ( $days * $this->units['day'] ) ) );
+        // else
             $this->db->where("user_registration_date <=", ( time() - ( $days * $this->units['day'] ) ) );
 
         $query = $this->db->get('users');
