@@ -124,15 +124,17 @@ class Cron_model extends CI_Model {
      * public cleanup_users()
      * this function is used to delete users who have not activated after 60 days
      *
+     * @param $days - this is the number of days we want to delete from (default 60)
      * @return int - the number of deleted users
      */
-    public function cleanup_users()
+    public function cleanup_users($days = 60)
     {
-        $this->db->having("user_active", "no");
-        $this->db->where("user_registration_date <=", ( time() - ( $this->units['month'] * 2 ) ) );
-        $this->db->delete('users');
+        return $this->inactive_users($days);
+        // $this->db->having("user_active", "no");
+        // $this->db->where("user_registration_date <=", ( time() - ( $days * $this->units['day'] ) ) );
+        // $this->db->delete('users');
 
-        return $this->db->affected_rows();
+        // return $this->db->affected_rows();
     }
     //------------------------------------------------------------------
 

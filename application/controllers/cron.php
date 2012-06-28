@@ -207,25 +207,32 @@ class Cron extends CI_Controller {
                     $this->printy("\tError sending email..." . PHP_EOL);
             }
             $this->printy(PHP_EOL);
-
         }
 
-/*        // delete the files
-        foreach ($toDelete->result() as $row)
-        {
-            // $this->printy("[" . $row->id . "]" . $row->file_name . " - " . $row->full_path);
-            if ( file_exists( $row->full_path ) && unlink( $row->full_path ) )
-                $this->printy("[" . $row->id . "]" . $row->file_name . " has been removed." . PHP_EOL);
-            else
-                $this->printy("Error removing file - " . $row->full_path . PHP_EOL);
-        }
+        $this->printy("There are a total of {$deleteCount} users to delete today.");
         $this->printy(PHP_EOL);
+        // remove the inactive members
+        if ($deleteCount > 0)
+        {
+            // setup the counts
+            $owl_deleted_count  = 0;
 
+            foreach ($inactive_members->result() as $row)
+            {
+                // setup the vars
+                $user_id = $row->id;
 
-        // delete from the database
-        $sqlDelete = $this->cron_model->cleanup_uploads();
-        $this->printy($sqlDelete . " uploads have been removed from the database.");
-*/
+                // if this user is an admin of an inactive owl, remove it
+                if ( $this->cron_model->cleanup_owls($user_id) )
+                    $owl_deleted_count++;
+
+                // do the database cleanup
+                $removed = $this->cron_model->cleanup_users();
+            }
+            $this->printy($removed . " users were successfully deleted.");
+            $this->printy($owl_deleted_count . " associated owls were also deleted.");
+        }
+
         // print the bottom seperator
         print $this->seperator . PHP_EOL;
     }
