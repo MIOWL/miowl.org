@@ -273,7 +273,11 @@ class User_model extends CI_Model {
     {
         // is this an admin requesting it??
         if(!$this->session->userdata('admin'))
+            print "not admin";
+        if(!$this->session->userdata('admin'))
             return FALSE;
+
+        print "group = {$group}\r\n<br>user_id = {$user_id}";
 
         // whats the user group?
         switch ( $group )
