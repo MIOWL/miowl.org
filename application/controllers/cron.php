@@ -222,11 +222,12 @@ class Cron extends CI_Controller {
         if ($deleteCount > 0)
         {
             $removed_users  = (int)$this->cron_model->cleanup_users();
-            $removed_owls   = (int)$this->cron_model->cleanup_owls();
-            
             $this->printy($removed_users . " users were successfully deleted.");
-            $this->printy($removed_owls . " associated owls were also deleted.");
         }
+
+        // remove the inactive owls with no admin
+        $removed_owls   = (int)$this->cron_model->cleanup_owls();
+        $this->printy($removed_owls . " inactive owls were deleted.");
 
         // print the bottom seperator
         print $this->seperator . PHP_EOL;
