@@ -14,7 +14,7 @@
             <fieldset class="inlineLabels">
 
                 <div class="ctrlHolder">
-                    <label for="owl">Organization</label>
+                    <label for="owl">Organization / OWL</label>
                     <select name="owl" id="owl" class="textInput medium" autocompelete="OFF" />
 
                         <option value="default" <?php print set_select('owl', 'default', TRUE); ?>>Select...</option>

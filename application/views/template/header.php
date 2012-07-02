@@ -10,7 +10,10 @@
     <link rel="Shortcut Icon" href="<?php print site_url('favicon.ico'); ?>" type="image/x-icon" />
 
     <!-- CSS -->
-    <link rel="stylesheet" href="<?php print site_url('/style.css'); ?>" type="text/css" media="screen" charset="utf-8" />
+    <link rel="stylesheet" href="<?php print site_url('style.css'); ?>" type="text/css" media="screen" charset="utf-8" />
+
+    <!-- Humans.txt -->
+    <link type="text/plain" rel="author" href="<?php print site_url('humans.txt'); ?>" />
 
     <!-- jQuery UI CSS -->
     <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/themes/blitzer/jquery-ui.css" type="text/css" media="screen" charset="utf-8" />
