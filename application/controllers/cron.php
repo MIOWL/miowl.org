@@ -193,9 +193,6 @@ class Cron extends CI_Controller {
             // get the data we need
             $inactive_result = $inactive_members->result();
 
-            // free up the result (this is due to an error in code)
-            $inactive_members->free_result();
-
             foreach ($inactive_result->result() as $row)
             {
                 // setup the vars
@@ -224,30 +221,11 @@ class Cron extends CI_Controller {
         // remove the inactive members
         if ($deleteCount > 0)
         {
-            // setup the counts
-            $owl_deleted_count  = 0;
-
-            // get the data we need
-            $deleted_result = $deleted_members->result();
-
-            // free up the result (this is due to an error in code)
-            $deleted_members->free_result();
-
-            foreach ($deleted_result as $row)
-            {
-                // setup the vars
-                $user_id = $row->id;
-                $cleanup = $this->cron_model->cleanup_owls($user_id);
-
-                // if this user is an admin of an inactive owl, remove it
-                if ( $cleanup )
-                    $owl_deleted_count++;
-
-                // do the database cleanup
-                $removed = (int)$this->cron_model->cleanup_users();
-            }
-            $this->printy($removed . " users were successfully deleted.");
-            $this->printy($owl_deleted_count . " associated owls were also deleted.");
+            $removed_users  = (int)$this->cron_model->cleanup_users();
+            $removed_owls   = (int)$this->cron_model->cleanup_owls();
+            
+            $this->printy($removed_users . " users were successfully deleted.");
+            $this->printy($removed_owls . " associated owls were also deleted.");
         }
 
         // print the bottom seperator

@@ -143,24 +143,40 @@ class Cron_model extends CI_Model {
 
     /**
      * public cleanup_owls()
-     * this function is used to delete owls who have not activated with the given ADMIN UID
+     * this function is used to delete owls who have not activated and don't have an admin
      *
-     * @param $user_id - this is the admin user id that we want to check the owl of
-     * @return bool
+     * @return int - the removed owls count
      */
-    public function cleanup_owls($user_id = FALSE)
+    public function cleanup_owls()
     {
-        if (!$user_id)
-            return FALSE;
+        // setup the removed owls var
+        $removed_owls = 0;
 
-        $this->db->where("owl_admin_uid", $user_id);
-        $this->db->having("owl_active", "no");
-        $this->db->delete('owls');
+        // get the inactive owls
+        $this->db->select('id','owl_admin_uid');
+        $this->db->having('owl_active', 'no');
+        $owls = $this->db->get('owls');
 
-        if ($this->db->affected_rows() > 0)
-            return TRUE;
+        // do we have any owls?
+        if ($owls->num_rows() > 0)
+        {
+            foreach ($owls->result() as $owl)
+            {
+                // does this owl have a valid admin user id?
+                if (!$this->valid_user_id($owl->owl_admin_uid))
+                {
+                    // not a valid admin user, lets delete it then...
+                    $this->db->where("id", $owl->id);
+                    $this->db->delete('owls');
 
-        return FALSE;
+                    // add to the count if it worked...
+                    $removed_owls += $this->db->affected_rows();
+                }
+            }
+        }
+
+        // return the removed owls count
+        return $removed_owls;
     }
     //------------------------------------------------------------------
 
@@ -168,6 +184,29 @@ class Cron_model extends CI_Model {
 //=================================================================================
 // :private functions
 //=================================================================================
+
+    /**
+     * private valid_user_id()
+     * function will check if this is a valid useer based on the passed int user id.
+     *
+     * @param int $user_id - user id
+     * @return bool
+     */
+    private function valid_user_id($user_id)
+    {
+        if (!$user_id)
+            return FALSE;
+
+        $this->db->select('*');
+        $this->db->where('id', $user_id);
+        $query = $this->db->get('users');
+
+        if ($query->num_rows() > 0)
+            return TRUE;
+        else
+            return FALSE;
+    }
+    //------------------------------------------------------------------
 
 
 }
