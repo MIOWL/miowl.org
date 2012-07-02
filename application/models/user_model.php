@@ -293,7 +293,6 @@ class User_model extends CI_Model {
                 break;
             
             default:
-                $group = FALSE
                 break;
         }
 
@@ -344,7 +343,6 @@ class User_model extends CI_Model {
                 break;
             
             default:
-                $group = FALSE
                 break;
         }
 
