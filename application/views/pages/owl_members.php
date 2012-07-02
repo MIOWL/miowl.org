@@ -121,7 +121,7 @@
                             var uri = '/owl/members';
                             uri += '/' + action;
                             uri += '/' + group;
-                            uri += ':' + uid;
+                            uri += '-' + uid;
 
                             // get the JSON data from the request
                             $.getJSON(uri, function(data) {
