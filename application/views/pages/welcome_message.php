@@ -8,7 +8,10 @@
 
 	<div id="body">
 		<p>
-			Welcome to Medical Interprofessional Open source Web-based Library, MI OWL.<br />
+			Welcome to Medical Interprofessional Open source Web-based Library, MI OWL.
+		</p>
+
+		<p>
 			Here Canadian Medical clinics and small Hospitals can create their own document libraries to organize, search and share the information (policies, program descriptions, forms, medical directives, patient resources, etc.) they rely on.
 		</p>
 
