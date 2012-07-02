@@ -153,8 +153,8 @@ class Cron_model extends CI_Model {
         $removed_owls = 0;
 
         // get the inactive owls
-        $this->db->select('id','owl_admin_uid');
-        $this->db->having('owl_active', 'no');
+        $this->db->select('*');
+        $this->db->having('owls.owl_active', 'no');
         $owls = $this->db->get('owls');
 
         // do we have any owls?
