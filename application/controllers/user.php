@@ -222,6 +222,7 @@ class User extends CI_Controller {
                         {
                             // users passed all our tests lets build em a session
                             $session_data = array(
+                                'authed'        => TRUE,
                                 'user_id'       => $user_query->row()->id,
                                 'username'      => $user_query->row()->user_name,
                                 'name'          => $user_query->row()->user_first_name . ' ' . $user_query->row()->user_last_name,
@@ -246,6 +247,7 @@ class User extends CI_Controller {
                         else
                         {
                             $session_data = array(
+                                'authed'    => TRUE,
                                 'user_id'   => $user_query->row()->id,
                                 'username'  => $user_query->row()->user_name,
                                 'email'     => $user_query->row()->user_email,

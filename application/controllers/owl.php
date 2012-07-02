@@ -93,10 +93,6 @@ class Owl extends CI_Controller {
      */
     public function index()
     {
-        // Do we need to login??
-        if (!$this->login_check('owl'))
-            return;
-
         if (!$this->session->userdata('owl_verified')) {
             redirect('/welcome', 'location');
             return;
