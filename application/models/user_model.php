@@ -276,7 +276,7 @@ class User_model extends CI_Model {
             return FALSE;
 
         // whats the user group?
-        switch ( strtolower($group) )
+        switch ( $group )
         {
             case 'admin':
                 $update_data = array(
@@ -293,6 +293,7 @@ class User_model extends CI_Model {
                 break;
             
             default:
+                $group = FALSE;
                 break;
         }
 
@@ -326,7 +327,7 @@ class User_model extends CI_Model {
             return FALSE;
 
         // whats the user group?
-        switch ( strtolower($group) )
+        switch ( $group )
         {
             case 'admin':
                 $update_data = array(
@@ -343,6 +344,7 @@ class User_model extends CI_Model {
                 break;
             
             default:
+                $group = FALSE;
                 break;
         }
 
