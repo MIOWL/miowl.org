@@ -567,7 +567,7 @@ class Owl extends CI_Controller {
      */
     public function _members_promote($group = FALSE, $user_id = FALSE)
     {
-        if($this->session->userdata('admin'))
+        if( $this->user_model->promote( $group, $user_id ) )
             print json_encode(array('success'=>'true'));
         else
             print json_encode(array('success'=>'false'));
@@ -580,7 +580,7 @@ class Owl extends CI_Controller {
      */
     public function _members_demote($group = FALSE, $user_id = FALSE)
     {
-        if($this->session->userdata('admin'))
+        if( $this->user_model->demote( $group, $user_id ) )
             print json_encode(array('success'=>'true'));
         else
             print json_encode(array('success'=>'false'));

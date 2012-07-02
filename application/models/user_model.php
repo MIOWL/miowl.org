@@ -261,6 +261,108 @@ class User_model extends CI_Model {
     //------------------------------------------------------------------
 
 
+    /**
+     * public promote()
+     * function will promote the user to a given group
+     *
+     * @param string $group   - the users activation code
+     * @param string $user_id     - the users new password
+     * @return bool
+     */
+    public function promote($group = FALSE, $user_id = FALSE)
+    {
+        // is this an admin requesting it??
+        if(!$this->session->userdata('admin'))
+            return FALSE;
+
+        // whats the user group?
+        switch ( strtolower($group) )
+        {
+            case 'admin':
+                $update_data = array(
+                    'user_admin'    => 'true',
+                    'user_editor'   => 'true'
+                );
+                break;
+            
+            case 'editor':
+                $update_data = array(
+                    'user_admin'    => 'false',
+                    'user_editor'   => 'true'
+                );
+                break;
+            
+            default:
+                $group = FALSE
+                break;
+        }
+
+        if (!$group || !$user_id)
+            return FALSE;
+
+        $this->db->where('id', $user_id);
+        $this->db->where('user_owl_id', $this->session->userdata('owl'));
+        $this->db->update('users', $update_data);
+
+        if ($this->db->affected_rows() > 0)
+            return TRUE;
+
+        return FALSE;
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * public demote()
+     * function will demote the user from a given group
+     *
+     * @param string $group   - the users activation code
+     * @param string $user_id     - the users new password
+     * @return bool
+     */
+    public function demote($group = FALSE, $user_id = FALSE)
+    {
+        // is this an admin requesting it??
+        if(!$this->session->userdata('admin'))
+            return FALSE;
+
+        // whats the user group?
+        switch ( strtolower($group) )
+        {
+            case 'admin':
+                $update_data = array(
+                    'user_admin'    => 'false',
+                    'user_editor'   => 'true'
+                );
+                break;
+            
+            case 'editor':
+                $update_data = array(
+                    'user_admin'    => 'false',
+                    'user_editor'   => 'false'
+                );
+                break;
+            
+            default:
+                $group = FALSE
+                break;
+        }
+
+        if (!$group || !$user_id)
+            return FALSE;
+
+        $this->db->where('id', $user_id);
+        $this->db->where('user_owl_id', $this->session->userdata('owl'));
+        $this->db->update('users', $update_data);
+
+        if ($this->db->affected_rows() > 0)
+            return TRUE;
+
+        return FALSE;
+    }
+    //------------------------------------------------------------------
+
+
 //=================================================================================
 // :validation callbacks
 //=================================================================================
