@@ -14,8 +14,13 @@
 
             <div id="license-tabs">
                 <ul>
+                <?php if($this->input->post('uploader') === 'upload') : ?>
+                    <li><a href="#lic-upload">Upload a License for a local copy</a></li>
+                    <li><a href="#lic-url">External URL to License File</a></li>
+                <?php else : ?>
                     <li><a href="#lic-url">External URL to License File</a></li>
                     <li><a href="#lic-upload">Upload a License for a local copy</a></li>
+                <?php endif; ?>
                 </ul>
                 <div id="lic-url">
                     <!-- link -->
