@@ -201,7 +201,7 @@ class Upload extends CI_Controller {
         $this->form_validation->set_rules('description', 'License Short Description', 'trim');
 
         if($this->input->post('link') === 'link')
-            $this->form_validation->set_rules('url', 'External URL to License File', 'trim|required|valid_url');
+            $this->form_validation->set_rules('url', 'External URL to License File', 'trim|required|callback_valid_url');
 
         if($this->form_validation->run())
         {
@@ -266,6 +266,24 @@ class Upload extends CI_Controller {
             $page_data['page_title'] = 'Upload New License';
             $this->load->view('pages/upload_lic_form', $page_data);
         }
+    }
+    //------------------------------------------------------------------
+
+
+//=================================================================================
+// :validation callbacks
+//=================================================================================
+
+    /**
+     * public valid_url()
+     */
+    public function valid_url( $str )
+    {
+        if( filter_var( $str, FILTER_VALIDATE_URL ) )
+            return TRUE;
+
+        else
+            return FALSE;
     }
     //------------------------------------------------------------------
 
