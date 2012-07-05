@@ -282,8 +282,8 @@ class Upload extends CI_Controller {
         if( filter_var( $str, FILTER_VALIDATE_URL ) )
             return TRUE;
 
-        else
-            return FALSE;
+        $this->form_validation->set_message('valid_url', 'Invalid URL entered');
+        return FALSE;
     }
     //------------------------------------------------------------------
 
