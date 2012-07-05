@@ -200,8 +200,8 @@ class Upload extends CI_Controller {
         $this->form_validation->set_rules('name', 'License Name', 'trim|required');
         $this->form_validation->set_rules('description', 'License Short Description', 'trim');
 
-        if($this->input->post('link'))
-            $this->form_validation->set_rules('url', 'External URL to License File', 'trim|required');
+        if(!$this->input->post('upload'))
+            $this->form_validation->set_rules('url', 'External URL to License File', 'trim|required|valid_url');
 
         if($this->form_validation->run())
         {
