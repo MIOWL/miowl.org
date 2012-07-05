@@ -207,7 +207,7 @@ class Upload extends CI_Controller {
                 $page_data['error'] = TRUE;
                 $page_data['msg'] = trim($this->upload->display_errors());
 
-                $this->load->view('pages/upload_form', $page_data);
+                $this->load->view('pages/upload_lic_form', $page_data);
             }
             else
             {
