@@ -14,7 +14,7 @@
 
             <div id="license-tabs">
                 <ul>
-                <?php if($this->input->post('uploader') === 'upload') : ?>
+                <?php if($this->input->post('uploader') === 'uploader') : ?>
                     <li><a href="#lic-upload">Upload a License for a local copy</a></li>
                     <li><a href="#lic-url">External URL to License File</a></li>
                 <?php else : ?>
@@ -87,7 +87,7 @@
 
                         </fieldset>
 
-                        <input type="hidden" name="uploader" value="upload" />
+                        <input type="hidden" name="uploader" value="uploader" />
 
                         <div class="buttonHolder">
                             <button class="button" type="submit">Upload</button>

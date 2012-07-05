@@ -205,7 +205,7 @@ class Upload extends CI_Controller {
 
         if($this->form_validation->run())
         {
-            if ($this->input->post('uploader') === 'upload' && !$this->upload->do_upload())
+            if ($this->input->post('uploader') === 'uploader' && !$this->upload->do_upload())
             {
                 $page_data['page_title'] = 'Upload Failure';
                 $page_data['error'] = TRUE;
@@ -222,7 +222,7 @@ class Upload extends CI_Controller {
                 $short_description  = str_replace(array("\r\n","\r","\n"), '\n', trim($this->input->post('description')));
 
                 // LOCAL FILE UPLOAD
-                if ($this->input->post('uploader') === 'upload')
+                if ($this->input->post('uploader') === 'uploader')
                 {
                     $lic_id         = '-=changeme=-';
                     $file_ext       = $upload_data['file_ext'];
