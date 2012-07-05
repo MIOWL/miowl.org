@@ -197,11 +197,13 @@ class Upload extends CI_Controller {
         // form validation rules
         $this->form_validation->set_rules('name', 'License Name', 'trim|required');
         $this->form_validation->set_rules('description', 'License Short Description', 'trim');
-        $this->form_validation->set_rules('url', 'External URL to License File', 'trim');
+
+        if($this->input->post('url'))
+            $this->form_validation->set_rules('url', 'External URL to License File', 'trim');
 
         if($this->form_validation->run())
         {
-            if ($this->input->post('url') == NULL || $this->input->post('url') == "" || !$this->upload->do_upload())
+            if ($this->input->post('upload') && !$this->upload->do_upload())
             {
                 $page_data['page_title'] = 'Upload Failure';
                 $page_data['error'] = TRUE;

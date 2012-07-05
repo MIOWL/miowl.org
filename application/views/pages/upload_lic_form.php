@@ -45,6 +45,8 @@
 
                         </fieldset>
 
+                        <input type="hidden" value="url">
+
                         <div class="buttonHolder">
                             <button class="button" type="submit">Add</button>
                         </div>
@@ -79,6 +81,8 @@
                             </div>
 
                         </fieldset>
+
+                        <input type="hidden" value="upload">
 
                         <div class="buttonHolder">
                             <button class="button" type="submit">Upload</button>
