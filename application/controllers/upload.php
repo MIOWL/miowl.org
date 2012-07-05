@@ -201,7 +201,7 @@ class Upload extends CI_Controller {
         $this->form_validation->set_rules('description', 'License Short Description', 'trim');
 
         if($this->input->post('link') === 'link')
-            $this->form_validation->set_rules('url', 'External URL to License File', 'trim|required|callback_valid_url');
+            $this->form_validation->set_rules('url', 'External URL to License File', 'trim|required|prep_url|callback_valid_url');
 
         if($this->form_validation->run())
         {
@@ -233,7 +233,7 @@ class Upload extends CI_Controller {
                 // EXTERNAL FILE
                 else
                 {
-                    $url            = $this->input->post('url');
+                    $url            = $this->form_validation->prep_url($this->input->post('url'));
                     $local_file     = 'false';
                 }
 
