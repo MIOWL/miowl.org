@@ -19,7 +19,7 @@
                 </ul>
                 <div id="lic-url">
                     <!-- link -->
-                    <?php echo form_open_multipart('', array('class' => 'uniForm'));?>
+                    <form class="uniForm" accept-charset="utf-8" method="post" action="">
 
                         <?php $this->load->view('messages/message_inline'); ?>
 
