@@ -200,12 +200,12 @@ class Upload extends CI_Controller {
         $this->form_validation->set_rules('name', 'License Name', 'trim|required');
         $this->form_validation->set_rules('description', 'License Short Description', 'trim');
 
-        if(!$this->input->post('upload'))
+        if($this->input->post('link') === 'link')
             $this->form_validation->set_rules('url', 'External URL to License File', 'trim|required|valid_url');
 
         if($this->form_validation->run())
         {
-            if ($this->input->post('upload') && !$this->upload->do_upload())
+            if ($this->input->post('upload') === 'upload' && !$this->upload->do_upload())
             {
                 $page_data['page_title'] = 'Upload Failure';
                 $page_data['error'] = TRUE;
@@ -222,7 +222,7 @@ class Upload extends CI_Controller {
                 $short_description  = str_replace(array("\r\n","\r","\n"), '\n', trim($this->input->post('description')));
 
                 // LOCAL FILE UPLOAD
-                if ($this->input->post('upload'))
+                if ($this->input->post('upload') === 'upload')
                 {
                     $lic_id         = '-=changeme=-';
                     $file_ext       = $upload_data['file_ext'];
