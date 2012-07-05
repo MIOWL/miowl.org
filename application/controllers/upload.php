@@ -199,7 +199,7 @@ class Upload extends CI_Controller {
         $this->form_validation->set_rules('description', 'License Short Description', 'trim');
 
         if($this->input->post('url'))
-            $this->form_validation->set_rules('url', 'External URL to License File', 'trim');
+            $this->form_validation->set_rules('url', 'External URL to License File', 'trim|required');
 
         if($this->form_validation->run())
         {
@@ -236,17 +236,17 @@ class Upload extends CI_Controller {
                 }
 
                 // add the lic and get the auto increment id
-                $lic_id = $this->lic_model->add_new(
-                            $name,
-                            $short_description,
-                            $url,
-                            $local_file,
-                            $owl
-                          );
+                // $lic_id = $this->lic_model->add_new(
+                //             $name,
+                //             $short_description,
+                //             $url,
+                //             $local_file,
+                //             $owl
+                //           );
 
                 // update that url with the correct id if we uploaded a local file
-                if ($local_file != 'false')
-                    $this->lic_model->fix_id($lic_id, $url);
+                // if ($local_file != 'false')
+                //     $this->lic_model->fix_id($lic_id, $url);
 
                 $page_data['page_title'] = 'License Upload Success';
                 $page_data['upload_data'] = $upload_data;
