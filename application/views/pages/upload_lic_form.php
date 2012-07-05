@@ -12,50 +12,82 @@
         </div>
         <div id="owl_body" class="column right threequarter">
 
-            <!-- upload -->
-            <?php echo form_open_multipart('', array('class' => 'uniForm'));?>
+            <div name="license" id="license-tabs">
+                <ul>
+                    <li><a href="#tabs-url">External URL to License File</a></li>
+                    <li><a href="#tabs-upload">Upload a License for a local copy</a></li>
+                </ul>
+                <div id="lic-url">
+                    <!-- link -->
+                    <?php echo form_open_multipart('', array('class' => 'uniForm'));?>
 
-                <?php $this->load->view('messages/message_inline'); ?>
+                        <?php $this->load->view('messages/message_inline'); ?>
 
-                <fieldset class="inlineLabels">
+                        <fieldset class="inlineLabels">
 
-                    <div class="ctrlHolder">
-                        <label for="name">Name <span class="right">(required)</span></label>
-                        <input type="text" name="filename" id="filename" size="35" class="textInput large" value="<?php print set_value('name'); ?>" placeholder="BSD" />
-                        <p class="formHint">Enter the License name</p>
-                    </div>
-
-                    <div class="ctrlHolder">
-                        <label for="description">Description <span class="right">(optional)</span></label>
-                        <textarea name="description" id="description" size="35" class="textInput large" rows="5" cols="50" placeholder="The BSD 3 Clause License"><?php print trim(set_value('description')); ?></textarea>
-                        <p class="formHint">Enter a description for the License.</p>
-                    </div>
-
-                    <div class="ctrlHolder">
-                        <label for="license">License File <span class="right">(required)</span></label>
-                        <div name="license" id="license-tabs">
-                            <ul>
-                                <li><a href="#tabs-url">External URL to License File</a></li>
-                                <li><a href="#tabs-upload">Upload a License for a local copy</a></li>
-                            </ul>
-                            <div id="lic-url">
-                                <p>http://www.opensource.org/licenses/BSD-3-Clause</p>
+                            <div class="ctrlHolder">
+                                <label for="name">Name <span class="right">(required)</span></label>
+                                <input type="text" name="filename" id="filename" size="35" class="textInput large" value="<?php print set_value('name'); ?>" placeholder="BSD" />
+                                <p class="formHint">Enter the License name</p>
                             </div>
-                            <div id="lic-upload">
-                                <input type="file" name="userfile" id="userfile" size="35" class="textInput large" />
-                                <p>Choose the file you want to upload. Must be <strong><?php print $allow_types; ?></strong></p>
+
+                            <div class="ctrlHolder">
+                                <label for="description">Description <span class="right">(optional)</span></label>
+                                <textarea name="description" id="description" size="35" class="textInput large" rows="5" cols="50" placeholder="The BSD 3 Clause License"><?php print trim(set_value('description')); ?></textarea>
+                                <p class="formHint">Enter a description for the License.</p>
                             </div>
+
+                            <div class="ctrlHolder">
+                                <label for="url">License File <span class="right">(required)</span></label>
+                                <input type="text" name="url" id="url" size="35" class="textInput large" value="<?php print set_value('url'); ?>" placeholder="http://www.opensource.org/licenses/BSD-3-Clause" />
+                                <p class="formHint">External URL to License File</p>
+                            </div>
+
+                        </fieldset>
+
+                        <div class="buttonHolder">
+                            <button class="button" type="submit">Upload</button>
                         </div>
-                        <p class="formHint">Enter license URL or choose the license file to upload.</p>
-                    </div>
 
-                </fieldset>
-
-                <div class="buttonHolder">
-                    <button class="button" type="submit">Upload</button>
+                    </form>
+                    <p>http://www.opensource.org/licenses/BSD-3-Clause</p>
                 </div>
 
-            </form>
+                <div id="lic-upload">
+                    <!-- upload -->
+                    <?php echo form_open_multipart('', array('class' => 'uniForm'));?>
+
+                        <?php $this->load->view('messages/message_inline'); ?>
+
+                        <fieldset class="inlineLabels">
+
+                            <div class="ctrlHolder">
+                                <label for="name">Name <span class="right">(required)</span></label>
+                                <input type="text" name="filename" id="filename" size="35" class="textInput large" value="<?php print set_value('name'); ?>" placeholder="BSD" />
+                                <p class="formHint">Enter the License name</p>
+                            </div>
+
+                            <div class="ctrlHolder">
+                                <label for="description">Description <span class="right">(optional)</span></label>
+                                <textarea name="description" id="description" size="35" class="textInput large" rows="5" cols="50" placeholder="The BSD 3 Clause License"><?php print trim(set_value('description')); ?></textarea>
+                                <p class="formHint">Enter a description for the License.</p>
+                            </div>
+
+                            <div class="ctrlHolder">
+                                <label for="license">License File <span class="right">(required)</span></label>
+                                <input type="file" name="license" id="license" size="35" class="textInput large" />
+                                <p class="formHint">Choose the file you want to upload. Must be <strong><?php print $allow_types; ?></strong></p>
+                            </div>
+
+                        </fieldset>
+
+                        <div class="buttonHolder">
+                            <button class="button" type="submit">Upload</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
 
         </div>
         <div class="clear">&nbsp;</div>
