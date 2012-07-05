@@ -75,8 +75,8 @@
                             </div>
 
                             <div class="ctrlHolder">
-                                <label for="license">License File <span class="right">(required)</span></label>
-                                <input type="file" name="license" id="license" size="35" class="textInput large" />
+                                <label for="userfile">License File <span class="right">(required)</span></label>
+                                <input type="file" name="userfile" id="userfile" size="35" class="textInput large" />
                                 <p class="formHint">Choose the file you want to upload. Must be <strong><?php print $allow_types; ?></strong></p>
                             </div>
 

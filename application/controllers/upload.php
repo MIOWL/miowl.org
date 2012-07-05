@@ -84,10 +84,10 @@ class Upload extends CI_Controller {
         // what are the allowed file types? [seperate via pipe (|)]
         $file_types = 'txt|rtf|pdf|doc|docx';
 
-        $config['upload_path'] = './uploads/';
-        $config['allowed_types'] = $file_types;
-        $config['max_size'] = '102400000'; // 10MB
-        $config['encrypt_name'] = TRUE;
+        $config['upload_path']      = './uploads/';
+        $config['allowed_types']    = $file_types;
+        $config['max_size']         = '102400000'; // 10MB
+        $config['encrypt_name']     = TRUE;
 
         // setup the page_data array and add in some data
         $page_data = array();
@@ -185,10 +185,10 @@ class Upload extends CI_Controller {
         // what are the allowed file types? [seperate via pipe (|)]
         $file_types = 'txt|rtf|pdf|doc|docx';
 
-        $config['upload_path'] = './user_license_files/';
-        $config['allowed_types'] = $file_types;
-        $config['max_size'] = '102400000'; // 10MB
-        $config['encrypt_name'] = TRUE;
+        $config['upload_path']      = './user_license_files/';
+        $config['allowed_types']    = $file_types;
+        $config['max_size']         = '102400000'; // 10MB
+        $config['encrypt_name']     = TRUE;
 
         // setup the page_data array and add in some data
         $page_data = array();
