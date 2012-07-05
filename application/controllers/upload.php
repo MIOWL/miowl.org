@@ -205,37 +205,57 @@ class Upload extends CI_Controller {
 
         if($this->form_validation->run())
         {
-            if ($this->input->post('uploader') === 'uploader' && !$this->upload->do_upload())
+            if ( $this->input->post('uploader') === 'uploader' )
             {
-                $page_data['page_title'] = 'Upload Failure';
-                $page_data['error'] = TRUE;
-                $page_data['msg'] = trim($this->upload->display_errors());
+                if ( !$this->upload->do_upload() )
+                {
+                    $page_data['page_title'] = 'Upload Failure';
+                    $page_data['error'] = TRUE;
+                    $page_data['msg'] = trim($this->upload->display_errors());
 
-                $this->load->view('pages/upload_lic_form', $page_data);
+                    $this->load->view('pages/upload_lic_form', $page_data);
+                }
+                else
+                {
+                    $upload_data = $this->upload->data();
+
+                    $name               = $this->input->post('name');
+                    $owl                = $this->session->userdata('owl');
+                    $short_description  = str_replace(array("\r\n","\r","\n"), '\n', trim($this->input->post('description')));
+                    $lic_id             = '-=changeme=-';
+                    $file_ext           = $upload_data['file_ext'];
+                    $url                = '/download/lic/' . $lic_id . '/' . $name .  $file_ext;
+                    $local_file         = $upload_data['full_path'];
+
+                    // add the lic and get the auto increment id
+                    // $lic_id = $this->lic_model->add_new(
+                    //             $name,
+                    //             $short_description,
+                    //             $url,
+                    //             $local_file,
+                    //             $owl
+                    //           );
+
+                    // update that url with the correct id if we uploaded a local file
+                    // $this->lic_model->fix_id($lic_id, $url);
+
+                    $page_data['page_title'] = 'License Upload Success';
+                    $page_data['upload_data'] = $upload_data;
+
+                    // Success Message
+                    $page_data['success']     = TRUE;
+                    $page_data['msg']         = "License Upload Successful, upload another?";
+
+                    $this->load->view('pages/upload_lic_form', $page_data);
+                }
             }
             else
             {
-                $upload_data = $this->upload->data();
-
                 $name               = $this->input->post('name');
                 $owl                = $this->session->userdata('owl');
                 $short_description  = str_replace(array("\r\n","\r","\n"), '\n', trim($this->input->post('description')));
-
-                // LOCAL FILE UPLOAD
-                if ($this->input->post('uploader') === 'uploader')
-                {
-                    $lic_id         = '-=changeme=-';
-                    $file_ext       = $upload_data['file_ext'];
-                    $url            = '/download/lic/' . $lic_id . '/' . $name .  $file_ext;
-                    $local_file     = $upload_data['full_path'];
-                }
-
-                // EXTERNAL FILE
-                else
-                {
-                    $url            = $this->form_validation->prep_url($this->input->post('url'));
-                    $local_file     = 'false';
-                }
+                $url                = $this->form_validation->prep_url($this->input->post('url'));
+                $local_file         = 'false';
 
                 // add the lic and get the auto increment id
                 // $lic_id = $this->lic_model->add_new(
@@ -246,18 +266,13 @@ class Upload extends CI_Controller {
                 //             $owl
                 //           );
 
-                // update that url with the correct id if we uploaded a local file
-                // if ($local_file != 'false')
-                //     $this->lic_model->fix_id($lic_id, $url);
-
-                $page_data['page_title'] = 'License Upload Success';
+                $page_data['page_title'] = 'License Install Success';
                 $page_data['upload_data'] = $upload_data;
 
                 // Success Message
                 $page_data['success']     = TRUE;
-                $page_data['msg']         = "License Upload Successful, upload another?";
+                $page_data['msg']         = "License Install Successful, upload another?";
 
-                #$this->load->view('pages/upload_success', $page_data);
                 $this->load->view('pages/upload_lic_form', $page_data);
             }
         }
