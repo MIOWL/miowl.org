@@ -99,10 +99,10 @@
     <!-- Page Javascript -->
     <script type="text/javascript">
         $(function() {
+            $( "#license-tabs" ).tabs();
+
             <?php if($this->input->post('uploader') === 'uploader') : ?>
                 $( "#license-tabs" ).tabs('select', 1);
-            <?php else : ?>
-                $( "#license-tabs" ).tabs();
             <?php endif; ?>
         });
     </script>
