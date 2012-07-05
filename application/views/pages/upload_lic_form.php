@@ -27,7 +27,7 @@
 
                             <div class="ctrlHolder">
                                 <label for="name">Name <span class="right">(required)</span></label>
-                                <input type="text" name="filename" id="filename" size="35" class="textInput large" value="<?php print set_value('name'); ?>" placeholder="BSD" />
+                                <input type="text" name="name" id="name" size="35" class="textInput large" value="<?php print set_value('name'); ?>" placeholder="BSD" />
                                 <p class="formHint">Enter the License name</p>
                             </div>
 
@@ -62,7 +62,7 @@
 
                             <div class="ctrlHolder">
                                 <label for="name">Name <span class="right">(required)</span></label>
-                                <input type="text" name="filename" id="filename" size="35" class="textInput large" value="<?php print set_value('name'); ?>" placeholder="BSD" />
+                                <input type="text" name="name" id="name" size="35" class="textInput large" value="<?php print set_value('name'); ?>" placeholder="BSD" />
                                 <p class="formHint">Enter the License name</p>
                             </div>
 
