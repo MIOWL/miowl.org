@@ -14,8 +14,8 @@
 
             <div id="license-tabs">
                 <ul>
-                    <li><a href="#tabs-url">External URL to License File</a></li>
-                    <li><a href="#tabs-upload">Upload a License for a local copy</a></li>
+                    <li><a href="#lic-url">External URL to License File</a></li>
+                    <li><a href="#lic-upload">Upload a License for a local copy</a></li>
                 </ul>
                 <div id="lic-url">
                     <!-- link -->
