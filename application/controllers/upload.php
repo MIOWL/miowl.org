@@ -180,6 +180,8 @@ class Upload extends CI_Controller {
         if (!$this->login_check('upload-lic'))
             return;
 
+        print '<pre>' . print_r($this->input->post(), true) . '</pre>';
+
         // what are the allowed file types? [seperate via pipe (|)]
         $file_types = 'txt|rtf|pdf|doc|docx';
 
