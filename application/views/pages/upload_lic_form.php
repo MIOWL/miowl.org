@@ -12,7 +12,7 @@
         </div>
         <div id="owl_body" class="column right threequarter">
 
-            <div name="license" id="license-tabs">
+            <div id="license-tabs">
                 <ul>
                     <li><a href="#tabs-url">External URL to License File</a></li>
                     <li><a href="#tabs-upload">Upload a License for a local copy</a></li>
