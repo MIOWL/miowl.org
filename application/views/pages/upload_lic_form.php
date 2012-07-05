@@ -14,13 +14,8 @@
 
             <div id="license-tabs">
                 <ul>
-                <?php if($this->input->post('uploader') === 'uploader') : ?>
-                    <li><a href="#lic-upload">Upload a License for a local copy</a></li>
-                    <li><a href="#lic-url">External URL to License File</a></li>
-                <?php else : ?>
                     <li><a href="#lic-url">External URL to License File</a></li>
                     <li><a href="#lic-upload">Upload a License for a local copy</a></li>
-                <?php endif; ?>
                 </ul>
                 <div id="lic-url">
                     <!-- link -->
@@ -104,7 +99,11 @@
     <!-- Page Javascript -->
     <script type="text/javascript">
         $(function() {
-            $( "#license-tabs" ).tabs();
+            <?php if($this->input->post('uploader') === 'uploader') : ?>
+                $( "#license-tabs" ).tabs('select', 1);
+            <?php else : ?>
+                $( "#license-tabs" ).tabs();
+            <?php endif; ?>
         });
     </script>
     <!-- --------------- -->
