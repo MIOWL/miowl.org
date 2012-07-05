@@ -244,7 +244,7 @@ class Upload extends CI_Controller {
 
                 // update that url with the correct id if we uploaded a local file
                 if ($local_file != 'false')
-                    $this->lic_model->fix_id($lic_id, $url)
+                    $this->lic_model->fix_id($lic_id, $url);
 
                 $page_data['page_title'] = 'License Upload Success';
                 $page_data['upload_data'] = $upload_data;
