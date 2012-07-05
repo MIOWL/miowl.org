@@ -95,16 +95,8 @@
     <!-- Page Javascript -->
     <script type="text/javascript">
         $(function() {
-            $( "#license-tabs" ).tabs({
-                cookie: {
-                    // store cookie for a day, without, it would be a session cookie
-                    expires: 1
-                }
-            });
-        });
-        /*$(function() {
             $( "#license-tabs" ).tabs();
-        });*/
+        });
     </script>
     <!-- --------------- -->
 
