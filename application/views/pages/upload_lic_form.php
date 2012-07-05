@@ -45,7 +45,7 @@
 
                         </fieldset>
 
-                        <input type="hidden" name="url">
+                        <input type="hidden" name="link">
 
                         <div class="buttonHolder">
                             <button class="button" type="submit">Add</button>

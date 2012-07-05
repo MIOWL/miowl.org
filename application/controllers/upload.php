@@ -198,7 +198,7 @@ class Upload extends CI_Controller {
         $this->form_validation->set_rules('name', 'License Name', 'trim|required');
         $this->form_validation->set_rules('description', 'License Short Description', 'trim');
 
-        if($this->input->post('url'))
+        if($this->input->post('link'))
             $this->form_validation->set_rules('url', 'External URL to License File', 'trim|required');
 
         if($this->form_validation->run())
@@ -220,7 +220,7 @@ class Upload extends CI_Controller {
                 $short_description  = str_replace(array("\r\n","\r","\n"), '\n', trim($this->input->post('description')));
 
                 // LOCAL FILE UPLOAD
-                if ($this->input->post('url') == NULL || $this->input->post('url') == "")
+                if ($this->input->post('upload'))
                 {
                     $lic_id         = '-=changeme=-';
                     $file_ext       = $upload_data['file_ext'];
