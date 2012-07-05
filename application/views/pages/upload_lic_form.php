@@ -46,7 +46,7 @@
                         </fieldset>
 
                         <div class="buttonHolder">
-                            <button class="button" type="submit">Upload</button>
+                            <button class="button" type="submit">Add</button>
                         </div>
 
                     </form>
@@ -94,17 +94,17 @@
 
     <!-- Page Javascript -->
     <script type="text/javascript">
-        /*$(function() {
+        $(function() {
             $( "#license-tabs" ).tabs({
                 cookie: {
                     // store cookie for a day, without, it would be a session cookie
                     expires: 1
                 }
             });
-        });*/
-        $(function() {
-            $( "#license-tabs" ).tabs();
         });
+        /*$(function() {
+            $( "#license-tabs" ).tabs();
+        });*/
     </script>
     <!-- --------------- -->
 
