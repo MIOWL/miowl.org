@@ -51,18 +51,71 @@ class Lic_model extends CI_Model {
     {
         $this->db->select('*');
 
-        // if ($owl != FALSE)
-        //     $this->db->where('owl', $owl);
-        // else
+        // if (!$owl)
         //     return FALSE;
 
-        $this->db->order_by("id", "ASC");
+        // $this->db->where('owl', $owl);
+        $this->db->order_by("name", "ASC");
         $query = $this->db->get('license');
 
         if ($query->num_rows() > 0)
             return $query;
         else
             return FALSE;
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * public insert_defaults()
+     */
+    public function insert_defaults($owl = FALSE)
+    {
+        if (!$owl)
+            return FALSE;
+
+        // the main array
+        $default_categories = array();
+
+        /**
+         * #########################
+         * || the individual cats ||
+         * #########################
+         * name         = category name
+         * parent_id    = category parent id ( 0 = top level - no parent )
+         * owl          = the owl id
+         */
+        $default_categories[] = array(
+            'name'              => 'GPL 3.0',
+            'short_description' => 'GNU General Public License, version 3',
+            'url'               => 'http://www.opensource.org/licenses/gpl-3.0.html',
+            'owl'               => $owl
+        );
+        $default_categories[] = array(
+            'name'              => 'BSD',
+            'short_description' => 'The BSD 3 Clause License',
+            'url'               => 'http://www.opensource.org/licenses/BSD-3-Clause',
+            'owl'               => $owl
+        );
+        $default_categories[] = array(
+            'name'              => 'LGPL 3.0',
+            'short_description' => 'GNU Lesser General Public License, version 3.0',
+            'url'               => 'http://www.opensource.org/licenses/lgpl-3.0.html',
+            'owl'               => $owl
+        );
+        $default_categories[] = array(
+            'name'              => 'MIT',
+            'short_description' => 'MIT License',
+            'url'               => 'http://www.opensource.org/licenses/MIT',
+            'owl'               => $owl
+        );
+
+        $this->db->insert_batch('categories', $default_categories);
+
+        if ($this->db->affected_rows() > 0)
+           return TRUE;
+
+        return FALSE;
     }
     //------------------------------------------------------------------
 

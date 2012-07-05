@@ -267,6 +267,8 @@ class Owl extends CI_Controller {
                                 $this->input->post('email'),
                                 $authcode
                             );
+                $this->cat_model->insert_defaults($owl_id);
+                $this->lic_model->insert_defaults($owl_id);
                 $this->owl_model->choose_owl($this->session->userdata('user_id'), $owl_id, TRUE);
                 $this->owlmail->send_activation($name, $this->input->post('email'), $authcode);
 

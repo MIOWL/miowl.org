@@ -148,7 +148,7 @@ class Browse extends CI_Controller {
 
 
     /**
-     * public index()
+     * public owl()
      */
     public function owl($owl = FALSE, $offset = 0, $limit = 10)
     {
@@ -221,12 +221,85 @@ class Browse extends CI_Controller {
 
 
     /**
+     * public cat()
+     */
+    public function cat($owl = FALSE, $cat = FALSE, $offset = 0, $limit = 10)
+    {
+        $page_data = array();
+        $page_data['page_title'] = 'File Browser | by owl (' . $this->owl_model->get_owl_by_id($owl)->row()->owl_name . ')';
+        $page_data['browse_by_owl'] = TRUE;
+
+        $uploads = $this->upload_model->get_upload_by_owl($owl, $limit, $offset);
+
+        $this->load->library('table');
+        $tmpl = array (
+            'table_open'          => '<table>',
+
+            'heading_row_start'   => '<tr>',
+            'heading_row_end'     => '</tr>',
+            'heading_cell_start'  => '<th>',
+            'heading_cell_end'    => '</th>',
+
+            'row_start'           => '<tr>',
+            'row_end'             => '</tr>',
+            'cell_start'          => '<td>',
+            'cell_end'            => '</td>',
+
+            'row_alt_start'       => '<tr>',
+            'row_alt_end'         => '</tr>',
+            'cell_alt_start'      => '<td>',
+            'cell_alt_end'        => '</td>',
+
+            'table_close'         => '</table>'
+        );
+        $this->table->set_template($tmpl);
+        $this->table->set_heading('Owl', 'Category', 'Filename', 'License', 'File Type', 'Download', 'Info');
+        $this->table->set_empty("N/A");
+
+        if($uploads)
+        {
+            foreach($uploads->result() as $row)
+            {
+                $lic = $this->miowl_model->get_license($row->upload_license);
+                $this->table->add_row(
+                    $this->owl_model->get_owl_by_id($row->owl)->row()->owl_name,
+                    cat_breadcrumb($row->upload_category),
+                    $row->file_name,
+                    '<a href="' . $lic->row()->url . '" target="_BLANK">' . $lic->row()->name . '</a>',
+                    $row->file_type,
+                    '<a href="' . site_url('download/' . $row->id) . '" title="Downlaod this file!" target="_BLANK" class="icon_font">F</a>',
+                    '<a href="' . site_url('browse/info/' . $row->id) . '" title="More info for this file!" class="icon_font">,</a>'
+                );
+            }
+        }
+
+        $page_data['table'] = $this->table->generate();
+
+        // setup pagination lib
+        $config['base_url']         = site_url('browse/cat/' . $owl . '/' . $cat);
+        $config['uri_segment']      = 5;
+        $config['total_rows']       = $this->upload_model->total_owl_uploads($owl);
+        $config['per_page']         = $limit;
+        $config['anchor_class']     = 'class="button" ';
+        $config['cur_tag_open']     = '&nbsp;<div class="button danger current">';
+        $config['cur_tag_close']    = '</div>';
+
+        // init pagination
+        $this->pagination->initialize($config);
+
+        // load our view
+        $this->load->view('pages/browse', $page_data);
+    }
+    //------------------------------------------------------------------
+
+
+    /**
      * public download()
      */
     public function download($file_id = FALSE)
     {
         if(!$file_id)
-            redirect(site_url('browse'), 'location');
+            redirect(site_url(), 'location');
 
         // Get the file info for this ID
         $upload_info = $this->upload_model->get_upload_by_id($file_id);
@@ -239,6 +312,26 @@ class Browse extends CI_Controller {
 
         $data = array();
         $data['file_path'] = $upload_info->row()->full_path;
+        $data['file_name'] = $file_name;
+        $this->load->view('pages/download_file', $data);
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * public download_lic()
+     */
+    public function download_lic($lic_id = FALSE, $file_name = FALSE)
+    {
+        if(!$lic_id)
+            redirect(site_url(), 'location');
+
+        // Get the file info for this ID
+        $lic_info = $this->lic_model->get_lic_by_id($lic_id);
+
+        // Check the file has an ext, if not add it.
+        $data = array();
+        $data['file_path'] = $lic_info ? $lic_info->row()->local_file : '';
         $data['file_name'] = $file_name;
         $this->load->view('pages/download_file', $data);
     }

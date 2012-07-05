@@ -273,6 +273,49 @@ class Cat_model extends CI_Model {
     //------------------------------------------------------------------
 
 
+    /**
+     * public insert_defaults()
+     */
+    public function insert_defaults($owl = FALSE)
+    {
+        if (!$owl)
+            return FALSE;
+
+        // category names array
+        $names = array(
+            'uncategorised'
+        );
+
+        // the main array
+        $default_categories = array();
+
+        /**
+         * #########################
+         * || the individual cats ||
+         * #########################
+         * name         = category name
+         * parent_id    = category parent id ( 0 = top level - no parent )
+         * owl          = the owl id
+         */
+        foreach ($names as $name)
+        {
+            $default_categories[] = array(
+                'name'      => $name,
+                'parent_id' => 0,
+                'owl'       => $owl
+            );
+        }
+
+        $this->db->insert_batch('categories', $default_categories);
+
+        if ($this->db->affected_rows() > 0)
+           return TRUE;
+
+        return FALSE;
+    }
+    //------------------------------------------------------------------
+
+
 //=================================================================================
 // :private functions
 //=================================================================================
