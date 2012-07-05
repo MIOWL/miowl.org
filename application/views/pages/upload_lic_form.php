@@ -50,7 +50,6 @@
                         </div>
 
                     </form>
-                    <p>http://www.opensource.org/licenses/BSD-3-Clause</p>
                 </div>
 
                 <div id="lic-upload">
@@ -95,13 +94,16 @@
 
     <!-- Page Javascript -->
     <script type="text/javascript">
-        $(function() {
+        /*$(function() {
             $( "#license-tabs" ).tabs({
                 cookie: {
                     // store cookie for a day, without, it would be a session cookie
                     expires: 1
                 }
             });
+        });*/
+        $(function() {
+            $( "#license-tabs" ).tabs();
         });
     </script>
     <!-- --------------- -->
