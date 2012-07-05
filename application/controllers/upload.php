@@ -218,6 +218,7 @@ class Upload extends CI_Controller {
                 else
                 {
                     $upload_data = $this->upload->data();
+                    print '<pre>' . print_r($upload_data, true) . '</pre>';
 
                     $name               = $this->input->post('name');
                     $owl                = $this->session->userdata('owl');
