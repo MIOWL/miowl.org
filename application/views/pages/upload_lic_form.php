@@ -82,7 +82,7 @@
 
                         </fieldset>
 
-                        <input type="hidden" name="upload" value="upload" />
+                        <input type="hidden" name="uploader" value="upload" />
 
                         <div class="buttonHolder">
                             <button class="button" type="submit">Upload</button>
