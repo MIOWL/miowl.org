@@ -239,6 +239,12 @@ class User extends CI_Controller {
                             {
                                 // change the config setting
                                 $this->config->set_item('sess_expiration',0);
+
+                                // destroy any session data that may be set
+                                $this->session->sess_destroy();
+
+                                // load the session lib
+                                $this->load->library('session');
                             }
 
                             $this->session->set_userdata($session_data);
