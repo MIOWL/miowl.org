@@ -2,13 +2,13 @@
 
 /**
  * ------------------------------------------------------------------------------
- * 
+ *
  * MiOWL                                                     (v1) | codename dave
- * 
+ *
  * ------------------------------------------------------------------------------
  *
  * Copyright (c) 2012, Alan Wynn
- * 
+ *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
  * files (the "Software"), to deal in the Software without
@@ -17,10 +17,10 @@
  * copies of the Software, and to permit persons to whom the
  * Software is furnished to do so, subject to the following
  * conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
  * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
@@ -29,7 +29,7 @@
  * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
- * 
+ *
  * ------------------------------------------------------------------------------
  */
 
@@ -233,6 +233,16 @@ class User extends CI_Controller {
                                 'editor'        => $user_query->row()->user_editor === 'true' ? TRUE : FALSE,
                                 'authed'        => TRUE,
                             );
+
+                            // did the user check the box to never logout?
+                            if ( $this->input->post('chkbox') == 'on' )
+                            {
+                                // change the config setting
+                                $this->config->set_item('sess_expiration',0);
+
+                                // force the session class to recapture global settings by calling it's constructor
+                                $this->session->CI_Session()
+                            }
 
                             $this->session->set_userdata($session_data);
 

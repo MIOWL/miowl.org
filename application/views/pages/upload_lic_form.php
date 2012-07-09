@@ -2,7 +2,7 @@
 
 	<h1>
 		<center>
-			Upload a new file
+			Upload a new license file
 		</center>
 	</h1>
 
