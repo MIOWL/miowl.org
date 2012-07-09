@@ -39,7 +39,7 @@ if (!function_exists('insert_3d_categories'))
     {
         // do we have a type? or OWL
         if( !$type || $owl_id )
-            return FALSE;
+            exit( 'no type or owl id' );
 
         // determin the filename from the type
         switch ( $type )
@@ -53,7 +53,7 @@ if (!function_exists('insert_3d_categories'))
                 break;
 
             default:
-                return FALSE;
+                exit( 'invalid type' );
                 break;
         }
 
