@@ -42,7 +42,7 @@
                             <?php endif; ?>
                         </td>
                         <td>
-                            <a style="color:#63b52e !important;" href="<?php print $row->id; ?>" class="catedit"><img src="/images/icons/edit.gif" title="edit this license" alt="edit" width="16px" height="16px" /></a>
+                            <a style="color:#63b52e !important;" href="<?php print $row->id; ?>" class="licedit"><img src="/images/icons/edit.gif" title="edit this license" alt="edit" width="16px" height="16px" /></a>
                         </td>
                         <td>
                             <?php if ($is_in_use) : ?>
@@ -115,7 +115,7 @@
         });
 
         $(function() {
-            $('.catedit').click(function(e) {
+            $('.licedit').click(function(e) {
                 // prevent the default action, e.g., following a link
                 e.preventDefault();
 
@@ -123,11 +123,7 @@
                 $( "#dialog" ).remove();
 
                 // get the data from the form
-                var data = $(this).attr('href').split(':'),
-                    cat_id = data[0],
-                    cat_pid = data[1],
-                    cat_name = data[2],
-                    old_uri = $(this).attr('href');
+                var lic_id = $(this).attr('href');
 
                 // get the owl list
                 $.get('/owl/licenses/select_list/' + cat_pid, function(response) {
@@ -169,7 +165,7 @@
                                         // update the href to reflect this change
                                         var new_uri = cat_id + ':' + response.subcat + ':' + response.namez;
                                         $('.del', $('#r-' + cat_id)).attr('href', new_uri);
-                                        $('.catedit', $('#r-' + cat_id)).attr('href', new_uri);
+                                        $('.licedit', $('#r-' + cat_id)).attr('href', new_uri);
                                     }
                                     else {
                                         alert('Sorry, an error has occured. Please report this to the site admin.');

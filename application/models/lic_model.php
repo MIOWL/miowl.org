@@ -71,6 +71,26 @@ class Lic_model extends CI_Model {
 
 
     /**
+     * public get_license()
+     */
+    public function get_license($id = FALSE)
+    {
+        if (!$id)
+            return FALSE;
+
+        $this->db->select('*');
+        $this->db->where('id', $id);
+        $query = $this->db->from('license');
+
+        if ($query->num_rows() > 0)
+            return $query;
+        else
+            return FALSE;
+    }
+    //------------------------------------------------------------------
+
+
+    /**
      * public count_owl_licenses()
      */
     public function count_owl_licenses($owl = FALSE)
