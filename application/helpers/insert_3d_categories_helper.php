@@ -35,10 +35,10 @@
 
 if (!function_exists('insert_3d_categories'))
 {
-    function insert_3d_categories( $type = FALSE, $owl_id )
+    function insert_3d_categories( $type = FALSE, $owl_id = FALSE )
     {
         // do we have a type? or OWL
-        if( !$type || $owl_id )
+        if( !$type || !$owl_id )
             exit( 'no type or owl id' );
 
         // determin the filename from the type
