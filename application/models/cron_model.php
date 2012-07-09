@@ -129,8 +129,8 @@ class Cron_model extends CI_Model {
      */
     public function cleanup_users($days = 60)
     {
-        $this->db->having("user_active", "no");
-        $this->db->where("user_registration_date <=", ( time() - ( $days * $this->units['day'] ) ) );
+        $this->db->where("user_active", "no");
+        $this->db->having("user_registration_date <=", ( time() - ( $days * $this->units['day'] ) ) );
         $this->db->delete('users');
 
         return $this->db->affected_rows();
