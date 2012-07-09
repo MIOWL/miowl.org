@@ -239,9 +239,6 @@ class User extends CI_Controller {
                             {
                                 // change the config setting
                                 $this->config->set_item('sess_expiration',0);
-
-                                // force the session class to recapture global settings by calling it's constructor
-                                $this->session->CI_Session();
                             }
 
                             $this->session->set_userdata($session_data);
