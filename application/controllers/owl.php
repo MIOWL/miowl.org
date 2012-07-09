@@ -968,7 +968,9 @@ class Owl extends CI_Controller {
      */
     public function _licenses_info( $id = FALSE )
     {
-        print json_encode($this->lic_model->get_license($id)->result());
+        $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($this->lic_model->get_license($id)->result()));
     }
     //------------------------------------------------------------------
 
