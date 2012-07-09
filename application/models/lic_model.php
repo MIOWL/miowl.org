@@ -71,9 +71,9 @@ class Lic_model extends CI_Model {
 
 
     /**
-     * public get_owl_licenses()
+     * public count_owl_licenses()
      */
-    public function get_owl_licenses($owl = FALSE)
+    public function count_owl_licenses($owl = FALSE)
     {
         $this->db->select('*');
 
