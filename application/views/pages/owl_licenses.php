@@ -126,11 +126,9 @@
                 var lic_id = $(this).attr('href');
 
                 // get the owl list
-                $.get('/owl/licenses/select_list/' + cat_pid, function(response) {
-                    var select_list = response;
-
+                $.get('/owl/licenses/info/' + lic_id, function(info) {
                     // create and load the dialog form
-                    $('<div id="dialog"></div>').html('<p class="validateTips">All form fields are required.</p><fieldset><span class="left">license Name</span><input type="text" id="dialog_name" class="text ui-widget-content ui-corner-all right" style="width: 185px;" value="' + cat_name + '" /><br /><span class="left">Sub license</span><select name="subcat" id="dialog_subcat" class="select ui-widget-content ui-corner-all right">' + select_list + '</select>').dialog({
+                    $('<div id="dialog"></div>').html('<p class="validateTips">All form fields are required.</p><fieldset><span class="left">license Name</span><input type="text" id="dialog_name" class="text ui-widget-content ui-corner-all right" style="width: 185px;" value="' + info->name + '" /><span class="left">license Description</span><input type="text" id="dialog_desc" class="text ui-widget-content ui-corner-all right" style="width: 185px;" value="' + info->short_description + '" /><span class="left">license URL</span><input type="text" id="dialog_url" class="text ui-widget-content ui-corner-all right" style="width: 185px;" value="' + info->url + '" />').dialog({
                         title: 'Edit the license',
                         autoOpen: true,
                         resizable: false,
@@ -139,19 +137,18 @@
                         buttons: {
                             "Edit": function() {
                                 var name = $("#dialog_name"),
-                                    subcat = $("#dialog_subcat"),
-                                    allFields = $([]).add(name).add(subcat);
+                                    desc = $("#dialog_desc"),
+                                    url = $("#dialog_url"),
+                                    allFields = $([]).add(name).add(subcat).add(url);
 
                                 allFields.removeClass("ui-state-error");
 
-                                // build the uri
-                                var uri = '/owl/members';
-
                                 // get the JSON data from the request
                                 $.post('/owl/licenses/edit/', {
-                                    id: cat_id,
+                                    id: lic_id,
                                     name: name.val(),
-                                    subcat: subcat.val()
+                                    desc: desc.val(),
+                                    url: url.val()
                                 },
                                 function(response) {
                                     // was the edit a success?
