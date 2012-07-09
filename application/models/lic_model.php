@@ -111,7 +111,7 @@ class Lic_model extends CI_Model {
             'owl'               => $owl
         );
 
-        $this->db->insert_batch('categories', $default_categories);
+        $this->db->insert_batch('license', $default_categories);
 
         if ($this->db->affected_rows() > 0)
            return TRUE;
