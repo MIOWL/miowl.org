@@ -323,15 +323,6 @@ class Owl extends CI_Controller {
     }
     //------------------------------------------------------------------
 
-    /**
-     * insert default cats
-     */
-    public function insert_defaults()
-    {
-        $this->load->helper('insert_3d_categories');
-        print ( !insert_3d_categories( 'hospital', $this->session->userdata('owl') ) ) ? 'broken :(' : 'working :D';
-    }
-
 
 //=================================================================================
 // :uploads view
@@ -844,6 +835,143 @@ class Owl extends CI_Controller {
             return print json_encode( array('success' => 'false') );
 
         if ($this->cat_model->delete($id))
+            return print json_encode( array('success' => 'true') );
+        else
+            return print json_encode( array('success' => 'false') );
+    }
+    //------------------------------------------------------------------
+
+
+//=================================================================================
+// :licenses view
+//=================================================================================
+
+    /**
+     * public licenses()
+     */
+    public function licenses($function = FALSE, $params = NULL)
+    {
+        // Do we need to login??
+        if (!$this->login_check('owl-licenses-' . $function))
+            return;
+
+        if (!$this->session->userdata('owl_verified')) {
+            redirect('/welcome', 'location');
+            return;
+        }
+
+        if (!$function)
+            $function = 'list';
+
+        if (method_exists($this, '_licenses_' . $function))
+            return call_user_func(array($this, '_licenses_' . $function), $params);
+
+        show_404();
+    }
+    //------------------------------------------------------------------
+
+
+//=================================================================================
+// :licenses view functions
+//=================================================================================
+
+    /**
+     * licenses function _licenses_list()
+     */
+    public function _licenses_list($offset = 0)
+    {
+        // set the pageination limit
+        $limit = 9;
+
+        // page data array
+        $page_data                  = array();
+        $page_data['page_title']    = "Organize Owl File licenses";
+        $page_data['licenses']      = $this->lic_model->get_owl_licenses($this->session->userdata('owl'), TRUE, $offset, $limit);
+
+        // setup pagination lib
+        $config['base_url']         = site_url('owl/licenses');
+        $config['uri_segment']      = 3;
+        $config['total_rows']       = $this->lic_model->count_owl_licenses($this->session->userdata('owl'));
+        $config['per_page']         = $limit;
+        $config['anchor_class']     = 'class="button" ';
+        $config['cur_tag_open']     = '&nbsp;<div class="button danger current">';
+        $config['cur_tag_close']    = '</div>';
+
+        // init pagination
+        $this->pagination->initialize($config);
+
+        // load the approp. page view
+        $this->load->view('pages/owl_licenses', $page_data);
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * licenses function _licenses_create()
+     */
+    public function _licenses_create()
+    {
+        // page data array
+        $page_data                  = array();
+        $page_data['page_title']    = "Create New Owl File Category";
+        $page_data['licenses']      = $this->lic_model->get_owl_licenses($this->session->userdata('owl'), FALSE);
+
+        // form validation rules
+        $this->form_validation->set_rules('name', 'License Name', "required|trim");
+        $this->form_validation->set_rules('desc', 'License Short Description', "required|trim");
+        $this->form_validation->set_rules('url', 'License URL', "required|trim");
+
+        if ($this->form_validation->run())
+        {
+            // add the new category
+            $this->lic_model->add_category();
+
+            $page_data['success']     = TRUE;
+            $page_data['msg']         = "You're new license has now been created.";
+        }
+
+        // load the approp. page view
+        $this->load->view('pages/owl_license_create', $page_data);
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * licenses function _licenses_edit()
+     */
+    public function _licenses_edit()
+    {
+        // get the post data
+        $id     = $this->input->post('id');
+        $name   = $this->input->post('name');
+        $desc   = $this->input->post('desc');
+        $url    = $this->input->post('url');
+
+        // do the edit
+        $edit = $this->lic_model->edit($id, $name, $desc, $url);
+
+        // setup the return data
+        $return             = array();
+        $return['success']  = $edit['success'];
+        $return['id']       = $edit['id'];
+        $return['namez']    = $edit['name'];
+        $return['desc']     = $edit['desc'];
+        $return['url']      = $edit['url'];
+
+        print json_encode($return);
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * licenses function _licenses_remove()
+     */
+    public function _licenses_remove($id = FALSE)
+    {
+        if (!$id)
+            return print json_encode( array('success' => 'false') );
+
+        if ($this->lic_model->delete($id))
             return print json_encode( array('success' => 'true') );
         else
             return print json_encode( array('success' => 'false') );

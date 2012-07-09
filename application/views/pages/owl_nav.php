@@ -10,7 +10,7 @@
 			</ul>
 		</li>
 
-		<li>
+		<?php /*<li>
 			members
 			<ul>
 				<li>
@@ -23,7 +23,7 @@
 				</li>
 				<li style="list-style-type: none">&nbsp;</li>
 			</ul>
-		</li>
+		</li>*/ ?>
 
 		<li>
 			categories
@@ -80,6 +80,17 @@
 	<?php if ($this->session->userdata('admin')) : ?>
 				<li><a class="owl_nav_button" href="<?php print site_url('owl/categories/organize'); ?>">organize</a></li>
 				<li><a class="owl_nav_button" href="<?php print site_url('owl/categories/create'); ?>">create</a></li>
+	<?php endif; ?>
+				<li style="list-style-type: none">&nbsp;</li>
+			</ul>
+		</li>
+
+		<li>
+			licenses
+			<ul>
+				<li><a class="owl_nav_button" href="<?php print site_url('owl/licenses'); ?>">list</a></li>
+	<?php if ($this->session->userdata('admin')) : ?>
+				<li><a class="owl_nav_button" href="<?php print site_url('owl/licenses/create'); ?>">create</a></li>
 	<?php endif; ?>
 				<li style="list-style-type: none">&nbsp;</li>
 			</ul>
