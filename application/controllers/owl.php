@@ -323,6 +323,15 @@ class Owl extends CI_Controller {
     }
     //------------------------------------------------------------------
 
+    /**
+     * insert default cats
+     */
+    public function insert_defaults()
+    {
+        $this->load->helper('insert_3d_categories');
+        print ( !insert_3d_categories( 'hospital', $this->session->userdata('owl') ) ) ? 'broken :(' : 'working :D';
+    }
+
 
 //=================================================================================
 // :uploads view
