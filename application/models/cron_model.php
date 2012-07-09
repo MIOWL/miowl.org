@@ -62,6 +62,7 @@ class Cron_model extends CI_Model {
      */
     public function deleted_uploads()
     {
+        $this->db->flush_cache();
         $this->db->select('*');
         $this->db->having("deleted", "true");
         $this->db->where("remove_timestamp <=", ( time() - $this->units['month'] ) );
@@ -83,6 +84,7 @@ class Cron_model extends CI_Model {
      */
     public function cleanup_uploads()
     {
+        $this->db->flush_cache();
         $this->db->having("deleted", "true");
         $this->db->where("remove_timestamp <=", ( time() - $this->units['month'] ) );
         $this->db->delete('uploads');
@@ -101,6 +103,7 @@ class Cron_model extends CI_Model {
      */
     public function inactive_users($days = 30)
     {
+        $this->db->flush_cache();
         $this->db->select('*');
         $this->db->having("user_active", "no");
 
@@ -129,6 +132,7 @@ class Cron_model extends CI_Model {
      */
     public function cleanup_users($days = 60)
     {
+        $this->db->flush_cache();
         $this->db->where("user_active", "no");
         $this->db->having("user_registration_date <=", ( time() - ( $days * $this->units['day'] ) ) );
         $this->db->delete('users');
@@ -146,6 +150,7 @@ class Cron_model extends CI_Model {
      */
     public function cleanup_owls()
     {
+        $this->db->flush_cache();
         // setup the removed owls var
         $removed_owls = 0;
 
