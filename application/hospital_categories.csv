@@ -1,0 +1,301 @@
+1,Acute Care Ward,0
+2,Chart Documents,1
+3,Admission Paperwork,2
+4,Discharge Paperwork,2
+5,Communication Paperwork,2
+6,Doctor's Orders,2
+7,Daily Assessment Forms,2
+8,Risk Assessments,2
+9,Psychiatric Forms,2
+10,Billing,2
+11,Miscellaneous,2
+12,Procedures,1
+13,Policies,12
+14,Consents,12
+15,Patient Handouts,12
+16,Miscellaneous,12
+17,Referrals,1
+18,Diagnostic Imaging,17
+19,PT/OT,17
+20,Homecare,17
+21,Public Health,17
+22,Specialty Clinics,17
+23,Cardiovascular,17
+24,Respiratory,17
+25,Gastro-intestinal,17
+26,Miscellaneous,17
+27,Emergency Department,0
+28,Procedures,27
+29,Policies,28
+30,Consents,28
+31,Patient Handouts,28
+32,Miscellaneous,28
+33,Medical Directives,27
+34,Chest Pain,33
+35,Anaphylaxis,33
+36,Hypoglycemia,33
+37,Croup,33
+38,Fever,33
+39,Shortness of Breath,33
+40,Seizures,33
+41,Neutropenia,33
+42,Post Partum Hemorrhage,33
+43,Sore throat,33
+44,Pain management,33
+45,Blank sheet,33
+46,Miscellaneous,33
+47,Policies,33
+48,Discharge Paperwork,27
+49,Transfers,48
+50,Patient Handouts,48
+51,Requisitions,48
+52,Billing,48
+53,Out of Province Claims,48
+54,Miscellaneous,48
+55,Policies,48
+56,Referrals,27
+57,Diagnostic Imaging,56
+58,PT/OT,56
+59,Homecare,56
+60,Public Health,56
+61,Specialty Clinics,56
+62,Cardiovascular,56
+63,Respiratory,56
+64,Gastro-intestinal,56
+65,Miscellaneous,56
+66,Doctor Forms,27
+67,Doctor's Orders,66
+68,History/physical Forms,66
+69,Psychiatric Forms,66
+70,Miscellaneous,66
+71,Policies,66
+72,Nursing Forms,27
+73,Nursing Notes,72
+74,Assessment Forms,72
+75,Policies,72
+76,Policies,0
+77,Acute Care Ward,76
+78,A-C,77
+79,D-F,77
+80,G-I,77
+81,J-L,77
+82,M-O,77
+83,P-R,77
+84,S-U,77
+85,V-Z,77
+86,Emergency Department,76
+87,A-C,86
+88,D-F,86
+89,G-I,86
+90,J-L,86
+91,M-O,86
+92,P-R,86
+93,S-U,86
+94,V-Z,86
+95,Administration,76
+96,Board of Directors,76
+97,Chronic Care Ward,76
+98,Clinical Nutrition,76
+99,Diabetes Education,76
+100,Diagnostic Imaging,76
+101,Dietary Services,76
+102,Employee Health,76
+103,Finance,76
+104,Health Records,76
+105,Housekeeping,76
+106,Human Resources,76
+107,Infection Control,76
+108,Laboratory,76
+109,Laundry,76
+110,Maintenance,76
+111,Meditech,76
+112,Obstetrics,76
+113,Occupational Health and Safety,76
+114,Pharmacy,76
+115,Physiotherapy,76
+116,Purchasing,76
+117,S.P.D. ,76
+119,A-C,95
+120,D-F,95
+121,G-I,95
+122,J-L,95
+123,M-O,95
+124,P-R,95
+125,S-U,95
+126,V-Z,95
+127,A-C,96
+128,D-F,96
+129,G-I,96
+130,J-L,96
+131,M-O,96
+132,P-R,96
+133,S-U,96
+134,V-Z,96
+135,A-C,97
+136,D-F,97
+137,G-I,97
+138,J-L,97
+139,M-O,97
+140,P-R,97
+141,S-U,97
+142,V-Z,97
+143,A-C,98
+144,D-F,98
+145,G-I,98
+146,J-L,98
+147,M-O,98
+148,P-R,98
+149,S-U,98
+150,V-Z,98
+151,A-C,99
+152,D-F,99
+153,G-I,99
+154,J-L,99
+155,M-O,99
+156,P-R,99
+157,S-U,99
+158,V-Z,99
+159,A-C,100
+160,D-F,100
+161,G-I,100
+162,J-L,100
+163,M-O,100
+164,P-R,100
+165,S-U,100
+166,V-Z,100
+167,A-C,101
+168,D-F,101
+169,G-I,101
+170,J-L,101
+171,M-O,101
+172,P-R,101
+173,S-U,101
+174,V-Z,101
+175,A-C,102
+176,D-F,102
+177,G-I,102
+178,J-L,102
+179,M-O,102
+180,P-R,102
+181,S-U,102
+182,V-Z,102
+183,A-C,103
+184,D-F,103
+185,G-I,103
+186,J-L,103
+187,M-O,103
+188,P-R,103
+189,S-U,103
+190,V-Z,103
+191,A-C,104
+192,D-F,104
+193,G-I,104
+194,J-L,104
+195,M-O,104
+196,P-R,104
+197,S-U,104
+198,V-Z,104
+199,A-C,105
+200,D-F,105
+201,G-I,105
+202,J-L,105
+203,M-O,105
+204,P-R,105
+205,S-U,105
+206,V-Z,105
+207,A-C,106
+208,D-F,106
+209,G-I,106
+210,J-L,106
+211,M-O,106
+212,P-R,106
+213,S-U,106
+214,V-Z,106
+215,A-C,107
+216,D-F,107
+217,G-I,107
+218,J-L,107
+219,M-O,107
+220,P-R,107
+221,S-U,107
+222,V-Z,107
+223,A-C,108
+224,D-F,108
+225,G-I,108
+226,J-L,108
+227,M-O,108
+228,P-R,108
+229,S-U,108
+230,V-Z,108
+231,A-C,109
+232,D-F,109
+233,G-I,109
+234,J-L,109
+235,M-O,109
+236,P-R,109
+237,S-U,109
+238,V-Z,109
+239,A-C,110
+240,D-F,110
+241,G-I,110
+242,J-L,110
+243,M-O,110
+244,P-R,110
+245,S-U,110
+246,V-Z,110
+247,A-C,111
+248,D-F,111
+249,G-I,111
+250,J-L,111
+251,M-O,111
+252,P-R,111
+253,S-U,111
+254,V-Z,111
+255,A-C,112
+256,D-F,112
+257,G-I,112
+258,J-L,112
+259,M-O,112
+260,P-R,112
+261,S-U,112
+262,V-Z,112
+263,A-C,113
+264,D-F,113
+265,G-I,113
+266,J-L,113
+267,M-O,113
+268,P-R,113
+269,S-U,113
+270,V-Z,113
+271,A-C,114
+272,D-F,114
+273,G-I,114
+274,J-L,114
+275,M-O,114
+276,P-R,114
+277,S-U,114
+278,V-Z,114
+279,A-C,115
+280,D-F,115
+281,G-I,115
+282,J-L,115
+283,M-O,115
+284,P-R,115
+285,S-U,115
+286,V-Z,115
+287,A-C,116
+288,D-F,116
+289,G-I,116
+290,J-L,116
+291,M-O,116
+292,P-R,116
+293,S-U,116
+294,V-Z,116
+295,A-C,117
+296,D-F,117
+297,G-I,117
+298,J-L,117
+299,M-O,117
+300,P-R,117
+301,S-U,117
+302,V-Z,117

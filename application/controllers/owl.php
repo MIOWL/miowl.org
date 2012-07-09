@@ -2,13 +2,13 @@
 
 /**
  * ------------------------------------------------------------------------------
- * 
+ *
  * MiOWL                                                     (v1) | codename dave
- * 
+ *
  * ------------------------------------------------------------------------------
  *
  * Copyright (c) 2012, Alan Wynn
- * 
+ *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
  * files (the "Software"), to deal in the Software without
@@ -17,10 +17,10 @@
  * copies of the Software, and to permit persons to whom the
  * Software is furnished to do so, subject to the following
  * conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
  * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
@@ -29,7 +29,7 @@
  * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
- * 
+ *
  * ------------------------------------------------------------------------------
  */
 
@@ -99,9 +99,9 @@ class Owl extends CI_Controller {
         }
 
         $details = $this->owl_model->get_owl_by_id($this->session->userdata('owl'));
-        $address = $details->row()->owl_address . "\n" . 
-                   $details->row()->owl_city . "\n" . 
-                   $details->row()->owl_province . "\n" . 
+        $address = $details->row()->owl_address . "\n" .
+                   $details->row()->owl_city . "\n" .
+                   $details->row()->owl_province . "\n" .
                    $details->row()->owl_post_code;
 
         // page data array
@@ -244,9 +244,9 @@ class Owl extends CI_Controller {
                 $this->owlmail->send_chosen($name, $owl_info->row()->owl_name, $this->session->userdata('email'));
                 $this->owlmail->inform_admin($name, $owl_info->row()->owl_email);
 
-                $page_data['success']     = TRUE;
-                $page_data['msg']        = "Successfully chosen you're owl. Please check your email to finish the registration process.";
-                $page_data['redirect']    = '';
+                $page_data['success']   = TRUE;
+                $page_data['msg']       = "Successfully chosen you're owl. Please check your email to finish the registration process.";
+                $page_data['redirect']  = '';
                 $this->load->view('messages/message_page', $page_data);
            }
             else                                                        // New Owl
@@ -267,14 +267,20 @@ class Owl extends CI_Controller {
                                 $this->input->post('email'),
                                 $authcode
                             );
-                $this->cat_model->insert_defaults($owl_id);
-                $this->lic_model->insert_defaults($owl_id);
+
+                // insert the default cats
+                $this->load->helper('insert_3d_categories');
+                insert_3d_categories( $this->input->post('type'), $owl_id );
+
+                // insert the default licenses
+                $this->lic_model->insert_defaults( $owl_id );
+
                 $this->owl_model->choose_owl($this->session->userdata('user_id'), $owl_id, TRUE);
                 $this->owlmail->send_activation($name, $this->input->post('email'), $authcode);
 
-                $page_data['success']     = TRUE;
-                $page_data['msg']        = "Successfully registered you're owl. Please check your email to finish the registration process.";
-                $page_data['redirect']    = '';
+                $page_data['success']   = TRUE;
+                $page_data['msg']       = "Successfully registered you're owl. Please check your email to finish the registration process.";
+                $page_data['redirect']  = '';
                 $this->load->view('messages/message_page', $page_data);
             }
         }

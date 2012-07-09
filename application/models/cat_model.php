@@ -2,13 +2,13 @@
 
 /**
  * ------------------------------------------------------------------------------
- * 
+ *
  * MiOWL                                                     (v1) | codename dave
- * 
+ *
  * ------------------------------------------------------------------------------
  *
  * Copyright (c) 2012, Alan Wynn
- * 
+ *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
  * files (the "Software"), to deal in the Software without
@@ -17,10 +17,10 @@
  * copies of the Software, and to permit persons to whom the
  * Software is furnished to do so, subject to the following
  * conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
  * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
@@ -29,7 +29,7 @@
  * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
- * 
+ *
  * ------------------------------------------------------------------------------
  */
 
@@ -116,13 +116,16 @@ class Cat_model extends CI_Model {
     /**
      * public add_category()
      */
-    public function add_category()
+    public function add_category( $insert_data = TRUE )
     {
-        $insert_data = array(
-            'name'      => $this->input->post('name'),
-            'parent_id' => $this->input->post('sub_category'),
-            'owl'    => $this->session->userdata('owl')
-        );
+        if( !$insert_data )
+        {
+            $insert_data = array(
+                'name'      => $this->input->post('name'),
+                'parent_id' => $this->input->post('sub_category'),
+                'owl'    => $this->session->userdata('owl')
+            );
+        }
 
         $this->db->insert('categories', $insert_data);
 
@@ -269,49 +272,6 @@ class Cat_model extends CI_Model {
            $return['success'] = TRUE;
 
         return $return;
-    }
-    //------------------------------------------------------------------
-
-
-    /**
-     * public insert_defaults()
-     */
-    public function insert_defaults($owl = FALSE)
-    {
-        if (!$owl)
-            return FALSE;
-
-        // category names array
-        $names = array(
-            'uncategorised'
-        );
-
-        // the main array
-        $default_categories = array();
-
-        /**
-         * #########################
-         * || the individual cats ||
-         * #########################
-         * name         = category name
-         * parent_id    = category parent id ( 0 = top level - no parent )
-         * owl          = the owl id
-         */
-        foreach ($names as $name)
-        {
-            $default_categories[] = array(
-                'name'      => $name,
-                'parent_id' => 0,
-                'owl'       => $owl
-            );
-        }
-
-        $this->db->insert_batch('categories', $default_categories);
-
-        if ($this->db->affected_rows() > 0)
-           return TRUE;
-
-        return FALSE;
     }
     //------------------------------------------------------------------
 
