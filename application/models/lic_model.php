@@ -80,7 +80,7 @@ class Lic_model extends CI_Model {
 
         $this->db->select('*');
         $this->db->where('id', $id);
-        $query = $this->db->from('license');
+        $query = $this->db->get('license');
 
         if ($query->num_rows() > 0)
             return $query;
