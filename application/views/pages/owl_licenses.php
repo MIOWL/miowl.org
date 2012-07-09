@@ -33,7 +33,7 @@
                     <tr id="r-<?php print $row->id; ?>">
                         <td><?php print $row->name; ?></td>
                         <td><?php print $row->short_description; ?></td>
-                        <td><?php print $row->url; ?></td>
+                        <td><a href="<?php print $row->url; ?>" target="_BLANK"><?php print $row->url; ?></a></td>
                         <td>
                             <?php if ( $is_in_use ) : ?>
                                 <span style="color:#63b52e !important;" class="icon_font">.</span>
