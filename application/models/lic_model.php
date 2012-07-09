@@ -88,6 +88,26 @@ class Lic_model extends CI_Model {
 
 
     /**
+     * public in_use()
+     * is this cat in use?
+     */
+    public function in_use($id = FALSE)
+    {
+        if (!$id)
+            return FALSE;
+
+        // does the cat have files attached to it?
+        $this->db->where('upload_license', $id);
+        $query = $this->db->get('uploads');
+        if ($query->num_rows() > 0)
+            return TRUE;
+
+        return FALSE;
+    }
+    //------------------------------------------------------------------
+
+
+    /**
      * public insert_defaults()
      */
     public function insert_defaults($owl = FALSE)
