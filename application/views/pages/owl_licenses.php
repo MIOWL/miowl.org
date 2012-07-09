@@ -128,7 +128,7 @@
                 // get the owl list
                 $.get('/owl/licenses/info/' + lic_id, function(info) {
                     // create and load the dialog form
-                    $('<div id="dialog"></div>').html('<p class="validateTips">All form fields are required.</p><fieldset><span class="left">license Name</span><input type="text" id="dialog_name" class="text ui-widget-content ui-corner-all right" style="width: 185px;" value="' + info.name + '" /><span class="left">license Description</span><input type="text" id="dialog_desc" class="text ui-widget-content ui-corner-all right" style="width: 185px;" value="' + info.short_description + '" /><span class="left">license URL</span><input type="text" id="dialog_url" class="text ui-widget-content ui-corner-all right" style="width: 185px;" value="' + info.url + '" />').dialog({
+                    $('<div id="dialog"></div>').html('<p class="validateTips">All form fields are required.</p><fieldset><span class="left">Name</span><input type="text" id="dialog_name" class="text ui-widget-content ui-corner-all right" style="width: 185px;" value="' + info.name + '" /><span class="left">Description</span><input type="text" id="dialog_desc" class="text ui-widget-content ui-corner-all right" style="width: 185px;" value="' + info.short_description + '" /><span class="left">URL</span><input type="text" id="dialog_url" class="text ui-widget-content ui-corner-all right" style="width: 185px;" value="' + info.url + '" />').dialog({
                         title: 'Edit the license',
                         autoOpen: true,
                         resizable: false,
