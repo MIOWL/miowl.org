@@ -886,7 +886,7 @@ class Owl extends CI_Controller {
         // page data array
         $page_data                  = array();
         $page_data['page_title']    = "Organize Owl File licenses";
-        $page_data['licenses']      = $this->lic_model->get_owl_licenses($this->session->userdata('owl'), TRUE, $offset, $limit);
+        $page_data['licenses']      = $this->lic_model->get_owl_licenses($this->session->userdata('owl'), $offset, $limit);
 
         // setup pagination lib
         $config['base_url']         = site_url('owl/licenses');
@@ -914,7 +914,7 @@ class Owl extends CI_Controller {
         // page data array
         $page_data                  = array();
         $page_data['page_title']    = "Create New Owl File Category";
-        $page_data['licenses']      = $this->lic_model->get_owl_licenses($this->session->userdata('owl'), FALSE);
+        $page_data['licenses']      = $this->lic_model->get_owl_licenses($this->session->userdata('owl'));
 
         // form validation rules
         $this->form_validation->set_rules('name', 'License Name', "required|trim");

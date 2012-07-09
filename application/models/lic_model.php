@@ -47,21 +47,42 @@ class Lic_model extends CI_Model {
     /**
      * public get_owl_licenses()
      */
-    public function get_owl_licenses($owl = FALSE)
+    public function get_owl_licenses($owl = FALSE, $offset = 0, $limit = FALSE)
     {
         $this->db->select('*');
 
-        // if (!$owl)
-        //     return FALSE;
+        if (!$owl)
+            $owl = $this->session->userdata('owl');
 
-        // $this->db->where('owl', $owl);
+        $this->db->where('owl', $owl);
         $this->db->order_by("name", "ASC");
-        $query = $this->db->get('license');
+
+        if (!$limit)
+            $query = $this->db->get('license');
+        else
+            $query = $this->db->get('license', $limit, $offset);
 
         if ($query->num_rows() > 0)
             return $query;
         else
             return FALSE;
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * public get_owl_licenses()
+     */
+    public function get_owl_licenses($owl = FALSE)
+    {
+        $this->db->select('*');
+
+        if (!$owl)
+            $owl = $this->session->userdata('owl');
+
+        $this->db->where('owl', $owl);
+        $this->db->from('license');
+        return $this->db->count_all_results();
     }
     //------------------------------------------------------------------
 
