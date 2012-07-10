@@ -165,8 +165,10 @@
                                             $('a', $(new_url)).val(response.url).attr('href', response.url);
 
                                             alert(
-                                                'name :' + response.name + "\n\n" +
-                                                'desc :' + response.desc + "\n\n" +
+                                                'name :' + response.name
+                                                 + "\n\n" +
+                                                'desc :' + response.desc
+                                                 + "\n\n" +
                                                 'url :' + response.url
                                             );
 
