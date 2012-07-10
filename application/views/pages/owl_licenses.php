@@ -77,13 +77,13 @@
                 e.preventDefault();
 
                 // get the data from the form
-                var id   = $(this).attr('href'),
+                var id   = $(this).parent('tr').attr('id').val().replace('#r-', ''),
                     name = $('td:first', $('#r-' + id)),
                     desc = $(name).next(),
                     url  = $(desc).next();
 
                 alert(
-                    'name = ' + name.val()
+                    'id = "' + id + '"'
                 );
 
                 // setup and load the dialog box
