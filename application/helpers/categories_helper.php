@@ -140,7 +140,7 @@ if (!function_exists('url_walk'))
                 if( !empty( $value ) )
                     $output[$name] = url_walk( $value );
                 else
-                    $output[] = url_walk( $value );
+                    $output[] = $name;
             }
             else
             {
