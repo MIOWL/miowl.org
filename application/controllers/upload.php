@@ -228,13 +228,13 @@ class Upload extends CI_Controller {
                     $local_file         = $upload_data['full_path'];
 
                     // add the lic and get the auto increment id
-                    $lic_id = $this->lic_model->add_new(
+                    $lic_id = $this->lic_model->add_new( array(
                         'name'              => $name,
                         'short_description' => $short_description,
                         'url'               => $url,
                         'local_file'        => $local_file,
-                        'owl'               => $owl
-                    );
+                        'owl'               => $owl,
+                    ) );
 
                     // update that url with the correct id if we uploaded a local file
                     $this->lic_model->fix_id($lic_id, $url);
@@ -258,13 +258,13 @@ class Upload extends CI_Controller {
                 $local_file         = 'false';
 
                 // add the lic and get the auto increment id
-                $this->lic_model->add_new(
+                $this->lic_model->add_new( array(
                     'name'              => $name,
                     'short_description' => $short_description,
                     'url'               => $url,
                     'local_file'        => $local_file,
-                    'owl'               => $owl
-                );
+                    'owl'               => $owl,
+                ) );
 
                 $page_data['page_title'] = 'License Install Success';
                 $page_data['upload_data'] = $upload_data;
