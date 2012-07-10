@@ -115,7 +115,7 @@ if (!function_exists('gen_categories_a'))
 {
     function gen_categories_a($owl = FALSE)
     {
-        return url_walk( $gen_categories_id($owl) );
+        return url_walk( gen_categories_id($owl) );
     }
 }
 
