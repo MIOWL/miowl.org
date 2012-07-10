@@ -155,7 +155,7 @@
                                     function(response) {
                                         // was the edit a success?
                                         if (response.success) {
-                                            var new_name = $('td:first', $('#r-' + cat_id)),
+                                            var new_name = $('td:first', $('#r-' + response.id)),
                                                 new_desc = $(new_name).next(),
                                                 new_url  = $(new_desc).next();
 
