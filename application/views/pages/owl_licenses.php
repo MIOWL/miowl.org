@@ -134,7 +134,7 @@
                             title: 'Edit the license',
                             autoOpen: true,
                             resizable: false,
-                            width: 350,
+                            width: 550,
                             modal: true,
                             buttons: {
                                 "Edit": function() {
