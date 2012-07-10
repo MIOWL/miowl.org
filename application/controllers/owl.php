@@ -988,7 +988,7 @@ class Owl extends CI_Controller {
         if ( (( $data = $this->lic_model->delete($id) )) != FALSE)
         {
             if( $data->local == 'true' )
-                unlink( $data->url )
+                unlink( $data->url );
 
             return print json_encode( array('success' => 'true') );
         }
