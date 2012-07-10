@@ -83,7 +83,7 @@
                     url  = $(desc).next();
 
                 alert(
-                    'id = "' + id + '"'
+                    'name = "' + name.val() + '"'
                 );
 
                 // setup and load the dialog box
