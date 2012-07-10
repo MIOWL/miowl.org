@@ -79,16 +79,14 @@
                 // get the data from the form
                 // var id   = $(this).closest('tr').attr('id').replace("r-", ""),
                 var id   = $(this).attr('href'),
-                    name = $('td:first', $('#r-' + id)),
-                    desc = $(name).next(),
-                    url  = $(desc).next();
+                    name = $('td:first', $('#r-' + id)).val();
 
                 alert(
-                    'name = "' + name.val() + '"'
+                    'name = "' + name + '"'
                 );
 
                 // setup and load the dialog box
-                $('<div></div>').html('<span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>This will delete the license <strong>' + name.val() + '</strong>').dialog({
+                $('<div></div>').html('<span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>This will delete the license <strong>' + name + '</strong>').dialog({
                     title: 'delete this license?',
                     autoOpen: true,
                     resizable: false,
