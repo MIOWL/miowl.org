@@ -130,15 +130,21 @@ if (!function_exists('url_walk'))
             if( is_array( $value ) )
             {
                 if( (( $data = $CI->cat_model->get_category( $key ) )) )
-                $cat_name = $data->row()->name;
-                $output[] = "<a href='{$key}'>{$cat_name}</a>";
-                $output[] = url_walk( $value );
+                {
+                    $cat_name = $data->row()->name;
+                    $output[] = "<a href='{$key}'>{$cat_name}</a>";
+                }
+
+                if( !empty( $value ) )
+                    $output[] = url_walk( $value );
             }
             else
             {
                 if( (( $data = $CI->cat_model->get_category( $value ) )) )
-                $cat_name = $data->row()->name;
-                $output[$key] = "<a href='{$value}'>{$cat_name}</a>";
+                {
+                    $cat_name = $data->row()->name;
+                    $output[$key] = "<a href='{$value}'>{$cat_name}</a>";
+                }
             }
         }
         return $output;
