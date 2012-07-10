@@ -128,7 +128,12 @@ if (!function_exists('url_walk'))
         $output = array();
         foreach ($input as $key => $value) {
             if( is_array( $value ) )
+            {
+                if( (( $data = $CI->cat_model->get_category( $key ) )) )
+                $cat_name = $data->row()->name;
+                $output[] = "<a href='{$key}'>{$cat_name}</a>";
                 $output[$key] = url_walk( $value );
+            }
             else
             {
                 if( (( $data = $CI->cat_model->get_category( $value ) )) )
