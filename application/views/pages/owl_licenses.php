@@ -82,38 +82,38 @@
                     name = $('td:first', $('#r-' + id)).effect("highlight", {}, 3000),
                     name = $('td:first', $('#r-' + id)).val();
 
-                // setup and load the dialog box
-                $('<div></div>').html('<span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>This will delete the license <strong>' + name + '</strong>').dialog({
-                    title: 'delete this license?',
-                    autoOpen: true,
-                    resizable: false,
-                    modal: true,
-                    buttons: {
-                        "Confirm": function() {
-                            // close the dialog box
-                            $(this).dialog("close");
+                // // setup and load the dialog box
+                // $('<div></div>').html('<span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>This will delete the license <strong>' + name + '</strong>').dialog({
+                //     title: 'delete this license?',
+                //     autoOpen: true,
+                //     resizable: false,
+                //     modal: true,
+                //     buttons: {
+                //         "Confirm": function() {
+                //             // close the dialog box
+                //             $(this).dialog("close");
 
-                            // build the uri
-                            var uri = '/owl/licenses/remove/' + id;
+                //             // build the uri
+                //             var uri = '/owl/licenses/remove/' + id;
 
-                            // get the JSON data from the request
-                            $.getJSON(uri, function(data) {
-                                if (data.success == 'true') {
-                                    // update the view to reflect this change
-                                    $('#r-' + id).fadeOut('slow', function() {
-                                        $('#r-' + id).empty();
-                                    });
-                                }
-                                else {
-                                    alert('Sorry, an error has occured. Please report this to the site admin.');
-                                }
-                            });
-                        },
-                        Cancel: function() {
-                            $(this).dialog("close");
-                        }
-                    }
-                });
+                //             // get the JSON data from the request
+                //             $.getJSON(uri, function(data) {
+                //                 if (data.success == 'true') {
+                //                     // update the view to reflect this change
+                //                     $('#r-' + id).fadeOut('slow', function() {
+                //                         $('#r-' + id).empty();
+                //                     });
+                //                 }
+                //                 else {
+                //                     alert('Sorry, an error has occured. Please report this to the site admin.');
+                //                 }
+                //             });
+                //         },
+                //         Cancel: function() {
+                //             $(this).dialog("close");
+                //         }
+                //     }
+                // });
             });
         });
 
