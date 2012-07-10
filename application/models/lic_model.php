@@ -49,7 +49,7 @@ class Lic_model extends CI_Model {
      */
     public function add_new( $insert_data = FALSE )
     {
-        $this->db->insert('categories', $insert_data);
+        $this->db->insert('license', $insert_data);
         return $this->db->insert_id();
     }
     //------------------------------------------------------------------
