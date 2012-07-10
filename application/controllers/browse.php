@@ -227,7 +227,7 @@ class Browse extends CI_Controller {
     {
         $page_data = array();
         $page_data['page_title'] = 'File Browser | by category (' . $this->cat_model->get_category($cat)->row()->name . ')';
-        $page_data['browse_by_owl'] = TRUE;
+        $page_data['browse_by_cat'] = TRUE;
 
         $uploads = $this->upload_model->get_upload_by_cat($cat, $limit, $offset);
 
@@ -276,8 +276,8 @@ class Browse extends CI_Controller {
         $page_data['table'] = $this->table->generate();
 
         // setup pagination lib
-        $config['base_url']         = site_url('browse/cat/' . $owl . '/' . $cat);
-        $config['uri_segment']      = 5;
+        $config['base_url']         = site_url('browse/cat/' . $cat);
+        $config['uri_segment']      = 4;
         $config['total_rows']       = $this->upload_model->total_owl_uploads($owl);
         $config['per_page']         = $limit;
         $config['anchor_class']     = 'class="button" ';
