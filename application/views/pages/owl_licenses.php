@@ -128,6 +128,9 @@
                 // get the owl list
                 $.getJSON('/owl/licenses/info/' + lic_id, function(info) {
                     var obj = $(info).first();
+                    $(obj).each(function(thing){
+                        alert(thing);
+                    });
                     // create and load the dialog form
                     $('<div id="dialog"></div>')
                         .html('<p class="validateTips">All form fields are required.</p><fieldset><span class="left">Name</span><input type="text" id="dialog_name" class="text ui-widget-content ui-corner-all right" style="width: 185px;" value="' + obj.name + '" /><br /><span class="left">Description</span><input type="text" id="dialog_desc" class="text ui-widget-content ui-corner-all right" style="width: 185px;" value="' + obj.short_description + '" /><br /><span class="left">URL</span><input type="text" id="dialog_url" class="text ui-widget-content ui-corner-all right" style="width: 185px;" value="' + obj.url + '" />')
