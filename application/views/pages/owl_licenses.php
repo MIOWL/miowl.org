@@ -97,14 +97,14 @@
                             $(this).dialog("close");
 
                             // build the uri
-                            var uri = '/owl/licenses/remove/' + lic_id;
+                            var uri = '/owl/licenses/remove/' + id;
 
                             // get the JSON data from the request
                             $.getJSON(uri, function(data) {
                                 if (data.success == 'true') {
                                     // update the view to reflect this change
-                                    $('#r-' + lic_id).fadeOut('slow', function() {
-                                        $('#r-' + lic_id).empty();
+                                    $('#r-' + id).fadeOut('slow', function() {
+                                        $('#r-' + id).empty();
                                     });
                                 }
                                 else {
