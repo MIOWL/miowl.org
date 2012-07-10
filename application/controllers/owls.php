@@ -2,13 +2,13 @@
 
 /**
  * ------------------------------------------------------------------------------
- * 
+ *
  * MiOWL                                                     (v1) | codename dave
- * 
+ *
  * ------------------------------------------------------------------------------
  *
  * Copyright (c) 2012, Alan Wynn
- * 
+ *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
  * files (the "Software"), to deal in the Software without
@@ -17,10 +17,10 @@
  * copies of the Software, and to permit persons to whom the
  * Software is furnished to do so, subject to the following
  * conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
  * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
@@ -29,7 +29,7 @@
  * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
- * 
+ *
  * ------------------------------------------------------------------------------
  */
 
@@ -118,9 +118,9 @@ class Owls extends CI_Controller {
     public function display($owl = FALSE)
     {
         $details = $this->owl_model->get_owl_by_id($owl);
-        $address = $details->row()->owl_address . "\n" . 
-                   $details->row()->owl_city . "\n" . 
-                   $details->row()->owl_province . "\n" . 
+        $address = $details->row()->owl_address . "\n" .
+                   $details->row()->owl_city . "\n" .
+                   $details->row()->owl_province . "\n" .
                    $details->row()->owl_post_code;
 
         // page data array
@@ -280,7 +280,7 @@ class Owls extends CI_Controller {
         $page_data                  = array();
         $page_data['page_title']    = "All Owl File Categories";
         $page_data['owl']           = $owl;
-        $page_data['categories']    = gen_categories($owl);
+        $page_data['categories']    = gen_categories_id($owl);
 
         // load the approp. page view
         $this->load->view('pages/owl_categories', $page_data);

@@ -72,6 +72,45 @@ if (!function_exists('gen_categories'))
     }
 }
 
+if (!function_exists('gen_categories_id'))
+{
+    function gen_categories_id($owl = FALSE)
+    {
+        $CI =& get_instance();
+        $cat_array = NULL;
+
+        // get our root categories
+        if (($roots = $CI->cat_model->get_roots($owl)))
+        {
+            foreach ($roots->result() as $root)
+            {
+                $cat_array[$root->id] = array();
+
+                // child this roots children
+                if (($kids = $CI->cat_model->get_children($owl, $root->id)))
+                {
+                    foreach ($kids->result() as $child)
+                    {
+                        $cat_array[$root->id][$child->id] = array();
+
+                        // get our childs children
+                        if (($kids_kids = $CI->cat_model->get_children($owl, $child->id)))
+                        {
+                            foreach ($kids_kids->result() as $childs_childs)
+                            {
+                                $cat_array[$root->id][$child->id][$childs_childs->id] = array();
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+
+        return $cat_array;
+    }
+}
+
 if (!function_exists('gen_drop_categories'))
 {
     function gen_drop_categories($owl = FALSE, $create_page = FALSE, $cat_pid = FALSE)
