@@ -125,7 +125,7 @@ if (!function_exists('url_walk'))
     {
         $CI =& get_instance();
         $CI->load->model('cat_model');
-        $ouput = array();
+        $output = array();
         foreach ($input as $key => $value) {
             if( is_array( $value ) )
                 $output[$key] = url_walk( $value );
