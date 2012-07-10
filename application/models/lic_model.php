@@ -56,6 +56,34 @@ class Lic_model extends CI_Model {
 
 
     /**
+     * public fix_id()
+     * fix_id the license URL
+     */
+    public function fix_id($id = FALSE, $url = FALSE)
+    {
+        if (!$this->session->userdata('editor'))
+            return FALSE;
+
+        if ( !$id || !$url )
+            return FALSE;
+
+        $this->db->set('url', $url);
+        $where = array(
+            'id'    => $id,
+            'owl'   => $this->session->userdata('owl')
+        );
+        $this->db->where($where);
+        $this->db->update('license');
+
+        if ($this->db->affected_rows() > 0)
+           return TRUE;
+
+        return FALSE;
+    }
+    //------------------------------------------------------------------
+
+
+    /**
      * public get_owl_licenses()
      */
     public function get_owl_licenses($owl = FALSE, $offset = 0, $limit = FALSE)
