@@ -82,6 +82,10 @@
                     desc = $(name).next(),
                     url  = $(desc).next();
 
+                alert(
+                    'name = ' + name.val()
+                );
+
                 // setup and load the dialog box
                 $('<div></div>').html('<span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>This will delete the license <strong>' + name.val() + '</strong>').dialog({
                     title: 'delete this license?',
