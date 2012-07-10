@@ -127,7 +127,7 @@ if (!function_exists('url_walk'))
         $ouput = array();
         foreach ($input as $key => $value) {
             if( is_array( $value ) )
-                $output[$key] = url_walk( $value )
+                $output[$key] = url_walk( $value );
             else
             {
                 if( (( $data = $CI->cat_model->get_category( $value ) )) )
