@@ -45,6 +45,17 @@ class Lic_model extends CI_Model {
 //=================================================================================
 
     /**
+     * public add_license()
+     */
+    public function add_new( $insert_data = FALSE )
+    {
+        $this->db->insert('categories', $insert_data);
+        return $this->db->insert_id();
+    }
+    //------------------------------------------------------------------
+
+
+    /**
      * public get_owl_licenses()
      */
     public function get_owl_licenses($owl = FALSE, $offset = 0, $limit = FALSE)

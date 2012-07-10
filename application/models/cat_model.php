@@ -116,14 +116,14 @@ class Cat_model extends CI_Model {
     /**
      * public add_category()
      */
-    public function add_category( $insert_data = TRUE )
+    public function add_category( $insert_data = FALSE )
     {
         if( !$insert_data )
         {
             $insert_data = array(
                 'name'      => $this->input->post('name'),
                 'parent_id' => $this->input->post('sub_category'),
-                'owl'    => $this->session->userdata('owl')
+                'owl'       => $this->session->userdata('owl')
             );
         }
 
