@@ -83,7 +83,7 @@ class Cat_model extends CI_Model {
 
 
     /**
-     * public get_owl_categories()
+     * public count_owl_categories()
      */
     public function count_owl_categories($owl = FALSE, $include_default = TRUE)
     {

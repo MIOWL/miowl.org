@@ -226,7 +226,7 @@ class Browse extends CI_Controller {
     public function cat($cat = FALSE, $offset = 0, $limit = 10)
     {
         $page_data = array();
-        $page_data['page_title'] = 'File Browser | by category (' . $this->owl_model->get_cat_by_id($cat)->row()->name . ')';
+        $page_data['page_title'] = 'File Browser | by category (' . $this->owl_model->get_category($cat)->row()->name . ')';
         $page_data['browse_by_owl'] = TRUE;
 
         $uploads = $this->upload_model->get_upload_by_cat($cat, $limit, $offset);
