@@ -129,6 +129,9 @@
                 $.getJSON('/owl/licenses/info/' + lic_id, function(info) {
                     var obj = $(info).first();
                     $(obj).each(function(thing){
+                        obj = thing;
+                    });
+                    $(obj).each(function(thing){
                         alert(thing);
                     });
                     // create and load the dialog form
