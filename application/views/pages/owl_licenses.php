@@ -128,61 +128,63 @@
                 // get the owl list
                 $.getJSON('/owl/licenses/info/' + lic_id, function(info) {
                     // create and load the dialog form
-                    $('<div id="dialog"></div>').html('<p class="validateTips">All form fields are required.</p><fieldset><span class="left">Name</span><input type="text" id="dialog_name" class="text ui-widget-content ui-corner-all right" style="width: 185px;" value="' + info.name + '" /><br /><span class="left">Description</span><input type="text" id="dialog_desc" class="text ui-widget-content ui-corner-all right" style="width: 185px;" value="' + info.short_description + '" /><br /><span class="left">URL</span><input type="text" id="dialog_url" class="text ui-widget-content ui-corner-all right" style="width: 185px;" value="' + info.url + '" />').dialog({
-                        title: 'Edit the license',
-                        autoOpen: true,
-                        resizable: false,
-                        width: 350,
-                        modal: true,
-                        buttons: {
-                            "Edit": function() {
-                                var name = $("#dialog_name"),
-                                    desc = $("#dialog_desc"),
-                                    url = $("#dialog_url"),
-                                    allFields = $([]).add(name).add(subcat).add(url);
+                    $('<div id="dialog"></div>')
+                        .html('<p class="validateTips">All form fields are required.</p><fieldset><span class="left">Name</span><input type="text" id="dialog_name" class="text ui-widget-content ui-corner-all right" style="width: 185px;" value="' + info.0.name + '" /><br /><span class="left">Description</span><input type="text" id="dialog_desc" class="text ui-widget-content ui-corner-all right" style="width: 185px;" value="' + info.0.short_description + '" /><br /><span class="left">URL</span><input type="text" id="dialog_url" class="text ui-widget-content ui-corner-all right" style="width: 185px;" value="' + info.0.url + '" />')
+                        .dialog({
+                            title: 'Edit the license',
+                            autoOpen: true,
+                            resizable: false,
+                            width: 350,
+                            modal: true,
+                            buttons: {
+                                "Edit": function() {
+                                    var name = $("#dialog_name"),
+                                        desc = $("#dialog_desc"),
+                                        url = $("#dialog_url"),
+                                        allFields = $([]).add(name).add(subcat).add(url);
 
-                                allFields.removeClass("ui-state-error");
+                                    allFields.removeClass("ui-state-error");
 
-                                // get the JSON data from the request
-                                $.post('/owl/licenses/edit/', {
-                                    id: lic_id,
-                                    name: name.val(),
-                                    desc: desc.val(),
-                                    url: url.val()
+                                    // get the JSON data from the request
+                                    $.post('/owl/licenses/edit/', {
+                                        id: lic_id,
+                                        name: name.val(),
+                                        desc: desc.val(),
+                                        url: url.val()
+                                    },
+                                    function(response) {
+                                        // was the edit a success?
+                                        if (response.success) {
+                                            // get the new breadcrumb
+                                            $.get('/owl/licenses/breadcrumb/' + cat_id, function(data) {
+                                                // var breadcrumb = response;
+                                                $('td:first', $('#r-' + cat_id)).html(data);
+                                            }, "html");
+
+                                            // update the href to reflect this change
+                                            var new_uri = cat_id + ':' + response.subcat + ':' + response.namez;
+                                            $('.del', $('#r-' + cat_id)).attr('href', new_uri);
+                                            $('.licedit', $('#r-' + cat_id)).attr('href', new_uri);
+                                        }
+                                        else {
+                                            alert('Sorry, an error has occured. Please report this to the site admin.');
+                                        }
+                                    }, "json");
+
+                                    // close the dialog box
+                                    $(this).dialog("close");
                                 },
-                                function(response) {
-                                    // was the edit a success?
-                                    if (response.success) {
-                                        // get the new breadcrumb
-                                        $.get('/owl/licenses/breadcrumb/' + cat_id, function(data) {
-                                            // var breadcrumb = response;
-                                            $('td:first', $('#r-' + cat_id)).html(data);
-                                        }, "html");
-
-                                        // update the href to reflect this change
-                                        var new_uri = cat_id + ':' + response.subcat + ':' + response.namez;
-                                        $('.del', $('#r-' + cat_id)).attr('href', new_uri);
-                                        $('.licedit', $('#r-' + cat_id)).attr('href', new_uri);
-                                    }
-                                    else {
-                                        alert('Sorry, an error has occured. Please report this to the site admin.');
-                                    }
-                                }, "json");
-
-                                // close the dialog box
-                                $(this).dialog("close");
+                                Cancel: function() {
+                                    $(this).dialog("close");
+                                }
                             },
-                            Cancel: function() {
-                                $(this).dialog("close");
-                            }
-                        },
-                        close: function() {
-                            var name = $("#dialog_name"),
-                                subcat = $("#dialog_subcat"),
-                                allFields = $([]).add(name).add(subcat);
+                            close: function() {
+                                var name = $("#dialog_name"),
+                                    subcat = $("#dialog_subcat"),
+                                    allFields = $([]).add(name).add(subcat);
 
-                            allFields.val("").removeClass("ui-state-error");
-                        }
+                                allFields.val("").removeClass("ui-state-error");
+                            }
                     });
                 },
                 "html");
