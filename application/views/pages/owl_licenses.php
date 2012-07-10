@@ -173,7 +173,7 @@
                                             );
 
                                             // debug highlight
-                                            $('td:first', $('#r-' + response.id)).effect("highlight", {}, 3000);
+                                            $('#r-' + response.id).effect("highlight", {}, 3000);
                                         }
                                         else {
                                             alert('Sorry, an error has occured. Please report this to the site admin.');
