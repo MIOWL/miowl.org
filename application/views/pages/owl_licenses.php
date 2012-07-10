@@ -79,11 +79,8 @@
                 // get the data from the form
                 // var id   = $(this).closest('tr').attr('id').replace("r-", ""),
                 var id   = $(this).attr('href'),
+                    name = $('td:first', $('#r-' + id)).effect("highlight", {}, 3000),
                     name = $('td:first', $('#r-' + id)).val();
-
-                alert(
-                    'name = "' + name + '"'
-                );
 
                 // setup and load the dialog box
                 $('<div></div>').html('<span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>This will delete the license <strong>' + name + '</strong>').dialog({
