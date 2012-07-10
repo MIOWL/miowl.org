@@ -127,7 +127,7 @@
 
                 // get the owl list
                 $.getJSON('/owl/licenses/info/' + lic_id, function(info) {
-                    info.each(function(index) {
+                    $(info).each(function(index) {
                         alert(index + ': ' + $(this).text());
                     });
                     // create and load the dialog form
