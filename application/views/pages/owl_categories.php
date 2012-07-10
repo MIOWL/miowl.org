@@ -16,4 +16,14 @@
         <div class="clear">&nbsp;</div>
     </div>
 
+    <!-- Page Javascript -->
+    <script type="text/javascript">
+        $(function() {
+            $('li', $('#categories')).each(function(value) {
+                alert(value + ': ' + $(this).text());
+            });
+        });
+    </script>
+    <!-- --------------- -->
+
 <?php $this->load->view('template/footer'); ?>
