@@ -164,10 +164,14 @@
                                             $(new_desc).val(response.desc);
                                             $('a', $(new_url)).val(response.url).attr('href', response.url);
 
+                                            alert(
+                                                'name :' + response.name + "\n\n" +
+                                                'desc :' + response.desc + "\n\n" +
+                                                'url :' + response.url
+                                            );
+
                                             // debug highlight
-                                            $(new_name).effect("highlight", {}, 3000);
-                                            $(new_desc).effect("highlight", {}, 3000);
-                                            $(new_url).effect("highlight", {}, 3000);
+                                            $('td:first', $('#r-' + response.id)).effect("highlight", {}, 3000);
                                         }
                                         else {
                                             alert('Sorry, an error has occured. Please report this to the site admin.');
