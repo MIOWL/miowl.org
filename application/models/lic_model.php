@@ -205,6 +205,36 @@ class Lic_model extends CI_Model {
 
 
     /**
+     * public delete()
+     * remove the lic
+     */
+    public function delete($id = FALSE)
+    {
+        if (!$this->session->userdata('editor'))
+            return FALSE;
+
+        if (!$id)
+            return FALSE;
+
+        if($this->in_use($id))
+            return FALSE;
+
+        if( !(( $data = $this->get_license( $id ) )) )
+            return FALSE;
+
+        $this->db->where('id', $id);
+        $this->db->where('owl', $this->session->userdata('owl'));
+        $this->db->delete('license');
+
+        if ($this->db->affected_rows() > 0)
+            return $data->row();
+
+        return FALSE;
+    }
+    //------------------------------------------------------------------
+
+
+    /**
      * public insert_defaults()
      */
     public function insert_defaults($owl = FALSE)
