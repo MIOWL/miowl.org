@@ -19,10 +19,7 @@
     <!-- Page Javascript -->
     <script type="text/javascript">
         $(function() {
-            $('li', $('#categories')).each(function(value) {
-                var id = $(this).text();
-                //alert("'" + id + "'")
-            });
+
         });
     </script>
     <!-- --------------- -->
