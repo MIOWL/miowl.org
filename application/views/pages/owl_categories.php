@@ -20,7 +20,8 @@
     <script type="text/javascript">
         $(function() {
             $('li', $('#categories')).each(function(value) {
-                alert(value + ': ' + $(this).text());
+                var id = $(this).text();
+                alert("'" + id + "'")
             });
         });
     </script>
