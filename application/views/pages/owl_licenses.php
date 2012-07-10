@@ -77,7 +77,7 @@
                 e.preventDefault();
 
                 // get the data from the form
-                var id   = $(this).closest('tr').attr('id').val(),
+                var id   = $(this).closest('tr').attr('id').replace("r-", ""),
                     name = $('td:first', $('#r-' + id)),
                     desc = $(name).next(),
                     url  = $(desc).next();
