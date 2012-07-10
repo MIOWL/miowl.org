@@ -126,7 +126,7 @@
                 var lic_id = $(this).attr('href');
 
                 // get the owl list
-                $.getJSON('/owl/licenses/info/' + lic_id, function(obj) {
+                $.get('/owl/licenses/info/' + lic_id, function(obj) {
                     // create and load the dialog form
                     $('<div id="dialog"></div>')
                         .html('<p class="validateTips">All form fields are required.</p><fieldset><span class="left">Name</span><input type="text" id="dialog_name" class="text ui-widget-content ui-corner-all right" style="width: 400px;" value="' + obj.name + '" /><br /><span class="left">Description</span><input type="text" id="dialog_desc" class="text ui-widget-content ui-corner-all right" style="width: 400px;" value="' + obj.short_description + '" /><br /><span class="left">URL</span><input type="text" id="dialog_url" class="text ui-widget-content ui-corner-all right" style="width: 400px;" value="' + obj.url + '" />')
@@ -141,7 +141,7 @@
                                     var name = $("#dialog_name"),
                                         desc = $("#dialog_desc"),
                                         url = $("#dialog_url"),
-                                        allFields = $([]).add(name).add(subcat).add(url);
+                                        allFields = $([]).add(name).add(desc).add(url);
 
                                     allFields.removeClass("ui-state-error");
 
@@ -155,16 +155,14 @@
                                     function(response) {
                                         // was the edit a success?
                                         if (response.success) {
-                                            // get the new breadcrumb
-                                            $.get('/owl/licenses/breadcrumb/' + cat_id, function(data) {
-                                                // var breadcrumb = response;
-                                                $('td:first', $('#r-' + cat_id)).html(data);
-                                            }, "html");
+                                            var new_name = $('td:first', $('#r-' + cat_id)),
+                                                new_desc = $(new_name).next(),
+                                                new_url  = $(new_desc).next();
 
-                                            // update the href to reflect this change
-                                            var new_uri = cat_id + ':' + response.subcat + ':' + response.namez;
-                                            $('.del', $('#r-' + cat_id)).attr('href', new_uri);
-                                            $('.licedit', $('#r-' + cat_id)).attr('href', new_uri);
+                                            // update the row data
+                                            $(new_name).val(response.name);
+                                            $(new_desc).val(response.desc);
+                                            $('a', $(new_url)).val(response.url).attr('href', response.url);
                                         }
                                         else {
                                             alert('Sorry, an error has occured. Please report this to the site admin.');
@@ -180,14 +178,15 @@
                             },
                             close: function() {
                                 var name = $("#dialog_name"),
-                                    subcat = $("#dialog_subcat"),
-                                    allFields = $([]).add(name).add(subcat);
+                                    desc = $("#dialog_desc"),
+                                    url = $("#dialog_url"),
+                                    allFields = $([]).add(name).add(desc).add(url);
 
                                 allFields.val("").removeClass("ui-state-error");
                             }
                     });
                 },
-                "html");
+                "json");
             });
         });
     </script>

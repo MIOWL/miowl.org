@@ -128,6 +128,44 @@ class Lic_model extends CI_Model {
 
 
     /**
+     * public edit()
+     * edit the license
+     */
+    public function edit($id = FALSE, $name = FALSE, $desc = FALSE, $url = FALSE)
+    {
+        // setup the return data
+        $return = array();
+        $return['success']  = FALSE;
+        $return['id']       = $id;
+        $return['name']     = $name;
+        $return['desc']     = $desc;
+        $return['url']      = $url;
+
+        if (!$this->session->userdata('editor'))
+            return $return;
+
+        if ( !$id || !$name || !$desc || !$url )
+            return $return;
+
+        $this->db->set('name', $name);
+        $this->db->set('short_description', $desc);
+        $this->db->set('url', $url);
+        $where = array(
+            'id'    => $id,
+            'owl'   => $this->session->userdata('owl')
+        );
+        $this->db->where($where);
+        $this->db->update('license');
+
+        if ($this->db->affected_rows() > 0)
+           $return['success'] = TRUE;
+
+        return $return;
+    }
+    //------------------------------------------------------------------
+
+
+    /**
      * public insert_defaults()
      */
     public function insert_defaults($owl = FALSE)

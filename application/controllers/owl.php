@@ -954,11 +954,13 @@ class Owl extends CI_Controller {
         $return             = array();
         $return['success']  = $edit['success'];
         $return['id']       = $edit['id'];
-        $return['namez']    = $edit['name'];
+        $return['name']     = $edit['name'];
         $return['desc']     = $edit['desc'];
         $return['url']      = $edit['url'];
 
-        print json_encode($return);
+        $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($return));
     }
     //------------------------------------------------------------------
 
