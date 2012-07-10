@@ -129,6 +129,8 @@ if (!function_exists('url_walk'))
         foreach ($input as $key => $value) {
             if( is_array( $value ) )
             {
+                $name = NULL;
+
                 if( (( $data = $CI->cat_model->get_category( $key ) )) )
                 {
                     $cat_name = $data->row()->name;
