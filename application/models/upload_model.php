@@ -334,6 +334,23 @@ class Upload_model extends CI_Model {
     //------------------------------------------------------------------
 
 
+    /**
+     * public total_cat_uploads()
+     */
+    public function total_cat_uploads($cat = FALSE)
+    {
+        if (!$cat)
+            return FALSE;
+
+        $this->db->select('*');
+        $this->db->where('upload_category', $cat);
+        $this->db->where('deleted', 'false');
+        $query = $this->db->get('uploads');
+
+        return $query->num_rows();
+    }
+    //------------------------------------------------------------------
+
 
     /**
      * public total_owl_uploads()
@@ -356,7 +373,6 @@ class Upload_model extends CI_Model {
         return $query->num_rows();
     }
     //------------------------------------------------------------------
-
 
 
     /**

@@ -278,7 +278,7 @@ class Browse extends CI_Controller {
         // setup pagination lib
         $config['base_url']         = site_url('browse/cat/' . $cat);
         $config['uri_segment']      = 4;
-        $config['total_rows']       = $this->upload_model->total_owl_uploads($owl);
+        $config['total_rows']       = $this->upload_model->total_cat_uploads($cat);
         $config['per_page']         = $limit;
         $config['anchor_class']     = 'class="button" ';
         $config['cur_tag_open']     = '&nbsp;<div class="button danger current">';
