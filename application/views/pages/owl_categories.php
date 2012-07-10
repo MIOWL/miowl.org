@@ -21,7 +21,7 @@
         $(function() {
             $('li', $('#categories')).each(function(value) {
                 var id = $(this).text();
-                alert("'" + id + "'")
+                //alert("'" + id + "'")
             });
         });
     </script>
