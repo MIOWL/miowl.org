@@ -160,9 +160,9 @@
                                                 new_url  = $(new_desc).next();
 
                                             // update the row data
-                                            $(new_name).val(response.name);
-                                            $(new_desc).val(response.desc);
-                                            $('a', $(new_url)).val(response.url).attr('href', response.url);
+                                            $(new_name).val(response.name).css('background-color', '#AEAEAE');
+                                            $(new_desc).val(response.desc).css('background-color', '#AEAEAE');
+                                            $('a', $(new_url)).val(response.url).attr('href', response.url).css('background-color', '#AEAEAE');
 
                                             alert(
                                                 'name : ' + response.name
