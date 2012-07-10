@@ -132,10 +132,12 @@ if (!function_exists('url_walk'))
                 if( (( $data = $CI->cat_model->get_category( $key ) )) )
                 {
                     $cat_name = $data->row()->name;
-                    $output[] = "<a href='{$key}'>{$cat_name}</a>";
+                    $name = "<a href='{$key}'>{$cat_name}</a>";
                 }
 
                 if( !empty( $value ) )
+                    $output[$name] = url_walk( $value );
+                else
                     $output[] = url_walk( $value );
             }
             else
