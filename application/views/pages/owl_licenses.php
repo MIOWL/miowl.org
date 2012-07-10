@@ -126,11 +126,7 @@
                 var lic_id = $(this).attr('href');
 
                 // get the owl list
-                $.getJSON('/owl/licenses/info/' + lic_id, function(info) {
-                    var obj = $(info).first();
-                    $(obj).each(function(thing){
-                        obj = thing;
-                    });
+                $.getJSON('/owl/licenses/info/' + lic_id, function(obj) {
                     $(obj).each(function(thing){
                         alert(thing);
                     });
