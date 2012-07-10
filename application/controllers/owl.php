@@ -906,34 +906,34 @@ class Owl extends CI_Controller {
     //------------------------------------------------------------------
 
 
-    /**
-     * licenses function _licenses_create()
-     */
-    public function _licenses_create()
-    {
-        // page data array
-        $page_data                  = array();
-        $page_data['page_title']    = "Create New Owl File Category";
-        $page_data['licenses']      = $this->lic_model->get_owl_licenses($this->session->userdata('owl'));
+    // /**
+    //  * licenses function _licenses_create()
+    //  */
+    // public function _licenses_create()
+    // {
+    //     // page data array
+    //     $page_data                  = array();
+    //     $page_data['page_title']    = "Create New Owl File Category";
+    //     $page_data['licenses']      = $this->lic_model->get_owl_licenses($this->session->userdata('owl'));
 
-        // form validation rules
-        $this->form_validation->set_rules('name', 'License Name', "required|trim");
-        $this->form_validation->set_rules('desc', 'License Short Description', "required|trim");
-        $this->form_validation->set_rules('url', 'License URL', "required|trim");
+    //     // form validation rules
+    //     $this->form_validation->set_rules('name', 'License Name', "required|trim");
+    //     $this->form_validation->set_rules('desc', 'License Short Description', "required|trim");
+    //     $this->form_validation->set_rules('url', 'License URL', "required|trim");
 
-        if ($this->form_validation->run())
-        {
-            // add the new category
-            $this->lic_model->add_category();
+    //     if ($this->form_validation->run())
+    //     {
+    //         // add the new category
+    //         $this->lic_model->add_category();
 
-            $page_data['success']     = TRUE;
-            $page_data['msg']         = "You're new license has now been created.";
-        }
+    //         $page_data['success']     = TRUE;
+    //         $page_data['msg']         = "You're new license has now been created.";
+    //     }
 
-        // load the approp. page view
-        $this->load->view('pages/owl_license_create', $page_data);
-    }
-    //------------------------------------------------------------------
+    //     // load the approp. page view
+    //     $this->load->view('pages/owl_license_create', $page_data);
+    // }
+    // //------------------------------------------------------------------
 
 
     /**
