@@ -77,7 +77,10 @@
                 e.preventDefault();
 
                 // get the data from the form
-                var lic_id = $(this).attr('href');
+                var id   = $(this).attr('href'),
+                    name = $('td:first', $('#r-' + id)),
+                    desc = $(new_name).next(),
+                    url  = $(new_desc).next();
 
                 // setup and load the dialog box
                 $('<div></div>').html('<span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>This will delete the license <strong>' + cat_name + '</strong>').dialog({
@@ -91,14 +94,14 @@
                             $(this).dialog("close");
 
                             // build the uri
-                            var uri = '/owl/licenses/remove/' + cat_id;
+                            var uri = '/owl/licenses/remove/' + lic_id;
 
                             // get the JSON data from the request
                             $.getJSON(uri, function(data) {
                                 if (data.success == 'true') {
                                     // update the view to reflect this change
-                                    $('#r-' + cat_id).fadeOut('slow', function() {
-                                        $('#r-' + cat_id).empty();
+                                    $('#r-' + lic_id).fadeOut('slow', function() {
+                                        $('#r-' + lic_id).empty();
                                     });
                                 }
                                 else {
