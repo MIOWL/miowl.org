@@ -327,7 +327,7 @@ class Browse extends CI_Controller {
             redirect(site_url(), 'location');
 
         // Get the file info for this ID
-        $lic_info = $this->lic_model->get_lic_by_id($lic_id);
+        $lic_info = $this->lic_model->get_license($lic_id);
 
         // Check the file has an ext, if not add it.
         $data = array();
