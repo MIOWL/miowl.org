@@ -164,14 +164,6 @@
                                             $(new_desc).text(response.desc);
                                             $('a', $(new_url)).text(response.url).attr('href', response.url);
 
-                                            alert(
-                                                'name : ' + response.name
-                                                 + "\n\n" +
-                                                'desc : ' + response.desc
-                                                 + "\n\n" +
-                                                'url : ' + response.url
-                                            );
-
                                             // debug highlight
                                             $('#r-' + response.id).effect("highlight", {}, 3000);
                                         }
