@@ -123,6 +123,7 @@ if (!function_exists('url_walk'))
 {
     function url_walk($input = array())
     {
+        $CI =& get_instance();
         $CI->load->model('cat_model');
         $ouput = array();
         foreach ($input as $key => $value) {
