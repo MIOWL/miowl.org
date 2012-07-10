@@ -111,6 +111,34 @@ if (!function_exists('gen_categories_id'))
     }
 }
 
+if (!function_exists('gen_categories_a'))
+{
+    function gen_categories_a($owl = FALSE)
+    {
+        return url_walk( $gen_categories_id($owl) );
+    }
+}
+
+if (!function_exists('url_walk'))
+{
+    function url_walk($input = array())
+    {
+        $CI->load->model('cat_model');
+        $ouput = array();
+        foreach ($input as $key => $value) {
+            if( is_array( $value ) )
+                $output[$key] = url_walk( $value )
+            else
+            {
+                if( (( $data = $CI->cat_model->get_category( $value ) )) )
+                $cat_name = $data->row()->name;
+                $output[$key] = "<a href='{$value}'>{$cat_name}</a>";
+            }
+        }
+        return $output;
+    }
+}
+
 if (!function_exists('gen_drop_categories'))
 {
     function gen_drop_categories($owl = FALSE, $create_page = FALSE, $cat_pid = FALSE)
