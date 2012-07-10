@@ -163,6 +163,11 @@
                                             $(new_name).val(response.name);
                                             $(new_desc).val(response.desc);
                                             $('a', $(new_url)).val(response.url).attr('href', response.url);
+
+                                            // debug highlight
+                                            $(new_name).effect("highlight", {}, 3000);
+                                            $(new_desc).effect("highlight", {}, 3000);
+                                            $(new_url).effect("highlight", {}, 3000);
                                         }
                                         else {
                                             alert('Sorry, an error has occured. Please report this to the site admin.');
