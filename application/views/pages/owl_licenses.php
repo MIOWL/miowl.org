@@ -165,11 +165,11 @@
                                             $('a', $(new_url)).val(response.url).attr('href', response.url);
 
                                             alert(
-                                                'name :' + response.name
+                                                'name : ' + response.name
                                                  + "\n\n" +
-                                                'desc :' + response.desc
+                                                'desc : ' + response.desc
                                                  + "\n\n" +
-                                                'url :' + response.url
+                                                'url : ' + response.url
                                             );
 
                                             // debug highlight
