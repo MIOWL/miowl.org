@@ -47,7 +47,6 @@
                         </td>
                         <td>
                             <a href="<?php print $row->id; ?>" title="Delete this file!" target="_BLANK" id="remove_<?php print $row->id; ?>" class="remove"><img src="/images/icons/recycle_bin.png" title="Delete this file!" alt="remove" width="25px" height="25px" /></a>
-                        </td>
 <?php if( time() >= $row->revision_date ) : ?>
                 <!-- <div class="reviewTip"> -->
                     <div class="arrow_box">
@@ -57,6 +56,7 @@
                     </div>
                 <!-- </div> -->
 <?php endif; ?>
+                        </td>
                     </tr>
 <?php
         endforeach;
