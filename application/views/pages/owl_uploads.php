@@ -112,7 +112,7 @@
             border: 0 solid #C2E1F5;
             display: block;
             position: relative;
-            right: 0;
+            right: -18px;
             top: 3px;
             width: 150px;
         }
