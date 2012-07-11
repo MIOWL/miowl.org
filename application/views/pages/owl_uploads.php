@@ -76,12 +76,15 @@
     <!-- Page Javascript -->
     <script type="text/javascript">
         $(function() {
+/*
             function reviewHighlight() {
                 $('.review').effect("highlight", {}, 3000);
             }
 
             setInterval(reviewHighlight, 500);
             reviewHighlight();
+*/
+            $('.review').css('background', '#e2f6ff');
         });
     </script>
     <!-- --------------- -->
