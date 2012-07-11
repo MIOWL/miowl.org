@@ -51,9 +51,11 @@
                     </tr>
 <?php if( time() >= $row->revision_date ) : ?>
                 <div class="reviewTip">
-                    <span class="content">
-                        css arrow please!
-                    </span>
+                    <div class="arrow_box">
+                        <span class="content">
+                            css arrow please!
+                        </span>
+                    </div>
                 </div>
 <?php endif;
         endforeach;
