@@ -69,18 +69,8 @@
     <!-- Page Javascript -->
     <script type="text/javascript">
         $(function() {
-            $.fn.animateHighlight = function(highlightColor, duration) {
-                var highlightBg = highlightColor || "#FFFF9C",
-                    animateMs = duration || 1500,
-                    originalBg = this.css("backgroundColor");
-
-                this.stop()
-                    .css("background-color", highlightBg)
-                    .animate({backgroundColor: originalBg}, animateMs);
-            };
-
             function reviewHighlight() {
-                $('.review').animateHighlight();
+                $('.review').effect("highlight", {}, 3000);
             }
 
             setInterval(reviewHighlight, 500);
