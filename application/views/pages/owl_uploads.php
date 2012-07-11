@@ -50,9 +50,7 @@
 <?php if( time() >= $row->revision_date ) : ?>
                 <div class="reviewTip">
                     <div class="arrow_box">
-                        <span class="content">
-                            css arrow please!
-                        </span>
+                        <span class="content">This file is up for review</span>
                     </div>
                 </div>
 <?php endif; ?>
@@ -93,9 +91,7 @@
 
         .reviewTip {
             width: 0px;
-            position: relative;
-            top: 12px;
-            left: 25px;
+            float: right;
         }
 
         .arrow_box .content {
@@ -112,6 +108,15 @@
         }
 
         .arrow_box {
+            background: none repeat scroll 0 0 #88B7D5;
+            border: 0 solid #C2E1F5;
+            display: block;
+            position: relative;
+            right: 0;
+            top: 3px;
+            width: 150px;
+        }
+        /*.arrow_box {
             display: block;
             top: 40px;
             left: 500px;
@@ -119,9 +124,8 @@
             background: #88b7d5;
             border: 0px solid #c2e1f5;
             width: 150px;
-            /*height; 188px;*/
             float: right;
-        }
+        }*/
         .arrow_box:after, .arrow_box:before {
             right: 100%;
             border: solid transparent;
