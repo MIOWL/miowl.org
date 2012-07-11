@@ -70,10 +70,13 @@
     <script type="text/javascript">
         $(function() {
             $.fn.animateHighlight = function(highlightColor, duration) {
-                var highlightBg = highlightColor || "#FFFF9C";
-                var animateMs = duration || 1500;
-                var originalBg = this.css("backgroundColor");
-                this.stop().css("background-color", highlightBg).animate({backgroundColor: originalBg}, animateMs);
+                var highlightBg = highlightColor || "#FFFF9C",
+                    animateMs = duration || 1500,
+                    originalBg = this.css("backgroundColor");
+
+                this.stop()
+                    .css("background-color", highlightBg)
+                    .animate({backgroundColor: originalBg}, animateMs);
             };
 
             $('.review').animateHighlight();
