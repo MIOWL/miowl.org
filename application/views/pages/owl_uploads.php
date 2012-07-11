@@ -138,13 +138,13 @@
 
         .arrow_box:after {
             border-right-color: #88b7d5;
-            border-width: 7px;
+            border-width: 10px;
             top: 50%;
-            margin-top: -7px;
+            margin-top: -10px;
         }
         .arrow_box:before {
             top: 50%;
-            margin-top: -7.5px;
+            margin-top: -10px;
         }
 
     </style>
