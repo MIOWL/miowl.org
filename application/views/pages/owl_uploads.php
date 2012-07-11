@@ -49,7 +49,13 @@
                             <a href="<?php print $row->id; ?>" title="Delete this file!" target="_BLANK" id="remove_<?php print $row->id; ?>" class="remove"><img src="/images/icons/recycle_bin.png" title="Delete this file!" alt="remove" width="25px" height="25px" /></a>
                         </td>
                     </tr>
-<?php
+<?php if( time() >= $row->revision_date ) : ?>
+                <div class="reviewTip">
+                    <span class="content">
+                        css arrow please!
+                    </span>
+                </div>
+<?php endif;
         endforeach;
     endif;
 ?>
@@ -77,6 +83,63 @@
             reviewHighlight();
         });
     </script>
+    <!-- --------------- -->
+
+    <!-- Page CSS -->
+    <style type="text/css">
+
+        .reviewTip {
+            width: 0px;
+            position: relative;
+            top: 12px;
+            left: 25px;
+        }
+
+        .arrow_box .content {
+          /*width: 50px;
+          height: 50px;*/
+          display: block;
+          color: #DDF8C6;
+          font-size: 12px;
+          text-align: center;
+          vertical-align: middle;
+          font-weight: bold;
+          text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+          font-family: 'Dosis',sans-serif;
+        }
+
+        .arrow_box {
+          display: block;
+          top: 40px;
+          left: 500px;
+            position: relative;
+            background: #88b7d5;
+            border: 0px solid #c2e1f5;
+          width: 150px;
+          /*height; 188px;*/
+        }
+        .arrow_box:after, .arrow_box:before {
+            right: 100%;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+        }
+
+        .arrow_box:after {
+            border-right-color: #88b7d5;
+            border-width: 7px;
+            top: 50%;
+            margin-top: -7px;
+        }
+        .arrow_box:before {
+            top: 50%;
+            margin-top: -7.5px;
+        }
+
+    </style>
     <!-- --------------- -->
 
 <?php $this->load->view('template/footer'); ?>
