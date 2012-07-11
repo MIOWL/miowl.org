@@ -356,7 +356,7 @@ class Browse extends CI_Controller {
         $page_data['upload_info']   = $upload_info;
         $page_data['deleted']       = $deleted;
 
-        if(time() >= $upload_info->row()->revision_date)
+        if( ( !is_null( $row->revision_date ) ) && ( time() >= $upload_info->row()->revision_date ) )
         {
             $page_data['info']      = TRUE;
             $nbsp                   = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
