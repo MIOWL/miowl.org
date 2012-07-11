@@ -74,14 +74,17 @@
                     animateMs = duration || 1500,
                     originalBg = this.css("backgroundColor");
 
-                for (var i = 0; i < 9999; i++ ) {
-                    this.stop()
-                        .css("background-color", highlightBg)
-                        .animate({backgroundColor: originalBg}, animateMs);
-                }
+                this.stop()
+                    .css("background-color", highlightBg)
+                    .animate({backgroundColor: originalBg}, animateMs);
             };
 
-            $('.review').animateHighlight();
+            function reviewHighlight() {
+                $('.review').animateHighlight();
+            }
+
+            setInterval(reviewHighlight, 500);
+            reviewHighlight();
         });
     </script>
     <!-- --------------- -->
