@@ -30,7 +30,7 @@
         foreach($uploads->result() as $row) :
             $lic = $this->miowl_model->get_license($row->upload_license);
 ?>
-                    <tr id="r-<?php print $row->id; ?>">
+                    <tr id="r-<?php print $row->id; ?>" class="<?php if( time() >= $row->revision_date ) print 'review';">
                         <td><?php print cat_breadcrumb_ul($row->upload_category); ?></td>
                         <td><?php print $row->file_name; ?></td>
                         <td>
@@ -65,5 +65,20 @@
         </div>
         <div class="clear">&nbsp;</div>
 	</div>
+
+    <!-- Page Javascript -->
+    <script type="text/javascript">
+        $(function() {
+            $.fn.animateHighlight = function(highlightColor, duration) {
+                var highlightBg = highlightColor || "#FFFF9C";
+                var animateMs = duration || 1500;
+                var originalBg = this.css("backgroundColor");
+                this.stop().css("background-color", highlightBg).animate({backgroundColor: originalBg}, animateMs);
+            };
+
+            $('.review').animateHighlight();
+        });
+    </script>
+    <!-- --------------- -->
 
 <?php $this->load->view('template/footer'); ?>
