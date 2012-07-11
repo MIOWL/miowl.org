@@ -50,13 +50,13 @@
                         </td>
                     </tr>
 <?php if( time() >= $row->revision_date ) : ?>
-                <div class="reviewTip">
+                <!-- <div class="reviewTip"> -->
                     <div class="arrow_box">
                         <span class="content">
                             css arrow please!
                         </span>
                     </div>
-                </div>
+                <!-- </div> -->
 <?php endif;
         endforeach;
     endif;
@@ -98,27 +98,28 @@
         }
 
         .arrow_box .content {
-          /*width: 50px;
-          height: 50px;*/
-          display: block;
-          color: #DDF8C6;
-          font-size: 12px;
-          text-align: center;
-          vertical-align: middle;
-          font-weight: bold;
-          text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
-          font-family: 'Dosis',sans-serif;
+            /*width: 50px;
+            height: 50px;*/
+            display: block;
+            color: #DDF8C6;
+            font-size: 12px;
+            text-align: center;
+            vertical-align: middle;
+            font-weight: bold;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+            font-family: 'Dosis',sans-serif;
         }
 
         .arrow_box {
-          display: block;
-          top: 40px;
-          left: 500px;
+            display: block;
+            top: 40px;
+            left: 500px;
             position: relative;
             background: #88b7d5;
             border: 0px solid #c2e1f5;
-          width: 150px;
-          /*height; 188px;*/
+            width: 150px;
+            /*height; 188px;*/
+            float: right;
         }
         .arrow_box:after, .arrow_box:before {
             right: 100%;
