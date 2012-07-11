@@ -512,6 +512,7 @@ input::-moz-focus-inner {
 }
 #owl_nav {
 	background: url(images/sidebar-short-left.png) no-repeat scroll 0 0 #FFFFFF;
+    min-height: 460px;
 }
 #owl_body {
 	padding: 20px 0;
@@ -603,11 +604,11 @@ table img {
     -webkit-border-radius: 4px;
 
     box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.5);
-    
+
     // display: inline-block;
-    
+
     margin: 5px 3px 0px 0px;
-    
+
     height: 50px;
     width: 50px;
 }
@@ -625,7 +626,7 @@ table img {
 	border: solid 1px #d2d2d2;
 	padding: 3px;
 	margin-bottom: 1.5em;
-	
+
 	-webkit-border-radius: 2em;
 	-moz-border-radius: 2em;
 	border-radius: 2em;
@@ -684,7 +685,7 @@ table img {
 */
 .breadcrumb {
     font: 11px Arial, Helvetica, sans-serif;
-    background-image:url('images/bc_bg.gif'); 
+    background-image:url('images/bc_bg.gif');
     background-repeat:repeat-x;
 	height:20px;
     line-height:21px;
@@ -702,8 +703,8 @@ table img {
 
 .breadcrumb li {
     list-style-type:none;
-    background-image:url('images/bc_separator.gif'); 
-    background-repeat:no-repeat; 
+    background-image:url('images/bc_separator.gif');
+    background-repeat:no-repeat;
     /*background-position:right;*/
     background-position:left center;
     padding:0 4px 0 10px;
