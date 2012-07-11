@@ -696,7 +696,6 @@ class Owl extends CI_Controller {
      */
     public function _categories_list()
     {
-        print '<pre>' . print_r( gen_categories_id(), TRUE ) . '</pre>';
         // page data array
         $page_data                  = array();
         $page_data['page_title']    = "All Owl File Categories";
