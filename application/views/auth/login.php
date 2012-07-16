@@ -26,11 +26,6 @@
                     <p class="formHint">Forgot your password? <a href="<?php print site_url('user/forgot'); ?>">Click here</a> to reset it.</p>
                 </div>
 
-                <div class="ctrlHolder">
-                    <label for="chkbox">Keep me logged in</label>
-                    <input type="checkbox" name="chkbox" id="chkbox" />
-                </div>
-
             </fieldset>
 
             <div class="buttonHolder">

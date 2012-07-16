@@ -233,17 +233,6 @@ class User extends CI_Controller {
                                 'editor'        => $user_query->row()->user_editor === 'true' ? TRUE : FALSE,
                                 'authed'        => TRUE,
                             );
-
-                            // did the user check the box to never logout?
-                            if ( $this->input->post('chkbox') == 'on' )
-                            {
-                                // change the config setting
-                                $this->config->set_item('sess_expiration',0);
-
-                                // load the session lib
-                                $this->load->library('session');
-                            }
-
                             $this->session->set_userdata($session_data);
 
                             // Set last login time
