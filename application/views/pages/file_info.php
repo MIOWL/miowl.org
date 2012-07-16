@@ -108,12 +108,16 @@
 
         <div class="buttonHolder right">
             <br />
-            <!-- <button onclick="javascript:history.back()" class="button">back</button> -->
+
+            <?php if ( ( $this->session->userdata('owl') === $upload_info->row()->owl ) && ( $this->session->userdata('editor') ) ) : ?>
+                <button class="button right">edit</button>
+                <button class="button right">delete</button>
+            <?php endif; ?>
+
             <a href="javascript:history.back()" class="button">back</a>
-            <button onclick="javascript:history.go(-1)" href="javascript:history.go(-1)" title="Back to the previous page" class="button">download</button>
+            <button onclick="window.location.href='<?php print site_url('download/' . $upload_info->row()->id); ?>'" class="button">download</button>
         </div>
 
-        <p>if you are the owner then more buttons will be displayed. (edit/delete etc.)</p>
         <div class="clear">&nbsp;</div>
 
     </div>
