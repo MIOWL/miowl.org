@@ -33,7 +33,7 @@
 ?>
                     <tr id="r-<?php print $row->id; ?>" class="<?php if( ( !is_null( $row->revision_date ) ) && ( time() >= $row->revision_date ) ) print 'review'; ?>">
                         <td><a href="<?php print site_url('browse/owl/' . $row->owl); ?>"><?php print $this->owl_model->get_owl_by_id($row->owl)->row()->owl_name; ?></a></td>
-                        <td><a href="<?php print site_url('browse/cat/' . $row->id); ?>"><?php print cat_breadcrumb_ul($row->upload_category); ?></a></td>
+                        <td><a href="<?php print site_url('browse/cat/' . $row->upload_category); ?>"><?php print cat_breadcrumb_ul($row->upload_category); ?></a></td>
                         <td><?php print $row->file_name; ?></td>
                         <td><a href="<?php print $lic->row()->url; ?>" target="_BLANK"><?php print $lic->row()->name; ?></a></td>
                         <td><?php print $row->file_type; ?></td>
