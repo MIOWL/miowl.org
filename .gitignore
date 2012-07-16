@@ -21,3 +21,21 @@
 .Trashes
 ##
 
+# Never ignore .htaccess or index files
+!.htaccess
+*/!.htaccess
+!index.html
+*/!index.html
+##
+
+# User uploads
+*/uploads/*
+*/uploads/!index.html
+*/uploads/!.htaccess
+##
+
+# User license files
+*/user_license_files/*
+*/user_license_files/!index.html
+*/user_license_files/!.htaccess
+##

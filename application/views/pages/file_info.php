@@ -33,10 +33,10 @@
 
                 <?php $this->load->view('messages/message_inline'); ?>
 
-                <div class="ctrlHolder">
+                <!--div class="ctrlHolder">
                     <label for="id">file id</label>
                     <span name="id" id="id" size="35" class="textInput medium"><?php print $upload_info->row()->id; ?></span>
-                </div>
+                </div-->
 
                 <div class="ctrlHolder">
                     <label for="upload_time">upload time (gmt)</label>
@@ -121,5 +121,34 @@
         <div class="clear">&nbsp;</div>
 
     </div>
+
+    <!-- Page Javascript -->
+    <script type="text/javascript">
+        $(function() {
+            $('.button .delete').click( function(e) {
+                // prevent the default action
+                e.preventDefault();
+
+                // set the id
+                var id = <?php print $upload_info->row()->id; ?>,
+                    deleted_uri = "<?php print site_url('deleted/info'); ?>/" + id;
+
+                $.ajax({
+                    type: 'GET',
+                    url: '/owl/uploads/remove/' + id,
+                    dataType: 'text',
+                    success: function(response) {
+                        if (response == "1") {
+                            $('#r-' + id).fadeOut('slow', function() {
+                                $('#r-' + id).empty();
+                            });
+                            window.location.href = deleted_uri;
+                        }
+                    }
+                });
+            })
+        });
+    </script>
+    <!-- --------------- -->
 
 <?php $this->load->view('template/footer'); ?>
