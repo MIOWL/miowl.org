@@ -269,7 +269,7 @@ class Upload_model extends CI_Model {
      */
     public function delete($id = NULL )
     {
-        if (!$this->session->userdata('admin'))
+        if (!$this->session->userdata('editor'))
             return FALSE;
 
         if (!$id)
@@ -297,7 +297,7 @@ class Upload_model extends CI_Model {
      */
     public function restore($id = NULL )
     {
-        if (!$this->session->userdata('admin'))
+        if (!$this->session->userdata('editor'))
             return FALSE;
 
         if (!$id)
