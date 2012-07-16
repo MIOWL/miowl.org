@@ -131,7 +131,7 @@
 
                 // set the id
                 var id = <?php print $upload_info->row()->id; ?>,
-                    deleted_uri = "<?php print site_url('deleted/info'); ?>/" + id;
+                    uri = "<?php print site_url('deleted/info'); ?>/" + id;
 
                 $.ajax({
                     type: 'GET',
@@ -142,7 +142,27 @@
                             $('#r-' + id).fadeOut('slow', function() {
                                 $('#r-' + id).empty();
                             });
-                            window.location.href = deleted_uri;
+                            window.location.href = uri;
+                        }
+                    }
+                });
+            })
+
+            $('button.restore').click( function(e) {
+                // prevent the default action
+                e.preventDefault();
+
+                // set the id
+                var id = <?php print $upload_info->row()->id; ?>,
+                    uri = "<?php print site_url('browse/info'); ?>/" + id;
+
+                $.ajax({
+                    type: 'GET',
+                    url: '/owl/uploads/restore/' + id,
+                    dataType: 'text',
+                    success: function(response) {
+                        if (response == "1") {
+                            window.location.href = uri;
                         }
                     }
                 });
