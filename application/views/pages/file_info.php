@@ -96,7 +96,7 @@
                 <div class="ctrlHolder">
                     <label for="revDate">revision date</label>
                     <span name="revDate" id="revDate" class="textInput medium"><?php
-                        print ( ( !is_null( $row->revision_date ) ) && ( time() >= $row->revision_date ) ) ?
+                        print ( !is_null( $upload_info->row()->revision_date ) ?
                             date("d/m/Y", $upload_info->row()->revision_date) :
                             'N/A';
                     ?></span>
