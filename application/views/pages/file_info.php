@@ -114,7 +114,7 @@
                 <?php if ( $this->uri->segment(1) != 'deleted' ) : ?>
                     <button class="button delete">delete</button>
                 <?php else : ?>
-                    <button class="button add">restore</button>
+                    <button class="button go">restore</button>
                 <?php endif; ?>
             <?php endif; ?>
 
