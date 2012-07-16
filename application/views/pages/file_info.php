@@ -111,11 +111,15 @@
 
             <?php if ( ( (int)$this->session->userdata('owl') === (int)$upload_info->row()->owl ) && ( $this->session->userdata('editor') ) ) : ?>
                 <button class="button edit">edit</button>
-                <button class="button delete">delete</button>
+                <?php if ( $this->uri->segment(1) != 'deleted' ) : ?>
+                    <button class="button delete">delete</button>
+                <?php else : ?>
+                    <button class="button add">restore</button>
+                <?php endif; ?>
             <?php endif; ?>
 
-            <a href="javascript:history.back()" class="button">back</a>
-            <button onclick="window.location.href='<?php print site_url('download/' . $upload_info->row()->id); ?>'" class="button">download</button>
+            <a href="javascript:history.back()" class="button pv">back</a>
+            <button onclick="window.location.href='<?php print site_url('download/' . $upload_info->row()->id); ?>'" class="button like">download</button>
         </div>
 
         <div class="clear">&nbsp;</div>
@@ -148,7 +152,7 @@
                 });
             })
 
-            $('button.restore').click( function(e) {
+            $('button.go').click( function(e) {
                 // prevent the default action
                 e.preventDefault();
 

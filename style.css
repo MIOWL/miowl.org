@@ -419,12 +419,12 @@ input::-moz-focus-inner {
 
 .nx:before {
     font-weight: bold;
-    content: "<";
+    content: ">";
 }
 
 .pv:before {
     font-weight: bold;
-    content: ">";
+    content: "<";
 }
 
 
