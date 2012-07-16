@@ -38,7 +38,16 @@
                         <td><a href="<?php print $lic->row()->url; ?>" target="_BLANK"><?php print $lic->row()->name; ?></a></td>
                         <td><?php print $row->file_type; ?></td>
                         <td><a href="<?php print site_url('download/' . $row->id); ?>" title="Downlaod this file!" target="_BLANK" class="icon_font">F</a></td>
-                        <td><a href="<?php print site_url('browse/info/' . $row->id); ?>" title="More info for this file!" class="icon_font">,</a></td>
+                        <td>
+                            <a href="<?php print site_url('browse/info/' . $row->id); ?>" title="More info for this file!" class="icon_font">,</a>
+<?php if( ( !is_null( $row->revision_date ) ) && ( time() >= $row->revision_date ) ) : ?>
+                <div class="reviewTip">
+                    <div class="arrow_box">
+                        <span class="content">This file is up for review</span>
+                    </div>
+                </div>
+<?php endif; ?>
+                        </td>
                     </tr>
 <?php
         endforeach;
@@ -54,5 +63,85 @@
         </div>
 
 	</div>
+
+    <!-- Page Javascript -->
+    <script type="text/javascript">
+        $(function() {
+/*
+            function reviewHighlight() {
+                $('.review').effect("highlight", {}, 3000);
+            }
+
+            setInterval(reviewHighlight, 500);
+            reviewHighlight();
+*/
+            $('.review').css('background', '#EDF9FF');
+        });
+    </script>
+    <!-- --------------- -->
+
+    <!-- Page CSS -->
+    <style type="text/css">
+
+        .reviewTip {
+            width: 0px;
+            float: right;
+        }
+
+        .arrow_box .content {
+            /*width: 50px;
+            height: 50px;*/
+            display: block;
+            color: #DDF8C6;
+            font-size: 12px;
+            text-align: center;
+            vertical-align: middle;
+            font-weight: bold;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+            font-family: 'Dosis',sans-serif;
+        }
+
+        .arrow_box {
+            background: none repeat scroll 0 0 #88B7D5;
+            border: 0 solid #C2E1F5;
+            display: block;
+            position: relative;
+            right: -18px;
+            top: 3px;
+            width: 150px;
+        }
+        /*.arrow_box {
+            display: block;
+            top: 40px;
+            left: 500px;
+            position: relative;
+            background: #88b7d5;
+            border: 0px solid #c2e1f5;
+            width: 150px;
+            float: right;
+        }*/
+        .arrow_box:after, .arrow_box:before {
+            right: 100%;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+        }
+
+        .arrow_box:after {
+            border-right-color: #88b7d5;
+            border-width: 10px;
+            top: 50%;
+            margin-top: -10px;
+        }
+        .arrow_box:before {
+            top: 50%;
+            margin-top: -10px;
+        }
+
+    </style>
+    <!-- --------------- -->
 
 <?php $this->load->view('template/footer'); ?>

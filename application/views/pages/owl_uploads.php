@@ -84,7 +84,7 @@
             setInterval(reviewHighlight, 500);
             reviewHighlight();
 */
-            $('.review').css('background', '#e2f6ff');
+            $('.review').css('background', '#EDF9FF');
         });
     </script>
     <!-- --------------- -->
