@@ -109,7 +109,7 @@
         <div class="buttonHolder right">
             <br />
 
-            <?php if ( ( $this->session->userdata('owl') === $upload_info->row()->owl ) && ( $this->session->userdata('editor') ) ) : ?>
+            <?php if ( ( (int)$this->session->userdata('owl') === (int)$upload_info->row()->owl ) && ( $this->session->userdata('editor') ) ) : ?>
                 <button class="button left">edit</button>
                 <button class="button left">delete</button>
             <?php endif; ?>
