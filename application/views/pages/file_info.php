@@ -28,7 +28,7 @@
             style="background-image: url(<?php print base_url('images/data-deletion.png'); ?>); background-position: center center; background-repeat: no-repeat;"
         <?php endif; ?>
         >
-            
+
             <fieldset class="inlineLabels">
 
                 <?php $this->load->view('messages/message_inline'); ?>
@@ -95,7 +95,11 @@
 
                 <div class="ctrlHolder">
                     <label for="revDate">revision date</label>
-                    <span name="revDate" id="revDate" class="textInput medium"><?php print date("d/m/Y", $upload_info->row()->revision_date); ?></span>
+                    <span name="revDate" id="revDate" class="textInput medium"><?php
+                        print ( ( !is_null( $row->revision_date ) ) && ( time() >= $row->revision_date ) ) ?
+                            date("d/m/Y", $upload_info->row()->revision_date) :
+                            'N/A';
+                    ?></span>
                 </div>
 
             </fieldset>
