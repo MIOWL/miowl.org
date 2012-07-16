@@ -125,7 +125,7 @@
     <!-- Page Javascript -->
     <script type="text/javascript">
         $(function() {
-            $('.button .delete').click( function(e) {
+            $('button.delete').click( function(e) {
                 // prevent the default action
                 e.preventDefault();
 
