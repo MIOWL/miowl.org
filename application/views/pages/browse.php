@@ -75,13 +75,16 @@
             setInterval(reviewHighlight, 500);
             reviewHighlight();
 */
-            $('.review').css('background', '#EDF9FF');
         });
     </script>
     <!-- --------------- -->
 
     <!-- Page CSS -->
     <style type="text/css">
+
+        .review {
+            background: #EDF9FF;
+        }
 
         .reviewTip {
             width: 0px;
