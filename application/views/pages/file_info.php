@@ -110,8 +110,8 @@
             <br />
 
             <?php if ( ( $this->session->userdata('owl') === $upload_info->row()->owl ) && ( $this->session->userdata('editor') ) ) : ?>
-                <button class="button right">edit</button>
-                <button class="button right">delete</button>
+                <button class="button left">edit</button>
+                <button class="button left">delete</button>
             <?php endif; ?>
 
             <a href="javascript:history.back()" class="button">back</a>
