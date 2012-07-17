@@ -35,7 +35,7 @@
                     </select>
                 </div>
 
-                <div class="ctrlHolder">
+                <!--div class="ctrlHolder">
                     <label for="upload_license">license</label>
                     <?php $license = $this->miowl_model->get_license($upload_info->row()->upload_license); ?>
                     <select name="upload_license" id="upload_category" size="35" class="textInput medium">
@@ -43,7 +43,7 @@
                             <?php print $license->row()->short_description; ?>
                         </a>
                     </span>
-                </div>
+                </div-->
 
                 <div class="ctrlHolder">
                     <label for="description">description</label>
