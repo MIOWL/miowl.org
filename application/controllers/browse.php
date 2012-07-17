@@ -251,6 +251,7 @@ class Browse extends CI_Controller {
         $page_data['page_title']    = "File Info Editor | " . $upload_info->row()->file_name;
         $page_data['upload_info']   = $upload_info;
         $page_data['deleted']       = $deleted;
+        $page_data['license_data']  = $this->lic_model->get_owl_licenses();
 
         if( ( !is_null( $upload_info->row()->revision_date ) ) && ( time() >= $upload_info->row()->revision_date ) )
         {
