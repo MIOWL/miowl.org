@@ -122,7 +122,7 @@
                     // was the edit a success?
                     if (response.success) {
                         // send back to the file view
-                        window.location.href = uri;
+                        history.back();
                     }
                     else {
                         alert('Sorry, an error has occured. Please report this to the site admin.');
