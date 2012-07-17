@@ -41,7 +41,7 @@
                     <select name="upload_license" id="upload_category" class="textInput medium">
                         <?php foreach ( $license_data->result() as $license ) : ?>
                             <option value="<?php print $license->id; ?>" <?php print $upload_info->row()->upload_license === $license->id ? 'selected="selected"' : NULL; ?>>
-                                <?php print $category->name; ?>
+                                <?php print $license->name; ?>
                             </option>
                         <?php endforeach; ?>
                     </select>
