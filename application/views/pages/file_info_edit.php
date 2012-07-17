@@ -21,12 +21,12 @@
 
                 <div class="ctrlHolder">
                     <label for="file_name">filename</label>
-                    <input type="text" name="file_name" id="file_name" class="textInput medium" value="<?php print $upload_info->row()->file_name; ?>" />
+                    <input type="text" name="file_name" id="file_name" class="textInput large" value="<?php print $upload_info->row()->file_name; ?>" />
                 </div>
 
                 <div class="ctrlHolder">
                     <label for="upload_category">category</label>
-                    <select name="upload_category" id="upload_category" class="textInput medium">
+                    <select name="upload_category" id="upload_category" class="textInput large">
                         <?php foreach ( gen_drop_categories( FALSE, FALSE, $upload_info->row()->upload_category ) as $category ) : ?>
                             <option value="<?php print $category['id']; ?>" <?php print $upload_info->row()->upload_category === $category['id'] ? 'selected="selected"' : NULL; ?>>
                                 <?php print $category['name']; ?>
@@ -38,7 +38,7 @@
                 <div class="ctrlHolder">
                     <label for="upload_license">license</label>
                     <?php $license = $this->miowl_model->get_license($upload_info->row()->upload_license); ?>
-                    <select name="upload_license" id="upload_category" class="textInput medium">
+                    <select name="upload_license" id="upload_category" class="textInput large">
                         <?php foreach ( $license_data->result() as $license ) : ?>
                             <option value="<?php print $license->id; ?>" <?php print $upload_info->row()->upload_license === $license->id ? 'selected="selected"' : NULL; ?>>
                                 <?php print $license->name; ?>
@@ -50,12 +50,12 @@
                 <div class="ctrlHolder">
                     <label for="description">description</label>
                     <textarea name="description" id="description" size="35" class="textInput large" rows="5" cols="50"><?php print trim($upload_info->row()->description); ?></textarea>
-                    <!--span name="description" id="description" class="textInput medium"><?php print str_replace(array("\n", '\n'), "<br>", $upload_info->row()->description); ?></span-->
+                    <!--span name="description" id="description" class="textInput large"><?php print str_replace(array("\n", '\n'), "<br>", $upload_info->row()->description); ?></span-->
                 </div>
 
                 <div class="ctrlHolder">
                     <label for="revDate">revision date</label>
-                    <input type="text" name="revDate" id="revDate" class="textInput medium" value="<?php
+                    <input type="text" name="revDate" id="revDate" class="textInput large" value="<?php
                         print ( !is_null( $upload_info->row()->revision_date ) ) ?
                             date("d/m/Y", $upload_info->row()->revision_date) :
                             '';
