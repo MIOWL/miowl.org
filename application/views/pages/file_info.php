@@ -110,7 +110,7 @@
             <br />
 
             <?php if ( ( (int)$this->session->userdata('owl') === (int)$upload_info->row()->owl ) && ( $this->session->userdata('editor') ) ) : ?>
-                <button class="button edit">edit</button>
+                <button class="button edit" onclick="window.location.href='<?php print site_url('browse/info_edit/' . $upload_info->row()->id); ?>'">edit</button>
                 <?php if ( $this->uri->segment(1) != 'deleted' ) : ?>
                     <button class="button delete">delete</button>
                 <?php else : ?>
