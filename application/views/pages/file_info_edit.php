@@ -21,7 +21,7 @@
 
                 <div class="ctrlHolder">
                     <label for="file_name">filename</label>
-                    <input type="text" name="file_name" id="file_name" size="35" class="textInput medium" value="<?php print $upload_info->row()->file_name; ?>" />
+                    <input type="text" name="file_name" id="file_name" class="textInput medium" value="<?php print $upload_info->row()->file_name; ?>" />
                 </div>
 
                 <div class="ctrlHolder">
@@ -42,7 +42,12 @@
                         <a href="<?php print $license->row()->url; ?>" target="_BLANK">
                             <?php print $license->row()->short_description; ?>
                         </a>
-                    </span>
+                        <?php foreach ( gen_drop_categories( FALSE, FALSE, $upload_info->row()->upload_category ) as $category ) : ?>
+                            <option value="<?php print $category['id']; ?>" <?php echo set_select( 'upload_category', $category['id'] ); ?>>
+                                <?php print $category['name']; ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
                 </div-->
 
                 <div class="ctrlHolder">
