@@ -189,6 +189,9 @@ class Upload_model extends CI_Model {
                                 $revDate            = NULL
                               )
     {
+        if ( !$this->session->userdata('editor') )
+            return FALSE;
+
         if (
                !$upload_user
             || !$owl
@@ -228,6 +231,9 @@ class Upload_model extends CI_Model {
      */
     public function update_upload( $full_path = FALSE, $upload_category = FALSE, $client_name = FALSE, $description = NULL )
     {
+        if ( !$this->session->userdata('editor') )
+            return FALSE;
+
         if (!$full_path || !$upload_category || !$client_name)
             return FALSE;
 
@@ -269,7 +275,7 @@ class Upload_model extends CI_Model {
      */
     public function delete($id = NULL )
     {
-        if (!$this->session->userdata('editor'))
+        if ( !$this->session->userdata('editor') )
             return FALSE;
 
         if (!$id)
@@ -297,15 +303,15 @@ class Upload_model extends CI_Model {
      */
     public function restore($id = NULL )
     {
-        if (!$this->session->userdata('editor'))
+        if ( !$this->session->userdata('editor') )
             return FALSE;
 
         if (!$id)
             return FALSE;
 
         $update_data = array(
-            'deleted' => 'false',
-            'remove_timestamp' => NULL
+            'deleted'           => 'false',
+            'remove_timestamp'  => NULL
         );
 
         $this->db->where('id', $id);
@@ -325,20 +331,27 @@ class Upload_model extends CI_Model {
      */
     public function edit( $id = FALSE )
     {
-        if ( !$id )
-            return FALSE;
-
         if ( !$this->session->userdata('editor') )
             return FALSE;
 
+        if ( !$id )
+            return FALSE;
+
         $update_data = array(
-            'upload_category'   => $upload_category,
-            'client_name'       => $client_name,
-            'description'       => $description
+            'file_name'         => $this->input->post('name'),
+            'upload_category'   => $this->input->post('cat'),
+            'upload_license'    => $this->input->post('lic'),
+            'description'       => $this->input->post('desc'),
+            'revision_date'     => $this->input->post('date')
         );
 
         $this->db->where('id', $id);
         $this->db->update('uploads', $update_data);
+
+        if ($this->db->affected_rows() > 0)
+            return TRUE;
+        else
+            return FALSE;
     }
     //------------------------------------------------------------------
 

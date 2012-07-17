@@ -107,17 +107,10 @@
                 e.preventDefault();
 
                 // set the id
-                var id = <?php print $upload_info->row()->id; ?>;
-
-                alert( 'name: ' + $('#file_name').val() );
-                alert( 'cat: ' + $('#upload_category').val() );
-                alert( 'lic: ' + $('#upload_license').val() );
-                alert( 'desc: ' + $('#description').val() );
-                alert( 'date: ' + $('#revDate').val() );
-
+                var id = <?php print $upload_info->row()->id; ?>,
+                    uri = "<?php print site_url('browse/info'); ?>/" + id;
 
                 // get the JSON data from the request
-                /*
                 $.post('/owl/categories/edit/' + id, {
                     name:   $('#file_name').val(),
                     cat:    $('#upload_category').val(),
@@ -134,17 +127,21 @@
                             $('td:first', $('#r-' + cat_id)).html(data);
                         }, "html");
 
-                        // update the href to reflect this change
-                        var new_uri = cat_id + ':' + response.subcat + ':' + response.namez;
-                        $('.del', $('#r-' + cat_id)).attr('href', new_uri);
-                        $('.catedit', $('#r-' + cat_id)).attr('href', new_uri);
+                        // send back to the file view
+                        window.location.href = uri;
                     }
                     else {
                         alert('Sorry, an error has occured. Please report this to the site admin.');
                     }
                 }, "json");
-                */
             })
+
+            $( "#revDate" ).datepicker({
+                showOn: "button",
+                buttonImage: "/images/calendar.gif",
+                buttonImageOnly: true,
+                dateFormat: "dd MM yy"
+            });
         });
     </script>
     <!-- --------------- -->
