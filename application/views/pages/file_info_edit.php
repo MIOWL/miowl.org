@@ -111,7 +111,7 @@
                     uri = "<?php print site_url('browse/info'); ?>/" + id;
 
                 // get the JSON data from the request
-                $.post('/owl/categories/edit/' + id, {
+                $.post('/owl/uploads/edit/' + id, {
                     name:   $('#file_name').val(),
                     cat:    $('#upload_category').val(),
                     lic:    $('#upload_license').val(),
