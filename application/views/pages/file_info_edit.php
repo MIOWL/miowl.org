@@ -28,27 +28,24 @@
                     <label for="upload_category">category</label>
                     <select name="upload_category" id="upload_category" class="textInput medium">
                         <?php foreach ( gen_drop_categories( FALSE, FALSE, $upload_info->row()->upload_category ) as $category ) : ?>
-                            <option value="<?php print $category['id']; ?>" <?php echo set_select( 'upload_category', $category['id'] );  print $upload_info->row()->upload_category === $category['id'] ? 'selected="selected"' : NULL; ?>>
+                            <option value="<?php print $category['id']; ?>" <?php print $upload_info->row()->upload_category === $category['id'] ? 'selected="selected"' : NULL; ?>>
                                 <?php print $category['name']; ?>
                             </option>
                         <?php endforeach; ?>
                     </select>
                 </div>
 
-                <!--div class="ctrlHolder">
+                <div class="ctrlHolder">
                     <label for="upload_license">license</label>
                     <?php $license = $this->miowl_model->get_license($upload_info->row()->upload_license); ?>
                     <select name="upload_license" id="upload_category" class="textInput medium">
-                        <a href="<?php print $license->row()->url; ?>" target="_BLANK">
-                            <?php print $license->row()->short_description; ?>
-                        </a>
-                        <?php foreach ( gen_drop_categories( FALSE, FALSE, $upload_info->row()->upload_category ) as $category ) : ?>
-                            <option value="<?php print $category['id']; ?>" <?php echo set_select( 'upload_category', $category['id'] ); ?>>
-                                <?php print $category['name']; ?>
+                        <?php foreach ( $license_data->result() as $license ) : ?>
+                            <option value="<?php print $license->id; ?>" <?php print $upload_info->row()->upload_license === $license->id ? 'selected="selected"' : NULL; ?>>
+                                <?php print $category->name; ?>
                             </option>
                         <?php endforeach; ?>
                     </select>
-                </div-->
+                </div>
 
                 <div class="ctrlHolder">
                     <label for="description">description</label>
