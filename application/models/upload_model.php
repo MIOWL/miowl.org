@@ -337,12 +337,16 @@ class Upload_model extends CI_Model {
         if ( !$id )
             return FALSE;
 
+        $date = $this->input->post('date') == ""
+                    ? NULL
+                    : strtotime($this->input->post('date'));
+
         $update_data = array(
             'file_name'         => $this->input->post('name'),
             'upload_category'   => $this->input->post('cat'),
             'upload_license'    => $this->input->post('lic'),
             'description'       => $this->input->post('desc'),
-            'revision_date'     => $this->input->post('date')
+            'revision_date'     => $date
         );
 
         $this->db->where('id', $id);
