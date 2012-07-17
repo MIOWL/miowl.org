@@ -323,7 +323,7 @@ class Upload_model extends CI_Model {
     /**
      * public edit()
      */
-    public function update_upload( $id = FALSE )
+    public function edit( $id = FALSE )
     {
         if ( !$id )
             return FALSE;
