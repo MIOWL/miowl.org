@@ -50,7 +50,6 @@
                 <div class="ctrlHolder">
                     <label for="description">description</label>
                     <textarea name="description" id="description" size="35" class="textInput large" rows="5" cols="50"><?php print trim($upload_info->row()->description); ?></textarea>
-                    <!--span name="description" id="description" class="textInput large"><?php print str_replace(array("\n", '\n'), "<br>", $upload_info->row()->description); ?></span-->
                 </div>
 
                 <div class="ctrlHolder">
@@ -109,6 +108,42 @@
 
                 // set the id
                 var id = <?php print $upload_info->row()->id; ?>;
+
+                alert( 'name: ' + $('#file_name').val() );
+                alert( 'cat: ' + $('#upload_category').val() );
+                alert( 'lic: ' + $('#upload_license').val() );
+                alert( 'desc: ' + $('#description').val() );
+                alert( 'date: ' + $('#revDate').val() );
+
+
+                // get the JSON data from the request
+                /*
+                $.post('/owl/categories/edit/' + id, {
+                    name:   $('#file_name').val(),
+                    cat:    $('#upload_category').val(),
+                    lic:    $('#upload_license').val(),
+                    desc:   $('#description').val(),
+                    date:   $('#revDate').val()
+                },
+                function(response) {
+                    // was the edit a success?
+                    if (response.success) {
+                        // get the new breadcrumb
+                        $.get('/owl/categories/breadcrumb/' + cat_id, function(data) {
+                            // var breadcrumb = response;
+                            $('td:first', $('#r-' + cat_id)).html(data);
+                        }, "html");
+
+                        // update the href to reflect this change
+                        var new_uri = cat_id + ':' + response.subcat + ':' + response.namez;
+                        $('.del', $('#r-' + cat_id)).attr('href', new_uri);
+                        $('.catedit', $('#r-' + cat_id)).attr('href', new_uri);
+                    }
+                    else {
+                        alert('Sorry, an error has occured. Please report this to the site admin.');
+                    }
+                }, "json");
+                */
             })
         });
     </script>

@@ -321,6 +321,29 @@ class Upload_model extends CI_Model {
 
 
     /**
+     * public edit()
+     */
+    public function update_upload( $id = FALSE )
+    {
+        if ( !$id )
+            return FALSE;
+
+        if ( !$this->session->userdata('editor') )
+            return FALSE;
+
+        $update_data = array(
+            'upload_category'   => $upload_category,
+            'client_name'       => $client_name,
+            'description'       => $description
+        );
+
+        $this->db->where('id', $id);
+        $this->db->update('uploads', $update_data);
+    }
+    //------------------------------------------------------------------
+
+
+    /**
      * public total_uploads()
      */
     public function total_uploads()
