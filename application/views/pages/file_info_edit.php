@@ -54,7 +54,7 @@
 
                 <div class="ctrlHolder">
                     <label for="revDate">revision date</label>
-                    <input type="text" name="revDate" id="revDate" class="textInput large" value="<?php
+                    <input type="text" name="revDate" id="revDate" class="textInput medium" value="<?php
                         print ( !is_null( $upload_info->row()->revision_date ) ) ?
                             date("d/m/Y", $upload_info->row()->revision_date) :
                             '';
