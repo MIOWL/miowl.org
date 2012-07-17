@@ -438,7 +438,7 @@ class Owl extends CI_Controller {
      */
     public function _uploads_edit($id = FALSE)
     {
-        print json_encode( 'success' => $this->upload_model->edit($id) );
+        print json_encode( array( 'success' => $this->upload_model->edit($id) ) );
     }
     //------------------------------------------------------------------
 
