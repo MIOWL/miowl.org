@@ -28,7 +28,7 @@
                     <label for="upload_category">category</label>
                     <select name="upload_category" id="upload_category" class="textInput medium">
                         <?php foreach ( gen_drop_categories( FALSE, FALSE, $upload_info->row()->upload_category ) as $category ) : ?>
-                            <option value="<?php print $category['id']; ?>" <?php echo set_select( 'upload_category', $category['id'] );  print $category['selected'] ? 'selected="selected"' : NULL; ?>>
+                            <option value="<?php print $category['id']; ?>" <?php echo set_select( 'upload_category', $category['id'] );  print $upload_info->row()->upload_category === $category['id'] ? 'selected="selected"' : NULL; ?>>
                                 <?php print $category['name']; ?>
                             </option>
                         <?php endforeach; ?>
