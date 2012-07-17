@@ -235,6 +235,38 @@ class Browse extends CI_Controller {
     //------------------------------------------------------------------
 
 
+    /**
+     * public info_edit()
+     */
+    public function info_edit($file_id = FALSE, $deleted = FALSE)
+    {
+        if(!$file_id)
+            redirect(site_url('browse'), 'location');
+
+        // Get the file info for this ID
+        $upload_info = $this->upload_model->get_upload_by_id($file_id, $deleted);
+
+        // page data array
+        $page_data                  = array();
+        $page_data['page_title']    = "File Info Editor | " . $upload_info->row()->file_name;
+        $page_data['upload_info']   = $upload_info;
+        $page_data['deleted']       = $deleted;
+
+        if( ( !is_null( $upload_info->row()->revision_date ) ) && ( time() >= $upload_info->row()->revision_date ) )
+        {
+            $page_data['info']      = TRUE;
+            $nbsp                   = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+            $page_data['msg']       = "This file needs to be reviewed!\n<br />\n{$nbsp}Review date was <strong>" . date("d/m/Y", $upload_info->row()->revision_date) . "</strong>";
+
+            // TODO: Email admin members about review
+        }
+
+        // load the approp. page view
+        $this->load->view('pages/file_info_edit', $page_data);
+    }
+    //------------------------------------------------------------------
+
+
 //=================================================================================
 // :private functions
 //=================================================================================
