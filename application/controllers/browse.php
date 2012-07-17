@@ -209,7 +209,7 @@ class Browse extends CI_Controller {
     public function info($file_id = FALSE, $deleted = FALSE)
     {
         if(!$file_id)
-            redirect(site_url('browse'), 'location');
+            redirect(site_url(), 'location');
 
         // Get the file info for this ID
         $upload_info = $this->upload_model->get_upload_by_id($file_id, $deleted);
@@ -240,11 +240,15 @@ class Browse extends CI_Controller {
      */
     public function info_edit($file_id = FALSE, $deleted = FALSE)
     {
-        if(!$file_id)
-            redirect(site_url('browse'), 'location');
+        if( !$file_id || $this->session->userdata('admin') )
+            redirect(site_url(), 'location');
 
         // Get the file info for this ID
         $upload_info = $this->upload_model->get_upload_by_id($file_id, $deleted);
+
+        // is this your file?
+        if( $this->session->userdata('owl') !== $upload_info->row()->owl )
+            redirect(site_url(), 'location');
 
         // page data array
         $page_data                  = array();
