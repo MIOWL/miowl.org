@@ -49,7 +49,7 @@
 
                 <div class="ctrlHolder">
                     <label for="description">description</label>
-                    <textarea name="description" id="description" size="35" class="textInput large" rows="5" cols="50"><?php print trim($upload_info->row()->description)); ?></textarea>
+                    <textarea name="description" id="description" size="35" class="textInput large" rows="5" cols="50"><?php print trim($upload_info->row()->description); ?></textarea>
                     <!--span name="description" id="description" class="textInput medium"><?php print str_replace(array("\n", '\n'), "<br>", $upload_info->row()->description); ?></span-->
                 </div>
 
