@@ -1,0 +1,23 @@
+SHELL=/bin/bash
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+MAILTO=cron@friendlydev.com
+HOME=/home/miowl/
+
+# Minute   Hour   Day of Month       Month          Day of Week        Command
+# (0-59)  (0-23)     (1-31)    (1-12 or Jan-Dec)  (0-6 or Sun-Sat)
+
+# Do the Git Pull on the miowl every day
+    0       0          *               *                 *             cd ./www && git pull
+
+# ==================================================
+## MiOWL Tasks
+# ==================================================
+
+# Do the files cleanup
+#3 1 * * * cd ./www && php codeigniter.php cron takeOutTheTrash
+
+# Check for inactive members
+#4 1 * * * cd ./www && php codeigniter.php cron inactiveMembers
+
+# ==================================================
+
