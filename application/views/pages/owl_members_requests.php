@@ -99,7 +99,7 @@
                         }
                     }
                 });
-            }
+            })
 
             $('.deny').click(function(e) {
                 // prevent the default action, e.g., following a link
@@ -140,7 +140,7 @@
                         }
                     }
                 });
-            }
+            })
 
             function camesString(str) {
                 str = str.toLowerCase().replace(/\b[a-z]/g, function(letter) {
