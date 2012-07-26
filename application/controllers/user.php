@@ -248,6 +248,7 @@ class User extends CI_Controller {
                             $session_data = array(
                                 'authed'    => TRUE,
                                 'user_id'   => $user_query->row()->id,
+                                'name'      => $user_query->row()->user_first_name . ' ' . $user_query->row()->user_last_name,
                                 'username'  => $user_query->row()->user_name,
                                 'email'     => $user_query->row()->user_email,
                             );
