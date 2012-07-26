@@ -11,8 +11,11 @@
 			# Logged in NAV
 			print "<a href='". site_url() . "' title='View your Owl'>my owl</a>";								# my owl
 			print " | ";																						# spacer
-			print "<a href='". site_url('owl/uploads/upload') . "' title='Upload a new file'>upload</a>";		# upload
-			print " | ";																						# spacer
+			if ($this->session->userdata('editor'))
+			{
+				print "<a href='". site_url('owl/uploads/upload') . "' title='Upload a new file'>upload</a>";	# upload
+				print " | ";																					# spacer
+			}
 		}
 
 		# These are non specific nav options
