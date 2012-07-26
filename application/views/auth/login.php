@@ -39,21 +39,20 @@
     <!-- Page Javascript -->
     <script type="text/javascript">
         $(function() {
-                <?php if ( (( $username = set_value('username') )) != FALSE ) : ?>
-                    $('#resend').click( function(e) {
-                        // prevent the default action
-                        e.preventDefault();
+            <?php if ( (( $username = set_value('username') )) != FALSE ) : ?>
+                $('#resend').click( function(e) {
+                    // prevent the default action
+                    e.preventDefault();
 
-                        // set the id
-                        var username = "<?php print $username; ?>";
+                    // set the id
+                    var username = "<?php print $username; ?>";
 
-                        // get the JSON data from the request
-                        $.post('/user/resend_validation', {
-                            username: username
-                        }, "html");
-                    })
-                <?php endif; ?>
-            }
+                    // get the JSON data from the request
+                    $.post('/user/resend_validation', {
+                        username: username
+                    }, "html");
+                })
+            <?php endif; ?>
         });
     </script>
     <!-- --------------- -->
