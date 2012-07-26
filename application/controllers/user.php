@@ -268,7 +268,7 @@ class User extends CI_Controller {
                 {
                     // account has not been activated
                     $page_data['error'] = TRUE;
-                    $page_data['msg'] = "Your account has not been validated. Please check your emails.\r\n<br />\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='#' id='resend'>Resend validation email?</a>";
+                    $page_data['msg'] = "Your account has not been validated. Please check your emails.\r\n<br />\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='#' id='resend'>Resend validation email?</a>";
                 }
             }
             else
