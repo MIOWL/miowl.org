@@ -58,7 +58,7 @@
                     print (strlen($owl_name) < 29) ? $owl_name : '['.$owl_name_short.']';
                 ?>
             </div>
-        <?php else; ?>
+        <?php else : ?>
             <div id="header_owl_name">
                 <?php
                     print "Awaiting Verification";
