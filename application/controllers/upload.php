@@ -52,6 +52,11 @@ class Upload extends CI_Controller {
         // init parent
         parent::__construct();
 
+        if (!$this->session->userdata('editor')) {
+            redirect('/welcome', 'location');
+            return;
+        }
+
         // loads
         $this->load->model('upload_model');
     }
