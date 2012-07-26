@@ -6,7 +6,7 @@
 	<?php endif; ?>
 	<br />
 	<?php
-		if ($this->session->userdata('authed'))
+		if ($this->session->userdata('authed') && $this->session->userdata('owl_verified'))
 		{
 			# Logged in NAV
 			print "<a href='". site_url() . "' title='View your Owl'>my owl</a>";								# my owl
