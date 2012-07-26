@@ -49,18 +49,24 @@
 
 	<h1>
 		<?php if ($this->session->userdata('owl_verified')) : ?>
-			<div id="header_owl_name">
-				<?php
-					$owl_data 		= $this->owl_model->get_owl_by_id($this->session->userdata('owl'));
-					$owl_name 		= $owl_data->row()->owl_name;
-					$owl_name_short = $owl_data->row()->owl_name_short;
+            <div id="header_owl_name">
+                <?php
+                    $owl_data       = $this->owl_model->get_owl_by_id($this->session->userdata('owl'));
+                    $owl_name       = $owl_data->row()->owl_name;
+                    $owl_name_short = $owl_data->row()->owl_name_short;
 
-					print (strlen($owl_name) < 29) ? $owl_name : '['.$owl_name_short.']';
-				?>
-			</div>
+                    print (strlen($owl_name) < 29) ? $owl_name : '['.$owl_name_short.']';
+                ?>
+            </div>
+        <?php else; ?>
+            <div id="header_owl_name">
+                <?php
+                    print "Awaiting Verification";
+                ?>
+            </div>
 		<?php endif; ?>
 		<a id="site_logo" href="<?php print site_url(); ?>" title="Go back home!">
-			<img 
+			<img
 				src="<?php print site_url('images/miowl_red_black_small.png'); ?>"
 				alt="MiOWL Logo"
 				width="500"
