@@ -78,52 +78,6 @@ $(document).ready(function() {
      // ------------------------------------------------------------------------
 
     /*!
-     * accept member
-     */
-    $('.approve').click(function(e) {
-    	e.preventDefault();
-
-    	// get href id
-    	var id = $(this).attr('href');
-
-    	$.ajax({
-            type: 'GET',
-            url: '/owl/members/accept/' + id,
-            dataType: 'text',
-            success: function(response) {
-                if (response == "1") {
-                	$('#r-' + id).slideUp('slow');
-                }
-            }
-        });
-    });
-    // ------------------------------------------------------------------------
-
-    /*!
-     * deny member
-     */
-    $('.deny').click(function(e) {
-    	e.preventDefault();
-
-    	// get href id
-    	var id = $(this).attr('href');
-
-    	$.ajax({
-            type: 'GET',
-            url: '/owl/members/deny/' + id,
-            dataType: 'text',
-            success: function(response) {
-                if (response == "1") {
-                	$('#r-' + id).fadeOut('slow', function() {
-					    $('#r-' + id).empty();
-					});
-                }
-            }
-        });
-    });
-    // ------------------------------------------------------------------------
-
-    /*!
      * delete upload
      */
     $('.remove').click(function(e) {

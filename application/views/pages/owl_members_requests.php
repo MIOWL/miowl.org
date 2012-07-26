@@ -57,4 +57,99 @@
         <div class="clear">&nbsp;</div>
     </div>
 
+    <!-- Page Javascript -->
+    <script type="text/javascript">
+        $(function() {
+            $('.approve').click(function(e) {
+                // prevent the default action, e.g., following a link
+                e.preventDefault();
+
+                // remove the previous dialog box if there is one
+                $( "#dialog" ).remove();
+
+                // get the data from the form
+                var id = $(this).attr('href');
+
+                $('<div id="dialog"></div>').html('<span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>This will approve the user into your owl!').dialog({
+                    title: 'Approve this user?',
+                    autoOpen: true,
+                    resizable: false,
+                    // height:151,
+                    modal: true,
+                    buttons: {
+                        "Confirm": function() {
+                            // close the dialog box
+                            $(this).dialog("close");
+
+                            $.ajax({
+                                type: 'GET',
+                                url: '/owl/members/accept/' + id,
+                                dataType: 'text',
+                                success: function(response) {
+                                    if (response == "1") {
+                                        $('#r-' + id).slideUp('slow', function() {
+                                            $('#r-' + id).empty();
+                                        });
+                                    }
+                                }
+                            });
+                        },
+                        Cancel: function() {
+                            $(this).dialog("close");
+                        }
+                    }
+                });
+            }
+
+            $('.deny').click(function(e) {
+                // prevent the default action, e.g., following a link
+                e.preventDefault();
+
+                // remove the previous dialog box if there is one
+                $( "#dialog" ).remove();
+
+                // get the data from the form
+                var id = $(this).attr('href');
+
+                $('<div id="dialog"></div>').html('<span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>This will approve the user into your owl!').dialog({
+                    title: 'Approve this user?',
+                    autoOpen: true,
+                    resizable: false,
+                    // height:151,
+                    modal: true,
+                    buttons: {
+                        "Confirm": function() {
+                            // close the dialog box
+                            $(this).dialog("close");
+
+                            $.ajax({
+                                type: 'GET',
+                                url: '/owl/members/deny/' + id,
+                                dataType: 'text',
+                                success: function(response) {
+                                    if (response == "1") {
+                                        $('#r-' + id).slideUp('slow', function() {
+                                            $('#r-' + id).empty();
+                                        });
+                                    }
+                                }
+                            });
+                        },
+                        Cancel: function() {
+                            $(this).dialog("close");
+                        }
+                    }
+                });
+            }
+
+            function camesString(str) {
+                str = str.toLowerCase().replace(/\b[a-z]/g, function(letter) {
+                    return letter.toUpperCase();
+                });
+                return str;
+            }
+        });
+    </script>
+    <!-- --------------- -->
+
 <?php $this->load->view('template/footer'); ?>

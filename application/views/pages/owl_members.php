@@ -106,7 +106,10 @@
                     str = ".";
                 }
 
-                $('<div></div>').html('<span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>This will ' + action + ' the user ' + toFrom + ' "<strong>' + group.toUpperCase() + '</strong>"?').dialog({
+                // remove the previous dialog box if there is one
+                $( "#dialog" ).remove();
+
+                $('<div id="dialog"></div>').html('<span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>This will ' + action + ' the user ' + toFrom + ' "<strong>' + group.toUpperCase() + '</strong>"?').dialog({
                     title: camesString(action) + ' the user?',
                     autoOpen: true,
                     resizable: false,
