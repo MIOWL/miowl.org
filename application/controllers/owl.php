@@ -242,9 +242,7 @@ class Owl extends CI_Controller {
                 $owl_info = $this->owl_model->get_owl_by_id($this->input->post('owl'));
                 $this->owl_model->choose_owl($this->session->userdata('user_id'), $this->input->post('owl'));
                 $this->owlmail->send_chosen($name, $owl_info->row()->owl_name, $this->session->userdata('email'));
-
-                print '<pre>' . "{$name}\n{$owl_info->row()->owl_email}" . '</pre>';
-                die( $this->owlmail->inform_admin($name, $owl_info->row()->owl_email) );
+                $this->owlmail->inform_admin($name, $owl_info->row()->owl_email);
 
                 $page_data['success']   = TRUE;
                 $page_data['msg']       = "Successfully chosen you're owl. Please check your email to finish the registration process.";
