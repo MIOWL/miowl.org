@@ -570,6 +570,7 @@ class User extends CI_Controller {
                 NULL,                           // owl_name
                 TRUE                            // resend
             );
+            print $user->row()->user_email;
         }
     }
     //------------------------------------------------------------------
