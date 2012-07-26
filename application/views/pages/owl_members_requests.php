@@ -111,8 +111,8 @@
                 // get the data from the form
                 var id = $(this).attr('href');
 
-                $('<div id="dialog"></div>').html('<span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>This will approve the user into your owl!').dialog({
-                    title: 'Approve this user?',
+                $('<div id="dialog"></div>').html('<span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>This will deny the user into your owl!').dialog({
+                    title: 'Deny this user?',
                     autoOpen: true,
                     resizable: false,
                     // height:151,
