@@ -268,7 +268,7 @@ class User extends CI_Controller {
                 {
                     // account has not been activated
                     $page_data['error'] = TRUE;
-                    $page_data['msg'] = "Your account has not been validated. Please check your emails.";
+                    $page_data['msg'] = "Your account has not been validated. Please check your emails.\r\n<br />\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='#' id='resend'>Resend validation email?</a>";
                 }
             }
             else
@@ -553,25 +553,24 @@ class User extends CI_Controller {
 
 
     /**
-     * public uploads()
+     * public resend_validation()
      */
-    public function uploads()
+    public function resend_validation()
     {
-        // Do we need to login??
-        if (!$this->login_check('user-uploads'))
-            return;
+        $user = $this->user_model->get_user_by_username( $this->input->post( 'username' ) );
+        if ( $user != FALSE )
+        {
+            $full_name = $user->row()->user_first_name . ' ' . $user->row()->user_last_name . ' (' . $user->row()->user_name . ')';
 
-        // Load the PixlDrop Model
-        $this->load->model('pixldrop_model');
-
-        // page data array
-        $page_data                  = array();
-        $page_data['page_title'] = "Uploads";
-        $username                  = $this->session->userdata('username');
-        $page_data['image']      = $this->pixldrop_model->get_user_images($username);
-
-        // load the approp. page view
-        $this->load->view('misc/user_gallery', $page_data);
+            $this->usermail->send_authcode(
+                $full_name,                     // username
+                $user->row()->user_email,       // email
+                $user->row()->user_activation,  // auth_code
+                FALSE,                          // new_owl
+                NULL,                           // owl_name
+                TRUE                            // resend
+            );
+        }
     }
     //------------------------------------------------------------------
 

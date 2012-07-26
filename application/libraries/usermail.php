@@ -2,13 +2,13 @@
 
 /**
  * ------------------------------------------------------------------------------
- * 
+ *
  * MiOWL                                                     (v1) | codename dave
- * 
+ *
  * ------------------------------------------------------------------------------
  *
  * Copyright (c) 2012, Alan Wynn
- * 
+ *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
  * files (the "Software"), to deal in the Software without
@@ -17,10 +17,10 @@
  * copies of the Software, and to permit persons to whom the
  * Software is furnished to do so, subject to the following
  * conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
  * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
@@ -29,7 +29,7 @@
  * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
- * 
+ *
  * ------------------------------------------------------------------------------
  */
 
@@ -61,7 +61,7 @@ class Usermail {
      *
      * @return bool
      */
-    public function send_authcode($username = FALSE, $email = FALSE, $auth_code = FALSE, $new_owl = FALSE, $owl_name = NULL)
+    public function send_authcode($username = FALSE, $email = FALSE, $auth_code = FALSE, $new_owl = FALSE, $owl_name = NULL, $resend = FALSE)
     {
         if (!$username || !$email || !$auth_code)
             return FALSE;
@@ -74,12 +74,15 @@ class Usermail {
 
         $email_data  = $this->obj->load->view('email/head_foot/email_head.tpl', NULL, TRUE);  // Add email header
         $email_data .= $this->obj->parser->parse('email/auth_email.tpl', $data, TRUE);      // Build the email body
-        
-        if ($new_owl)  // New Owl
-            $email_data .= $this->obj->load->view('email/owl_new.tpl', NULL, TRUE);
-        else  // Chosen Owl
-            $email_data .= $this->obj->parser->parse('email/owl_chosen.tpl', array('owl' => $owl_name), TRUE);
-        
+
+        if ( $resend )
+        {
+            if ($new_owl)  // New Owl
+                $email_data .= $this->obj->load->view('email/owl_new.tpl', NULL, TRUE);
+            else  // Chosen Owl
+                $email_data .= $this->obj->parser->parse('email/owl_chosen.tpl', array('owl' => $owl_name), TRUE);
+        }
+
         $email_data .= $this->obj->load->view('email/head_foot/email_foot.tpl', '', TRUE);  // Add the email footer
 
         // Email Subject
