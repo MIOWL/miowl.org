@@ -285,7 +285,7 @@ class Owl_model extends CI_Model {
     public function get_owl_by_id($owl_id = FALSE)
     {
         if (!$owl_id)
-            return FALSE;
+            $owl_id = $this->session->userdata( 'owl' );
 
         $this->db->select('*');
         $this->db->where('id', $owl_id);

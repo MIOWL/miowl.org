@@ -567,7 +567,20 @@ class Owl extends CI_Controller {
      */
     public function _members_accept($user_id = FALSE)
     {
-        print $this->miowl_model->owl_accept_member($this->session->userdata('owl'), $user_id)?1:0;
+        $change = $this->miowl_model->owl_accept_member($this->session->userdata('owl'), $user_id) ? 1 : 0 ;
+        if ( $change === 1 )
+        {
+            // get some data
+            $user       = $this->user_model->get_user_by_id( $user_id )->row();
+            $owl        = $this->owl_model->get_owl_by_id()->row();
+
+            // build up the username
+            $username   = $user->user_first_name . " " . $user->user_last_name . " (" . $user->user_name . ")";
+
+            // send the email to the user
+            $this->owlmail->send_owl_accepted( $username, $owl->owl_name, $user->user_email );
+        }
+        return $change;
     }
     //------------------------------------------------------------------
 
@@ -577,7 +590,20 @@ class Owl extends CI_Controller {
      */
     public function _members_deny($user_id = FALSE)
     {
-        print $this->miowl_model->owl_deny_member($this->session->userdata('owl'), $user_id)?1:0;
+        $change = $this->miowl_model->owl_deny_member($this->session->userdata('owl'), $user_id) ? 1 : 0;
+        if ( $change === 1 )
+        {
+            // get some data
+            $user       = $this->user_model->get_user_by_id( $user_id )->row();
+            $owl        = $this->owl_model->get_owl_by_id()->row();
+
+            // build up the username
+            $username   = $user->user_first_name . " " . $user->user_last_name . " (" . $user->user_name . ")";
+
+            // send the email to the user
+            $this->owlmail->send_owl_deny( $username, $owl->owl_name, $user->user_email );
+        }
+        return $change;
     }
     //------------------------------------------------------------------
 
