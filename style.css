@@ -730,3 +730,951 @@ table img {
     /* padding-right: 10px; */
     color:#333;
 }
+
+
+/* ----------------------------------------------------------------------------- */
+/* ############################### Buttons ##################################### */
+/* ----------------------------------------------------------------------------- */
+.button {
+    position: relative;
+    overflow: visible;
+    display: inline-block;
+    padding: 0.5em 1em;
+
+    border: 1px solid #c7c7c7;
+
+    margin: 0;
+    text-decoration: none;
+    text-shadow: 1px 1px 0 #fff;
+
+    /* font: 11px/bold sans-serif;  */
+    font: 600 11px 'Open Sans', sans-serif;
+
+    color: #333;
+    white-space: nowrap;
+    cursor: pointer;
+    outline: none;
+
+    background: #fefefe;
+    background: -moz-linear-gradient(top,  #fefefe 0%, #e7e7e7 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fefefe), color-stop(100%,#e7e7e7));
+    background: -webkit-linear-gradient(top,  #fefefe 0%,#e7e7e7 100%);
+    background: -o-linear-gradient(top,  #fefefe 0%,#e7e7e7 100%);
+    background: -ms-linear-gradient(top,  #fefefe 0%,#e7e7e7 100%);
+    background: linear-gradient(top,  #fefefe 0%,#e7e7e7 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', endColorstr='#e7e7e7',GradientType=0);
+
+    -webkit-background-clip: padding;
+    -moz-background-clip: padding;
+    -o-background-clip: padding-box;
+    /*background-clip: padding-box;*/ /* commented out due to Opera 11.10 bug */
+
+    -webkit-border-radius: 0.2em;
+    -moz-border-radius: 0.2em;
+    border-radius: 0.2em;
+
+    /* IE hacks */
+    zoom: 1;
+    *display: inline;
+}
+
+.button:hover,
+.button:focus,
+.button:active,
+.button.active {
+    border-color: #c7c7c7;
+    text-decoration: none;
+
+    background-color: #fefefe;
+
+    background: -moz-linear-gradient(top,  #fefefe 0%, #e7e7e7 50%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fefefe), color-stop(50%,#e7e7e7));
+    background: -webkit-linear-gradient(top,  #fefefe 0%,#e7e7e7 50%);
+    background: -o-linear-gradient(top,  #fefefe 0%,#e7e7e7 50%);
+    background: -ms-linear-gradient(top,  #fefefe 0%,#e7e7e7 50%);
+    background: linear-gradient(top,  #fefefe 0%,#e7e7e7 50%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', endColorstr='#e7e7e7',GradientType=0);
+}
+
+.button:active,
+.button.active {
+    border-color: #c7c7c7;
+
+    background: #e7e7e7;
+    background: -moz-linear-gradient(top,  #e7e7e7 0%, #fefefe 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e7e7e7), color-stop(100%,#fefefe));
+    background: -webkit-linear-gradient(top,  #e7e7e7 0%,#fefefe 100%);
+    background: -o-linear-gradient(top,  #e7e7e7 0%,#fefefe 100%);
+    background: -ms-linear-gradient(top,  #e7e7e7 0%,#fefefe 100%);
+    background: linear-gradient(top,  #e7e7e7 0%,#fefefe 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e7e7e7', endColorstr='#fefefe',GradientType=0);
+}
+
+
+.button::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+}
+
+.button.icon {
+    padding: 4px 8px;
+    line-height: 16px;
+}
+
+.button.icon:before {
+    content: "";
+    position: relative;
+    top: 0px;
+    float:left;
+    width: 16px;
+    height: 16px;
+    margin: 0 0.65em 0 -0.25em;
+}
+
+.button.icon-only {
+    padding: 4px 6px;
+}
+
+.button.icon-only:before {
+    margin: 0 0 0 0;
+}
+
+.button.icon:before {
+    background: url(images/other.png) 0px 0px no-repeat;
+}
+
+.button.icon.arrow:before {
+    background: url(images/arrows.png) 0px 0px no-repeat;
+}
+
+/* Arrow Icons */
+
+.button.icon.arrow.right:before { background-position: 0px -16px; }
+.button.icon.arrow.right:hover:before,
+.button.icon.arrow.right:active:before { background-position: 0px 0px; }
+
+.button.icon.arrow.upright:before { background-position: -16px -16px; }
+.button.icon.arrow.upright:hover:before,
+.button.icon.arrow.upright:active:before { background-position: -16px 0px; }
+
+.button.icon.arrow.up:before { background-position: -32px -16px; }
+.button.icon.arrow.up:hover:before,
+.button.icon.arrow.up:active:before { background-position: -32px 0px; }
+
+.button.icon.arrow.upleft:before { background-position: -32px -16px; }
+.button.icon.arrow.upleft:hover:before,
+.button.icon.arrow.upleft:active:before { background-position: -32px 0px; }
+
+.button.icon.arrow.left:before { background-position: -48px -16px; }
+.button.icon.arrow.left:hover:before,
+.button.icon.arrow.left:active:before { background-position: -48px 0px; }
+
+.button.icon.arrow.downleft:before { background-position: -64px -16px; }
+.button.icon.arrow.downleft:hover:before,
+.button.icon.arrow.downleft:active:before { background-position: -64px 0px; }
+
+.button.icon.arrow.down:before { background-position: -80px -16px; }
+.button.icon.arrow.down:hover:before,
+.button.icon.arrow.down:active:before { background-position: -80px 0px; }
+
+.button.icon.arrow.downright:before { background-position: -96px -16px; }
+.button.icon.arrow.downright:hover:before,
+.button.icon.arrow.downright:active:before { background-position: -96px 0px; }
+
+.button.icon.arrow.split:before { background-position: -112px -16px; }
+.button.icon.arrow.split:hover:before,
+.button.icon.arrow.split:active:before { background-position: -112px 0px; }
+
+.button.icon.arrow.circle:before { background-position: -144px -16px; }
+.button.icon.arrow.circle:hover:before,
+.button.icon.arrow.circle:active:before { background-position: -144px 0px; }
+
+.button.icon.arrow.circle-alt:before { background-position: -160px -16px; }
+.button.icon.arrow.circle-alt:hover:before,
+.button.icon.arrow.circle-alt:active:before { background-position: -160px 0px; }
+
+.button.icon.arrow.reload:before { background-position: -176px -16px; }
+.button.icon.arrow.reload:hover:before,
+.button.icon.arrow.reload:active:before { background-position: -176px 0px; }
+
+.button.icon.arrow.dright:before { background-position: -192px -16px; }
+.button.icon.arrow.dright:hover:before,
+.button.icon.arrow.dright:active:before { background-position: -192px 0px; }
+
+.button.icon.arrow.uright-double:before { background-position: -208px -16px; }
+.button.icon.arrow.uright-double:hover:before,
+.button.icon.arrow.uright-double:active:before { background-position: -208px 0px; }
+
+.button.icon.arrow.uright:before { background-position: -224px -16px; }
+.button.icon.arrow.uright:hover:before,
+.button.icon.arrow.uright:active:before { background-position: -224px 0px; }
+
+.button.icon.arrow.rup:before { background-position: -240px -16px; }
+.button.icon.arrow.rup:hover:before,
+.button.icon.arrow.rup:active:before { background-position: -240px 0px; }
+
+.button.icon.arrow.lup:before { background-position: -256px -16px; }
+.button.icon.arrow.lup:hover:before,
+.button.icon.arrow.lup:active:before { background-position: -256px 0px; }
+
+.button.icon.arrow.uleft:before { background-position: -272px -16px; }
+.button.icon.arrow.uleft:hover:before,
+.button.icon.arrow.uleft:active:before { background-position: -272px 0px; }
+
+.button.icon.arrow.uleftd:before { background-position: -288px -16px; }
+.button.icon.arrow.uleftd:hover:before,
+.button.icon.arrow.uleftd:active:before { background-position: -288px 0px; }
+
+.button.icon.arrow.dleft:before { background-position: -304px -16px; }
+.button.icon.arrow.dleft:hover:before,
+.button.icon.arrow.dleft:active:before { background-position: -304px 0px; }
+
+.button.icon.arrow.ldown:before { background-position: -320px -16px; }
+.button.icon.arrow.ldown:hover:before,
+.button.icon.arrow.ldown:active:before { background-position: -320px 0px; }
+
+.button.icon.arrow.rdown:before { background-position: -336px -16px; }
+.button.icon.arrow.rdown:hover:before,
+.button.icon.arrow.rdown:active:before { background-position: -336px 0px; }
+
+.button.icon.arrow.move:before { background-position: -352px -16px; }
+.button.icon.arrow.move:hover:before,
+.button.icon.arrow.move:active:before { background-position: -352px 0px; }
+
+.button.icon.arrow.track:before { background-position: -368px -16px; }
+.button.icon.arrow.track:hover:before,
+.button.icon.arrow.track:active:before { background-position: -368px 0px; }
+
+.button.icon.arrow.sizeh:before { background-position: -384px -16px; }
+.button.icon.arrow.sizeh:hover:before,
+.button.icon.arrow.sizeh:active:before { background-position: -384px 0px; }
+
+.button.icon.arrow.sizev:before { background-position: -400px -16px; }
+.button.icon.arrow.sizev:hover:before,
+.button.icon.arrow.sizev:active:before { background-position: -400px 0px; }
+
+.button.icon.arrow.sizehv:before { background-position: -416px -16px; }
+.button.icon.arrow.sizehv:hover:before,
+.button.icon.arrow.sizehv:active:before { background-position: -416px 0px; }
+
+.button.icon.arrow.u:before { background-position: -432px -16px; }
+.button.icon.arrow.u:hover:before,
+.button.icon.arrow.u:active:before { background-position: -432px 0px; }
+
+.button.icon.arrow.re:before { background-position: -448px -16px; }
+.button.icon.arrow.re:hover:before,
+.button.icon.arrow.re:active:before { background-position: -448px 0px; }
+
+.button.icon.arrow.skip:before { background-position: -464px -16px; }
+.button.icon.arrow.skip:hover:before,
+.button.icon.arrow.skip:active:before { background-position: -464px 0px; }
+
+.button.icon.arrow.cross:before { background-position: -480px -16px; }
+.button.icon.arrow.cross:hover:before,
+.button.icon.arrow.cross:active:before { background-position: -480px 0px; }
+
+.button.icon.arrow.trans-right:before { background-position: -496px -16px; }
+.button.icon.arrow.trans-right:hover:before,
+.button.icon.arrow.trans-right:active:before { background-position: -496px 0px; }
+
+.button.icon.arrow.trans-up:before { background-position: -512px -16px; }
+.button.icon.arrow.trans-up:hover:before,
+.button.icon.arrow.trans-up:active:before { background-position: -512px 0px; }
+
+.button.icon.arrow.trans-left:before { background-position: -528px -16px; }
+.button.icon.arrow.trans-left:hover:before,
+.button.icon.arrow.trans-left:active:before { background-position: -528px 0px; }
+
+.button.icon.arrow.trans-down:before { background-position: -544px -16px; }
+.button.icon.arrow.trans-down:hover:before,
+.button.icon.arrow.trans-down:active:before { background-position: -544px 0px; }
+
+.button.icon.arrow.trans-down:before { background-position: -560px -16px; }
+.button.icon.arrow.trans-down:hover:before,
+.button.icon.arrow.trans-down:active:before { background-position: -560px 0px; }
+
+/* Other Icons */
+
+.button.icon.at:before { background-position: -0px -16px; }
+.button.icon.at:hover:before,
+.button.icon.at:active:before { background-position: -0px 0px; }
+
+.button.icon.balloon:before { background-position: -16px -16px; }
+.button.icon.balloon:hover:before,
+.button.icon.balloon:active:before { background-position: -16px 0px; }
+
+.button.icon.balloon-arrow:before { background-position: -32px -16px; }
+.button.icon.balloon-arrow:hover:before,
+.button.icon.balloon-arrow:active:before { background-position: -32px 0px; }
+
+.button.icon.balloon-dots:before { background-position: -48px -16px; }
+.button.icon.balloon-dots:hover:before,
+.button.icon.balloon-dots:active:before { background-position: -48px 0px; }
+
+.button.icon.balloon-ex:before { background-position: -64px -16px; }
+.button.icon.balloon-ex:hover:before,
+.button.icon.balloon-ex:active:before { background-position: -64px 0px; }
+
+.button.icon.balloon-left:before { background-position: -80px -16px; }
+.button.icon.balloon-left:hover:before,
+.button.icon.balloon-left:active:before { background-position: -80px 0px; }
+
+.button.icon.balloon-min:before { background-position: -96px -16px; }
+.button.icon.balloon-min:hover:before,
+.button.icon.balloon-min:active:before { background-position: -96px 0px; }
+
+.button.icon.balloon-edit:before { background-position: -112px -16px; }
+.button.icon.balloon-edit:hover:before,
+.button.icon.balloon-edit:active:before { background-position: -112px 0px; }
+
+.button.icon.balloon-add:before { background-position: -128px -16px; }
+.button.icon.balloon-add:hover:before,
+.button.icon.balloon-add:active:before { background-position: -128px 0px; }
+
+.button.icon.balloon-quote:before { background-position: -144px -16px; }
+.button.icon.balloon-quote:hover:before,
+.button.icon.balloon-quote:active:before { background-position: -144px 0px; }
+
+.button.icon.balloons:before { background-position: -160px -16px; }
+.button.icon.balloons:hover:before,
+.button.icon.balloons:active:before { background-position: -160px 0px; }
+
+.button.icon.block:before { background-position: -176px -16px; }
+.button.icon.block:hover:before,
+.button.icon.block:active:before { background-position: -176px 0px; }
+
+.button.icon.block-min:before { background-position: -192px -16px; }
+.button.icon.block-min:hover:before,
+.button.icon.block-min:active:before { background-position: -192px 0px; }
+
+.button.icon.block-edit:before { background-position: -208px -16px; }
+.button.icon.block-edit:hover:before,
+.button.icon.block-edit:active:before { background-position: -208px 0px; }
+
+.button.icon.block-add:before { background-position: -224px -16px; }
+.button.icon.block-add:hover:before,
+.button.icon.block-add:active:before { background-position: -224px 0px; }
+
+.button.icon.bookmark:before { background-position: -240px -16px; }
+.button.icon.bookmark:hover:before,
+.button.icon.bookmark:active:before { background-position: -240px 0px; }
+
+.button.icon.bookmark-min:before { background-position: -256px -16px; }
+.button.icon.bookmark-min:hover:before,
+.button.icon.bookmark-min:active:before { background-position: -256px 0px; }
+
+.button.icon.bookmark-edit:before { background-position: -272px -16px; }
+.button.icon.bookmark-edit:hover:before,
+.button.icon.bookmark-edit:active:before { background-position: -272px 0px; }
+
+.button.icon.bookmark-add:before { background-position: -288px -16px; }
+.button.icon.bookmark-add:hover:before,
+.button.icon.bookmark-add:active:before { background-position: -288px 0px; }
+
+.button.icon.bookmarks:before { background-position: -304px -16px; }
+.button.icon.bookmarks:hover:before,
+.button.icon.bookmarks:active:before { background-position: -304px 0px; }
+
+.button.icon.box:before { background-position: -320px -16px; }
+.button.icon.box:hover:before,
+.button.icon.box:active:before { background-position: -320px 0px; }
+
+.button.icon.box-label:before { background-position: -336px -16px; }
+.button.icon.box-label:hover:before,
+.button.icon.box-label:active:before { background-position: -336px 0px; }
+
+.button.icon.box-min:before { background-position: -352px -16px; }
+.button.icon.box-min:hover:before,
+.button.icon.box-min:active:before { background-position: -352px 0px; }
+
+.button.icon.box-edit:before { background-position: -368px -16px; }
+.button.icon.box-edit:hover:before,
+.button.icon.box-edit:active:before { background-position: -368px 0px; }
+
+.button.icon.box-add:before { background-position: -384px -16px; }
+.button.icon.box-add:hover:before,
+.button.icon.box-add:active:before { background-position: -384px 0px; }
+
+.button.icon.box-share:before { background-position: -400px -16px; }
+.button.icon.box-share:hover:before,
+.button.icon.box-share:active:before { background-position: -400px 0px; }
+
+.button.icon.brain:before { background-position: -416px -16px; }
+.button.icon.brain:hover:before,
+.button.icon.brain:active:before { background-position: -416px 0px; }
+
+.button.icon.brain-empty:before { background-position: -432px -16px; }
+.button.icon.brain-empty:hover:before,
+.button.icon.brain-empty:active:before { background-position: -432px 0px; }
+
+.button.icon.brain-min:before { background-position: -448px -16px; }
+.button.icon.brain-min:hover:before,
+.button.icon.brain-min:active:before { background-position: -448px 0px; }
+
+.button.icon.brain-edit:before { background-position: -464px -16px; }
+.button.icon.brain-edit:hover:before,
+.button.icon.brain-edit:active:before { background-position: -464px 0px; }
+
+.button.icon.brain-add:before { background-position: -480px -16px; }
+.button.icon.brain-add:hover:before,
+.button.icon.brain-add:active:before { background-position: -480px 0px; }
+
+.button.icon.bug:before { background-position: -496px -16px; }
+.button.icon.bug:hover:before,
+.button.icon.bug:active:before { background-position: -496px 0px; }
+
+.button.icon.bug-min:before { background-position: -512px -16px; }
+.button.icon.bug-min:hover:before,
+.button.icon.bug-min:active:before { background-position: -512px 0px; }
+
+.button.icon.bug-edit:before { background-position: -528px -16px; }
+.button.icon.bug-edit:hover:before,
+.button.icon.bug-edit:active:before { background-position: -528px 0px; }
+
+.button.icon.bug-add:before { background-position: -544px -16px; }
+.button.icon.bug-add:hover:before,
+.button.icon.bug-add:active:before { background-position: -544px 0px; }
+
+.button.icon.chain:before { background-position: -560px -16px; }
+.button.icon.chain:hover:before,
+.button.icon.chain:active:before { background-position: -560px 0px; }
+
+.button.icon.chain-min:before { background-position: -576px -16px; }
+.button.icon.chain-min:hover:before,
+.button.icon.chain-min:active:before { background-position: -576px 0px; }
+
+.button.icon.chain-edit:before { background-position: -592px -16px; }
+.button.icon.chain-edit:hover:before,
+.button.icon.chain-edit:active:before { background-position: -592px 0px; }
+
+.button.icon.chain-add:before { background-position: -608px -16px; }
+.button.icon.chain-add:hover:before,
+.button.icon.chain-add:active:before { background-position: -608px 0px; }
+
+.button.icon.chevron:before { background-position: -624px -16px; }
+.button.icon.chevron:hover:before,
+.button.icon.chevron:active:before { background-position: -624px 0px; }
+
+.button.icon.chevron-exp:before { background-position: -640px -16px; }
+.button.icon.chevron-exp:hover:before,
+.button.icon.chevron-exp:active:before { background-position: -640px 0px; }
+
+.button.icon.chevron-small:before { background-position: -656px -16px; }
+.button.icon.chevron-small:hover:before,
+.button.icon.chevron-small:active:before { background-position: -656px 0px; }
+
+.button.icon.chevron-small-exp:before { background-position: -672px -16px; }
+.button.icon.chevron-small-exp:hover:before,
+.button.icon.chevron-small-exp:active:before { background-position: -672px 0px; }
+
+.button.icon.computer:before { background-position: -688px -16px; }
+.button.icon.computer:hover:before,
+.button.icon.computer:active:before { background-position: -688px 0px; }
+
+.button.icon.computer-min:before { background-position: -704px -16px; }
+.button.icon.computer-min:hover:before,
+.button.icon.computer-min:active:before { background-position: -704px 0px; }
+
+.button.icon.computer-net:before { background-position: -720px -16px; }
+.button.icon.computer-net:hover:before,
+.button.icon.computer-net:active:before { background-position: -720px 0px; }
+
+.button.icon.computer-off:before { background-position: -736px -16px; }
+.button.icon.computer-off:hover:before,
+.button.icon.computer-off:active:before { background-position: -736px 0px; }
+
+.button.icon.computer-edit:before { background-position: -752px -16px; }
+.button.icon.computer-edit:hover:before,
+.button.icon.computer-edit:active:before { background-position: -752px 0px; }
+
+.button.icon.computer-add:before { background-position: -768px -16px; }
+.button.icon.computer-add:hover:before,
+.button.icon.computer-add:active:before { background-position: -768px 0px; }
+
+.button.icon.cross:before { background-position: -784px -16px; }
+.button.icon.cross:hover:before,
+.button.icon.cross:active:before { background-position: -784px 0px; }
+
+.button.icon.disk:before { background-position: -800px -16px; }
+.button.icon.disk:hover:before,
+.button.icon.disk:active:before { background-position: -800px 0px; }
+
+.button.icon.disk-arrow:before { background-position: -816px -16px; }
+.button.icon.disk-arrow:hover:before,
+.button.icon.disk-arrow:active:before { background-position: -816px 0px; }
+
+.button.icon.disk-black:before { background-position: -832px -16px; }
+.button.icon.disk-black:hover:before,
+.button.icon.disk-black:active:before { background-position: -832px 0px; }
+
+.button.icon.disk-min:before { background-position: -848px -16px; }
+.button.icon.disk-min:hover:before,
+.button.icon.disk-min:active:before { background-position: -848px 0px; }
+
+.button.icon.disk-edit:before { background-position: -864px -16px; }
+.button.icon.disk-edit:hover:before,
+.button.icon.disk-edit:active:before { background-position: -864px 0px; }
+
+.button.icon.disk-add:before { background-position: -880px -16px; }
+.button.icon.disk-add:hover:before,
+.button.icon.disk-add:active:before { background-position: -880px 0px; }
+
+.button.icon.disk-share:before { background-position: -896px -16px; }
+.button.icon.disk-share:hover:before,
+.button.icon.disk-share:active:before { background-position: -896px 0px; }
+
+.button.icon.download-win:before { background-position: -912px -16px; }
+.button.icon.download-win:hover:before,
+.button.icon.download-win:active:before { background-position: -912px 0px; }
+
+.button.icon.download:before { background-position: -928px -16px; }
+.button.icon.download:hover:before,
+.button.icon.download:active:before { background-position: -928px 0px; }
+
+.button.icon.download-linux:before { background-position: -944px -16px; }
+.button.icon.download-linux:hover:before,
+.button.icon.download-linux:active:before { background-position: -944px 0px; }
+
+.button.icon.download-mac:before { background-position: -960px -16px; }
+.button.icon.download-mac:hover:before,
+.button.icon.download-mac:active:before { background-position: -960px 0px; }
+
+.button.icon.drive:before { background-position: -976px -16px; }
+.button.icon.drive:hover:before,
+.button.icon.drive:active:before { background-position: -976px 0px; }
+
+.button.icon.drive-arrow:before { background-position: -992px -16px; }
+.button.icon.drive-arrow:hover:before,
+.button.icon.drive-arrow:active:before { background-position: -992px 0px; }
+
+.button.icon.drive-download:before { background-position: -1008px -16px; }
+.button.icon.drive-download:hover:before,
+.button.icon.drive-download:active:before { background-position: -1008px 0px; }
+
+.button.icon.drive-min:before { background-position: -1024px -16px; }
+.button.icon.drive-min:hover:before,
+.button.icon.drive-min:active:before { background-position: -1024px 0px; }
+
+.button.icon.drive-net:before { background-position: -1040px -16px; }
+.button.icon.drive-net:hover:before,
+.button.icon.drive-net:active:before { background-position: -1040px 0px; }
+
+.button.icon.drive-edit:before { background-position: -1056px -16px; }
+.button.icon.drive-edit:hover:before,
+.button.icon.drive-edit:active:before { background-position: -1056px 0px; }
+
+.button.icon.drive-add:before { background-position: -1072px -16px; }
+.button.icon.drive-add:hover:before,
+.button.icon.drive-add:active:before { background-position: -1072px 0px; }
+
+.button.icon.drive-share:before { background-position: -1088px -16px; }
+.button.icon.drive-share:hover:before,
+.button.icon.drive-share:active:before { background-position: -1088px 0px; }
+
+.button.icon.drive-upload:before { background-position: -1104px -16px; }
+.button.icon.drive-upload:hover:before,
+.button.icon.drive-upload:active:before { background-position: -1104px 0px; }
+
+.button.icon.dummy:before { background-position: -1120px -16px; }
+.button.icon.dummy:hover:before,
+.button.icon.dummy:active:before { background-position: -1120px 0px; }
+
+.button.icon.dummy-happy:before { background-position: -1136px -16px; }
+.button.icon.dummy-happy:hover:before,
+.button.icon.dummy-happy:active:before { background-position: -1136px 0px; }
+
+.button.icon.dummy-sad:before { background-position: -1152px -16px; }
+.button.icon.dummy-sad:hover:before,
+.button.icon.dummy-sad:active:before { background-position: -1152px 0px; }
+
+.button.icon.excl:before { background-position: -1168px -16px; }
+.button.icon.excl:hover:before,
+.button.icon.excl:active:before { background-position: -1168px 0px; }
+
+.button.icon.feed:before { background-position: -1184px -16px; }
+.button.icon.feed:hover:before,
+.button.icon.feed:active:before { background-position: -1184px 0px; }
+
+.button.icon.game:before { background-position: -1200px -16px; }
+.button.icon.game:hover:before,
+.button.icon.game:active:before { background-position: -1200px 0px; }
+
+.button.icon.gear:before { background-position: -1216px -16px; }
+.button.icon.gear:hover:before,
+.button.icon.gear:active:before { background-position: -1216px 0px; }
+
+.button.icon.gear-arrow:before { background-position: -1232px -16px; }
+.button.icon.gear-arrow:hover:before,
+.button.icon.gear-arrow:active:before { background-position: -1232px 0px; }
+
+.button.icon.gear-min:before { background-position: -1248px -16px; }
+.button.icon.gear-min:hover:before,
+.button.icon.gear-min:active:before { background-position: -1248px 0px; }
+
+.button.icon.gear-edit:before { background-position: -1264px -16px; }
+.button.icon.gear-edit:hover:before,
+.button.icon.gear-edit:active:before { background-position: -1264px 0px; }
+
+.button.icon.gear-add:before { background-position: -1280px -16px; }
+.button.icon.gear-add:hover:before,
+.button.icon.gear-add:active:before { background-position: -1280px 0px; }
+
+.button.icon.tools:before { background-position: -1296px -16px; }
+.button.icon.tools:hover:before,
+.button.icon.tools:active:before { background-position: -1296px 0px; }
+
+.button.icon.heart:before { background-position: -1312px -16px; }
+.button.icon.heart:hover:before,
+.button.icon.heart:active:before { background-position: -1312px 0px; }
+
+.button.icon.heart-arrow:before { background-position: -1328px -16px; }
+.button.icon.heart-arrow:hover:before,
+.button.icon.heart-arrow:active:before { background-position: -1328px 0px; }
+
+.button.icon.heart-break:before { background-position: -1344px -16px; }
+.button.icon.heart-break:hover:before,
+.button.icon.heart-break:active:before { background-position: -1344px 0px; }
+
+.button.icon.heart-empty:before { background-position: -1360px -16px; }
+.button.icon.heart-empty:hover:before,
+.button.icon.heart-empty:active:before { background-position: -1360px 0px; }
+
+.button.icon.heart-excl:before { background-position: -1376px -16px; }
+.button.icon.heart-excl:hover:before,
+.button.icon.heart-excl:active:before { background-position: -1376px 0px; }
+
+.button.icon.heart-half:before { background-position: -1392px -16px; }
+.button.icon.heart-half:hover:before,
+.button.icon.heart-half:active:before { background-position: -1392px 0px; }
+
+.button.icon.heart-min:before { background-position: -1408px -16px; }
+.button.icon.heart-min:hover:before,
+.button.icon.heart-min:active:before { background-position: -1408px 0px; }
+
+.button.icon.heart-edit:before { background-position: -1424px -16px; }
+.button.icon.heart-edit:hover:before,
+.button.icon.heart-edit:active:before { background-position: -1424px 0px; }
+
+.button.icon.heart-add:before { background-position: -1440px -16px; }
+.button.icon.heart-add:hover:before,
+.button.icon.heart-add:active:before { background-position: -1440px 0px; }
+
+.button.icon.heart-small:before { background-position: -1456px -16px; }
+.button.icon.heart-small:hover:before,
+.button.icon.heart-small:active:before { background-position: -1456px 0px; }
+
+.button.icon.heart-small-empty:before { background-position: -1472px -16px; }
+.button.icon.heart-small-empty:hover:before,
+.button.icon.heart-small-empty:active:before { background-position: -1472px 0px; }
+
+.button.icon.heart-small-half:before { background-position: -1488px -16px; }
+.button.icon.heart-small-half:hover:before,
+.button.icon.heart-small-half:active:before { background-position: -1488px 0px; }
+
+.button.icon.info:before { background-position: -1504px -16px; }
+.button.icon.info:hover:before,
+.button.icon.info:active:before { background-position: -1504px 0px; }
+
+.button.icon.key:before { background-position: -1520px -16px; }
+.button.icon.key:hover:before,
+.button.icon.key:active:before { background-position: -1520px 0px; }
+
+.button.icon.key-min:before { background-position: -1536px -16px; }
+.button.icon.key-min:hover:before,
+.button.icon.key-min:active:before { background-position: -1536px 0px; }
+
+.button.icon.key-edit:before { background-position: -1552px -16px; }
+.button.icon.key-edit:hover:before,
+.button.icon.key-edit:active:before { background-position: -1552px 0px; }
+
+.button.icon.key-add:before { background-position: -1568px -16px; }
+.button.icon.key-add:hover:before,
+.button.icon.key-add:active:before { background-position: -1568px 0px; }
+
+.button.icon.edit:before { background-position: -1584px -16px; }
+.button.icon.edit:hover:before,
+.button.icon.edit:active:before { background-position: -1584px 0px; }
+
+.button.icon.edit-min:before { background-position: -1600px -16px; }
+.button.icon.edit-min:hover:before,
+.button.icon.edit-min:active:before { background-position: -1600px 0px; }
+
+.button.icon.edit-add:before { background-position: -1616px -16px; }
+.button.icon.edit-add:hover:before,
+.button.icon.edit-add:active:before { background-position: -1616px 0px; }
+
+.button.icon.add:before { background-position: -1632px -16px; }
+.button.icon.add:hover:before,
+.button.icon.add:active:before { background-position: -1632px 0px; }
+
+.button.icon.question:before { background-position: -1648px -16px; }
+.button.icon.question:hover:before,
+.button.icon.question:active:before { background-position: -1648px 0px; }
+
+.button.icon.screwdriver:before { background-position: -1664px -16px; }
+.button.icon.screwdriver:hover:before,
+.button.icon.screwdriver:active:before { background-position: -1664px 0px; }
+
+.button.icon.screwdriver-min:before { background-position: -1680px -16px; }
+.button.icon.screwdriver-min:hover:before,
+.button.icon.screwdriver-min:active:before { background-position: -1680px 0px; }
+
+.button.icon.screwdriver-edit:before { background-position: -1696px -16px; }
+.button.icon.screwdriver-edit:hover:before,
+.button.icon.screwdriver-edit:active:before { background-position: -1696px 0px; }
+
+.button.icon.screwdriver-plus:before { background-position: -1712px -16px; }
+.button.icon.screwdriver-plus:hover:before,
+.button.icon.screwdriver-plus:active:before { background-position: -1712px 0px; }
+
+.button.icon.tick:before { background-position: -1728px -16px; }
+.button.icon.tick:hover:before,
+.button.icon.tick:active:before { background-position: -1728px 0px; }
+
+.button.icon.upload-win:before { background-position: -1744px -16px; }
+.button.icon.upload-win:hover:before,
+.button.icon.upload-win:active:before { background-position: -1744px 0px; }
+
+.button.icon.upload:before { background-position: -1760px -16px; }
+.button.icon.upload:hover:before,
+.button.icon.upload:active:before { background-position: -1760px 0px; }
+
+.button.icon.upload-linux:before { background-position: -1776px -16px; }
+.button.icon.upload-linux:hover:before,
+.button.icon.upload-linux:active:before { background-position: -1776px 0px; }
+
+.button.icon.upload-mac:before { background-position: -1792px -16px; }
+.button.icon.upload-mac:hover:before,
+.button.icon.upload-mac:active:before { background-position: -1792px 0px; }
+
+.button.icon.usbdrive:before { background-position: -1808px -16px; }
+.button.icon.usbdrive:hover:before,
+.button.icon.usbdrive:active:before { background-position: -1808px 0px; }
+
+.button.icon.usbdrive-arrow:before { background-position: -1824px -16px; }
+.button.icon.usbdrive-arrow:hover:before,
+.button.icon.usbdrive-arrow:active:before { background-position: -1824px 0px; }
+
+.button.icon.usbdrive-logo:before { background-position: -1840px -16px; }
+.button.icon.usbdrive-logo:hover:before,
+.button.icon.usbdrive-logo:active:before { background-position: -1840px 0px; }
+
+.button.icon.usbdrive-min:before { background-position: -1856px -16px; }
+.button.icon.usbdrive-min:hover:before,
+.button.icon.usbdrive-min:active:before { background-position: -1856px 0px; }
+
+.button.icon.usbdrive-edit:before { background-position: -1872px -16px; }
+.button.icon.usbdrive-edit:hover:before,
+.button.icon.usbdrive-edit:active:before { background-position: -1872px 0px; }
+
+.button.icon.usbdrive-add:before { background-position: -1888px -16px; }
+.button.icon.usbdrive-add:hover:before,
+.button.icon.usbdrive-add:active:before { background-position: -1888px 0px; }
+
+
+.button.primary {
+    font-weight: bold;
+}
+
+.button.danger {
+    color: #900;
+}
+
+.button.danger:hover,
+.button.danger:focus,
+.button.danger:active {
+    color: #333;
+    border-color: #b53f3a;
+    border-bottom-color: #a0302a;
+    background-color: #dc5f59;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#dc5f59), to(#b33630));
+    background-image: -moz-linear-gradient(#dc5f59, #b33630);
+    background-image: -o-linear-gradient(#dc5f59, #b33630);
+    background-image: linear-gradient(#dc5f59, #b33630);
+}
+
+.button.danger:active,
+.button.danger.active {
+    border-color: #a0302a;
+    border-bottom-color: #bf4843;
+    background-color: #b33630;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#b33630), to(#dc5f59));
+    background-image: -moz-linear-gradient(#b33630, #dc5f59);
+    background-image: -o-linear-gradient(#b33630, #dc5f59);
+    background-image: linear-gradient(#b33630, #dc5f59);
+}
+
+
+
+.button.pill {
+    -webkit-border-radius: 50em;
+    -moz-border-radius: 50em;
+    border-radius: 50em;
+}
+
+
+.button.disable {
+    opacity: 0.5;
+}
+
+.button.big {
+    font-size: 14px;
+}
+
+.button.big.icon:before { top: 0; }
+
+.button-group {
+    display: inline-block;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    /* IE hacks */
+    zoom: 1;
+    *display: inline;
+}
+
+.button + .button,
+.button + .button-group,
+.button-group + .button,
+.button-group + .button-group {
+    margin-left: 15px;
+}
+
+.button-group li {
+    float: left;
+    padding: 0;
+    margin: 0;
+}
+
+.button-group .button {
+    float: left;
+    margin-left: -1px;
+}
+
+.button-group > .button:not(:first-child):not(:last-child),
+.button-group li:not(:first-child):not(:last-child) .button {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
+.button-group > .button:first-child,
+.button-group li:first-child .button {
+    margin-left: 0;
+    -webkit-border-top-right-radius: 0;
+    -webkit-border-bottom-right-radius: 0;
+    -moz-border-radius-topright: 0;
+    -moz-border-radius-bottomright: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.button-group > .button:last-child,
+.button-group li:last-child > .button {
+    -webkit-border-top-left-radius: 0;
+    -webkit-border-bottom-left-radius: 0;
+    -moz-border-radius-topleft: 0;
+    -moz-border-radius-bottomleft: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.button-group.minor-group .button {
+    border: 1px solid #d4d4d4;
+    text-shadow: none;
+    background-image: none;
+    background-color: #fff;
+}
+
+.button-group.minor-group .button:hover,
+.button-group.minor-group .button:focus,
+.button-group.minor-group .button:active {
+    background-color: #599bdc;
+}
+
+.button-group.minor-group .button:active,
+.button-group.minor-group .button.active {
+    background-color: #3072b3;
+}
+
+.button-group.minor-group .button.icon:before {
+    opacity: 0.8;
+}
+
+.button-container .button,
+.button-container .button-group {
+    vertical-align: top;
+}
+
+#profile-fetch, #genapi {
+    margin: 6px 6px 0px 0px;
+}
+
+#set-default {
+    float: right;
+    margin-top: -4px;
+}
+
+/* button glow effects */
+.button.active.green {
+    border-color: #c7c7c7;
+
+    background: #F3F7D7;
+    background: -moz-linear-gradient(top,  #F3F7D7 0%, #D2E26D 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#F3F7D7), color-stop(100%,#D2E26D));
+    background: -webkit-linear-gradient(top,  #F3F7D7 0%,#D2E26D 100%);
+    background: -o-linear-gradient(top,  #F3F7D7 0%,#D2E26D 100%);
+    background: -ms-linear-gradient(top,  #F3F7D7 0%,#D2E26D 100%);
+    background: linear-gradient(top,  #F3F7D7 0%,#D2E26D 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#F3F7D7', endColorstr='#D2E26D',GradientType=0);
+}
+
+.element {
+        -webkit-box-shadow:  0px 0px 2px 0.8px #C4D940;
+        box-shadow:  0px 0px 2px 0.8px #C4D940;
+}
+
+.element-1 {
+        -webkit-box-shadow:  0px 0px 2px 0.8px #FFB83D;
+        box-shadow:  0px 0px 2px 0.8px #FFB83D;
+}
+
+
+/* ----------------------------------------------------------------------------- */
+/* ############################### Live Search ################################# */
+/* ----------------------------------------------------------------------------- */
+#livesearch {
+    /* margin-left: 7em; */
+}
+
+#livesearch div.left {
+    /*width: 88%;*/
+    width: 90%;
+}
+
+#keyword {
+    font: 600 1.5em 'Open Sans', sans-serif;
+    padding: 7px 4px;
+    line-height: 30px;
+    width: 100%;
+}
+
+#search-clear, #search-info {
+    padding: 14px;
+    margin: 0px 0px 0px -1px;
+}
+
+#search-clear {
+    -webkit-border-top-left-raidus: 0px;
+    -webkit-border-bottom-left-radius: 0px;
+    -moz-border-radius-topleft: 0px;
+    -moz-border-radius-bottomleft: 0px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.button-group.search-buttons {
+
+}
+
+

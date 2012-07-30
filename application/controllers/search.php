@@ -2,13 +2,13 @@
 
 /**
  * ------------------------------------------------------------------------------
- * 
+ *
  * MiOWL                                                     (v1) | codename dave
- * 
+ *
  * ------------------------------------------------------------------------------
  *
  * Copyright (c) 2012, Alan Wynn
- * 
+ *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
  * files (the "Software"), to deal in the Software without
@@ -17,10 +17,10 @@
  * copies of the Software, and to permit persons to whom the
  * Software is furnished to do so, subject to the following
  * conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
  * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
@@ -29,7 +29,7 @@
  * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
- * 
+ *
  * ------------------------------------------------------------------------------
  */
 
@@ -140,9 +140,9 @@ class Search extends CI_Controller {
 
         // setup our page data
         $page_data = array();
-        $page_data['page_title'] = 'Search Results';
-        $page_data['keyword'] = $search['keyword'];
-        $page_data['query'] = $this->gen_results($offset, $this->per_page_limit);
+        $page_data['page_title']    = 'Search Results';
+        $page_data['keyword']       = $search['keyword'];
+        $page_data['query']         = $this->gen_results($offset, $this->per_page_limit);
 
         // setup pagination lib
         $config['base_url']         = base_url('search/results');
@@ -212,6 +212,45 @@ class Search extends CI_Controller {
     //------------------------------------------------------------------
 
 
+    /**
+     * ajax_search()
+     */
+    public function ajax_search($limit = 1000, $offset = 0)
+    {
+        // ajax security check
+        // checks to make sure it a) was an ajax request and b) that it came from our server
+        if (!$this->input->is_ajax_request() || strpos($this->input->server('HTTP_REFERER'), 'miowl') === FALSE)
+            die('Invalid request.');
+
+        // get our keyword
+        if (!$this->input->post('keyword'))
+        {
+            print json_encode(FALSE);
+            return;
+        }
+
+        // do our search
+        $search_data = $this->search_model->search_all($this->input->post('keyword'), $offset, $limit, $this->input->post('having'));
+        // $search_data = $this->save_model->search_saves($this->input->post('keyword'), $limit, $offset);
+
+        if ($search_data)
+        {
+            // our data array
+            $json_array = array();
+
+            // build our array
+            foreach ($search_data->result_array() as $row)
+                array_push($json_array, $row);
+
+            print json_encode($json_array);
+            return;
+        }
+
+        print json_encode(FALSE);
+    }
+    // -------------------------------------------------------------------------------
+
+
 //=================================================================================
 // :private functions
 //=================================================================================
@@ -252,15 +291,15 @@ class Search extends CI_Controller {
         $this->session->unset_userdata('search');
 
         // build up the session data from the post data
-        $post_data = $this->urldecode_array($this->input->post(NULL, TRUE));
-        $search_array = array();
-        $search_array['keyword']                     = $post_data['keyword'];
+        $post_data                              = $this->urldecode_array($this->input->post(NULL, TRUE));
+        $search_array                           = array();
+        $search_array['keyword']                = $post_data['keyword'];
 
         if($post_data['type'] != 'both')
             $search_array['having']['owl_type'] = $post_data['type'];
 
         $search_array['having']['owl_province'] = $post_data['province'];
-        $search_array['having']['owl_id']           = $post_data['owl'];
+        $search_array['having']['owl_id']       = $post_data['owl'];
 
         // build the post data into the session
         $this->session->set_userdata('search', $search_array);
@@ -301,7 +340,7 @@ class Search extends CI_Controller {
     {
         if($this->gen_results())
             return TRUE;
-        
+
         $this->form_validation->set_message('_valid_search', 'No results found...');
         return FALSE;
     }
