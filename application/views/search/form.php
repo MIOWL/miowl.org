@@ -7,12 +7,6 @@
 	</h1>
 
 	<div id="body">
-        <?php /*
-        <div id="search_nav" class="column left quarter">
-            <?php $this->load->view('search/_nav'); ?>
-        </div>
-        <div id="search_body" class="column right threequarter">
-        */ ?>
 
             <!-- Search Form -->
             <form action="" name="search" class="uniForm" method="post">

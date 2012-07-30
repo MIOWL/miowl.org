@@ -7,16 +7,9 @@
 	</h1>
 
 	<div id="body">
-        <?php /*
-        <div id="search_nav" class="column left quarter">
-            <?php $this->load->view('search/_nav'); ?>
-        </div>
-        <div id="search_body" class="column right threequarter">
-        */ ?>
 
             <div>
                 <h2>General Site Search</h2>
-                <?php $this->load->view('search/__search_bar'); ?>
                 <br />
                 <div>
                 	<?php if($query) : ?>
