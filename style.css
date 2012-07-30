@@ -427,17 +427,17 @@ input::-moz-focus-inner {
     content: "<";
 }
 
-.button.danger {
+/*.button.danger {
     color: #FF0055;
-}
+}*/
 
-.button.current {
+/*.button.current {
     font-weight: bold;
 
             box-shadow: 0px 0px 3px #888;
        -moz-box-shadow: 0px 0px 3px #888;
     -webkit-box-shadow: 0px 0px 3px #888;
-}
+}*/
 
 
 /*
