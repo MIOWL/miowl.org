@@ -33,12 +33,11 @@
  * ------------------------------------------------------------------------------
  */
 
-$CI =& get_instance();
-
 if (!function_exists('is_verified'))
 {
     function is_verified()
     {
+        $CI =& get_instance();
         return $CI->owl_model->is_x('verified');
     }
 }
@@ -48,6 +47,7 @@ if (!function_exists('is_admin'))
 {
     function is_admin()
     {
+        $CI =& get_instance();
         return $CI->owl_model->is_x('admin');
     }
 }
@@ -57,6 +57,7 @@ if (!function_exists('is_editor'))
 {
     function is_editor()
     {
+        $CI =& get_instance();
         return $CI->owl_model->is_x('editor');
     }
 }
@@ -66,6 +67,7 @@ if (!function_exists('is_owner'))
 {
     function is_owner()
     {
+        $CI =& get_instance();
         return $CI->owl_model->is_x('owner');
     }
 }
