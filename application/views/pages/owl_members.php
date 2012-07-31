@@ -28,7 +28,7 @@
 <?php
     if($members) :
         foreach($members->result() as $user_row) :
-            $row = $this->user_model->get_user_by_id($user_row->user);
+            $row = $this->user_model->get_user_by_id($user_row->user)->row();
 ?>
                     <tr id="r-<?php print $row->id; ?>">
                         <td><?php print $row->id; ?></td>
