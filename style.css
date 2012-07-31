@@ -102,6 +102,22 @@ p.footer {
 	text-align: center;
 }
 
+#owl_choice_area {
+    position: relative;
+    float: right;
+    top: 150px;
+    right: -55px;
+}
+
+#owl_choice_area_b {
+    left: auto;
+    right: auto;
+    position: absolute;
+}
+
+#owl_choice_area.span {
+    font: 20px/100% normal Helvetica,Arial,sans-serif
+}
 
 /*
 |-----------------------------------
