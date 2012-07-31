@@ -1,28 +1,16 @@
-	<div id="nav">
-	<?php if ($this->session->userdata('authed')) : ?>
-			Welcome Back <?php print $this->session->userdata('name'); ?> (<a href='<?php print site_url('user/logout'); ?>' title='Logout'>logout</a>)
-	<?php else : ?>
-			Welcome Guest (<a href='<?php print site_url('user/login'); ?>' title='Login'>login</a> | <a href='<?php print site_url('user/register'); ?>' title='Register a new account'>register</a>)
-	<?php endif; ?>
-	<br />
-	<?php
-		if ($this->session->userdata('authed') && is_verified())
-		{
-			# Logged in NAV
-			print "<a href='". site_url() . "' title='View your Owl'>my owl</a>";								# my owl
-			print " | ";																						# spacer
-			if (is_editor())
-			{
-				print "<a href='". site_url('owl/uploads/upload') . "' title='Upload a new file'>upload</a>";	# upload
-				print " | ";																					# spacer
-			}
-		}
-
-		# These are non specific nav options
-		print "<a href='". site_url('owls') . "' title=\"Browse all the Owl's on the site\">owl's</a>";			# owls
-		print " | ";																							# spacer
-		print "<a href='". site_url('search') . "' title='Search for a file'>site search</a>";					# search
-		print " | ";																							# spacer
-		print "<a href='". site_url('about') . "' title='About the site'>about</a>";							# about
-	?>
-	</div>
+<?php
+    $user_owls = $this->user_model->get_owls();
+    if ($user_owls->num_rows() > 1) :
+?>
+    <div id="owl_choice_area" class="right">
+        Active Owl <br />
+        <select id="current_owl_chosen" autocompelete="OFF" />
+            <?php foreach ($user_owls->result() as $owl_row) : ?>
+                <option value="<?php print $owl_row->owl; ?>" <?php print ($this->session->userdata('owl') == $owl_row->owl) ? 'selected' : NULL; ?>>
+                    <?php print $this->owl_model->get_owl_by_id($owl_row->owl)->row()->owl_name; ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+        <a href="change_owl" class="button right">Change</a></li>
+    </div>
+<?php endif; ?>
