@@ -37,7 +37,7 @@ if (!function_exists('is_verified'))
 {
     function is_verified()
     {
-        return $this->owl_model->is_x('verified')
+        return $this->owl_model->is_x('verified');
     }
 }
 
@@ -46,7 +46,7 @@ if (!function_exists('is_admin'))
 {
     function is_admin()
     {
-        return $this->owl_model->is_x('admin')
+        return $this->owl_model->is_x('admin');
     }
 }
 
@@ -55,7 +55,7 @@ if (!function_exists('is_editor'))
 {
     function is_editor()
     {
-        return $this->owl_model->is_x('editor')
+        return $this->owl_model->is_x('editor');
     }
 }
 
@@ -64,7 +64,7 @@ if (!function_exists('is_owner'))
 {
     function is_owner()
     {
-        return $this->owl_model->is_x('owner')
+        return $this->owl_model->is_x('owner');
     }
 }
 
