@@ -42,7 +42,7 @@ class User_model extends CI_Model {
     /**
      * public get_owls()
      */
-    public function get_owls($user_id)
+    public function get_owls($user_id = FALSE)
     {
         if (!$user_id)
             $user_id = $this->session->userdata('user_id');
