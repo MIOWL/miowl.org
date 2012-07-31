@@ -513,10 +513,7 @@ class User extends CI_Controller {
 
         // get our keyword
         if (!$this->input->post('keyword'))
-        {
-            print "Owl id  NOT changed to " . $this->input->post('owl');
-            return;
-        }
+            die("Owl id  NOT changed to " . $this->input->post('owl'));
 
         $this->session->set_userdata(array(
             'owl'=>$this->input->post('owl')
