@@ -513,12 +513,12 @@ class User extends CI_Controller {
 
         // get our owl id
         if (!$this->input->post('owl'))
-            die("Owl id  NOT changed to " . $this->input->post('owl'));
+            die("NOT changed");
 
         $this->session->unset_userdata('owl');
         $this->session->set_userdata('owl', trim($this->input->post('owl')));
 
-        print "Owl id changed to " . $this->input->post('owl');
+        print "changed";
     }
     // -------------------------------------------------------------------------------
 
