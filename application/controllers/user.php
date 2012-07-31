@@ -515,9 +515,8 @@ class User extends CI_Controller {
         if (!$this->input->post('keyword'))
             die("Owl id  NOT changed to " . $this->input->post('owl'));
 
-        $this->session->set_userdata(array(
-            'owl'=>$this->input->post('owl')
-        ));
+        $this->session->unset_userdata('owl');
+        $this->session->set_userdata('owl', trim($this->input->post('owl')));
 
         print "Owl id changed to " . $this->input->post('owl');
     }
