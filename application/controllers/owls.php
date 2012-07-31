@@ -117,6 +117,8 @@ class Owls extends CI_Controller {
      */
     public function display($owl = FALSE)
     {
+        $this->owl_check($owl);
+
         $details = $this->owl_model->get_owl_by_id($owl);
         $address = $details->row()->owl_address . "\n" .
                    $details->row()->owl_city . "\n" .
@@ -147,6 +149,8 @@ class Owls extends CI_Controller {
      */
     public function uploads($owl = FALSE, $offset = 0, $limit = 7)
     {
+        $this->owl_check($owl);
+
         // page data array
         $page_data                  = array();
         $page_data['page_title']    = "Owl Uploads";
@@ -200,6 +204,8 @@ class Owls extends CI_Controller {
      */
     public function _members_list($owl = FALSE)
     {
+        $this->owl_check($owl);
+
         // page data array
         $page_data                  = array();
         $page_data['page_title']    = "All Owl Members";
@@ -218,6 +224,8 @@ class Owls extends CI_Controller {
      */
     public function _members_admin($owl = FALSE)
     {
+        $this->owl_check($owl);
+
         // page data array
         $page_data                  = array();
         $page_data['page_title']    = "Owl Administrator Members";
@@ -236,6 +244,8 @@ class Owls extends CI_Controller {
      */
     public function _members_editor($owl = FALSE)
     {
+        $this->owl_check($owl);
+
         // page data array
         $page_data                  = array();
         $page_data['page_title']    = "Owl Editor Members";
@@ -254,6 +264,8 @@ class Owls extends CI_Controller {
      */
     public function _members_user($owl = FALSE)
     {
+        $this->owl_check($owl);
+
         // page data array
         $page_data                  = array();
         $page_data['page_title']    = "Owl User Members";
@@ -276,6 +288,8 @@ class Owls extends CI_Controller {
      */
     public function categories($owl = FALSE)
     {
+        $this->owl_check($owl);
+
         // page data array
         $page_data                  = array();
         $page_data['page_title']    = "All Owl File Categories";
@@ -341,6 +355,20 @@ class Owls extends CI_Controller {
         curl_close($ch);
 
         return $data;
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * private owl_check()
+     */
+    private function owl_check($owl_id = FALSE)
+    {
+        if(!$owl_id)
+            return FALSE;
+
+        if($owl_id == $this->session->userdata('owl'))
+            redirect(site_url(), 'location');
     }
     //------------------------------------------------------------------
 
