@@ -117,7 +117,11 @@ p.footer {
 }
 
 #owl_choice_area span {
-    font: 20px/100% normal Helvetica,Arial,sans-serif
+    font: 20px/100% normal Helvetica,Arial,sans-serif;
+}
+
+#owl_choice_area select {
+    width: 100%;
 }
 
 /*
