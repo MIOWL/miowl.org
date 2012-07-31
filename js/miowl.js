@@ -131,19 +131,16 @@ $(document).ready(function() {
     $('#owl_choice_area a.button').click(function(e) {
         e.preventDefault();
 
-        $.ajax({
-            type: 'POST',
-            url: "/user/ajax_change_owl",
-            dataType: "text",
-            data: {
-                owl: $("#owl_choice_area select option:selected").val()
+        $.post('/user/ajax_change_owl',
+            {
+                owl: return $("#owl_choice_area select option:selected").val()
             },
-            success: function(response) {
-                console.log('response: ' + response);
-            }
-        });
 
-        window.location.reload();
+            function(resp) {
+                console.log(resp);
+                window.location.reload();
+            }, "JSON"
+        );
     });
     // ------------------------------------------------------------------------
 
