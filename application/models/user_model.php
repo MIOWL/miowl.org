@@ -177,7 +177,7 @@ class User_model extends CI_Model {
         $this->db->insert('users', $insert_data);
 
         // add the user to the owl_users database
-        $this->db->insert('owl_users', array('user' => $this->db->insert_id(), 'owl' => $owl_id))
+        $this->db->insert('owl_users', array('user' => $this->db->insert_id(), 'owl' => $owl_id));
     }
     //------------------------------------------------------------------
 
