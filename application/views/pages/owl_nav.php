@@ -43,6 +43,21 @@
 
 <?php else : ?>
 
+		<?php $user_owls = $this->user_model->get_owls; ?>
+		<?php if ($user_owls->num_rows() > 1) : ?>
+			<li style="list-style-type: none">Active Owl</li>
+			<li style="list-style-type: none">
+	            <select id="current_owl_chosen" autocompelete="OFF" />
+	            <?php foreach ($user_owls->results() as $owl_row) : ?>
+                    <option value="<?php print $owl_row->owl; ?>" <?php print ($this->session->userdata('owl') == $owl_row->owl) ? 'selected' : NULL; ?>>
+                    	<?php print $this->owl_model->get_owl_by_id($owl_row->owl)->row()->owl_name; ?>
+                    </option>
+	            </select>
+			</li>
+			<li style="list-style-type: none"><a href="change_owl" class="button">Change</a></li>
+			<li style="list-style-type: none">&nbsp;</li>
+		<?php endif; ?>
+
 		<li>
 			MiOwl
 			<ul>
