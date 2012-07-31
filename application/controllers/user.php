@@ -518,7 +518,7 @@ class User extends CI_Controller {
         $this->session->unset_userdata('owl');
         $this->session->set_userdata('owl', trim($this->input->post('owl')));
 
-        print "Owl id changed to " . $this->input->post('owl');
+        print "Owl id changed to " . $this->input->post('owl')
     }
     // -------------------------------------------------------------------------------
 
