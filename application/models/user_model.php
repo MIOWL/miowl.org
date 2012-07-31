@@ -292,7 +292,7 @@ class User_model extends CI_Model {
     public function promote($group = FALSE, $user_id = FALSE)
     {
         // is this an admin requesting it??
-        if(!$this->session->userdata('admin'))
+        if(!is_admin())
             return FALSE;
 
         // whats the user group?
@@ -343,7 +343,7 @@ class User_model extends CI_Model {
     public function demote($group = FALSE, $user_id = FALSE)
     {
         // is this an admin requesting it??
-        if(!$this->session->userdata('admin'))
+        if(!is_admin())
             return FALSE;
 
         // whats the user group?

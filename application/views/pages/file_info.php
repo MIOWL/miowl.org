@@ -109,7 +109,7 @@
         <div class="buttonHolder right">
             <br />
 
-            <?php if ( ( (int)$this->session->userdata('owl') === (int)$upload_info->row()->owl ) && ( $this->session->userdata('editor') ) ) : ?>
+            <?php if ( ( (int)$this->session->userdata('owl') === (int)$upload_info->row()->owl ) && ( is_editor() ) ) : ?>
                 <?php if (isset($deleted) && !$deleted) : ?>
                     <button class="button edit" onclick="window.location.href='<?php print site_url('browse/info_edit/' . $upload_info->row()->id); ?>'">edit</button>
                 <?php endif; ?>

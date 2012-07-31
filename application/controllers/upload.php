@@ -52,7 +52,7 @@ class Upload extends CI_Controller {
         // init parent
         parent::__construct();
 
-        if (!$this->session->userdata('editor')) {
+        if (!is_editor()) {
             redirect('/welcome', 'location');
             return;
         }

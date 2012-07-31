@@ -93,7 +93,7 @@ class Owl extends CI_Controller {
      */
     public function index()
     {
-        if (!$this->session->userdata('owl_verified')) {
+        if (!is_verified()) {
             redirect('/welcome', 'location');
             return;
         }
@@ -127,7 +127,7 @@ class Owl extends CI_Controller {
         if (!$this->login_check('owl-edit_details'))
             return;
 
-        if (!$this->session->userdata('owl_verified')) {
+        if (!is_verified()) {
             redirect('/welcome', 'location');
             return;
         }
@@ -339,7 +339,7 @@ class Owl extends CI_Controller {
         if (!$this->login_check('owl-uploads-' . $function))
             return;
 
-        if (!$this->session->userdata('owl_verified')) {
+        if (!is_verified()) {
             redirect('/welcome', 'location');
             return;
         }
@@ -458,7 +458,7 @@ class Owl extends CI_Controller {
         if (!$this->login_check('owl-members-' . $function))
             return;
 
-        if (!$this->session->userdata('owl_verified')) {
+        if (!is_verified()) {
             redirect('/welcome', 'location');
             return;
         }
@@ -709,7 +709,7 @@ class Owl extends CI_Controller {
         if (!$this->login_check('owl-categories-' . $function))
             return;
 
-        if (!$this->session->userdata('owl_verified')) {
+        if (!is_verified()) {
             redirect('/welcome', 'location');
             return;
         }
@@ -893,7 +893,7 @@ class Owl extends CI_Controller {
         if (!$this->login_check('owl-licenses-' . $function))
             return;
 
-        if (!$this->session->userdata('owl_verified')) {
+        if (!is_verified()) {
             redirect('/welcome', 'location');
             return;
         }

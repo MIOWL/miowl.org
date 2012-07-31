@@ -40,6 +40,31 @@ class Owl_model extends CI_Model {
 //=================================================================================
 
     /**
+     * public is_x()
+     *
+     * this function is used to check if someone is something.
+     * i.e. is admin/editor/verified
+     */
+    public function is_x($what = FALSE)
+    {
+        if(!$what)
+            return FALSE;
+
+        $this->db->select('*');
+        $this->db->where('user', $this->session->userdata('id'))
+        $this->db->having('owl', $this->session->userdata('owl'));
+        $this->db->having($what, 'true');
+        $query = $this->db->get('owl_users');
+
+        if ($query->num_rows() > 0)
+            return TRUE;
+        else
+            return FALSE;
+    }
+    //------------------------------------------------------------------
+
+
+    /**
      * public get_owl_admin()
      */
     public function get_owl_admin($owl_id = FALSE)
@@ -58,7 +83,7 @@ class Owl_model extends CI_Model {
 
         $this->db->select('*');
         $this->db->where('id', $query->row()->owl_admin_uid);
-        $query = $this->db->get('owls');
+        $query = $this->db->get('users');
 
         if ($query->num_rows() > 0)
             return $query;
@@ -77,12 +102,12 @@ class Owl_model extends CI_Model {
             return FALSE;
 
         $this->db->select('*');
-        $this->db->where('user_owl_id', $owl_id);
+        $this->db->where('owl', $owl_id);
 
         if (!$inclue_inactive)
-            $this->db->where('user_owl_verified', 'true');
+            $this->db->where('verified', 'true');
 
-        $query = $this->db->get('users');
+        $query = $this->db->get('owl_users');
 
         if ($query->num_rows() > 0)
             return $query;
@@ -101,10 +126,10 @@ class Owl_model extends CI_Model {
             return FALSE;
 
         $this->db->select('*');
-        $this->db->where('user_owl_id', $owl_id);
-        $this->db->having('user_owl_verified', 'true');
-        $this->db->having('user_admin', 'true');
-        $query = $this->db->get('users');
+        $this->db->where('owl', $owl_id);
+        $this->db->having('verified', 'true');
+        $this->db->having('admin', 'true');
+        $query = $this->db->get('owl_users');
 
         if ($query->num_rows() > 0)
             return $query;
@@ -123,11 +148,11 @@ class Owl_model extends CI_Model {
             return FALSE;
 
         $this->db->select('*');
-        $this->db->where('user_owl_id', $owl_id);
-        $this->db->having('user_owl_verified', 'true');
-        $this->db->having('user_editor', 'true');
-        $this->db->or_having('user_admin', 'true');
-        $query = $this->db->get('users');
+        $this->db->where('owl', $owl_id);
+        $this->db->having('verified', 'true');
+        $this->db->having('editor', 'true');
+        $this->db->or_having('admin', 'true');
+        $query = $this->db->get('owl_users');
 
         if ($query->num_rows() > 0)
             return $query;
@@ -146,11 +171,11 @@ class Owl_model extends CI_Model {
             return FALSE;
 
         $this->db->select('*');
-        $this->db->where('user_owl_id', $owl_id);
-        $this->db->having('user_owl_verified', 'true');
-        $this->db->having('user_admin', 'false');
-        $this->db->having('user_editor', 'false');
-        $query = $this->db->get('users');
+        $this->db->where('owl', $owl_id);
+        $this->db->having('verified', 'true');
+        $this->db->having('admin', 'false');
+        $this->db->having('editor', 'false');
+        $query = $this->db->get('owl_users');
 
         if ($query->num_rows() > 0)
             return $query;
@@ -166,12 +191,12 @@ class Owl_model extends CI_Model {
     public function get_owl_unverified_members($owl_id = FALSE)
     {
         if (!$owl_id)
-            return FALSE;
+            $owl_id = $this->session->userdata('owl');
 
         $this->db->select('*');
-        $this->db->where('user_owl_id', $owl_id);
-        $this->db->having('user_owl_verified', 'false');
-        $query = $this->db->get('users');
+        $this->db->where('owl', $owl_id);
+        $this->db->having('verified', 'false');
+        $query = $this->db->get('owl_users');
 
         if ($query->num_rows() > 0)
             return $query;
@@ -186,7 +211,7 @@ class Owl_model extends CI_Model {
      */
     public function owl_accept_member($owl_id = FALSE, $user_id = FALSE)
     {
-        if ( !$this->session->userdata( 'admin' ) )
+        if (!is_admin())
             return FALSE;
 
         if (!$owl_id || !$user_id)
@@ -194,12 +219,12 @@ class Owl_model extends CI_Model {
 
         $this->db->set('user_owl_verified', 'true');
         $where = array(
-            'id'                => $user_id,
-            'user_owl_id'       => $owl_id,
-            'user_owl_verified' => 'false'
+            'user'      => $user_id,
+            'owl'       => $owl_id,
+            'verified'  => 'false'
         );
         $this->db->where($where);
-        $this->db->update('users');
+        $this->db->update('owl_users');
 
         if ($this->db->affected_rows() > 0)
             return TRUE;
@@ -214,20 +239,20 @@ class Owl_model extends CI_Model {
      */
     public function owl_deny_member($owl_id = FALSE, $user_id = FALSE)
     {
-        if ( !$this->session->userdata( 'admin' ) )
+        if ( !is_admin() )
             return FALSE;
 
         if (!$owl_id || !$user_id)
             return FALSE;
 
-        $this->db->set('user_owl_verified', 'false');
-        $this->db->set('user_owl_id', 0);
+        $this->db->set('verified', 'false');
+        $this->db->set('owl', 0);
         $where = array(
-            'id'            => $user_id,
-            'user_owl_id'   => $owl_id
+            'user'  => $user_id,
+            'owl'   => $owl_id
         );
         $this->db->where($where);
-        $this->db->update('users');
+        $this->db->update('owl_users');
 
         if ($this->db->affected_rows() > 0)
             return TRUE;
@@ -276,7 +301,7 @@ class Owl_model extends CI_Model {
      */
     public function new_email($old_email, $new_email)
     {
-        if ( !$this->session->userdata('admin') )
+        if ( !is_admin() )
             return FALSE;
 
         if (!$old_email || !$new_email)
@@ -401,7 +426,7 @@ class Owl_model extends CI_Model {
      */
     public function update_owl()
     {
-        if ( !$this->session->userdata( 'editor' ) )
+        if ( !is_editor() )
             return FALSE;
 
         $update_data = array(
@@ -431,25 +456,25 @@ class Owl_model extends CI_Model {
             return FALSE;
 
         $where = array(
-            'id'                    => $user_id
+            'user'          => $user_id
         );
 
         if (!$is_admin) {
             $update_data = array(
-                'user_owl_id'       => $user_owl_id
+                'owl'       => $user_owl_id
             );
         }
         else {
             $update_data = array(
-                'user_owl_id'       => $user_owl_id,
-                'user_admin'        => 'true',
-                'user_editor'       => 'true',
-                'user_owl_verified' => 'true'
+                'owl_id'    => $user_owl_id,
+                'admin'     => 'true',
+                'editor'    => 'true',
+                'verified'  => 'true'
             );
         }
 
         $this->db->where($where);
-        $this->db->update('users', $update_data);
+        $this->db->update('owl_users', $update_data);
     }
     //------------------------------------------------------------------
 

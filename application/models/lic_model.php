@@ -49,7 +49,7 @@ class Lic_model extends CI_Model {
      */
     public function add_new( $insert_data = FALSE )
     {
-        if ( !$this->session->userdata('editor') )
+        if ( !is_editor() )
             return FALSE;
 
         $this->db->insert('license', $insert_data);
@@ -64,7 +64,7 @@ class Lic_model extends CI_Model {
      */
     public function fix_id($id = FALSE, $url = FALSE)
     {
-        if ( !$this->session->userdata('editor') )
+        if ( !is_editor() )
             return FALSE;
 
         if ( !$id || !$url )
@@ -183,7 +183,7 @@ class Lic_model extends CI_Model {
         $return['desc']     = $desc;
         $return['url']      = $url;
 
-        if ( !$this->session->userdata('editor') )
+        if ( !is_editor() )
             return FALSE;
 
         if ( !$id || !$name || !$desc || !$url )
@@ -213,7 +213,7 @@ class Lic_model extends CI_Model {
      */
     public function delete($id = FALSE)
     {
-        if ( !$this->session->userdata('editor') )
+        if ( !is_editor() )
             return FALSE;
 
         if (!$id)

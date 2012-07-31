@@ -189,7 +189,7 @@ class Upload_model extends CI_Model {
                                 $revDate            = NULL
                               )
     {
-        if ( !$this->session->userdata('editor') )
+        if ( !is_editor() )
             return FALSE;
 
         if (
@@ -231,7 +231,7 @@ class Upload_model extends CI_Model {
      */
     public function update_upload( $full_path = FALSE, $upload_category = FALSE, $client_name = FALSE, $description = NULL )
     {
-        if ( !$this->session->userdata('editor') )
+        if ( !is_editor() )
             return FALSE;
 
         if (!$full_path || !$upload_category || !$client_name)
@@ -275,7 +275,7 @@ class Upload_model extends CI_Model {
      */
     public function delete($id = NULL )
     {
-        if ( !$this->session->userdata('editor') )
+        if ( !is_editor() )
             return FALSE;
 
         if (!$id)
@@ -303,7 +303,7 @@ class Upload_model extends CI_Model {
      */
     public function restore($id = NULL )
     {
-        if ( !$this->session->userdata('editor') )
+        if ( !is_editor() )
             return FALSE;
 
         if (!$id)
@@ -331,7 +331,7 @@ class Upload_model extends CI_Model {
      */
     public function edit( $id = FALSE )
     {
-        if ( !$this->session->userdata('editor') )
+        if ( !is_editor() )
             return FALSE;
 
         if ( !$id )

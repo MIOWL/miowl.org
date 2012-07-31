@@ -118,7 +118,7 @@ class Cat_model extends CI_Model {
      */
     public function add_category( $insert_data = FALSE )
     {
-        if ( !$this->session->userdata('editor') )
+        if ( !is_editor() )
             return FALSE;
 
         if( !$insert_data )
@@ -219,7 +219,7 @@ class Cat_model extends CI_Model {
      */
     public function delete($id = FALSE)
     {
-        if ( !$this->session->userdata('editor') )
+        if ( !is_editor() )
             return FALSE;
 
         if (!$id)
@@ -253,7 +253,7 @@ class Cat_model extends CI_Model {
         $return['name']     = $name;
         $return['subcat']   = $subcat;
 
-        if ( !$this->session->userdata('editor') )
+        if ( !is_editor() )
             return FALSE;
 
         if (!$id || !$name)

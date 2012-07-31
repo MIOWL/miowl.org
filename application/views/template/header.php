@@ -49,7 +49,7 @@
 
 	<h1>
         <?php if ($this->session->userdata('authed')) : ?>
-    		<?php if ($this->session->userdata('owl_verified')) : ?>
+    		<?php if (is_verified()) : ?>
                 <div id="header_owl_name">
                     <?php
                         $owl_data       = $this->owl_model->get_owl_by_id($this->session->userdata('owl'));

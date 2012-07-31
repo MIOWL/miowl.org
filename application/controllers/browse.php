@@ -240,7 +240,7 @@ class Browse extends CI_Controller {
      */
     public function info_edit($file_id = FALSE, $deleted = FALSE)
     {
-        if( !$file_id || !$this->session->userdata('editor') )
+        if( !$file_id || !is_editor() )
             redirect(site_url(), 'location');
 
         // Get the file info for this ID

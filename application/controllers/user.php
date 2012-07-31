@@ -228,10 +228,6 @@ class User extends CI_Controller {
                                 'name'          => $user_query->row()->user_first_name . ' ' . $user_query->row()->user_last_name,
                                 'email'         => $user_query->row()->user_email,
                                 'owl'           => $user_query->row()->user_owl_id,
-                                'owl_verified'  => $user_query->row()->user_owl_verified === 'true' ? TRUE : FALSE,
-                                'admin'         => $user_query->row()->user_admin === 'true' ? TRUE : FALSE,
-                                'editor'        => $user_query->row()->user_editor === 'true' ? TRUE : FALSE,
-                                'authed'        => TRUE,
                             );
                             $this->session->set_userdata($session_data);
 
