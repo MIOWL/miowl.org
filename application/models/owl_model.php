@@ -96,13 +96,18 @@ class Owl_model extends CI_Model {
     /**
      * public get_owl_member()
      */
-    public function get_owl_member($user_id = FALSE)
+    public function get_owl_member($user_id = FALSE, $owl_id = FALSE)
     {
         if (!$user_id)
             return FALSE;
 
+        if(!$owl_id)
+            $owl_id = $this->session->userdata('owl');
+
         $this->db->select('*');
         $this->db->where('user', $user_id);
+        $this->db->having('owl', $owl_id);
+        $this->db->having('verified', 'true');
         $query = $this->db->get('owl_users');
 
         if ($query->num_rows() > 0)
