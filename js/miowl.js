@@ -134,7 +134,7 @@ $(document).ready(function() {
         $.ajax({
             type: 'POST',
             url: "/user/ajax_change_owl",
-            dataType: "html",
+            dataType: "text",
             data: {
                 owl: $("#owl_choice_area select option:selected").val()
             },
