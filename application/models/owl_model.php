@@ -217,7 +217,7 @@ class Owl_model extends CI_Model {
         if (!$owl_id || !$user_id)
             return FALSE;
 
-        $this->db->set('user_owl_verified', 'true');
+        $this->db->set('verified', 'true');
         $where = array(
             'user'      => $user_id,
             'owl'       => $owl_id,
