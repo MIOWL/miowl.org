@@ -39,7 +39,7 @@
                         <td><?php print date("H:i:s d/m/Y", $row->user_registration_date); ?></td>
                         <td>
                             <center>
-                            <?php if($row->user_admin === 'true') : ?>
+                            <?php if($owl_row->user_admin === 'true') : ?>
                                 <a href="demote:admin:<?php print $row->id; ?>" style="color:#63b52e !important;" class="userAction icon_font">.</a>
                             <?php else : ?>
                                 <a href="promote:admin:<?php print $row->id; ?>" style="color:#FF0000 !important;" class="userAction icon_font">'</a>
@@ -48,7 +48,7 @@
                         </td>
                         <td>
                             <center>
-                            <?php if($row->user_admin === 'true' || $row->user_editor === 'true') : ?>
+                            <?php if($owl_row->user_admin === 'true' || $owl_row->user_editor === 'true') : ?>
                                 <a href="demote:editor:<?php print $row->id; ?>" style="color:#63b52e !important;" class="userAction icon_font">.</a>
                             <?php else : ?>
                                 <a href="promote:editor:<?php print $row->id; ?>" style="color:#FF0000 !important;" class="userAction icon_font">'</a>
