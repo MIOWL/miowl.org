@@ -170,11 +170,14 @@ class User_model extends CI_Model {
             'user_salt'                 => $user_salt,
             'user_password'             => $user_password,
             'user_activation'           => $user_activation,
-            'user_registration_date'    => time(),
-            'user_owl_id'               => $owl_id
+            'user_registration_date'    => time()
         );
 
+        // add the user to the users table
         $this->db->insert('users', $insert_data);
+
+        // add the user to the owl_users database
+        $this->db->insert('owl_users', array('user' => $this->db->insert_id(), 'owl' => $owl_id))
     }
     //------------------------------------------------------------------
 
@@ -300,15 +303,15 @@ class User_model extends CI_Model {
         {
             case 'admin':
                 $update_data = array(
-                    'user_admin'    => 'true',
-                    'user_editor'   => 'true'
+                    'admin'    => 'true',
+                    'editor'   => 'true'
                 );
                 break;
 
             case 'editor':
                 $update_data = array(
-                    'user_admin'    => 'false',
-                    'user_editor'   => 'true'
+                    'admin'    => 'false',
+                    'editor'   => 'true'
                 );
                 break;
 
@@ -320,9 +323,9 @@ class User_model extends CI_Model {
         if (!$group || !$user_id)
             return FALSE;
 
-        $this->db->where('id', $user_id);
-        $this->db->where('user_owl_id', $this->session->userdata('owl'));
-        $this->db->update('users', $update_data);
+        $this->db->where('user', $user_id);
+        $this->db->where('owl', $this->session->userdata('owl'));
+        $this->db->update('owl_users', $update_data);
 
         if ($this->db->affected_rows() > 0)
             return TRUE;
@@ -351,15 +354,15 @@ class User_model extends CI_Model {
         {
             case 'admin':
                 $update_data = array(
-                    'user_admin'    => 'false',
-                    'user_editor'   => 'true'
+                    'admin'    => 'false',
+                    'editor'   => 'true'
                 );
                 break;
 
             case 'editor':
                 $update_data = array(
-                    'user_admin'    => 'false',
-                    'user_editor'   => 'false'
+                    'admin'    => 'false',
+                    'editor'   => 'false'
                 );
                 break;
 
@@ -371,9 +374,9 @@ class User_model extends CI_Model {
         if (!$group || !$user_id)
             return FALSE;
 
-        $this->db->where('id', $user_id);
-        $this->db->where('user_owl_id', $this->session->userdata('owl'));
-        $this->db->update('users', $update_data);
+        $this->db->where('user', $user_id);
+        $this->db->where('owl', $this->session->userdata('owl'));
+        $this->db->update('owl_users', $update_data);
 
         if ($this->db->affected_rows() > 0)
             return TRUE;
