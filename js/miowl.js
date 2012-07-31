@@ -140,7 +140,7 @@ $(document).ready(function() {
                 // console.log(resp);
             }, "JSON"
         );
-        window.location.reload();
+        //window.location.reload();
     });
     // ------------------------------------------------------------------------
 
