@@ -511,8 +511,8 @@ class User extends CI_Controller {
         if (!$this->input->is_ajax_request() || strpos($this->input->server('HTTP_REFERER'), 'miowl') === FALSE)
             die('Invalid request.');
 
-        // get our keyword
-        if (!$this->input->post('keyword'))
+        // get our owl id
+        if (!$this->input->post('owl'))
             die("Owl id  NOT changed to " . $this->input->post('owl'));
 
         $this->session->unset_userdata('owl');

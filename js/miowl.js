@@ -133,7 +133,7 @@ $(document).ready(function() {
 
         $.post('/user/ajax_change_owl',
             {
-                owl: $("#owl_choice_area select option:selected").val()
+                owl: function() { return $("#owl_choice_area select option:selected").val(); }
             },
 
             function(resp) {
