@@ -29,7 +29,7 @@
 <?php
     if($data) :
         foreach($data->result() as $row) :
-            $lic = $this->miowl_model->get_license($row->upload_license);
+            $lic = $this->lic_model->get_license($row->upload_license);
 ?>
                     <tr id="r-<?php print $row->id; ?>" class="<?php if( ( !is_null( $row->revision_date ) ) && ( time() >= $row->revision_date ) ) print 'review'; ?>">
                         <td><a href="<?php print site_url('browse/owl/' . $row->owl); ?>"><?php print $this->owl_model->get_owl_by_id($row->owl)->row()->owl_name; ?></a></td>

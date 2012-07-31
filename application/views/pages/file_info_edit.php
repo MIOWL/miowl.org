@@ -37,7 +37,7 @@
 
                 <div class="ctrlHolder">
                     <label for="upload_license">license</label>
-                    <?php $license = $this->miowl_model->get_license($upload_info->row()->upload_license); ?>
+                    <?php $license = $this->lic_model->get_license($upload_info->row()->upload_license); ?>
                     <select name="upload_license" id="upload_license" class="textInput large">
                         <?php foreach ( $license_data->result() as $license ) : ?>
                             <option value="<?php print $license->id; ?>" <?php print $upload_info->row()->upload_license === $license->id ? 'selected="selected"' : NULL; ?>>

@@ -97,7 +97,7 @@ class Upload extends CI_Controller {
         // setup the page_data array and add in some data
         $page_data = array();
         $page_data['allow_types'] = str_replace('|', ', ', $file_types);
-        $page_data['license'] = $this->miowl_model->get_license();
+        $page_data['license'] = $this->lic_model->get_license();
 
         $this->load->library('upload', $config);
 

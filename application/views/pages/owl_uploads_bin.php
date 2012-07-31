@@ -31,7 +31,7 @@
 <?php
     if($uploads) :
         foreach($uploads->result() as $row) :
-            $lic = $this->miowl_model->get_license($row->upload_license);
+            $lic = $this->lic_model->get_license($row->upload_license);
 ?>
                     <tr id="r-<?php print $row->id; ?>">
                         <td><?php print $row->id; ?></td>
