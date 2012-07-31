@@ -125,4 +125,23 @@ $(document).ready(function() {
     });
     // ------------------------------------------------------------------------
 
+    /*!
+     * change active owl
+     */
+    $('#owl_choice_area a.button').click(function(e) {
+        e.preventDefault();
+
+        $.ajax({
+            type: 'POST',
+            url: "/user/ajax_change_owl",
+            dataType: "html",
+            data: {
+                owl: $("#owl_choice_area select option:selected").val()
+            }
+        });
+
+        window.location.reload();
+    });
+    // ------------------------------------------------------------------------
+
 });

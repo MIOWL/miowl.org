@@ -12,7 +12,7 @@
 	            <?php endforeach; ?>
 	        </select>
 	        <br />
-	        <a href="change_owl" class="button right">Change</a></li>
+	        <a href="#" class="button right">Change</a></li>
 	    </div>
 	</div>
 <?php endif; ?>

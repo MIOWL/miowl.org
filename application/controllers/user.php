@@ -478,78 +478,6 @@ class User extends CI_Controller {
 
 
     /**
-     * public settings()
-     */
-    public function settings()
-    {
-        // Are we allowed to view this page??
-        if (!$this->login_check('user-settings'))
-            return;
-
-        $page_data                  = array();
-        $page_data['page_title'] = "User CP";
-
-
-        /**
-         * Users testing this (set as premium)
-         * 1 = jnewing
-         * 2 = djekl
-         * 145 = Deany95
-         */
-        if ($this->session->userdata('premium'))
-        {
-            // displayed message on page
-            $page_data['note']         = TRUE;
-            $page_data['msg']        = "Development Testing Only, please don't use unless you know what you are doing!!!";
-            $page_data['redirect']    = "";
-
-            // form validation rules
-            $this->form_validation->set_rules('password', 'Password', 'required|callback__valid_password');
-            $this->form_validation->set_rules('new_password', 'Password', 'callback__new_password');
-            $this->form_validation->set_rules('new_password_again', 'Password Confirmation', 'matches[new_password]');
-            $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|callback__valid_email');
-
-            // did the user submit
-            if ($this->form_validation->run())
-            {
-                // generate a salt for our new user
-                $salt = $this->_genSalt(5);
-
-                // generate our authcode
-                $authcode = $this->_genActCode(20);
-
-                // register the user -- NEEDS WORK
-                #$this->user_model->add_user($this->input->post('username'), sha1(sha1($this->input->post('password')) . $salt), $this->input->post('email'), $salt, $authcode);
-
-                $page_data['success']     = TRUE;
-                $page_data['msg']        = "Your account has been successfully updated. If you updated your email Please check your email to finish the update process.";
-                $page_data['redirect']    = '';
-
-                // send user email -- NEEDS WORK
-                #$this->usermail->send_authcode($this->input->post('username'), $this->input->post('email'), $authcode);
-            }
-
-            // Load approp view
-            if (isset($page_data['success']))
-                $this->load->view('messages/message_page', $page_data);
-            else
-                $this->load->view('auth/user_settings', $page_data);
-        }
-        else
-        {
-            // displayed message on page
-            $page_data['note']         = TRUE;
-            $page_data['msg']        = "This is just a view, it does noting at the moment!";
-            $page_data['redirect']    = "";
-
-            // Load approp view
-            $this->load->view('auth/user_settings', $page_data);
-        }
-    }
-    //------------------------------------------------------------------
-
-
-    /**
      * public resend_validation()
      */
     public function resend_validation()
@@ -571,6 +499,29 @@ class User extends CI_Controller {
         }
     }
     //------------------------------------------------------------------
+
+
+    /**
+     * ajax_search()
+     */
+    public function ajax_change_owl()
+    {
+        // ajax security check
+        // checks to make sure it a) was an ajax request and b) that it came from our server
+        if (!$this->input->is_ajax_request() || strpos($this->input->server('HTTP_REFERER'), 'miowl') === FALSE)
+            die('Invalid request.');
+
+        // get our keyword
+        if (!$this->input->post('keyword'))
+            return;
+
+        $this->session->set_userdata(array(
+            'owl'=>$this->input->post('owl')
+        ));
+
+        print "Owl id changed to " . $this->input->post('owl');
+    }
+    // -------------------------------------------------------------------------------
 
 
 //=================================================================================
