@@ -3,7 +3,8 @@
     if ($user_owls->num_rows() > 1) :
 ?>
     <div id="owl_choice_area" class="right">
-        Active Owl <br />
+        Active Owl
+        <br />
         <select id="current_owl_chosen" autocompelete="OFF" />
             <?php foreach ($user_owls->result() as $owl_row) : ?>
                 <option value="<?php print $owl_row->owl; ?>" <?php print ($this->session->userdata('owl') == $owl_row->owl) ? 'selected' : NULL; ?>>
@@ -11,6 +12,7 @@
                 </option>
             <?php endforeach; ?>
         </select>
+        <br />
         <a href="change_owl" class="button right">Change</a></li>
     </div>
 <?php endif; ?>
