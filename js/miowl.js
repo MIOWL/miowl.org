@@ -137,10 +137,10 @@ $(document).ready(function() {
             },
 
             function(resp) {
-                console.log(resp);
-                window.location.reload();
+                // console.log(resp);
             }, "JSON"
         );
+        window.location.reload();
     });
     // ------------------------------------------------------------------------
 
