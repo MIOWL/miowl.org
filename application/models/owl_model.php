@@ -51,7 +51,7 @@ class Owl_model extends CI_Model {
             return FALSE;
 
         $this->db->select('*');
-        $this->db->where('user', $this->session->userdata('id'))
+        $this->db->where('user', $this->session->userdata('user_id'));
         $this->db->having('owl', $this->session->userdata('owl'));
         $this->db->having($what, 'true');
         $query = $this->db->get('owl_users');
