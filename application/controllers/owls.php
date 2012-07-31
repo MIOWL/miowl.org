@@ -203,7 +203,7 @@ class Owls extends CI_Controller {
         // page data array
         $page_data                  = array();
         $page_data['page_title']    = "All Owl Members";
-        $page_data['members']       = $this->miowl_model->get_owl_members($owl);
+        $page_data['members']       = $this->owl_model->get_owl_members($owl);
         $page_data['admin_id']      = $this->owl_model->get_owl_by_id($owl)->row()->owl_admin_uid;
         $page_data['owl']           = $owl;
 
@@ -221,7 +221,7 @@ class Owls extends CI_Controller {
         // page data array
         $page_data                  = array();
         $page_data['page_title']    = "Owl Administrator Members";
-        $page_data['members']       = $this->miowl_model->get_owl_admin_members($owl);
+        $page_data['members']       = $this->owl_model->get_owl_admin_members($owl);
         $page_data['admin_id']      = $this->owl_model->get_owl_by_id($owl)->row()->owl_admin_uid;
         $page_data['owl']           = $owl;
 
@@ -239,7 +239,7 @@ class Owls extends CI_Controller {
         // page data array
         $page_data                  = array();
         $page_data['page_title']    = "Owl Editor Members";
-        $page_data['members']       = $this->miowl_model->get_owl_editor_members($owl);
+        $page_data['members']       = $this->owl_model->get_owl_editor_members($owl);
         $page_data['admin_id']      = $this->owl_model->get_owl_by_id($owl)->row()->owl_admin_uid;
         $page_data['owl']           = $owl;
 
@@ -257,7 +257,7 @@ class Owls extends CI_Controller {
         // page data array
         $page_data                  = array();
         $page_data['page_title']    = "Owl User Members";
-        $page_data['members']       = $this->miowl_model->get_owl_user_members($owl);
+        $page_data['members']       = $this->owl_model->get_owl_user_members($owl);
         $page_data['admin_id']      = $this->owl_model->get_owl_by_id($owl)->row()->owl_admin_uid;
         $page_data['owl']           = $owl;
 

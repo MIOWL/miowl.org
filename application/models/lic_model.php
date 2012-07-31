@@ -45,6 +45,26 @@ class Lic_model extends CI_Model {
 //=================================================================================
 
     /**
+     * public get_license()
+     */
+    public function get_license($id = FALSE)
+    {
+        $this->db->select('*');
+
+        if ($id)
+            $this->db->where('id', $id);
+
+        $query = $this->db->get('license');
+
+        if ($query->num_rows() > 0)
+            return $query;
+        else
+            return FALSE;
+    }
+    //------------------------------------------------------------------
+
+
+    /**
      * public add_license()
      */
     public function add_new( $insert_data = FALSE )

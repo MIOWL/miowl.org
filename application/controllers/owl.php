@@ -486,7 +486,7 @@ class Owl extends CI_Controller {
         // page data array
         $page_data                  = array();
         $page_data['page_title']    = "All Owl Members";
-        $page_data['members']       = $this->miowl_model->get_owl_members($this->session->userdata('owl'));
+        $page_data['members']       = $this->owl_model->get_owl_members($this->session->userdata('owl'));
         $page_data['admin_id']      = $this->owl_model->get_owl_by_id($this->session->userdata('owl'))->row()->owl_admin_uid;
 
         // load the approp. page view
@@ -503,7 +503,7 @@ class Owl extends CI_Controller {
         // page data array
         $page_data                  = array();
         $page_data['page_title']    = "Owl Administrator Members";
-        $page_data['members']       = $this->miowl_model->get_owl_admin_members($this->session->userdata('owl'));
+        $page_data['members']       = $this->owl_model->get_owl_admin_members($this->session->userdata('owl'));
         $page_data['admin_id']      = $this->owl_model->get_owl_by_id($this->session->userdata('owl'))->row()->owl_admin_uid;
 
         // load the approp. page view
@@ -520,7 +520,7 @@ class Owl extends CI_Controller {
         // page data array
         $page_data                  = array();
         $page_data['page_title']    = "Owl Editor Members";
-        $page_data['members']       = $this->miowl_model->get_owl_editor_members($this->session->userdata('owl'));
+        $page_data['members']       = $this->owl_model->get_owl_editor_members($this->session->userdata('owl'));
         $page_data['admin_id']      = $this->owl_model->get_owl_by_id($this->session->userdata('owl'))->row()->owl_admin_uid;
 
         // load the approp. page view
@@ -537,7 +537,7 @@ class Owl extends CI_Controller {
         // page data array
         $page_data                  = array();
         $page_data['page_title']    = "Owl User Members";
-        $page_data['members']       = $this->miowl_model->get_owl_user_members($this->session->userdata('owl'));
+        $page_data['members']       = $this->owl_model->get_owl_user_members($this->session->userdata('owl'));
         $page_data['admin_id']      = $this->owl_model->get_owl_by_id($this->session->userdata('owl'))->row()->owl_admin_uid;
 
         // load the approp. page view
@@ -554,7 +554,7 @@ class Owl extends CI_Controller {
         // page data array
         $page_data                  = array();
         $page_data['page_title']    = "Owl Member Requests";
-        $page_data['members']       = $this->miowl_model->get_owl_unverified_members($this->session->userdata('owl'));
+        $page_data['members']       = $this->owl_model->get_owl_unverified_members($this->session->userdata('owl'));
 
         // load the approp. page view
         $this->load->view('pages/owl_members_requests', $page_data);
@@ -567,7 +567,7 @@ class Owl extends CI_Controller {
      */
     public function _members_accept($user_id = FALSE)
     {
-        $change = $this->miowl_model->owl_accept_member($this->session->userdata('owl'), $user_id) ? '1' : '0' ;
+        $change = $this->owl_model->owl_accept_member($this->session->userdata('owl'), $user_id) ? '1' : '0' ;
         if ( $change === 1 )
         {
             // get some data
@@ -590,7 +590,7 @@ class Owl extends CI_Controller {
      */
     public function _members_deny($user_id = FALSE)
     {
-        $change = $this->miowl_model->owl_deny_member($this->session->userdata('owl'), $user_id) ? '1' : '0';
+        $change = $this->owl_model->owl_deny_member($this->session->userdata('owl'), $user_id) ? '1' : '0';
         if ( $change === 1 )
         {
             // get some data
