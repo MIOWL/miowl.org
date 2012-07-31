@@ -43,7 +43,7 @@
 
 <?php else : ?>
 
-		<?php $user_owls = $this->user_model->get_owls; ?>
+		<?php $user_owls = $this->user_model->get_owls(); ?>
 		<?php if ($user_owls->num_rows() > 1) : ?>
 			<li style="list-style-type: none">Active Owl</li>
 			<li style="list-style-type: none">

@@ -40,6 +40,26 @@ class User_model extends CI_Model {
 //=================================================================================
 
     /**
+     * public get_owls()
+     */
+    public function get_owls($user_id)
+    {
+        if (!$user_id)
+            $user_id = $this->session->userdata('user_id');
+
+        $this->db->select('*');
+        $this->db->where('user', $user_id);
+        $query = $this->db->get('owl_users');
+
+        if ($query->num_rows() > 0)
+            return $query;
+        else
+            return FALSE;
+    }
+    //------------------------------------------------------------------
+
+
+    /**
      * public get_user_by_id()
      * function will pull needed user info based on the passed int user id.
      *
