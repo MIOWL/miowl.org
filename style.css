@@ -105,7 +105,7 @@ p.footer {
 #owl_choice_area {
     position: relative;
     float: right;
-    top: 150px;
+    top: 140px;
     right: auto;
 }
 
@@ -122,6 +122,10 @@ p.footer {
 
 #owl_choice_area select {
     width: 100%;
+}
+
+#owl_choice_area a.button {
+    margin-top: 10px;
 }
 
 /*
