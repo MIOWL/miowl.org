@@ -137,6 +137,9 @@ $(document).ready(function() {
             dataType: "html",
             data: {
                 owl: $("#owl_choice_area select option:selected").val()
+            },
+            success: function(response) {
+                console.log('response: ' + response);
             }
         });
 
