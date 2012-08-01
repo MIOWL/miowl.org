@@ -7,10 +7,12 @@
 				<li><a class="owl_nav_button" href="<?php print site_url('owls'); ?>">choose new owl</a></li>
 				<li><a class="owl_nav_button" href="<?php print site_url('owls/display/' . $owl); ?>">details</a></li>
 
-				<?php if(is_member($owl)) : ?>
-					<li><a class="change_owl owl_nav_button" href="<?php print $owl; ?>">change active owl</a></li>
-				<?php else : ?>
-					<li><a class="request_access owl_nav_button" href="<?php print $owl; ?>">request access</a></li>
+				<?php if($this->session->userdata('authed')) : ?>
+					<?php if(is_member($owl)) : ?>
+						<li><a class="change_owl owl_nav_button" href="<?php print $owl; ?>">change active owl</a></li>
+					<?php else : ?>
+						<li><a class="request_access owl_nav_button" href="<?php print $owl; ?>">request access</a></li>
+					<?php endif; ?>
 				<?php endif; ?>
 
 				<li style="list-style-type: none">&nbsp;</li>
