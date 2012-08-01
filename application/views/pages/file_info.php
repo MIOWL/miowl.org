@@ -39,7 +39,7 @@
                 </div-->
 
                 <div class="ctrlHolder">
-                    <label for="upload_time">upload time (gmt)</label>
+                    <label for="upload_time">upload time (est)</label>
                     <span name="upload_time" id="upload_time" size="35" class="textInput medium"><?php print date("H:i:s d/m/Y", $upload_info->row()->upload_time); ?></span>
                 </div>
 
