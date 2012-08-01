@@ -212,6 +212,9 @@ class User extends CI_Controller {
             // get the users owl info (first row found)
             $owl_user_query = $this->owl_model->get_all_owl_member_info($user_query->row()->id, TRUE);
 
+            if (!$owl_user_query)
+                die("owl_user_query is FALSE");
+
             // did we find the user?
             if ($user_query)
             {
