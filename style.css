@@ -96,8 +96,9 @@ p.footer {
 	z-index: 0;
 	position: relative;
 	height: 0pt;
+    width: 500px;
 	top: 15px;
-    left: 115px;
+    left: 70px;
 	font-size: 30px;
 	color: rgb(0, 0, 0);
 	text-align: center;
