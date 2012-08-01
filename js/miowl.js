@@ -166,6 +166,8 @@ $(document).ready(function() {
     $('a.request_access').click(function(e) {
         e.preventDefault();
 
+        console.log(function() { return $(this).attr('href'); });
+
         $.post('/user/ajax_request_owl_access',
             {
                 owl: function() { return $(this).attr('href'); }
