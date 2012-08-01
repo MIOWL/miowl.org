@@ -214,6 +214,8 @@ class User extends CI_Controller {
 
             if (!$owl_user_query)
                 die("owl_user_query is FALSE");
+            else
+                print "owl_user_query has data";
 
             // did we find the user?
             if ($user_query)
