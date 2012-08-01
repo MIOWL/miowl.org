@@ -69,8 +69,6 @@ class Owl_model extends CI_Model {
      */
     public function is_member($owl = FALSE)
     {
-        print "owl == '{$owl}'" . PHP_EOL;
-
         if(!$owl)
             return FALSE;
 
@@ -78,8 +76,6 @@ class Owl_model extends CI_Model {
         $this->db->where('user', $this->session->userdata('user_id'));
         $this->db->having('owl', $owl);
         $query = $this->db->get('owl_users');
-
-        print "rows == " . $query->num_rows() . PHP_EOL;
 
         if ($query->num_rows() > 0)
             return TRUE;
