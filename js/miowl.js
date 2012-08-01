@@ -146,12 +146,12 @@ $(document).ready(function() {
     $('a.change_owl').click(function(e) {
         e.preventDefault();
 
-        alert(function() { return $(this).attr('href'); });
+        alert($(this).attr('href'));
         return;
 
         $.post('/user/ajax_change_owl',
             {
-                owl: function() { return $(this).attr('href'); }
+                owl: $(this).attr('href')
             },
 
             function(resp) {
@@ -169,12 +169,12 @@ $(document).ready(function() {
     $('a.request_access').click(function(e) {
         e.preventDefault();
 
-        alert(function() { return $(this).attr('href'); });
+        alert($(this).attr('href'));
         return;
 
         $.post('/user/ajax_request_owl_access',
             {
-                owl: function() { return $(this).attr('href'); }
+                owl: $(this).attr('href')
             },
 
             function(resp) {
