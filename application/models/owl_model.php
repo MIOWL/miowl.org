@@ -685,6 +685,17 @@ class Owl_model extends CI_Model {
     //------------------------------------------------------------------
 
 
+    /**
+     * public request_owl_access()
+     */
+    public function request_owl_access()
+    {
+        // add the user to the owl_users database
+        $this->db->insert('owl_users', array('user' => $this->session->userdata('user_id'), 'owl' => $this->input->post('owl')));
+    }
+    //------------------------------------------------------------------
+
+
 //=================================================================================
 // :validation callbacks
 //=================================================================================

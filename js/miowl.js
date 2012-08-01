@@ -143,6 +143,41 @@ $(document).ready(function() {
             }, "text"
         );
     });
+    $('a.change_owl').click(function(e) {
+        e.preventDefault();
+
+        $.post('/user/ajax_change_owl',
+            {
+                owl: function() { return $(this).attr('href'); }
+            },
+
+            function(resp) {
+                if(resp === 'changed') {
+                    window.location.reload();
+                }
+            }, "text"
+        );
+    });
+    // ------------------------------------------------------------------------
+
+    /*!
+     * change active owl
+     */
+    $('a.request_access').click(function(e) {
+        e.preventDefault();
+
+        $.post('/user/ajax_request_owl_access',
+            {
+                owl: function() { return $(this).attr('href'); }
+            },
+
+            function(resp) {
+                if(resp === 'requested') {
+                    window.location.reload();
+                }
+            }, "text"
+        );
+    });
     // ------------------------------------------------------------------------
 
 });

@@ -523,6 +523,30 @@ class User extends CI_Controller {
     // -------------------------------------------------------------------------------
 
 
+    /**
+     * ajax_request_owl_access()
+     */
+    public function ajax_request_owl_access()
+    {
+        // ajax security check
+        // checks to make sure it a) was an ajax request and b) that it came from our server
+        if (!$this->input->is_ajax_request() || strpos($this->input->server('HTTP_REFERER'), 'miowl') === FALSE)
+            die('Invalid request.');
+
+        // get our owl id
+        if (!$this->input->post('owl'))
+            die("NOT requested");
+
+        $this->owl_model->request_owl_access();
+
+        $owl_info = $this->owl_model->get_owl_by_id($this->input->post('owl'));
+        $this->owlmail->inform_admin($this->session->userdata('name'), $owl_info->row()->owl_email);
+
+        print "requested";
+    }
+    // -------------------------------------------------------------------------------
+
+
 //=================================================================================
 // :custom callbacks
 //=================================================================================
