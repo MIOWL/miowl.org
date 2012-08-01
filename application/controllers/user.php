@@ -221,6 +221,7 @@ class User extends CI_Controller {
                     // does the supplied password match?
                     if (sha1(sha1($this->input->post('password')) . $user_query->row()->user_salt) === $user_query->row()->user_password)
                     {
+                        die($owl_user_query->row()->owl);
                         if ($owl_user_query->row()->owl != 0)
                         {
                             // users passed all our tests lets build em a session
