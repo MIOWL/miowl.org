@@ -140,6 +140,30 @@ class Owl_model extends CI_Model {
 
 
     /**
+     * public get_all_owl_member_info()
+     */
+    public function get_all_owl_member_info($user_id = FALSE, $first = FALSE)
+    {
+        if (!$user_id)
+            return FALSE;
+
+        $this->db->select('*');
+        $this->db->where('user', $user_id);
+
+        if(!$first)
+            $query = $this->db->get('owl_users');
+        else
+            $query = $this->db->get('owl_users', 1, 0);
+
+        if ($query->num_rows() > 0)
+            return $query;
+
+        return FALSE;
+    }
+    //------------------------------------------------------------------
+
+
+    /**
      * public get_owl_members()
      */
     public function get_owl_members($owl_id = FALSE, $inclue_inactive = FALSE)

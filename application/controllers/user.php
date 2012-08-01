@@ -193,7 +193,7 @@ class User extends CI_Controller {
     public function login($location = FALSE)
     {
         // Do we need to login??
-        if (!$this->login_check($location, TRUE, FALSE, TRUE))
+        if (!$this->login_check($location, TRUE, TRUE))
             return;
 
         $page_data                  = array();
@@ -208,6 +208,9 @@ class User extends CI_Controller {
         {
             // check the username & password
             $user_query = $this->user_model->get_user($this->input->post('username'));
+
+            // get the users owl info (first row found)
+            $owl_user_query = $this->owl_model->get_all_owl_member_info($user_query->row()->id, TRUE);
 
             // did we find the user?
             if ($user_query)
@@ -288,13 +291,16 @@ class User extends CI_Controller {
 
             // fetch the owl data we need
             $owl_data                   = $this->owl_model->get_all_owls();
-            if($owl_data) {
+            if($owl_data)
+            {
                 $owls                   = array();
-                foreach ($owl_data->result() as $row) {
+                foreach ($owl_data->result() as $row)
+                {
                     $owls[$row->id] = $row->owl_name;
                 }
             }
-            else {
+            else
+            {
                 $owls                   = FALSE;
             }
             $page_data['owls']          = $owls;
@@ -709,47 +715,19 @@ class User extends CI_Controller {
     /**
      * private login_check()
      */
-    private function login_check($location = FALSE, $redirect = FALSE, $premium_page = FALSE, $login_check = FALSE)
+    private function login_check($location = FALSE, $redirect = FALSE, $login_check = FALSE)
     {
         if ($this->session->userdata('authed'))
         {
-            if ($premium_page)
+            if($redirect)
             {
-                if ($this->session->userdata('premium'))
-                {
-                    if($redirect)
-                    {
-                        $location = str_replace('-', '/', "" . $location);
-                        redirect('/' . $location, 'location');
-                        return FALSE;
-                    }
-                    else
-                    {
-                        return TRUE;
-                    }
-                }
-                else
-                {
-                    // displayed message page and redirect
-                    $page_data['error']     = TRUE;
-                    $page_data['msg']        = "You are not authorized to view this page.";
-                    $page_data['redirect']    = "";
-                    $this->load->view('messages/message_page', $page_data);
-                    return FALSE;
-                }
+                $location = str_replace('-', '/', "" . $location);
+                redirect('/' . $location, 'location');
+                return FALSE;
             }
             else
             {
-                if($redirect)
-                {
-                    $location = str_replace('-', '/', "" . $location);
-                    redirect('/' . $location, 'location');
-                    return FALSE;
-                }
-                else
-                {
-                    return TRUE;
-                }
+                return TRUE;
             }
         }
         else
