@@ -256,7 +256,6 @@ class User extends CI_Controller {
 
                             // Owl Creation Required
                             $owl_selection = TRUE;
-                            die("owlid is 0<br>" . print_r($session_data, true));
                         }
                     }
                     else
@@ -287,6 +286,7 @@ class User extends CI_Controller {
         }
         elseif (isset($owl_selection) && $owl_selection)
         {
+            die('$owl_selection is true');
             $page_data['page_title']    = 'Choose your Owl';
             $page_data['owl_selection'] = TRUE;
             $page_data['province']      = $this->province_list;
