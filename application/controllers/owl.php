@@ -241,6 +241,7 @@ class Owl extends CI_Controller {
             {
                 $owl_info = $this->owl_model->get_owl_by_id($this->input->post('owl'));
                 $this->owl_model->choose_owl($this->session->userdata('user_id'), $this->input->post('owl'));
+                $this->session->set_userdata('owl', $this->input->post('owl'));
                 $this->owlmail->send_chosen($name, $owl_info->row()->owl_name, $this->session->userdata('email'));
                 $this->owlmail->inform_admin($name, $owl_info->row()->owl_email);
 
@@ -248,7 +249,7 @@ class Owl extends CI_Controller {
                 $page_data['msg']       = "Successfully chosen you're owl. Please check your email to finish the registration process.";
                 $page_data['redirect']  = '';
                 $this->load->view('messages/message_page', $page_data);
-           }
+            }
             else                                                        // New Owl
             {
                 $authcode = $this->_genActCode();
@@ -277,6 +278,7 @@ class Owl extends CI_Controller {
 
                 $this->owl_model->choose_owl($this->session->userdata('user_id'), $owl_id, TRUE);
                 $this->owlmail->send_activation($name, $this->input->post('email'), $authcode);
+                $this->session->set_userdata('owl', $owl_id);
 
                 $page_data['success']   = TRUE;
                 $page_data['msg']       = "Successfully registered you're owl. Please check your email to finish the registration process.";
