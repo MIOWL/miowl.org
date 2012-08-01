@@ -146,9 +146,6 @@ $(document).ready(function() {
     $('a.change_owl').click(function(e) {
         e.preventDefault();
 
-        alert($(this).attr('href'));
-        return;
-
         $.post('/user/ajax_change_owl',
             {
                 owl: $(this).attr('href')
@@ -168,9 +165,6 @@ $(document).ready(function() {
      */
     $('a.request_access').click(function(e) {
         e.preventDefault();
-
-        alert($(this).attr('href'));
-        return;
 
         $.post('/user/ajax_request_owl_access',
             {
