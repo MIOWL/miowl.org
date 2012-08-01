@@ -2,8 +2,7 @@
 	if($this->session->userdata('authed')) :
 	    $user_owls = $this->user_model->get_owls();
 	    if ($user_owls->num_rows() > 1) :
-?>
-	<div id="owl_choice_area">
+?><div id="owl_choice_area">
 	 	<div id="owl_choice_area_b">
 	        <span>Active Owl</span>
 	        <br />
