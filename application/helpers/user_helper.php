@@ -81,7 +81,7 @@ if (!function_exists('is_member'))
 {
     function is_member($owl = FALSE)
     {
-        print $owl;
+        print "owl == '{$owl}'";
         $CI =& get_instance();
         if($CI->session->userdata('authed'))
             return $CI->owl_model->is_member();
