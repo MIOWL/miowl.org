@@ -33,13 +33,13 @@
 ?>
                     <tr id="r-<?php print $row->id; ?>">
                         <td><?php print $row->id; ?></td>
-                        <td><?php print $row->id == $admin_id ? '<span class="icon_font">Q</span> ' : ''; ?><?php print $row->user_name; ?></td>
+                        <td><?php print ($owl_row->owner === 'true' || $row->id == $admin_id) ? '<span class="icon_font">Q</span> ' : ''; ?><?php print $row->user_name; ?></td>
                         <td><?php print $row->user_first_name; ?></td>
                         <td><?php print $row->user_last_name; ?></td>
                         <td><?php print date("H:i:s d/m/Y", $row->user_registration_date); ?></td>
                         <td>
                             <center>
-                            <?php if($owl_row->admin === 'true') : ?>
+                            <?php if($owl_row->owner === 'true' || $owl_row->admin === 'true') : ?>
                                 <a href="demote:admin:<?php print $row->id; ?>" style="color:#63b52e !important;" class="userAction icon_font">.</a>
                             <?php else : ?>
                                 <a href="promote:admin:<?php print $row->id; ?>" style="color:#FF0000 !important;" class="userAction icon_font">'</a>
@@ -48,7 +48,7 @@
                         </td>
                         <td>
                             <center>
-                            <?php if($owl_row->admin === 'true' || $owl_row->editor === 'true') : ?>
+                            <?php if($owl_row->owner === 'true' || $owl_row->admin === 'true' || $owl_row->editor === 'true') : ?>
                                 <a href="demote:editor:<?php print $row->id; ?>" style="color:#63b52e !important;" class="userAction icon_font">.</a>
                             <?php else : ?>
                                 <a href="promote:editor:<?php print $row->id; ?>" style="color:#FF0000 !important;" class="userAction icon_font">'</a>

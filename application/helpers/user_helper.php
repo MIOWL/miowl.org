@@ -44,28 +44,6 @@ if (!function_exists('is_verified'))
 }
 
 
-if (!function_exists('is_admin'))
-{
-    function is_admin()
-    {
-        $CI =& get_instance();
-        if($CI->session->userdata('authed'))
-            return $CI->owl_model->is_x('admin');
-    }
-}
-
-
-if (!function_exists('is_editor'))
-{
-    function is_editor()
-    {
-        $CI =& get_instance();
-        if($CI->session->userdata('authed'))
-            return $CI->owl_model->is_x('editor');
-    }
-}
-
-
 if (!function_exists('is_owner'))
 {
     function is_owner()
@@ -77,10 +55,44 @@ if (!function_exists('is_owner'))
 }
 
 
+if (!function_exists('is_admin'))
+{
+    function is_admin()
+    {
+        if(is_owner())
+            return TRUE;
+
+        if(!is_verified())
+            return FALSE;
+
+        $CI =& get_instance();
+        if($CI->session->userdata('authed'))
+            return $CI->owl_model->is_x('admin');
+    }
+}
+
+
+if (!function_exists('is_editor'))
+{
+    function is_editor()
+    {
+        if(is_admin())
+            return TRUE;
+
+        $CI =& get_instance();
+        if($CI->session->userdata('authed'))
+            return $CI->owl_model->is_x('editor');
+    }
+}
+
+
 if (!function_exists('is_member'))
 {
     function is_member($owl = FALSE)
     {
+        if(is_editor())
+            return TRUE;
+
         $CI =& get_instance();
         if($CI->session->userdata('authed'))
             return $CI->owl_model->is_member($owl);
