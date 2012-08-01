@@ -285,8 +285,6 @@ class Owl extends CI_Controller {
                 $page_data['redirect']  = '';
                 $this->load->view('messages/message_page', $page_data);
             }
-            // destroy the session
-            $this->session->sess_destroy();
         }
     }
     //------------------------------------------------------------------
