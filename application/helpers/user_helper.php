@@ -84,6 +84,8 @@ if (!function_exists('is_member'))
         $CI =& get_instance();
         if($CI->session->userdata('authed'))
             return $CI->owl_model->is_member();
+
+        return FALSE;
     }
 }
 
