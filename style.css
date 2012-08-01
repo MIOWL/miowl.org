@@ -106,12 +106,11 @@ p.footer {
     position: relative;
     float: right;
     top: 140px;
-    right: auto;
+    right: 0;
 }
 
 #owl_choice_area_b {
-    left: auto;
-    right: auto;
+    right: 0;
     position: absolute;
     width: 257px;
 }
