@@ -110,7 +110,7 @@ p.footer {
 }
 
 #owl_choice_area_b {
-    right: 0;
+    right: auto;
     position: absolute;
     width: 257px;
 }
