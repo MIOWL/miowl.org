@@ -65,6 +65,27 @@ class Owl_model extends CI_Model {
 
 
     /**
+     * public is_member()
+     */
+    public function is_member($owl = FALSE)
+    {
+        if(!$owl)
+            return FALSE;
+
+        $this->db->select('*');
+        $this->db->where('user', $this->session->userdata('user_id'));
+        $this->db->having('owl', $owl);
+        $query = $this->db->get('owl_users');
+
+        if ($query->num_rows() > 0)
+            return TRUE;
+        else
+            return FALSE;
+    }
+    //------------------------------------------------------------------
+
+
+    /**
      * public get_owl_admin()
      */
     public function get_owl_admin($owl_id = FALSE)

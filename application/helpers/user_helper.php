@@ -77,4 +77,15 @@ if (!function_exists('is_owner'))
 }
 
 
+if (!function_exists('is_member'))
+{
+    function is_member($owl = FALSE)
+    {
+        $CI =& get_instance();
+        if($CI->session->userdata('authed'))
+            return $CI->owl_model->is_member();
+    }
+}
+
+
 // eof.
