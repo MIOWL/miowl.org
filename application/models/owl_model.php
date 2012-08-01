@@ -72,10 +72,14 @@ class Owl_model extends CI_Model {
         if(!$owl)
             return FALSE;
 
+        print "owl == '{$owl}'" . PHP_EOL;
+
         $this->db->select('*');
         $this->db->where('user', $this->session->userdata('user_id'));
         $this->db->having('owl', $owl);
         $query = $this->db->get('owl_users');
+
+        print "rows == " . $query->num_rows() . PHP_EOL;
 
         if ($query->num_rows() > 0)
             return TRUE;
