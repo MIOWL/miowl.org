@@ -221,7 +221,6 @@ class User extends CI_Controller {
                     // does the supplied password match?
                     if (sha1(sha1($this->input->post('password')) . $user_query->row()->user_salt) === $user_query->row()->user_password)
                     {
-                        die($owl_user_query->row()->owl);
                         if ($owl_user_query->row()->owl != 0)
                         {
                             // users passed all our tests lets build em a session
@@ -231,7 +230,7 @@ class User extends CI_Controller {
                                 'username'      => $user_query->row()->user_name,
                                 'name'          => $user_query->row()->user_first_name . ' ' . $user_query->row()->user_last_name,
                                 'email'         => $user_query->row()->user_email,
-                                'owl'           => $owl_user_query->row()->owl,
+                                'owl'           => $owl_user_query->row()->owl
                             );
                             $this->session->set_userdata($session_data);
 
@@ -251,11 +250,13 @@ class User extends CI_Controller {
                                 'name'      => $user_query->row()->user_first_name . ' ' . $user_query->row()->user_last_name,
                                 'username'  => $user_query->row()->user_name,
                                 'email'     => $user_query->row()->user_email,
+                                'owl'       => $owl_user_query->row()->owl
                             );
                             $this->session->set_userdata($session_data);
 
                             // Owl Creation Required
                             $owl_selection = TRUE;
+                            die("owlid is 0<br>" . print_r($session_data, true));
                         }
                     }
                     else
