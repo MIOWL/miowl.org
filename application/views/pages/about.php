@@ -33,6 +33,7 @@
         /* ----------------------------------*/
         /*           Vertical Tabs           */
         /* ----------------------------------*/
+        #tabs { border: none !important; min-width: 99% !important; }
         .ui-tabs-vertical { width: 55em; }
         .ui-tabs-vertical .ui-tabs-nav { padding: .2em .1em .2em .2em; float: left; width: 12em; }
         .ui-tabs-vertical .ui-tabs-nav li { clear: left; width: 100%; border-bottom-width: 1px !important; border-right-width: 0 !important; margin: 0 -1px .2em 0; }
