@@ -54,7 +54,7 @@
     		<?php if (is_verified()) : ?>
                 <div id="header_owl_name" class="left"><?php
                         $owl_data       = $this->owl_model->get_owl_by_id($this->session->userdata('owl'));
-                        if($owl_data->owl_active === 'yes')
+                        if(owl_verified())
                         {
                             $owl_name       = $owl_data->row()->owl_name;
                             $owl_name_short = $owl_data->row()->owl_name_short;
