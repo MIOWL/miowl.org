@@ -35,7 +35,7 @@
 			owl(s)
 			<ul>
 				<?php foreach ($search['having']['owl_id'] as $owl_id) : ?>
-					<li><?php print $owl_id; ?></li>
+					<li><?php print $this->owl_model->get_owl_name($owl_id); ?></li>
 				<?php endforeach; ?>
 				<li style="list-style-type: none">&nbsp;</li>
 			</ul>
