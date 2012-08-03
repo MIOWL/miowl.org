@@ -8,27 +8,26 @@
 
 	<div id="body">
 
-            <div>
-                <h2>General Site Search</h2>
-                <br />
-                <div>
-                	<?php if($query) : ?>
-                		<?php $this->load->view('search/__table'); ?>
-                	<?php else : ?>
-                		No Results Found...
-                	<?php endif; ?>
-                </div>
+        <div id="search_sidebar" class="column left quarter">
+            <?php $this->load->view('search/_sidebar'); ?>
+        </div>
 
-                <!-- pagination -->
-                <div class="pagination">
-                    <center><?php print $this->pagination->create_links(); ?></center>
-                </div>
+        <div id="search_body" class="column right threequarter">
+            <div>
+            	<?php if($query) : ?>
+            		<?php $this->load->view('search/__table'); ?>
+            	<?php else : ?>
+            		No Results Found...
+            	<?php endif; ?>
             </div>
 
-        <?php /*
+            <!-- pagination -->
+            <div class="pagination">
+                <center><?php print $this->pagination->create_links(); ?></center>
+            </div>
         </div>
+
         <div class="clear">&nbsp;</div>
-        */ ?>
     </div>
 
 <?php $this->load->view('template/footer'); ?>
