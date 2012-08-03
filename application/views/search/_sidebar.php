@@ -4,7 +4,7 @@
 		<li>
 			keyword
 			<ul>
-				<li>keyword</li>
+				<li><?php print $this->session->userdata('search')['keyword']; ?></li>
 				<li style="list-style-type: none">&nbsp;</li>
 			</ul>
 		</li>
@@ -12,7 +12,7 @@
 		<li>
 			owl type
 			<ul>
-				<li>type</li>
+				<li><?php print $this->session->userdata('post')['type']; ?></li>
 				<li style="list-style-type: none">&nbsp;</li>
 			</ul>
 		</li>
@@ -20,7 +20,9 @@
 		<li>
 			owl province(s)
 			<ul>
-				<li>province</li>
+				<?php foreach ($this->session->userdata('search')['having']['owl_province'] as $province) : ?>
+					<li><?php print $province; ?></li>
+				<?php endforeach; ?>
 				<li style="list-style-type: none">&nbsp;</li>
 			</ul>
 		</li>
@@ -28,7 +30,9 @@
 		<li>
 			owl(s)
 			<ul>
-				<li>owl</li>
+				<?php foreach ($this->session->userdata('search')['having']['owl_id'] as $owl_id) : ?>
+					<li><?php print $owl_id; ?></li>
+				<?php endforeach; ?>
 				<li style="list-style-type: none">&nbsp;</li>
 			</ul>
 		</li>
