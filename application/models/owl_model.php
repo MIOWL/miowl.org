@@ -86,6 +86,27 @@ class Owl_model extends CI_Model {
 
 
     /**
+     * public is_owl_active()
+     */
+    public function is_owl_active($owl = FALSE)
+    {
+        if(!$owl)
+            $owl = $this->session->userdata('owl');
+
+        $this->db->select('*');
+        $this->db->where('owl', $owl);
+        $this->db->having('owl_active', 'yes');
+        $query = $this->db->get('owls');
+
+        if ($query->num_rows() > 0)
+            return TRUE;
+        else
+            return FALSE;
+    }
+    //------------------------------------------------------------------
+
+
+    /**
      * public get_owl_admin()
      */
     public function get_owl_admin($owl_id = FALSE)
@@ -618,12 +639,15 @@ class Owl_model extends CI_Model {
      *
      * @param string $owl_type - owl type (clinic/hospital)
      */
-    public function get_owl_by_type($owl_type = 'both')
+    public function get_owl_by_type($owl_type = 'both', $inc_unverified = FALSE)
     {
         $this->db->select('*');
 
         if ($owl_type != 'both')
             $this->db->where('owl_type', $owl_type);
+
+        if(!$inc_unverified)
+            $this->db->where('owl_active', 'yes');
 
         $this->db->order_by('owl_name', 'ASC');
         $query = $this->db->get('owls');
@@ -642,7 +666,7 @@ class Owl_model extends CI_Model {
      *
      * @param string $province - owl province
      */
-    public function get_owl_by_province($province = FALSE, $owl_type = FALSE)
+    public function get_owl_by_province($province = FALSE, $owl_type = FALSE, $inc_unverified = FALSE)
     {
         if (!$province)
             return FALSE;
@@ -652,6 +676,9 @@ class Owl_model extends CI_Model {
 
         if($owl_type != FALSE && $owl_type != 'both')
             $this->db->having('owl_type', $owl_type);
+
+        if(!$inc_unverified)
+            $this->db->where('owl_active', 'yes');
 
         $this->db->order_by('owl_name', 'ASC');
         $query = $this->db->get('owls');

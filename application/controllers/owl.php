@@ -93,7 +93,8 @@ class Owl extends CI_Controller {
      */
     public function index()
     {
-        if (!is_verified()) {
+        if (!is_verified() || !owl_verified())
+        {
             redirect('/welcome', 'location');
             return;
         }
@@ -127,7 +128,8 @@ class Owl extends CI_Controller {
         if (!$this->login_check('owl-edit_details'))
             return;
 
-        if (!is_verified()) {
+        if (!is_verified() || !owl_verified())
+        {
             redirect('/welcome', 'location');
             return;
         }
@@ -339,7 +341,8 @@ class Owl extends CI_Controller {
         if (!$this->login_check('owl-uploads-' . $function))
             return;
 
-        if (!is_verified()) {
+        if (!is_verified() || !owl_verified())
+        {
             redirect('/welcome', 'location');
             return;
         }
@@ -458,7 +461,8 @@ class Owl extends CI_Controller {
         if (!$this->login_check('owl-members-' . $function))
             return;
 
-        if (!is_verified()) {
+        if (!is_verified() || !owl_verified())
+        {
             redirect('/welcome', 'location');
             return;
         }
@@ -713,7 +717,8 @@ class Owl extends CI_Controller {
         if (!$this->login_check('owl-categories-' . $function))
             return;
 
-        if (!is_verified()) {
+        if (!is_verified() || !owl_verified())
+        {
             redirect('/welcome', 'location');
             return;
         }
@@ -897,7 +902,8 @@ class Owl extends CI_Controller {
         if (!$this->login_check('owl-licenses-' . $function))
             return;
 
-        if (!is_verified()) {
+        if (!is_verified() || !owl_verified())
+        {
             redirect('/welcome', 'location');
             return;
         }

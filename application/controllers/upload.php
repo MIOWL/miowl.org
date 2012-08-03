@@ -52,7 +52,8 @@ class Upload extends CI_Controller {
         // init parent
         parent::__construct();
 
-        if (!is_editor()) {
+        if (!is_editor() || !owl_verified())
+        {
             redirect('/welcome', 'location');
             return;
         }

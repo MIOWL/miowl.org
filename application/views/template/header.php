@@ -54,10 +54,16 @@
     		<?php if (is_verified()) : ?>
                 <div id="header_owl_name" class="left"><?php
                         $owl_data       = $this->owl_model->get_owl_by_id($this->session->userdata('owl'));
-                        $owl_name       = $owl_data->row()->owl_name;
-                        $owl_name_short = $owl_data->row()->owl_name_short;
-
-                        print (strlen($owl_name) < 29) ? $owl_name : '['.$owl_name_short.']';
+                        if($owl_data->owl_active === 'yes')
+                        {
+                            $owl_name       = $owl_data->row()->owl_name;
+                            $owl_name_short = $owl_data->row()->owl_name_short;
+                            print (strlen($owl_name) < 29) ? $owl_name : '['.$owl_name_short.']';
+                        }
+                        else
+                        {
+                            print 'Unverified Owl';
+                        }
                     ?></div>
             <?php else : ?>
                 <div id="header_owl_name"><?php

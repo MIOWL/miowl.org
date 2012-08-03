@@ -212,45 +212,6 @@ class Search extends CI_Controller {
     //------------------------------------------------------------------
 
 
-    /**
-     * ajax_search()
-     */
-    public function ajax_search($limit = 1000, $offset = 0)
-    {
-        // ajax security check
-        // checks to make sure it a) was an ajax request and b) that it came from our server
-        if (!$this->input->is_ajax_request() || strpos($this->input->server('HTTP_REFERER'), 'miowl') === FALSE)
-            die('Invalid request.');
-
-        // get our keyword
-        if (!$this->input->post('keyword'))
-        {
-            print json_encode(FALSE);
-            return;
-        }
-
-        // do our search
-        $search_data = $this->search_model->search_all($this->input->post('keyword'), $offset, $limit, $this->input->post('having'));
-        // $search_data = $this->save_model->search_saves($this->input->post('keyword'), $limit, $offset);
-
-        if ($search_data)
-        {
-            // our data array
-            $json_array = array();
-
-            // build our array
-            foreach ($search_data->result_array() as $row)
-                array_push($json_array, $row);
-
-            print json_encode($json_array);
-            return;
-        }
-
-        print json_encode(FALSE);
-    }
-    // -------------------------------------------------------------------------------
-
-
 //=================================================================================
 // :private functions
 //=================================================================================
