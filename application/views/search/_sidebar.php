@@ -4,7 +4,7 @@
 		<li>
 			keyword
 			<ul>
-				<li><?php print $this->session->userdata('search')['keyword']; ?></li>
+				<li><?php print ($this->session->userdata('search'))['keyword']; ?></li>
 				<li style="list-style-type: none">&nbsp;</li>
 			</ul>
 		</li>
