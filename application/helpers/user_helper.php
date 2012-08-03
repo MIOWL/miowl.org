@@ -104,11 +104,11 @@ if (!function_exists('is_member'))
 
 if (!function_exists('owl_verified'))
 {
-    function owl_verified($owl = FALSE)
+    function owl_verified()
     {
         $CI =& get_instance();
         if($CI->session->userdata('authed'))
-            return $CI->owl_model->is_owl_active($owl);
+            return $CI->owl_model->is_owl_active();
         else
             return FALSE;
     }

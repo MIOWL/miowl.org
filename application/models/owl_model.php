@@ -88,13 +88,10 @@ class Owl_model extends CI_Model {
     /**
      * public is_owl_active()
      */
-    public function is_owl_active($owl = FALSE)
+    public function is_owl_active()
     {
-        if(!$owl)
-            $owl = $this->session->userdata('owl');
-
         $this->db->select('*');
-        $this->db->where('owl', $owl);
+        $this->db->where('id', $this->session->userdata('owl'));
         $this->db->having('owl_active', 'yes');
         $query = $this->db->get('owls');
 
