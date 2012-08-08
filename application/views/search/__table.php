@@ -1,7 +1,7 @@
 <table>
 	<thead>
 		<tr>
-    		<?php foreach (array('Owl', 'Category', 'Filename', 'License', 'File Type', 'Download', 'Info') as $title) : ?>
+    		<?php foreach (array('OWL', 'Category', 'Filename', 'License', 'File Type', 'Download', 'Info') as $title) : ?>
 				<th><?php print $title; ?></th>
 			<?php endforeach; ?>
 		</tr>

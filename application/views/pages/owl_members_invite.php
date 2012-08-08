@@ -2,7 +2,7 @@
 
 	<h1>
 		<center>
-			Owl Member Invite
+			OWL Member Invite
 		</center>
 	</h1>
 

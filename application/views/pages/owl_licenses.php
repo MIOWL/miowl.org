@@ -2,7 +2,7 @@
 
 	<h1>
 		<center>
-			Owl Licenses
+			OWL Licenses
 		</center>
 	</h1>
 

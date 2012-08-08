@@ -50,7 +50,7 @@
                     </div>
 
                     <div id="owlSelection" class="ctrlHolder" >
-                        <label for="owl">Search within specific owls?</label>
+                        <label for="owl">Search within specific OWL's?</label>
                         <div id="owl_list" style="display: inline-block;" >
                             <?php foreach ($this->owl_model->get_all_owls()->result() as $row) : ?>
                                 <input
@@ -69,7 +69,7 @@
                             <span class="save button"   onclick="checkAll('.owl_list')"   > Check All </span>
                             <span class="delete button" onclick="uncheckAll('.owl_list')" > Uncheck All </span>
                         </div>
-                        <p class="formHint">Choose the owl's you wish to search within.</p>
+                        <p class="formHint">Choose the OWL's you wish to search within.</p>
                     </div>
 
                     <div id="keywordSelection" class="ctrlHolder">

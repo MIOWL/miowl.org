@@ -15,7 +15,7 @@
             <table>
                 <thead>
                     <tr> <!-- 'Owl', 'Category', 'Filename', 'License', 'File Type', 'Download', 'Info' -->
-                        <th>Owl</th>
+                        <th>OWL</th>
                         <th>Category</th>
                         <th>Filename</th>
                         <th>License</th>

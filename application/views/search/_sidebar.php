@@ -14,7 +14,7 @@
 		</li>
 
 		<li>
-			owl type
+			OWL type
 			<ul>
 				<li><?php print $post['type']; ?></li>
 				<li style="list-style-type: none">&nbsp;</li>
@@ -22,7 +22,7 @@
 		</li>
 
 		<li>
-			owl province(s)
+			OWL province(s)
 			<ul>
 				<?php foreach ($search['having']['owl_province'] as $province) : ?>
 					<li><?php print $province; ?></li>
@@ -32,7 +32,7 @@
 		</li>
 
 		<li>
-			owl(s)
+			OWL(s)
 			<ul>
 				<?php foreach ($search['having']['owl_id'] as $owl_id) : ?>
 					<li><?php print $this->owl_model->get_owl_name($owl_id); ?></li>

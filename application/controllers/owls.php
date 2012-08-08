@@ -92,10 +92,10 @@ class Owls extends CI_Controller {
     {
         // page data array
         $page_data                  = array();
-        $page_data['page_title']    = "Owl Choice";
+        $page_data['page_title']    = "OWL Choice";
 
         // form validation rules
-        $this->form_validation->set_rules('owl', 'Owl Choice', 'callback__valid_choice');
+        $this->form_validation->set_rules('owl', 'OWL Choice', 'callback__valid_choice');
 
         // did the user submit
         if ($this->form_validation->run())
@@ -127,7 +127,7 @@ class Owls extends CI_Controller {
 
         // page data array
         $page_data                  = array();
-        $page_data['page_title']    = "Owl Details";
+        $page_data['page_title']    = "OWL Details";
         $page_data['details']       = $details;
         $page_data['google_maps']   = TRUE;
         $page_data['address']       = str_replace("\n", '<br>', $address);
@@ -153,7 +153,7 @@ class Owls extends CI_Controller {
 
         // page data array
         $page_data                  = array();
-        $page_data['page_title']    = "Owl Uploads";
+        $page_data['page_title']    = "OWL Uploads";
         $page_data['uploads']       = $this->upload_model->get_upload_by_owl($owl, $limit, $offset);
         $page_data['owl']           = $owl;
 
@@ -208,7 +208,7 @@ class Owls extends CI_Controller {
 
         // page data array
         $page_data                  = array();
-        $page_data['page_title']    = "All Owl Members";
+        $page_data['page_title']    = "All OWL Members";
         $page_data['members']       = $this->owl_model->get_owl_members($owl);
         $page_data['admin_id']      = $this->owl_model->get_owl_by_id($owl)->row()->owl_admin_uid;
         $page_data['owl']           = $owl;
@@ -228,7 +228,7 @@ class Owls extends CI_Controller {
 
         // page data array
         $page_data                  = array();
-        $page_data['page_title']    = "Owl Administrator Members";
+        $page_data['page_title']    = "OWL Administrator Members";
         $page_data['members']       = $this->owl_model->get_owl_admin_members($owl);
         $page_data['admin_id']      = $this->owl_model->get_owl_by_id($owl)->row()->owl_admin_uid;
         $page_data['owl']           = $owl;
@@ -248,7 +248,7 @@ class Owls extends CI_Controller {
 
         // page data array
         $page_data                  = array();
-        $page_data['page_title']    = "Owl Editor Members";
+        $page_data['page_title']    = "OWL Editor Members";
         $page_data['members']       = $this->owl_model->get_owl_editor_members($owl);
         $page_data['admin_id']      = $this->owl_model->get_owl_by_id($owl)->row()->owl_admin_uid;
         $page_data['owl']           = $owl;
@@ -268,7 +268,7 @@ class Owls extends CI_Controller {
 
         // page data array
         $page_data                  = array();
-        $page_data['page_title']    = "Owl User Members";
+        $page_data['page_title']    = "OWL User Members";
         $page_data['members']       = $this->owl_model->get_owl_user_members($owl);
         $page_data['admin_id']      = $this->owl_model->get_owl_by_id($owl)->row()->owl_admin_uid;
         $page_data['owl']           = $owl;
@@ -292,7 +292,7 @@ class Owls extends CI_Controller {
 
         // page data array
         $page_data                  = array();
-        $page_data['page_title']    = "All Owl File Categories";
+        $page_data['page_title']    = "All OWL File Categories";
         $page_data['owl']           = $owl;
         $page_data['categories']    = gen_categories_a($owl);
 

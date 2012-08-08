@@ -107,7 +107,7 @@ class Owl extends CI_Controller {
 
         // page data array
         $page_data                  = array();
-        $page_data['page_title']    = "Owl Details";
+        $page_data['page_title']    = "OWL Details";
         $page_data['details']       = $details;
         $page_data['google_maps']   = TRUE;
         $page_data['address']       = str_replace("\n", '<br>', $address);
@@ -140,7 +140,7 @@ class Owl extends CI_Controller {
         // form validation rules
         $this->form_validation->set_rules('name', 'Organization Name', "required|trim|callback__is_this_unique[{$owl_id}]");
         $this->form_validation->set_rules('acronym', 'Organization Acronym', "required|trim|alpha_numeric|callback__is_this_unique[{$owl_id}]");
-        $this->form_validation->set_rules('type', 'Owl Type', 'callback__valid_choice');
+        $this->form_validation->set_rules('type', 'OWL Type', 'callback__valid_choice');
         $this->form_validation->set_rules('address', 'Organization Address', 'required|trim');
         $this->form_validation->set_rules('province', 'Province', 'callback__valid_choice');
         $this->form_validation->set_rules('city', 'City', 'required|trim');
@@ -151,7 +151,7 @@ class Owl extends CI_Controller {
 
         // page data array
         $page_data                  = array();
-        $page_data['page_title']    = "[EDIT] Owl Details";
+        $page_data['page_title']    = "[EDIT] OWL Details";
         $page_data['details']       = $details;
         $page_data['province']      = $this->province_list;
 
@@ -174,7 +174,7 @@ class Owl extends CI_Controller {
             }
 
             $page_data['success']     = TRUE;
-            $page_data['msg']         = "Successfully updated you're owl.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If you updated your admin email please check your email to finish the update process.";
+            $page_data['msg']         = "Successfully updated you're OWL.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If you updated your admin email please check your email to finish the update process.";
 
             // load the approp. page view
             $this->load->view('pages/owl_details_edit', $page_data);
@@ -192,14 +192,14 @@ class Owl extends CI_Controller {
         if(!$this->input->post('new_owl'))
         { // Existing Owl
             // form validation rules
-            $this->form_validation->set_rules('owl', 'Owl', 'callback__valid_choice');
+            $this->form_validation->set_rules('owl', 'OWL', 'callback__valid_choice');
         }
         else
         { // New Owl
             // form validation rules
             $this->form_validation->set_rules('name', 'Organization Name', 'required|trim|is_unique[owls.owl_name]');
             $this->form_validation->set_rules('acronym', 'Organization Acronym', 'required|trim|alpha_numeric|is_unique[owls.owl_name_short]');
-            $this->form_validation->set_rules('type', 'Owl Type', 'callback__valid_choice');
+            $this->form_validation->set_rules('type', 'OWL Type', 'callback__valid_choice');
             $this->form_validation->set_rules('address', 'Organization Address', 'required|trim');
             $this->form_validation->set_rules('province', 'Province', 'callback__valid_choice');
             $this->form_validation->set_rules('city', 'City', 'required|trim');
@@ -248,7 +248,7 @@ class Owl extends CI_Controller {
                 $this->owlmail->inform_admin($name, $owl_info->row()->owl_email);
 
                 $page_data['success']   = TRUE;
-                $page_data['msg']       = "Successfully chosen you're owl. Please check your email to finish the registration process.";
+                $page_data['msg']       = "Successfully chosen you're OWL. Please check your email to finish the registration process.";
                 $page_data['redirect']  = '';
                 $this->load->view('messages/message_page', $page_data);
             }
@@ -283,7 +283,7 @@ class Owl extends CI_Controller {
                 $this->session->set_userdata('owl', $owl_id);
 
                 $page_data['success']   = TRUE;
-                $page_data['msg']       = "Successfully registered you're owl. Please check your email to finish the registration process.";
+                $page_data['msg']       = "Successfully registered you're OWL. Please check your email to finish the registration process.";
                 $page_data['redirect']  = '';
                 $this->load->view('messages/message_page', $page_data);
             }
@@ -299,7 +299,7 @@ class Owl extends CI_Controller {
     {
         $page_data = array(
             'code'          => $code,
-            'page_title'    => 'Owl Activate',
+            'page_title'    => 'OWL Activate',
         );
 
         // form validation rules
@@ -315,7 +315,7 @@ class Owl extends CI_Controller {
             $this->owlmail->send_owl_welcome($email);
 
             $page_data['success']     = TRUE;
-            $page_data['msg']         = "You're owl has been successfully activated.";
+            $page_data['msg']         = "You're OWL has been successfully activated.";
             $page_data['redirect']    = '';
         }
 
@@ -369,7 +369,7 @@ class Owl extends CI_Controller {
     {
         // page data array
         $page_data                  = array();
-        $page_data['page_title']    = "Owl Uploads";
+        $page_data['page_title']    = "OWL Uploads";
         $page_data['uploads']       = $this->upload_model->get_upload_by_owl($this->session->userdata('owl'), $limit, $offset);
 
         // setup pagination lib
@@ -489,7 +489,7 @@ class Owl extends CI_Controller {
     {
         // page data array
         $page_data                  = array();
-        $page_data['page_title']    = "All Owl Members";
+        $page_data['page_title']    = "All OWL Members";
         $page_data['members']       = $this->owl_model->get_owl_members($this->session->userdata('owl'));
         $page_data['admin_id']      = $this->owl_model->get_owl_by_id($this->session->userdata('owl'))->row()->owl_admin_uid;
         $page_data['owl']           = FALSE;
@@ -507,7 +507,7 @@ class Owl extends CI_Controller {
     {
         // page data array
         $page_data                  = array();
-        $page_data['page_title']    = "Owl Administrator Members";
+        $page_data['page_title']    = "OWL Administrator Members";
         $page_data['members']       = $this->owl_model->get_owl_admin_members($this->session->userdata('owl'));
         $page_data['admin_id']      = $this->owl_model->get_owl_by_id($this->session->userdata('owl'))->row()->owl_admin_uid;
         $page_data['owl']           = FALSE;
@@ -525,7 +525,7 @@ class Owl extends CI_Controller {
     {
         // page data array
         $page_data                  = array();
-        $page_data['page_title']    = "Owl Editor Members";
+        $page_data['page_title']    = "OWL Editor Members";
         $page_data['members']       = $this->owl_model->get_owl_editor_members($this->session->userdata('owl'));
         $page_data['admin_id']      = $this->owl_model->get_owl_by_id($this->session->userdata('owl'))->row()->owl_admin_uid;
         $page_data['owl']           = FALSE;
@@ -543,7 +543,7 @@ class Owl extends CI_Controller {
     {
         // page data array
         $page_data                  = array();
-        $page_data['page_title']    = "Owl User Members";
+        $page_data['page_title']    = "OWL User Members";
         $page_data['members']       = $this->owl_model->get_owl_user_members($this->session->userdata('owl'));
         $page_data['admin_id']      = $this->owl_model->get_owl_by_id($this->session->userdata('owl'))->row()->owl_admin_uid;
         $page_data['owl']           = FALSE;
@@ -561,7 +561,7 @@ class Owl extends CI_Controller {
     {
         // page data array
         $page_data                  = array();
-        $page_data['page_title']    = "Owl Member Requests";
+        $page_data['page_title']    = "OWL Member Requests";
         $page_data['members']       = $this->owl_model->get_owl_unverified_members($this->session->userdata('owl'));
 
         // load the approp. page view
@@ -651,7 +651,7 @@ class Owl extends CI_Controller {
     {
         // page data array
         $page_data                  = array();
-        $page_data['page_title']    = "Owl Member Invite";
+        $page_data['page_title']    = "OWL Member Invite";
         $page_data['owl_info']      = $this->owl_model->get_owl_by_id($this->session->userdata('owl'));
 
         // form validation rules
@@ -745,7 +745,7 @@ class Owl extends CI_Controller {
     {
         // page data array
         $page_data                  = array();
-        $page_data['page_title']    = "All Owl File Categories";
+        $page_data['page_title']    = "All OWL File Categories";
         $page_data['categories']    = gen_categories_a();
 
         // load the approp. page view
@@ -764,7 +764,7 @@ class Owl extends CI_Controller {
 
         // page data array
         $page_data                  = array();
-        $page_data['page_title']    = "Organize Owl File Categories";
+        $page_data['page_title']    = "Organize OWL File Categories";
         $page_data['categories']    = $this->cat_model->get_owl_categories($this->session->userdata('owl'), TRUE, $offset, $limit);
 
         // setup pagination lib
@@ -792,7 +792,7 @@ class Owl extends CI_Controller {
     {
         // page data array
         $page_data                  = array();
-        $page_data['page_title']    = "Create New Owl File Category";
+        $page_data['page_title']    = "Create New OWL File Category";
         $page_data['categories']    = $this->cat_model->get_owl_categories($this->session->userdata('owl'), FALSE);
 
         // form validation rules
@@ -933,7 +933,7 @@ class Owl extends CI_Controller {
 
         // page data array
         $page_data                  = array();
-        $page_data['page_title']    = "Organize Owl File licenses";
+        $page_data['page_title']    = "Organize OWL File licenses";
         $page_data['licenses']      = $this->lic_model->get_owl_licenses($this->session->userdata('owl'), $offset, $limit);
 
         // setup pagination lib
@@ -961,7 +961,7 @@ class Owl extends CI_Controller {
     // {
     //     // page data array
     //     $page_data                  = array();
-    //     $page_data['page_title']    = "Create New Owl File Category";
+    //     $page_data['page_title']    = "Create New OWL File Category";
     //     $page_data['licenses']      = $this->lic_model->get_owl_licenses($this->session->userdata('owl'));
 
     //     // form validation rules

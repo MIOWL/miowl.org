@@ -39,7 +39,7 @@ if (!function_exists('insert_3d_categories'))
     {
         // do we have a type? or OWL
         if( !$type || !$owl_id )
-            exit( 'no type or owl id' );
+            die( 'no type or owl id' );
 
         // determin the filename from the type
         switch ( $type )
@@ -56,6 +56,8 @@ if (!function_exists('insert_3d_categories'))
                 exit( 'invalid type' );
                 break;
         }
+
+        die( "type = '{$type}'\n<br>\nfilename = '{$filename}'" );
 
         // get our CodeIgniter instance
         $CI =& get_instance();

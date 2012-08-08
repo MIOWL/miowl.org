@@ -4,7 +4,7 @@
 		<li>
 			<?php print $this->owl_model->get_owl_name($owl); ?>
 			<ul>
-				<li><a class="owl_nav_button" href="<?php print site_url('owls'); ?>">choose new owl</a></li>
+				<li><a class="owl_nav_button" href="<?php print site_url('owls'); ?>">choose new OWL</a></li>
 				<li><a class="owl_nav_button" href="<?php print site_url('owls/display/' . $owl); ?>">details</a></li>
 
 				<?php if($this->session->userdata('authed')) : ?>
@@ -53,7 +53,7 @@
 <?php else : ?>
 
 		<li>
-			MiOwl
+			MI Owl
 			<ul>
 				<li><a class="owl_nav_button" href="<?php print site_url(); ?>">details</a></li>
 	<?php if (is_admin()) : ?>

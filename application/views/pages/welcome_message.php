@@ -2,7 +2,7 @@
 
 	<h1>
 		<center>
-			Welcome to MiOWL!
+			Welcome to MI OWL!
 		</center>
 	</h1>
 

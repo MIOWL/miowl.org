@@ -38,19 +38,23 @@
                     <span name="id" id="id" size="35" class="textInput medium"><?php print $upload_info->row()->id; ?></span>
                 </div-->
 
+                <!--div class="ctrlHolder">
+                    <label for="file_size">file size</label>
+                    <span name="file_size" id="file_size" size="35" class="textInput medium"><?php print $upload_info->row()->file_size; ?></span>
+                </div-->
+
                 <div class="ctrlHolder">
-                    <label for="upload_time">upload time (est)</label>
-                    <span name="upload_time" id="upload_time" size="35" class="textInput medium"><?php print date("H:i:s d/m/Y", $upload_info->row()->upload_time); ?></span>
+                    <label for="file_name">filename</label>
+                    <span name="file_name" id="file_name" size="35" class="textInput medium"><?php print $upload_info->row()->file_name; ?></span>
                 </div>
 
                 <div class="ctrlHolder">
-                    <label for="upload_user">upload user</label>
-                    <?php $user = $this->user_model->get_user_by_id($upload_info->row()->upload_user); ?>
-                    <span name="upload_user" id="upload_user" size="35" class="textInput medium"><?php print $user->row()->user_first_name; ?> <?php print $user->row()->user_last_name; ?> (<?php print $user->row()->user_name; ?>)</span>
+                    <label for="description">description</label>
+                    <span name="description" id="description" class="textInput medium"><?php print str_replace(array("\n", '\n'), "<br>", $upload_info->row()->description); ?></span>
                 </div>
 
                 <div class="ctrlHolder">
-                    <label for="owl">owl</label>
+                    <label for="owl">OWL</label>
                     <span name="owl" id="owl" size="35" class="textInput medium">
                         <a href="<?php print site_url('browse/owl/' . $upload_info->row()->owl); ?>">
                             <?php print $this->owl_model->get_owl_by_id($upload_info->row()->owl)->row()->owl_name; ?>
@@ -59,13 +63,13 @@
                 </div>
 
                 <div class="ctrlHolder">
-                    <label for="file_name">filename</label>
-                    <span name="file_name" id="file_name" size="35" class="textInput medium"><?php print $upload_info->row()->file_name; ?></span>
+                    <label for="upload_category">category</label>
+                    <span name="upload_category" id="upload_category" size="35" class="textInput medium"><?php print cat_breadcrumb($upload_info->row()->upload_category); ?></span>
                 </div>
 
                 <div class="ctrlHolder">
-                    <label for="upload_category">category</label>
-                    <span name="upload_category" id="upload_category" size="35" class="textInput medium"><?php print cat_breadcrumb($upload_info->row()->upload_category); ?></span>
+                    <label for="file_type">filetype</label>
+                    <span name="file_type" id="file_type" size="35" class="textInput medium"><?php print $upload_info->row()->file_type; ?></span>
                 </div>
 
                 <div class="ctrlHolder">
@@ -79,18 +83,8 @@
                 </div>
 
                 <div class="ctrlHolder">
-                    <label for="file_type">filetype</label>
-                    <span name="file_type" id="file_type" size="35" class="textInput medium"><?php print $upload_info->row()->file_type; ?></span>
-                </div>
-
-                <div class="ctrlHolder">
-                    <label for="file_size">file size</label>
-                    <span name="file_size" id="file_size" size="35" class="textInput medium"><?php print $upload_info->row()->file_size; ?></span>
-                </div>
-
-                <div class="ctrlHolder">
-                    <label for="description">description</label>
-                    <span name="description" id="description" class="textInput medium"><?php print str_replace(array("\n", '\n'), "<br>", $upload_info->row()->description); ?></span>
+                    <label for="upload_time">upload time (est)</label>
+                    <span name="upload_time" id="upload_time" size="35" class="textInput medium"><?php print date("H:i:s d/m/Y", $upload_info->row()->upload_time); ?></span>
                 </div>
 
                 <div class="ctrlHolder">
@@ -101,6 +95,14 @@
                             'N/A';
                     ?></span>
                 </div>
+
+                <?php if(is_member($upload_info->row()->owl)) : ?>
+                    <div class="ctrlHolder">
+                        <label for="upload_user">upload user</label>
+                        <?php $user = $this->user_model->get_user_by_id($upload_info->row()->upload_user); ?>
+                        <span name="upload_user" id="upload_user" size="35" class="textInput medium"><?php print $user->row()->user_first_name; ?> <?php print $user->row()->user_last_name; ?> (<?php print $user->row()->user_name; ?>)</span>
+                    </div>
+                <?php endif; ?>
 
             </fieldset>
 

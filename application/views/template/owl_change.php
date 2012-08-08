@@ -4,7 +4,7 @@
 	    if ($user_owls->num_rows() > 1) :
 ?><div id="owl_choice_area" <?php print is_editor() ? NULL : 'style="right: 42px !important;"'; ?>>
 	 	<div id="owl_choice_area_b">
-	        <span>Active Owl</span>
+	        <span>Active OWL</span>
 	        <br />
 	        <select id="current_owl_chosen" autocompelete="OFF" />
 	            <?php foreach ($user_owls->result() as $owl_row) : ?>

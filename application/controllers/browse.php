@@ -108,7 +108,7 @@ class Browse extends CI_Controller {
     public function owl($owl = FALSE, $offset = 0, $limit = 10)
     {
         $page_data = array();
-        $page_data['page_title'] = 'File Browser | by owl (' . $this->owl_model->get_owl_by_id($owl)->row()->owl_name . ')';
+        $page_data['page_title'] = 'File Browser | by OWL (' . $this->owl_model->get_owl_by_id($owl)->row()->owl_name . ')';
         $page_data['browse_by_owl'] = TRUE;
         $page_data['data'] = $this->upload_model->get_upload_by_owl($owl, $limit, $offset);
 

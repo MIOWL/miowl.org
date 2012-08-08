@@ -9,7 +9,7 @@
 		if ($this->session->userdata('authed') && is_verified())
 		{
 			# Logged in NAV
-			print "<a href='". site_url() . "' title='View your Owl'>my owl</a>";								# my owl
+			print "<a href='". site_url() . "' title='View your OWL library'>my library</a>";					# my library
 			print " | ";																						# spacer
 			if (is_editor())
 			{
@@ -19,7 +19,7 @@
 		}
 
 		# These are non specific nav options
-		print "<a href='". site_url('owls') . "' title=\"Browse all the Owl's on the site\">owl's</a>";			# owls
+		print "<a href='". site_url('owls') . "' title=\"Browse all the OWL's on the site\">OWL's</a>";			# owls
 		print " | ";																							# spacer
 		print "<a href='". site_url('search') . "' title='Search for a file'>site search</a>";					# search
 		print " | ";																							# spacer

@@ -14,7 +14,7 @@
             <fieldset class="inlineLabels">
 
                 <div class="ctrlHolder">
-                    <label for="owl">Organization / OWL</label>
+                    <label for="owl">Library / OWL</label>
                     <select name="owl" id="owl" class="textInput medium" autocompelete="OFF" />
 
                         <option value="default" <?php print set_select('owl', 'default', TRUE); ?>>Select...</option>
@@ -24,7 +24,7 @@
                         <?php endforeach; ?>
 
                     </select>
-                    <p class="formHint">Choose the organization you wish to browse, aka owl.</p>
+                    <p class="formHint">Choose the library you wish to browse, aka OWL.</p>
                 </div>
 
             </fieldset>

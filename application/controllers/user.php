@@ -137,7 +137,7 @@ class User extends CI_Controller {
         $this->form_validation->set_rules('password_again', 'Password Confirmation', 'required|matches[password]');
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|callback__valid_email');
         $this->form_validation->set_rules('spamcheck', 'Spam Check', 'required|trim|callback__spam_check');
-        $this->form_validation->set_rules('owl', 'Owl', 'callback__valid_choice');
+        $this->form_validation->set_rules('owl', 'OWL', 'callback__valid_choice');
 
         // did the user submit
         if ($this->form_validation->run())

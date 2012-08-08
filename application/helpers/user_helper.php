@@ -90,9 +90,6 @@ if (!function_exists('is_member'))
 {
     function is_member($owl = FALSE)
     {
-        if(is_editor())
-            return TRUE;
-
         $CI =& get_instance();
         if($CI->session->userdata('authed'))
             return $CI->owl_model->is_member($owl);

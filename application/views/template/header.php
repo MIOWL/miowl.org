@@ -62,7 +62,7 @@
                         }
                         else
                         {
-                            print 'Unverified Owl';
+                            print 'Unverified OWL';
                         }
                     ?></div>
             <?php else : ?>

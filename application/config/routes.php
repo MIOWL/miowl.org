@@ -51,6 +51,7 @@ $route['owl/uploads/upload']                = 'upload/index';
 $route['owl/licenses/create']               = 'upload/lic';
 $route['browse/(:num)']                     = 'browse/index/$1';
 $route['deleted/info/(:num)']               = 'browse/info/$1/TRUE';
+$route['user/forgot']                       = 'user/forgot_password';
 
 
 /* End of file routes.php */
