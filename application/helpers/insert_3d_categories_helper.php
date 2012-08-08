@@ -57,8 +57,6 @@ if (!function_exists('insert_3d_categories'))
                 break;
         }
 
-        print "type = '{$type}'\n<br>\nowl_id = '{$owl_id}'\n<br>\nfilename = '{$filename}'";
-
         // get our CodeIgniter instance
         $CI =& get_instance();
 
@@ -81,8 +79,6 @@ if (!function_exists('insert_3d_categories'))
                 'parent_id' => trim( $pid ),
             );
         }
-
-        print '<pre>' . print_r($insert, true) . '</pre>';
 
         // do the SQL insert
         foreach ($insert as $cat)
