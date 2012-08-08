@@ -116,9 +116,9 @@ class Cat_model extends CI_Model {
     /**
      * public add_category()
      */
-    public function add_category( $insert_data = FALSE )
+    public function add_category( $insert_data = FALSE, $owl_create = FALSE )
     {
-        if ( !is_editor() )
+        if ( !$owl_create && !is_editor() )
             return FALSE;
 
         if( !$insert_data )

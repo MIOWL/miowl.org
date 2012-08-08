@@ -57,7 +57,7 @@ if (!function_exists('insert_3d_categories'))
                 break;
         }
 
-        print "type = '{$type}'\n<br>\nfilename = '{$filename}'";
+        print "type = '{$type}'\n<br>\nowl_id = '{$owl_id}'\n<br>\nfilename = '{$filename}'";
 
         // get our CodeIgniter instance
         $CI =& get_instance();
@@ -96,7 +96,8 @@ if (!function_exists('insert_3d_categories'))
                                             'name'      => trim( $cat['name'] ),
                                             'parent_id' => '0',
                                             'owl'       => $owl_id,
-                                        )
+                                        ),
+                                        TRUE
                                     );
 
                 // get root children
@@ -110,7 +111,8 @@ if (!function_exists('insert_3d_categories'))
                                                     'name'      => trim( $sub_cat['name'] ),
                                                     'parent_id' => $root_insert_id,
                                                     'owl'       => $owl_id,
-                                                )
+                                                ),
+                                                TRUE
                                             );
 
                         // get sub children
@@ -124,7 +126,8 @@ if (!function_exists('insert_3d_categories'))
                                         'name'      => trim( $sub_sub_cat['name'] ),
                                         'parent_id' => $sub_insert_id,
                                         'owl'       => $owl_id,
-                                    )
+                                    ),
+                                    TRUE
                                 );
                             }
                         }
