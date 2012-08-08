@@ -45,11 +45,11 @@ if (!function_exists('insert_3d_categories'))
         switch ( $type )
         {
             case 'clinic':
-                $filename = APPPATH . 'clinic_categories.csv';
+                $filename = realpath(APPPATH . 'clinic_categories.csv');
                 break;
 
             case 'hospital':
-                $filename = APPPATH . 'hospital_categories.csv';
+                $filename = realpath(APPPATH . 'hospital_categories.csv');
                 break;
 
             default:
