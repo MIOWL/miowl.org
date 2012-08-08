@@ -53,7 +53,7 @@
 <?php else : ?>
 
 		<li>
-			MI Owl
+			MI OWL
 			<ul>
 				<li><a class="owl_nav_button" href="<?php print site_url(); ?>">details</a></li>
 	<?php if (is_admin()) : ?>
