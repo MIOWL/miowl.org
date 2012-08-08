@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 
     <!-- Title -->
-    <title>Email | MiOWL</title>
+    <title>Email | MI OWL</title>
 
     <!-- Icon -->
     <link rel="Shortcut Icon" href="<?php print site_url('favicon.ico'); ?>" type="image/x-icon" />
@@ -90,7 +90,7 @@
             padding-left: 18px;
             text-indent: -18px;
         }
-        
+
         blockquote:first-letter {
             background: url(<?php print site_url('images/open-quote.gif'); ?>) no-repeat left top;
             padding-left: 18px;
@@ -103,7 +103,7 @@
 <div id="container">
     <h1>
         <a href="<?php print site_url(); ?>" title="Go back home!">
-            <img 
+            <img
                 src="<?php print site_url('images/miowl_red_black_small.png'); ?>"
                 alt="MiOWL Logo"
                 width="500"
