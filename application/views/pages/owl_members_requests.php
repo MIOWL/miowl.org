@@ -28,6 +28,7 @@
 <?php
     if($members) :
     foreach($members->result() as $user_row) :
+        print '<pre>' . print_r($user_row, true) . '</pre>';
             $row = $this->user_model->get_user_by_id($user_row->user)->row();
 ?>
                     <tr id="r-<?php print $row->id; ?>">
