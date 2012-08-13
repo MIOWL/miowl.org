@@ -23,7 +23,7 @@
                     </div>
 
                     <div class="ctrlHolder">
-                        <label for="sub_category">Sub Category?</label>
+                        <label for="sub_category">Sub Category of?</label>
                         <select name="sub_category" id="sub_category" class="textInput medium" autocompelete="OFF" />
                             <option value="0" <?php echo set_select('sub_category', '0', TRUE); ?>>
                                 None (top level category)
@@ -34,7 +34,7 @@
                                 </option>
                             <?php endforeach; ?>
                         </select>
-                        <p class="formHint">If this is a sub category please choose it from the list.</p>
+                        <p class="formHint">If a sub category, please choose its parent from the list.</p>
                     </div>
 
                 </fieldset>

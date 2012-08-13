@@ -287,7 +287,19 @@ if (!function_exists('cat_breadcrumb_ul'))
             }
         }
 
-        return '<ul class="breadcrumb" title="' . $breadcrumb_text . '">' . $breadcrumb;
+        return '<a href=""><ul class="breadcrumb" title="' . $breadcrumb_text . '">' . $breadcrumb;
+    }
+}
+
+
+if (!function_exists('cat_breadcrumb_ul_a'))
+{
+    function cat_breadcrumb_ul_a($cat_id = FALSE)
+    {
+        if(!$cat_id)
+            return FALSE;
+
+        return '<a href="' . site_url('/browse/cat/' . $cat_id) . '">' . cat_breadcrumb_ul($cat_id) . '</a>';
     }
 }
 

@@ -142,7 +142,7 @@
                                 <span class="left">Category Name</span>\
                                 <input type="text" id="dialog_name" class="text ui-widget-content ui-corner-all right" style="width: 185px;" value="' + cat_name + '" />\
                                 <br />\
-                                <span class="left">Sub Category of:</span>\
+                                <span class="left">Sub Category of</span>\
                                 <select name="subcat" id="dialog_subcat" class="select ui-widget-content ui-corner-all right">\
                                 ' + select_list + '\
                                 </select>\
