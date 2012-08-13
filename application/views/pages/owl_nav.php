@@ -64,20 +64,14 @@
 		</li>
 
 		<li>
-			members
+			uploads
 			<ul>
-				<li>
-					<a class="owl_nav_button" href="<?php print site_url('owl/members'); ?>">list</a>
-					<ul>
-						<li><a class="owl_nav_button" href="<?php print site_url('owl/members/admin'); ?>">admins</a></li>
-						<li><a class="owl_nav_button" href="<?php print site_url('owl/members/editor'); ?>">editors</a></li>
-						<li><a class="owl_nav_button" href="<?php print site_url('owl/members/user'); ?>">users</a></li>
-					</ul>
-				</li>
-	<?php if (is_admin()) : ?>
-				<li><a class="owl_nav_button" href="<?php print site_url('owl/members/requests'); ?>">requests</a></li>
+				<li><a class="owl_nav_button" href="<?php print site_url('owl/uploads'); ?>">browse</a></li>
+	<?php if (is_editor()) : ?>
+				<li><a class="owl_nav_button" href="<?php print site_url('owl/uploads/upload'); ?>">upload</a></li>
+	<?php endif; if (is_admin()) : ?>
+				<li><a class="owl_nav_button" href="<?php print site_url('owl/uploads/bin'); ?>">recycle bin</a></li>
 	<?php endif; ?>
-				<li><a class="owl_nav_button" href="<?php print site_url('owl/members/invite'); ?>">invite</a></li>
 				<li style="list-style-type: none">&nbsp;</li>
 			</ul>
 		</li>
@@ -106,14 +100,20 @@
 		</li>
 
 		<li>
-			uploads
+			members
 			<ul>
-				<li><a class="owl_nav_button" href="<?php print site_url('owl/uploads'); ?>">browse</a></li>
-	<?php if (is_editor()) : ?>
-				<li><a class="owl_nav_button" href="<?php print site_url('owl/uploads/upload'); ?>">upload</a></li>
-	<?php endif; if (is_admin()) : ?>
-				<li><a class="owl_nav_button" href="<?php print site_url('owl/uploads/bin'); ?>">recycle bin</a></li>
+				<li>
+					<a class="owl_nav_button" href="<?php print site_url('owl/members'); ?>">list</a>
+					<ul>
+						<li><a class="owl_nav_button" href="<?php print site_url('owl/members/admin'); ?>">admins</a></li>
+						<li><a class="owl_nav_button" href="<?php print site_url('owl/members/editor'); ?>">editors</a></li>
+						<li><a class="owl_nav_button" href="<?php print site_url('owl/members/user'); ?>">users</a></li>
+					</ul>
+				</li>
+	<?php if (is_admin()) : ?>
+				<li><a class="owl_nav_button" href="<?php print site_url('owl/members/requests'); ?>">requests</a></li>
 	<?php endif; ?>
+				<li><a class="owl_nav_button" href="<?php print site_url('owl/members/invite'); ?>">invite</a></li>
 				<li style="list-style-type: none">&nbsp;</li>
 			</ul>
 		</li>

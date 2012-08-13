@@ -133,63 +133,79 @@
                     var select_list = response;
 
                     // create and load the dialog form
-                    $('<div id="dialog"></div>').html('<p class="validateTips">All form fields are required.</p><fieldset><span class="left">Category Name</span><input type="text" id="dialog_name" class="text ui-widget-content ui-corner-all right" style="width: 185px;" value="' + cat_name + '" /><br /><span class="left">Sub Category</span><select name="subcat" id="dialog_subcat" class="select ui-widget-content ui-corner-all right">' + select_list + '</select>').dialog({
-                        title: 'Edit the Category',
-                        autoOpen: true,
-                        resizable: false,
-                        width: 350,
-                        modal: true,
-                        buttons: {
-                            "Edit": function() {
+                    $('<div id="dialog"></div>')
+                        .html(
+                            '<p class="validateTips"> \
+                                All form fields are required. \
+                            </p> \
+                            <fieldset> \
+                                <span class="left">Category Name</span>\
+                                <input type="text" id="dialog_name" class="text ui-widget-content ui-corner-all right" style="width: 185px;" value="' + cat_name + '" />\
+                                <br />\
+                                <span class="left">Sub Category of:</span>\
+                                <select name="subcat" id="dialog_subcat" class="select ui-widget-content ui-corner-all right">\
+                                ' + select_list + '\
+                                </select>\
+                            </fieldset>'
+                        )
+
+                        .dialog({
+                            title: 'Edit the Category',
+                            autoOpen: true,
+                            resizable: false,
+                            width: 350,
+                            modal: true,
+                            buttons: {
+                                "Edit": function() {
+                                    var name = $("#dialog_name"),
+                                        subcat = $("#dialog_subcat"),
+                                        allFields = $([]).add(name).add(subcat);
+
+                                    allFields.removeClass("ui-state-error");
+
+                                    // build the uri
+                                    var uri = '/owl/members';
+
+                                    // get the JSON data from the request
+                                    $.post('/owl/categories/edit/', {
+                                        id: cat_id,
+                                        name: name.val(),
+                                        subcat: subcat.val()
+                                    },
+                                    function(response) {
+                                        // was the edit a success?
+                                        if (response.success) {
+                                            // get the new breadcrumb
+                                            $.get('/owl/categories/breadcrumb/' + cat_id, function(data) {
+                                                // var breadcrumb = response;
+                                                $('td:first', $('#r-' + cat_id)).html(data);
+                                            }, "html");
+
+                                            // update the href to reflect this change
+                                            var new_uri = cat_id + ':' + response.subcat + ':' + response.namez;
+                                            $('.del', $('#r-' + cat_id)).attr('href', new_uri);
+                                            $('.catedit', $('#r-' + cat_id)).attr('href', new_uri);
+                                        }
+                                        else {
+                                            alert('Sorry, an error has occured. Please report this to the site admin.');
+                                        }
+                                    }, "json");
+
+                                    // close the dialog box
+                                    $(this).dialog("close");
+                                },
+                                Cancel: function() {
+                                    $(this).dialog("close");
+                                }
+                            },
+                            close: function() {
                                 var name = $("#dialog_name"),
                                     subcat = $("#dialog_subcat"),
                                     allFields = $([]).add(name).add(subcat);
 
-                                allFields.removeClass("ui-state-error");
-
-                                // build the uri
-                                var uri = '/owl/members';
-
-                                // get the JSON data from the request
-                                $.post('/owl/categories/edit/', {
-                                    id: cat_id,
-                                    name: name.val(),
-                                    subcat: subcat.val()
-                                },
-                                function(response) {
-                                    // was the edit a success?
-                                    if (response.success) {
-                                        // get the new breadcrumb
-                                        $.get('/owl/categories/breadcrumb/' + cat_id, function(data) {
-                                            // var breadcrumb = response;
-                                            $('td:first', $('#r-' + cat_id)).html(data);
-                                        }, "html");
-
-                                        // update the href to reflect this change
-                                        var new_uri = cat_id + ':' + response.subcat + ':' + response.namez;
-                                        $('.del', $('#r-' + cat_id)).attr('href', new_uri);
-                                        $('.catedit', $('#r-' + cat_id)).attr('href', new_uri);
-                                    }
-                                    else {
-                                        alert('Sorry, an error has occured. Please report this to the site admin.');
-                                    }
-                                }, "json");
-
-                                // close the dialog box
-                                $(this).dialog("close");
-                            },
-                            Cancel: function() {
-                                $(this).dialog("close");
+                                allFields.val("").removeClass("ui-state-error");
                             }
-                        },
-                        close: function() {
-                            var name = $("#dialog_name"),
-                                subcat = $("#dialog_subcat"),
-                                allFields = $([]).add(name).add(subcat);
-
-                            allFields.val("").removeClass("ui-state-error");
-                        }
-                    });
+                        });
                 },
                 "html");
             });

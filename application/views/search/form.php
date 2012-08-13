@@ -23,7 +23,7 @@
                             <option value="hospital" <?php print set_select('type', 'hospital'); ?> />Hospital</option>
                             <option value="both" <?php print set_select('type', 'both'); ?> />Both</option>
                         </select>
-                        <p class="formHint">Choose the type of owl you wish to search within.</p>
+                        <p class="formHint">Choose the type of OWL you wish to search within.</p>
                     </div>
 
                     <div id="provinceSelection" class="ctrlHolder" >
@@ -50,7 +50,7 @@
                     </div>
 
                     <div id="owlSelection" class="ctrlHolder" >
-                        <label for="owl">Search within specific OWL's?</label>
+                        <label for="owl">Search within specific OWLs?</label>
                         <div id="owl_list" style="display: inline-block;" >
                             <?php foreach ($this->owl_model->get_all_owls()->result() as $row) : ?>
                                 <input
@@ -69,7 +69,7 @@
                             <span class="save button"   onclick="checkAll('.owl_list')"   > Check All </span>
                             <span class="delete button" onclick="uncheckAll('.owl_list')" > Uncheck All </span>
                         </div>
-                        <p class="formHint">Choose the OWL's you wish to search within.</p>
+                        <p class="formHint">Choose the OWLs you wish to search within.</p>
                     </div>
 
                     <div id="keywordSelection" class="ctrlHolder">
