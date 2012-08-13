@@ -287,7 +287,7 @@ if (!function_exists('cat_breadcrumb_ul'))
             }
         }
 
-        return '<a href=""><ul class="breadcrumb" title="' . $breadcrumb_text . '">' . $breadcrumb;
+        return '<ul class="breadcrumb" title="' . $breadcrumb_text . '">' . $breadcrumb;
     }
 }
 
