@@ -19,7 +19,7 @@
 		}
 
 		# These are non specific nav options
-		print "<a href='". site_url('owls') . "' title=\"Browse all the OWLs on the site\">OWL's</a>";			# owls
+		print "<a href='". site_url('owls') . "' title=\"Browse all the OWLs on the site\">OWLs</a>";			# owls
 		print " | ";																							# spacer
 		print "<a href='". site_url('search') . "' title='Search for a file'>site search</a>";					# search
 		print " | ";																							# spacer

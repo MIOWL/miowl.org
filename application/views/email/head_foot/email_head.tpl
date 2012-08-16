@@ -105,7 +105,7 @@
         <a href="<?php print site_url(); ?>" title="Go back home!">
             <img
                 src="<?php print site_url('images/miowl_red_black_small.png'); ?>"
-                alt="MiOWL Logo"
+                alt="MI OWL Logo"
                 width="500"
                 height="205"
             >

@@ -40,7 +40,7 @@
                         Homepage
                     </h3>
                     <span class="owl_body_details">
-                        <?php print $details->row()->owl_site == NULL ? 'N/A' : '<a href="' . $details->row()->owl_site . '" title="Owl Homepage" target="_BLANK">' . $details->row()->owl_site . '</a>'; ?>
+                        <?php print $details->row()->owl_site == NULL ? 'N/A' : '<a href="' . $details->row()->owl_site . '" title="OWL Homepage" target="_BLANK">' . $details->row()->owl_site . '</a>'; ?>
                     </span>
                 </div>
 

@@ -3,7 +3,7 @@
 /**
  * ------------------------------------------------------------------------------
  *
- * MiOWL                                                     (v1) | codename dave
+ * MI OWL                                                     (v1) | codename dave
  *
  * ------------------------------------------------------------------------------
  *
@@ -77,7 +77,7 @@ class owlmail {
         $email_data .= $this->obj->load->view('email/head_foot/email_foot.tpl', NULL, TRUE);    // Add the email footer
 
         // Email Subject
-        $subject = 'MiOWL | Confirm your Owl';
+        $subject = 'MI OWL | Confirm your OWL';
 
         // Send the email
         return $this->send_email($email, $subject, $email_data);
@@ -108,7 +108,7 @@ class owlmail {
         $email_data .= $this->obj->load->view('email/head_foot/email_foot.tpl', NULL, TRUE);    // Add the email footer
 
         // Email Subject
-        $subject = 'MiOWL | New Administrator Email';
+        $subject = 'MI OWL | New Administrator Email';
 
         // Send the email
         $email = "{$old_email}, {$new_email}";
@@ -134,7 +134,7 @@ class owlmail {
         $email_data .= $this->obj->load->view('email/head_foot/email_foot.tpl', '', TRUE);      // Add the email footer
 
         // Email Subject
-        $subject = 'MiOWL | Welcome Owl';
+        $subject = 'MI OWL | Welcome OWL';
 
         // Send the email
         return $this->send_email($email, $subject, $email_data);
@@ -164,7 +164,7 @@ class owlmail {
         $email_data .= $this->obj->load->view('email/head_foot/email_foot.tpl', NULL, TRUE);    // Add the email footer
 
         // Email Subject
-        $subject = 'MiOWL | Owl Chosen';
+        $subject = 'MI OWL | OWL Chosen';
 
         // Send the email
         return $this->send_email($email, $subject, $email_data);
@@ -190,7 +190,7 @@ class owlmail {
         $email_data .= $this->obj->load->view('email/head_foot/email_foot.tpl', NULL, TRUE);    // Add the email footer
 
         // Email Subject
-        $subject = 'MiOWL | New User Request';
+        $subject = 'MI OWL | New User Request';
 
         // Send the email
         return $this->send_email($email, $subject, $email_data);
@@ -220,7 +220,7 @@ class owlmail {
         $email_data .= $this->obj->load->view('email/head_foot/email_foot.tpl', NULL, TRUE);    // Add the email footer
 
         // Email Subject
-        $subject = 'MiOWL | Owl Accepted';
+        $subject = 'MI OWL | OWL Accepted';
 
         // Send the email
         return $this->send_email($email, $subject, $email_data);
@@ -250,7 +250,7 @@ class owlmail {
         $email_data .= $this->obj->load->view('email/head_foot/email_foot.tpl', NULL, TRUE);    // Add the email footer
 
         // Email Subject
-        $subject = 'MiOWL | Owl Denied';
+        $subject = 'MI OWL | OWL Denied';
 
         // Send the email
         return $this->send_email($email, $subject, $email_data);
@@ -275,13 +275,13 @@ class owlmail {
 
         // Configure and initialize the email function
         $config = array();
-        $config['useragent']    = 'MiOwl';
+        $config['useragent']    = 'MI OWL';
         $config['mailtype']     = 'html';
         $config['validate']     = TRUE;
         $this->obj->email->initialize($config);
 
         // Setup the email
-        $this->obj->email->from('no-reply@miowl.com', 'MiOWL');
+        $this->obj->email->from('no-reply@miowl.com', 'MI OWL');
         $this->obj->email->to($email);
 
         $this->obj->email->subject($subject);

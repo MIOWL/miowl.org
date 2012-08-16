@@ -9,7 +9,7 @@
     <meta name="language" content="en" />
 
     <!-- Title -->
-    <title>MiOWL (Something else here!)</title>
+    <title>MI OWL (Something else here!)</title>
 
     <!-- Icon -->
     <link rel="Shortcut Icon" href="<?php print site_url('favicon.ico'); ?>" type="image/x-icon" />

@@ -3,7 +3,7 @@
     <div<?php print $this->input->post('new_owl') ? ' style="display:none;"' : NULL ?>>
         <h1>
             <center>
-                Choose existing Owl!
+                Choose existing OWL!
             </center>
         </h1>
 
@@ -17,14 +17,14 @@
                 <input type="hidden" name="existing_owl" id="existing_owl" value="existing_owl" />
                 <fieldset class="inlineLabels">
                     <div class="ctrlHolder">
-                        <label for="owl">Owl</label>
+                        <label for="owl">OWL</label>
                         <select name="owl" id="owl" class="textInput medium" autocompelete="OFF" />
                             <option value="default">Select</option>
                             <?php if($owls) : foreach ($owls as $value => $owl) : ?>
                                 <option value="<?php print $value; ?>"><?php print $owl; ?></option>
                             <?php endforeach; endif; ?>
                         </select>
-                        <p class="formHint">Please choose your Owl from the list. Or register a new owl below...</p>
+                        <p class="formHint">Please choose your OWL from the list. Or register a new owl below...</p>
                     </div>
                 </fieldset>
                 <div class="buttonHolder">
@@ -37,7 +37,7 @@
 
     <h1>
         <center>
-            Register New Owl!
+            Register New OWL!
         </center>
     </h1>
 
@@ -66,13 +66,13 @@
                 </div>
 
                 <div class="ctrlHolder">
-                    <label for="type">Owl Type</label>
+                    <label for="type">OWL Type</label>
                     <select name="type" id="type" class="textInput medium" autocompelete="OFF" />
                         <option value="default" <?php echo set_select('type', 'default', TRUE); ?>>Select</option>
                         <option value="clinic" <?php echo set_select('type', 'clinic'); ?>>Clinic</option>
                         <option value="hospital" <?php echo set_select('type', 'hospital'); ?>>Hospital</option>
                     </select>
-                    <p class="formHint">Please choose your Owl type from the list.</p>
+                    <p class="formHint">Please choose your OWL type from the list.</p>
                 </div>
 
                 <div class="ctrlHolder">

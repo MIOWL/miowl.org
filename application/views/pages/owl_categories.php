@@ -2,7 +2,7 @@
 
 	<h1>
 		<center>
-			Owl Categories
+			OWL Categories
 		</center>
 	</h1>
 

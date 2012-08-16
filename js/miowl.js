@@ -1,5 +1,5 @@
 /*!
- * MiOWL JS
+ * MI OWL JS
  * Yummy JQuery
  *
  * author: A. Wynn

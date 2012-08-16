@@ -3,7 +3,7 @@
 /**
  * ------------------------------------------------------------------------------
  *
- * MiOWL                                                     (v1) | codename dave
+ * MI OWL                                                     (v1) | codename dave
  *
  * ------------------------------------------------------------------------------
  *
@@ -86,7 +86,7 @@ class Usermail {
         $email_data .= $this->obj->load->view('email/head_foot/email_foot.tpl', '', TRUE);  // Add the email footer
 
         // Email Subject
-        $subject = 'MiOWL | Confirm your Account';
+        $subject = 'MI OWL | Confirm your Account';
 
         // Send the email
         return $this->send_email($email, $subject, $email_data);
@@ -115,7 +115,7 @@ class Usermail {
         $email_data .= $this->obj->load->view('email/head_foot/email_foot.tpl', '', TRUE);  // Add the email footer
 
         // Email Subject
-        $subject = 'MiOWL | Welcome';
+        $subject = 'MI OWL | Welcome';
 
         // Send the email
         return $this->send_email($email, $subject, $email_data);
@@ -147,7 +147,7 @@ class Usermail {
         $email_data .= $this->obj->load->view('email/head_foot/email_foot.tpl', '', TRUE);      // Add the email footer
 
         // Email Subject
-        $subject = 'MiOWL | Password Reset';
+        $subject = 'MI OWL | Password Reset';
 
         // Send the email
         return $this->send_email($email, $subject, $email_data);
@@ -176,7 +176,7 @@ class Usermail {
         $email_data .= $this->obj->load->view('email/head_foot/email_foot.tpl', '', TRUE);  // Add the email footer
 
         // Email Subject
-        $subject = 'MiOWL | Account Lockout';
+        $subject = 'MI OWL | Account Lockout';
 
         // Send the email
         return $this->send_email($email, $subject, $email_data);
@@ -229,7 +229,7 @@ class Usermail {
         $email_data .= $this->obj->load->view('email/head_foot/email_foot.tpl', '', TRUE);  // Add the email footer
 
         // Email Subject
-        $subject = 'MiOWL | Invite';
+        $subject = 'MI OWL | Invite';
 
         // Send the email
         return $this->send_email($toEmail, $subject, $email_data);
@@ -254,13 +254,13 @@ class Usermail {
 
         // Configure and initialize the email function
         $config = array();
-        $config['useragent']    = 'MiOwl';
+        $config['useragent']    = 'MI OWL';
         $config['mailtype']     = 'html';
         $config['validate']     = TRUE;
         $this->obj->email->initialize($config);
 
         // Setup the email
-        $this->obj->email->from('no-reply@miowl.com', 'MiOWL');
+        $this->obj->email->from('no-reply@miowl.com', 'MI OWL');
         $this->obj->email->to($email);
 
         $this->obj->email->subject($subject);

@@ -3,7 +3,7 @@
 /**
  * ------------------------------------------------------------------------------
  *
- * MiOWL                                                     (v1) | codename dave
+ * MI OWL                                                     (v1) | codename dave
  *
  * ------------------------------------------------------------------------------
  *
@@ -217,7 +217,7 @@ class Owl extends CI_Controller {
         if (!$this->form_validation->run())
         {
             $page_data                  = array();
-            $page_data['page_title']    = "[ERROR] Choose your Owl";
+            $page_data['page_title']    = "[ERROR] Choose your OWL";
             $page_data['province']      = $this->province_list;
 
             // fetch the owl data we need
@@ -1310,7 +1310,7 @@ class Owl extends CI_Controller {
         $ch = curl_init();
         $timeout = 600;
         curl_setopt($ch, CURLOPT_URL,               $url);
-        curl_setopt($ch, CURLOPT_USERAGENT,         'MiOwl ~djeklDevelopments');
+        curl_setopt($ch, CURLOPT_USERAGENT,         'MI Owl ~(FriendlyDev Production)');
         curl_setopt($ch, CURLOPT_TIMEOUT,           $timeout);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT,    $timeout);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER,    TRUE);

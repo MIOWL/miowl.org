@@ -50,11 +50,11 @@
                 </div>
 
                 <div class="ctrlHolder">
-                    <label for="owl">Owl</label>
+                    <label for="owl">OWL</label>
                     <?php if(!$owl_id) : ?>
                         <select name="owl" id="owl" class="textInput medium" autocompelete="OFF" />
                             <option value="default" <?php echo set_select('owl', 'default', TRUE); ?>>Select</option>
-                            <option value="new" <?php echo set_select('owl', 'new'); ?>>New Owl</option>
+                            <option value="new" <?php echo set_select('owl', 'new'); ?>>New OWL</option>
                             <?php if($owls) : foreach ($owls as $value => $owl) : ?>
                                 <option value="<?php print $value; ?>" <?php echo set_select('owl', $value); ?>><?php print $owl; ?></option>
                             <?php endforeach; endif; ?>
@@ -64,7 +64,7 @@
                             <option value="<?php print $owl_id; ?>" <?php echo set_select('owl', $owl_id, TRUE); ?>><?php print $owls[$owl_id]; ?></option>
                         </select>
                     <?php endif; ?>
-                    <p class="formHint">Please choose your Owl from the list. If you choose an existing Owl, the owner of this Owl will need to approve you. If you choose "New Owl" you will be prompted to create this owl after account validation.</p>
+                    <p class="formHint">Please choose your OWL from the list. If you choose an existing OWL, the owner of this OWL will need to approve you. If you choose "New OWL" you will be prompted to create this owl after account validation.</p>
                 </div>
 
                 <div class="ctrlHolder">

@@ -2,7 +2,7 @@
 
 	<h1>
 		<center>
-			Owl Category Creation
+			OWL Category Creation
 		</center>
 	</h1>
 

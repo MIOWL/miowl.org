@@ -3,7 +3,7 @@
 /**
  * ------------------------------------------------------------------------------
  *
- * MiOWL                                                     (v1) | codename dave
+ * MI OWL                                                     (v1) | codename dave
  *
  * ------------------------------------------------------------------------------
  *
@@ -344,7 +344,7 @@ class Owls extends CI_Controller {
         $ch = curl_init();
         $timeout = 600;
         curl_setopt($ch, CURLOPT_URL,               $url);
-        curl_setopt($ch, CURLOPT_USERAGENT,         'MiOwl ~djeklDevelopments');
+        curl_setopt($ch, CURLOPT_USERAGENT,         'MI OWL ~(A Friendly Dev Production)');
         curl_setopt($ch, CURLOPT_TIMEOUT,           $timeout);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT,    $timeout);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER,    TRUE);

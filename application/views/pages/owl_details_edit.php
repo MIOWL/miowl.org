@@ -30,7 +30,7 @@
                     </div>
 
                     <div class="ctrlHolder">
-                        <label for="type">Owl Type</label>
+                        <label for="type">OWL Type</label>
                         <select name="type" id="type" class="textInput medium" autocompelete="OFF" />
                             <?php if($details->row()->owl_type == 'clinic') : ?>
                                 <option value="clinic" <?php echo set_select('type', 'clinic', TRUE); ?>>Clinic</option>
@@ -40,7 +40,7 @@
                                 <option value="hospital" <?php echo set_select('type', 'hospital', TRUE); ?>>Hospital</option>
                             <?php endif; ?>
                         </select>
-                        <p class="formHint">Please choose your Owl type from the list.</p>
+                        <p class="formHint">Please choose your OWL type from the list.</p>
                     </div>
 
                     <div class="ctrlHolder">

@@ -10,7 +10,7 @@ HOME=/home/miowl/
     0       0          *               *                 *             cd ./www && git pull
 
 # ==================================================
-## MiOWL Tasks
+## MI OWL Tasks
 # ==================================================
 
 # Do the files cleanup

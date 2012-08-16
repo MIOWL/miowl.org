@@ -2,7 +2,7 @@
 
     <h1>
         <center>
-            Owl Activate!
+            OWL Activate!
         </center>
     </h1>
 
@@ -23,7 +23,7 @@
             </fieldset>
 
             <div class="buttonHolder">
-                <button class="button" type="submit">Authorize Owl</button>
+                <button class="button" type="submit">Authorize OWL</button>
             </div>
 
         </form>

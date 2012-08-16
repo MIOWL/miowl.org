@@ -2,13 +2,13 @@
 
 /**
  * ------------------------------------------------------------------------------
- * 
- * MiOWL                                                     (v1) | codename dave
- * 
+ *
+ * MI OWL                                                     (v1) | codename dave
+ *
  * ------------------------------------------------------------------------------
  *
  * Copyright (c) 2012, Alan Wynn
- * 
+ *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
  * files (the "Software"), to deal in the Software without
@@ -17,10 +17,10 @@
  * copies of the Software, and to permit persons to whom the
  * Software is furnished to do so, subject to the following
  * conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
  * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
@@ -29,7 +29,7 @@
  * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
- * 
+ *
  * ------------------------------------------------------------------------------
  */
 
@@ -77,7 +77,7 @@ class Cronmail {
         $email_data .= $this->obj->load->view('email/head_foot/email_foot.tpl', '', TRUE);          // Add the email footer
 
         // Email Subject
-        $subject = 'MiOWL | Confirm your Account';
+        $subject = 'MI OWL | Confirm your Account';
 
         // Send the email
         return $this->send_email($email, $subject, $email_data);
@@ -102,13 +102,13 @@ class Cronmail {
 
         // Configure and initialize the email function
         $config = array();
-        $config['useragent']    = 'MiOwl';
+        $config['useragent']    = 'MI OWL';
         $config['mailtype']     = 'html';
         $config['validate']     = TRUE;
         $this->obj->email->initialize($config);
 
         // Setup the email
-        $this->obj->email->from('no-reply@miowl.com', 'MiOWL');
+        $this->obj->email->from('no-reply@miowl.com', 'MI OWL');
         $this->obj->email->to($email);
 
         $this->obj->email->subject($subject);

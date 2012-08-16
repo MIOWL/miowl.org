@@ -2,7 +2,7 @@
 
 	<h1>
 		<center>
-			Owl Categories Organization Page
+			OWL Categories Organization Page
 		</center>
 	</h1>
 

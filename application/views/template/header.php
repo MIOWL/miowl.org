@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 
     <!-- Title -->
-    <title><?php if(isset($page_title)) print $page_title . ' | '; elseif (isset($heading))  print $heading . ' | '; ?>MiOWL</title>
+    <title><?php if(isset($page_title)) print $page_title . ' | '; elseif (isset($heading))  print $heading . ' | '; ?>MI OWL</title>
 
     <!-- Icon -->
     <link rel="Shortcut Icon" href="<?php print site_url('favicon.ico'); ?>" type="image/x-icon" />
@@ -74,7 +74,7 @@
 		<a id="site_logo" href="<?php print site_url(); ?>" title="Go back home!">
 			<img
 				src="<?php print site_url('images/miowl_red_black_small.png'); ?>"
-				alt="MiOWL Logo"
+				alt="MI OWL Logo"
 				width="500"
 				height="205"
 			>

@@ -3,7 +3,7 @@
 /**
  * ------------------------------------------------------------------------------
  *
- * MiOWL                                                     (v1) | codename dave
+ * MI OWL                                                     (v1) | codename dave
  *
  * ------------------------------------------------------------------------------
  *
@@ -286,7 +286,7 @@ class User extends CI_Controller {
         }
         elseif (isset($owl_selection) && $owl_selection)
         {
-            $page_data['page_title']    = 'Choose your Owl';
+            $page_data['page_title']    = 'Choose your OWL';
             $page_data['owl_selection'] = TRUE;
             $page_data['province']      = $this->province_list;
 
