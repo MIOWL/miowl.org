@@ -40,6 +40,9 @@
 	  </style>
 	<![endif]-->
 
+    <!-- Google Webmaster Verification -->
+    <meta name="google-site-verification" content="5tjYI55gAymoAtLuFScCBj_O_amDwPBVwUVnKacNtOM" />
+
 </head>
 <body>
 
