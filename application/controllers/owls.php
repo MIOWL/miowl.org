@@ -368,7 +368,8 @@ class Owls extends CI_Controller {
             return FALSE;
 
         if($owl_id == $this->session->userdata('owl'))
-            redirect(site_url(), 'location');
+            if(is_verified())
+                redirect(site_url(), 'location');
     }
     //------------------------------------------------------------------
 

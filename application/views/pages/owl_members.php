@@ -40,18 +40,34 @@
                         <td>
                             <center>
                             <?php if($owl_row->owner === 'true' || $owl_row->admin === 'true') : ?>
-                                <a href="demote:admin:<?php print $row->id; ?>" style="color:#63b52e !important;" class="userAction icon_font">.</a>
+                                <?php if (is_admin()) : ?>
+                                    <a href="demote:admin:<?php print $row->id; ?>" style="color:#63b52e !important;" class="userAction icon_font">.</a>
+                                <?php else: ?>
+                                    <span style="color:#63b52e !important;" class="icon_font">.</span>
+                                <?php endif; ?>
                             <?php else : ?>
-                                <a href="promote:admin:<?php print $row->id; ?>" style="color:#FF0000 !important;" class="userAction icon_font">'</a>
+                                <?php if (is_admin()) : ?>
+                                    <a href="promote:admin:<?php print $row->id; ?>" style="color:#FF0000 !important;" class="userAction icon_font">'</a>
+                                <?php else: ?>
+                                    <span style="color:#FF0000 !important;" class="icon_font">'</span>
+                                <?php endif; ?>
                             <?php endif; ?>
                             </center>
                         </td>
                         <td>
                             <center>
                             <?php if($owl_row->owner === 'true' || $owl_row->admin === 'true' || $owl_row->editor === 'true') : ?>
-                                <a href="demote:editor:<?php print $row->id; ?>" style="color:#63b52e !important;" class="userAction icon_font">.</a>
+                                <?php if (is_admin()) : ?>
+                                    <a href="demote:editor:<?php print $row->id; ?>" style="color:#63b52e !important;" class="userAction icon_font">.</a>
+                                <?php else: ?>
+                                    <span style="color:#63b52e !important;" class="icon_font">.</span>
+                                <?php endif; ?>
                             <?php else : ?>
-                                <a href="promote:editor:<?php print $row->id; ?>" style="color:#FF0000 !important;" class="userAction icon_font">'</a>
+                                <?php if (is_admin()) : ?>
+                                    <a href="promote:editor:<?php print $row->id; ?>" style="color:#FF0000 !important;" class="userAction icon_font">'</a>
+                                <?php else: ?>
+                                    <span style="color:#FF0000 !important;" class="icon_font">'</span>
+                                <?php endif; ?>
                             <?php endif; ?>
                             </center>
                         </td>
@@ -135,7 +151,7 @@
                                     element.attr('href', href).attr('style', style).text(str);
                                 }
                                 else {
-                                    alert('Sorry, an error has occured. Please report this to the site admin.');
+                                    alert('Sorry, you don’t have the authority to change this status.');
                                 }
                             });
                         },

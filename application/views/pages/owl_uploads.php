@@ -46,7 +46,15 @@
                             <a href="<?php print site_url('browse/info/' . $row->id); ?>" title="More info for this file!" class="icon_font">,</a>
                         </td>
                         <td>
-                            <a href="<?php print $row->id; ?>" title="Delete this file!" target="_BLANK" id="remove_<?php print $row->id; ?>" class="remove"><img src="/images/icons/recycle_bin.png" title="Delete this file!" alt="remove" width="25px" height="25px" /></a>
+                            <?php if(is_editor()) : ?>
+                                <a href="<?php print $row->id; ?>" title="Delete this file!" target="_BLANK" id="remove_<?php print $row->id; ?>" class="remove">
+                            <?php else : ?>
+                                <span style="opacity: 0.25 !important;">
+                            <?php endif; ?>
+                                    <img src="/images/icons/recycle_bin.png" title="Delete this file!" alt="remove" width="25px" height="25px" />
+                                <?php
+                                    print is_editor() ? '</a>' : '</span>';
+                                ?>
 <?php if( ( !is_null( $row->revision_date ) ) && ( time() >= $row->revision_date ) ) : ?>
                 <div class="reviewTip">
                     <div class="arrow_box">

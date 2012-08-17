@@ -106,6 +106,7 @@ class Search_model extends CI_Model {
 
         // find by keyword
         $this->db->like('uploads.file_name', $keyword);
+        $this->db->like('uploads.description', $keyword);
 
         // don't show deleted files
         $this->db->where('uploads.deleted', 'false');

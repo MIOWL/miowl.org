@@ -42,10 +42,20 @@
                             <?php endif; ?>
                         </td>
                         <td>
-                            <a style="color:#63b52e !important;" href="<?php print $row->id; ?>" class="licedit"><img src="/images/icons/edit.gif" title="edit this license" alt="edit" width="16px" height="16px" /></a>
+                            <?php if (is_editor()) : ?>
+                                <a style="color:#63b52e !important;" href="<?php print $row->id; ?>" class="licedit">
+                            <?php else : ?>
+                                <span style="color:#63b52e !important; opacity: 0.25 !important;">
+                            <?php endif; ?>
+                                    <img src="/images/icons/edit.gif" title="edit this license" alt="edit" width="16px" height="16px" />
+                            <?php
+                                print is_editor() ? '</a>' : '</span>';
+                            ?>
                         </td>
                         <td>
                             <?php if ($is_in_use) : ?>
+                                <span style="color:#FF0000 !important; opacity: 0.25 !important;"><img src="/images/icons/recycle_bin.png" title="cannot remove this license" alt="cannot remove" width="25px" height="25px" /></span>
+                            <?php elseif (!is_editor()) : ?>
                                 <span style="color:#FF0000 !important; opacity: 0.25 !important;"><img src="/images/icons/recycle_bin.png" title="cannot remove this license" alt="cannot remove" width="25px" height="25px" /></span>
                             <?php else : ?>
                                 <a style="color:#FF0000 !important;" href="<?php print $row->id; ?>" class="del"><img src="/images/icons/recycle_bin.png" title="remove this license" alt="remove" width="25px" height="25px" /></a>
@@ -104,7 +114,7 @@
                                     });
                                 }
                                 else {
-                                    alert('Sorry, an error has occured. Please report this to the site admin.');
+                                    alert('Sorry, you don’t have the authority to change this status.');
                                 }
                             });
                         },
@@ -170,7 +180,7 @@
                                             $('#r-' + response.id).effect("highlight", {}, 3000);
                                         }
                                         else {
-                                            alert('Sorry, an error has occured. Please report this to the site admin.');
+                                            alert('Sorry, you don’t have the authority to change this status.');
                                         }
                                     }, "json");
 

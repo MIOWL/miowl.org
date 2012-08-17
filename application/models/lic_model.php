@@ -257,30 +257,20 @@ class Lic_model extends CI_Model {
          * url                  = license link
          * owl                  = the owl id
          */
-        $default_categories[] = array(
-            'name'              => 'GPL 3.0',
-            'short_description' => 'GNU General Public License, version 3',
-            'url'               => 'http://www.opensource.org/licenses/gpl-3.0.html',
-            'owl'               => $owl
-        );
-        $default_categories[] = array(
-            'name'              => 'BSD',
-            'short_description' => 'The BSD 3 Clause License',
-            'url'               => 'http://www.opensource.org/licenses/BSD-3-Clause',
-            'owl'               => $owl
-        );
-        $default_categories[] = array(
-            'name'              => 'LGPL 3.0',
-            'short_description' => 'GNU Lesser General Public License, version 3.0',
-            'url'               => 'http://www.opensource.org/licenses/lgpl-3.0.html',
-            'owl'               => $owl
-        );
-        $default_categories[] = array(
-            'name'              => 'MIT',
-            'short_description' => 'MIT License',
-            'url'               => 'http://www.opensource.org/licenses/MIT',
-            'owl'               => $owl
-        );
+        $license_file = file(realpath(APPPATH . 'licenses.csv'));
+        foreach ($license_file as $license)
+        {
+            // get the 3 elements from the string
+            list($name, $short_description, $url) = explode(',', $license);
+
+            // add the elements in an array to the insert array
+            $default_categories[] = array(
+                'name'              => $name,
+                'short_description' => $short_description,
+                'url'               => $url,
+                'owl'               => $owl
+            );
+        }
 
         $this->db->insert_batch('license', $default_categories);
 

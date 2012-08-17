@@ -53,7 +53,28 @@
 53,Breast Cancer Screening,47
 54,Colorectal Cancer Screening,47
 55,Recall Letters,54
-56,EMR,0
-57,Templates,56
-58,Access,0
-59,Administration,0
+56,Access,0
+57,Administration,0
+58,Patient Resources,0
+59,Cardiology,58
+60,Endocrinology,58
+61,Diabetes,61
+62,E.N.T.,58
+63,Dermatology,58
+64,Gastroenterology,58
+65,Geriatrics,58
+66,Gynaecology,58
+67,Haematology,58
+68,Infectious Disease,58
+69,Nephrology,58
+70,Neurology,58
+71,Obstetrics,58
+72,Orthopaedics,58
+73,Ophthalmology,58
+74,Palliative Care,58
+75,Paediatrics,58
+76,Psychiatry,58
+77,Respirology,58
+78,Urology,58
+79,Physician,0
+80,Internal Governance,79

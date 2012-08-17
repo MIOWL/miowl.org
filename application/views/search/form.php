@@ -46,7 +46,7 @@
                             <span class="save button"   onclick="checkAll('.province_list')"   > Check All </span>
                             <span class="delete button" onclick="uncheckAll('.province_list')" > Uncheck All </span>
                         </div>
-                        <p class="formHint">Choose the province search within.</p>
+                        <p class="formHint">Choose the province(s) you wish to search within.</p>
                     </div>
 
                     <div id="owlSelection" class="ctrlHolder" >
