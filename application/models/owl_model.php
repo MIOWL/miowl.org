@@ -555,6 +555,7 @@ class Owl_model extends CI_Model {
         else {
             $update_data = array(
                 'owl'       => $user_owl_id,
+                'owner'     => 'true',
                 'admin'     => 'true',
                 'editor'    => 'true',
                 'verified'  => 'true'
