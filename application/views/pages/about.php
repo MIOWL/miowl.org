@@ -11,6 +11,7 @@
             <ul>
                 <li><a href="#howto">How To Use</a></li>
                 <li><a href="#create_owl">Create New OWLs</a></li>
+                <li><a href="#disclamer">Disclamer &amp; Privacy Policy</a></li>
             </ul>
             <div id="howto">
                 <h2>Browsing libraries</h2>
@@ -22,6 +23,24 @@
             <div id="create_owl">
                 <h2>Under Construction</h2>
                 <p>Sorry, this content is still getting written.<br />Please check back at a later date for updates.</p>
+            </div>
+            <div id="disclamer">
+                <h2>Disclaimer and Privacy Policy</h2>
+                <p>
+                    The operators of this site specifically disclaim all responsibility for any liability, risk, personal or otherwise which is incurred as a consequence, directly or indirectly, of the use and application of any of the material on this site.
+                </p>
+                <p>
+                    MI OWL makes no representations or warranties in relation to the information on this website.  MI OWL does not warrant that the medical information on this website will be constantly available, or available at all.  It also does not warrant that the medical information on this website is complete, true, accurate, up-to-date, or non-misleading.
+                </p>
+                <p>
+                    If you use, or browse through our website we do collect some basic data about your visit.  This information is kept and used in aggregate for analysis, but is not personal to you and cannot be used to identify you. We use this aggregate data to determine traffic patterns, visits, and other statistics we then use to help us make MI OWL more useful.
+                </p>
+                <p>
+                    MI OWL does not share, sell, or lease personal information about you to any third parties for their marketing use.  Any personal and contact information collected is only used in the function of MI OWL and its evolution.
+                </p>
+                <p>
+                    By using this site, you agree to the terms and conditions of our Website Disclaimer and Privacy Policy and you assume full responsibility for use of any information within MI OWL. You also agree that MI OWL is not responsible or liable for any claim, loss or damage resulting from the use of this site by you, or any user. We reserve the right to modify, including add, or remove contents of this Website Disclaimer and Privacy Policy at any time. We reserve the right to remove contents from MI OWL at any time.  Please periodically review our Website Disclaimer and Privacy Policy for any changes.
+                </p>
             </div>
         </div>
 	</div>
