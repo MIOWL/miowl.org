@@ -10,7 +10,7 @@
         <div id="tabs">
             <ul>
                 <li><a href="#howto">How To Use</a></li>
-                <!--li><a href="#create_owl">Create New OWLs</a></li-->
+                <li><a href="#create_owl">Create New OWLs</a></li>
             </ul>
             <div id="howto">
                 <h2>Browsing libraries</h2>
