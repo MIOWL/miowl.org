@@ -9,22 +9,19 @@
 	<div id="body">
         <div id="tabs">
             <ul>
-                <li><a href="#tabs-1">Nunc tincidunt</a></li>
-                <li><a href="#tabs-2">Proin dolor</a></li>
-                <li><a href="#tabs-3">Aenean lacinia</a></li>
+                <li><a href="#howto">How To Use</a></li>
+                <!--li><a href="#create_owl">Create New OWLs</a></li-->
             </ul>
-            <div id="tabs-1">
-                <h2>Content heading 1</h2>
-                <p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.</p>
+            <div id="howto">
+                <h2>Browsing libraries</h2>
+                <p>You can look through individual organizational libraries by going to them from the MI OWL home page.  Return to the home page by moving the cursor over the MI OWL logo, found on the top left of each page, and clicking on it.  Then click on “OWLs” on the top right of the page.  By selecting the desired library from the drop down list and clicking on “choose”, in the lower right of the screen, you will be taken to the particular OWL.   Clicking “list” under the heading of “categories”, on the left hand side of that OWL’s homepage, will bring up the table of contents for that particular OWL.  Clicking on a particular category within that list will bring up all the document files stored under that category.  More information on a particular file can then be discovered by clicking on the tag icon to the right of the file name.  Another way to look through the files in an OWL is to click on “browse” under the “uploads” heading on the left side of an OWL’s homepage.  This will bring up a list of all the files within that OWL.  More information on a particular file can be discovered by clicking on its tag icon to the right of the file name.  Files can be downloaded, or printed by clicking on the appropriate icon to the right of the file name.</p>
+                <br/>
+                <h2>Searching content</h2>
+                <p>Content within the MI OWL site can be searched by returning to the MI OWL home page by clicking on the MI OWL logo found at the top left of each page.  There “site search” can be clicked on at the top left of the home page.  This will bring up the general “Search form” where you will be prompted to enter 3 different search limits and then the topic to be searched.  Clicking on “search” on the lower right of the page will then run the inquiry.</p>
             </div>
-            <div id="tabs-2">
-                <h2>Content heading 2</h2>
-                <p>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.</p>
-            </div>
-            <div id="tabs-3">
-                <h2>Content heading 3</h2>
-                <p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>
-                <p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
+            <div id="create_owl">
+                <h2>Under Construction</h2>
+                <p>Sorry, this content is still getting written.<br />Please check back at a later date for updates.</p>
             </div>
         </div>
 	</div>
