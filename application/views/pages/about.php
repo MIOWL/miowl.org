@@ -11,7 +11,7 @@
             <ul>
                 <li><a href="#howto">How To Use</a></li>
                 <li><a href="#create_owl">Create New OWLs</a></li>
-                <li><a href="#disclamer">Disclamer &amp; Privacy Policy</a></li>
+                <li><a href="#disclamer">Disclamer &amp; Privacy</a></li>
             </ul>
             <div id="howto">
                 <h2>Browsing libraries</h2>
