@@ -11,10 +11,12 @@
         <?php if ($this->session->userdata('authed')) : ?>
             <p>
                 Hey there <?=$this->session->userdata('name')?>,
-                <br />
-                <br />
+            </p>
+            <p>
                 We can see that your currently logged in, thats good news!<br />
-                It looks like somebody has invited you into the <?=$owl_name?> OWL.<br />
+                It looks like somebody has invited you into the <?=$owl_name?> OWL.
+            </p>
+            <p>
                 If this is correct, please click the button below to request membership. Once approved you will be a fully fledged member of this OWL.
             </p>
 
@@ -25,10 +27,12 @@
         <?php else : ?>
             <p>
                 Why hello there,
-                <br />
-                <br />
+            </p>
+            <p>
                 We can see that your not currently logged in or registered.<br />
-                It looks like somebody has invited you into the <?=$owl_name?> OWL.<br />
+                It looks like somebody has invited you into the <?=$owl_name?> OWL.
+            </p>
+            <p>
                 To become a member of this OWL please login and then request membership, or register for access to the owl.
             </p>
 
