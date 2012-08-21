@@ -516,6 +516,9 @@ class User extends CI_Controller {
         if (!$owl_id)
             redirect('/user/register/', 'location');
 
+        if (is_member($owl_id))
+            redirect('/', 'location');
+
         $page_data = array(
             'owl_id'        => $owl_id,
             'owl_name'      => $this->owl_model->get_owl_by_id($owl_id)->row()->owl_name,
