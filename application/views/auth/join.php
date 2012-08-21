@@ -18,7 +18,7 @@
                 If this is correct, please click the button below to request membership. Once approved you will be a fully fledged member of this OWL.
             </p>
 
-            <div class="buttonHolder">
+            <div class="buttonHolder right">
                 <a href="<?php print site_url(); ?>" class="button">Cancel</a>
                 <a class="button request_access" href="<?=$owl_id?>">Request Membership</a>
             </div>
@@ -32,7 +32,7 @@
                 To become a member of this OWL please login and then request membership, or register for access to the owl.
             </p>
 
-            <div class="buttonHolder">
+            <div class="buttonHolder right">
                 <a href="<?php print site_url('/user/login/user-join-' . $owl_id); ?>" class="button">Login</a>
                 <a href="<?php print site_url('user/register/' . $owl_id); ?>" class="button">Register</a>
             </div>
