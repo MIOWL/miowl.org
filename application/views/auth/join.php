@@ -19,7 +19,7 @@
             </p>
 
             <div class="buttonHolder">
-                <a href="<?site_url()?>" class="button">Cancel</a>
+                <a href="<?php print site_url(); ?>" class="button">Cancel</a>
                 <a class="button request_access" href="<?=$owl_id?>">Request Membership</a>
             </div>
         <?php else : ?>
@@ -33,8 +33,8 @@
             </p>
 
             <div class="buttonHolder">
-                <a href="<?site_url('/user/login/user-join-' . $owl_id)?>" class="button">Login</a>
-                <a href="<?site_url('user/register/' . $owl_id)?>" class="button">Register</a>
+                <a href="<?php print site_url('/user/login/user-join-' . $owl_id); ?>" class="button">Login</a>
+                <a href="<?php print site_url('user/register/' . $owl_id); ?>" class="button">Register</a>
             </div>
         <?php endif; ?>
     </div>
