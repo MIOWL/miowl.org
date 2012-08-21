@@ -161,7 +161,7 @@ $(document).ready(function() {
     // ------------------------------------------------------------------------
 
     /*!
-     * change active owl
+     * request owl access
      */
     $('a.request_access').click(function(e) {
         e.preventDefault();

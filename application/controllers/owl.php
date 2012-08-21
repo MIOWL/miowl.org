@@ -656,7 +656,7 @@ class Owl extends CI_Controller {
 
         // form validation rules
         $this->form_validation->set_rules('name', 'Invitee Name', 'required|trim');
-        $this->form_validation->set_rules('email', 'Invitee Email', 'required|trim|valid_email|callback__valid_email');
+        $this->form_validation->set_rules('email', 'Invitee Email', 'required|trim|valid_email'/*|callback__valid_email'*/);
         $this->form_validation->set_rules('msg', 'Message', 'trim');
 
         // did the user submit

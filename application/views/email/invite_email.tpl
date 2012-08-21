@@ -6,7 +6,7 @@
     	<code>{msg}</code>
 	</p>
     <p>
-        If you would like to request membership to this OWL please follow this link <a href="<?php print site_url('user/register'); ?>/{owl_id}" title="MI OWL Registration" target="_BLANK"><?php print site_url('user/register'); ?>/{owl_id}</a>
+        If you would like to request membership to this OWL please follow this link <a href="<?php print site_url('user/join'); ?>/{owl_id}" title="MI OWL Registration" target="_BLANK"><?php print site_url('user/join'); ?>/{owl_id}</a>
     </p>
     <br />
     <br />

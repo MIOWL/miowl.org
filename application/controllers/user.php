@@ -509,6 +509,25 @@ class User extends CI_Controller {
 
 
     /**
+     * public join()
+     */
+    public function join($owl_id = FALSE)
+    {
+        if (!$owl_id)
+            redirect('/user/register/', 'location');
+
+        $page_data = array(
+            'owl_id'        => $owl_id,
+            'owl_name'      => $this->owl_model->get_owl_by_id($owl_id)->row()->owl_name,
+            'page_title'    => 'OWL Join Request'
+        );
+
+        $this->load->view('auth/join', $page_data);
+    }
+    //------------------------------------------------------------------
+
+
+    /**
      * ajax_search()
      */
     public function ajax_change_owl()
