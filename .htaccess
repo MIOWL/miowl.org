@@ -2,7 +2,7 @@
 DirectoryIndex codeigniter.php
 
 #Set the timezone to GMT/UTC
-SetEnv TZ Europe/London
+#SetEnv TZ Europe/London
 
 <IfModule mod_rewrite.c>
     RewriteEngine On
