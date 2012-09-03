@@ -5,7 +5,7 @@
 
     Alan Wynn
     Site: http://friendlydev.com/
-    Site: http://djekldevelopments.co.uk/
+    Site: http://alanwynn.me/
     Twitter: djekl
     Location: UK
 
