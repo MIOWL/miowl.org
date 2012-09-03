@@ -92,6 +92,7 @@ class Search_model extends CI_Model {
                 uploads.id AS up_id,
                 uploads.file_type,
                 uploads.file_name,
+                uploads.description,
                 uploads.file_ext,
                 license.id AS lic_id,
                 license.name AS lic_name,
@@ -106,7 +107,7 @@ class Search_model extends CI_Model {
 
         // find by keyword
         $this->db->like('uploads.file_name', $keyword);
-        $this->db->like('uploads.description', $keyword);
+        $this->db->or_like('uploads.description', $keyword);
 
         // don't show deleted files
         $this->db->where('uploads.deleted', 'false');
@@ -115,13 +116,16 @@ class Search_model extends CI_Model {
             if(isset($having['owl_type']))
                 $this->db->having('owl_type', $having['owl_type']);
 
-            $i=0;
-            foreach ($having['owl_province'] as $value) {
-                if($i != '0')
-                    $this->db->or_having('owl_province', $value);
-                else
-                    $this->db->having('owl_province', $value);
-                $i++;
+            if(!empty($having['owl_province']))
+            {
+                $i=0;
+                foreach ($having['owl_province'] as $value) {
+                    if($i != '0')
+                        $this->db->or_having('owl_province', $value);
+                    else
+                        $this->db->having('owl_province', $value);
+                    $i++;
+                }
             }
 
             $i=0;

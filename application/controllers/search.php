@@ -213,6 +213,61 @@ class Search extends CI_Controller {
 
 
 //=================================================================================
+// :ajax functions
+//=================================================================================
+
+    /**
+     * ajax_search()
+     */
+    public function ajax_search()
+    {
+        print $this->input->server('HTTP_REFERER') . "\n\n";
+        // ajax security check
+        // checks to make sure it a) was an ajax request and b) that it came from our server
+        // if (!$this->input->is_ajax_request() || strpos($this->input->server('HTTP_REFERER'), 'miowl') === FALSE)
+        if (strpos($this->input->server('HTTP_REFERER'), 'miowl') === FALSE)
+            die('Invalid request.');
+
+        // get our search term
+        if (!$this->input->post('query'))
+            die(json_encode(array('success'=>FALSE, 'data'=>'no query')));
+        else
+        {
+            $search_array                       = array();
+            $search_array['keyword']            = $this->input->post('query');
+        }
+
+        // add the owl id to the search data
+        $search_array['having']['owl_id'][]     = $this->input->post('owl');
+
+        // add the owl province to the search data
+        // $search_array['having']['owl_province'] = array($this->owl_model->get_owl_by_id($search_array['having']['owl_id'])->row()->owl_province);
+
+        // remove the search data if it exists (to avoid any issues)
+        $this->session->unset_userdata('search');
+
+        // build the post data into the session
+        $this->session->set_userdata('search', $search_array);
+
+        // gather our search data
+        $search_data = $this->gen_results();
+
+        // set our JSON header
+        @header('Content-type: application/json');
+
+        // build the JSON return data and output
+        if($search_data)
+        {
+            print json_encode(array('success'=>TRUE, 'data'=>$search_data->row()));
+            print "\n\n" . print_r($search_data->row(), TRUE);
+        }
+        else
+            print json_encode(array('success'=>FALSE, 'data'=>'No results found!'));
+    }
+    // -------------------------------------------------------------------------------
+
+
+//=================================================================================
 // :private functions
 //=================================================================================
 
@@ -221,11 +276,16 @@ class Search extends CI_Controller {
      *
      * Private function to do the search via the vars given in the post.
      */
-    private function gen_results($offset = 0, $limit = FALSE)
+    private function gen_results($offset = 0, $limit = FALSE, $ajax = FALSE)
     {
         $search = $this->input->post(NULL, TRUE);
 
-        if($search)
+        // ajax security check
+        // checks to make sure it a) was an ajax request and b) that it came from our server
+        if ($this->input->is_ajax_request() || strpos($this->input->server('HTTP_REFERER'), 'miowl') != FALSE)
+            $ajax = TRUE;
+
+        if($search && !$ajax)
             $this->build_search();
 
         $search = $this->session->userdata('search');

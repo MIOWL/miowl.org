@@ -531,7 +531,7 @@ class User extends CI_Controller {
 
 
     /**
-     * ajax_search()
+     * ajax_change_owl()
      */
     public function ajax_change_owl()
     {
