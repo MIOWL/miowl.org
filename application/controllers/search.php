@@ -221,7 +221,6 @@ class Search extends CI_Controller {
      */
     public function ajax_search()
     {
-        print $this->input->server('HTTP_REFERER') . "\n\n";
         // ajax security check
         // checks to make sure it a) was an ajax request and b) that it came from our server
         // if (!$this->input->is_ajax_request() || strpos($this->input->server('HTTP_REFERER'), 'miowl') === FALSE)
@@ -229,12 +228,12 @@ class Search extends CI_Controller {
             die('Invalid request.');
 
         // get our search term
-        if (!$this->input->post('query'))
+        if (!$this->input->post('keyword'))
             die(json_encode(array('success'=>FALSE, 'data'=>'no query')));
         else
         {
             $search_array                       = array();
-            $search_array['keyword']            = $this->input->post('query');
+            $search_array['keyword']            = $this->input->post('keyword');
         }
 
         // add the owl id to the search data
@@ -252,17 +251,8 @@ class Search extends CI_Controller {
         // gather our search data
         $search_data = $this->gen_results();
 
-        // set our JSON header
-        @header('Content-type: application/json');
-
-        // build the JSON return data and output
-        if($search_data)
-        {
-            print json_encode(array('success'=>TRUE, 'data'=>$search_data->row()));
-            print "\n\n" . print_r($search_data->row(), TRUE);
-        }
-        else
-            print json_encode(array('success'=>FALSE, 'data'=>'No results found!'));
+        // build the view with the formatted data
+        $this->load->view('search/ajax_search_row', array('results' => $search_data));
     }
     // -------------------------------------------------------------------------------
 
