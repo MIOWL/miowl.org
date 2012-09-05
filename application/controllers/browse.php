@@ -135,15 +135,17 @@ class Browse extends CI_Controller {
      */
     public function cat($cat = FALSE, $offset = 0, $limit = 10)
     {
-        $page_data = array();
-        $page_data['page_title'] = 'File Browser | by category (' . $this->cat_model->get_category($cat)->row()->name . ')';
+        $page_data                  = array();
+        $page_data['page_title']    = 'File Browser | by category (' . $this->cat_model->get_category($cat)->row()->name . ')';
         $page_data['browse_by_cat'] = TRUE;
-        $page_data['data'] = $this->upload_model->get_upload_by_cat($cat, $limit, $offset);
+        $page_data['data']          = $this->upload_model->get_upload_by_cat(get_cat_children_arr($cat), $limit, $offset);
+
+        print '<pre>' . $this->db->last_query() . '</pre>';
 
         // setup pagination lib
         $config['base_url']         = site_url('browse/cat/' . $cat);
         $config['uri_segment']      = 4;
-        $config['total_rows']       = $this->upload_model->total_cat_uploads($cat);
+        $config['total_rows']       = $this->upload_model->total_cat_uploads(get_cat_children_arr($cat));
         $config['per_page']         = $limit;
         $config['anchor_class']     = 'class="button" ';
         $config['cur_tag_open']     = '&nbsp;<div class="button danger current">';

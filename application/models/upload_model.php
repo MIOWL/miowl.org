@@ -99,7 +99,19 @@ class Upload_model extends CI_Model {
             return FALSE;
 
         $this->db->select('*');
-        $this->db->where('upload_category', $cat);
+
+        if(is_array($cat))
+        {
+            foreach ($cat as $category)
+            {
+                $this->db->or_where('upload_category', $category);
+            }
+        }
+        else
+        {
+            $this->db->where('upload_category', $cat);
+        }
+
         $this->db->where('deleted', 'false');
         $query = $this->db->get('uploads', $limit, $offset);
 
@@ -383,7 +395,19 @@ class Upload_model extends CI_Model {
             return FALSE;
 
         $this->db->select('*');
-        $this->db->where('upload_category', $cat);
+
+        if(is_array($cat))
+        {
+            foreach ($cat as $category)
+            {
+                $this->db->or_where('upload_category', $category);
+            }
+        }
+        else
+        {
+            $this->db->where('upload_category', $cat);
+        }
+
         $this->db->where('deleted', 'false');
         $query = $this->db->get('uploads');
 

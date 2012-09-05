@@ -158,14 +158,17 @@ class Cat_model extends CI_Model {
      * public get_roots()
      * get root categories
      */
-    public function get_roots($owl = FALSE, $pid = '0')
+    public function get_roots($owl = FALSE, $pid = '0', $no_owl = FALSE)
     {
         if ($owl === FALSE)
             $owl = $this->session->userdata('owl');
 
         $this->db->order_by("id", "ASC");
         $this->db->where('parent_id', $pid);
-        $this->db->having('owl', $owl);
+
+        if(!$no_owl)
+            $this->db->having('owl', $owl);
+
         $query = $this->db->get('categories');
 
         if ($query->num_rows() > 0)
@@ -180,9 +183,9 @@ class Cat_model extends CI_Model {
      * public get_children()
      * get our parent cat's children
      */
-    public function get_children($owl = FALSE, $pid = '0')
+    public function get_children($owl = FALSE, $pid = '0', $no_owl = FALSE)
     {
-        return $this->get_roots($owl, $pid);
+        return $this->get_roots($owl, $pid, $no_owl);
     }
     //------------------------------------------------------------------
 

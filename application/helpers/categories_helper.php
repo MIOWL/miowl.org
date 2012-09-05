@@ -33,6 +33,41 @@
  * ------------------------------------------------------------------------------
  */
 
+if (!function_exists('get_cat_children_arr'))
+{
+    function get_cat_children_arr($cat = FALSE)
+    {
+        if(!$cat)
+            return FALSE;
+
+        $CI =& get_instance();
+        $cat_array = array();
+
+        // add the initial category id
+        $cat_array[] = $cat;
+
+        // child this categories children
+        if (($kids = $CI->cat_model->get_children(FALSE, $cat, TRUE)))
+        {
+            foreach ($kids->result() as $child)
+            {
+                $cat_array[] = $child->id;
+
+                // get our kids children
+                if (($kids_kids = $CI->cat_model->get_children(FALSE, $child->id, TRUE)))
+                {
+                    foreach ($kids_kids->result() as $childs_childs)
+                    {
+                        $cat_array[] = $childs_childs->id;
+                    }
+                }
+            }
+        }
+
+        return $cat_array;
+    }
+}
+
 if (!function_exists('gen_categories'))
 {
     function gen_categories($owl = FALSE)
