@@ -1,5 +1,5 @@
 <div id="ajax_search">
-    <span class="icon_font" id="keyword_search">L</span>
+    <!--span class="icon_font" id="keyword_search">L</span-->
     <input type="text" name="keyword" id="keyword" placeholder="Live Search..." style="width: 90%; margin: 12px;">
     <span class="icon_font" id="keyword_clear">'</span>
 </div>
@@ -34,18 +34,18 @@
                     dataType: "html",
                     data: {
                         keyword: $('#keyword').val(),
-                        owl: <?php print 1 /*($this->uri->segment(1) === 'owls') ? $this->uri->segment(3) : $this->session->userdata('owl')*/; ?>
+                        owl: '<?php print isset($owl) ? $owl : (($this->uri->segment(1) === 'owls') ? $this->uri->segment(3) : $this->session->userdata('owl')); ?>'
                     },
 
                     success: function(data) {
                         // hide our current files
-                        $('table').addClass('original').fadeOut();
+                        $('table').not('.ajax_search_results').addClass('original').fadeOut();
 
                         // hide the pagination
                         $('div.pagination').hide();
 
                         // render container for our ajax results
-                        $('table.ajax_search_results').empty().show();
+                        $('.ajax_search_results').empty().show();
 
                         // build the new table to populate
                         // $('#owl_body').append(' <table class="ajax_search_results" style="display: none;"> \

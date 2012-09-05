@@ -107,10 +107,11 @@ class Browse extends CI_Controller {
      */
     public function owl($owl = FALSE, $offset = 0, $limit = 10)
     {
-        $page_data = array();
-        $page_data['page_title'] = 'File Browser | by OWL (' . $this->owl_model->get_owl_by_id($owl)->row()->owl_name . ')';
+        $page_data                  = array();
+        $page_data['page_title']    = 'File Browser | by OWL (' . $this->owl_model->get_owl_by_id($owl)->row()->owl_name . ')';
         $page_data['browse_by_owl'] = TRUE;
-        $page_data['data'] = $this->upload_model->get_upload_by_owl($owl, $limit, $offset);
+        $page_data['data']          = $this->upload_model->get_upload_by_owl($owl, $limit, $offset);
+        $page_data['owl']           = $owl;
 
         // setup pagination lib
         $config['base_url']         = site_url('browse/owl/' . $owl);
@@ -139,6 +140,7 @@ class Browse extends CI_Controller {
         $page_data['page_title']    = 'File Browser | by category (' . $this->cat_model->get_category($cat)->row()->name . ')';
         $page_data['browse_by_cat'] = TRUE;
         $page_data['data']          = $this->upload_model->get_upload_by_cat(get_cat_children_arr($cat), $limit, $offset);
+        $page_data['owl']           = $this->cat_model->get_category($cat)->row()->owl;
 
         // setup pagination lib
         $config['base_url']         = site_url('browse/cat/' . $cat);

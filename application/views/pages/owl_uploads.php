@@ -11,6 +11,8 @@
             <?php $this->load->view('pages/owl_nav'); ?>
         </div>
         <div id="owl_body" class="column right threequarter">
+            <?php $this->load->view('search/ajax_search_bar'); ?>
+
             <table>
                 <thead>
                     <tr>
