@@ -140,8 +140,6 @@ class Browse extends CI_Controller {
         $page_data['browse_by_cat'] = TRUE;
         $page_data['data']          = $this->upload_model->get_upload_by_cat(get_cat_children_arr($cat), $limit, $offset);
 
-        print '<pre>' . $this->db->last_query() . '</pre>';
-
         // setup pagination lib
         $config['base_url']         = site_url('browse/cat/' . $cat);
         $config['uri_segment']      = 4;
