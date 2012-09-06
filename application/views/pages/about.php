@@ -2,7 +2,7 @@
 
 	<h1>
 		<center>
-			About Mi OWL!
+			About MI OWL!
 		</center>
 	</h1>
 
@@ -11,8 +11,8 @@
             <ul>
                 <li><a href="#who_we_are">Who We Are</a></li>
                 <li><a href="#howto">How To Use</a></li>
-                <li><a href="#create_owl">Create New OWLs</a></li>
-                <li><a href="#disclamer">Disclamer &amp; Privacy</a></li>
+                <li><a href="#create_owl">Create New OWL</a></li>
+                <li><a href="#disclaimer">Disclaimer &amp; Privacy</a></li>
             </ul>
             <div id="who_we_are">
                 <h2>Genesis</h2>
@@ -24,19 +24,27 @@
                 <p>
                     MI OWL is rooted in several principles which include being: a free service, advertisement free, open source and widely accessible.  MI OWL is a noncommercial site.  Its creators do not wish to make any financial profit from its use, nor have others do so.  Being open source allows for the program to be improved upon by other interested parties.  It can also be adapted, with minor modifications, to provide a similar service in other countries.  Beyond the health care application, the basic programming of MI OWL could be used to make a library of libraries for any myriad of topics.   The primary intent of MI OWL is to support health care providers in their care provision within our Canadian health care system.  As our system is publically funded, we believe that the body of knowledge that it creates should be freely accessible to all.  Improved sharing among health care providers can enhance the system’s function and evolution.  As well, transparency with the public makes us more directly accountable.
                 </p>
+                <br />
+                <h2>Goals</h2>
+                <p>
+                    MI OWL has been created to provide Canadian primary care clinics and small community hospitals with a tool to create their own web-based document libraries.  These libraries allow the organizing, searching and sharing of the information that health care facilities rely on to provide patient care.   Such information can be policies, program descriptions, forms, medical directives and patient resources for example.  Individual libraries can be organized as desired depending on need and preference.
+                </p>
+                <p>
+                    A fundamental goal of MI OWL is to create access to information.  This is achieved by allowing the libraries to be perused and searched by all those interested.   This facilitates us to share and build on what health organizations have already created.  It saves time and effort as well as creating a greater collaborative culture in health care.
+                </p>
             </div>
             <div id="howto">
                 <h2>Browsing libraries</h2>
-                <p>You can look through individual organizational libraries by going to them from the MI OWL home page.  Return to the home page by moving the cursor over the MI OWL logo, found on the top left of each page, and clicking on it.  Then click on “OWLs” on the top right of the page.  By selecting the desired library from the drop down list and clicking on “choose”, in the lower right of the screen, you will be taken to the particular OWL.   Clicking “list” under the heading of “categories”, on the left hand side of that OWL’s homepage, will bring up the table of contents for that particular OWL.  Clicking on a particular category within that list will bring up all the document files stored under that category.  More information on a particular file can then be discovered by clicking on the tag icon to the right of the file name.  Another way to look through the files in an OWL is to click on “browse” under the “uploads” heading on the left side of an OWL’s homepage.  This will bring up a list of all the files within that OWL.  More information on a particular file can be discovered by clicking on its tag icon to the right of the file name.  Files can be downloaded, or printed by clicking on the appropriate icon to the right of the file name.</p>
+                <p>You can look through individual libraries by clicking on “OWLs” on the top right of MI OWL pages.  This will bring you to the OWL Choice page.  From there you can select the desired library from the drop down list by clicking on “choose”, in the lower right of that screen.  You will be taken to the particular library’s OWL Details page.   Clicking “list” under the heading of “categories”, on the left hand side of that page, will bring up the table of contents for that particular OWL.  Clicking on a particular category within that list will bring up all the document files stored under that category.  More information on a particular file can then be discovered by clicking on the tag icon to the right of the file name.  Another way to look through the files in a particular OWL is to click on “browse” under the “uploads” heading on the left side of an OWL’s Details page.  This will bring up a list of all the files within that OWL.  More information on a particular file can be discovered by clicking on its tag icon to the right of the file name.  Files can be downloaded, or printed by clicking on the appropriate icon to the right of the file name.</p>
                 <br/>
                 <h2>Searching content</h2>
-                <p>Content within the MI OWL site can be searched by returning to the MI OWL home page by clicking on the MI OWL logo found at the top left of each page.  There “site search” can be clicked on at the top left of the home page.  This will bring up the general “Search form” where you will be prompted to enter 3 different search limits and then the topic to be searched.  Clicking on “search” on the lower right of the page will then run the inquiry.</p>
+                <p>Content within the MI OWL site and all its libraries can be searched by clicking on “site search” at the top left of the MI OWL’s pages.  This will bring up the general “Search form” page where you will be prompted to enter 3 different search limits and then the topic to be searched.  Clicking on “search” on the lower right of the Search Form page will then run the inquiry.</p>
             </div>
             <div id="create_owl">
                 <h2>Under Construction</h2>
                 <p>Sorry, this content is still getting written.<br />Please check back at a later date for updates.</p>
             </div>
-            <div id="disclamer">
+            <div id="disclaimer">
                 <h2>Disclaimer and Privacy Policy</h2>
                 <p>
                     The operators of this site specifically disclaim all responsibility for any liability, risk, personal or otherwise which is incurred as a consequence, directly or indirectly, of the use and application of any of the material on this site.

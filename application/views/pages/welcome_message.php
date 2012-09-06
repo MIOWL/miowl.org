@@ -25,7 +25,7 @@
 				<li>Learn more about MI OWL by clicking on “<a href="/about">about</a>”.</li>
 				<li>Want to look through existing libraries?  Click on “<a href="/owls">OWLs</a>” above.</li>
 				<li>Searching for something specific?  Click on “<a href="/search">site search</a>” above.</li>
-				<li>Interested in learning how to create a new library?  Click on “<a href="/about">about</a>” and then click on “<a href="/about#create_owl">creating an OWL</a>”.</li>
+				<li>Interested in learning how to create a new library?  Click on “<a href="/about">about</a>” and then click on “<a href="/about#create_owl">Create New OWL</a>”.</li>
 				<li>Questions, or need support?  You can email us at <?php print safe_mailto('support@miowl.org'); ?>.</li>
 			</ul>
 		</p>
