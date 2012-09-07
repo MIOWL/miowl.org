@@ -76,6 +76,15 @@
         .ui-tabs-vertical .ui-tabs-nav li a { display:block; width: 84% !important;}
         .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-selected { padding-bottom: 0; padding-right: .1em; border-right-width: 1px; border-right-width: 1px; }
         .ui-tabs-vertical .ui-tabs-panel { padding: 1em; float: left; width: 45.5em; }
+
+        /* paragraph padding */
+        #tabs p { padding-left: 30px; }
+
+        /* h2 bottom border */
+        #tabs h2 {
+            border-bottom: 1px solid #000;
+            padding-bottom: 5px;
+        }
     </style>
 
     <script type="text/javascript">
