@@ -24,7 +24,7 @@
 		<li>
 			OWL province(s)
 			<ul>
-				<?php foreach ($search['having']['owl_province'] as $province) : ?>
+				<?php if($search['having'] && $search['having']['owl_province'] != FALSE) foreach ($search['having']['owl_province'] as $province) : ?>
 					<li><?php print $province; ?></li>
 				<?php endforeach; ?>
 				<li style="list-style-type: none">&nbsp;</li>
@@ -34,7 +34,7 @@
 		<li>
 			OWL(s)
 			<ul>
-				<?php foreach ($search['having']['owl_id'] as $owl_id) : ?>
+				<?php if($search['having'] && $search['having']['owl_id'] != FALSE) foreach ($search['having']['owl_id'] as $owl_id) : ?>
 					<li><?php print $this->owl_model->get_owl_name($owl_id); ?></li>
 				<?php endforeach; ?>
 				<li style="list-style-type: none">&nbsp;</li>

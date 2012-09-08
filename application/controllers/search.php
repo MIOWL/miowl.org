@@ -107,7 +107,7 @@ class Search extends CI_Controller {
         $this->form_validation->set_rules('keyword', 'Search Term', 'required|trim|callback__valid_search');
         $this->form_validation->set_rules('type', 'OWL Type', 'callback__valid_choice');
 
-        // print '<pre>' . print_r($this->db->last_query(), TRUE) . '</pre>';
+        // print '<pre>' . print_r($data = $this->input->post(NULL, TRUE), TRUE) . '</pre>';
 
         // did the user submit
         if ($this->form_validation->run())
@@ -223,8 +223,7 @@ class Search extends CI_Controller {
     {
         // ajax security check
         // checks to make sure it a) was an ajax request and b) that it came from our server
-        // if (!$this->input->is_ajax_request() || strpos($this->input->server('HTTP_REFERER'), 'miowl') === FALSE)
-        if (strpos($this->input->server('HTTP_REFERER'), 'miowl') === FALSE)
+        if (!$this->input->is_ajax_request() && strpos($this->input->server('HTTP_REFERER'), 'miowl') === FALSE)
             die('Invalid request.');
 
         // get our search term
@@ -271,7 +270,7 @@ class Search extends CI_Controller {
 
         // ajax security check
         // checks to make sure it a) was an ajax request and b) that it came from our server
-        if ($this->input->is_ajax_request() || strpos($this->input->server('HTTP_REFERER'), 'miowl') != FALSE)
+        if ($this->input->is_ajax_request() && strpos($this->input->server('HTTP_REFERER'), 'miowl') != FALSE)
             $ajax = TRUE;
 
         if($search && !$ajax)
@@ -280,7 +279,7 @@ class Search extends CI_Controller {
         $search = $this->session->userdata('search');
 
         $query = $this->search_model->search_all($search['keyword'], $offset, $limit, $search['having']);
-        // print '<pre>' . print_r($this->db->last_query(), TRUE) . '</pre>';
+
         return $query;
     }
     //------------------------------------------------------------------
