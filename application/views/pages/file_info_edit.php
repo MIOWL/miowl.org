@@ -49,7 +49,8 @@
 
                 <div class="ctrlHolder">
                     <label for="description">description</label>
-                    <textarea name="description" id="description" size="35" class="textInput large" rows="5" cols="50"><?php print trim($upload_info->row()->description); ?></textarea>
+                    <textarea name="description" id="description" size="35" class="textInput large" rows="5" cols="50" maxsize="255"><?php print trim($upload_info->row()->description); ?></textarea>
+                    <p class="formHint">Enter a description for the file. Maximum character count is 255.</p>
                 </div>
 
                 <div class="ctrlHolder">
