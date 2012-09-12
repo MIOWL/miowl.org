@@ -35,6 +35,9 @@
                     data: {
                         keyword: $('#keyword').val(),
                         owl: '<?php print isset($owl) ? $owl : (($this->uri->segment(1) === 'owls') ? $this->uri->segment(3) : $this->session->userdata('owl')); ?>'
+                        <?php if ($this->uri->segment(1) === 'browse' && $this->uri->segment(2) === 'cat') : ?>
+                            , cat: '<?php print $this->uri->segment(3); ?>'
+                        <?php endif; ?>
                     },
 
                     success: function(data) {

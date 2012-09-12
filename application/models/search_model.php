@@ -128,6 +128,18 @@ class Search_model extends CI_Model {
                 }
             }
 
+            if(!empty($having['cat']))
+            {
+                $i=0;
+                foreach ($having['cat'] as $value) {
+                    if($i != '0')
+                        $this->db->or_having('cat_id', $value);
+                    else
+                        $this->db->having('cat_id', $value);
+                    $i++;
+                }
+            }
+
             $i=0;
             foreach ($having['owl_id'] as $value) {
                 if($i != '0')

@@ -237,8 +237,28 @@ class Search extends CI_Controller {
 
         // add the owl id to the search data
         $search_array['having'] = array();
-        if($this->input->post('owl') && ($this->input->post('owl') != NULL || $this->input->post('owl') != FALSE || $this->input->post('owl') != '' || $this->input->post('owl') != 'undefined'))
-            $search_array['having']['owl_id'][]     = $this->input->post('owl');
+        if( $this->input->post('owl')
+            && (
+                    $this->input->post('owl') != NULL
+                    || $this->input->post('owl') != FALSE
+                    || $this->input->post('owl') != ''
+                    || $this->input->post('owl') != 'undefined'
+                )
+            )
+            $search_array['having']['owl_id'][] = $this->input->post('owl');
+
+        if( $this->input->post('cat')
+            && (
+                    $this->input->post('cat') != NULL
+                    || $this->input->post('cat') != FALSE
+                    || $this->input->post('cat') != ''
+                    || $this->input->post('cat') != 'undefined'
+                )
+            )
+        {
+            print "\n\n<!--\n\n" . print_r(get_cat_children_arr($this->input->post('cat')), TRUE) . "\n\n-->\n\n";
+            $search_array['having']['cat'] = get_cat_children_arr($this->input->post('cat'));
+        }
 
         // remove the search data if it exists (to avoid any issues)
         $this->session->unset_userdata('search');
@@ -248,6 +268,7 @@ class Search extends CI_Controller {
 
         // gather our search data
         $search_data = $this->gen_results();
+        print "\n\n<!--\n\n" . $this->db->last_query() . "\n\n-->\n\n";
 
         // build the view with the formatted data
         $this->load->view('search/ajax_search_row', array('results' => $search_data));
