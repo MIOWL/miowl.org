@@ -97,6 +97,14 @@
             padding-bottom: 5px;
         }
 
+        .out-links a,
+        .out-links a:visited,
+        .out-links a:active,
+        .out-links a:hover {
+            color: rgb(255,0,0);
+            text-decoration: none;
+        }
+
         .out-links {
             margin: 0;
             padding: 0;
