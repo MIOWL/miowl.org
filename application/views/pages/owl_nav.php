@@ -11,7 +11,7 @@
 					<?php if(is_member($owl)) : ?>
 						<li><a class="change_owl owl_nav_button" href="<?php print $owl; ?>">change active owl</a></li>
 					<?php else : ?>
-						<li><a class="request_access owl_nav_button" href="<?php print $owl; ?>">request access</a></li>
+						<li><a class="request_access owl_nav_button" href="<?php print $owl; ?>">request membership</a></li>
 					<?php endif; ?>
 				<?php endif; ?>
 
