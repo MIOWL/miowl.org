@@ -34,6 +34,11 @@
         </div>
     </div>
 
+    <div class="center-line">
+        <span class="center-line">
+            OR
+        </span>
+    </div>
 
     <h1>
         <center>

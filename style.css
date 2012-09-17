@@ -481,6 +481,21 @@ input::-moz-focus-inner {
     color: #808080;
 }
 
+div.center-line {
+    height: 1px;
+    background-color: rgba(0,0,0,0.20);
+    text-align: center;
+    margin: 1.5em 5em;
+}
+
+span.center-line {
+    background-color: white;
+    position: relative;
+    top: -0.4em;
+    padding: 0 .7em;
+    font-size: 25px;
+}
+
 
 /*
 |-----------------------
