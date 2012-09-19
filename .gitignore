@@ -34,6 +34,12 @@
 */uploads/!.htaccess
 ##
 
+# MFHT imported uploads
+*/mfht_import/*
+*/mfht_import/!index.html
+*/mfht_import/!.htaccess
+##
+
 # User license files
 */user_license_files/*
 */user_license_files/!index.html
