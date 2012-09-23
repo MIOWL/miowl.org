@@ -58,7 +58,7 @@
                     <div class="ctrlHolder">
                         <label for="description">Description <span class="right">(required)</span></label>
                         <textarea name="description" id="description" size="35" class="textInput large" rows="5" cols="50" maxlength="255"><?php print trim(set_value('description')); ?></textarea>
-                        <div id="description-chars">Loading...</div>
+                        <div id="description-chars" style="margin-left: 34%;">Loading...</div>
                         <p class="formHint">Enter a description for the file. Maximum character count is 255.</p>
                     </div>
 
