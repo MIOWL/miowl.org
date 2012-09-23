@@ -181,3 +181,24 @@ $(document).ready(function() {
     // ------------------------------------------------------------------------
 
 });
+
+// Input & Textarea Character Limit Display with jQuery
+(function($) {
+    $.fn.extend( {
+        limiter: function(elem) {
+            var limit = $(this).attr('maxlength');
+            $(this).on("keyup focus", function() {
+                setCount(this, elem);
+            });
+            function setCount(src, elem) {
+                var chars = src.value.length;
+                if (chars > limit) {
+                    src.value = src.value.substr(0, limit);
+                    chars = limit;
+                }
+                elem.html( limit - chars + " Character's remaining." );
+            }
+            setCount($(this)[0], elem);
+        }
+    });
+})(jQuery);

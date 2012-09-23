@@ -57,7 +57,8 @@
 
                     <div class="ctrlHolder">
                         <label for="description">Description <span class="right">(required)</span></label>
-                        <textarea name="description" id="description" size="35" class="textInput large" rows="5" cols="50" maxsize="255"><?php print trim(set_value('description')); ?></textarea>
+                        <textarea name="description" id="description" size="35" class="textInput large" rows="5" cols="50" maxlength="255"><?php print trim(set_value('description')); ?></textarea>
+                        <div id="description-chars"></div>
                         <p class="formHint">Enter a description for the file. Maximum character count is 255.</p>
                     </div>
 
@@ -88,6 +89,9 @@
                 buttonImageOnly: true,
                 dateFormat: "dd MM yy"
             });
+
+            // jQuery Limit counter
+            $("#description").limiter($("#description-chars"));
         });
     </script>
     <!-- --------------- -->
