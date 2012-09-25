@@ -30,7 +30,8 @@
 	<script type="text/javascript" src="<?php print site_url('/js/miowl.js'); ?>"></script>
 	<script type="text/javascript" src="<?php print site_url('/js/uni-form.jquery.min.js'); ?>"></script>
 	<script type="text/javascript" src="<?php print site_url('/js/tips.js'); ?>"></script>
-	<script type="text/javascript" src="<?php print site_url('/js/jquery.countdown.js'); ?>"></script>
+    <script type="text/javascript" src="<?php print site_url('/js/jquery.countdown.js'); ?>"></script>
+	<script type="text/javascript" src="<?php print site_url('/js/nwxforms.js'); ?>"></script> <!-- HTML5 fix for IE -->
 
     <!--[if lt IE 9]>
         <script type="text/javascript" src="/js/html5shiv.js"></script>
