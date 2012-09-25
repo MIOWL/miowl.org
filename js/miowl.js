@@ -206,3 +206,9 @@ $(document).ready(function() {
 })(jQuery);
 // -------------------------------------------------------------------------
 
+// $('#keyword').css('color', 'red');
+// $('[placeholder]').css('color', 'red').each(function(){$(this).val($(this).attr('placeholder') + ' modified')});
+// $('[placeholder]').css('color', 'red')
+//                   .each(function() {
+//                     $(this).val($(this).attr('placeholder') + ' modified');
+//                   });
