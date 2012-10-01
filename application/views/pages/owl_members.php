@@ -149,6 +149,9 @@
                                 if (data.success == 'true') {
                                     // update the view to reflect this change
                                     element.attr('href', href).attr('style', style).text(str);
+
+                                    // quick and dirty hack to reload page due to it only modifying the element not both the element and admin/editor etc.
+                                    window.location.reload();
                                 }
                                 else {
                                     alert('Sorry, you don’t have the authority to change this status.');
