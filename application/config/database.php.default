@@ -48,10 +48,10 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'lister.binslashbash.org';
-$db['default']['username'] = 'miowl';
-$db['default']['password'] = 'hLLc9vV356pnSWLZ';
-$db['default']['database'] = 'miowl_db';
+$db['default']['hostname'] = 'localhost';
+$db['default']['username'] = 'username';
+$db['default']['password'] = 'password';
+$db['default']['database'] = 'miowl';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
