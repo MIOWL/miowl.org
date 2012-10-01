@@ -147,11 +147,32 @@
                             // get the JSON data from the request
                             $.getJSON(uri, function(data) {
                                 if (data.success == 'true') {
-                                    // update the view to reflect this change
-                                    element.attr('href', href).attr('style', style).text(str);
+                                    // if we are promoting a user to an admin, make sure that the editor is ticked also
+                                    if (group == 'admin' && action == 'promote') {
+                                        $('#r-' + uid + ' td center').each(function() {
+                                            var uri = $(this).children().attr('href').split(':');
+                                            $(this).children().attr('href', 'demote:' + uri[1] + ':' + uid);
+                                            $(this).children()
+                                                    .text(".")
+                                                    .attr('style', 'color:#63b52e !important');
+                                        });
+                                    }
 
-                                    // quick and dirty hack to reload page due to it only modifying the element not both the element and admin/editor etc.
-                                    window.location.reload();
+                                    // if we are demoting from an editor, then untick the admin also...
+                                    else if(group == 'editor' && action == 'demote') {
+                                        $('#r-' + uid + ' td center').each(function() {
+                                            var uri = $(this).children().attr('href').split(':');
+                                            $(this).children().attr('href', 'promote:' + uri[1] + ':' + uid);
+                                            $(this).children()
+                                                    .text("'")
+                                                    .attr('style', 'color:#FF0000 !important');
+                                        });
+                                    }
+
+                                    // normal action, update the view to reflect this change
+                                    else {
+                                        element.attr('href', href).attr('style', style).text(str);
+                                    };
                                 }
                                 else {
                                     alert('Sorry, you don’t have the authority to change this status.');
