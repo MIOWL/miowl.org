@@ -112,4 +112,17 @@ if (!function_exists('owl_verified'))
 }
 
 
+if (!function_exists('get_user'))
+{
+    function get_user($user_id = FALSE)
+    {
+        $CI =& get_instance();
+        if(!$user_id)
+            return NULL;
+        else
+            return $CI->user_model->get_user_by_id($user_id);
+    }
+}
+
+
 // eof.

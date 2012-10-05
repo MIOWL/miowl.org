@@ -134,6 +134,18 @@ p.footer {
   color: #aaa;
 }
 
+#previousUploads hr {
+    border: none;
+    border-top: medium double;
+    color: #ddd;
+    text-align: center;
+    padding: 5px 0;
+}
+
+#previousUploads :last-child hr {
+    display: none;
+}
+
 
 /*
 |-----------------------------------

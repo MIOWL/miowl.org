@@ -6,6 +6,8 @@
 <!-- -------------------------------------- JAVASCRRIPT HERE -------------------------------------- -->
 <!-- ---------------------------------------------------------------------------------------------- -->
 
+<script type="text/javascript" src="<?php print site_url('/js/prefixfree.min.js'); ?>"></script>
+
 <?php if(isset($owl_selection) && $owl_selection) : ?>
   <script type="text/javascript" src="<?php print site_url('/js/owl_selection.js'); ?>"></script>
 <?php endif; ?>

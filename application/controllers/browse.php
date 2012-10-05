@@ -259,6 +259,9 @@ class Browse extends CI_Controller {
         $page_data['deleted']       = $deleted;
         $page_data['license_data']  = $this->lic_model->get_owl_licenses();
 
+        // get the previous versions of the upload if any
+        $page_data['previous']      = $this->upload_model->get_previous($file_id);
+
         if( ( !is_null( $upload_info->row()->revision_date ) ) && ( time() >= $upload_info->row()->revision_date ) )
         {
             $page_data['info']      = TRUE;

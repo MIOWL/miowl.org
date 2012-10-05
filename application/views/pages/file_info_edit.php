@@ -63,6 +63,42 @@
                     ?>" />
                 </div>
 
+                <?php if(!$previous) : ?>
+                    <div class="ctrlHolder">
+                        <label for="previousUploads">Previous Uploads</label>
+                        <ul name="previousUploads" id="previousUploads" style="float: right; width: 66%;">
+
+                            <?php if($previous) : ?>
+
+                                <?php foreach ($previous as $row) : ?>
+                                    <li>
+                                        <span style="width: 33%; display: inline-block;">
+                                            <strong>User:</strong> <?php print get_user($row->user)->row()->user_name; ?>
+                                        </span>
+                                        <span style="width: 33%; display: inline-block;"><strong>Time/Date:</strong> <?php print date("d/m/Y", $row->timestamp); ?></span>
+                                        <button class="right button">download</button>
+                                        <br>
+                                        <strong>Reason:</strong>
+                                        <span style="display: inline-table; width: 411px; text-align: justify;"> <?php print $row->reason; ?></span>
+                                        <hr>
+                                    </li>
+                                <?php endforeach; ?>
+
+                                <?php if(count($previous) > 1) : ?>
+                                    <button class="button right ShowAll" style="display: none;">show all</button>
+                                    <button class="button right ShowLess" style="display: none;">show less</button>
+                                <?php endif; ?>
+
+                            <?php else : ?>
+
+                                <li>No previous uploads...</li>
+
+                            <?php endif; ?>
+
+                        </ul>
+                    </div>
+                <?php endif; ?>
+
             </fieldset>
 
         </div>
@@ -141,6 +177,28 @@
 
             // jQuery Limit counter
             $("#description").limiter($("#description-chars"));
+
+            // Hide all but 1st Previous Uploads and 1st hr
+            $('#previousUploads li:not(:first-child)').toggle();
+            $('#previousUploads :first-child hr').toggle();
+            $('.ShowAll').toggle();
+
+            // Show more Previous Uploads button
+            $('.ShowAll').click(function(){
+                $(this).toggle();
+                $('#previousUploads :first-child hr').toggle("slow");
+                $('#previousUploads li:not(:first-child)').toggle("slow");
+                $('.ShowLess').toggle();
+            });
+
+            // Show less Previous Uploads button
+            $('.ShowLess').click(function(){
+                $(this).toggle();
+                $('#previousUploads :first-child hr').toggle("slow");
+                $('#previousUploads li:not(:first-child)').toggle("slow");
+                $('.ShowAll').toggle();
+            });
+
         });
     </script>
     <!-- --------------- -->
