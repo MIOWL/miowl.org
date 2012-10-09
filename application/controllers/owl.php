@@ -134,6 +134,12 @@ class Owl extends CI_Controller {
             return;
         }
 
+        if (!is_admin())
+        {
+            redirect('/', 'location');
+            return;
+        }
+
         $details    = $this->owl_model->get_owl_by_id($this->session->userdata('owl'));
         $owl_id     = $this->session->userdata('owl');
 
@@ -395,6 +401,12 @@ class Owl extends CI_Controller {
      */
     public function _uploads_bin($offset = 0, $limit = 7)
     {
+        if (!is_admin())
+        {
+            redirect('/', 'location');
+            return;
+        }
+
         // page data array
         $page_data                  = array();
         $page_data['page_title']    = "Recycle Bin";
@@ -759,6 +771,12 @@ class Owl extends CI_Controller {
      */
     public function _categories_organize($offset = 0)
     {
+        if (!is_editor())
+        {
+            redirect('/', 'location');
+            return;
+        }
+
         // set the pageination limit
         $limit = 9;
 
@@ -790,6 +808,12 @@ class Owl extends CI_Controller {
      */
     public function _categories_create()
     {
+        if (!is_editor())
+        {
+            redirect('/', 'location');
+            return;
+        }
+
         // page data array
         $page_data                  = array();
         $page_data['page_title']    = "Create New OWL File Category";
@@ -989,6 +1013,12 @@ class Owl extends CI_Controller {
      */
     public function _licenses_edit()
     {
+        if (!is_editor())
+        {
+            redirect('/', 'location');
+            return;
+        }
+
         // get the post data
         $id     = $this->input->post('id');
         $name   = $this->input->post('name');

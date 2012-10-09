@@ -80,7 +80,7 @@
 			categories
 			<ul>
 				<li><a class="owl_nav_button" href="<?php print site_url('owl/categories'); ?>">list</a></li>
-	<?php if (is_admin()) : ?>
+	<?php if (is_editor()) : ?>
 				<li><a class="owl_nav_button" href="<?php print site_url('owl/categories/organize'); ?>">organize</a></li>
 				<li><a class="owl_nav_button" href="<?php print site_url('owl/categories/create'); ?>">create</a></li>
 	<?php endif; ?>
@@ -92,7 +92,7 @@
 			licenses
 			<ul>
 				<li><a class="owl_nav_button" href="<?php print site_url('owl/licenses'); ?>">list</a></li>
-	<?php if (is_admin()) : ?>
+	<?php if (is_editor()) : ?>
 				<li><a class="owl_nav_button" href="<?php print site_url('owl/licenses/create'); ?>">create</a></li>
 	<?php endif; ?>
 				<li style="list-style-type: none">&nbsp;</li>
