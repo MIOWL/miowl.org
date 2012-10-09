@@ -1,5 +1,5 @@
     <p>{toName},<br />
-        Your have been invited to join the OWL "{owl_name}" by {fromName}.
+        You have been invited to join the OWL "{owl_name}" by {fromName}.
     </p>
     <p>
     	Below is the message from {fromName}:<br />

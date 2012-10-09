@@ -49,6 +49,7 @@
                 <ul class="out-links">
                     <li><a href="#BrowseLibraries">Browsing libraries</a></li>
                     <li><a href="#SearchContent">Site Search</a></li>
+                    <li><a href="#LiveSearch">Live Search</a></li>
                 </ul>
                 <div class="clear"></div>
 
@@ -67,7 +68,7 @@
                 <h2 id="LiveSearch">Live search</h2>
                 <p>The following are the two ways to use a search function when within a particular library.</p>
                 <p>
-                    Clicking on “list” under the “Categories” heading on the left side of the page within a particular OWL will take one to the “Owl Categories” page that lists all the file categories for that particular OWL. Clicking on a particular category from that list takes you to the “File Browser” page which lists all the files under the chosen category. Above the list of files is a box with the words “Live Search”. Typing words in this book will search the files within the category and select those that have the key words in their file name, or description.
+                    Clicking on “list” under the “Categories” heading on the left side of the page within a particular OWL will take one to the “Owl Categories” page that lists all the file categories for that particular OWL. Clicking on a particular category from that list takes you to the “File Browser” page which lists all the files under the chosen category. Above the list of files is a box with the words “Live Search”. Typing words in this box will search the files within the category and select those that have the key words in their file name, or description.
                 </p>
                 <p>
                     The other way to search within a particular library is to click on “browse” beneath the heading “Uploads” on the left side of the page within an OWL. This takes one to the “OWL Uploads” page where there is a listing of all the files within that particular library. Above the list of files is a box with the words “Live Search”. Typing key words in this box will search all files and select those that have the key words in their file name, or description.
@@ -75,8 +76,48 @@
             </div>
 
             <div id="create_owl">
-                <h2>Under Construction</h2>
-                <p>Sorry, this content is still getting written.<br />Please check back at a later date for updates.</p>
+                <ul class="out-links">
+                    <li><a href="#Register">Register</a></li>
+                    <li><a href="#CreateNewOwl">Create New OWL</a></li>
+                    <li><a href="#ManageCats">Managing Categories</a></li>
+                    <li><a href="#Licenses">Licenses</a></li>
+                    <li><a href="#Uploads">Uploads</a></li>
+                </ul>
+                <div class="clear"></div>
+
+                <h2 id="Register">Register</h2>
+                <p>
+                    To create a new OWL it is necessary to register with the MI OWL site. Do so by clicking on “register” at the top right of the MI OWL pages. This will take you to the Registration Page. There you will be asked to submit information including your name, email and whether you want to join an existing OWL, or create a new one. You will then receive an email titled MI OWL/Confirm your Account. By following the instructions you will be able to go to the MI OWL User Account Authorize page. There you will enter the Authorization Code sent to you in the email you received. By then clicking on “Authorize Account” on the lower right hand of the page you will have activated your account. You will then receive another email titled MI OWL/Welcome verifying that your account has been activated.
+                </p>
+
+                <h2 id="CreateNewOwl">Create New OWL</h2>
+                <p>
+                    Once you have an activated account you can go back to the MI OWL site and click on “log in”. This will bring you to a page where you can have a choice of “Choose existing OWL”, or  “Register New OWL”. Filling the information required under “Register New OWL” will create an “Unverified OWL”. You will receive an email with a confirmation code that allows you to confirm and activate your new OWL once you return and log in to the MI OWL site.
+                </p>
+
+                <h2 id="ManageCats">Managing Categories</h2>
+                <p>
+                    Having created a new OWL you will find that it is already auto-populated with a large number of categories which are specific to either a hospital or primary care clinic. You can modify this table of contents, or get rid of it completely and develop one that will meet your specific needs.
+                </p>
+                <p>
+                    By clicking “organize” under the “categories” heading you can change whether a category is a primary, secondary or tertiary one.  If it is not a primary category you can also establish which category is its parent.
+                </p>
+                <p>
+                    Clicking on “create” under the “categories” heading allows for a new category to be made. If the new category is not to be a primary category it can then be assigned to be a subcategory of another existing category.
+                </p>
+
+                <h2 id="Licenses">Licenses</h2>
+                <p>
+                    The list of licenses that are automatically populated for a new OWL can be reviewed by clicking “list” under “licenses”.  These are the choices of license one has to choose from when uploading a new file. New licenses can be added to this list by clicking on “create”.  We encourage users to use permissive licenses as a fundamental goal of this site is sharing.
+                </p>
+
+                <h2 id="Uploads">Uploads</h2>
+                <p>
+                    Files can be uploaded to populate the various categories by using the “upload” function under “uploads”. Files must be in the txt, rtf, pdf, doc or docx format. It is important to put in a descriptive file name. Care should be taken in filling the “description” box with a summary of what the file contains. Key words should be used in this description. The “site search” and “live search” functions of the MI OWL site search through the file name and the file description information to find the required files.
+                </p>
+                <p>
+                    Deleted files can be recovered from the “recycle bin” for up to 30 days.
+                </p>
             </div>
 
             <div id="open_source">

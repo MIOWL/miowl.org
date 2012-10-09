@@ -11,7 +11,7 @@
             <?php $this->load->view('pages/owl_nav'); ?>
         </div>
         <div id="owl_body" class="column right threequarter">
-            <p>Deleted uploads are stored here for up to 30 days from the date of removal. After this time they will be perminantly removed.<br><br>You can un-delete them during this time if you wish.</p>
+            <p>Deleted uploads are stored here for up to 30 days from the date of removal. After this time they will be permanently removed.<br><br>You can un-delete them during this time if you wish.</p>
             <table>
                 <thead>
                     <tr>
@@ -48,7 +48,7 @@
                             <a href="<?php print site_url('download/' . $row->id); ?>" title="Downlaod this file!" target="_BLANK" class="icon_font">F</a>
                         </td>
                         <td>
-                            <a href="<?php print site_url('deleted/info/' . $row->id); ?>" title="More info for this file!" target="_BLANK" class="icon_font">,</a>
+                            <a href="<?php print site_url('deleted/info/' . $row->id); ?>" title="More info for this file!" class="icon_font">,</a>
                         </td>
                         <td>
                             <a href="<?php print $row->id; ?>" title="Restore this file!" target="_BLANK" id="restore_<?php print $row->id; ?>" class="icon_font restore">i</a>
