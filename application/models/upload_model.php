@@ -184,28 +184,67 @@ class Upload_model extends CI_Model {
 
 
     /**
+     * public add_replacement()
+     */
+    public function add_replacement($upload_id = FALSE, $reason = NULL)
+    {
+        if(!$upload_id)
+            return FALSE;
+
+        // get the previous upload data
+        $previous_upload_data = $this->get_upload_by_id($upload_id);
+
+        // check we have some valid data
+        if(!$previous_upload_data)
+            return FALSE;
+
+        // build the insert data for the previous uploads table
+        // and insert it
+        $insert_data = array(
+            'upload_id' => $upload_id,
+            'prev_user' => $previous_upload_data->row()->full_path,
+            'user'      => $this->session->userdata('user_id'),
+            'reason'    => $reason,
+            'filename'  => $previous_upload_data->row()->full_path,
+            'timestamp' => time()
+        );
+        $this->db->insert('prev_uploads', $insert_data);
+
+        // build the update data for the uploads table
+        // and insert it
+        $update_data = array(
+            'last_updated'      => time(),
+            'user'      => $this->session->userdata('user_id'),
+            'reason'    => $reason,
+            'filename'  => $previous_upload_data->row()->full_path,
+            'timestamp' => time()
+        );
+        $this->db->where('id', $upload_id);
+        $this->db->update('uploads', $update_data);
+    }
+
+
+    /**
      * public add_upload()
      */
     public function add_upload(
-                                $upload_user        = FALSE,
-                                $owl                = FALSE,
-                                $file_name          = FALSE,
-                                $full_path          = FALSE,
-                                $upload_category    = FALSE,
-                                $upload_license     = FALSE,
-                                $file_type          = FALSE,
-                                $client_name        = FALSE,
-                                $file_size          = FALSE,
-                                $file_ext           = FALSE,
-                                $description        = NULL,
-                                $revDate            = NULL
-                              )
-    {
+        $upload_user        = FALSE,
+        $owl                = FALSE,
+        $file_name          = FALSE,
+        $full_path          = FALSE,
+        $upload_category    = FALSE,
+        $upload_license     = FALSE,
+        $file_type          = FALSE,
+        $client_name        = FALSE,
+        $file_size          = FALSE,
+        $file_ext           = FALSE,
+        $description        = NULL,
+        $revDate            = NULL
+    ) {
         if ( !is_editor() )
             return FALSE;
 
-        if (
-               !$upload_user
+        if (   !$upload_user
             || !$owl
             || !$file_name
             || !$full_path
@@ -214,11 +253,11 @@ class Upload_model extends CI_Model {
             || !$client_name
             || !$file_size
             || !$file_ext
-        )
-            return FALSE;
+        ) return FALSE;
 
         $insert_data = array(
             'upload_time'       => time(),
+            'last_updated'      => time(),
             'upload_user'       => $upload_user,
             'owl'               => $owl,
             'file_name'         => $file_name,
@@ -250,10 +289,11 @@ class Upload_model extends CI_Model {
             return FALSE;
 
         $update_data = array(
-                                'upload_category'   => $upload_category,
-                                'client_name'       => $client_name,
-                                'description'       => $description
-                            );
+            'last_updated'      => time(),
+            'upload_category'   => $upload_category,
+            'client_name'       => $client_name,
+            'description'       => $description
+        );
 
         $this->db->where('full_path', $full_path);
         $this->db->update('uploads', $update_data);
@@ -354,6 +394,7 @@ class Upload_model extends CI_Model {
                     : strtotime($this->input->post('date'));
 
         $update_data = array(
+            'last_updated'      => time(),
             'file_name'         => $this->input->post('name'),
             'upload_category'   => $this->input->post('cat'),
             'upload_license'    => $this->input->post('lic'),
