@@ -186,7 +186,7 @@ class Upload_model extends CI_Model {
     /**
      * public add_replacement()
      */
-    public function add_replacement($upload_id = FALSE, $reason = NULL)
+    public function add_replacement($upload_id = FALSE)
     {
         if(!$upload_id)
             return FALSE;
@@ -204,7 +204,7 @@ class Upload_model extends CI_Model {
             'upload_id' => $upload_id,
             'prev_user' => $previous_upload_data->row()->full_path,
             'user'      => $this->session->userdata('user_id'),
-            'reason'    => $reason,
+            'reason'    => str_replace(array("\r\n","\r","\n"), '\n', trim($this->input->post('reason'))),
             'filename'  => $previous_upload_data->row()->full_path,
             'timestamp' => time()
         );
@@ -212,12 +212,11 @@ class Upload_model extends CI_Model {
 
         // build the update data for the uploads table
         // and insert it
+        $upload_data = $this->upload->data();
         $update_data = array(
-            'last_updated'      => time(),
-            'user'      => $this->session->userdata('user_id'),
-            'reason'    => $reason,
-            'filename'  => $previous_upload_data->row()->full_path,
-            'timestamp' => time()
+            'last_updated'  => time(),
+            'user'          => $this->session->userdata('user_id'),
+            'filename'      => $upload_data['full_path']
         );
         $this->db->where('id', $upload_id);
         $this->db->update('uploads', $update_data);

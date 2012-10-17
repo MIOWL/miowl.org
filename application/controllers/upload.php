@@ -178,6 +178,65 @@ class Upload extends CI_Controller {
 
 
      /**
+     * public index()
+     */
+    public function replace($upload_id = FALSE)
+    {
+        // do we have an upload id
+        if(!$upload_id)
+        {
+            redirect('/welcome', 'location');
+            return;
+        }
+
+        // do we need to login??
+        if (!$this->login_check('upload'))
+            return;
+
+        // what are the allowed file types? [seperate via pipe (|)]
+        $file_types = 'txt|rtf|pdf|doc|docx';
+
+        $config['upload_path']      = './uploads/';
+        $config['allowed_types']    = $file_types;
+        $config['max_size']         = '102400000'; // 10MB
+        $config['encrypt_name']     = TRUE;
+
+        // setup the page_data array and add in some data
+        $page_data                  = array();
+        $page_data['allow_types']   = str_replace('|', ', ', $file_types);
+
+        $this->load->library('upload', $config);
+
+        // form validation rules
+        $this->form_validation->set_rules('reason', 'Reason', 'trim|required');
+
+        if($this->form_validation->run())
+        {
+            if (!$this->upload->do_upload())
+            {
+                $page_data['page_title'] = 'Upload Failure';
+                $page_data['error'] = TRUE;
+                $page_data['msg'] = trim($this->upload->display_errors());
+
+                $this->load->view('pages/replacement_form', $page_data);
+            }
+            else
+            {
+                $this->upload_model->add_replacement($upload_id);
+                redirect('/browse/info_edit/' . $upload_id, 'location');
+                return;
+            }
+        }
+        else
+        {
+            $page_data['page_title'] = 'Upload a replacement file';
+            $this->load->view('pages/replacement_form', $page_data);
+        }
+    }
+    //------------------------------------------------------------------
+
+
+     /**
      * public lic()
      */
     public function lic()

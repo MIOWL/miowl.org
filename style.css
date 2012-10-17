@@ -392,6 +392,7 @@ input::-moz-focus-inner {
 }
 
 .button:before {
+    line-height: 25px !important;
     float: left;
     margin: 0 1em 0 -1em;
     padding: 0 .2em;

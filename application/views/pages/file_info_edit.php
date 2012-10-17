@@ -20,6 +20,13 @@
                 <?php $this->load->view('messages/message_inline'); ?>
 
                 <div class="ctrlHolder">
+                    <label for="change_file">change uploaded file</label>
+                    <span type="text" name="change_file" id="change_file" class="large buttonHolder">
+                        <a href="/upload/replace/<?=$upload_info->row()->id?>"><button class="button star" id="new_upload">upload a new file to replace the current...</button></a>
+                    </span>
+                </div>
+
+                <div class="ctrlHolder">
                     <label for="file_name">filename</label>
                     <input type="text" name="file_name" id="file_name" class="textInput large" value="<?php print $upload_info->row()->file_name; ?>" />
                 </div>
@@ -63,9 +70,9 @@
                     ?>" />
                 </div>
 
-                <?php /*if(!$previous) : ?>
+                <?php if(!$previous) : ?>
                     <div class="ctrlHolder">
-                        <label for="previousUploads">Previous Uploads</label>
+                        <label for="previousUploads">previous uploads</label>
                         <ul name="previousUploads" id="previousUploads" style="float: right; width: 66%;">
 
                             <?php if($previous) : ?>
@@ -91,83 +98,13 @@
 
                             <?php else : ?>
 
-                                    <li>
-                                        <span style="width: 33%; display: inline-block;">
-                                            <strong>User:</strong> Me
-                                        </span>
-                                        <span style="width: 33%; display: inline-block;"><strong>Time/Date:</strong> Today</span>
-                                        <button class="right button">download</button>
-                                        <br>
-                                        <strong>Reason:</strong>
-                                        <span style="display: inline-table; width: 411px; text-align: justify;"> Some reason</span>
-                                        <hr>
-                                    </li>
-                                    <li>
-                                        <span style="width: 33%; display: inline-block;">
-                                            <strong>User:</strong> Me
-                                        </span>
-                                        <span style="width: 33%; display: inline-block;"><strong>Time/Date:</strong> Today</span>
-                                        <button class="right button">download</button>
-                                        <br>
-                                        <strong>Reason:</strong>
-                                        <span style="display: inline-table; width: 411px; text-align: justify;"> Some reason</span>
-                                        <hr>
-                                    </li>
-                                    <li>
-                                        <span style="width: 33%; display: inline-block;">
-                                            <strong>User:</strong> Me
-                                        </span>
-                                        <span style="width: 33%; display: inline-block;"><strong>Time/Date:</strong> Today</span>
-                                        <button class="right button">download</button>
-                                        <br>
-                                        <strong>Reason:</strong>
-                                        <span style="display: inline-table; width: 411px; text-align: justify;"> Some reason</span>
-                                        <hr>
-                                    </li>
-                                    <li>
-                                        <span style="width: 33%; display: inline-block;">
-                                            <strong>User:</strong> Me
-                                        </span>
-                                        <span style="width: 33%; display: inline-block;"><strong>Time/Date:</strong> Today</span>
-                                        <button class="right button">download</button>
-                                        <br>
-                                        <strong>Reason:</strong>
-                                        <span style="display: inline-table; width: 411px; text-align: justify;"> Some reason</span>
-                                        <hr>
-                                    </li>
-                                    <li>
-                                        <span style="width: 33%; display: inline-block;">
-                                            <strong>User:</strong> Me
-                                        </span>
-                                        <span style="width: 33%; display: inline-block;"><strong>Time/Date:</strong> Today</span>
-                                        <button class="right button">download</button>
-                                        <br>
-                                        <strong>Reason:</strong>
-                                        <span style="display: inline-table; width: 411px; text-align: justify;"> Some reason</span>
-                                        <hr>
-                                    </li>
-                                    <li>
-                                        <span style="width: 33%; display: inline-block;">
-                                            <strong>User:</strong> Me
-                                        </span>
-                                        <span style="width: 33%; display: inline-block;"><strong>Time/Date:</strong> Today</span>
-                                        <button class="right button">download</button>
-                                        <br>
-                                        <strong>Reason:</strong>
-                                        <span style="display: inline-table; width: 411px; text-align: justify;"> Some reason</span>
-                                        <hr>
-                                    </li>
-
                                 <li>No previous uploads...</li>
-
-                                    <button class="button right ShowAll" style="display: none;">show all</button>
-                                    <button class="button right ShowLess" style="display: none;">show less</button>
 
                             <?php endif; ?>
 
                         </ul>
                     </div>
-                <?php endif;*/ ?>
+                <?php endif; ?>
 
             </fieldset>
 
