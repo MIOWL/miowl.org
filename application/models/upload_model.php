@@ -498,8 +498,8 @@ class Upload_model extends CI_Model {
             return FALSE;
 
         $this->db->select('*');
-        $this->db->where('owl', $owl);
-        $query = $this->db->get('uploads');
+        $this->db->where('upload_id', $file_id);
+        $query = $this->db->get('prev_uploads');
 
         if ($query->num_rows() > 0)
             return $query;
