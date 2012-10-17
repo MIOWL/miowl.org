@@ -494,7 +494,7 @@ class Upload_model extends CI_Model {
      */
     public function get_previous($file_id = FALSE)
     {
-        if (!$owl)
+        if (!$file_id)
             return FALSE;
 
         $this->db->select('*');
