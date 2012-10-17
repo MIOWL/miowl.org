@@ -79,7 +79,7 @@
                             <?php foreach ($previous->result() as $row) : ?>
                                 <li>
                                     <span style="width: 33%; display: inline-block;">
-                                        <strong>User:</strong> <?php print get_user($row->user)->row()->user_name; ?>
+                                        <strong>User:</strong> <?php $user = get_user($row->user); print $user->row()->user_first_name . ' ' . $user->row()->user_last_name . ' (' . $user->row()->user_name . ')'; ?>
                                     </span>
                                     <span style="width: 33%; display: inline-block;">
                                         <strong>Previous User:</strong> <?php print get_user($row->prev_user)->row()->user_name; ?>
