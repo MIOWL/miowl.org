@@ -76,8 +76,6 @@
 
                         <?php if($previous) : ?>
 
-                            <pre><?php print_r($previous->result()); ?></pre>
-
                             <?php foreach ($previous->result() as $row) : ?>
                                 <li>
                                     <span style="width: 33%; display: inline-block;">
@@ -95,7 +93,7 @@
                                 </li>
                             <?php endforeach; ?>
 
-                            <?php if(count($previous) > 1) : ?>
+                            <?php if(count($previous->result()) > 1) : ?>
                                 <button class="button right ShowAll" style="display: none;">show all</button>
                                 <button class="button right ShowLess" style="display: none;">show less</button>
                             <?php endif; ?>
