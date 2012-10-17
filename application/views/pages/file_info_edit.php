@@ -78,6 +78,8 @@
 
                             <?php foreach ($previous as $row) : ?>
                                 <li>
+                                    <pre><?php print_r($row); ?></pre>
+                                    <?php /*
                                     <span style="width: 33%; display: inline-block;">
                                         <strong>User:</strong> <?php print ($user = get_user($row->user)) ? $user->row()->user_name : 'null'; ?>
                                     </span>
@@ -90,6 +92,7 @@
                                     <strong>Reason:</strong>
                                     <span style="display: inline-table; width: 411px; text-align: justify;"> <?php print $row->reason; ?></span>
                                     <hr>
+                                     */ ?>
                                 </li>
                             <?php endforeach; ?>
 
