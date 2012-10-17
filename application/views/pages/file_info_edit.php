@@ -88,7 +88,7 @@
                                     <button class="right button">download</button>
                                     <br>
                                     <strong>Reason:</strong>
-                                    <span style="display: inline-table; width: 411px; text-align: justify;"> <?php print $row->reason; ?></span>
+                                    <span style="display: inline-table; width: 400px; text-align: justify;"> <?php print $row->reason; ?></span>
                                     <hr>
                                 </li>
                             <?php endforeach; ?>
