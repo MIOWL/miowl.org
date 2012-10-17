@@ -76,6 +76,8 @@
 
                         <?php if($previous) : ?>
 
+                            <pre><?php print_r($previous->result()); ?></pre>
+
                             <?php foreach ($previous->result() as $row) : ?>
                                 <li>
                                     <span style="width: 33%; display: inline-block;">
