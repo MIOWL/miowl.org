@@ -78,11 +78,11 @@
 
                             <?php foreach ($previous->result() as $row) : ?>
                                 <li>
-                                    <span style="width: 33%; display: inline-block;">
+                                    <span style="width: 47%; display: inline-block;">
                                         <strong>User:</strong> <?php $user = get_user($row->user); print $user->row()->user_first_name . ' ' . $user->row()->user_last_name . ' (' . $user->row()->user_name . ')'; ?>
                                     </span>
-                                    <span style="width: 33%; display: inline-block;">
-                                        <strong>Previous User:</strong> <?php print get_user($row->prev_user)->row()->user_name; ?>
+                                    <span style="width: 47%; display: inline-block;">
+                                        <strong>Previous User:</strong> <?php $user = get_user($row->prev_user); print $user->row()->user_first_name . ' ' . $user->row()->user_last_name . ' (' . $user->row()->user_name . ')'; ?>
                                     </span>
                                     <span style="width: 33%; display: inline-block;"><strong>Time/Date:</strong> <?php print date("d/m/Y", $row->timestamp); ?></span>
                                     <button class="right button">download</button>
