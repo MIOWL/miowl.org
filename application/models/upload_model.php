@@ -202,7 +202,7 @@ class Upload_model extends CI_Model {
         // and insert it
         $insert_data = array(
             'upload_id' => $upload_id,
-            'prev_user' => $previous_upload_data->row()->full_path,
+            'prev_user' => $previous_upload_data->row()->upload_user,
             'user'      => $this->session->userdata('user_id'),
             'reason'    => str_replace(array("\r\n","\r","\n"), '\n', trim($this->input->post('reason'))),
             'filename'  => $previous_upload_data->row()->full_path,
@@ -215,8 +215,8 @@ class Upload_model extends CI_Model {
         $upload_data = $this->upload->data();
         $update_data = array(
             'last_updated'  => time(),
-            'upload_user'          => $this->session->userdata('user_id'),
-            'filename'      => $upload_data['full_path']
+            'upload_user'   => $this->session->userdata('user_id'),
+            'full_path'     => $upload_data['full_path']
         );
         $this->db->where('id', $upload_id);
         $this->db->update('uploads', $update_data);
