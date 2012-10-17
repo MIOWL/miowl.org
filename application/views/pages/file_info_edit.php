@@ -93,7 +93,7 @@
                                 </li>
                             <?php endforeach; ?>
 
-                            <?php if(count($previous->result()) > 1) : ?>
+                            <?php if(count($previous->num_rows()) > 1) : ?>
                                 <button class="button right ShowAll" style="display: none;">show all</button>
                                 <button class="button right ShowLess" style="display: none;">show less</button>
                             <?php endif; ?>
