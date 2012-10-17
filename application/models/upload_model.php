@@ -215,7 +215,7 @@ class Upload_model extends CI_Model {
         $upload_data = $this->upload->data();
         $update_data = array(
             'last_updated'  => time(),
-            'user'          => $this->session->userdata('user_id'),
+            'upload_user'          => $this->session->userdata('user_id'),
             'filename'      => $upload_data['full_path']
         );
         $this->db->where('id', $upload_id);
