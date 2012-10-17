@@ -82,6 +82,9 @@
                                         <span style="width: 33%; display: inline-block;">
                                             <strong>User:</strong> <?php print get_user($row->user)->row()->user_name; ?>
                                         </span>
+                                        <span style="width: 33%; display: inline-block;">
+                                            <strong>Previous User:</strong> <?php print get_user($row->prev_user)->row()->user_name; ?>
+                                        </span>
                                         <span style="width: 33%; display: inline-block;"><strong>Time/Date:</strong> <?php print date("d/m/Y", $row->timestamp); ?></span>
                                         <button class="right button">download</button>
                                         <br>
