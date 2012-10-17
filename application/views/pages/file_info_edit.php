@@ -76,7 +76,7 @@
 
                         <?php if($previous) : ?>
 
-                            <?php foreach ($previous as $row) : ?>
+                            <?php foreach ($previous->result() as $row) : ?>
                                 <li>
                                     <pre><?php print_r($row); ?></pre>
                                     <?php /*
