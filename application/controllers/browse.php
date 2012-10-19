@@ -206,6 +206,42 @@ class Browse extends CI_Controller {
 
 
     /**
+     * public download_previous_upload()
+     */
+    public function download_previous_upload($file_id = FALSE)
+    {
+        if(!is_editor())
+            redirect(site_url(), 'location');
+
+        if(!$file_id)
+            redirect(site_url(), 'location');
+
+        // Get the file info for this ID
+        $prev_upload_info = $this->upload_model->get_previous_upload_by_id($file_id);
+
+        if(!$prev_upload_info)
+            redirect(site_url(), 'location');
+
+        $upload_info = $this->upload_model->get_upload_by_id($prev_upload_info->row()->upload_id);
+
+        if(!$upload_info)
+            redirect(site_url(), 'location');
+
+        // Check the file has an ext, if not add it.
+        $file_name = $upload_info->row()->file_name;
+        $file_ext  = $upload_info->row()->file_ext;
+        if (!$this->endswith($file_name, $file_ext))
+            $file_name = $file_name . $file_ext;
+
+        $data = array();
+        $data['file_path'] = $prev_upload_info->row()->full_path;
+        $data['file_name'] = $file_name;
+        $this->load->view('pages/download_file', $data);
+    }
+    //------------------------------------------------------------------
+
+
+    /**
      * public info()
      */
     public function info($file_id = FALSE, $deleted = FALSE)

@@ -85,7 +85,7 @@
                                         <strong>Previous User:</strong> <?php $user = get_user($row->prev_user); print $user->row()->user_first_name . ' ' . $user->row()->user_last_name . ' (' . $user->row()->user_name . ')'; ?>
                                     </span>
                                     <span style="width: 33%; display: inline-block;"><strong>Time/Date:</strong> <?php print date("d/m/Y", $row->timestamp); ?></span>
-                                    <button class="right button">download</button>
+                                    <a href="<?php print site_url('download/prev') . $row->id; ?>"><button class="right button">download</button></a>
                                     <br>
                                     <strong>Reason:</strong>
                                     <span style="display: inline-table; width: 400px; text-align: justify;"> <?php print $row->reason; ?></span>

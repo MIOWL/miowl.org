@@ -46,6 +46,7 @@ $route['404_override']                      = 'error/error_404';
 /* Custom Routes */
 $route['about']                             = 'welcome/about';
 $route['download/(:num)']                   = 'browse/download/$1';
+$route['download/prev/(:num)']              = 'browse/download_previous_upload/$1';
 $route['download/lic/(:num)/(:any)']        = 'browse/download_lic/$1/$2';
 $route['owl/uploads/upload']                = 'upload/index';
 $route['owl/licenses/create']               = 'upload/lic';

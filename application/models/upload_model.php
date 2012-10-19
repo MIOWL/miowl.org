@@ -45,7 +45,7 @@ class Upload_model extends CI_Model {
      *
      * @param int $upload_id - upload id
      */
-    public function get_upload_by_id($upload_id, $deleted = FALSE)
+    public function get_upload_by_id($upload_id = FALSE, $deleted = FALSE)
     {
         if (!$upload_id)
             return FALSE;
@@ -57,6 +57,29 @@ class Upload_model extends CI_Model {
         else
             $this->db->where('deleted', 'true');
         $query = $this->db->get('uploads');
+
+        if ($query->num_rows() > 0)
+            return $query;
+        else
+            return FALSE;
+    }
+    //------------------------------------------------------------------
+
+
+    /**
+     * public get_previous_upload_by_id()
+     * function will pull needed upload info based on the passed int upload id.
+     *
+     * @param int $upload_id - upload id
+     */
+    public function get_previous_upload_by_id($upload_id = FALSE)
+    {
+        if (!$upload_id)
+            return FALSE;
+
+        $this->db->select('*');
+        $this->db->where('id', $upload_id);
+        $query = $this->db->get('prev_uploads');
 
         if ($query->num_rows() > 0)
             return $query;
