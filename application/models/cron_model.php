@@ -95,6 +95,23 @@ class Cron_model extends CI_Model {
 
 
     /**
+     * public cleanup_previous_uploads()
+     */
+    public function cleanup_previous_uploads($upload_id = FALSE)
+    {
+        if(!$upload_id)
+            return FALSE;
+
+        $this->db->flush_cache();
+        $this->db->where("upload_id", $upload_id);
+        $this->db->delete('prev_uploads');
+
+        return $this->db->affected_rows();
+    }
+    //------------------------------------------------------------------
+
+
+    /**
      * public inactive_users()
      * this function is used to get users who have not activated after given $days
      *

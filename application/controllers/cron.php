@@ -124,6 +124,15 @@ class Cron extends CI_Controller {
         // delete the files
         foreach ($toDelete->result() as $row)
         {
+            // cleanup previous uploads
+            if(($prev_uploads = $this->upload_model->get_previous_upload_by_id($row->id)))
+            {
+                foreach ($prev_uploads->result() as $prev_row)
+                    unlink($prev_row->filename);
+
+                $this->cron_model->cleanup_previous_uploads($row->id);
+            }
+
             // $this->printy("[" . $row->id . "]" . $row->file_name . " - " . $row->full_path);
             if ( file_exists( $row->full_path ) && unlink( $row->full_path ) )
                 $this->printy("[" . $row->id . "]" . $row->file_name . " has been removed." . PHP_EOL);
