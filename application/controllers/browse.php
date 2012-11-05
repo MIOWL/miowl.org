@@ -252,6 +252,12 @@ class Browse extends CI_Controller {
         // Get the file info for this ID
         $upload_info = $this->upload_model->get_upload_by_id($file_id, $deleted);
 
+        if(!$upload_info)
+        {
+            show_404();
+            return;
+        }
+
         // page data array
         $page_data                  = array();
         $page_data['page_title']    = "File Info | " . $upload_info->row()->file_name;
