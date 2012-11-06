@@ -47,6 +47,7 @@ user_license_files/!.htaccess
 ##
 
 
-## Dont include the production database.php configuration file (Security)
+## Dont include the production database.php/config.php configuration file (Security)
+application/config/config.php
 application/config/database.php
 ##
